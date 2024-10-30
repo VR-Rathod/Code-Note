@@ -1,0 +1,97 @@
+# **Software Organization:**
+	- Organize software data into three main categories:
+		- ** All Software List** :- Comprehensive overview of available software.
+		- **Free Software** :- Tools and applications accessible at no cost.
+		- **Paid Software** :- Options that require payment.
+-
+	- ### Note : -
+		- software can perform multiple task so It can be repetitive in subcategories
+-
+- # All Software List
+	- [[Blender]] : Free 3D modeling and animation software
+	- [[Maya]] : Advanced 3D modeling, animation, and rendering software
+	- [[Adobe After Effects]] : Motion graphics and visual effects software
+	- [[Adobe Premiere Pro]] : Professional video editing software
+	- [[Cinema 4D]] : 3D modeling, animation, and rendering software
+	- [[Unity]] : Game development platform for 2D and 3D games
+	- [[Unreal Engine]] : Powerful game engine for real-time 3D creation
+	- [[ZBrush]] : Digital sculpting tool for 3D modeling
+	- [[SketchUp]] : 3D modeling software for architecture and design
+	- [[Houdini]] : 3D animation and visual effects software
+	- [[GIMP]] : Free and open-source image editing software
+	- [[Inkscape]] : Free vector graphics editor
+	- [[DaVinci Resolve]] : Video editing and color correction software
+	- [[Autodesk SketchBook]] : Digital drawing and painting software
+	- [[Affinity Designer]] : Vector graphic design software
+	- [[CorelDRAW]] : Vector graphic design software
+	- [[Microsoft Visual Studio]] : Integrated development environment for software development
+	- [[PyCharm]] : IDE for Python development
+	- [[Sublime Text]] : Text editor for code, markup, and prose
+	- [[Visual Studio Code]] : Code editor with support for many programming languages
+	- [[Notepad++]] : Source code editor and Notepad replacement
+	- [[FL Studio]] : Digital audio workstation for music production
+	- [[Ableton Live]] : Music production software
+	- [[Pro Tools]] : Digital audio workstation for music and audio editing
+	- [[Figma]] : Interface design tool for collaboration
+	- [[Adobe XD]] : UI/UX design and prototyping tool
+	- [[Canva]] : Online graphic design tool for creating visual content
+- # Free Software
+	- ## Video Editing
+		- [[DaVinci Resolve]] : Free version available for video editing and color correction (lifetime free)
+		-
+	- ## Photo Editing
+		- [[GIMP]] : Free and open-source image editing software (lifetime free)
+		-
+	- ## Graphics Design
+		- [[Inkscape]] : Free vector graphics editor (lifetime free)
+		- [[Figma]] : Free tier available for interface design and collaboration (lifetime free for individuals, web-based)
+		-
+	- ## Drawing
+		- [[Autodesk SketchBook]] : Free version available for digital drawing (lifetime free)
+		-
+	- ## Code Editing
+		- [[Notepad++]] : Free source code editor (lifetime free)
+		- [[Visual Studio Code]] : Free code editor with support for many programming languages (lifetime free)
+		-
+	- ## Music Production
+		- [[FL Studio]] : Free trial available, but not lifetime free (considered for learning purposes)
+		-
+	- ## Game Development
+		- [[Unity]] : Free tier available for game development (lifetime free with limitations)
+		-
+	- ## Web-Based Tools
+		- [[Figma]] : Web-based interface design tool (lifetime free for individuals)
+		- [[Canva]] : Online graphic design tool with a free tier (lifetime free with limitations)
+		-
+- # Paid Software
+	- ## Video Editing
+		- [[Adobe Premiere Pro]] : Professional video editing software (subscription-based)
+		-
+	- ## Motion Graphics
+		- [[Adobe After Effects]] : Motion graphics and visual effects software (subscription-based)
+		-
+	- ## 3D Modeling and Animation
+		- [[Maya]] : Advanced 3D modeling, animation, and rendering software (subscription-based)
+		- [[Cinema 4D]] : 3D modeling, animation, and rendering software (subscription-based)
+		- [[Houdini]] : 3D animation and visual effects software (subscription-based)
+		-
+	- ## Digital Sculpting
+		- [[ZBrush]] : Digital sculpting tool for 3D modeling (one-time purchase)
+		-
+	- ## Graphics Design
+		- [[Affinity Designer]] : One-time purchase vector graphic design software
+		- [[CorelDRAW]] : Subscription or one-time purchase vector graphic design software
+		- [[Adobe XD]] : Paid version for UI/UX design and prototyping (subscription-based)
+		- [[Canva]] : Pro version for advanced graphic design features (subscription-based)
+		-
+	- ## Music Production
+		- [[Ableton Live]] : Paid version for music production (subscription-based)
+		- [[Pro Tools]] : Digital audio workstation for music and audio editing (subscription-based)
+		-
+	- ## Game Development
+		- [[Unity]] : Free tier available for game development (lifetime free with limitations)
+		-
+	- ## Software Development
+		- [[Microsoft Visual Studio]] : Professional version for software development (subscription-based)
+		- [[PyCharm]] : Professional version for Python development (subscription-based)
+		-
