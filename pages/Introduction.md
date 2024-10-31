@@ -62,7 +62,7 @@ collapsed:: true
   collapsed:: true
 	- [[DSA]]: The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, 
 	                 as well as algorithms for searching, sorting, and optimization.
--
+	-
 - ## DevOps & CI/CD
   collapsed:: true
 	- Notes will be available Soon
@@ -70,4 +70,19 @@ collapsed:: true
 - ## Software Informations
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
 	- [[Software]] :- This page showcases all types of software, categorized by their functionality and purpose.
--
+	-
+- # more learn
+	- In this field you can get community and git repo link which can help full for your Knowledge
+	-
+	- ## Github & Webs
+		- [What are getting famous in GitHub?](https://github.com/EvanLi/Github-Ranking/tree/master)
+		- [Free For dev](https://github.com/ripienaar/free-for-dev)
+		- [Quick Reference](https://quickref.me/index.html)
+		- [You wanna Help on CSS Degine?](https://uiverse.io/cssbuttons-io/wonderful-baboon-62)
+		- [How to build Anything ?](https://github.com/codecrafters-io/build-your-own-x)
+		- [I want Free Engineering Projects😉](https://www.enggroom.com/)
+		- [Are You Finding It jobs ?](https://github.com/poteto/hiring-without-whiteboards)
+		-
+		-
+		-
+	-

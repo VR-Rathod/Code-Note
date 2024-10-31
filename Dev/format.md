@@ -7,7 +7,7 @@ in every notes format will be same
 5. require - if some category are missing use this
 6. more learn - you can share link on social media like github link , drive (Only trustable link and dont try to pramote socal accounts)
 
-Note - That Tag name must be same every carater on every page you can skip tag if it's not relatable.(like in os lib not usefull so you can remove and make require and it's sub categorys for write )
+Note - That Tag name must be same every carater on every page you can skip tag if it's not relatable.(like in os lib not usefull so you can remove and make require and it's sub category for write )
 
 Thank you devloper For your contribuations
 
