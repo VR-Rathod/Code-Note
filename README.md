@@ -40,7 +40,10 @@ Note : - after || (Something) Was use for navigate on Logseq and if pages are bl
       After Download That software
        
       Then open Your project Like This: -
-      **Link Gif**
+      
+      
+      https://github.com/user-attachments/assets/e4cd771b-a7f0-4656-8737-4ea55ac40a5e
+
 
   
   3. **The Final Gift**
