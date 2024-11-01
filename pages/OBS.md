@@ -1,0 +1,43 @@
+## 1. History
+-
+	- **How**: OBS Studio was developed by Hugh "Jim" Bailey and launched in 2012 as an open-source streaming and recording software.
+	- **Who**: Created by a community of developers and contributors focused on live streaming and recording.
+	- **Why**: OBS was designed to provide a free and powerful tool for video recording and live streaming.
+-
+- ## 2. Intro
+-
+	- OBS Studio is a free and open-source software for video recording and live streaming. It allows users to capture video from various sources, including screens, webcams, and games, and stream to platforms like Twitch and YouTube.
+-
+	- ### Advantages
+		- Free and open-source with no restrictions or fees.
+		- High performance and flexibility for various use cases.
+		- Extensive plugin support for additional features.
+-
+	- ### Disadvantages
+		- Steeper learning curve for beginners.
+		- May require powerful hardware for optimal performance.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Familiarize yourself with the interface; use the "Scenes" and "Sources" panels to manage inputs.
+	- **Settings**: Adjust settings for output resolution and bitrate for optimal streaming quality.
+	- **Shortcuts**: Learn essential shortcuts (e.g., Ctrl + R to start/stop recording) to enhance workflow efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [OBS Documentation](https://obsproject.com/wiki/)
+	- **Community Forum**: [OBS Forum](https://obsproject.com/forum/)
+	- **Tutorials**: [OBS Tutorials](https://obsproject.com/wiki/)
+-
+- ## 5. Feature List
+-
+	- **Multi-Source Recording**: Capture video from multiple sources simultaneously.
+	- **Scenes**: Create and switch between different scenes for varied content.
+	- **Audio Mixer**: Control audio levels from different sources in real time.
+	- **Streaming Services**: Stream to multiple platforms including Twitch and YouTube.
+	- **Open-Source**: Free to use and modify with an active community contributing.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [OBS GitHub](https://github.com/obsproject/obs-studio)
+	- **Documentation**: [OBS API Documentation](https://obsproject.com/docs/)

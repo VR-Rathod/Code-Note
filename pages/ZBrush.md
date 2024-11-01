@@ -1,0 +1,47 @@
+## 1. History
+-
+	- **How**: ZBrush was developed by Pixologic and first released in 1999. It was created to provide artists with a powerful digital sculpting tool.
+	- **Who**: The development was led by Joseph Drust and his team at Pixologic.
+	- **Why**: ZBrush was designed to enable artists to create highly detailed and complex 3D models with an intuitive interface and innovative sculpting techniques.
+-
+- ## 2. Intro
+-
+	- ZBrush is a digital sculpting application that combines 3D/2.5D modeling, texturing, and painting. It is widely used in industries such as gaming, film, and illustration for creating intricate details in models. ZBrush's unique features, such as its dynamic subdivision and powerful brush engine, allow for creative freedom and precision in sculpting, making it a favorite among artists and designers.
+-
+	- ### Advantages
+		- Highly detailed sculpting capabilities with millions of polygons.
+		- Intuitive and flexible interface tailored for artists.
+		- Extensive brush library and customization options.
+		- Strong support for texture painting and polygroups.
+-
+	- ### Disadvantages
+		- Steep learning curve for new users.
+		- Resource-intensive, requiring a powerful computer for optimal performance.
+		- Limited traditional polygon modeling features compared to other software.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use the right mouse button to rotate the view; hold Alt to pan; scroll wheel to zoom.
+	- **Sculpting Tools**: Familiarize yourself with brushes like Standard, ClayBuildup, and Move.
+	- **Shortcuts**: Learn essential shortcuts (e.g., S for Scale, Shift for smoothing) to enhance workflow.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [ZBrush Documentation](https://docs.pixologic.com/)
+	- **ZBrush Community**: [ZBrushCentral](https://www.zbrushcentral.com/)
+	- **Plugins**: [ZBrush Plugins](https://www.zbrushcentral.com/c/zbrush-plugins/)
+	- **Tutorials**: [Pixologic ZBrush Tutorials](https://pixologic.com/zclassroom/)
+-
+- ## 5. Feature List
+-
+	- **Sculpting**: Advanced sculpting tools and brushes for high-resolution detailing.
+	- **Texturing**: Polygroups and UV mapping support for detailed texturing.
+	- **Dynamic Subdivision**: Non-destructive modeling with real-time subdivisions.
+	- **ZModeler**: Polygonal modeling capabilities for hard surface designs.
+	- **Fibermesh**: Tools for creating realistic hair, fur, and fibers.
+	- **Rendering**: BPR (Best Preview Render) and integration with other rendering software.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [Pixologic GitHub](https://github.com/Pixologic) (for various ZBrush-related projects)
+	- **Documentation**: [ZBrush API Documentation](https://docs.pixologic.com/reference/api/)

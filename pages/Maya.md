@@ -1,0 +1,46 @@
+# Maya Notes
+- ## 1. History
+	-
+	- **How**: Maya was developed by Alias Systems Corporation, first released in 1998. It evolved from earlier products like PowerAnimator.
+	- **Who**: The development was led by a team of engineers at Alias, with significant contributions from industry artists and animators.
+	- **Why**: Maya was created to provide a comprehensive 3D graphics application for animation, modeling, simulation, and rendering, focusing on film and game production.
+-
+- ## 2. Intro
+	-
+	- Maya is a powerful and versatile 3D software widely used in the animation, modeling, and visual effects industries. It offers a comprehensive suite of tools for creating complex characters, realistic environments, and stunning animations. The software operates on a node-based architecture, allowing for flexible workflows and easy integration of various elements, such as shaders, textures, and animations.
+	-
+	- ### Advantages
+		- Industry-standard software used in major film and game studios.
+		- Robust modeling, animation, and rendering capabilities.
+		- Extensive plugin support and a vibrant community.
+		- Powerful tools for character rigging and animation.
+	-
+	- ### Disadvantages
+		- High cost of licensing.
+		- Steeper learning curve compared to some alternatives.
+		- Resource-intensive, requiring powerful hardware for optimal performance.
+-
+- ## 3. Notes
+	-
+	- **Basic Navigation**: Use Alt + Left Mouse Button to rotate the view; Alt + Middle Mouse Button to pan; Alt + Right Mouse Button to zoom.
+	- **Modeling Tools**: Familiarize yourself with the Modeling Toolkit, including Extrude, Bevel, and Bridge.
+	- **Shortcuts**: Learn essential shortcuts (e.g., W for move, E for rotate, R for scale) to enhance workflow.
+-
+- ## 4. Libs & Framework
+-
+- **Official Documentation**: [Maya Documentation](https://help.autodesk.com/view/MAYAUL/2024/ENU/)
+	- **Maya Learning Channel**: [Maya Learning Channel](https://www.youtube.com/user/AutodeskMaya)
+	- **Community Forums**: [Area by Autodesk](https://area.autodesk.com/)
+	- **Maya Plugins**: [Maya Plugin Repository](https://www.creativecrash.com/maya/plugins)
+-
+- ## 5. Require
+	-
+	- If you find missing topics, consider adding sections on:
+		- Rendering techniques (e.g., Arnold Renderer).
+		- Dynamics and simulations (e.g., nCloth, particles).
+		- Scripting and customization (e.g., MEL, Python).
+-
+- ## 6. More Learn - Share Links
+	-
+	- **GitHub Repositories**: [Maya GitHub](https://github.com/Autodesk/maya-usd) (USD integration)
+	- **Documentation**: [Maya API Documentation](https://help.autodesk.com/view/MAYAUL/2024/ENU/?guid=GUID-C65D5D71-C25C-4ED6-8668-2F65F99D25C5)

@@ -1,0 +1,46 @@
+## 1. History
+-
+	- **How**: Visual Studio Code (VS Code) was developed by Microsoft and first released in 2015 as a lightweight, open-source code editor.
+	- **Who**: The development was led by a team at Microsoft, focusing on providing a versatile tool for developers.
+	- **Why**: VS Code was designed to be a fast, customizable, and powerful code editor that supports numerous programming languages and extensions, enhancing productivity for developers.
+-
+- ## 2. Intro
+-
+	- Visual Studio Code is a popular code editor known for its speed, simplicity, and rich ecosystem of extensions. It offers features such as IntelliSense for code completion, integrated Git support, and a powerful debugging environment. With support for multiple languages and frameworks, VS Code is suitable for a wide range of development tasks, from web development to data science.
+-
+	- ### Advantages
+		- Free and open-source, with a strong community contributing to its development.
+		- Extensive marketplace for extensions and themes to customize the environment.
+		- Built-in Git integration for version control management.
+		- Regular updates with new features and enhancements.
+	- ### Disadvantages
+		- Can become resource-intensive with many extensions installed.
+		- Some features may require additional configuration or extensions.
+		- Not a full IDE, which may require complementary tools for certain workflows.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use Ctrl + P to quickly open files; Ctrl + Shift + P to access the command palette; Ctrl + ` to open the integrated terminal.
+	- **Extensions**: Familiarize yourself with installing and managing extensions from the Marketplace.
+	- **Shortcuts**: Learn essential shortcuts (e.g., Ctrl + B for sidebar toggle, Ctrl + / for comments) to enhance workflow efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [Visual Studio Code Documentation](https://code.visualstudio.com/docs)
+	- **VS Code Community**: [VS Code GitHub Repository](https://github.com/microsoft/vscode)
+	- **Extensions Marketplace**: [VS Code Marketplace](https://marketplace.visualstudio.com/vscode)
+	- **Tutorials**: [VS Code Tutorials](https://code.visualstudio.com/docs/getstarted/keybindings)
+-
+- ## 5. Feature List
+-
+	- **Code Editing**: Support for syntax highlighting and intelligent code completion for many languages.
+	- **Integrated Terminal**: Access a terminal directly within the editor.
+	- **Debugging**: Built-in debugger for various programming languages with breakpoint management.
+	- **Source Control**: Integrated Git support for version control operations.
+	- **Live Share**: Real-time collaboration features for coding with others.
+	- **Customization**: Highly customizable with settings, themes, and extensions.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [Visual Studio Code GitHub](https://github.com/microsoft/vscode) (for various related projects)
+	- **Documentation**: [VS Code API Documentation](https://code.visualstudio.com/api)

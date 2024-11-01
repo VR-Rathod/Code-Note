@@ -1,0 +1,43 @@
+## 1. History
+-
+	- **How**: XAMPP was developed by Apache Friends, first released in 2002 as an easy-to-install Apache distribution.
+	- **Who**: Created by a team of developers aiming to simplify the process of setting up a local web server.
+	- **Why**: XAMPP was designed to make it easy for developers to create a local environment for testing web applications.
+-
+- ## 2. Intro
+-
+	- XAMPP is a free and open-source cross-platform web server solution stack package that includes Apache, MariaDB, PHP, and Perl. It allows developers to set up a local web server for testing and development purposes.
+-
+	- ### Advantages
+		- Easy installation with a user-friendly interface.
+		- Cross-platform support (Windows, Linux, macOS).
+		- Includes all necessary components for web development.
+-
+	- ### Disadvantages
+		- Not recommended for production environments due to security concerns.
+		- Some users may find configuration options overwhelming.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use the XAMPP Control Panel to manage services (start/stop Apache and MySQL).
+	- **Configuration Files**: Familiarize yourself with editing the `httpd.conf` file for Apache settings.
+	- **Shortcuts**: Learn essential shortcuts (e.g., Cmd + R to restart services) to enhance workflow efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [XAMPP Documentation](https://www.apachefriends.org/index.html)
+	- **Community Forum**: [XAMPP Community](https://community.apachefriends.org/f/)
+	- **Tutorials**: [XAMPP Tutorials](https://www.apachefriends.org/index.html#tutorials)
+-
+- ## 5. Feature List
+-
+	- **Apache Server**: Includes Apache for hosting web applications locally.
+	- **MySQL Database**: Comes with MariaDB for database management.
+	- **PHP and Perl**: Support for both PHP and Perl scripting languages.
+	- **Control Panel**: User-friendly control panel for managing services.
+	- **Cross-Platform**: Available for Windows, macOS, and Linux.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [XAMPP GitHub](https://github.com/apachefriends/xampp)
+	- **Documentation**: [XAMPP API Documentation](https://www.apachefriends.org/docs/)

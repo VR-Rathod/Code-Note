@@ -1,0 +1,47 @@
+## 1. History
+-
+	- **How**: Houdini was developed by SideFX, with its first version released in 1996. It was created to provide a powerful platform for 3D animation and visual effects.
+	- **Who**: The software was founded by Greg Hermanovic and his team at SideFX.
+	- **Why**: Houdini was designed to cater to the needs of visual effects artists and game developers, offering procedural generation tools for creating complex simulations and animations.
+-
+- ## 2. Intro
+-
+	- Houdini is a professional 3D animation and visual effects software widely used in the film, television, and gaming industries. Known for its powerful procedural workflow, Houdini allows artists to create intricate effects and detailed animations with a node-based interface. This flexibility makes it a favorite among VFX artists for tasks such as particle simulations, fluid dynamics, and character rigging.
+-
+	- ### Advantages
+		- Powerful procedural workflow enabling complex effects creation.
+		- Extensive simulation tools for particles, fluids, and dynamics.
+		- Robust integration with other software and pipelines.
+		- Strong community support and a wealth of learning resources.
+-
+	- ### Disadvantages
+		- Steeper learning curve compared to other 3D software.
+		- Resource-intensive, requiring powerful hardware for optimal performance.
+		- Complexity can be overwhelming for beginners.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use the middle mouse button to rotate the view; Alt + left mouse button to pan; Alt + right mouse button to zoom.
+	- **Node-Based Workflow**: Familiarize yourself with creating and connecting nodes for various tasks like modeling, shading, and animation.
+	- **Shortcuts**: Learn essential shortcuts (e.g., H for home view, B for back view) to improve your efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [Houdini Documentation](https://www.sidefx.com/docs/houdini/)
+	- **Houdini Community**: [SideFX Forum](https://www.sidefx.com/community/)
+	- **Learning Resources**: [Houdini Tutorials](https://www.sidefx.com/learn/)
+	- **Houdini Engine**: [Houdini Engine](https://www.sidefx.com/products/houdini-engine/)
+-
+- ## 5. Feature List
+-
+	- **Procedural Modeling**: Create complex models using a node-based approach.
+	- **Dynamics and Simulations**: Advanced tools for simulating particles, fluids, and soft/hard body dynamics.
+	- **Character Rigging**: Comprehensive rigging tools for character animation.
+	- **Shading and Rendering**: Powerful shading tools with support for both mantra and third-party renderers.
+	- **VEX and VOPs**: Use VEX scripting and VOPs for custom shader and effect creation.
+	- **Asset Management**: Houdini Digital Assets for reusability and sharing of tools.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [Houdini GitHub](https://github.com/sideeffects) (for various SideFX projects)
+	- **Documentation**: [Houdini API Documentation](https://www.sidefx.com/docs/houdini/hdk/)

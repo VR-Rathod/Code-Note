@@ -1,0 +1,43 @@
+## 1. History
+-
+	- **How**: Audacity was developed by Dominic Mazzoni and Roger D. Smith, first released in 2000 as a free audio editing software.
+	- **Who**: Created by a team of volunteers as part of the Audacity Team, focusing on open-source development.
+	- **Why**: Audacity was designed to provide a powerful, accessible audio editing tool for both amateur and professional users.
+-
+- ## 2. Intro
+-
+	- Audacity is a free, open-source audio editing software that allows users to record, edit, and produce audio files. It supports a wide range of audio formats and offers a variety of editing tools and effects, making it popular among podcasters, musicians, and sound engineers.
+-
+	- ### Advantages
+		- Free and open-source with no cost for users.
+		- Multi-platform support (Windows, macOS, Linux).
+		- Extensive features for audio recording and editing.
+-
+	- ### Disadvantages
+		- User interface may feel outdated compared to modern audio software.
+		- Limited advanced features compared to some commercial products.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Familiarize yourself with the interface; use the Transport toolbar for playback and recording.
+	- **Editing Tools**: Learn about tools like cut, copy, paste, and effects for audio manipulation.
+	- **Shortcuts**: Master essential shortcuts (e.g., Ctrl + Z for undo, Ctrl + R for record) to enhance workflow efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [Audacity Manual](https://manual.audacityteam.org/)
+	- **Community Forum**: [Audacity Forum](https://forum.audacityteam.org/)
+	- **Tutorials**: [Audacity Tutorials](https://www.audacityteam.org/help/tutorials/)
+-
+- ## 5. Feature List
+-
+	- **Multi-Track Editing**: Supports editing multiple audio tracks simultaneously.
+	- **Effects and Filters**: A wide range of audio effects and filters for enhancement.
+	- **Audio Recording**: Capability to record live audio through a microphone or mixer.
+	- **Import/Export Formats**: Supports various audio formats for importing and exporting.
+	- **Analysis Tools**: Features for analyzing audio such as spectrogram view and frequency analysis.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [Audacity GitHub](https://github.com/audacity/audacity)
+	- **Documentation**: [Audacity API Documentation](https://audacityteam.org/about/faq/)

@@ -1,0 +1,47 @@
+## 1. History
+-
+	- **How**: Ableton Live was developed by Ableton AG and first released in 2003 as a digital audio workstation (DAW) designed for live performance and music production.
+	- **Who**: The software was created by a team led by Gerhard Behles and Rob Akershoek, focusing on the needs of both studio producers and live performers.
+	- **Why**: Ableton Live was designed to provide an intuitive and flexible platform for music creation, allowing users to seamlessly switch between studio and live performance environments.
+-
+- ## 2. Intro
+-
+	- Ableton Live is a popular digital audio workstation known for its unique session view, which allows for easy arrangement and live performance. It provides a wide array of features for composing, recording, and mixing music, as well as powerful tools for sound design and audio manipulation. Its flexibility makes it a favorite among electronic music producers, DJs, and live performers.
+-
+	- ### Advantages
+		- Intuitive interface with a unique session view for flexible live performances.
+		- Extensive library of sounds, samples, and instruments.
+		- Real-time audio warping and time-stretching capabilities.
+		- Supports both MIDI and audio clip manipulation for versatile music creation.
+-
+	- ### Disadvantages
+		- Can be resource-intensive, requiring a powerful computer for optimal performance.
+		- Some advanced features may have a steeper learning curve for new users.
+		- The pricing may be high for the Suite version with all features included.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use the spacebar to play/pause; Tab to switch between session view and arrangement view; Ctrl + T to add a new audio track.
+	- **Clip View**: Familiarize yourself with the clip view for editing MIDI and audio clips.
+	- **Shortcuts**: Learn essential shortcuts (e.g., Ctrl + D for duplicate, Ctrl + Z for undo) to enhance workflow efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [Ableton Live Documentation](https://www.ableton.com/en/manual/)
+	- **Ableton Community**: [Ableton Community Forum](https://community.ableton.com/)
+	- **Tutorials**: [Ableton Live Tutorials](https://www.ableton.com/en/learn/)
+	- **Max for Live**: [Max for Live](https://www.ableton.com/en/max-for-live/) (extend Live with custom devices)
+-
+- ## 5. Feature List
+-
+	- **Session View**: Unique view for launching clips and scenes for live performance.
+	- **Audio and MIDI Effects**: Extensive range of built-in effects for sound processing.
+	- **Automation**: Comprehensive automation features for mixing and sound design.
+	- **MIDI Support**: Robust MIDI capabilities for composing and controlling virtual instruments.
+	- **VST/AU Support**: Compatibility with third-party VST and Audio Units plugins for expanded sound design options.
+	- **Live Performance Tools**: Features like follow actions and MIDI mapping to enhance live sets.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [Ableton GitHub](https://github.com/Ableton) (for various related projects)
+	- **Documentation**: [Ableton Live API Documentation](https://ableton.github.io/live-api/)

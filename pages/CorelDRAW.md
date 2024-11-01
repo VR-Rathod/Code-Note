@@ -1,0 +1,47 @@
+## 1. History
+-
+	- **How**: CorelDRAW was developed by Corel Corporation and first released in 1989 as a vector graphic design software.
+	- **Who**: The software was created by a team of developers at Corel, including founder Dr. Michael Cowpland.
+	- **Why**: CorelDRAW was designed to provide graphic designers and illustrators with powerful tools for vector illustration, layout, and typography, enabling the creation of high-quality graphics and print materials.
+-
+- ## 2. Intro
+-
+	- CorelDRAW is a leading vector graphic design application widely used for creating illustrations, logos, and layouts. With its intuitive interface and extensive toolset, CorelDRAW allows users to design with precision and creativity. It supports a variety of file formats and offers advanced features for professional graphic design, making it popular among artists, marketers, and print professionals.
+-
+	- ### Advantages
+		- User-friendly interface that is easy to learn for beginners.
+		- Powerful vector editing tools and advanced typography options.
+		- Extensive compatibility with various file formats, including AI, EPS, and PDF.
+		- Strong support for color management and print production.
+-
+	- ### Disadvantages
+		- Can be resource-intensive, requiring a capable computer for optimal performance.
+		- Some advanced features may not be as comprehensive as competitors like Adobe Illustrator.
+		- Licensing costs may be higher than some alternative graphic design software.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use the scroll wheel to zoom in and out; hold the spacebar to pan the canvas.
+	- **Tool Familiarity**: Familiarize yourself with tools such as the Pen tool, Shape tool, and Text tool for various design tasks.
+	- **Shortcuts**: Learn essential shortcuts (e.g., Ctrl + Z for undo, Ctrl + D for duplicate, Ctrl + E for export) to enhance your workflow efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [CorelDRAW Documentation](https://www.coreldraw.com/en/pages/documentation/)
+	- **Corel Community**: [CorelDRAW Community Forum](https://community.coreldraw.com/)
+	- **Tutorials**: [CorelDRAW Tutorials](https://www.coreldraw.com/en/learn/)
+	- **Resources**: [CorelDRAW Resources](https://www.coreldraw.com/en/resources/)
+-
+- ## 5. Feature List
+-
+	- **Vector Illustration**: Advanced tools for creating and editing vector graphics.
+	- **Page Layout**: Features for designing multi-page documents and layouts.
+	- **Text Handling**: Robust text tools for typography and text formatting.
+	- **Color Management**: Comprehensive color palette and management tools.
+	- **Export Options**: Wide range of export formats, including SVG, PDF, and JPG.
+	- **Collaboration Tools**: Options for sharing and collaborating on projects with others.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [Corel GitHub](https://github.com/Corel) (for various related projects)
+	- **Documentation**: [Corel API Documentation](https://www.coreldraw.com/en/developers/)

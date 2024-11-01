@@ -1,0 +1,43 @@
+## 1. History
+-
+	- **How**: Adobe Photoshop was developed by Thomas and John Knoll, first released in 1988 as a photo editing software.
+	- **Who**: Created by Adobe Inc., it quickly became the standard for photo editing and manipulation.
+	- **Why**: Photoshop was designed to provide a comprehensive tool for editing images and creating graphics.
+-
+- ## 2. Intro
+-
+	- Adobe Photoshop is a powerful image editing software widely used by photographers, graphic designers, and digital artists. With a vast array of tools for photo manipulation and graphic design, it remains an industry standard.
+-
+	- ### Advantages
+		- Extensive tools for photo editing, retouching, and manipulation.
+		- Support for various file formats, including PSD and TIFF.
+		- Integration with other Adobe products.
+-
+	- ### Disadvantages
+		- Subscription model can be costly for users.
+		- Steep learning curve for beginners.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Familiarize yourself with the workspace and toolbar; Ctrl + Z for undo.
+	- **Layer Management**: Understand how to work with layers and layer masks.
+	- **Shortcuts**: Learn essential shortcuts (e.g., B for brush, E for eraser) to enhance workflow efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [Photoshop Documentation](https://helpx.adobe.com/photoshop/tutorials.html)
+	- **Community Forum**: [Adobe Community](https://community.adobe.com/)
+	- **Tutorials**: [Photoshop Tutorials](https://helpx.adobe.com/photoshop/tutorials.html)
+-
+- ## 5. Feature List
+-
+	- **Layering**: Advanced layer management for complex compositions.
+	- **Filters and Effects**: Extensive library of filters and effects for enhancing images.
+	- **Selection Tools**: Powerful selection tools for isolating and editing specific areas.
+	- **Brush Engine**: Customizable brushes for various artistic effects.
+	- **Smart Objects**: Non-destructive editing with smart objects.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [Photoshop GitHub](https://github.com/adobe)
+	- **Documentation**: [Photoshop API Documentation](https://www.adobe.io/apis/creativecloud/photoshop.html)

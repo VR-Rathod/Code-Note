@@ -1,0 +1,47 @@
+## 1. History
+-
+	- **How**: Notepad++ was developed by Don Ho and first released in 2003 as a free and open-source text editor.
+	- **Who**: The project is maintained by Don Ho and a community of contributors, aimed at providing a robust text editing tool for programmers and writers.
+	- **Why**: Notepad++ was created to offer a lightweight, feature-rich alternative to the standard Notepad application, focusing on code editing and supporting multiple programming languages.
+-
+- ## 2. Intro
+-
+	- Notepad++ is a popular text and source code editor that supports various programming languages and file formats. Known for its simplicity and speed, it offers features such as syntax highlighting, code folding, and customizable plugins. Notepad++ is particularly favored by developers for its lightweight nature and efficiency in handling plain text and code files.
+-
+	- ### Advantages
+		- Lightweight and fast, with low resource consumption.
+		- Extensive plugin system for added functionality.
+		- Supports syntax highlighting for many programming languages.
+		- Free and open-source, making it accessible to everyone.
+-
+	- ### Disadvantages
+		- Lacks some advanced features found in full-fledged IDEs.
+		- Windows-only application, limiting cross-platform usage.
+		- May require additional configuration for optimal use with specific languages.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use Ctrl + O to open files; Ctrl + S to save; Ctrl + F to find text.
+	- **Customization**: Familiarize yourself with configuring themes and preferences through the settings menu.
+	- **Shortcuts**: Learn essential shortcuts (e.g., Ctrl + D for duplicating a line, Ctrl + Shift + F for find in files) to enhance workflow efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [Notepad++ Documentation](https://npp.us/)
+	- **Notepad++ Community**: [Notepad++ Forum](https://community.notepad-plus-plus.org/)
+	- **Plugins**: [Notepad++ Plugin Manager](https://nppplugins.sourceforge.io/)
+	- **Tutorials**: [Notepad++ Tutorials](https://www.notepad-plus-plus.org/community/)
+-
+- ## 5. Feature List
+-
+	- **Text Editing**: Supports multiple document editing with tabs and syntax highlighting.
+	- **Code Folding**: Ability to collapse and expand code blocks for easier navigation.
+	- **Macros**: Record and replay macros to automate repetitive tasks.
+	- **Search Functionality**: Powerful find and replace features, including regular expressions.
+	- **Customizable Interface**: Options to change themes, fonts, and layouts.
+	- **Extensive Language Support**: Syntax highlighting for various programming languages, including HTML, CSS, JavaScript, and more.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [Notepad++ GitHub](https://github.com/notepad-plus-plus/notepad-plus-plus) (for various related projects)
+	- **Documentation**: [Notepad++ API Documentation](https://npp.github.io/)

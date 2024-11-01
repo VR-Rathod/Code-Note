@@ -1,0 +1,46 @@
+## 1. History
+-
+	- **How**: FL Studio was developed by Belgian company Image-Line and first released in 1997 as Fruity Loops.
+	- **Who**: The software was created by Didier Dambrin and a team at Image-Line, focusing on music production and beat making.
+	- **Why**: FL Studio was designed to provide a powerful yet user-friendly digital audio workstation (DAW) that caters to both beginners and professional music producers, enabling them to create, mix, and master music.
+-
+- ## 2. Intro
+-
+	- FL Studio is a widely used digital audio workstation known for its intuitive interface and versatile features. It provides tools for composing, arranging, recording, and mixing music, along with a variety of plugins and virtual instruments. FL Studio is particularly popular in electronic music production, offering advanced functionalities like automation and a comprehensive piano roll.
+-
+	- ### Advantages
+		- User-friendly interface, making it accessible for beginners.
+		- Extensive library of sounds, samples, and virtual instruments.
+		- Powerful automation features for dynamic music production.
+		- Lifetime free updates for users who purchase the software.
+-
+	- ### Disadvantages
+		- Can be resource-intensive, requiring a capable computer for optimal performance.
+		- Some users may find the workflow different from other DAWs, requiring an adjustment period.
+		- The initial learning curve for advanced features can be steep.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use the spacebar to play/pause; Ctrl + T to open the tempo settings; F5 to open the playlist.
+	- **Piano Roll**: Familiarize yourself with the piano roll for composing melodies and harmonies.
+	- **Shortcuts**: Learn essential shortcuts (e.g., Ctrl + S for save, Ctrl + Z for undo) to enhance workflow efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [FL Studio Documentation](https://support.image-line.com/portal/en/kb/fl-studio)
+	- **FL Studio Community**: [FL Studio Forum](https://forum.image-line.com/)
+	- **Tutorials**: [FL Studio Tutorials](https://www.image-line.com/support/flstudio_online_manual/)
+	- **Plugins**: [FL Studio Plugin Database](https://www.image-line.com/plugins/)
+-
+- ## 5. Feature List
+-
+	- **Audio Recording**: Supports recording audio and MIDI input from various sources.
+	- **Mixer**: Comprehensive mixer with effects processing and routing capabilities.
+	- **Piano Roll**: Advanced piano roll for detailed note editing and automation.
+	- **Pattern-Based Workflow**: Easy arrangement of music using patterns and clips.
+	- **Built-in Effects**: Wide range of built-in effects for sound design and mixing.
+	- **VST Support**: Compatibility with third-party VST plugins for expanded sound options.
+-
+- ## 6. More Learn - Share Links
+-
+	- **Documentation**: [FL Studio API Documentation](https://flstudio.image-line.com/documents/api/)

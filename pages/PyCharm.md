@@ -1,0 +1,47 @@
+## 1. History
+-
+	- **How**: PyCharm was developed by JetBrains and first released in 2010 as an IDE specifically for Python programming.
+	- **Who**: The development was led by a team at JetBrains, known for their focus on creating intelligent development tools.
+	- **Why**: PyCharm was designed to provide Python developers with a comprehensive IDE that includes advanced coding assistance, debugging, and testing tools, enhancing productivity and code quality.
+-
+- ## 2. Intro
+-
+	- PyCharm is a powerful integrated development environment (IDE) for Python that supports web development, data science, and more. It offers features such as smart code completion, code inspections, a graphical debugger, and integration with various web frameworks and libraries. PyCharm is suitable for both beginners and experienced developers, streamlining the development process and improving code efficiency.
+-
+	- ### Advantages
+		- Intelligent code completion and suggestions tailored for Python.
+		- Comprehensive debugging tools and test runners.
+		- Built-in support for popular web frameworks like Django and Flask.
+		- Strong integration with version control systems and databases.
+-
+	- ### Disadvantages
+		- Can be resource-intensive, requiring a powerful machine for optimal performance.
+		- Some advanced features are available only in the Professional edition, which requires a subscription.
+		- Steeper learning curve for users new to IDEs.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use Ctrl + N to navigate to classes; Ctrl + Shift + N for files; Shift + Shift for search everywhere.
+	- **Code Management**: Familiarize yourself with creating and managing virtual environments and project configurations.
+	- **Shortcuts**: Learn essential shortcuts (e.g., Ctrl + / for comments, Alt + Enter for quick fixes) to enhance workflow efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [PyCharm Documentation](https://www.jetbrains.com/pycharm/documentation/)
+	- **PyCharm Community**: [JetBrains Community Forum](https://intellij-support.jetbrains.com/hc/en-us/community/topics/200368193-PyCharm)
+	- **Plugins**: [PyCharm Plugins Repository](https://plugins.jetbrains.com/plugin/631-pycharm)
+	- **Tutorials**: [PyCharm Tutorials](https://www.jetbrains.com/pycharm/learn/)
+-
+- ## 5. Feature List
+-
+	- **Code Assistance**: Smart code completion, code inspections, and quick-fix suggestions.
+	- **Debugging**: A powerful debugger with breakpoints, watches, and a console.
+	- **Testing Support**: Integration with testing frameworks like pytest and unittest.
+	- **Version Control**: Built-in support for Git, Mercurial, and other version control systems.
+	- **Database Tools**: Tools for managing and interacting with databases directly from the IDE.
+	- **Remote Development**: Support for remote interpreters and deployment to various environments.
+-
+- ## 6. More Learn - Share Links
+-
+	- **Documentation**: [PyCharm API Documentation](https://www.jetbrains.org/pycharm/)
+-

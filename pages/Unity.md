@@ -1,0 +1,47 @@
+## 1. History
+-
+	- **How**: Unity was developed by Unity Technologies, with its first version released in 2005. It was designed to simplify game development for multiple platforms.
+	- **Who**: The software was co-founded by David Helgason, Nicholas Francis, and Joachim Ante.
+	- **Why**: Unity was created to provide an accessible and powerful game development platform that supports 2D and 3D content creation, allowing developers to publish their games across various platforms easily.
+-
+- ## 2. Intro
+-
+	- Unity is a leading game engine used for developing both 2D and 3D games and interactive experiences. It offers a comprehensive suite of tools for graphics, physics, audio, and scripting, making it a popular choice for indie developers and large studios alike. Unity's user-friendly interface and extensive asset store facilitate rapid prototyping and iteration, helping developers bring their ideas to life.
+-
+	- ### Advantages
+		- Cross-platform support, allowing deployment to multiple devices and consoles.
+		- Extensive asset store for easy access to tools, assets, and plugins.
+		- Strong community and support resources, including documentation and forums.
+		- Visual scripting capabilities through tools like Bolt, enhancing accessibility for non-coders.
+-
+	- ### Disadvantages
+		- Performance may vary across platforms, requiring optimization.
+		- The free version has limitations on revenue generation for larger projects.
+		- Steeper learning curve for complex features compared to simpler engines.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use the right mouse button to rotate the view; W, A, S, D to move around the scene.
+	- **Scripting**: Familiarize yourself with C# for scripting gameplay mechanics and interactions.
+	- **Shortcuts**: Learn essential shortcuts (e.g., Ctrl + S for save, Ctrl + Z for undo) to enhance productivity.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [Unity Documentation](https://docs.unity3d.com/Manual/index.html)
+	- **Unity Community**: [Unity Forum](https://forum.unity.com/)
+	- **Asset Store**: [Unity Asset Store](https://assetstore.unity.com/)
+	- **Tutorials**: [Unity Learn](https://learn.unity.com/)
+-
+- ## 5. Feature List
+-
+	- **Game Development**: Tools for 2D and 3D game development, including physics, animations, and UI.
+	- **Scripting**: C# scripting for gameplay and logic, with a robust API.
+	- **Cross-Platform**: One-click deployment to various platforms, including mobile, console, and PC.
+	- **Graphics**: Support for high-quality graphics and real-time rendering with the Universal Render Pipeline (URP) and High Definition Render Pipeline (HDRP).
+	- **Collaboration**: Unity Collaborate for team workflows and version control.
+	- **Analytics**: Integrated analytics tools for tracking user engagement and performance.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [Unity GitHub](https://github.com/Unity-Technologies) (for various Unity projects)
+	- **Documentation**: [Unity Scripting API](https://docs.unity3d.com/ScriptReference/)

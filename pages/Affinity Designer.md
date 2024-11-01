@@ -1,0 +1,47 @@
+## 1. History
+-
+	- **How**: Affinity Designer was developed by Serif and first released in 2014 as part of the Affinity suite of creative software.
+	- **Who**: The development team at Serif, including designers and software engineers, aimed to create a powerful vector graphic design tool.
+	- **Why**: Affinity Designer was designed to provide a cost-effective, professional-grade alternative to Adobe Illustrator, offering robust features for graphic design, illustration, and user interface design.
+-
+- ## 2. Intro
+-
+	- Affinity Designer is a vector graphic design application used by artists, illustrators, and designers for creating detailed graphics, illustrations, and layouts. Its intuitive interface and advanced features allow for precise vector editing and rapid workflows. Affinity Designer supports both vector and raster design, making it versatile for various design projects.
+-
+	- ### Advantages
+		- One-time purchase with no subscription fees, making it cost-effective.
+		- Smooth and intuitive user interface, suitable for both beginners and professionals.
+		- Supports both vector and raster graphics, allowing for flexible design options.
+		- High-performance rendering and real-time editing features.
+-
+	- ### Disadvantages
+		- Limited integration with third-party plugins compared to Adobe products.
+		- Some advanced features may be less mature than those in longer-established software.
+		- Learning curve for users transitioning from other design software.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use the zoom tool or Cmd/Ctrl + scroll to zoom in and out; hold the spacebar to pan the canvas.
+	- **Layer Management**: Familiarize yourself with layer organization, including groups, masks, and adjustments.
+	- **Shortcuts**: Learn essential shortcuts (e.g., V for select, P for pen tool, Cmd + Z for undo) to enhance your workflow efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [Affinity Designer Documentation](https://affinity.serif.com/en-us/tutorials/designer/)
+	- **Affinity Community**: [Affinity Forum](https://forum.affinity.serif.com/)
+	- **Tutorials**: [Affinity Designer Tutorials](https://affinity.serif.com/en-us/tutorials/designer/)
+	- **Resources**: [Affinity Assets](https://affinity.serif.com/en-us/resources/)
+-
+- ## 5. Feature List
+-
+	- **Vector Tools**: Comprehensive set of vector drawing tools, including pen, pencil, and shape tools.
+	- **Raster Support**: Ability to incorporate raster images and use brushes for painting.
+	- **Artboards**: Support for multiple artboards for project organization.
+	- **Text Tools**: Advanced typography features with full control over text styles and formatting.
+	- **Export Options**: Export in various formats, including SVG, PDF, PNG, and more.
+	- **Non-destructive Editing**: Edit objects and effects without altering the original elements.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [Affinity GitHub](https://github.com/Affinity) (for various related projects)
+	- **Documentation**: [Affinity API Documentation](https://affinity.serif.com/en-us/api/)

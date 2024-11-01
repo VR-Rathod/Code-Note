@@ -1,0 +1,47 @@
+## 1. History
+-
+	- **How**: Sublime Text was developed by Jon Skinner and was first released in 2008 as a text editor aimed at developers.
+	- **Who**: The software was created by Jon Skinner and has since been maintained and updated by a small team at Sublime HQ.
+	- **Why**: Sublime Text was designed to provide a fast, efficient, and customizable text editor with a focus on code editing, offering powerful features without the bloat of full IDEs.
+-
+- ## 2. Intro
+-
+	- Sublime Text is a sophisticated text editor used for code, markup, and prose. It is known for its speed, simplicity, and powerful features, such as split editing, instant project switching, and a wide range of plugins. Sublime Text supports numerous programming languages and file types, making it a popular choice among developers and writers alike.
+-
+	- ### Advantages
+		- Lightweight and fast, with low resource consumption.
+		- Highly customizable with a robust package ecosystem.
+		- Multiple selections and split editing for efficient coding.
+		- Cross-platform compatibility (Windows, macOS, Linux).
+-
+	- ### Disadvantages
+		- Some advanced features may require additional packages or plugins.
+		- The free version has occasional reminders to purchase a license.
+		- Not a full IDE, which may require complementary tools for debugging and project management.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use Ctrl + P to quickly open files; Ctrl + G to go to a specific line; Ctrl + Shift + P to access the command palette.
+	- **Customization**: Familiarize yourself with creating and editing user preferences and key bindings.
+	- **Shortcuts**: Learn essential shortcuts (e.g., Ctrl + D for multiple selections, Ctrl + / for comments) to enhance workflow efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [Sublime Text Documentation](https://www.sublimetext.com/docs/)
+	- **Sublime Community**: [Sublime Forum](https://forum.sublimetext.com/)
+	- **Package Control**: [Package Control Installation](https://packagecontrol.io/installation) (for managing packages)
+	- **Tutorials**: [Sublime Text Tutorials](https://www.sublimetext.com/docs/tutorial/)
+-
+- ## 5. Feature List
+-
+	- **Code Editing**: Support for multiple programming languages with syntax highlighting.
+	- **Multiple Selections**: Edit multiple lines simultaneously with ease.
+	- **Split Editing**: Open multiple views of the same file or different files side by side.
+	- **Command Palette**: Access frequently used commands and settings quickly.
+	- **Customization**: Extensive customization options through themes, key bindings, and plugins.
+	- **Cross-Platform**: Works seamlessly across different operating systems.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [Sublime Text GitHub](https://github.com/sublimehq/sublime_text) (for various related projects)
+	- **Documentation**: [Sublime Text API Documentation](https://www.sublimetext.com/docs/api_reference.html)

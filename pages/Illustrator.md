@@ -1,0 +1,43 @@
+## 1. History
+-
+	- **How**: Adobe Illustrator was developed by Adobe Inc., first released in 1987 as a vector graphics editor.
+	- **Who**: Created by a team of engineers and designers aiming to provide a professional design tool.
+	- **Why**: Illustrator was designed to enable artists and designers to create scalable graphics and illustrations.
+-
+- ## 2. Intro
+-
+	- Adobe Illustrator is a leading vector graphics editor used by professionals for creating logos, illustrations, and complex designs. With powerful drawing tools and extensive features, it is a standard in graphic design.
+-
+	- ### Advantages
+		- Industry-standard software with robust features for vector design.
+		- Extensive library of brushes, colors, and effects.
+		- Seamless integration with other Adobe products.
+-
+	- ### Disadvantages
+		- Subscription-based pricing can be expensive for some users.
+		- Steep learning curve for new users.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use the toolbar for tools; Ctrl + Z for undo; use the artboard for layout.
+	- **Drawing Tools**: Familiarize yourself with the Pen tool, Shape tools, and Pathfinder.
+	- **Shortcuts**: Learn essential shortcuts (e.g., V for selection, P for Pen tool) to enhance workflow efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [Illustrator Documentation](https://helpx.adobe.com/illustrator/tutorials.html)
+	- **Community Forum**: [Adobe Community](https://community.adobe.com/)
+	- **Tutorials**: [Illustrator Tutorials](https://helpx.adobe.com/illustrator/tutorials.html)
+-
+- ## 5. Feature List
+-
+	- **Vector Graphics**: Create and edit vector graphics that can be scaled without losing quality.
+	- **Artboards**: Multiple artboards for designing various layouts in one document.
+	- **Advanced Typography**: Extensive typography tools for precise text design.
+	- **Integration**: Seamless integration with Adobe Creative Cloud.
+	- **Custom Brushes**: Create and use custom brushes for unique designs.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [Illustrator GitHub](https://github.com/adobe)
+	- **Documentation**: [Illustrator API Documentation](https://www.adobe.io/apis/creativecloud/illustrator.html)

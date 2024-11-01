@@ -1,0 +1,47 @@
+## 1. History
+-
+	- **How**: Cinema 4D was developed by Maxon Computer GmbH, with its first version released in 1990. It has evolved significantly over the years with multiple updates and new features.
+	- **Who**: The software was initially created by a small team at Maxon, including key developer Ralf Schmerberg.
+	- **Why**: Cinema 4D was designed to provide an accessible and powerful 3D modeling, animation, and rendering software suitable for artists and designers in various industries.
+-
+- ## 2. Intro
+-
+	- Cinema 4D is a professional 3D software application used for modeling, animation, motion graphics, and rendering. It is renowned for its intuitive interface, powerful tools, and robust integration with other software, making it a favorite among motion graphics artists, visual effects studios, and designers. Cinema 4D offers a versatile workflow with features that cater to both beginners and advanced users.
+-
+	- ### Advantages
+		- User-friendly interface that makes it accessible for beginners.
+		- Powerful modeling, animation, and rendering capabilities.
+		- Excellent integration with other software, including Adobe After Effects.
+		- Strong support for motion graphics and procedural workflows.
+-
+	- ### Disadvantages
+		- Subscription pricing can be costly for individuals.
+		- Some advanced features may require additional learning.
+		- Less community support compared to more established tools like Blender.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use the middle mouse button to rotate the view; hold Shift while dragging to pan.
+	- **Modeling Tools**: Familiarize yourself with tools like Extrude, Bevel, and Sculpting.
+	- **Shortcuts**: Learn essential shortcuts (e.g., E for move, R for rotate, T for scale) to improve efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [Cinema 4D Documentation](https://help.maxon.net/us/#Cinema_4D)
+	- **Maxon Community**: [Maxon Community](https://www.maxon.net/en/community/)
+	- **Plugins**: [C4D Plugins](https://www.c4dplugins.com/)
+	- **Tutorials**: [Cinema 4D Tutorials](https://www.maxon.net/en/learn/tutorials/)
+-
+- ## 5. Feature List
+-
+	- **Modeling**: Extensive modeling tools including parametric and polygonal modeling.
+	- **Animation**: Keyframe animation, character rigging, and MoGraph tools.
+	- **Rendering**: Integrated physical renderer and support for third-party render engines.
+	- **Simulation**: Tools for dynamics, particles, and cloth simulation.
+	- **Scripting**: Python and COFFEE scripting for automation and customization.
+	- **Viewport**: Real-time rendering in the viewport for enhanced workflow.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [Cinema 4D GitHub](https://github.com/maxon3d) (for various Maxon projects)
+	- **Documentation**: [Cinema 4D SDK Documentation](https://developers.maxon.net/docs/Cinema4DPythonSDK/)

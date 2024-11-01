@@ -1,0 +1,47 @@
+## 1. History
+-
+	- **How**: Unreal Engine was developed by Epic Games, with its first version released in 1998 for the game "Unreal."
+	- **Who**: The engine was created by Tim Sweeney and his team at Epic Games.
+	- **Why**: Unreal Engine was designed to provide a high-quality game development platform with advanced graphics, physics, and networking capabilities, catering to the needs of developers in the gaming industry.
+-
+- ## 2. Intro
+-
+	- Unreal Engine is a powerful game engine widely used for developing 3D games, simulations, and virtual reality experiences. Known for its high-fidelity graphics and robust toolset, Unreal Engine enables developers to create visually stunning environments and complex gameplay mechanics. Its Blueprint visual scripting system allows designers to implement functionality without deep programming knowledge, making it accessible to a broader range of users.
+-
+	- ### Advantages
+		- High-quality graphics and real-time rendering capabilities.
+		- Blueprint visual scripting for easy logic implementation.
+		- Extensive community support and resources, including documentation and forums.
+		- Strong integration with virtual reality (VR) and augmented reality (AR) development.
+-
+	- ### Disadvantages
+		- Steeper learning curve for beginners compared to some other engines.
+		- Resource-intensive, requiring a powerful machine for optimal performance.
+		- The complexity of features can overwhelm new users.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use the right mouse button to look around; WASD keys to move through the viewport.
+	- **Blueprints**: Familiarize yourself with the Blueprint system for creating gameplay logic and interactions.
+	- **Shortcuts**: Learn essential shortcuts (e.g., Ctrl + S for save, Ctrl + Z for undo) to improve efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [Unreal Engine Documentation](https://docs.unrealengine.com/)
+	- **Unreal Engine Community**: [Unreal Engine Forums](https://forums.unrealengine.com/)
+	- **Marketplace**: [Unreal Engine Marketplace](https://www.unrealengine.com/marketplace)
+	- **Tutorials**: [Unreal Engine Learning](https://www.unrealengine.com/en-US/onlinelearning-courses)
+-
+- ## 5. Feature List
+-
+	- **Game Development**: Comprehensive tools for developing 2D and 3D games with advanced physics and AI.
+	- **Visual Scripting**: Blueprint visual scripting for creating game logic without traditional coding.
+	- **Graphics**: Support for high-quality graphics, real-time ray tracing, and post-processing effects.
+	- **VR/AR Support**: Built-in tools for creating virtual and augmented reality experiences.
+	- **Asset Management**: Robust asset pipeline for managing and importing 3D models, textures, and animations.
+	- **Collaboration**: Integrated version control and team collaboration tools.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [Unreal Engine GitHub](https://github.com/EpicGames) (for various Epic Games projects)
+	- **Documentation**: [Unreal Engine API Reference](https://docs.unrealengine.com/en-US/API/)

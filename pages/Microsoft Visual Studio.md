@@ -1,0 +1,46 @@
+## 1. History
+-
+	- **How**: Microsoft Visual Studio was first released in 1997 as an integrated development environment (IDE) for software development.
+	- **Who**: Developed by Microsoft, with contributions from a large team of software engineers and designers.
+	- **Why**: Visual Studio was created to provide developers with a comprehensive IDE that supports multiple programming languages and platforms, enhancing productivity in software development.
+-
+- ## 2. Intro
+-
+	- Microsoft Visual Studio is a powerful IDE used for developing applications across various platforms, including web, desktop, and mobile. It offers a range of tools and features for coding, debugging, testing, and deployment, making it suitable for both beginners and experienced developers. The integrated support for various languages, along with features like IntelliSense and debugging tools, enhances the development workflow.
+-
+	- ### Advantages
+		- Supports multiple programming languages, including C#, VB.NET, C++, and Python.
+		- Comprehensive debugging and profiling tools.
+		- Extensive integration with Azure and other Microsoft services.
+		- Strong community support and extensive documentation.
+-
+	- ### Disadvantages
+		- Can be resource-intensive, requiring significant system resources.
+		- The complexity of features may overwhelm new users.
+		- Licensing costs for certain editions can be high.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use Ctrl + K, Ctrl + C for comments; Ctrl + K, Ctrl + U for uncommenting; F5 to start debugging.
+	- **Project Management**: Familiarize yourself with creating and managing projects and solutions.
+	- **Shortcuts**: Learn essential shortcuts (e.g., Ctrl + . for quick actions, Ctrl + Shift + B for build) to enhance workflow efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [Visual Studio Documentation](https://docs.microsoft.com/en-us/visualstudio/)
+	- **Visual Studio Community**: [Visual Studio Developer Community](https://developercommunity.visualstudio.com/)
+	- **Extensions**: [Visual Studio Marketplace](https://marketplace.visualstudio.com/)
+	- **Tutorials**: [Visual Studio Tutorials](https://docs.microsoft.com/en-us/learn/paths/intro-to-visual-studio/)
+-
+- ## 5. Feature List
+-
+	- **Code Editing**: Advanced code editor with IntelliSense, syntax highlighting, and code refactoring.
+	- **Debugging Tools**: Comprehensive debugging tools, including breakpoints, watch windows, and performance profiling.
+	- **Version Control Integration**: Support for Git and Azure DevOps for source control management.
+	- **Test Frameworks**: Integrated support for unit testing and other testing frameworks.
+	- **Deployment Options**: Tools for packaging and deploying applications to various platforms.
+	- **Customizable Interface**: Options to customize the IDE layout and tools to fit user preferences.
+-
+- ## 6. More Learn - Share Links
+-
+	- **Documentation**: [Visual Studio API Documentation](https://docs.microsoft.com/en-us/visualstudio/extensibility/internals/?view=vs-2022)

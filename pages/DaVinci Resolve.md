@@ -1,0 +1,46 @@
+## 1. History
+-
+	- **How**: DaVinci Resolve was originally developed by DaVinci Systems as a color correction tool and was first released in the late 1980s. It evolved significantly after being acquired by Blackmagic Design in 2009.
+	- **Who**: The software was created by a team at DaVinci Systems, including key figures like Grant Petty at Blackmagic Design.
+	- **Why**: DaVinci Resolve was designed to provide filmmakers with a powerful color grading tool that has now expanded into a full-featured video editing software suitable for all stages of post-production.
+-
+- ## 2. Intro
+-
+	- DaVinci Resolve is a professional video editing and color grading software widely used in the film and television industry. It combines advanced editing, visual effects, motion graphics, and audio post-production in a single application. With its user-friendly interface and powerful features, DaVinci Resolve is suitable for both beginners and professional editors, allowing for seamless integration of all aspects of video production.
+-
+	- ### Advantages
+		- Comprehensive editing and color grading tools in one platform.
+		- High-quality rendering and playback performance.
+		- Strong collaboration features for team workflows.
+		- Free version available with robust features.
+-
+	- ### Disadvantages
+		- Steeper learning curve for beginners, especially in color grading.
+		- Requires a powerful computer for optimal performance, especially with high-resolution footage.
+		- Some features may be limited in the free version compared to the Studio version.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use the spacebar to play/pause; J, K, L for rewind, stop, and fast forward; Ctrl + Z for undo.
+	- **Cut and Edit Tools**: Familiarize yourself with the Cut, Edit, and Color pages for different aspects of the editing process.
+	- **Shortcuts**: Learn essential shortcuts (e.g., Cmd + B for blade cut, Cmd + Z for undo) to speed up your workflow.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [DaVinci Resolve Documentation](https://documents.blackmagicdesign.com/DaVinciResolve/)
+	- **DaVinci Resolve Community**: [Blackmagic Forum](https://forum.blackmagicdesign.com/)
+	- **Training Resources**: [Blackmagic Design Training](https://www.blackmagicdesign.com/products/davinciresolve/training)
+	- **Plugins and Effects**: [Motion VFX](https://www.motionvfx.com/) (for DaVinci Resolve plugins)
+- ## 5. Feature List
+-
+	- **Video Editing**: Advanced editing tools, including multi-camera editing and timeline management.
+	- **Color Grading**: Industry-leading color correction and grading tools with node-based workflows.
+	- **Fairlight Audio**: Comprehensive audio post-production features with built-in mixing and effects.
+	- **Fusion VFX**: Integrated visual effects and motion graphics tools.
+	- **Collaboration**: Real-time collaboration features for team editing.
+	- **Export Options**: Supports a wide range of export formats and settings for various delivery needs.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [DaVinci Resolve GitHub](https://github.com/BlackmagicDesign) (for various related projects)
+	- **Documentation**: [DaVinci Resolve API Documentation](https://developer.blackmagicdesign.com/)

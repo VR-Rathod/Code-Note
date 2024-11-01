@@ -1,0 +1,47 @@
+## 1. History
+-
+	- **How**: GIMP (GNU Image Manipulation Program) was developed as a free and open-source image editing software, first released in 1996.
+	- **Who**: The project was initiated by Spencer Kimball and Peter Mattis while they were students at the University of California, Berkeley.
+	- **Why**: GIMP was created to provide a powerful, free alternative to commercial image editing software, enabling users to manipulate images and create graphics without the financial burden.
+-
+- ## 2. Intro
+-
+	- GIMP is a versatile and powerful open-source image editing software used for tasks such as photo retouching, image composition, and image authoring. It offers a wide range of tools and features for graphic design, making it suitable for both amateur and professional users. GIMP supports various file formats and can be extended with plugins and scripts, allowing for enhanced functionality and customization.
+-
+	- ### Advantages
+		- Completely free and open-source with no licensing fees.
+		- Extensive features comparable to professional software like Adobe Photoshop.
+		- Highly customizable interface and tools through plugins and scripts.
+		- Strong community support and extensive documentation.
+-
+	- ### Disadvantages
+		- Steeper learning curve for users familiar with more commercial software.
+		- Some advanced features may be less polished compared to paid alternatives.
+		- Performance can be slow with very large images or complex tasks.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use the spacebar to pan the canvas; Ctrl + scroll wheel to zoom in and out.
+	- **Layers**: Familiarize yourself with layer management, including creating, grouping, and adjusting layer properties.
+	- **Shortcuts**: Learn essential shortcuts (e.g., B for brush, E for eraser, Ctrl + Z for undo) to enhance your workflow.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [GIMP Documentation](https://docs.gimp.org/)
+	- **GIMP Community**: [GIMP User Forum](https://www.gimpusers.com/forums)
+	- **Plugins**: [GIMP Plugin Registry](https://github.com/GNOME/gimp-plugin-registry)
+	- **Tutorials**: [GIMP Tutorials](https://www.gimp.org/tutorials/)
+-
+- ## 5. Feature List
+-
+	- **Photo Editing**: Comprehensive tools for retouching and enhancing photographs.
+	- **Drawing and Painting**: A variety of brushes and tools for digital painting.
+	- **Layering**: Advanced layer support for creating complex compositions.
+	- **Filters and Effects**: A wide range of filters and effects for creative image manipulation.
+	- **File Format Support**: Compatibility with various image formats, including PSD, PNG, JPEG, and more.
+	- **Scripting**: Support for scripting with Python and other languages to automate tasks.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [GIMP GitHub](https://github.com/GNOME/gimp) (for GIMP-related projects)
+	- **Documentation**: [GIMP API Documentation](https://developer.gimp.org/)

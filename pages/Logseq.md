@@ -1,0 +1,43 @@
+## 1. History
+-
+	- **How**: Logseq was developed by a community of open-source enthusiasts, launched in 2020 as a knowledge management tool.
+	- **Who**: Created by a team aiming to provide a better way to organize and connect information.
+	- **Why**: Logseq was designed to facilitate personal knowledge management and help users create a second brain using linked notes.
+-
+- ## 2. Intro
+-
+	- Logseq is a free and open-source note-taking and knowledge management tool that uses a unique outliner format. It allows users to create structured notes and connect ideas through backlinks and graph visualization.
+-
+	- ### Advantages
+		- Supports markdown and org-mode for flexible note formatting.
+		- Local storage option, ensuring data privacy and security.
+		- Graph view for visualizing connections between notes.
+		-
+	- ### Disadvantages
+		- Still in active development, so some features may be in beta.
+		- Learning curve for new users, especially with the outliner approach.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use keyboard shortcuts for fast navigation; Ctrl + N for new page.
+	- **Outlining**: Familiarize yourself with creating bullet points and nested lists.
+	- **Shortcuts**: Learn essential shortcuts (e.g., Ctrl + B for bold, Ctrl + K for link) to enhance workflow efficiency.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [Logseq Documentation](https://logseq.com/learn/)
+	- **Community Forum**: [Logseq Forum](https://discuss.logseq.com/)
+	- **Tutorials**: [Logseq Tutorials](https://logseq.com/learn/tutorials)
+-
+- ## 5. Feature List
+-
+	- **Backlinks**: Automatically create connections between notes with backlinks.
+	- **Graph View**: Visual representation of notes and their relationships.
+	- **Local Storage**: Data stored locally for privacy and offline access.
+	- **Markdown Support**: Full markdown support for formatting notes.
+	- **Integrations**: Integrates with various tools for enhanced functionality.
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [Logseq GitHub](https://github.com/logseq/logseq)
+	- **Documentation**: [Logseq API Documentation](https://logseq.com/learn/api/)

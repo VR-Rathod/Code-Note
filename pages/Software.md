@@ -35,9 +35,20 @@
 	- [[Figma]] : Interface design tool for collaboration
 	- [[Adobe XD]] : UI/UX design and prototyping tool
 	- [[Canva]] : Online graphic design tool for creating visual content
+	- [[Krita]] : Free and open-source painting program designed for digital artists
+	- [[Godot]] : Free and open-source game engine for 2D and 3D game development
+	- [[Sumatra PDF]] : Free lightweight PDF reader for viewing documents
+	- [[Logseq]] : Free and open-source note-taking and knowledge management tool
+	- [[XAMPP]] : Free and open-source cross-platform web server solution stack package
+	- [[Audacity]] : Free, open-source audio editing software for recording and editing sound
+	- [[OBS]] : Free and open-source software for video recording and live streaming
+	- [[Illustrator]] : Industry-standard vector graphics editor (note: not free but may have a trial version)
+	- [[Photoshop]] : Industry-standard image editing software (note: not free but may have a trial version)
+	- [[Jaganath Hora]] : Free astrology software for Vedic astrology calculations
+-
 - # Free Software
 	- ## Video Editing
-		- [[DaVinci Resolve]] : Free version available for video editing and color correction (lifetime free)
+		- [[DaVinci Resolve]] : Free version available for video editing and color correction (lifetime free Also Paid version is available)
 		-
 	- ## Photo Editing
 		- [[GIMP]] : Free and open-source image editing software (lifetime free)
@@ -46,23 +57,26 @@
 		- [[Inkscape]] : Free vector graphics editor (lifetime free)
 		- [[Figma]] : Free tier available for interface design and collaboration (lifetime free for individuals, web-based)
 		-
-	- ## Drawing
+	- ## Drawing & 2D Animation
 		- [[Autodesk SketchBook]] : Free version available for digital drawing (lifetime free)
+		- [[Krita]] : Free and open-source painting program designed for digital artists (lifetime free).
 		-
 	- ## Code Editing
 		- [[Notepad++]] : Free source code editor (lifetime free)
 		- [[Visual Studio Code]] : Free code editor with support for many programming languages (lifetime free)
 		-
-	- ## Music Production
-		- [[FL Studio]] : Free trial available, but not lifetime free (considered for learning purposes)
+	- ## Audiio & Music Production
+		- [[Audacity]] : Free, open-source audio editing software for recording and editing sound (lifetime free).
 		-
 	- ## Game Development
-		- [[Unity]] : Free tier available for game development (lifetime free with limitations)
+		- [[Godot]] : Free and open-source game engine for 2D and 3D game development (lifetime free).
 		-
 	- ## Web-Based Tools
 		- [[Figma]] : Web-based interface design tool (lifetime free for individuals)
 		- [[Canva]] : Online graphic design tool with a free tier (lifetime free with limitations)
 		-
+	- ## 3D Software
+		- [[Blender]] :
 - # Paid Software
 	- ## Video Editing
 		- [[Adobe Premiere Pro]] : Professional video editing software (subscription-based)
@@ -87,9 +101,11 @@
 	- ## Music Production
 		- [[Ableton Live]] : Paid version for music production (subscription-based)
 		- [[Pro Tools]] : Digital audio workstation for music and audio editing (subscription-based)
+		- [[FL Studio]] : Free trial available, but not lifetime free (considered for learning purposes)
 		-
 	- ## Game Development
-		- [[Unity]] : Free tier available for game development (lifetime free with limitations)
+		- [[Unity]] : Free tier available for game development (lifetime free with limitations on free version)
+		- [[Unreal Engine]] : Powerful game engine for real-time 3D creation (free to use with royalty fees on commercial products).
 		-
 	- ## Software Development
 		- [[Microsoft Visual Studio]] : Professional version for software development (subscription-based)

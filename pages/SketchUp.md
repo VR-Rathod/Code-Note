@@ -1,0 +1,47 @@
+## 1. History
+-
+	- **How**: SketchUp was developed by Last Software and first released in 2000. Google acquired it in 2006, and later it became part of Trimble Inc. in 2012.
+	- **Who**: The software was created by Brad Schell and Joe Edkins at Last Software.
+	- **Why**: SketchUp was designed to provide an intuitive 3D modeling tool for architects, designers, and hobbyists, making 3D modeling accessible to everyone.
+-
+- ## 2. Intro
+-
+	- SketchUp is a user-friendly 3D modeling software primarily used for architectural design, interior design, and woodworking. Known for its simplicity and ease of use, SketchUp allows users to create detailed models quickly. The software features a variety of tools for drawing, measuring, and visualizing designs, making it a popular choice for both professionals and beginners.
+-
+	- ### Advantages
+		- Intuitive interface that is easy to learn for new users.
+		- Extensive library of pre-made models available through the 3D Warehouse.
+		- Strong community support and resources for learning.
+		- Integration with various rendering plugins for enhanced visualization.
+-
+	- ### Disadvantages
+		- Limited advanced modeling features compared to professional CAD software.
+		- Performance may decline with highly detailed models.
+		- The free version has limitations in functionality and cloud storage.
+-
+- ## 3. Notes
+-
+	- **Basic Navigation**: Use the scroll wheel to zoom; the middle mouse button to pan; hold the Shift key to rotate the view.
+	- **Drawing Tools**: Familiarize yourself with tools like Line, Rectangle, and Push/Pull for 3D modeling.
+	- **Shortcuts**: Learn essential shortcuts (e.g., M for Move, R for Rectangle, P for Push/Pull) to enhance workflow.
+-
+- ## 4. Libs & Framework
+-
+	- **Official Documentation**: [SketchUp Documentation](https://help.sketchup.com/en)
+	- **SketchUp Community**: [SketchUp Forum](https://forums.sketchup.com/)
+	- **3D Warehouse**: [3D Warehouse](https://3dwarehouse.sketchup.com/)
+	- **Tutorials**: [SketchUp Learning](https://learn.sketchup.com/)
+-
+- ## 5. Feature List
+-
+	- **3D Modeling**: Easy-to-use tools for creating 3D models, including geometry and shapes.
+	- **Layout**: Tools for creating detailed 2D presentations from 3D models.
+	- **Styles**: Customizable styles for visualizing models in different ways (e.g., line drawing, textures).
+	- **Extensions**: Support for plugins and extensions to enhance functionality.
+	- **Collaboration**: Cloud features for sharing models and collaborating with others.
+	- **Import/Export**: Ability to import and export various file formats (e.g., DWG, DXF, STL).
+-
+- ## 6. More Learn - Share Links
+-
+	- **GitHub Repositories**: [SketchUp GitHub](https://github.com/SketchUp) (for various SketchUp-related projects)
+	- **Documentation**: [SketchUp API Documentation](https://ruby.sketchup.com/)
