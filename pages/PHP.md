@@ -423,8 +423,14 @@
 - # Libs & Framework
 -
 - # More learn
-	- [PHP Doc](https://www.php.net/docs.php)
-	- [Beautiful Doc](https://devdocs.io/php/)
-	- [Which PHP lib/framework are trending Now?](https://github.com/EvanLi/Github-Ranking/blob/master/Top100/ActionScript.md)
+	- Explore the following links for valuable resources, communities, and tools to enhance your skills :-
+	-
+	- ## Github & Webs
+		- [PHP Doc](https://www.php.net/docs.php)
+		- [Beautiful Doc](https://devdocs.io/php/)
+		- [PHP Roadmap](https://github.com/thecodeholic/php-developer-roadmap)
+		- [Design Patterns For PHP](https://github.com/DesignPatternsPHP/DesignPatternsPHP)
+		- [Which PHP lib/framework are trending Now?](https://github.com/EvanLi/Github-Ranking/blob/master/Top100/ActionScript.md)
+	-
 	-
 	-

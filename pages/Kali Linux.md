@@ -60,7 +60,6 @@ collapsed:: true
 			- C shell => Fully Base on C ,% is default promt
 	-
 	- ### Linux File System hierarchy
-	  collapsed:: true
 		- Filesystem Hierarchy Standard(FHS) started in 1993
 		- Goal was to come to consensus on How directories Should be organized and which files should be stored Where.
 		- Files Information: -
@@ -103,7 +102,6 @@ collapsed:: true
 			- strings {file path} => read binary files
 	-
 	- ### Command Lines
-	  collapsed:: true
 		- Open command line and code
 		- Touch Command
 		  logseq.order-list-type:: number
@@ -192,7 +190,7 @@ collapsed:: true
 			- ;    => This multiple command in ones
 			- &   => it's run in background
 			- && => it's check command was right or Not
-			- pund sign(#) => comments
+			- hash/pung ( # ) => comments
 			- history => show past cmd lines
 			-
 		- #### I/O Redirection

@@ -1,0 +1,21 @@
+# more learn
+	- Explore the following links for valuable resources, communities, and tools to enhance your skills:
+	-
+	- ## Github & Webs
+		- [React Roadmap](https://github.com/GomaGoma676/react-roadmap-2024)
+		- [compilation of React Patterns, techniques, tips and tricks](https://github.com/vasanthk/react-bits)
+		- [React Atomic Design](https://github.com/danilowoz/react-atomic-design)
+		- [React patterns](https://github.com/reactpatterns/reactpatterns)
+		- [React TypeScript Cheatsheet](https://github.com/typescript-cheatsheets/react)
+		- [Beautiful React Hooks can Help For Faster Development](https://github.com/antonioru/beautiful-react-hooks?tab=readme-ov-file)
+		- [Learn How make Primer Degine](https://github.com/primer/react)
+		- [Building dynamic UIs with modern JavaScript (Frontend)](https://github.com/HackYourFuture/React)
+		- [React Docs](https://github.com/reactjs/react.dev)
+		- [React boilerplate](https://github.com/react-boilerplate/react-boilerplate)
+		-
+		-
+		-
+		-
+		-
+		-
+	-

@@ -1,0 +1,19 @@
+# more learn
+	- Explore the following links for valuable resources, communities, and tools to enhance your skills:
+	-
+	- [CSS Learning](https://github.com/micromata/awesome-css-learning)
+	- [How Degine Resources ?](https://github.com/bradtraversy/design-resources-for-developers)
+	- [CSS Tips & Tricks ](https://github.com/AllThingsSmitty/css-protips)
+	- [Useful modules in CSS](https://github.com/awesome-css-group/awesome-css)
+	- [CSS Fremworks](https://github.com/troxler/awesome-css-frameworks)
+	- [Animation Lib for cross platform](https://github.com/animate-css/animate.css?tab=readme-ov-file)
+	- [Front-end Developer collection](https://github.com/dypsilon/frontend-dev-bookmarks)
+	- [You want to learn CSS grids by Playing Game?](https://github.com/thomaspark/gridgarden/)
+	- [Learn Css By playing Game](https://github.com/thomaspark/flexboxfroggy/)
+	- [No Worry About JavaScript 😉](https://github.com/you-dont-need/You-Dont-Need-JavaScript)
+	- [CSS Interview questions 😎](https://github.com/Devinterview-io/css-interview-questions)
+	-
+	-
+	-
+	-
+	-

@@ -1,0 +1,25 @@
+# More Learn
+	- Explore the following links for valuable resources, communities, and tools to enhance your skills:
+	-
+	- ## Github & Webs
+		- [Learn Big Company's Problem Solution](https://github.com/nishant-Tiwari24/company-wise-dsa)
+		- [Awesome Algorithms](https://github.com/tayllan/awesome-algorithms)
+		- [Complate FAANG Preparation](https://github.com/AkashSingh3031/The-Complete-FAANG-Preparation?tab=readme-ov-file)
+		- [Code and It's Pattern Learn](https://github.com/seanprashad/leetcode-patterns)
+		- [DSA using Js](https://github.com/amejiarosario/dsa.js-data-structures-algorithms-javascript)
+		- [Open-Source Collection of 200+ Algorithmic Flash Cards to Help you Preparing your Algorithm & Data Structure Interview](https://github.com/teivah/algodeck)
+		- [188 Problem Solved in C++ DSA](https://github.com/mandliya/algorithms_and_data_structures)
+		- [DSA Problem Solve](https://github.com/fishercoder1534/Leetcode)
+		- [Domain-Driven Hexagon](https://github.com/Sairyss/domain-driven-hexagon)
+		- [System Design primer can help to understand How system work](https://github.com/donnemartin/system-design-primer)
+		- [The Patterns of Scalable, Reliable, and Performant Large-Scale Systems](https://github.com/binhnguyennus/awesome-scalability)
+		- [The Simplest Way to understand patterns](https://github.com/kamranahmedse/design-patterns-for-humans)
+		- [Design Patterns for Multiple Language ](https://github.com/DovAmir/awesome-design-patterns)
+		- [System Design Preparation](https://github.com/checkcheckzz/system-design-interview)
+		- [System Design E-book](https://github.com/karanpratapsingh/system-design)
+		- [Coding Interview Preparation](https://github.com/jwasham/coding-interview-university)
+		- [SDE Interview Question](https://github.com/twowaits/SDE-Interview-Questions)
+		-
+		-
+		-
+		-

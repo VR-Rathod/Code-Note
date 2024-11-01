@@ -3,7 +3,6 @@ collapsed:: true
 	- Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
 -
 - ## Programming Languages
-  collapsed:: true
 	- [[Python]] :- A beginner-friendly language known for its readability and extensive libraries.
 	-
 	- [[Java]] :- A robust, object-oriented language commonly used in enterprise applications and Android development.
@@ -20,9 +19,6 @@ collapsed:: true
 	-
 	- [[Kotlin]] :- A modern language that runs on the Java Virtual Machine, widely used for Android app development.
 	-
-- ## Web Development
-  collapsed:: true
-	-
 	- [[HTML]]: The standard markup language for creating web pages, providing the structure and content.
 	-
 	- [[CSS]]: A stylesheet language used for describing the presentation of a document written in HTML, enabling design and layout customization.
@@ -34,6 +30,7 @@ collapsed:: true
 	- [[PHP]]: A server-side scripting language widely used for web development, powering many dynamic websites.
 	-
 	- [[Ruby]]: A dynamic, object-oriented language often used for web applications, particularly with Ruby on Rails.
+	-
 -
 - ## Operating Systems & Kernels
   collapsed:: true
@@ -59,30 +56,35 @@ collapsed:: true
 	- You Can find particular lib in that programing page
 -
 - ## Data Structures & Algorithms
-  collapsed:: true
-	- [[DSA]]: The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, 
+	- [[DSA , Algo & System Design]]: The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, 
 	                 as well as algorithms for searching, sorting, and optimization.
 	-
 - ## DevOps & CI/CD
-  collapsed:: true
-	- Notes will be available Soon
+	- [[DevOps]] - This page contains DevOps Concepts
+-
+- ## Cybersecurity
+	- [[Cybersecurity]] - This page contains DevOps Concepts
+	-
 -
 - ## Software Informations
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
-	- [[Software]] :- This page showcases all types of software, categorized by their functionality and purpose.
+	- [[Software]] - This page showcases all types of software, categorized by their functionality and purpose.
 	-
 - # more learn
-	- In this field you can get community and git repo link which can help full for your Knowledge
+	- Explore the following links for valuable resources, communities, and tools to enhance your skills:
 	-
 	- ## Github & Webs
+		-
 		- [What are getting famous in GitHub?](https://github.com/EvanLi/Github-Ranking/tree/master)
+		- [Roadmap for Learn 🏆](https://github.com/kamranahmedse/developer-roadmap)
 		- [Free For dev](https://github.com/ripienaar/free-for-dev)
 		- [Quick Reference](https://quickref.me/index.html)
 		- [You wanna Help on CSS Degine?](https://uiverse.io/cssbuttons-io/wonderful-baboon-62)
 		- [How to build Anything ?](https://github.com/codecrafters-io/build-your-own-x)
 		- [I want Free Engineering Projects😉](https://www.enggroom.com/)
 		- [Are You Finding It jobs ?](https://github.com/poteto/hiring-without-whiteboards)
-		-
+		- [Free Programing E-Books 📚](https://github.com/EbookFoundation/free-programming-books)
+		- [The Algorithms community](https://github.com/TheAlgorithms)
 		-
 		-
 	-

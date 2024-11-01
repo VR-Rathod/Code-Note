@@ -1,7 +1,21 @@
-# more learn
-	- ## github
-		- [Lean Machine Learning ](https://mlu-explain.github.io/)
+-
+- # Libs & Framework
 	- [[Web Scraping]] - Get Data From Sites
 	- [[machine Learning]] - Train Models and NLP
+-
+- # more learn
+	- Explore the following links for valuable resources, communities, and tools to enhance your skills : -
+		-
+		- ## github & Webs
+			-
+			- [Python Roadmap](https://github.com/DjangoEx/awesome-python-roadmaps)
+			- [Python Patterns](https://github.com/faif/python-patterns)
+			-
+			-
+			- [Lean Machine Learning ](https://mlu-explain.github.io/)
+			-
+			- [SherLock](https://github.com/sherlock-project/sherlock?tab=coc-ov-file)
+			-
+			-
 	-
 -
