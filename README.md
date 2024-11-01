@@ -21,7 +21,7 @@ Note : - after || (Something) Was use for navigate on Logseq and if pages are bl
   1. **Clone the Repository**
    ```bash
    git clone https://github.com/VR-Rathod/Code-Book
-   cd free-code-notes
+   cd code-note
     ```
 
   2. **Usefull Software**
@@ -47,11 +47,16 @@ Note : - after || (Something) Was use for navigate on Logseq and if pages are bl
 
   
   3. **The Final Gift**
+
+  You can Directorly View on github but i suggest open in logseq for Better view and update This repo regulerly...
+
   
-  Look Introduction page  Now You have all data, pdfs, topics , Links related to This Subject
+  Look Introduction page For Easy navigate, Now You have all data, pdfs, topics , Links related to This Subject
+  
   
   
   Happy Learning...🙏
+  
 
 - ## Author
 - [@VR-Rathod](https://github.com/VR-Rathod)
@@ -60,4 +65,4 @@ Note : - after || (Something) Was use for navigate on Logseq and if pages are bl
 
 - You can Give Your feedback on this mail vaibhavrathod2282@gmail.com
 
-- if you wanny share your note please read and follow interaction written on contribution
+- if you wanny share your note please read and follow interaction written on [Dev](https://github.com/VR-Rathod/Code-Note/blob/Admin/Dev/format.md)
