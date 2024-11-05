@@ -39,5 +39,4 @@
 -
 - ## 6. More Learn - Share Links
 -
-	- **GitHub Repositories**: [Jaganath Hora GitHub](https://github.com/)
-	- **Documentation**: [Jaganath Hora API Documentation](http://jaganathhora.com/api)
+	- **Documentation**: [Jaganath Hora Documentation](https://www.vedicastrologer.org/jh/)

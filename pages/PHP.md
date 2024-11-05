@@ -9,7 +9,6 @@
 	- For comment use "//" or " /**/ "
 	-
 	- ## Import tags
-	  collapsed:: true
 		- "<?" - Start Php  ?> - and PHP
 		- echo - Returns multiple string
 		- Print - return single String and return value
