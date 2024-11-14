@@ -1,20 +1,65 @@
+# History
+- **How**:
+	- Developed by Guido van Rossum in the late 1980s.
+	- Initially released in 1991 as Python 0.9.0.
+	- Designed as a high-level, interpreted, and general-purpose programming language.
+-
+- **Who**:
+	- Guido van Rossum, Dutch programmer, and the creator of Python.
+	- Python Software Foundation (PSF), which now oversees Python's development.
+-
+- **Why**:
+	- To create a language that is easy to read and write, with an emphasis on simplicity and clarity.
+	- Intended as an alternative to more complex languages like C and C++.
+-
+- # Introduction
+	- ## Advantages:
+		- Easy-to-read syntax, reducing the learning curve for new programmers.
+		- Strong support for multiple programming paradigms (procedural, object-oriented, and functional).
+		- Large standard library with built-in modules for tasks like file handling, web development, and data processing.
+		- Excellent support for third-party libraries and frameworks (e.g., Django, Flask, Pandas, NumPy).
+		- Cross-platform support (Linux, macOS, Windows).
+-
+	- ## Disadvantages:
+		- Slower execution speed compared to compiled languages like C or Java.
+		- Global Interpreter Lock (GIL) limits Python's effectiveness in multi-threaded CPU-bound applications.
+		- Limited mobile development support (although frameworks like Kivy and BeeWare exist).
+		- Runtime errors can occur due to dynamic typing, which can lead to unexpected behavior.
+-
+	- # Key Features
+		- **Interpreted Language**: Python code is executed line by line by an interpreter, rather than being compiled into machine code.
+		- **Dynamic Typing**: Variable types do not need to be declared explicitly, but can lead to runtime errors if the types are used incorrectly.
+		- **Garbage Collection**: Python automatically manages memory by removing objects that are no longer in use.
+		- **Comprehensive Standard Library**: Python comes with a vast standard library that can handle everything from file I/O to networking.
+		- **Indentation-Based Syntax**: Python uses indentation to define code blocks, making the code more readable and concise.
+-
+- # Notes
+	- **Download link** - https://www.python.org/
+	-
+	- You can create page by write {filename}.py
+	- print() - use for Print cmd
+	- You can learn python by click [here](https://learnxinyminutes.com/docs/python/)
+	-
+-
+-
 -
 - # Libs & Framework
 	- [[Web Scraping]] - Get Data From Sites
 	- [[machine Learning]] - Train Models and NLP
 -
 - # more learn
-	- Explore the following links for valuable resources, communities, and tools to enhance your skills : -
+	- Explore the following links for valuable resources, communities, and tools to enhance your skills :-
 		-
 		- ## github & Webs
 			-
 			- [Python Roadmap](https://github.com/DjangoEx/awesome-python-roadmaps)
 			- [Python Patterns](https://github.com/faif/python-patterns)
 			-
+			- <ins>ML Concepts</ins>
+				- [Lean Machine Learning ](https://mlu-explain.github.io/)
 			-
-			- [Lean Machine Learning ](https://mlu-explain.github.io/)
-			-
-			- [SherLock](https://github.com/sherlock-project/sherlock?tab=coc-ov-file)
+			- <ins>Hacks</ins>
+				- [SherLock](https://github.com/sherlock-project/sherlock?tab=coc-ov-file)
 			-
 			-
 	-

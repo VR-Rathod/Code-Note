@@ -12,8 +12,7 @@
 		- To complement HTML and CSS for enhanced web development.
 -
 - # Introduction
-  collapsed:: true
-	- ## Advanced Topics :
+	- ## Advantages :
 		- Asynchronous Programming (Promises, Async/Await).
 		- JavaScript Design Patterns (Module, Singleton, Observer).
 		- Prototypal Inheritance and ES6 Classes.
@@ -25,10 +24,9 @@
 		- Complexities in large-scale application development.
 -
 - # Notes
-  collapsed:: true
 	- You can Direcly create page by write {filename}.js
 	- console.log("msg") - Print that msg
-	- console.warn('hello %s', 'QuickRef.ME') - The `%s` is a placeholder for a string, allowing you to format the message with additional variables.
+	- console.warn('hello %s', 'Cheekbone') - The `%s` is a placeholder for a string, allowing you to format the message with additional variables.
 	- console.error(new Error('Oops!')) - console.error(new Error('Oops!'));
 	-
 	- ## variables Types
