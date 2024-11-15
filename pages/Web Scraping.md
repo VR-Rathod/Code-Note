@@ -34,12 +34,4 @@
 		- it's collect useful information -> extract into [sql , xml , ...]
 	-
 - # python lib & tools
-	- This libs and fremwork Helpfull For Web Scraping - [[ pyws codes]]
-	- Scrapy
-	  logseq.order-list-type:: number
-	- request - for get web page
-	  logseq.order-list-type:: number
-	- Beautifulsoup -
-	  logseq.order-list-type:: number
-	- selenium
-	  logseq.order-list-type:: number
+	- logseq.order-list-type:: number
