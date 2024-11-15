@@ -28,6 +28,7 @@
 	- console.log("msg") - Print that msg
 	- console.warn('hello %s', 'Cheekbone') - The `%s` is a placeholder for a string, allowing you to format the message with additional variables.
 	- console.error(new Error('Oops!')) - console.error(new Error('Oops!'));
+	- In Html use <script {You can Give link path or =>} > write Here </script> this tag for write js
 	-
 	- ## variables Types
 	  collapsed:: true
@@ -50,9 +51,13 @@
 		- **Object Types**:
 			-
 			- **Object**: A collection of key-value pairs (e.g., `{ name: "Alice", age: 25 }`).
+			-
 			- **Array**: A special type of object for storing ordered lists (e.g., `[1, 2, 3]`).
+			-
 			- **Function**: A callable object that can be defined with the `function` keyword (e.g., `function add(a, b) { return a + b; }`).
+			-
 			- **Date**: A built-in object for working with dates and times (e.g., `new Date()`).
+			-
 			- **RegExp**: Regular expressions for pattern matching in strings (e.g., `/abc/`).
 		-
 	-
@@ -365,7 +370,6 @@
 		-
 	-
 	- ## JavaScript Arrays
-	  collapsed:: true
 		- ## Mutable chart
 			- ```js
 			  		add	remove	start	end
@@ -448,6 +452,10 @@
 			  // => [ 3, 2, 1, 4 ]
 			  numbers.concat(newFirstNumber)
 			  ```
+		-
+		- # extra
+			- [Array's methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/entries)
+			-
 	-
 	- ## JavaScript Loops
 	  collapsed:: true
