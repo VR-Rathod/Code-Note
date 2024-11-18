@@ -31,7 +31,6 @@
 	- In Html use <script {You can Give link path or =>} > write Here </script> this tag for write js
 	-
 	- ## variables Types
-	  collapsed:: true
 		- **Primitive Types**:
 			-
 			- **String**: Represents text (e.g., `"Hello, world!"`).
@@ -370,6 +369,7 @@
 		-
 	-
 	- ## JavaScript Arrays
+	  collapsed:: true
 		- ## Mutable chart
 			- ```js
 			  		add	remove	start	end
@@ -454,8 +454,7 @@
 			  ```
 		-
 		- # extra
-			- [Array's methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/entries)
-			-
+			- [Array's methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/)
 	-
 	- ## JavaScript Loops
 	  collapsed:: true
@@ -1362,10 +1361,15 @@
 -
 - # Library & Frameworks
 	- [[ React js ]] - This is Use Full  for Front-end single page web application
-	- [[Node Js]] -
+	-
+	- [[Node Js]] - JavaScript runtime built on Chrome's V8 engine for building fast and scalable server-side applications.
+	-
 	- [[jQuery]]    - Simplifies DOM manipulation.
+	-
 	- [[Lodash]]   - Utility library for JavaScript.
+	-
 	- [[Angular]]  - Platform for building mobile and desktop web applications.
+	-
 	- [[Vue.js]]     - Progressive framework for building user interfaces.
 - #
 -

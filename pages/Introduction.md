@@ -78,4 +78,5 @@ collapsed:: true
 		- [Are You Finding It jobs ?](https://github.com/poteto/hiring-without-whiteboards)
 		- [Free Programing E-Books 📚](https://github.com/EbookFoundation/free-programming-books)
 		- [The Algorithms community](https://github.com/TheAlgorithms)
+		- [lfs-folderStore For remote LFS media store](https://github.com/sinbad/lfs-folderstore)
 -
