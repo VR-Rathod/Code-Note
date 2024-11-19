@@ -13,3 +13,7 @@
 		- [Learn Css By playing Game](https://github.com/thomaspark/flexboxfroggy/)
 		- [No Worry About JavaScript 😉](https://github.com/you-dont-need/You-Dont-Need-JavaScript)
 		- [CSS Interview questions 😎](https://github.com/Devinterview-io/css-interview-questions)
+		- [CSS Animations](https://animate.style/)
+		- [Creative Buttons](https://tympanus.net/Development/CreativeButtons/)
+		- [SVG to CSS Encoder ](https://yoksel.github.io/url-encoder/)
+		- [Convert SVG absolute clip-path to relative](https://yoksel.github.io/relative-clip-path/)

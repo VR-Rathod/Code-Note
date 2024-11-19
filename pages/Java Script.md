@@ -24,6 +24,7 @@
 		- Complexities in large-scale application development.
 -
 - # Notes
+  collapsed:: true
 	- You can Direcly create page by write {filename}.js
 	- console.log("msg") - Print that msg
 	- console.warn('hello %s', 'Cheekbone') - The `%s` is a placeholder for a string, allowing you to format the message with additional variables.
@@ -913,7 +914,6 @@
 			  ```
 	-
 	- ## JavaScript Modules
-	  collapsed:: true
 		- ## Export
 			- ```js
 			  // myMath.js
