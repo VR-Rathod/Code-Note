@@ -52,8 +52,11 @@ Note : - after || (Something) Was use for navigate on Logseq and if pages are bl
 
   
   Look Introduction page For Easy navigate, Now You have all data, pdfs, topics , Links related to This Subject
+
+  That much Resource Available 😍
+    ![graph](https://github.com/user-attachments/assets/02f2ab94-e6a1-4ea4-9f34-0d1987acdb31)
   
-  
+  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   
   Happy Learning...🙏
   
@@ -65,4 +68,4 @@ Note : - after || (Something) Was use for navigate on Logseq and if pages are bl
 
 - You can Give Your feedback on this mail vaibhavrathod2282@gmail.com
 
-- if you wanny share your note please read and follow interaction written on [Dev](https://github.com/VR-Rathod/Code-Note/blob/Admin/Dev/format.md)
+- if you wanny share your note please read and follow instructions written on [Dev](https://github.com/VR-Rathod/Code-Note/blob/Admin/Dev/format.md)
