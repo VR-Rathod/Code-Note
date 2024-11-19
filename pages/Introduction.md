@@ -1,10 +1,13 @@
 # Welcome to Your Code Book!
-collapsed:: true
 	- Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
+	-
 - ## Programming Languages
+	-
 	- [[Python]] :- A beginner-friendly language known for its readability and extensive libraries.
 	-
 	- [[Java]] :- A robust, object-oriented language commonly used in enterprise applications and Android development.
+	-
+	- [[C]]: A procedural language known for efficiency and low-level memory access, commonly used in system programming.
 	-
 	- [[C++]] :- An extension of C that adds object-oriented features, often used in system/software development and game programming.
 	-
@@ -66,6 +69,7 @@ collapsed:: true
 -
 - # more learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills:-
+	-
 	- ## Github & Webs
 		- [What are getting famous in GitHub?](https://github.com/EvanLi/Github-Ranking/tree/master)
 		- [Roadmap for Learn 🏆](https://github.com/kamranahmedse/developer-roadmap)

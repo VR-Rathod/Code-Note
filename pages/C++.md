@@ -14,7 +14,6 @@
 		- To introduce features like **object-oriented programming (OOP)** while retaining C's performance and control.
 -
 - # Introduction
-  collapsed:: true
 	- ## Advantages:
 		- **Performance and Control:**
 		  collapsed:: true
@@ -42,7 +41,6 @@
 	-
 	- ## Disadvantages:
 		- **Complex Syntax:**
-		  collapsed:: true
 			- C++ has a more **complex syntax** than some other modern languages, making it harder for beginners to learn and use effectively.
 		-
 		- **Memory Management:**
@@ -66,13 +64,12 @@
 			- While C++ is portable, it still requires careful attention to platform-specific details (e.g., differences in compilers, hardware, or OS).
 -
 - # Notes
-  collapsed:: true
 	- `main()` function is the entry point of a C++ program
 	- `std::count<< "Hello Word" << std::endl;` use for print
 	-
 	- ## variables Types
 	  collapsed:: true
-		- ```js
+		- ```c++
 		  int number = 5;       // Integer
 		  float f = 0.95;       // Floating number
 		  double PI = 3.14159;  // Floating number
@@ -127,7 +124,7 @@
 		     in C++ */
 		  ```
 	-
-	- ## If statement
+	- ## Condition
 	  collapsed:: true
 		- ```c++
 		  if (a == 10) {
@@ -673,7 +670,6 @@
 			  ```
 	-
 	- ## Miscellaneous
-	  collapsed:: true
 		- ## Escape Sequences
 			- ```c++
 			  \b	Backspace

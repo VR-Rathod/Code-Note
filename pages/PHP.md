@@ -124,7 +124,8 @@
 		  !	Not
 		  &&	And
 		  ||	Or
-		      
+		  ------------------------------------------------------------------------------
+		    
 		  && - True if both condition is Ture
 		  || - True if at least One codition os ture
 		  !  - Ture if flase and Flase if Ture
@@ -178,15 +179,14 @@
 			-
 	- ## Loops
 		- For loop
-		-
-		- ```php
-		  <?php
-		  
-		      for ($i=0; $i < 5; $i++) { 
-		          echo"Hello";
-		      }
-		  ?>
-		  ```
+			- ```php
+			  <?php
+			  
+			      for ($i=0; $i < 5; $i++) { 
+			          echo"Hello";
+			      }
+			  ?>
+			  ```
 		-
 		- While loop
 			- ```php
@@ -265,6 +265,7 @@
 		                          "JAPAN"=>"Kyoto", 
 		                          "INDIA"=>"New Delhi", 
 		                          "South korea"=>"Seoul");
+		  
 		  	  echo $capitals["USA"] // Give value
 		        
 		          //Print all Key Vkue Pairs
@@ -360,7 +361,6 @@
 		  ```
 		-
 	- ## String Methods
-	  collapsed:: true
 		- ```php
 		  <?php 
 		      
@@ -408,6 +408,7 @@
 		      echo $name
 		  ?>
 		  ```
+		-
 		- ### Privent atteck -  Filter methods
 			- ```php
 			  <?php 
@@ -420,6 +421,7 @@
 			      }
 			  ?>
 			  ```
+			-
 			- include() - copies the content of a file (php/html/text) and inclued in PHP File.
 			  collapsed:: true
 				- use for Code resubility like header , Fotter
@@ -468,36 +470,52 @@
 				- logseq.order-list-type:: number
 -
 - # Libs & Framework
-	- **Laravel**: A modern, MVC-based PHP framework with built-in tools for routing, authentication, ORM, and task scheduling. Highly favored for its elegant syntax and developer-friendly ecosystem.
+	- [[Laravel]]: A modern, MVC-based PHP framework with built-in tools for routing, authentication, ORM, and task scheduling. Highly favored for its elegant syntax and developer-friendly ecosystem.
 	-
-	- **Symfony**: A robust and flexible PHP framework for large-scale enterprise applications. It's known for its reusable components, stability, and widespread use in the PHP community.
+	- [[Symfony]]: A robust and flexible PHP framework for large-scale enterprise applications. It's known for its reusable components, stability, and widespread use in the PHP community.
 	-
-	- **CodeIgniter**: A lightweight, fast, and simple PHP framework for building dynamic web applications. Ideal for beginners or when you need to get projects up and running quickly.
+	- [[CodeIgniter]]: A lightweight, fast, and simple PHP framework for building dynamic web applications. Ideal for beginners or when you need to get projects up and running quickly.
 	-
-	- **Yii**: A high-performance, component-based PHP framework that is perfect for developing large-scale applications. It comes with built-in features like caching, authentication, and security.
+	- [[Yii]]: A high-performance, component-based PHP framework that is perfect for developing large-scale applications. It comes with built-in features like caching, authentication, and security.
 	-
-	- **Zend Framework (Laminas)**: A professional PHP framework that offers a set of reusable components and libraries. It's ideal for enterprise-grade applications and services.
+	- [[Zend Framework (Laminas)]]: A professional PHP framework that offers a set of reusable components and libraries. It's ideal for enterprise-grade applications and services.
 	-
-	- **Composer**: The PHP dependency manager that makes it easy to manage libraries and packages. It's essential for managing project dependencies in modern PHP development.
+	- [[Composer]]: The PHP dependency manager that makes it easy to manage libraries and packages. It's essential for managing project dependencies in modern PHP development.
 	-
-	- **PHPMailer**: A library for sending emails from PHP, with support for attachments, HTML messages, SMTP authentication, and more.
+	- [[PHPMailer]]: A library for sending emails from PHP, with support for attachments, HTML messages, SMTP authentication, and more.
 	-
-	- **Guzzle**: A powerful HTTP client for PHP, ideal for making HTTP requests to APIs or web services. It supports synchronous and asynchronous requests.
-	- **Monolog**: A comprehensive logging library for PHP, allowing you to log messages to various handlers (files, databases, email, etc.) in a standardized format.
-	- **Carbon**: A popular PHP date and time library that extends PHP's native DateTime class with a wide range of useful methods for date manipulation and formatting.
-	- **Twig**: A flexible, fast, and secure templating engine for PHP, designed to separate the logic of your application from the presentation layer.
-	- **Intervention Image**: A simple and easy-to-use image handling and manipulation library for PHP, with support for resizing, cropping, filters, and more.
-	- **Doctrine ORM**: A powerful and flexible Object-Relational Mapping (ORM) library for PHP, used to map database entities to PHP objects, easing database interaction.
-	- **PHPUnit**: A testing framework for PHP that helps developers write unit tests and perform test-driven development (TDD). It supports assertions, mocking, and code coverage analysis.
-	- **Slim**: A lightweight micro-framework for PHP that is perfect for building small and simple RESTful APIs or web applications. It focuses on simplicity and performance.
-	- **Lumen**: A micro-framework by the creators of Laravel, designed for building fast and lightweight APIs. It uses the same core components as Laravel but with less overhead.
-	- **Firebase PHP SDK**: A library to integrate Firebase services (such as Firestore, Authentication, and Push Notifications) with your PHP applications.
-	- **JWT (Firebase JWT)**: A simple PHP library for working with JSON Web Tokens (JWT), often used for authentication and secure data transmission in APIs.
-	- **PHPStan**: A static analysis tool for PHP that helps find bugs in your code without running it. It checks for type safety, dead code, and potential issues in your codebase.
-	- **Xdebug**: A PHP extension for debugging and profiling. It allows you to step through your code, inspect variables, and trace execution flow to make development easier.
-	- **Ratchet**: A PHP WebSocket library for real-time, bi-directional communication between the server and client. It supports websockets and provides a framework for building chat systems or live data feeds.
-	- **Flysystem**: A filesystem abstraction library for PHP, enabling you to work with different storage systems (local, Amazon S3, FTP, etc.) using a unified API.
-	- **Faker**: A library for generating fake data in PHP, useful for testing, seeding databases, or populating forms with realistic data.
+	- [[Guzzle]]: A powerful HTTP client for PHP, ideal for making HTTP requests to APIs or web services. It supports synchronous and asynchronous requests.
+	-
+	- [[Monolog]]: A comprehensive logging library for PHP, allowing you to log messages to various handlers (files, databases, email, etc.) in a standardized format.
+	-
+	- [[Carbon]]: A popular PHP date and time library that extends PHP's native DateTime class with a wide range of useful methods for date manipulation and formatting.
+	-
+	- [[Twig]]:A flexible, fast, and secure templating engine for PHP, designed to separate the logic of your application from the presentation layer.
+	-
+	- [[Intervention Image]]: A simple and easy-to-use image handling and manipulation library for PHP, with support for resizing, cropping, filters, and more.
+	-
+	- [[Doctrine ORM]]: A powerful and flexible Object-Relational Mapping (ORM) library for PHP, used to map database entities to PHP objects, easing database interaction.
+	-
+	- [[PHPUnit]]: A testing framework for PHP that helps developers write unit tests and perform test-driven development (TDD). It supports assertions, mocking, and code coverage analysis.
+	-
+	- [[Slim]]: A lightweight micro-framework for PHP that is perfect for building small and simple RESTful APIs or web applications. It focuses on simplicity and performance.
+	-
+	- [[Lumen]]: A micro-framework by the creators of Laravel, designed for building fast and lightweight APIs. It uses the same core components as Laravel but with less overhead.
+	-
+	- [[Firebase PHP SDK]] : A library to integrate Firebase services (such as Firestore, Authentication, and Push Notifications) with your PHP applications.
+	-
+	- [[JWT (Firebase JWT)]]: A simple PHP library for working with JSON Web Tokens (JWT), often used for authentication and secure data transmission in APIs.
+	-
+	- [[PHPStan]]: A static analysis tool for PHP that helps find bugs in your code without running it. It checks for type safety, dead code, and potential issues in your codebase.
+	-
+	- [[Xdebug]]: A PHP extension for debugging and profiling. It allows you to step through your code, inspect variables, and trace execution flow to make development easier.
+	-
+	- [[Ratchet]]: A PHP WebSocket library for real-time, bi-directional communication between the server and client. It supports websockets and provides a framework for building chat systems or live data feeds.
+	-
+	- [[Flysystem]]: A filesystem abstraction library for PHP, enabling you to work with different storage systems (local, Amazon S3, FTP, etc.) using a unified API.
+	-
+	- [[Faker]]: A library for generating fake data in PHP, useful for testing, seeding databases, or populating forms with realistic data.
+	-
 - # More learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills :-
 	-
