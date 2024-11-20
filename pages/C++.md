@@ -1,18 +1,18 @@
 # History
-	- **How**:
+	**How**:
 		- Developed by **Bjarne Stroustrup** in 1979 at **Bell Labs**.
 		- Originally designed as an enhancement to the C programming language, adding object-oriented features and better abstractions.
 		- Evolved through several versions (C++98, C++03, C++11, C++14, C++17, C++20, and beyond).
-	-
-	- **Who**:
+	
+	**Who**:
 		- **Bjarne Stroustrup**, a computer scientist, is the creator of C++.
 		- **Bell Labs**, the research lab at AT&T, where C++ was first developed.
-	-
-	- **Why**:
+	
+	**Why**:
 		- To address the need for a more efficient, flexible, and powerful language than C.
 		- To support both **low-level system programming** and **high-level application development**, balancing performance and abstraction.
 		- To introduce features like **object-oriented programming (OOP)** while retaining C's performance and control.
--
+
 - # Introduction
   collapsed:: true
 	- ## Advantages:
