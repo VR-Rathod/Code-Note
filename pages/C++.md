@@ -14,7 +14,9 @@
 		- To introduce features like **object-oriented programming (OOP)** while retaining C's performance and control.
 -
 - # Introduction
+  collapsed:: true
 	- ## Advantages:
+	  collapsed:: true
 		- **Performance and Control:**
 		  collapsed:: true
 			- C++ provides **direct memory manipulation** with **pointers** and **manual memory management**, making it ideal for high-performance applications (e.g., games, systems programming, real-time systems).
@@ -40,6 +42,7 @@
 			- C++ is largely compatible with C code, making it easy to integrate or port legacy C code into C++ projects.
 	-
 	- ## Disadvantages:
+	  collapsed:: true
 		- **Complex Syntax:**
 			- C++ has a more **complex syntax** than some other modern languages, making it harder for beginners to learn and use effectively.
 		-
@@ -64,6 +67,7 @@
 			- While C++ is portable, it still requires careful attention to platform-specific details (e.g., differences in compilers, hardware, or OS).
 -
 - # Notes
+  collapsed:: true
 	- `main()` function is the entry point of a C++ program
 	- `std::count<< "Hello Word" << std::endl;` use for print
 	-
@@ -688,6 +692,7 @@
 			- All ref Keywords are [Here](https://en.cppreference.com/w/cpp/keyword)
 -
 - # Library & Frameworks
+  id:: 673ac308-24d0-40b6-b0d7-a4b6cac5b79a
 	- [[STL (Standard Template Library)]] - Provides common data structures and algorithms like vectors, maps, sets, and sorting functions.
 	-
 	- [[Boost]] - A collection of peer-reviewed libraries that extend the functionality of C++, including threading, file system, and smart pointers.

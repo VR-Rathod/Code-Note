@@ -1,4 +1,4 @@
-# **History**
+# History
 	- **How**:
 		- Developed by **Dennis Ritchie** in the early 1970s at **Bell Labs**.
 		- Designed as an evolution of the B programming language, with the goal of providing more control over hardware and efficient system programming.
@@ -8,14 +8,16 @@
 	- **Who**:
 		- **Dennis Ritchie**, a computer scientist, is the creator of C.
 		- **Bell Labs**, the research lab at AT&T, where C was first developed.
-	-
+		-
 	- **Why**:
 		- To create a portable, efficient language that could be used for system programming and writing operating systems.
 		- To provide low-level access to memory and hardware while maintaining readability and simplicity.
 		- To enable the development of the **UNIX operating system**, which was one of its first major uses.
 -
 - # introduction
-	- ## **Advantages:**
+  collapsed:: true
+	- ## Advantages:
+	  collapsed:: true
 		- **Performance and Control**:
 		  C offers **direct memory manipulation** through **pointers** and **manual memory management**, making it highly efficient for system programming, embedded systems, and performance-critical applications. This level of control allows developers to fine-tune performance but requires careful handling.
 		-
@@ -30,8 +32,9 @@
 		-
 		- **Low-Level System Programming**:
 		  C is perfect for **system-level programming** (e.g., operating systems, device drivers) due to its ability to interact directly with hardware and manage system resources efficiently.
--
-	- ## **Disadvantages:**
+	-
+	- ## Disadvantages:
+	  collapsed:: true
 		- **Manual Memory Management**:
 		  Unlike modern languages with garbage collection, C requires developers to manually manage memory using `malloc` and `free`. This can lead to **memory leaks** or **segmentation faults** if not handled correctly.
 		-
@@ -51,6 +54,7 @@
 		  While C is powerful, it lacks the advanced data structures and higher-level abstractions found in languages like C++ or Java, requiring more effort to implement features like dynamic arrays, complex data structures, or multithreading.
 -
 - # Notes
+  collapsed:: true
 	- `main()` is the entry point of a C program.
 	- `printf("Hello World\n");` is used for printing output.
 	-
@@ -262,8 +266,11 @@
 		  printf("%d\n", *ptr);
 		  
 		  ```
+	-
 	- ## Operators
+	  collapsed:: true
 		- ## Arithmetic Operators
+		  collapsed:: true
 			- ```c
 			  int myNum = 100 + 50;
 			  int sum1 = 100 + 50; // 150 (100 + 50)
@@ -271,6 +278,7 @@
 			  int sum3 = sum2 + sum2; // 800 (400 + 400)
 			  ```
 		- ## Assignment operator
+		  collapsed:: true
 			- ```c
 			  x = 5			x = 5
 			  x += 3			x = x + 3
@@ -321,212 +329,504 @@
 			  >>				binary right shift operator											A >> 2 will get 15 which is 0000 1111
 			  ```
 			-
-		- ## C Preprocessor
+	-
+	- ## C Preprocessor
+	  collapsed:: true
+		- ## Preprocessor Directives
 		  collapsed:: true
-			- ## Preprocessor Directives
-			  collapsed:: true
-				- ```c
-				  #define		define a macro
-				  #include	include a source code file
-				  #undef		undefined macro
-				  #ifdef		Returns true if the macro is defined
-				  #ifndef		Returns true if the macro is not defined
-				  #if			Compile the following code if the given condition is true
-				  #else		Alternative to #if
-				  #elif		If the #if condition is false, the current condition is true
-				  #endif		End a #if...#else conditional compilation block
-				  #error		Print an error message when standard error is encountered
-				  #pragma		Issue special commands to the compiler using the standardized method
-				  
-				  ---------------------------------------------------------------------------------
-				    
-				  // replace all MAX_ARRAY_LENGTH with 20
-				  #define MAX_ARRAY_LENGTH 20
-				  // Get stdio.h from the system library
-				  #include <stdio.h>
-				  // Get myheader.h in the local directory
-				  #include "myheader.h"
-				  #undef FILE_SIZE
-				  #define FILE_SIZE 42 // undefine and define to 42
-				  ```
-			- ## Predefined macros
-			  collapsed:: true
-				- ```c
-				  __DATE__	The current date, a character constant in the format "MMM DD YYYY"
-				  __TIME__	The current time, a character constant in the format "HH:MM:SS"
-				  __FILE__	This will contain the current filename, a string constant
-				  __LINE__	This will contain the current line number, a decimal constant
-				  __STDC__	Defined as 1 when the compiler compiles against the ANSI standard
-				  
-				  -----------------------------------------------------------------------------
-				  
-				  // Example
-				  #include <stdio.h>
-				  
-				  int main() {
-				    printf("File :%s\n", __FILE__);
-				    printf("Date :%s\n", __DATE__);
-				    printf("Time :%s\n", __TIME__);
-				    printf("Line :%d\n", __LINE__);
-				    printf("ANSI :%d\n", __STDC__);
-				  }
-				  ```
-			- ## Macro continuation operator ()
-			  collapsed:: true
-				- ```c
-				  #define message_for(a, b) \
-				      printf(#a " and " #b ": We love you(@' 3 '@)!\n")
-				  ```
-				-
-		- ## C Function
-			- ## Function declaration and definition
-			  collapsed:: true
-				- ```c
-				  int main(void) {
-				    printf("Hello World!");
-				  
-				    return 0;
-				  }
-				  The function consists of two parts
-				  
-				  
-				  void myFunction() { // declaration declaration
-				    // function body (code to be executed) (definition)
-				  }
-				  Declaration declares the function name, return type and parameters (if any)
-				  Definition function body (code to execute)
-				  
-				  // function declaration
-				  void myFunction();
-				  // main method
-				  int main() {
-				    myFunction(); // --> call the function
-				  
-				    return 0;
-				  }
-				  
-				  void myFunction() {// Function definition
-				    printf("Good evening!");
-				  }
-				  ```
-			- ## Call function
-			  collapsed:: true
-				- ```c
-				  // create function
-				  void myFunction() {
-				    printf("Good evening!");
-				  }
-				  
-				  int main() {
-				    myFunction(); // call the function
-				    myFunction(); // can be called multiple times
-				  
-				    return 0;
-				  }
-				  // Output -> "Good evening!"
-				  // Output -> "Good evening!"
-				  ```
-				- ## Function parameters
-				  collapsed:: true
-					- ```c
-					  void myFunction(char name[]) {
-					    printf("Hello %s\n", name);
-					  }
-					  
-					  int main() {
-					    myFunction("Liam");
-					    myFunction("Jenny");
-					  
-					    return 0;
-					  }
-					  // Hello Liam
-					  // Hello Jenny
-					  ```
-				- ## Multiple parameters
-				  collapsed:: true
-					- ```c
-					  void myFunction(char name[], int age) {
-					    printf("Hi %s, you are %d years old.\n",name,age);
-					  }
-					  int main() {
-					    myFunction("Liam", 3);
-					    myFunction("Jenny", 14);
-					  
-					    return 0;
-					  }
-					  // Hi Liam you are 3 years old.
-					  // Hi Jenny you are 14 years old.
-					  ```
-				- ## Return value
-				  collapsed:: true
-					- ```c
-					  int myFunction(int x) {
-					    return 5 + x;
-					  }
-					  
-					  int main() {
-					    printf("Result: %d", myFunction(3));
-					    return 0;
-					  }
-					  // output 8 (5 + 3)
-					  two parameters
-					  
-					  
-					  int myFunction(int x, int y) {
-					    return x + y;
-					  }
-					  
-					  int main() {
-					    printf("Result: %d", myFunction(5, 3));
-					    // store the result in a variable
-					    int result = myFunction(5, 3);
-					    printf("Result = %d", result);
-					  
-					    return 0;
-					  }
-					  // result: 8 (5 + 3)
-					  // result = 8 (5 + 3)
-					  ```
-				- ## Recursive example
-				  collapsed:: true
-					- ```c
-					  int sum(int k);
-					  
-					  int main() {
-					    int result = sum(10);
-					    printf("%d", result);
-					  
-					    return 0;
-					  }
-					  
-					  int sum(int k) {
-					    if (k > 0) {
-					      return k + sum(k -1);
-					    } else {
-					      return 0;
-					    }
-					  }
-					  ```
-				- ## Mathematical functions
-				  collapsed:: true
-					- ```c
-					  #include <math.h>
-					  
-					  void main(void) {
-					    printf("%f", sqrt(16)); // square root
-					    printf("%f", ceil(1.4)); // round up (round)
-					    printf("%f", floor(1.4)); // round up (round)
-					    printf("%f", pow(4, 3)); // x(4) to the power of y(3)
-					  }
-					  abs(x) absolute value
-					  acos(x) arc cosine value
-					  asin(x) arc sine
-					  atan(x) arc tangent
-					  cbrt(x) cube root
-					  cos(x) cosine
-					  the value of exp(x) Ex
-					  sin(x) the sine of x
-					  tangent of tan(x) angle
-					  ```
+			- ```c
+			  #define		define a macro
+			  #include	include a source code file
+			  #undef		undefined macro
+			  #ifdef		Returns true if the macro is defined
+			  #ifndef		Returns true if the macro is not defined
+			  #if			Compile the following code if the given condition is true
+			  #else		Alternative to #if
+			  #elif		If the #if condition is false, the current condition is true
+			  #endif		End a #if...#else conditional compilation block
+			  #error		Print an error message when standard error is encountered
+			  #pragma		Issue special commands to the compiler using the standardized method
+			  
+			  ---------------------------------------------------------------------------------
+			    
+			  // replace all MAX_ARRAY_LENGTH with 20
+			  #define MAX_ARRAY_LENGTH 20
+			  // Get stdio.h from the system library
+			  #include <stdio.h>
+			  // Get myheader.h in the local directory
+			  #include "myheader.h"
+			  #undef FILE_SIZE
+			  #define FILE_SIZE 42 // undefine and define to 42
+			  ```
+		-
+		- ## Predefined macros
+		  collapsed:: true
+			- ```c
+			  __DATE__	The current date, a character constant in the format "MMM DD YYYY"
+			  __TIME__	The current time, a character constant in the format "HH:MM:SS"
+			  __FILE__	This will contain the current filename, a string constant
+			  __LINE__	This will contain the current line number, a decimal constant
+			  __STDC__	Defined as 1 when the compiler compiles against the ANSI standard
+			  
+			  -----------------------------------------------------------------------------
+			  
+			  // Example
+			  #include <stdio.h>
+			  
+			  int main() {
+			    printf("File :%s\n", __FILE__);
+			    printf("Date :%s\n", __DATE__);
+			    printf("Time :%s\n", __TIME__);
+			    printf("Line :%d\n", __LINE__);
+			    printf("ANSI :%d\n", __STDC__);
+			  }
+			  ```
+		-
+		- ## Macro continuation operator ()
+		  collapsed:: true
+			- ```c
+			  #define message_for(a, b) \
+			      printf(#a " and " #b ": We love you(@' 3 '@)!\n")
+			  ```
+			-
 		-
 	-
+	- ## C Function
+	  collapsed:: true
+		- ## Function declaration and definition
+		  collapsed:: true
+			- ```c
+			  int main(void) {
+			    printf("Hello World!");
+			  
+			    return 0;
+			  }
+			  The function consists of two parts
+			  
+			  
+			  void myFunction() { // declaration declaration
+			    // function body (code to be executed) (definition)
+			  }
+			  Declaration declares the function name, return type and parameters (if any)
+			  Definition function body (code to execute)
+			  
+			  // function declaration
+			  void myFunction();
+			  // main method
+			  int main() {
+			    myFunction(); // --> call the function
+			  
+			    return 0;
+			  }
+			  
+			  void myFunction() {// Function definition
+			    printf("Good evening!");
+			  }
+			  ```
+		-
+		- ## Call function
+		  collapsed:: true
+			- ```c
+			  // create function
+			  void myFunction() {
+			    printf("Good evening!");
+			  }
+			  
+			  int main() {
+			    myFunction(); // call the function
+			    myFunction(); // can be called multiple times
+			  
+			    return 0;
+			  }
+			  // Output -> "Good evening!"
+			  // Output -> "Good evening!"
+			  ```
+			- ## Function parameters
+			  collapsed:: true
+				- ```c
+				  void myFunction(char name[]) {
+				    printf("Hello %s\n", name);
+				  }
+				  
+				  int main() {
+				    myFunction("Liam");
+				    myFunction("Jenny");
+				  
+				    return 0;
+				  }
+				  // Hello Liam
+				  // Hello Jenny
+				  ```
+			- ## Multiple parameters
+			  collapsed:: true
+				- ```c
+				  void myFunction(char name[], int age) {
+				    printf("Hi %s, you are %d years old.\n",name,age);
+				  }
+				  int main() {
+				    myFunction("Liam", 3);
+				    myFunction("Jenny", 14);
+				  
+				    return 0;
+				  }
+				  // Hi Liam you are 3 years old.
+				  // Hi Jenny you are 14 years old.
+				  ```
+			- ## Return value
+			  collapsed:: true
+				- ```c
+				  int myFunction(int x) {
+				    return 5 + x;
+				  }
+				  
+				  int main() {
+				    printf("Result: %d", myFunction(3));
+				    return 0;
+				  }
+				  // output 8 (5 + 3)
+				  two parameters
+				  
+				  
+				  int myFunction(int x, int y) {
+				    return x + y;
+				  }
+				  
+				  int main() {
+				    printf("Result: %d", myFunction(5, 3));
+				    // store the result in a variable
+				    int result = myFunction(5, 3);
+				    printf("Result = %d", result);
+				  
+				    return 0;
+				  }
+				  // result: 8 (5 + 3)
+				  // result = 8 (5 + 3)
+				  ```
+			- ## Recursive example
+			  collapsed:: true
+				- ```c
+				  int sum(int k);
+				  
+				  int main() {
+				    int result = sum(10);
+				    printf("%d", result);
+				  
+				    return 0;
+				  }
+				  
+				  int sum(int k) {
+				    if (k > 0) {
+				      return k + sum(k -1);
+				    } else {
+				      return 0;
+				    }
+				  }
+				  ```
+			- ## Mathematical functions
+			  collapsed:: true
+				- ```c
+				  #include <math.h>
+				  
+				  void main(void) {
+				    printf("%f", sqrt(16)); // square root
+				    printf("%f", ceil(1.4)); // round up (round)
+				    printf("%f", floor(1.4)); // round up (round)
+				    printf("%f", pow(4, 3)); // x(4) to the power of y(3)
+				  }
+				  abs(x) absolute value
+				  acos(x) arc cosine value
+				  asin(x) arc sine
+				  atan(x) arc tangent
+				  cbrt(x) cube root
+				  cos(x) cosine
+				  the value of exp(x) Ex
+				  sin(x) the sine of x
+				  tangent of tan(x) angle
+				  ```
+		-
+		- ## Function parameters
+		  collapsed:: true
+			- ```c
+			  void myFunction(char name[]) {
+			    printf("Hello %s\n", name);
+			  }
+			  
+			  int main() {
+			    myFunction("Liam");
+			    myFunction("Jenny");
+			  
+			    return 0;
+			  }
+			  // Hello Liam
+			  // Hello Jenny
+			  ```
+		-
+		- ## Multiple parameters
+		  collapsed:: true
+			- ```c
+			  void myFunction(char name[], int age) {
+			    printf("Hi %s, you are %d years old.\n",name,age);
+			  }
+			  int main() {
+			    myFunction("Liam", 3);
+			    myFunction("Jenny", 14);
+			  
+			    return 0;
+			  }
+			  // Hi Liam you are 3 years old.
+			  // Hi Jenny you are 14 years old.
+			  ```
+		-
+		- ## Return value
+		  collapsed:: true
+			- ```c
+			  int myFunction(int x) {
+			    return 5 + x;
+			  }
+			  
+			  int main() {
+			    printf("Result: %d", myFunction(3));
+			    return 0;
+			  }
+			  // output 8 (5 + 3)
+			  ```
+		-
+		- ## Recursive example
+		  collapsed:: true
+			- ```c
+			  int sum(int k);
+			  
+			  int main() {
+			    int result = sum(10);
+			    printf("%d", result);
+			  
+			    return 0;
+			  }
+			  
+			  int sum(int k) {
+			    if (k > 0) {
+			      return k + sum(k -1);
+			    } else {
+			      return 0;
+			    }
+			  }
+			  ```
+		-
+		- ## Mathematical functions
+		  collapsed:: true
+			- ```C
+			  #include <math.h>
+			  
+			  void main(void) {
+			    printf("%f", sqrt(16)); // square root
+			    printf("%f", ceil(1.4)); // round up (round)
+			    printf("%f", floor(1.4)); // round up (round)
+			    printf("%f", pow(4, 3)); // x(4) to the power of y(3)
+			  }
+			  -------------------------------------------------------------------------
+			    abs(x) absolute value
+			  acos(x) arc cosine value
+			  asin(x) arc sine
+			  atan(x) arc tangent
+			  cbrt(x) cube root
+			  cos(x) cosine
+			  the value of exp(x) Ex
+			  sin(x) the sine of x
+			  tangent of tan(x) angle
+			  ```
+		-
+		- ## Return value
+		  collapsed:: true
+			- ```c
+			  int myFunction(int x) {
+			    return 5 + x;
+			  }
+			  
+			  int main() {
+			    printf("Result: %d", myFunction(3));
+			    return 0;
+			  }
+			  // output 8 (5 + 3)
+			  ---------------------------------------------------------
+			  //  two parameters
+			  
+			  int myFunction(int x, int y) {
+			    return x + y;
+			  }
+			  
+			  int main() {
+			    printf("Result: %d", myFunction(5, 3));
+			    // store the result in a variable
+			    int result = myFunction(5, 3);
+			    printf("Result = %d", result);
+			  
+			    return 0;
+			  }
+			  // result: 8 (5 + 3)
+			  // result = 8 (5 + 3)
+			  ```
+	-
+	- ## C Structures
+	  collapsed:: true
+		- ## Create structure
+		  collapsed:: true
+			- ```c
+			  struct MyStructure { // structure declaration
+			    int myNum; // member (int variable)
+			    char myLetter; // member (char variable)
+			  }; // end the structure with a semicolon
+			  Create a struct variable called s1
+			  
+			  struct myStructure {
+			    int myNum;
+			    char myLetter;
+			  };
+			  
+			  int main() {
+			    struct myStructure s1;
+			  
+			    return 0;
+			  }
+			  ```
+		-
+		- ## Strings in the structure
+		  collapsed:: true
+			- ```c
+			  struct myStructure {
+			    int myNum;
+			    char myLetter;
+			    char myString[30]; // String
+			  };
+			  
+			  int main() {
+			    struct myStructure s1;
+			    strcpy(s1. myString, "Some text");
+			    // print value
+			    printf("my string: %s", s1.myString);
+			  
+			    return 0;
+			  }
+			  ```
+		-
+		- ## Accessing structure members
+		  collapsed:: true
+			- ```c
+			  // create a structure called myStructure
+			  struct myStructure {
+			    int myNum;
+			    char myLetter;
+			  };
+			  
+			  int main() {
+			    // Create a structure variable called myStructure called s1
+			    struct myStructure s1;
+			    // Assign values ​​to the members of s1
+			    s1.myNum = 13;
+			    s1.myLetter = 'B';
+			  
+			    // Create a structure variable of myStructure called s2
+			    // and assign it a value
+			    struct myStructure s2 = {13, 'B'};
+			    // print value
+			    printf("My number: %d\n", s1.myNum);
+			    printf("My letter: %c\n", s1.myLetter);
+			  
+			    return 0;
+			  }`
+			  
+			  --------------------------------------------------------------------------
+			  // Create different structure variables
+			  
+			  struct myStructure s1;
+			  struct myStructure s2;
+			  // Assign values ​​to different structure variables
+			  s1.myNum = 13;
+			  s1.myLetter = 'B';
+			  
+			  s2.myNum = 20;
+			  s2.myLetter = 'C';
+			  ```
+		-
+		- ## Copy structure
+		  collapsed:: true
+			- ```c
+			  struct myStructure s1 = {
+			    13, 'B', "Some text"
+			  };
+			  
+			  struct myStructure s2;
+			  s2 = s1;
+			  ```
+		-
+		- ## Modify value
+		  collapsed:: true
+			- ```c
+			  // Create a struct variable and assign it a value
+			  struct myStructure s1 = {
+			    13, 'B'
+			  };
+			  // modify the value
+			  s1.myNum = 30;
+			  s1.myLetter = 'C';
+			  // print value
+			  printf("%d %c %s",
+			      s1.myNum,
+			      s1.myLetter);
+			  ```
+		-
+	-
+	- ## file processing
+	  collapsed:: true
+		- ## File processing function
+			- ```c
+			  fopen()			open a new or existing file
+			  fprintf()		write data to file
+			  fscanf()		read data from a file
+			  fputc()			write a character to file
+			  fgetc()			read a character from a file
+			  fclose()		close the file
+			  fseek()			set the file pointer to the given position
+			  fputw()			Write an integer to a file
+			  fgetw()			read an integer from a file
+			  ftell()			returns the current position
+			  rewind()		set the file pointer to the beginning of the file
+			  ```
+		- ## Open mode parameter
+		  collapsed:: true
+			- ```c
+			  r		Open a text file in read mode, allowing the file to be read
+			  w		Open a text file in write mode, allowing writing to the file
+			  a		Open a text file in append mode
+			  If 		the file does not exist, a new one will be created
+			  r+		Open a text file in read-write mode, allowing reading and writing of the file
+			  w+		Open a text file in read-write mode, allowing reading and writing of the file
+			  a+		Open a text file in read-write mode, allowing reading and writing of the file
+			  rb		Open a binary file in read mode
+			  wb		Open binary file in write mode
+			  ab		Open a binary file in append mode
+			  rb+		open binary file in read-write mode
+			  wb+		Open binary file in read-write mode
+			  ab+		open binary file in read-write mode
+			  ```
+	-
+-
+- # Library & Frameworks
+  collapsed:: true
+	- [[GLib]] - Core library for C with data structures, utilities, and threading.
+	- [[GTK]] - GUI toolkit for creating graphical user interfaces.
+	- [[libcurl]] - Library for transferring data with URLs (HTTP, FTP, etc.).
+	- [[OpenSSL]] - Cryptography and SSL/TLS protocols.
+	- [[SQLite]] - Lightweight, self-contained SQL database engine.
+	- [[libxml2]] - XML parsing and manipulation.
+	- [[ncurses]] - Library for text-based interfaces and terminal handling.
+	- [[SDL]] - Multimedia library for graphics, sound, and input handling in games.
+	- [[pthread]] - POSIX threads library for multithreading support.
+	- [[libevent]] - Event notification library for asynchronous I/O.
+	- [[jansson]] - JSON library for encoding and decoding.
+	- [[zlib]] - Data compression library.
+-
+- # More Learn
+  collapsed:: true
+	- Explore the following links for valuable resources, communities, and tools to enhance your skills : -
+		-
+		- [C Programing Algorithms](https://github.com/TheAlgorithms/C)
