@@ -1,5 +1,22 @@
-# More Learn
+# History
+collapsed:: true
+	- **How**:
+		- Developed by **Håkon Wium Lie** and **Bert Bos** in **1994** at **W3C** (World Wide Web Consortium).
+		- Designed to separate **content** (HTML) from **presentation** (layout and style), enabling web developers to control the look and feel of a webpage without affecting its structure.
+		- CSS was developed to address the limitations of inline styles and to provide a way to style web pages in a flexible, reusable manner.
+		- CSS has evolved over time with major versions and updates, with key milestones such as CSS2 (1998) introducing more sophisticated layout controls and CSS3 (2001–2010s) bringing powerful new features like animations, transitions, and responsive design.
 	-
+	- **Who**:
+		- **Håkon Wium Lie**, a Norwegian web pioneer and the person behind the creation of CSS, working under Tim Berners-Lee at CERN.
+		- **Bert Bos**, a Dutch computer scientist who co-developed CSS and played a significant role in its evolution at W3C.
+		- **W3C** (World Wide Web Consortium), the organization that oversees the development and standardization of CSS, ensuring it works across browsers and platforms.
+	-
+	- **Why**:
+		- To allow web developers to create more **dynamic**, **consistent**, and **maintainable** web designs by separating content (HTML) from its visual style (CSS).
+		- To provide **flexibility** in styling web content, allowing for greater **accessibility**, **performance**, and **device compatibility**.
+		- To **simplify** the management of website design by allowing styles to be applied globally, reducing redundancy and enabling the easy creation of **responsive** layouts for varying screen sizes and devices.
+-
+- # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills:-
 		-
 		- [CSS Learning](https://github.com/micromata/awesome-css-learning)
@@ -15,5 +32,3 @@
 		- [CSS Interview questions 😎](https://github.com/Devinterview-io/css-interview-questions)
 		- [CSS Animations](https://animate.style/)
 		- [Creative Buttons](https://tympanus.net/Development/CreativeButtons/)
-		- [SVG to CSS Encoder ](https://yoksel.github.io/url-encoder/)
-		- [Convert SVG absolute clip-path to relative](https://yoksel.github.io/relative-clip-path/)
