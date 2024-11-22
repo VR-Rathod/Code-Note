@@ -826,7 +826,6 @@
 	- [[zlib]] - Data compression library.
 -
 - # More Learn
-  collapsed:: true
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills : -
 		-
 		- [C Programing Algorithms](https://github.com/TheAlgorithms/C)
