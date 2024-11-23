@@ -44,7 +44,13 @@
 	- [[OBS]] : Free and open-source software for video recording and live streaming
 	- [[Illustrator]] : Industry-standard vector graphics editor (note: not free but may have a trial version)
 	- [[Photoshop]] : Industry-standard image editing software (note: not free but may have a trial version)
-	- [[Jaganath Hora]] : Free astrology software for Vedic astrology calculations
+	- [[jagannatha Hora]] : Free astrology software for Vedic astrology calculations
+	- [[git]] : Industry-standard version control system (note: free and open-source, widely used for managing code and collaboration).
+	- [[KeePass]]: Free and open-source password manager (note: used to securely store and manage passwords with encryption).
+	- [[Defold]]: Free and open-source game engine (note: lightweight, cross-platform engine focused on 2D game development with a powerful editor and scripting capabilities).
+	- [[Cocos2d-x]]: Free and open-source game engine (note: primarily for 2D game development but also supports 3D, with a focus on lightweight performance and multi-platform support).
+	- [[LÖVE]]: Free and open-source 2D game framework (note: written in Lua, designed for rapid game development with a simple and easy-to-use API).
+	- [[Torque3D]]: Free and open-source 3D game engine (note: offers powerful 3D capabilities, including terrain rendering, physics, and multiplayer support).
 -
 - # Free Software
 	- ## Video Editing
@@ -64,19 +70,28 @@
 	- ## Code Editing
 		- [[Notepad++]] : Free source code editor (lifetime free)
 		- [[Visual Studio Code]] : Free code editor with support for many programming languages (lifetime free)
+		- [[git]] : Industry-standard version control system (note: free and open-source, widely used for managing code and collaboration).
 		-
 	- ## Audiio & Music Production
 		- [[Audacity]] : Free, open-source audio editing software for recording and editing sound (lifetime free).
 		-
 	- ## Game Development
 		- [[Godot]] : Free and open-source game engine for 2D and 3D game development (lifetime free).
-		-
+		- [[Defold]]: Free and open-source game engine (note: lightweight, cross-platform engine focused on 2D game development with a powerful editor and scripting capabilities).
+		- [[Cocos2d-x]]: Free and open-source game engine (note: primarily for 2D game development but also supports 3D, with a focus on lightweight performance and multi-platform support).
+		- [[LÖVE]]: Free and open-source 2D game framework (note: written in Lua, designed for rapid game development with a simple and easy-to-use API).
+		- [[Torque3D]]: Free and open-source 3D game engine (note: offers powerful 3D capabilities, including terrain rendering, physics, and multiplayer support).
+	-
 	- ## Web-Based Tools
 		- [[Figma]] : Web-based interface design tool (lifetime free for individuals)
 		- [[Canva]] : Online graphic design tool with a free tier (lifetime free with limitations)
 		-
 	- ## 3D Software
-		- [[Blender]] :
+		- [[Blender]] : Industry-standard open-source 3D creation suite (note: free and open-source, widely used for modeling, animation, rendering, and more).
+	-
+	- ## Useful Softwares
+		- [[KeePass]]: Free and open-source password manager (note: used to securely store and manage passwords with encryption).
+-
 - # Paid Software
 	- ## Video Editing
 		- [[Adobe Premiere Pro]] : Professional video editing software (subscription-based)
@@ -107,7 +122,7 @@
 		- [[Unity]] : Free tier available for game development (lifetime free with limitations on free version)
 		- [[Unreal Engine]] : Powerful game engine for real-time 3D creation (free to use with royalty fees on commercial products).
 		-
-	- ## Software Development
+	- ## Code & Software Editing
 		- [[Microsoft Visual Studio]] : Professional version for software development (subscription-based)
 		- [[PyCharm]] : Professional version for Python development (subscription-based)
 		-

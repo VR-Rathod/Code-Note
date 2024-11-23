@@ -85,4 +85,4 @@
 		- [Free Programing E-Books 📚](https://github.com/EbookFoundation/free-programming-books)
 		- [The Algorithms community](https://github.com/TheAlgorithms)
 		- [lfs-folderStore For remote LFS media store](https://github.com/sinbad/lfs-folderstore)
--
+		- [Get Free APIs🐱‍🏍](https://github.com/public-apis/public-apis)

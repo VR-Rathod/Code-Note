@@ -15,9 +15,7 @@
 		- To enable the development of the **UNIX operating system**, which was one of its first major uses.
 -
 - # introduction
-  collapsed:: true
 	- ## Advantages:
-	  collapsed:: true
 		- **Performance and Control**:
 		  C offers **direct memory manipulation** through **pointers** and **manual memory management**, making it highly efficient for system programming, embedded systems, and performance-critical applications. This level of control allows developers to fine-tune performance but requires careful handling.
 		-
@@ -34,7 +32,6 @@
 		  C is perfect for **system-level programming** (e.g., operating systems, device drivers) due to its ability to interact directly with hardware and manage system resources efficiently.
 	-
 	- ## Disadvantages:
-	  collapsed:: true
 		- **Manual Memory Management**:
 		  Unlike modern languages with garbage collection, C requires developers to manually manage memory using `malloc` and `free`. This can lead to **memory leaks** or **segmentation faults** if not handled correctly.
 		-
@@ -54,7 +51,6 @@
 		  While C is powerful, it lacks the advanced data structures and higher-level abstractions found in languages like C++ or Java, requiring more effort to implement features like dynamic arrays, complex data structures, or multithreading.
 -
 - # Notes
-  collapsed:: true
 	- `main()` is the entry point of a C program.
 	- `printf("Hello World\n");` is used for printing output.
 	-

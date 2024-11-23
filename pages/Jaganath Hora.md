@@ -1,7 +1,9 @@
 ## 1. History
 -
 	- **How**: Jaganath Hora was developed by P.V.R. Narasimha Rao, first released in the early 2000s as astrology software.
+	-
 	- **Who**: Created by a solo developer aiming to provide tools for Vedic astrology calculations.
+	-
 	- **Why**: Jaganath Hora was designed to assist users in performing astrological calculations and analyses.
 -
 - ## 2. Intro

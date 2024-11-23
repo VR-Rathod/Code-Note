@@ -1,0 +1,229 @@
+/* General Reset and Typography */
+body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    overflow: hidden;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+header {
+    background-color: #6c63ff;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+section {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.media-content {
+    margin-top: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.media-content img, .media-content video {
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.repo-files ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.repo-files li {
+    background-color: #ffffff;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.repo-files li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.repo-files a {
+    color: #6c63ff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.repo-files a:hover {
+    color: #4f4dcb;
+}
+
+.repo-files a .material-icons {
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    position: relative;
+    font-size: 1rem;
+}
+
+footer p {
+    margin: 0;
+    font-weight: 300;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    color: #f0f0f0;
+}
+
+.call-to-action {
+    background-color: #ff6f61;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 8px;
+    margin-top: 40px;
+    font-size: 1.2rem;
+}
+
+.call-to-action a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.call-to-action a:hover {
+    color: #ff9a86;
+}
+
+.background-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.toggle-button {
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.toggle-button:hover {
+    color: #6c63ff;
+}
+
+body.dark-mode {
+    background-color: #232323;
+    /* color: #fff; */
+}
+
+body.dark-mode .repo-files a {
+    color: #6c63ff;
+}
+
+body.dark-mode .call-to-action {
+    background-color: #ff6f61;
+    color: white;
+}
+
+.quote-section {
+    background-color: #f2f2f2;
+    padding: 40px;
+    margin-top: 30px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.quote-section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.quote-section p {
+    font-size: 1.8rem;
+    font-weight: 500;
+    font-style: italic;
+    color: #6c63ff;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    section {
+        padding: 15px;
+    }
+
+    .media-content img,
+    .media-content video {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    section {
+        padding: 10px;
+    }
+
+    .call-to-action {
+        font-size: 1rem;
+        padding: 15px;
+    }
+}

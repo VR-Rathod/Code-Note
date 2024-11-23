@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Code Note Repository By Vaibhav</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to Code Note Repository</h1>
+      <p>Share, Learn, and Grow with Code Snippets</p>
+    </header>
+
+    <section>
+      <h2>Repository Overview</h2>
+      <p>
+        This repository contains various programming notes and code snippets to
+        help you learn different languages and technologies. Browse through the
+        files below to explore and use them for your projects!
+      </p>
+    </section>
+    <section class="media-content">
+      <h2>Featured Content</h2>
+      <div>
+        <img
+          src="https://github.com/user-attachments/assets/02f2ab94-e6a1-4ea4-9f34-0d1987acdb31"
+          alt="Project Preview Image"
+        />
+        <br />
+        <h1>How to Set Up a Project?✨</h1>
+        <br />
+        <video controls>
+          <source
+            src="https://github.com/user-attachments/assets/e4cd771b-a7f0-4656-8737-4ea55ac40a5e"
+            type="video/mp4"
+          />
+        </video>
+        <h2> Let's get started and make your project journey smooth and successful! 🚀.</h2>
+      </div>
+    </section>
+    <section class="background-toggle">
+      <button class="toggle-button" onclick="toggleBackground()">🌙</button>
+    </section>
+    <section class="call-to-action">
+      <p>
+        Want to contribute or explore more? Visit the
+        <a href="https://github.com/VR-Rathod/Code-Note" target="_blank"
+          >GitHub Repository</a
+        >
+      </p>
+    </section>
+    <section class="repo-files">
+      <h2>Repository Files</h2>
+      <ul id="repo-list"></ul>
+    </section>
+    <footer>
+      <p>
+        Created with ❤️ by VR-Rathod |
+        <a href="https://github.com/VR-Rathod" target="_blank"
+          >GitHub Profile</a
+        >
+      </p>
+    </footer>
+
+    <script>
+      function toggleBackground() {
+        const body = document.body;
+        const button = document.querySelector(".toggle-button");
+        if (body.classList.contains("dark-mode")) {
+          body.classList.remove("dark-mode");
+          button.innerText = "🌙";
+        } else {
+          body.classList.add("dark-mode");
+          button.innerText = "🌞";
+        }
+      }
+
+      fetch("https://api.github.com/repos/VR-Rathod/Code-Note/contents")
+        .then((response) => response.json())
+        .then((data) => {
+          const repoList = document.getElementById("repo-list");
+          data.forEach((file) => {
+            if (file.name !== ".gitignore") {
+              const listItem = document.createElement("li");
+              listItem.innerHTML = `<a href="${file.html_url}" target="_blank"><span class="material-icons">insert_drive_file</span>${file.name}</a>`;
+              repoList.appendChild(listItem);
+            }
+          });
+        })
+        .catch((error) =>
+          console.error("Error fetching repository data:", error)
+        );
+      document.addEventListener("wheel", function (event) {
+        if (event.deltaY) {
+          window.scrollBy(0, event.deltaY);
+        }
+      });
+
+      // JavaScript for handling the scroll buttons
+      let gallery = document.querySelector(".gallery");
+      let scrollAmount = 320; // Amount of pixels to scroll at once
+    </script>
+  </body>
+</html>
