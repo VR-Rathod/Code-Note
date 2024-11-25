@@ -68,4 +68,4 @@ Note : - after || (Something) Was use for navigate on Logseq and if pages are bl
 
 - You can Give Your feedback on this mail vaibhavrathod2282@gmail.com
 
-- if you wanny share your note please read and follow instructions written on [Dev](https://github.com/VR-Rathod/Code-Note/blob/Admin/Dev/format.md)
+- if you interested to share your note please read and follow instructions written on [Dev](https://github.com/VR-Rathod/Code-Note/blob/Admin/Dev/format.md)
