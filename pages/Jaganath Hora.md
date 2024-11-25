@@ -36,7 +36,7 @@
 	- **Chart Generation**: Create detailed astrological charts using birth data.
 	- **Multiple Chart Types**: Generate various types of charts, including Rashi and Navamsa.
 	- **Dasha System**: Supports Vedic Dasha calculations for predictive astrology.
-	- **User-Friendly Interface**: Simple navigation for users of all levels.
+	- **Advance Interface**: Advance navigation for users of all levels.
 	- **Free to Use**: Completely free software without subscription fees.
 -
 - ## 6. More Learn - Share Links
