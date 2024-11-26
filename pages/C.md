@@ -807,7 +807,6 @@
 	-
 -
 - # Library & Frameworks
-  collapsed:: true
 	- [[GLib]] - Core library for C with data structures, utilities, and threading.
 	- [[GTK]] - GUI toolkit for creating graphical user interfaces.
 	- [[libcurl]] - Library for transferring data with URLs (HTTP, FTP, etc.).
