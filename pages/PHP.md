@@ -9,11 +9,13 @@
 	- For comment use "//" or " /**/ "
 	-
 	- ## Import tags
+	  collapsed:: true
 		- "<?" - Start Php  ?> - and PHP
 		- echo - Returns multiple string
 		- Print - return single String and return value
 		-
 	- ## Variables
+	  collapsed:: true
 		- ```php
 		   int, float, string, bullion ,  array , Null , resource , object
 		   $ - Use for Decrele variable
@@ -29,6 +31,7 @@
 		  ```
 		-
 		- ## IMP
+		  collapsed:: true
 			- $_GET =    Data Is appended To the URL , Not SECURE , char Limit , Bookmark Is possible w/ value , Better for search page - Technically it array
 			-
 			- $_POST =  Data is packaged inside the body of the HTTP request , MORE SECURE , No data limit , Cannot bookmark , GET request are not cached , Better 
@@ -85,6 +88,7 @@
 				  ```
 		-
 		- You can catch data for more conveniat use
+		  collapsed:: true
 			- ```php
 			  - $item = Pizza;
 			  - $Price = 2.99$ ;
@@ -97,8 +101,11 @@
 			  ```
 		-
 	- ## Opraters
+	  collapsed:: true
 		- Arithmetic operators
-			- ```PHP
+		  collapsed:: true
+			- collapsed:: true
+			  ```PHP
 			  // Arithmetic
 			  $sum        = 1 + 1; // 2
 			  $difference = 2 - 1; // 1
@@ -114,9 +121,11 @@
 			  ```
 				-
 				- ## perenthisis
+				  collapsed:: true
 					- () > ** > * > / > % > + > -
 					-
 	- ## Logical op
+	  collapsed:: true
 		- ```PHP
 		  and	And
 		  or	Or
@@ -132,6 +141,7 @@
 		  ```
 		-
 	- ## if - else statement
+	  collapsed:: true
 		- ```php
 		  <?php
 		      $age = 10
@@ -148,6 +158,7 @@
 		  ```
 		-
 		- Switch - Statement
+		  collapsed:: true
 			- ```php
 			  <?php
 			      $grade = "A";
@@ -178,7 +189,9 @@
 			  ```
 			-
 	- ## Loops
+	  collapsed:: true
 		- For loop
+		  collapsed:: true
 			- ```php
 			  <?php
 			  
@@ -189,6 +202,7 @@
 			  ```
 		-
 		- While loop
+		  collapsed:: true
 			- ```php
 			  <!DOCTYPE html>
 			  <html lang="en">
@@ -224,6 +238,7 @@
 			  ```
 		-
 		- Do while loop
+		  collapsed:: true
 			- ```PHP
 			  $i = 1;
 			  # => 12345
@@ -233,6 +248,7 @@
 			  ```
 		-
 		- Foreach loop
+		  collapsed:: true
 			- ```PHP
 			  $a = ['foo' => 1, 'bar' => 2];
 			  # => 12
@@ -242,6 +258,7 @@
 			  ```
 			-
 	- ## Array
+	  collapsed:: true
 		- ```php
 		  <?php
 		      $Arry = array("apple", "Orange", "Coconut"); 
@@ -287,6 +304,7 @@
 		  ```
 		-
 	- ## Math Operations
+	  collapsed:: true
 		- ```php
 		  <!DOCTYPE html>
 		  <html lang="en">
@@ -348,6 +366,7 @@
 		  // get Show in URL name and Possword so Use Post
 		  ```
 	- ## Funtions
+	  collapsed:: true
 		- This use for make code block Run particular time
 		- We don't need Re-write code just call it
 		- ```php
@@ -361,6 +380,7 @@
 		  ```
 		-
 	- ## String Methods
+	  collapsed:: true
 		- ```php
 		  <?php 
 		      
@@ -410,6 +430,7 @@
 		  ```
 		-
 		- ### Privent atteck -  Filter methods
+		  collapsed:: true
 			- ```php
 			  <?php 
 			      //asume Maked HTML form
@@ -436,17 +457,20 @@
 				  ```
 			-
 		- ## session
+		  collapsed:: true
 			- SGB used to store information on a user to be used across multiple pages.
 			- A user is assigned a session-id
 			- ex- login credentials
 			- This is useful for pass data in global
 			-
 		- ## Server
+		  collapsed:: true
 			- SGB That contains headers, paths, and script locations
 			- THE entries in this array are created by the wev server.
 			- $_SERVER - use this
 			-
 		- ### hashing
+		  collapsed:: true
 			- this is method to pass sensitive data in
 			- this useful for atteck
 			- trafring sesitive data into letters, numbers and/or symbols via a methematical process.
@@ -463,6 +487,7 @@
 		- ## connet to mySQL
 		  collapsed:: true
 			- There are 2 Type to connet
+			  collapsed:: true
 				- MySQLi Extension
 				  logseq.order-list-type:: number
 				- PDO (PHP Data Objects )

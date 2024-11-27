@@ -1387,8 +1387,3 @@
 	- [Learn Write Clean Coding ](https://github.com/ryanmcdermott/clean-code-javascript)
 	- [collection for Js Resource](https://github.com/sorrycc/awesome-javascript)
 	- [Algorithm for js](https://github.com/felipernb/algorithms.js)
-	-
-	-
-	-
-	-
-	-

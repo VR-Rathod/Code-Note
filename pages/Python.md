@@ -155,13 +155,10 @@
 			-
 			- [Python Roadmap](https://github.com/DjangoEx/awesome-python-roadmaps)
 			- [Python Patterns](https://github.com/faif/python-patterns)
+			- [Track Like samurai🐱‍👤](https://github.com/yangchris11/samurai)
 			-
 			- <ins>ML Concepts</ins>
 				- [Lean Machine Learning ](https://mlu-explain.github.io/)
 			-
 			- <ins>Hacks</ins>
 				- [SherLock](https://github.com/sherlock-project/sherlock?tab=coc-ov-file)
-			-
-			-
-	-
--

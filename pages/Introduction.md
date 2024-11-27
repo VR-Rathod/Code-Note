@@ -2,6 +2,7 @@
 	- Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
 	-
 - ## Programming Languages
+  collapsed:: true
 	-
 	- [[Python]] :- A beginner-friendly language known for its readability and extensive libraries.
 	-
@@ -12,8 +13,6 @@
 	- [[C++]] :- An extension of C that adds object-oriented features, often used in system/software development and game programming(unreal Engine).
 	-
 	- [[C#]] :- A modern, object-oriented language built for simplicity, used in web, desktop, and game development (especially with .NET and Unity).
-	-
-	- [[Ruby]] :- Known for its elegant syntax, it's popular for web applications, particularly with the Ruby on Rails framework.
 	-
 	- [[Go]] :- A statically typed language developed by Google, known for its performance and simplicity in building scalable applications.
 	-
@@ -36,6 +35,7 @@
 	- [[Ruby]]: A dynamic, object-oriented language often used for web applications, particularly with Ruby on Rails.
 -
 - ## Operating Systems & Kernels
+  collapsed:: true
 	- ## Linux
 		- [[Kali Linux]] :- A Debian-based distribution designed for penetration testing and cybersecurity professionals, featuring numerous security tools.
 		-
@@ -54,19 +54,24 @@
 		- [[Linux Mint]] :- A user-friendly distribution based on Ubuntu, designed to provide a familiar interface for users transitioning from Windows.
 -
 - ## Frameworks & Libraries
+  collapsed:: true
 	- You Can find particular lib & Frameworks on The Languages page in that programing page
 -
 - ## Data Structures & Algorithms
+  collapsed:: true
 	- [[DSA , Algo & System Design]]: The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for searching, sorting, and optimization.
 -
 - ## DevOps & CI/CD
+  collapsed:: true
 	- [[DevOps]] - This page contains DevOps Concepts
 -
 - ## Cybersecurity
+  collapsed:: true
 	- [[Cybersecurity]] - This page contains DevOps Concepts
 -
 - ## Software Informations
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
+  collapsed:: true
 	- [[Software]] - This page showcases all types of software, categorized by their functionality and purpose.
 -
 - # more learn
@@ -81,7 +86,7 @@
 		- [You wanna Help on CSS Degine?](https://uiverse.io/cssbuttons-io/wonderful-baboon-62)
 		- [How to build Anything ?](https://github.com/codecrafters-io/build-your-own-x)
 		- [I want Free Engineering Projects it will Be Helpful😉](https://www.enggroom.com/)
-		- [Are You Finding It jobs ?](https://github.com/poteto/hiring-without-whiteboards)
+		- [Are You Finding It jobs  ?](https://github.com/poteto/hiring-without-whiteboards)
 		- [Free Programing E-Books 📚](https://github.com/EbookFoundation/free-programming-books)
 		- [The Algorithms community](https://github.com/TheAlgorithms)
 		- [lfs-folderStore For remote LFS media store](https://github.com/sinbad/lfs-folderstore)
