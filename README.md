@@ -53,8 +53,9 @@ Note : - after || (Something) Was use for navigate on Logseq and if pages are bl
   
   Look Introduction page For Easy navigate, Now You have all data, pdfs, topics , Links related to This Subject
 
-  That much Resource Available 😍
-    ![graph](https://github.com/user-attachments/assets/02f2ab94-e6a1-4ea4-9f34-0d1987acdb31)
+  ## Resource Available 😍
+  
+    ![graph](https://github.com/user-attachments/assets/4ad416f0-0b55-413e-9589-412ca7ea271d)
   
   -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   
