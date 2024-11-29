@@ -29,6 +29,7 @@
 	- **Official Documentation**: [Krita Documentation](https://docs.krita.org/en/)
 	- **Community Forum**: [Krita Forum](https://krita-artists.org/)
 	- **Tutorials**: [Krita Tutorials](https://krita.org/en/learn/)
+	- **BeeRef**: [For collect reference](https://beeref.org/)
 -
 - ## 5. Feature List
 -
@@ -42,4 +43,5 @@
 -
 	- **GitHub Repositories**: [Krita GitHub](https://github.com/KDE/krita)
 	- **Documentation**: [Krita API Documentation](https://docs.krita.org/en/user_manual/python_scripting.html)
+	-
 	-

@@ -1,11 +1,11 @@
 # **Software Organization:**
 	- Organize software data into three main categories:
-		- ** All Software List** :- Comprehensive overview of available software.
+		- **All Software List** :- Comprehensive overview of available software.
 		- **Free Software** :- Tools and applications accessible at no cost.
 		- **Paid Software** :- Options that require payment.
 -
 	- ### Note : -
-		- software can perform multiple task so It can be repetitive in subcategories
+		- software can perform multiple task so It can be repetitive in subcategories (Free software/Paid Software)
 -
 - # All Software List
 	- [[Blender]] : Free 3D modeling and animation software

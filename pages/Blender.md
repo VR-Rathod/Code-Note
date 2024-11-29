@@ -24,6 +24,7 @@
 	- **Add-ons Repository**: [Blender Add-ons](https://blender-addons.org/)
 	- **Blender Community**: [Blender Community](https://blender.community/)
 	- **Blender Artists Forum**: [Blender Artists](https://blenderartists.org/)
+	- **Blender Marker**:[Blender Market](https://blendermarket.com/)
 -
 - ## 5. Require
 	- If you find missing topics, consider adding sections on:

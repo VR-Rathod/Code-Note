@@ -2,7 +2,6 @@
 	- Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
 	-
 - ## Programming Languages
-  collapsed:: true
 	-
 	- [[Python]] :- A beginner-friendly language known for its readability and extensive libraries.
 	-
@@ -33,6 +32,54 @@
 	- [[PHP]]: A server-side scripting language widely used for web development, powering many dynamic websites.
 	-
 	- [[Ruby]]: A dynamic, object-oriented language often used for web applications, particularly with Ruby on Rails.
+	-
+	- [[GDScript]]: A Python-like language created specifically for Godot Engine, used for game development.
+	-
+	- [[Lua]]: A lightweight, high-level scripting language often embedded in applications for customization, particularly in game development.
+	-
+	- [[R]]: A language and environment for statistical computing and graphics, popular in data analysis and research.
+	-
+	- [[Dart]]: A language developed by Google, mainly used for building mobile, desktop, and web applications (with Flutter).
+	-
+	- [[Haskell]]: A functional programming language known for its strong type system and lazy evaluation.
+	-
+	- [[Scala]]: A language that blends object-oriented and functional programming paradigms, often used for scalable applications.
+	-
+	- [[Elixir]]: A functional, concurrent language built on the Erlang virtual machine, used for highly scalable and fault-tolerant systems.
+	-
+	- [[Perl]]: A high-level language known for its text processing capabilities, used in web development, system administration, and bioinformatics.
+	-
+	- [[Shell Script]]: A scripting language for command-line interface environments used to automate system tasks.
+	-
+	- [[VHDL]]: A hardware description language used in electronic design automation to model digital systems.
+	-
+	- [[Verilog]]: Another hardware description language used for designing circuits and systems.
+	-
+	- [[Objective-C]]: A general-purpose, object-oriented language that was used for macOS and iOS development before Swift.
+	-
+	- [[COBOL]]: A legacy programming language primarily used in business, finance, and administrative systems for companies and governments.
+	-
+	- [[Fortran]]: One of the oldest programming languages, widely used in scientific computing and numerical simulations.
+	-
+	- [[ActionScript]]: A scripting language for the Adobe Flash platform, used for developing rich internet applications.
+	-
+	- [[F#]]: A functional-first language that runs on the .NET platform, used for data analysis and web programming.
+	-
+	- [[Tcl]]: A scripting language often used for rapid prototyping and embedded systems.
+	-
+	- [[Scheme]]: A minimalist dialect of Lisp, known for its clean syntax and functional programming features.
+	-
+	- [[OCaml]]: A general-purpose functional programming language, known for its strong type system and performance.
+	-
+	- [[Erlang]]: A functional, concurrent language used for building scalable and fault-tolerant systems, especially in telecoms.
+	-
+	- [[Smalltalk]]: An object-oriented language known for its simple syntax and early influence on object-oriented design.
+	-
+	- [[Ada]]: A structured, statically typed language used for real-time systems and safety-critical applications, especially in aerospace and military contexts.
+	-
+	- [[Crystal]]: A compiled language with syntax similar to Ruby but with performance comparable to C, designed for high performance.
+	-
+	- [[Zig]]: A systems programming language that aims to replace C with a focus on simplicity, performance, and safety.
 -
 - ## Operating Systems & Kernels
   collapsed:: true
@@ -71,7 +118,6 @@
 -
 - ## Software Informations
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
-  collapsed:: true
 	- [[Software]] - This page showcases all types of software, categorized by their functionality and purpose.
 -
 - # more learn
