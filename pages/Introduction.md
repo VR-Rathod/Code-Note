@@ -81,6 +81,43 @@
 	-
 	- [[Zig]]: A systems programming language that aims to replace C with a focus on simplicity, performance, and safety.
 -
+- ## Databases
+  collapsed:: true
+	- [[MySQL]] : One of the most widely used open-source relational database management systems (RDBMS), especially in web applications.
+	-
+	- [[PostgreSQL]] : An advanced, open-source relational database that emphasizes extensibility, SQL compliance, and performance.
+	-
+	- [[MongoDB]] : A NoSQL database that stores data in flexible, JSON-like documents instead of tables.
+	-
+	- [[SQLite]] : A lightweight, serverless relational database that is often embedded in mobile and desktop applications.
+	-
+	- [[Oracle Database]] : A comprehensive, multi-model database management system known for its robust features and high performance.
+	-
+	- [[Microsoft SQL Server]] : A relational database management system developed by Microsoft, often used in enterprise environments.
+-
+- ## CMS (Content Management Systems)
+  collapsed:: true
+	- [[WordPress]] :- A widely used, open-source CMS known for its ease of use, vast theme/plugin ecosystem, and flexibility for building various websites from blogs to e-commerce stores.
+	-
+	- [[Joomla]] :- A flexible and powerful CMS that allows for the creation of complex websites with various extensions and templates.
+	-
+	- [[Drupal]] :- A highly customizable and scalable CMS, ideal for large, complex websites with advanced content management needs and security features.
+	-
+	- [[Shopify]] :- A hosted CMS tailored for e-commerce, allowing users to easily create online stores with integrated payment systems and app support.
+	-
+	- [[Wix]] :- A website builder with drag-and-drop functionality, offering templates and easy-to-use tools for building websites without technical expertise.
+	-
+	- [[Squarespace]] :- A user-friendly, all-in-one CMS designed for building visually appealing websites, particularly for creatives and small businesses.
+	-
+	- [[Magento]] :- A robust, open-source e-commerce platform that provides powerful tools for managing online stores and customer experiences.
+	-
+	- [[Weebly]] :- A drag-and-drop website builder that allows users to create websites and online stores with ease, featuring customizable templates and e-commerce tools.
+	-
+	- [[Ghost]] :- A minimalist, open-source CMS focused on blogging and publishing, known for its speed, simplicity, and modern user interface.
+	-
+	- [[TYPO3]] :- A scalable, open-source CMS suitable for both small businesses and large enterprise-level websites, offering powerful content management and flexibility.
+-
+-
 - ## Operating Systems & Kernels
   collapsed:: true
 	- ## Linux

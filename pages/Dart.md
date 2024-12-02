@@ -14,7 +14,7 @@
 	-
 	- **Why**:
 		- Dart was developed to overcome the performance limitations of JavaScript, aiming to provide a better experience for building complex web and mobile applications.
-		- It was also designed to be easy to learn for developers familiar with object-oriented programming languages (e.g., Java, C#), and to be compiled to highly optimized machine code or JavaScript for web development.
+		- It was also designed to be easy to learn for developers familiar with object-oriented programming languages (e.g., Java, C# ), and to be compiled to highly optimized machine code or JavaScript for web development.
 		- **Flutter's** success has significantly boosted Dart’s adoption, as it is the primary language for building cross-platform apps on iOS, Android, web, and desktop.
 -
 - # Introduction
