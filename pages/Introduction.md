@@ -2,6 +2,7 @@
 	- Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
 	-
 - ## Programming Languages
+
 	-
 	- [[Python]] :- A beginner-friendly language known for its readability and extensive libraries.
 	-
@@ -96,7 +97,6 @@
 	- [[Microsoft SQL Server]] : A relational database management system developed by Microsoft, often used in enterprise environments.
 -
 - ## CMS (Content Management Systems)
-  collapsed:: true
 	- [[WordPress]] :- A widely used, open-source CMS known for its ease of use, vast theme/plugin ecosystem, and flexibility for building various websites from blogs to e-commerce stores.
 	-
 	- [[Joomla]] :- A flexible and powerful CMS that allows for the creation of complex websites with various extensions and templates.
@@ -116,7 +116,6 @@
 	- [[Ghost]] :- A minimalist, open-source CMS focused on blogging and publishing, known for its speed, simplicity, and modern user interface.
 	-
 	- [[TYPO3]] :- A scalable, open-source CMS suitable for both small businesses and large enterprise-level websites, offering powerful content management and flexibility.
--
 -
 - ## Operating Systems & Kernels
   collapsed:: true
@@ -155,6 +154,7 @@
 -
 - ## Software Informations
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
+  collapsed:: true
 	- [[Software]] - This page showcases all types of software, categorized by their functionality and purpose.
 -
 - # more learn

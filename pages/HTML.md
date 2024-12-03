@@ -46,7 +46,7 @@
 	- [This is List of All Tags.](https://www.fing.edu.uy/tecnoinf/mvd/cursos/ria/material/teorico/html-tags-chart.pdf)
 	- [Tag's And Definitions](https://www.coderepublics.com/HTML/images/HTML%20Tags%20List.pdf)
 -
-- # more learn
+- # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills :-
 	-
 	- [Heading Special](https://github.com/joshbuchea/HEAD)
