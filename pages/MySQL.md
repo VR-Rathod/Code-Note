@@ -1,0 +1,41 @@
+# History
+	- **How**:
+		- SQL (Structured Query Language) was first developed in the early **1970s** at **IBM** by **Donald D. Chamberlin** and **Ray Boyce** as part of the **System R project** to manage and query relational databases.
+		- It was created to provide a standardized language for interacting with relational databases, following the theoretical principles of the **relational model** proposed by **Edgar F. Codd**.
+		- SQL is a declarative language that focuses on what data to retrieve or manipulate, rather than how to do it, making it easier to express complex queries in a more human-readable form.
+		- SQL introduced innovations like **ACID properties** (Atomicity, Consistency, Isolation, Durability) for transaction management and has influenced many other query languages.
+		- SQL became an **ANSI** (American National Standards Institute) standard in **1986**, ensuring widespread adoption across different database systems.
+		-
+	- **Who**:
+		- **Donald D. Chamberlin** and **Ray Boyce** were the primary creators of SQL.
+		- SQL's development was influenced by the work of **Edgar F. Codd**, whose **relational model** provided the foundation for SQL's design.
+		- SQL's standardization was overseen by the **American National Standards Institute (ANSI)** and the **International Organization for Standardization (ISO)**.
+		-
+	- **Why**:
+		- SQL was created to standardize and simplify the process of managing and querying relational databases, making it easier for users and developers to work with large datasets.
+		- The goal was to provide a universal language for interacting with databases, allowing for consistent and efficient querying across different database platforms.
+		- SQL was developed to enable reliable, scalable, and secure data management in industries ranging from finance to healthcare and beyond.
+-
+- # introduction
+	- ## Advantages :
+		- **Declarative Nature**: SQL allows developers to express what data they want, rather than how to retrieve it, making queries easier to write and understand.
+		- **Standardization**: SQL is a standardized language (ANSI/ISO), ensuring compatibility across different relational database systems.
+		- **Powerful Query Capabilities**: SQL provides robust querying features, including **JOINs**, **GROUP BY**, **ORDER BY**, and **aggregations**, enabling complex data analysis and manipulation.
+		- **Transaction Management**: SQL supports **ACID transactions**, ensuring data consistency and reliability, which is critical in industries like finance and banking.
+		- **Data Integrity**: SQL enforces **constraints** (e.g., primary keys, foreign keys, unique constraints) to maintain the integrity and consistency of data.
+		- **Scalability**: SQL is widely used in systems of all sizes, from small applications to large, distributed systems, and is capable of handling massive datasets.
+		-
+	- ## Disadvantages :
+		- **Complexity for Advanced Queries**: SQL can become complex when dealing with advanced queries involving multiple joins, subqueries, and aggregations.
+		- **Limited to Relational Databases**: SQL is specifically designed for relational databases and doesn't natively support other types of databases, such as NoSQL or graph databases.
+		- **Performance Issues**: SQL queries can become slow or inefficient with large datasets or poorly optimized queries, requiring expertise in query optimization.
+		- **Learning Curve**: While SQL is relatively simple for basic queries, mastering advanced features and optimizing queries can be challenging.
+		- **Database Vendor Differences**: While SQL is standardized, different database vendors (e.g., MySQL, PostgreSQL, SQL Server) may implement slightly different versions of SQL, leading to some variations in syntax and features.
+	- ## Remember Points :
+		- **Declarative Syntax**: SQL lets you focus on what you want to retrieve or manipulate, not how it is done, making it more efficient for expressing complex queries.
+		- **ACID Transactions**: SQL supports transactional operations, ensuring that database changes are reliable, consistent, and recoverable in the event of a failure.
+		- **Data Integrity**: Constraints like **primary keys**, **foreign keys**, and **unique constraints** help ensure that the data in the database is valid and consistent.
+		- **Normalization**: SQL encourages database normalization, which helps minimize data redundancy and improve data integrity.
+		- **Join Operations**: SQL's ability to join multiple tables makes it powerful for handling relational data and allows users to combine and query related datasets efficiently.
+- # Note
+-

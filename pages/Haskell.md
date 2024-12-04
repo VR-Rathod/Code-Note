@@ -15,6 +15,7 @@
 		- Haskell was created to provide a pure, declarative alternative to imperative programming languages like C and Java, offering better tools for building reliable, concurrent, and scalable systems.
 		- Its focus on **pure functions**, **lazy evaluation**, and **strong, static typing** makes Haskell a great choice for systems where correctness, maintainability, and performance are critical.
 		- It was also developed to explore and push forward the theoretical foundations of computer science, especially in the areas of category theory, lambda calculus, and logic.
+-
 - # Introduction
 	- ## Advantages:
 		- **Pure Functional Programming**: Haskell enforces functional programming principles, where functions are treated as first-class citizens and side effects are minimized or controlled.

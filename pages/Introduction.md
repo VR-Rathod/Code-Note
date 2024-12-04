@@ -83,7 +83,6 @@
 	- [[Zig]]: A systems programming language that aims to replace C with a focus on simplicity, performance, and safety.
 -
 - ## Databases
-  collapsed:: true
 	- [[MySQL]] : One of the most widely used open-source relational database management systems (RDBMS), especially in web applications.
 	-
 	- [[PostgreSQL]] : An advanced, open-source relational database that emphasizes extensibility, SQL compliance, and performance.
