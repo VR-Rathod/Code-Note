@@ -1,0 +1,2 @@
+- **Automated Deployment**: Deploying code automatically to staging or production after it passes tests.
+- **Rollback Mechanisms**: Mechanisms that allow easy rollback to a previous version if an issue occurs during deployment.
