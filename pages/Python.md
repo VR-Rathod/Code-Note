@@ -86,7 +86,6 @@
 	- ## 8. Game Development
 		- [[Pygame]]: Set of Python modules for writing video games.
 		- [[Panda3D]]: Game engine and 3D rendering library.
-		- [[PyKyra]]: Framework for creating games in Python.
 	-
 	- ## 9. Testing
 		- [[unittest]]: Python's built-in library for writing unit tests.
@@ -144,8 +143,6 @@
 		- [[PyYAML]]: For parsing and writing YAML files.
 	-
 	- ## 20. Time & Date Manipulation
-		- [[datetime]]: Built-in library for manipulating dates and times.
-		- [[Arrow]]: A better way to handle dates and times with an easy-to-use library.
 		- [[Pendulum]]: Another date/time library that provides a more intuitive API.
 -
 - # more learn

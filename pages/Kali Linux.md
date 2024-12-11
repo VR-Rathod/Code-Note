@@ -249,6 +249,7 @@ collapsed:: true
 		  logseq.order-list-type:: number
 		- Faster in simple password
 		  logseq.order-list-type:: number
+	-
 	- HTT Track - EDU Only
 	  logseq.order-list-type:: number
 		- Download form Browser

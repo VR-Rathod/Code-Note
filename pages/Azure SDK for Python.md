@@ -1,0 +1,1 @@
+- [Web link](https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-overview)

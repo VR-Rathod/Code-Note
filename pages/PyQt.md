@@ -1,0 +1,1 @@
+- [Docs](https://doc.qt.io/qtforpython-6/)

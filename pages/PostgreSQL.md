@@ -39,3 +39,9 @@
 		- **Standards Compliance**: PostgreSQL is known for its strong **SQL standards compliance**, ensuring that SQL queries are portable across different systems and compatible with SQL norms.
 		- **Concurrency and Scalability**: PostgreSQL’s **MVCC** ensures that it handles concurrent transactions efficiently, making it suitable for applications with high transaction volumes and heavy read/write workloads.
 		- **Open Source and Community Support**: PostgreSQL is an open-source project with a large and active community, ensuring that the database remains free to use and continuously improved.
+-
+- # More Learn
+	-
+	- Explore the following links for valuable resources, communities, and tools to enhance your skills : -
+		-
+		- [Road Map](https://roadmap.sh/postgresql-dba)

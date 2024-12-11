@@ -1,0 +1,1 @@
+- [Docs](https://python-watchdog.readthedocs.io/en/stable/)

@@ -24,10 +24,9 @@
 		- Complexities in large-scale application development.
 -
 - # Notes
-  collapsed:: true
 	- You can Direcly create page by write {filename}.js
-	- console.log("msg") - Print that msg
-	- console.warn('hello %s', 'Cheekbone') - The `%s` is a placeholder for a string, allowing you to format the message with additional variables.
+	- `console.log("msg")` - Print that msg
+	- `console.warn('hello %s', 'Cheekbone')` - The `%s` is a placeholder for a string, allowing you to format the message with additional variables.
 	- console.error(new Error('Oops!')) - console.error(new Error('Oops!'));
 	- In Html use <script {You can Give link path or =>} > write Here </script> this tag for write js
 	-
@@ -38,7 +37,7 @@
 			-
 			- **Number**: Represents numeric values (e.g., `42`, `3.14`).
 			-
-			- **BigInt**: Represents integers of arbitrary precision (e.g., `1234567890123456789012345678901234567890n`).
+			- **BigInt**: Represents integers of arbitrary precision (e.g., `12345678901245678901234567890n`).
 			-
 			- **Boolean**: Represents a logical entity that can be either `true` or `false`.
 			-
@@ -62,7 +61,6 @@
 		-
 	-
 	- ## Scope Types
-	  collapsed:: true
 		-
 		- **Global Scope**: Variables declared outside any function or block. Accessible anywhere in the code.
 			-
@@ -103,29 +101,28 @@
 			  console.log(statusMessage);
 			  ```
 		-
-		- **Extra Explain**
-		- ## let vs var
+		- ## Extra Explain
+			- ## let vs var
+				-
+				- ```js
+				  for (let i = 0; i < 3; i++) {
+				    // This is the Max Scope for 'let'
+				    // i accessible ✔️
+				  }
+				  // i not accessible ❌
+				  ```
 			-
-			- ```js
-			  for (let i = 0; i < 3; i++) {
-			    // This is the Max Scope for 'let'
-			    // i accessible ✔️
-			  }
-			  // i not accessible ❌
-			  ```
-		-
-		- ## Loops with closures
-			-
-			- ```js
-			  // Prints 3 thrice, not what we meant.
-			  for (var i = 0; i < 3; i++) {
-			    setTimeout(_ => console.log(i), 10);
-			  }
-			  ```
-		-
+			- ## Loops with closures
+				-
+				- ```js
+				  // Prints 3 thrice, not what we meant.
+				  for (var i = 0; i < 3; i++) {
+				    setTimeout(_ => console.log(i), 10);
+				  }
+				  ```
+				-
 	-
 	- ## Operators
-	  collapsed:: true
 		-
 		- ### Arithmetic Operators
 			-
@@ -203,7 +200,6 @@
 			- `property in object`
 	-
 	- ## JavaScript Conditionals
-	  collapsed:: true
 		- ## if Statement
 			- ```js
 			  const isMailSent = true;
@@ -370,7 +366,6 @@
 		-
 	-
 	- ## JavaScript Arrays
-	  collapsed:: true
 		- ## Mutable chart
 			- ```js
 			  		add	remove	start	end
@@ -454,11 +449,10 @@
 			  numbers.concat(newFirstNumber)
 			  ```
 		-
-		- # extra
+		- ## More Methods
 			- [Array's methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/)
 	-
 	- ## JavaScript Loops
-	  collapsed:: true
 		- ## While Loop
 			- ```js
 			  while (condition) {
@@ -570,7 +564,6 @@
 		-
 	-
 	- ## JavaScript Iterators
-	  collapsed:: true
 		- ## Functions Assigned to Variables
 			- ```js
 			  let plusFive = (number) => {
@@ -641,7 +634,6 @@
 		-
 	-
 	- ## JavaScript Objects
-	  collapsed:: true
 		- ## Accessing Properties
 			- ```js
 			  const apple = { 
@@ -666,7 +658,6 @@
 			  ```
 		-
 		- ## Non-existent properties
-		  collapsed:: true
 			- ```js
 			  const classElection = {
 			    date: 'January 12'
@@ -676,7 +667,6 @@
 			  ```
 		-
 		- ## Mutable
-		  collapsed:: true
 			- ```js
 			  const student = {
 			    name: 'Sheldon',
@@ -696,7 +686,6 @@
 			  // TypeError: Assignment to constant variable.
 			  ```
 		- ## Assignment shorthand syntax
-		  collapsed:: true
 			- ```js
 			  const person = {
 			    name: 'Tom',
@@ -706,6 +695,7 @@
 			  console.log(name); // 'Tom'
 			  console.log(age);  // '22'
 			  ```
+		-
 		- ## Delete operator
 			- ```js
 			  const person = {
@@ -782,7 +772,7 @@
 			    };
 			  };
 			  ```
-		- .
+		-
 		- ## Methods
 			- ```js
 			  const engine = {
@@ -820,7 +810,6 @@
 			  ```
 	-
 	- ## JavaScript Classes
-	  collapsed:: true
 		- ## Static Methods
 			- ```js
 			  class Dog {
@@ -993,7 +982,6 @@
 			  ```
 		-
 		- ## JavaScript Promises
-		  collapsed:: true
 			- ## Promise states
 				- ```js
 				  const promise = new Promise((resolve, reject) => {
@@ -1146,10 +1134,8 @@
 				    }
 				  }
 				  ```
-			-
 	-
 	- ## JavaScript Async-Await
-	  collapsed:: true
 		- ## Asynchronous
 			- ```js
 			  function helloWorld() {

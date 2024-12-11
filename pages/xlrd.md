@@ -1,0 +1,1 @@
+- [Docs](https://xlrd.readthedocs.io/en/latest/)

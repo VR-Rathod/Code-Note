@@ -134,7 +134,7 @@
 		- [[Linux Mint]] :- A user-friendly distribution based on Ubuntu, designed to provide a familiar interface for users transitioning from Windows.
 -
 - ## Frameworks & Libraries
-	- You Can find particular lib & Frameworks on The Languages page in that programing page
+	- You Can find particular lib & Frameworks  in that programing page
 -
 - ## Data Structures & Algorithms
 	- [[DSA , Algo & System Design]]: The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for searching, sorting, and optimization.
@@ -142,75 +142,104 @@
 - ## DevOps & CI/CD
 	- ## DevOps Concepts
 		- [[Collaboration & Communication]]: Emphasizes enhanced communication between development and operations teams to improve the software development lifecycle (SDLC).
+		-
 		- [[Automation]]: Automating manual tasks such as testing, deployments, and infrastructure provisioning to reduce errors and increase efficiency.
+		-
 		- [[Infrastructure as Code (IaC)]]: Managing and provisioning infrastructure using code, enabling version control and reproducibility in environments.
+		-
 		- [[Continuous Monitoring & Logging]]: Continuous observation of applications and infrastructure to track performance and issues in real-time.
+		-
 		- [[Microservices Architecture]]: Designing applications as a set of independent services, each with its own functionality, that communicate over APIs.
+		-
 		- [[Containerization]]: Using containers (e.g., Docker) to package applications and their dependencies to ensure consistent environments across different platforms.
 	- ---
 	- ## CI/CD Concepts
 		- [[Continuous Integration (CI)]]: The practice of automatically integrating and testing code changes in a shared repository multiple times a day, ensuring that code is always in a working state.
-		- [[Continuous Delivery (CD)]]: Extends CI by automating the deployment process to staging or production environments, making sure code is always ready to be deployed with minimal manual intervention.
-		- [[Continuous Testing]]: Ensuring automated tests are executed throughout the entire CI/CD pipeline to maintain code quality and prevent issues.
-		- [[Continuous Monitoring]]: Monitoring the application and infrastructure during and after deployment to ensure the system is running smoothly and catching any issues early.
 		-
-	- ---
+		- [[Continuous Delivery (CD)]]: Extends CI by automating the deployment process to staging or production environments, making sure code is always ready to be deployed with minimal manual intervention.
+		-
+		- [[Continuous Testing]]: Ensuring automated tests are executed throughout the entire CI/CD pipeline to maintain code quality and prevent issues.
+		-
+		- [[Continuous Monitoring]]: Monitoring the application and infrastructure during and after deployment to ensure the system is running smoothly and catching any issues early.
+	-
 	- ## CI/CD Tools
 		- [[Jenkins]]: A widely used open-source automation server for automating the CI/CD pipeline with plugins for building, testing, and deploying code.
+		-
 		- [[GitLab CI]]: An integrated CI/CD tool built into GitLab, offering version control, CI/CD pipelines, and project management in a single platform.
+		-
 		- [[CircleCI]]: A cloud-based CI/CD service for automating workflows, providing a fast and scalable solution for integrating, testing, and deploying code.
+		-
 		- [[Travis CI]]: A cloud-based CI/CD tool that automatically tests and deploys code from GitHub repositories, commonly used for open-source projects.
+		-
 		- [[Azure DevOps]]: A Microsoft platform that integrates development tools for CI/CD pipelines, version control, and project management, primarily for enterprise applications.
+		-
 		- [[GitHub Actions]]: A CI/CD solution integrated with GitHub repositories that allows users to automate workflows for building, testing, and deploying applications.
+		-
 		- [[TeamCity]]: A JetBrains CI/CD server that provides support for multiple build configurations and integrates with a wide range of tools for managing projects.
+		-
 		- [[Bamboo]]: An Atlassian CI/CD tool that integrates with other Atlassian products (like Jira) for automating builds and deployments across the SDLC.
+		-
 		- [[ArgoCD]]: A continuous delivery tool for Kubernetes that implements GitOps, where Git repositories are the source of truth for Kubernetes deployment.
-	- ---
+	-
 	- ## Containerization & Orchestration
 		- [[Docker]]: A platform for building, shipping, and running applications inside containers, which encapsulate an application and its dependencies.
+		-
 		- [[Kubernetes]]: A container orchestration platform that automates the deployment, scaling, and management of containerized applications.
+		-
 		- [[Helm]]: A Kubernetes package manager that simplifies the deployment of applications by using pre-configured charts for Kubernetes resources.
+		-
 		- [[Docker Compose]]: A tool for defining and running multi-container Docker applications, useful for local development environments.
-	- ---
 	-
 	- ## Infrastructure as Code (IaC) Tools
 		- [[Terraform]]: An open-source IaC tool for provisioning and managing infrastructure using configuration files, supporting multiple cloud providers.
+		-
 		- [[Ansible]]: A configuration management and automation tool that automates infrastructure provisioning, deployment, and management.
+		-
 		- [[Puppet]]: A configuration management tool used for automating infrastructure and application deployments across large environments.
+		-
 		- [[Chef]]: A configuration management and automation tool that uses "recipes" and "cookbooks" to manage infrastructure.
+		-
 		- [[CloudFormation]]: AWS’s IaC tool for provisioning and managing AWS resources using declarative templates written in JSON or YAML.
-	- ---
 	-
 	- ## Cloud Platforms & Services
 		- [[Amazon Web Services (AWS)]]: A leading cloud provider offering services like EC2, S3, Lambda, CodePipeline, and CodeDeploy for DevOps automation.
+		-
 		- [[Microsoft Azure]]: A cloud platform offering services for version control, CI/CD, Kubernetes management, and more.
+		-
 		- [[Google Cloud Platform (GCP)]]: Google’s cloud service offering CI/CD tools like Cloud Build, Kubernetes Engine (GKE), and Cloud Functions for DevOps.
+		-
 		- [[DigitalOcean]]: A cloud computing platform known for simplicity and ease of use, often employed by small to medium-sized DevOps teams.
-	- ---
 	-
 	- ## Monitoring & Logging
 		- [[Prometheus]]: An open-source monitoring and alerting toolkit often used with Kubernetes for gathering metrics and system health data.
+		-
 		- [[Grafana]]: A visualization and analytics platform that integrates with Prometheus to create real-time dashboards for monitoring system performance.
+		-
 		- [[ELK Stack (Elasticsearch, Logstash, Kibana)]]: A popular toolset for collecting, storing, and visualizing logs for improved observability.
+		-
 		- [[Datadog]]: A cloud-based monitoring platform that provides observability into the infrastructure, applications, and services.
+		-
 		- [[New Relic]]: A performance monitoring and analytics platform used to track the health and performance of applications in real-time.
+		-
 		- [[Nagios]]: An open-source monitoring system for checking the status of applications, services, and network infrastructure.
-	- ---
 	-
 	- ## Security in DevOps (DevSecOps)
 		- [[SonarQube]]: A tool for continuous code quality inspection to detect bugs, vulnerabilities, and code smells.
+		-
 		- [[OWASP ZAP]]: A security scanner used for finding vulnerabilities in web applications during the development process.
+		-
 		- [[HashiCorp Vault]]: A tool for securely managing sensitive data such as API keys, passwords, and certificates.
+		-
 		- [[Aqua Security]]: A container security platform that scans for vulnerabilities in container images and Kubernetes clusters.
-	- ---
 	-
 	- ## Agile & Project Management Tools
 		- [[Jira]]: A project management tool often used in DevOps teams for managing tasks, bugs, and user stories, integrated with CI/CD pipelines.
+		-
 		- [[Trello]]: A visual project management tool to organize tasks and workflows in a simple board format, ideal for small teams and quick task tracking.
+		-
 		- [[Asana]]: A task and project management tool used for tracking work, collaborating with teams, and ensuring smooth project delivery.
 -
 - ## Cybersecurity
-  collapsed:: true
 	- [[Cybersecurity]] - This page contains DevOps Concepts
 -
 - ## Software Informations
