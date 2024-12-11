@@ -49,9 +49,17 @@ Welcome to the Free Code Notes repository! This project is designed to provide a
   
   You can Directorly View on github but i suggest open in logseq for Better view and update This repo regulerly...
       Look Introduction page For Easy navigate, Now You have all data, pdfs, topics , Links related to This Subject
+  
+  ### *Note* :- Repo updating daily use this for daily update content
+  
+  Pull Updates Regularly:
+  Whenever you update the content, users can run the following command in their local clone to get the latest changes:
+  ```
+  git pull origin main
+  ```
 - ## Resource Available 😍
   
-    ![graph](https://github.com/user-attachments/assets/4ad416f0-0b55-413e-9589-412ca7ea271d)
+    ![v3](https://github.com/user-attachments/assets/c6e077ba-7a08-4de7-9ee7-e0c47034b1d4)
   
   -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   
