@@ -133,10 +133,11 @@
 		-
 		- [[Linux Mint]] :- A user-friendly distribution based on Ubuntu, designed to provide a familiar interface for users transitioning from Windows.
 -
-- ## Frameworks & Libraries
+- ## Frameworks, Libraries Common Elements
 	- You Can find particular lib & Frameworks  in that programing page
+	- Api - You can find specific APIs and related documentation on the respective programming language or framework page.
 -
-- ## Data Structures & Algorithms
+- ## Data Structures , Algorithms & OOP
 	- [[DSA , Algo & System Design]]: The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for searching, sorting, and optimization.
 -
 - ## DevOps & CI/CD
@@ -242,9 +243,8 @@
 - ## Cybersecurity
 	- [[Cybersecurity]] - This page contains DevOps Concepts
 -
-- ## Software Informations
+- ## Software Information
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
-  collapsed:: true
 	- [[Software]] - This page showcases all types of software, categorized by their functionality and purpose.
 -
 - # more learn
