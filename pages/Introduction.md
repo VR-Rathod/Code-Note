@@ -135,7 +135,7 @@
 -
 - ## Frameworks, Libraries Common Elements
 	- You Can find particular lib & Frameworks  in that programing page
-	- Api - You can find specific APIs and related documentation on the respective programming language or framework page.
+	- [[Api]] - You can find specific APIs and related documentation on the respective programming language or framework page.
 -
 - ## Data Structures , Algorithms & OOP
 	- [[DSA , Algo & System Design]]: The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for searching, sorting, and optimization.
