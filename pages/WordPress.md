@@ -42,7 +42,9 @@
 		- **SEO and Marketing**: WordPress includes many tools to help improve SEO and drive traffic to websites, making it a top choice for marketers.
 -
 - # Notes
-	- You Must Have Basic Knowledge of [[HTML]] , [[css]] , [[Java Script]] , [[PHP]] .
+	- For Dev.
+	- You Must Have Basic Knowledge of [[HTML]] , [[css]] , [[Java Script]] , [[PHP]] , [[jQuery]] .
+	- Design Theme or plugin
 -
 - # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills :-
@@ -50,3 +52,6 @@
 	- [All php Ref List For WordPress](https://developer.wordpress.org/themes/references/)
 	- [Theme Handbook](https://developer.wordpress.org/themes/)
 	- [Plugin Handbook](https://developer.wordpress.org/plugins/)
+	- [wordpress Hooks]( https://kinsta.com/blog/wordpress-hooks/)
+	- [Tamplate Tags](https://developer.wordpress.org/themes/references/list-of-template-tags/)
+	- [Action Filters](https://apppresser.com/difference-actions-filters/)
