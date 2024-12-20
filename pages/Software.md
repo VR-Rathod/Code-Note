@@ -43,14 +43,15 @@
 	- [[Audacity]] : Free, open-source audio editing software for recording and editing sound
 	- [[OBS]] : Free and open-source software for video recording and live streaming
 	- [[Illustrator]] : Industry-standard vector graphics editor (note: not free but may have a trial version)
-	- [[Photoshop]] : Industry-standard image editing software (note: not free but may have a trial version)
+	- [[Photoshop]] : Industry-standard image editing software (not free but may have a trial version)
 	- [[jagannatha Hora]] : Free astrology software for Vedic astrology calculations
-	- [[git]] : Industry-standard version control system (note: free and open-source, widely used for managing code and collaboration).
+	- [[git]] : Industry-standard version control system (free and open-source, widely used for managing code and collaboration).
 	- [[KeePass]]: Free and open-source password manager (note: used to securely store and manage passwords with encryption).
 	- [[Defold]]: Free and open-source game engine (note: lightweight, cross-platform engine focused on 2D game development with a powerful editor and scripting capabilities).
 	- [[Cocos2d-x]]: Free and open-source game engine (note: primarily for 2D game development but also supports 3D, with a focus on lightweight performance and multi-platform support).
 	- [[LÖVE]]: Free and open-source 2D game framework (note: written in Lua, designed for rapid game development with a simple and easy-to-use API).
 	- [[Torque3D]]: Free and open-source 3D game engine (note: offers powerful 3D capabilities, including terrain rendering, physics, and multiplayer support).
+	- [[Bevy]]: Game engine for 2D and 3D game development in Rust.
 -
 - # Free Software
 	- ## Video Editing
@@ -81,6 +82,7 @@
 		- [[Cocos2d-x]]: Free and open-source game engine (note: primarily for 2D game development but also supports 3D, with a focus on lightweight performance and multi-platform support).
 		- [[LÖVE]]: Free and open-source 2D game framework (note: written in Lua, designed for rapid game development with a simple and easy-to-use API).
 		- [[Torque3D]]: Free and open-source 3D game engine (note: offers powerful 3D capabilities, including terrain rendering, physics, and multiplayer support).
+		- [[Bevy]]: Game engine for 2D and 3D game development in Rust.
 	-
 	- ## Web-Based Tools
 		- [[Figma]] : Web-based interface design tool (lifetime free for individuals)
