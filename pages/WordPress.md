@@ -43,15 +43,18 @@
 -
 - # Notes
 	- For Dev.
-	- You Must Have Basic Knowledge of [[HTML]] , [[css]] , [[Java Script]] , [[PHP]] , [[jQuery]] .
+	- You Must Have Basic Knowledge of [[HTML]] , [[css]] , [[Java Script]] , [[PHP]] , [[jQuery]]
 	- Design Theme or plugin
+		- offline - xampp
 -
 - # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills :-
-	-
-	- [All php Ref List For WordPress](https://developer.wordpress.org/themes/references/)
-	- [Theme Handbook](https://developer.wordpress.org/themes/)
-	- [Plugin Handbook](https://developer.wordpress.org/plugins/)
-	- [wordpress Hooks]( https://kinsta.com/blog/wordpress-hooks/)
-	- [Tamplate Tags](https://developer.wordpress.org/themes/references/list-of-template-tags/)
-	- [Action Filters](https://apppresser.com/difference-actions-filters/)
+		-
+		- [All php Ref List For WordPress](https://developer.wordpress.org/themes/references/)
+		- [Theme Handbook](https://developer.wordpress.org/themes/)
+		- [Plugin Handbook](https://developer.wordpress.org/plugins/)
+		- [wordpress Hooks]( https://kinsta.com/blog/wordpress-hooks/)
+		- [Tamplate Tags](https://developer.wordpress.org/themes/references/list-of-template-tags/)
+		- [Action Filters](https://apppresser.com/difference-actions-filters/)
+		- [Learn Hooks]( https://kinsta.com/blog/wordpress-hooks/)
+		- [Quick Find Concept](https://codex.wordpress.org/)

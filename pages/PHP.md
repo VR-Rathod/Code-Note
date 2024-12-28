@@ -189,9 +189,7 @@
 			  ```
 			-
 	- ## Loops
-	  collapsed:: true
 		- For loop
-		  collapsed:: true
 			- ```php
 			  <?php
 			  
@@ -238,7 +236,6 @@
 			  ```
 		-
 		- Do while loop
-		  collapsed:: true
 			- ```PHP
 			  $i = 1;
 			  # => 12345
