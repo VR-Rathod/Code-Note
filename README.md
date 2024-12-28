@@ -19,7 +19,7 @@ Welcome to the Free Code Notes repository! This project is designed to provide a
   
   1. **Clone the Repository**
    ```bash
-   git clone https://github.com/VR-Rathod/Code-Book
+   git clone https://github.com/VR-Rathod/Code-Note.git
    cd code-note
     ```
 
