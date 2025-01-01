@@ -17,11 +17,17 @@
 - # Introduction
 - ## Advantages:
 	- **Concurrency and Fault Tolerance**: Elixir is built on the **Erlang VM**, which provides excellent support for **concurrent programming**. Elixir allows developers to easily manage thousands or even millions of processes running in parallel. Processes are lightweight and isolated, so if one fails, it does not affect others, making Elixir applications inherently **fault-tolerant**.
+	-
 	- **Immutable Data and Functional Programming**: Elixir is a **pure functional** language, meaning that functions are first-class citizens, and data is immutable. This makes code easier to reason about and less prone to bugs related to mutable state.
+	-
 	- **Scalability**: Elixir’s design, based on the Erlang VM, supports the creation of highly scalable systems. It is used in applications where distributed processing and horizontal scaling are essential. Elixir applications can scale easily across multiple machines, making it suitable for cloud-native applications.
+	-
 	- **Real-Time Applications**: Elixir is well-suited for **real-time systems**, such as chat applications, live notifications, and other types of interactive web apps, due to its efficient handling of concurrent processes and distributed nature.
+	-
 	- **Fault-Tolerant Design**: The language’s design encourages building systems that can “self-heal” in the case of errors. Elixir applications use **supervision trees**, where processes that fail can be automatically restarted by their supervisor.
+	-
 	- **Excellent Tooling**: Elixir provides a set of robust tools that enhance developer productivity, including **Mix** (a build tool), **ExUnit** (a testing framework), and **IEx** (an interactive shell). These tools make it easier to develop, test, and deploy Elixir applications.
+	-
 	- **Hot Code Upgrades**: Elixir allows for **hot code swapping**, meaning you can update a running system without shutting it down. This is a critical feature for building systems that require high availability.
 	-
 	- ## Disadvantages:

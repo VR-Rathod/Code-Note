@@ -39,8 +39,6 @@
 	- You can create page by write {filename}.py
 	- print() - use for Print cmd
 	- You can learn python by click [here](https://learnxinyminutes.com/docs/python/)
-	-
--
 -
 -
 - # Libs & Framework

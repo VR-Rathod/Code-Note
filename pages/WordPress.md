@@ -45,7 +45,7 @@
 	- For Dev.
 	- You Must Have Basic Knowledge of [[HTML]] , [[css]] , [[Java Script]] , [[PHP]] , [[jQuery]]
 	- Design Theme or plugin
-		- offline - xampp
+		- LocalHost Dev Download xampp (windows , Linux , macOS)
 -
 - # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills :-
