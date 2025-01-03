@@ -41,7 +41,7 @@
 			-
 			- **Boolean**: Represents a logical entity that can be either `true` or `false`.
 			-
-			- **Undefined**: A variable that has been declared but has not been assigned a value (e.g., `let a;`).
+			- **Undefined**: A variable that has been declared but has not been assigned a value(e.g., `let a;`).
 			-
 			- **Null**: Represents the intentional absence of any value (e.g., `let b = null;`).
 			-
@@ -263,7 +263,6 @@
 			  ```
 	-
 	- ## JavaScript Functions
-	  collapsed:: true
 		- ## Functions
 			- ```js
 			  // Defining the function:
@@ -368,11 +367,11 @@
 	- ## JavaScript Arrays
 		- ## Mutable chart
 			- ```js
-			  		add	remove	start	end
-			  push	✔					✔
-			  pop			 ✔				✔
-			  unshift	✔			✔	
-			  shift		 ✔		✔
+			  			add	remove	start	end
+			  push		✔					✔
+			  pop			 	✔				✔
+			  unshift		✔			✔	
+			  shift		 	✔		✔
 			  ```
 		-
 		- ## Arrays
