@@ -1,4 +1,22 @@
-# More learn
+# History
+	- **How:**
+	  Cybersecurity emerged as a field in the late 20th century as the internet and networked systems began to grow. It evolved as a response to the increasing sophistication and scale of digital threats.
+		- Initially focused on securing computer systems from unauthorized access, data theft, and malicious software.
+		- As technology advanced, cybersecurity expanded to include not only technical defenses but also legal, organizational, and human factors.
+		- Key milestones include the development of encryption algorithms (e.g., RSA in the 1970s), the creation of firewalls, antivirus software, intrusion detection systems, and the formalization of cybersecurity standards and frameworks (e.g., ISO/IEC 27001, NIST Cybersecurity Framework).
+	-
+	- Who:**
+		- **Pioneers:** Early figures in cybersecurity include figures like Whitfield Diffie and Martin Hellman (who developed the concept of public-key cryptography) and researchers from institutions such as MIT, the RAND Corporation, and later, cybersecurity companies like Symantec and McAfee.
+		- **Governments:** National security agencies, such as the NSA (National Security Agency), were pivotal in developing many of the early cryptographic techniques.
+		- **Private Sector:** A growing number of companies specializing in cybersecurity, such as Palo Alto Networks, CrowdStrike, and Cisco, play major roles today in both defensive and offensive cybersecurity strategies.
+		-
+	- Why:
+		- **To Protect Information:** As the world became more digitally connected, the need to safeguard sensitive data—ranging from personal information to corporate secrets and national security intelligence—became paramount.
+		- **To Ensure Trust:** Cybersecurity aims to ensure that individuals, organizations, and governments can trust the digital systems they use for communication, financial transactions, and other activities.
+		- **To Combat Threats:** Cybersecurity exists to defend against evolving and increasingly sophisticated cyberattacks—ranging from malware and ransomware to phishing, hacking, and state-sponsored espionage.
+		- **To Support Critical Infrastructure:** Protection of critical infrastructure, such as power grids, healthcare systems, and financial networks, is vital to prevent disruptions that could have catastrophic consequences.
+-
+- # More learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills :-
 	-
 	- ## Github & Webs

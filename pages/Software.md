@@ -51,7 +51,10 @@
 	- [[Cocos2d-x]]: Free and open-source game engine (note: primarily for 2D game development but also supports 3D, with a focus on lightweight performance and multi-platform support).
 	- [[LÖVE]]: Free and open-source 2D game framework (note: written in Lua, designed for rapid game development with a simple and easy-to-use API).
 	- [[Torque3D]]: Free and open-source 3D game engine (note: offers powerful 3D capabilities, including terrain rendering, physics, and multiplayer support).
-	- [[Bevy]]: Game engine for 2D and 3D game development in Rust.
+	- [[Bevy]]: Game engine for 2D and 3D game development in Rust..
+	- [[Fyrox]] : 3D and 2D game engine written in Rust
+	- [[NcEngine]]: 3D game engine written in modern C++ and Vulkan
+	- [[Thunder Engine]] : Cross-platform 2D and 3D game engine with modular
 -
 - # Free Software
 	- ## Video Editing
