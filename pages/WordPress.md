@@ -46,6 +46,10 @@
 	- You Must Have Basic Knowledge of [[HTML]] , [[css]] , [[Java Script]] , [[PHP]] , [[jQuery]]
 	- Design Theme or plugin
 		- LocalHost Dev Download xampp (windows , Linux , macOS)
+		- MAMP
+		- AMPPS
+		  Bitnami WordPress
+		  Local By Flywheel
 -
 - # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills :-
