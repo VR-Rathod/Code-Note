@@ -55,6 +55,7 @@
 	- [[Fyrox]] : 3D and 2D game engine written in Rust
 	- [[NcEngine]]: 3D game engine written in modern C++ and Vulkan
 	- [[Thunder Engine]] : Cross-platform 2D and 3D game engine with modular
+	- [[penpot]] : Online web Based Open source Design Tool
 -
 - # Free Software
 	- ## Video Editing
@@ -66,6 +67,7 @@
 	- ## Graphics Design
 		- [[Inkscape]] : Free vector graphics editor (lifetime free)
 		- [[Figma]] : Free tier available for interface design and collaboration (lifetime free for individuals, web-based)
+		- [[penpot]] : Online web Based Open source Design Tool (Life time free, Unlimited Projects)
 		-
 	- ## Drawing & 2D Animation
 		- [[Autodesk SketchBook]] : Free version available for digital drawing (lifetime free)
