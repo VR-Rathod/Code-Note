@@ -265,7 +265,8 @@
 		- [lfs-folderStore For remote LFS media store](https://github.com/sinbad/lfs-folderstore)
 		- [Get Free APIs🐱‍🏍](https://github.com/public-apis/public-apis)
 		- [Learn Basic About  API](https://aws.amazon.com/what-is/api/)
-		-
+		- [Interview Preparation⚔](https://www.indiabix.com/)
+	-
 	- ## Lib
 		- [bhartiya Digital lib](https://ndl.iitkgp.ac.in/)
 		- [Online Biggest Lib](https://archive.org/details/internetarchivebooks)
