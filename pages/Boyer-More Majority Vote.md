@@ -1,0 +1,29 @@
+# Explanation
+	- The Boyer-Moore Majority Vote Algorithm is used to find the **majority element** (the element that appears more than n/2 times) in an array.
+-
+- # Steps
+	- Initialize a `candidate` and a `count`.
+	-
+	- Traverse the array. If the `count` is 0, set the `candidate` to the current element.
+	-
+	- If the current element is the same as the `candidate`, increment `count`; otherwise, decrement `count`.
+	-
+	- After the traversal, the `candidate` is the majority element.
+-
+- # Time Complexity
+	- **O(n)**, where `n` is the number of elements in the array.
+-
+- ```python
+  def boyer_moore(arr):
+      candidate = None
+      count = 0
+      for num in arr:
+          if count == 0:
+              candidate = num
+          count += (1 if num == candidate else -1)
+      return candidate
+  
+  # Example usage
+  arr = [3, 3, 4, 2, 4, 4, 2, 4, 4]
+  print("Majority element:", boyer_moore(arr))
+  ```

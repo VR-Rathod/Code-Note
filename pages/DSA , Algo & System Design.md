@@ -29,7 +29,7 @@
 		- **Dynamic Binding (Late Binding)** - Resolving method calls at runtime based on the object type.
 		  logseq.order-list-type:: number
 	-
-	- ### But **additional related concepts** or **design patterns** that can supplement or extend OOP are:-
+	- ## **additional related concepts** or **design patterns** that can supplement or extend OOP are:-
 		- **Delegation** - One object handing over responsibilities to another.
 		- **Mixin** - A class that provides functionality to other classes without being a parent class.
 		- **Abstract Classes** - Classes that cannot be instantiated and may contain abstract methods.
@@ -37,6 +37,97 @@
 		- **Factory Pattern**: Creating objects without specifying the exact class of object to be created.
 		- **Observer Pattern**: Notifying multiple objects about state changes in another object.
 		- **Singleton Pattern**: Ensuring a class has only one instance and providing a global point of access.
+-
+- # Algorithms
+	- ## Searching:
+		- 1) [[Binary Search]] - efficient algorithm to find an element in a **sorted** array.
+		- 2) [[Linear Search]] - check each element in list one by one until we find the target element.
+		- 3) [[Depth First Search]] - explores as far as possible along each branch before backtracking.
+		- 4) [[Breadth First Search]] - explores all the neighboring nodes at the present level
+		- 5) [[Rabin-Karp Algorithm]] - string searching used to find a pattern within a larger text.
+		- 6) [[Z Algorithm]] - string matching algorithm that provides efficient matching
+		-
+	- ## Sorting:
+		- 1) [[Insertion Sort]] - sorting algorithm that builds the final sorted array one item at a time.
+		- 2) [[Heap Sort]] - comparison-based sorting algorithm that uses a binary heap data structure
+		- 3) [[Selection Sort]] - simple comparison-based sorting algorithm.
+		- 4) [[Merge Sort]] - divide-and-conquer sorting algorithm.
+		- 5) [[Quick Sort]] - another divide-and-conquer sorting algorithm.
+		- 6) [[Counting Sort]] - non-comparison-based sorting algorithm
+		- 7) [[Bucket Sort]] - distribution-based sorting algorithm
+		- 8) [[Bubble Sort]] - imple comparison-based sorting algorithm
+		- 9) [[Radix Sort]] - non-comparative sorting algorithm
+		- 10) [[Shell Sort]] - in-place comparison-based sorting algorithm
+		- 11) [[Comb Sort]] - variation of **Bubble Sort** that improves on it by using a gap sequence.
+		- 12) [[Pigeonhole Sort]] - comparison-based sorting algorithm
+		- 13) [[Cycle Sort]] - non-comparative sorting algorithm
+		-
+	- ## Graphs:
+		- 1) [[Kruskal's Algorithm]] - algorithm used to find the (MST) of a graph.
+		- 2) [[Dijkstra's Algorithm]] - find the shortest paths from a source vertex-other vertices
+		- 3) [[Bellman Ford Algorithm]] - dynamic algorithm used for finding the shortest path
+		- 4) [[Floyd Warshall Algorithm]] - finding the shortest paths between all pairs
+		- 5) [[Topological Sort Algorithm]] - used to order the vertices of a **directed acyclic graph**
+		- 6) [[Flood Fill Algorithm]] - used to determine the area connected to a given node
+		- 7) [[Lee Algorithm]] - BFS based algorithm used to find the shortest path
+		- 8) [[Prim's Algorithm]] - algorithm used to find the MST of a graph
+		- 9) [[Boruvka's Algorithm]] - algorithm used to find theMST of a graph.
+		- 10) [[Johnson's Algorithm]] - find **all pairs shortest paths** in a weighted directed graph.
+		- 11) [[Kosaraju's Algorithm]] - find the SCC of a directed graph.
+		- 12) [[Tarjan's Algorithm]] - algorithm used to find SCCs in a directed graph.
+		-
+	- ## Arrays:
+		- 1) [[Kadane's Algorithm]] - used to find the **maximum sum subarray**
+		- 2) [[Floyd's Cycle Detection Algorithm]] - also known as **Tortoise and Hare**
+		- 3) [[Knuth-Morris-Pratt Algorithm (KMP)]] - used for **pattern matching**
+		- 4) [[Quick Select Algorithm]] - find the **k-th smallest element**
+		- 5) [[Boyer-More Majority Vote]] - used to find the **majority element**
+		-
+	- ## Tree:
+		- 1) [[AA Tree]] - self-balancing binary search tree
+		- 2) [[Binary Indexed Tree or Fenwick Tree]] - efficiently supports dynamic cumulative
+		- 3) [[Quadtree]] - used to partition a two-dimensional space
+		- 4) [[Cartesian Tree]] - the inorder traversal of the tree gives a sorted sequence
+		- 5) [[Fibonacci heap]] - optimize priority queues and supports very efficient
+		- 6) [[Interval Tree]] - binary search tree used to store intervals.
+		- 7) [[Finger Tree]] - supports efficient access and updates
+		- 8) [[Crit-bit Trees]] - storing strings, especially strings of arbitrary length
+		- 9) [[Scapegoat Tree]] - self-balancing binary search tree
+		- 10) [[Splay Tree]] - the accessed element to the root via **splaying**
+		- 11) [[Suffix Tree]] - efficient string matching, substring search, and various other
+		- 12) [[Counted B-Trees]] - efficient range queries
+		- 13) [[Binary Space Partitioning]] - recursively dividing a space into two half-spaces
+		- 14) [[Van Emde Boas Tree]] - supports **efficient priority queue** operations.
+		-
+	- ## Others:
+		- 1) [[Huffman Coding Compression]] - **lossless data compression** algorithm
+		- 2) [[Euclid's Algorithm]] - efficient way to compute the **Greatest Common Divisor**
+		- 3) [[Union Find Algorithm]] - keep track of a collection of disjoint sets
+		- 4) [[Manacher's Algorithm]] - find the **longest palindromic substring**
+		- 5) [[Eukerian Path (Hierholzer's Algorithm)]] - path that visits every edge exactly once.
+		- 6) [[Convex Hull | Set 1 (Jarvis’s Algorithm or Wrapping)]] - finding the convex hull
+		- 7) [[Convex Hull | Set 2 (Graham Scan)]] - finding the convex hull.
+		- 8) [[Convex Hull using Divide and Conquer Algorithm]] - enclose a set of points in a plane.
+		- 9) [[Quickhull Algorithm for Convex Hull]] - divide and conquer approach for finding convex hull
+		- 10) [[Distinct elements in subarray using Mo’s Algorithm]] - square root decomposition
+		- 11) [[Line Sweep Algorithm]] - solve geometric problems
+		- 12) [[MO’s Algorithm (Query square root decomposition)]] - square root decomposition technique
+		- 13) [[Disjoint-set Data Structure]] - used to efficiently manage a collection of disjoint sets.
+		- 14) [[Ackermann Function]] - well-known recursive function that grows very quickly.
+		- 15) [[Zobrist Hashing]] - hashing technique used in computer games
+		- 16) [[FM-index]] - data structure used for efficient full-text searching
+		- 17) [[Circular buffer]] - works like a fixed-size queue
+		- 18) [[Hungarian / Kuhn–Munkres / Munkres Assignment-Algorithm]] - combinatorial optimization algorithm
+		- 19) [[Dekker's Algorithm]] - first algorithms to solve the mutual exclusion
+		- 20) [[Winged Edge]] - used to represent **polygonal meshes**
+		- 21) [[Burrows–Wheeler Transform]] - string transformation algorithm
+		- 22) [[Zipper]] - efficiently navigate and manipulate sequences.
+		- 23) [[Five Balltree Construction Algorithms]] - efficient nearest neighbor search.
+		- 24) [[Cuckoo Hashing]] - hash table algorithm that resolves collisions
+		- 25) [[Rope (Data Structure)]] - tree-based data structure used for efficiently concatenating
+		- 26) [[Binary Decision Diagram]] - used to represent boolean functions.
+		- 27) [[Disjoint-set Data Structure]] - efficiently perform union and find operations
+		- 28)[[Bloom Filter]]  - space-efficient probabilistic data structure used to test whether
 -
 - # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills:
