@@ -157,3 +157,6 @@
 			-
 			- <ins>Hacks</ins>
 				- [SherLock](https://github.com/sherlock-project/sherlock?tab=coc-ov-file)
+- ```python
+  print(input() == input()[::-1])
+  ```

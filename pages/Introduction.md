@@ -1,6 +1,7 @@
 # Welcome to Your Code Book!
 	- Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
-	-
+-
+-
 - ## Programming Languages
 	-
 	- [[Python]] :- A beginner-friendly language known for its readability and extensive libraries.
@@ -247,6 +248,8 @@
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
 	- [[Software]] - This page showcases all types of software, categorized by their functionality and purpose.
 -
+-
+- [[check]]
 - # more learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills:-
 	-

@@ -3,11 +3,15 @@
 -
 - # Steps:
 	- **Start** from a node (typically the root node or any arbitrary node).
-	- Mark the node as **visited**.
-	- Visit its **adjacent nodes** that have not been visited yet.
-	- This process continues recursively or using a stack, visiting each node until all nodes are explored.
-	- If a node has already been visited, it is not revisited.
 	-
+	- Mark the node as **visited**.
+	-
+	- Visit its **adjacent nodes** that have not been visited yet.
+	-
+	- This process continues recursively or using a stack, visiting each node until all nodes are explored.
+	-
+	- If a node has already been visited, it is not revisited.
+-
 - # Time Complexity:
 	- For a graph with **V vertices** and **E edges**, the time complexity of DFS is **O(V + E)**.
 -

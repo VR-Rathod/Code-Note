@@ -3,6 +3,7 @@
 -
 - # Steps:
 	- The **list must be sorted** first.
+	-
 	- Start with the low pointer at index 0 and the high pointer at the last index of the list.
 	-
 	- Find the middle element: `mid = (low + high) // 2`.

@@ -1,5 +1,4 @@
 # History
-collapsed:: true
 	- **How**:
 		- Developed by **Håkon Wium Lie** and **Bert Bos** in **1994** at **W3C** (World Wide Web Consortium).
 		- Designed to separate **content** (HTML) from **presentation** (layout and style), enabling web developers to control the look and feel of a webpage without affecting its structure.
@@ -49,7 +48,7 @@ collapsed:: true
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills:-
 		-
 		- [CSS Learning](https://github.com/micromata/awesome-css-learning)
-		- [How Degine Resources ?](https://github.com/bradtraversy/design-resources-for-developers)
+		- [How Design Resources ?](https://github.com/bradtraversy/design-resources-for-developers)
 		- [CSS Tips & Tricks ](https://github.com/AllThingsSmitty/css-protips)
 		- [Useful modules in CSS](https://github.com/awesome-css-group/awesome-css)
 		- [CSS Fremworks](https://github.com/troxler/awesome-css-frameworks)
@@ -61,3 +60,4 @@ collapsed:: true
 		- [CSS Interview questions 😎](https://github.com/Devinterview-io/css-interview-questions)
 		- [CSS Animations](https://animate.style/)
 		- [Creative Buttons](https://tympanus.net/Development/CreativeButtons/)
+		- [animejs](https://animejs.com/)

@@ -1,4 +1,5 @@
 # History
+collapsed:: true
 	- **How**:
 		- Developed by Brendan Eich in 1995 at Netscape.
 		- Initially created in just 10 days as a client-side scripting language for web browsers.
@@ -12,6 +13,7 @@
 		- To complement HTML and CSS for enhanced web development.
 -
 - # Introduction
+  collapsed:: true
 	- ## Advantages :
 		- Asynchronous Programming (Promises, Async/Await).
 		- JavaScript Design Patterns (Module, Singleton, Observer).

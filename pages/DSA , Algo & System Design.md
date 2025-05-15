@@ -1,42 +1,43 @@
 # OOP consepts
 	- ## The  **core concepts**  of OOP are indeed  **14** :-
-		- **Class** - Blueprint for creating objects, defining properties and methods.
+		- [[Class]] - Blueprint for creating objects, defining properties and methods.
 		  logseq.order-list-type:: number
-		- Object - An instance of a class containing data and behavior.
+		- [[Constructor]] - Special method for initializing objects when created.
 		  logseq.order-list-type:: number
-		- **Encapsulation** - Bundling data and methods, restricting direct access to an object's internal state.
+		- [[Destructors]] - Method for cleaning up when an object is destroyed or goes out of scope.
 		  logseq.order-list-type:: number
-		- **Abstraction** - Hiding complex implementation details and exposing only essential features.
+		- [[Object]] - An instance of a class containing data and behavior.
 		  logseq.order-list-type:: number
-		- **Inheritance** - Mechanism by which one class derives properties and behaviors from another.
+		- [[Encapsulation]] - Bundling data and methods, restricting direct access to an object's internal state.
 		  logseq.order-list-type:: number
-		- **Polymorphism** - Ability for objects of different types to be treated as instances of a common superclass.
+		- [[Abstraction]] - Hiding complex implementation details and exposing only essential features.
 		  logseq.order-list-type:: number
-		- **Constructor** - Special method for initializing objects when created.
+		- [[Inheritance]] - Mechanism by which one class derives properties and behaviors from another.
 		  logseq.order-list-type:: number
-		- **Destructors** - Method for cleaning up when an object is destroyed or goes out of scope.
+		- [[Polymorphism]] - Ability for objects of different types to be treated as instances of a common superclass.
 		  logseq.order-list-type:: number
-		- **Composition** - Creating complex objects by combining simpler objects, a "has-a" relationship.
+		- [[Composition]] - Creating complex objects by combining simpler objects, a "has-a" relationship.
+		  id:: 67e63024-2a0a-4a19-aff1-05ad33f056cf
 		  logseq.order-list-type:: number
-		- **Interface** - Defines a contract that classes must follow, without providing implementation.
+		- [[Interface]] - Defines a contract that classes must follow, without providing implementation.
 		  logseq.order-list-type:: number
-		- **Method Overloading** - Defining multiple methods with the same name but different parameters.
+		- [[Method Overloading]] - Defining multiple methods with the same name but different parameters.
 		  logseq.order-list-type:: number
-		- **Method Overriding** - Redefining a method in a subclass to change its behavior.
+		- [[Method Overriding]] - Redefining a method in a subclass to change its behavior.
 		  logseq.order-list-type:: number
-		- **Static Methods and Class Methods** - Methods that belong to the class rather than instances.
+		- [[Static Methods and Class Methods]] - Methods that belong to the class rather than instances.
 		  logseq.order-list-type:: number
-		- **Dynamic Binding (Late Binding)** - Resolving method calls at runtime based on the object type.
+		- [[Dynamic Binding (Late Binding)]] - Resolving method calls at runtime based on the object type.
 		  logseq.order-list-type:: number
 	-
 	- ## **additional related concepts** or **design patterns** that can supplement or extend OOP are:-
-		- **Delegation** - One object handing over responsibilities to another.
-		- **Mixin** - A class that provides functionality to other classes without being a parent class.
-		- **Abstract Classes** - Classes that cannot be instantiated and may contain abstract methods.
-		- **Loose Coupling and High Cohesion** - Reducing dependencies between components and ensuring focused class responsibilities
-		- **Factory Pattern**: Creating objects without specifying the exact class of object to be created.
-		- **Observer Pattern**: Notifying multiple objects about state changes in another object.
-		- **Singleton Pattern**: Ensuring a class has only one instance and providing a global point of access.
+		- [[Delegation]] - One object handing over responsibilities to another.
+		- [[Mixin]] - A class that provides functionality to other classes without being a parent class.
+		- [[Abstract Classes]] - Classes that cannot be instantiated and may contain abstract methods.
+		- [[Loose Coupling and High Cohesion]] - Reducing dependencies between components and ensuring focused class responsibilities
+		- [[Factory Pattern]] - Creating objects without specifying the exact class of object to be created.
+		- [[Observer Pattern]] - Notifying multiple objects about state changes in another object.
+		- [[Singleton Pattern]] - Ensuring a class has only one instance and providing a global point of access.
 -
 - # Algorithms
 	- ## Searching:
@@ -117,7 +118,7 @@
 		- 15) [[Zobrist Hashing]] - hashing technique used in computer games
 		- 16) [[FM-index]] - data structure used for efficient full-text searching
 		- 17) [[Circular buffer]] - works like a fixed-size queue
-		- 18) [[Hungarian / Kuhn–Munkres / Munkres Assignment-Algorithm]] - combinatorial optimization algorithm
+		- 18) [[Hungarian - Kuhn–Munkres - Munkres Assignment-Algorithm]] - combinatorial optimization algorithm
 		- 19) [[Dekker's Algorithm]] - first algorithms to solve the mutual exclusion
 		- 20) [[Winged Edge]] - used to represent **polygonal meshes**
 		- 21) [[Burrows–Wheeler Transform]] - string transformation algorithm
@@ -128,6 +129,11 @@
 		- 26) [[Binary Decision Diagram]] - used to represent boolean functions.
 		- 27) [[Disjoint-set Data Structure]] - efficiently perform union and find operations
 		- 28)[[Bloom Filter]]  - space-efficient probabilistic data structure used to test whether
+-
+- # Short fourmulas
+	- [[fibonacci]] - Short trick
+	- [[palindrome]] - short method
+	-
 -
 - # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills:
@@ -150,7 +156,4 @@
 		- [System Design E-book](https://github.com/karanpratapsingh/system-design)
 		- [Coding Interview Preparation](https://github.com/jwasham/coding-interview-university)
 		- [SDE Interview Question](https://github.com/twowaits/SDE-Interview-Questions)
-		-
-		-
-		-
-		-
+-
