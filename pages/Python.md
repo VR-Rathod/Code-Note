@@ -155,7 +155,7 @@
 			- <ins>ML Concepts</ins>
 				- [Lean Machine Learning ](https://mlu-explain.github.io/)
 			-
-			- <ins>Hacks</ins>
+			- <ins>Hacking Support</ins>
 				- [SherLock](https://github.com/sherlock-project/sherlock?tab=coc-ov-file)
 - ```python
   print(input() == input()[::-1])

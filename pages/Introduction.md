@@ -133,6 +133,8 @@
 		- [[OpenSUSE]] :-  A community-driven distribution with strong support for development and server environments, offering both stable and rolling release options.
 		-
 		- [[Linux Mint]] :- A user-friendly distribution based on Ubuntu, designed to provide a familiar interface for users transitioning from Windows.
+	-
+	- ## Windows
 -
 - ## Frameworks, Libraries Common Elements
 	- You Can find particular lib & Frameworks  in that programing page
@@ -274,10 +276,12 @@
 		- [bhartiya Digital lib](https://ndl.iitkgp.ac.in/)
 		- [Online Biggest Lib](https://archive.org/details/internetarchivebooks)
 		-
-	- ## Master Play Lists
+	- ## Master PlayLists Youtube📺 Free
 		- [Blander 3D🧁](https://youtube.com/playlist?list=PLPMIlPa0MRx4xhit8wjYU3Zwz6DgAL5bo&si=oembX0dwhlWS5MxG)
 		- [Learn 2D Animation Consepts🎨](https://youtube.com/playlist?list=PLPMIlPa0MRx56RShbo-NYVWP1LdSyFhdJ&si=jd0ALYKpEj0CSGcY)
 		- [Hardware Chips 👾](https://youtube.com/playlist?list=PLPMIlPa0MRx5U3s8CGuiH6ODgLUTDMlZx&si=H7OH0f-DG75bygYC)
 		- [Godot Engine Learn.🤖](https://youtube.com/playlist?list=PLPMIlPa0MRx6asDFZk9R6CTHMaY7j6cDk&si=3r6ADTPOcQ4t_yEM)
 		- [Grafics Design Ideas✨](https://youtube.com/playlist?list=PLPMIlPa0MRx5NTnZs_bbCN2vadNeScqwJ&si=inL4162f-c_L1VLf)
 		- [AI Models Learn Res🎆](https://youtube.com/playlist?list=PLPMIlPa0MRx7X6LjaxlkQflYOwRaYfjQe&si=zvw0xsx_VdPC_cfW)
+		- [DSA and Algo with Videos 🌿🧠🌿](https://youtube.com/playlist?list=PLPMIlPa0MRx5c_1s2e4VDQkORCO56W21B&si=9dXvGjjV_dbV_l0o)
+		- [Andriod App Dev 🤙📱](https://youtube.com/playlist?list=PLPMIlPa0MRx6goy6W4OSLv6jXFpyumjra&si=6xpSlF4fXF7NT2l7)

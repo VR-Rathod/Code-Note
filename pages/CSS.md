@@ -16,7 +16,7 @@
 		- To **simplify** the management of website design by allowing styles to be applied globally, reducing redundancy and enabling the easy creation of **responsive** layouts for varying screen sizes and devices.
 -
 - # introduction
-	- #### Advantages:
+	- ## Advantages:
 		- **Separation of Structure and Design**: CSS separates HTML content from styling, making the code cleaner and easier to maintain.
 		-
 		- **Responsive Design**: Easily adapt layouts for different screen sizes using **media queries**.
@@ -27,7 +27,7 @@
 		-
 		- **Easy to Learn**: Intuitive syntax, especially for those with HTML knowledge.
 	-
-	- #### Disadvantages:
+	- ## Disadvantages:
 		- **Cross-Browser Issues**: Older browsers or versions may have compatibility problems.
 		-
 		- **No Logic**: CSS lacks programming logic (no loops, conditions) and relies on JavaScript for dynamic behavior.
