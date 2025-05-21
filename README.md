@@ -45,10 +45,10 @@ Welcome to the Free Code Notes repository! This project is designed to provide a
   
   
   
-  3. **The Final Gift**
-  
-  You can Directorly View on github but i suggest open in logseq for Better view and update This repo regulerly...
-      Look Introduction page For Easy navigate, Now You have all data, pdfs, topics , Links related to This Subject
+  3. ### **The Final Gift**
+     
+      You can Directorly View on github but i suggest open in logseq for Better view and update This repo regulerly...
+      Look Introduction page For Easy navigate, Now You have all data, pdfs, topics , Links related to This Subject.
   
   ### *Note* :- Repo updating daily use this for daily update content
   
@@ -69,3 +69,6 @@ Welcome to the Free Code Notes repository! This project is designed to provide a
 - ## contribution
 - You can Give Your feedback on this mail vaibhavrathod2282@gmail.com
 - if you interested to share your note please read and follow instructions written on [Dev](https://github.com/VR-Rathod/Code-Note/blob/Admin/Dev/format.md)
+
+## Note - In recent update Logseq showing some bug on Page Loding.
+- ### Press `Ctrl + r` to slove it.
