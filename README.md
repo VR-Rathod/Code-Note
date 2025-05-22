@@ -59,7 +59,7 @@ Welcome to the Free Code Notes repository! This project is designed to provide a
   ```
 - ## Resource Available 😍
   
-    ![v3](https://github.com/user-attachments/assets/c6e077ba-7a08-4de7-9ee7-e0c47034b1d4)
+    ![latest graph](https://github.com/user-attachments/assets/3f5bfe92-e4d7-4872-9150-3e7e7eabdb82)
   
   -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   
@@ -72,4 +72,4 @@ Welcome to the Free Code Notes repository! This project is designed to provide a
 
 ## Note - In recent update Logseq showing some bug on Page Loding.
 If you see `Page is not loading` / `Try qix fix ` error
-- ### Press `Ctrl + r` to slove it.
+- ### Press `Ctrl + Shift + r` to slove it.
