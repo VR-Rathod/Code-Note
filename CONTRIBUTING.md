@@ -1,4 +1,4 @@
-- in every notes format will be same
+# notes **format** Must be same
   
   1. History - How/ Who / Why made this
   2. intro - advance / disadvance topics 
@@ -7,7 +7,7 @@
   5. require - if some category are missing use this
   6. more learn - you can share link on social media like github link , drive (Only trustable link and dont try to pramote social accounts)
   
-  This Rules are Applied For coding not for OS 
+  This **Rules** are Applied For coding not for **OS** 
   if You are making notes on OS Use Linux as Ref and make You own way 
   
   Note - That Tag name must be on every page you can skip tag if it's not relatable.(like in os lib not useful so you can remove and make require and it's sub category for write )
