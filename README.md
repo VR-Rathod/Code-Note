@@ -71,5 +71,5 @@ Welcome to the Free Code Notes repository! This project is designed to provide a
 - if you interested to share your note please read and follow instructions written on [Dev](https://github.com/VR-Rathod/Code-Note/blob/Admin/Dev/format.md)
 
 ## Note - In recent update Logseq showing some bug on Page Loding.
-If you see `Page is not loading` / `Try qix fix ` error
+If you see `Page is not loading` / `Try quick fix ` error
 - ### Press `Ctrl + Shift + r` to slove it.
