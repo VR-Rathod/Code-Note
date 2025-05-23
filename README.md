@@ -3,27 +3,32 @@
 Welcome to the Free Code Notes repository! This project is designed to provide a collection of coding notes and resources created using Logseq. Whether you're a beginner or an experienced developer, you'll find valuable information to enhance your coding skills.
 
 - ## Table of Contents
-- [Introduction](#introduction) || [[Introduction]]
+
+- [Introduction](#introduction) || [[Introduction]] 🦖
+
 - [Getting Started](#getting-started)
-- [contribution](#contribution)
-- [License](https://github.com/VR-Rathod/Code-Note/blob/main/LICENSE)
-- [Contribute Guideline](https://github.com/VR-Rathod/Code-Note/blob/main/Dev/format.md)
+- [contributer](#contributer)🦚
+- [contribution query](#contribution)🦧
+- [License](https://github.com/VR-Rathod/Code-Note/blob/main/LICENSE)🦐
+- [Contribute Guideline](https://github.com/VR-Rathod/Code-Note/blob/main/Dev/format.md)🐱‍👤
   
   Note : - after || (Something) Was use for navigate on Logseq and if pages are blank that means there data will add in future
   
 - ## Introduction
 - This repository serves as a comprehensive resource for various programming concepts, languages, and best practices. The notes are organized and structured using Logseq, making it easy to navigate and reference. You can also use SumatraPDF for reading PDFs. For more in-depth knowledge, navigate to the Software page section to find details on various software tools and resources. ||( ((6722a764-cba3-430a-805a-3a2746eb9e3f)) )
+
 - ## Getting Started
   
   To get started with the code notes:
   
-  1. **Clone the Repository**
+- 1. **Clone the Repository**
    ```bash
    git clone https://github.com/VR-Rathod/Code-Note.git
    cd code-note
     ```
 
 - 2. **Usefull Software**
+
      ## Logseq
       Logseq is an open-source, non-linear outliner notebook that helps you organize and share your knowledge.
   
@@ -39,7 +44,6 @@ Welcome to the Free Code Notes repository! This project is designed to provide a
       After **Download** That software
        
       Then open Your project Like This: -
-      
       
       https://github.com/user-attachments/assets/e4cd771b-a7f0-4656-8737-4ea55ac40a5e
   
@@ -66,10 +70,15 @@ Welcome to the Free Code Notes repository! This project is designed to provide a
   Happy Learning...🙏
 - ## Author
 - [@VR-Rathod](https://github.com/VR-Rathod)
-- ## contribution
-- You can Give Your feedback on this mail vaibhavrathod2282@gmail.com
+
+- ## contributer
+- [@Nirmit Kotadiya](https://github.com/nirmitkotadiya)
+
+
+- ## contribution query
+- You can Give Your feedback on [Discussions](https://github.com/VR-Rathod/Code-Note/discussions)
 - if you interested to share your note please read and follow instructions written on [Dev](https://github.com/VR-Rathod/Code-Note/blob/Admin/Dev/format.md)
 
 ## Note - In recent update Logseq showing some bug on Page Loding.
-If you see `Page is not loading` / `Try quick fix ` error
+If you see `Page is not loading` / `Try quick fix` error
 - ### Press `Ctrl + Shift + r` to slove it.
