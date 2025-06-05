@@ -1,5 +1,6 @@
 - Useful for moderate n values
 - ```C++
+  // Usefull for small Numbers
   int fib = round(pow(1.618, n) / sqrt(5));
   ```
 - ```python

@@ -250,8 +250,9 @@
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
 	- [[Software]] - This page showcases all types of software, categorized by their functionality and purpose.
 -
+- # Free Books
+	- [[Books & Free Res]] - This page will provide free Pdf Books and resource with can downloadable.
 -
-- [[check]]
 - # more learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills:-
 	-

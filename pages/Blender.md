@@ -9,6 +9,7 @@
 		- Extensive community support and resources.
 		- Regular updates and new features.
 		- Versatile for modeling, animation, sculpting, and more.
+	-
 	- ### Disadvantages
 		- Steeper learning curve for beginners.
 		- Some advanced features may lack in-depth documentation.
@@ -28,9 +29,9 @@
 -
 - ## 5. Require
 	- If you find missing topics, consider adding sections on:
-		- Rendering techniques (e.g., Eevee vs. Cycles).
-		- Compositing basics.
-		- Animation principles (e.g., keyframes, easing).
+		- Rendering techniques (e.g., Eevee vs. Cycles). (in Docs)
+		- Compositing basics. (in Docs)
+		- Animation principles (e.g., keyframes, easing). (in Docs)
 -
 - ## 6. More Learn - Share Links on Social Media
 	- **GitHub Repositories**: [Blender GitHub](https://github.com/blender/blender) (official repo)

@@ -46,10 +46,8 @@ Welcome to the Free Code Notes repository! This project is designed to provide a
       Then open Your project Like This: -
       
       https://github.com/user-attachments/assets/e4cd771b-a7f0-4656-8737-4ea55ac40a5e
-  
-  
-  
-  3. ### **The Final Gift**
+      
+- 3. ### **The Final Gift**
      
       You can Directorly View on github but i suggest open in logseq for Better view and update This repo regulerly...
       Look Introduction page For Easy navigate, Now You have all data, pdfs, topics , Links related to This Subject.
