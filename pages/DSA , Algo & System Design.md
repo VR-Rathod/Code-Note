@@ -133,7 +133,9 @@
 - # Short fourmulas
 	- [[fibonacci]] - Short trick
 	- [[palindrome]] - short method
-	-
+-
+- # Binary systemm
+	- [[binary]] - every type of binary calculations
 -
 - # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills:

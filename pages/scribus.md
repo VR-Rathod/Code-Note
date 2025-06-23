@@ -1,0 +1,4 @@
+- [Scribus](https://www.scribus.net/)
+-
+- # github repo
+	- [Scribus Project](https://github.com/scribusproject/scribus)

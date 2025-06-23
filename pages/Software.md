@@ -8,6 +8,7 @@
 		- software can perform multiple task so It can be repetitive in subcategories (Free software/Paid Software)
 -
 - # All Software List
+  collapsed:: true
 	- [[Blender]] : Free 3D modeling and animation software
 	- [[Maya]] : Advanced 3D modeling, animation, and rendering software
 	- [[Adobe After Effects]] : Motion graphics and visual effects software
@@ -30,6 +31,7 @@
 	- [[Visual Studio Code]] : Code editor with support for many programming languages
 	- [[Notepad++]] : Source code editor and Notepad replacement
 	- [[FL Studio]] : Digital audio workstation for music production
+	- [[LMMS]] : open source digital audio workstation for music production
 	- [[Ableton Live]] : Music production software
 	- [[Pro Tools]] : Digital audio workstation for music and audio editing
 	- [[Figma]] : Interface design tool for collaboration
@@ -41,6 +43,7 @@
 	- [[Logseq]] : Free and open-source note-taking and knowledge management tool
 	- [[XAMPP]] : Free and open-source cross-platform web server solution stack package
 	- [[Audacity]] : Free, open-source audio editing software for recording and editing sound
+	- [[Ardour]] : Free, open-source audio editing software for recording and editing sound
 	- [[OBS]] : Free and open-source software for video recording and live streaming
 	- [[Illustrator]] : Industry-standard vector graphics editor (note: not free but may have a trial version)
 	- [[Photoshop]] : Industry-standard image editing software (not free but may have a trial version)
@@ -56,6 +59,8 @@
 	- [[NcEngine]]: 3D game engine written in modern C++ and Vulkan
 	- [[Thunder Engine]] : Cross-platform 2D and 3D game engine with modular
 	- [[penpot]] : Online web Based Open source Design Tool
+	- [[Libra office]] : Free and open source like Microsoft's Software
+	- [[scribus]] : Free alternative of adobe in design for book and PDF export
 -
 - # Free Software
 	- ## Video Editing
@@ -80,6 +85,8 @@
 		-
 	- ## Audiio & Music Production
 		- [[Audacity]] : Free, open-source audio editing software for recording and editing sound (lifetime free).
+		- [[LMMS]] : open source digital audio workstation for music production
+		- [[Ardour]] : Free, open-source audio editing software for recording and editing sound
 		-
 	- ## Game Development
 		- [[Godot]] : Free and open-source game engine for 2D and 3D game development (lifetime free).
@@ -98,6 +105,8 @@
 	-
 	- ## Useful Softwares
 		- [[KeePass]]: Free and open-source password manager (note: used to securely store and manage passwords with encryption).
+		- [[Libra office]] : Free and open source like Microsoft's Software
+		- [[scribus]] : Free alternative of adobe in design for book and PDF export
 -
 - # Paid Software
 	- ## Video Editing
