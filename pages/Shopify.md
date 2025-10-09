@@ -1,8 +1,10 @@
 # History
+collapsed:: true
 	- **How**: Shopify was founded in **2006** by **Tobias Lütke**, **Daniel Weinand**, and **Scott Lake** as an e-commerce platform designed to help merchants build their own online stores. The founders originally wanted to sell snowboards online, but created the platform when they couldn’t find a suitable e-commerce solution.
 	- **Who**: Shopify was created by the **Shopify Inc.** team, with **Tobias Lütke** as the CEO. The company quickly grew, becoming one of the largest e-commerce platforms worldwide, used by businesses of all sizes to set up and manage online stores.
 	- **Why**: Shopify was created to provide an easy-to-use, flexible, and scalable e-commerce platform for merchants, enabling them to sell products online with minimal technical expertise.
 - # Introduction
+  collapsed:: true
 	- ## Advantages:
 		- **Ease of Use**: Shopify is known for its user-friendly interface, making it easy for non-technical users to set up and manage an online store with little effort.
 		- **Scalability**: Shopify supports businesses of all sizes, from small startups to large enterprises, with features designed to grow as the business expands.

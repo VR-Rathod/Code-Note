@@ -1,4 +1,4 @@
-- # 📜 **History**
+# 📜 **History**
 	- **How**:
 		- Developed by Jordan Walke, a software engineer at Facebook, in 2011.
 		- First deployed on Facebook’s newsfeed in 2011 and later on Instagram in 2012.
@@ -10,11 +10,9 @@
 		- To build large-scale, dynamic web applications with better performance and maintainability.
 		- To address the challenge of complex UI rendering and state management in JavaScript-heavy apps.
 		- Promotes the **component-based architecture** for reusable and manageable code.
-	
-
 - # 📘 **Intro**
 	- React is an open-source JavaScript library used for building user interfaces, primarily for single-page applications. It enables developers to create large web applications that can update and render efficiently in response to data changes. React encourages a declarative and component-based programming model, promoting reusability and maintainability.
-	-	- ## ✅ **Advantages**
+	- - ## ✅ **Advantages**
 		- Component-Based Architecture for better code reuse and scalability.
 		- Virtual DOM enhances performance by minimizing direct DOM manipulation.
 		- Strong ecosystem and community support with rich tooling (Redux, React Router, etc.).
@@ -22,45 +20,40 @@
 		- Works well with **JavaScript Design Patterns** (Module, Singleton, Observer).
 		- Embraces **Prototypal Inheritance** and **ES6 Classes** for advanced object-oriented capabilities.
 		- Supports integration with **TypeScript** for typed JavaScript development.
-		
 	- ## ⚠️ **Disadvantages**
 		- Steeper learning curve due to JSX and component lifecycle understanding.
 		- **Browser inconsistencies** in older or unsupported environments.
 		- **Lack of strong typing** in plain JavaScript can lead to **runtime errors**.
 		- Requires boilerplate setup (though improved via Create React App, Vite, Next.js, etc.).
 		- Can get **complex in large-scale applications**, especially with deep component trees and state management.
-
 - # 🧾 **Notes**
 	- ## 📌 Core Concepts
 		- **JSX (JavaScript XML)**  
-		  Syntax extension allowing HTML to be written within JavaScript. It’s syntactic sugar for `React.createElement()`.  
+		  Syntax extension allowing HTML to be written within JavaScript. It’s syntactic sugar for `React.createElement()`.
 		- **Components**  
-		  Building blocks of React UIs. Two types:  
+		  Building blocks of React UIs. Two types:
 			- **Functional Components** – Now standard with Hooks.
 			- **Class Components** – Legacy, but still relevant in older codebases.
 		- **Props (Properties)**  
-		  Read-only inputs passed to components, making them reusable.  
+		  Read-only inputs passed to components, making them reusable.
 		- **State**  
-		  Mutable data managed within components. Changes trigger re-renders.  
+		  Mutable data managed within components. Changes trigger re-renders.
 		- **Hooks**  
-		  Functions that let functional components use state and lifecycle features. Examples:  
+		  Functions that let functional components use state and lifecycle features. Examples:
 			- `useState`, `useEffect`, `useContext`, `useReducer`, `useMemo` etc...
 	- **Virtual DOM**  
-	  React maintains a lightweight copy of the real DOM and performs diffing to efficiently update the UI.  
+	  React maintains a lightweight copy of the real DOM and performs diffing to efficiently update the UI.
 	- ## ⚙️ Component Lifecycle (Class-Based)
 	    
-		1. `constructor()`
-		2. `static getDerivedStateFromProps()`
-		3. `render()`
-		4. `componentDidMount()`
-		5. `shouldComponentUpdate()`
-		6. `getSnapshotBeforeUpdate()`
-		7. `componentDidUpdate()`
-		8. `componentWillUnmount()`
-		
-    - >Note: Hooks replace lifecycle methods in functional components.
-  
-
+	  1. `constructor()`
+	  2. `static getDerivedStateFromProps()`
+	  3. `render()`
+	  4. `componentDidMount()`
+	  5. `shouldComponentUpdate()`
+	  6. `getSnapshotBeforeUpdate()`
+	  7. `componentDidUpdate()`
+	  8. `componentWillUnmount()`
+		- >Note: Hooks replace lifecycle methods in functional components.
 	- ## 🏗️ State Management Options
 	- **Local State** – `useState`, `useReducer`
 	- **Global State** – Context API, Redux, Zustand, Jotai
@@ -80,9 +73,7 @@
 	  const element = <h1 className="greet">Hello, React!</h1>;
 	  ```
 	- **Expressions inside JSX**: `{}`  
-	  Only expressions (not statements) are allowed inside `{}`.  
-	    
- 
+	  Only expressions (not statements) are allowed inside `{}`.
 	- ## 🧱 2. **Components**
 	- ### ➤ Functional Components
 	- Modern standard using hooks.
@@ -103,7 +94,6 @@
 	  }
 	  }
 	  ```
-	     
 	- ## 📥 3. **Props**
 	- Read-only values passed to components.
 	- Encourages reusability.
@@ -112,7 +102,6 @@
 	  ```jsx
 	  <Greeting name="John" />
 	  ```
-	     
 	- ## 🧠 4. **State**
 	- Holds dynamic data.
 	- Modifying state re-renders the component.
@@ -123,28 +112,20 @@
 	- Never mutate state directly. Always use setters:
 	    
 	  ❌ `count++`  
-	  ✅ `setCount(count + 1)`  
-	    
-
+	  ✅ `setCount(count + 1)`
 	- ## 🪝 5. **Hooks (Functional Lifecycle + Logic)**
 	    
-	  > Introduced in React 16.8, **Hooks** allow functional components to manage **state**, access **lifecycle methods**, and handle **side effects**, making class components mostly unnecessary.  
-	    
-
+	  > Introduced in React 16.8, **Hooks** allow functional components to manage **state**, access **lifecycle methods**, and handle **side effects**, making class components mostly unnecessary.
 	- ## 🔗 **What is a Hook?**
 	- A **Hook** is a **JavaScript function** that lets you “hook into” React **features** from functional components.
 	- Hooks **cannot be used in class components**.
 	- Always start with `use` (e.g. `useState`, `useEffect`).
 	- Must be called **at the top level** of the component (not inside loops, conditions, or nested functions).
-	    
-
 	- ## 🧰 **Rules of Hooks**
 	    
-		1. Only call Hooks at the **top level**.
-		2. Only call Hooks from **React functional components** or **custom hooks**.
-		3. Custom hooks must start with `use`.
-
-
+	  1. Only call Hooks at the **top level**.
+	  2. Only call Hooks from **React functional components** or **custom hooks**.
+	  3. Custom hooks must start with `use`.
 	- ## 📚 **Built-in Hooks**
 	- ### 1️⃣ `useState` → *State Handling in Functional Components*
 	    
@@ -160,11 +141,9 @@
 	  const [count, setCount] = useState(0);
 	  ```
 	    
-	  **📌 Notes:**  
+	  **📌 Notes:**
 	- Re-renders the component on state update.
 	- Always use the setter — never mutate the state directly.
-	    
-
 	- ### 2️⃣ `useEffect` → *Side Effects / Lifecycle*
 	    
 	  **✅ Purpose:** Run **side effects** like data fetching, DOM manipulation, etc.  
@@ -186,12 +165,10 @@
 	  }, [count]);
 	  ```
 	    
-	  **📌 Notes:**  
+	  **📌 Notes:**
 	- `[]` dependency = runs once (on mount).
 	- No dependency = runs on **every render**.
 	- Returns cleanup function that runs on **unmount** or before re-run.
-	    
-
 	- ### 3️⃣ `useContext` → *Access Context API*
 	    
 	  **✅ Purpose:** Access values from a **React Context Provider**.  
@@ -206,11 +183,9 @@
 	  const theme = useContext(ThemeContext);
 	  ```
 	    
-	  **📌 Notes:**  
+	  **📌 Notes:**
 	- Helps avoid **prop drilling**.
 	- Triggers re-render if context value changes.
-	    
-
 	- ### 4️⃣ `useRef` → *DOM Access / Persistent Values*
 	    
 	  **✅ Purpose:** Create a **persistent mutable reference**.  
@@ -229,11 +204,9 @@
 	  }, []);
 	  ```
 	    
-	  **📌 Notes:**  
+	  **📌 Notes:**
 	- Changes to `.current` do **not** trigger re-renders.
 	- Often used to store DOM references or timers.
-	    
-
 	- ### 5️⃣ `useReducer` → *Complex State Logic (Redux-like)*
 	    
 	  **✅ Purpose:** Handle **complex state transitions** or **multiple state values**.  
@@ -257,10 +230,8 @@
 	  const [state, dispatch] = useReducer(reducer, { count: 0 });
 	  ```
 	    
-	  **📌 Notes:**  
+	  **📌 Notes:**
 	- Ideal for managing **multiple related state updates**.
-	    
-
 	- ### 6️⃣ `useCallback` → *Memoize Functions*
 	    
 	  **✅ Purpose:** Prevent re-creating functions unnecessarily on every render.  
@@ -279,10 +250,8 @@
 	  }, [count]);
 	  ```
 	    
-	  **📌 Notes:**  
+	  **📌 Notes:**
 	- Useful when passing callbacks to child components to avoid re-renders.
-	    
-
 	- ### 7️⃣ `useMemo` → *Memoize Expensive Computation*
 	    
 	  **✅ Purpose:** Cache the result of **expensive operations**.  
@@ -297,10 +266,8 @@
 	  const total = useMemo(() => calculateTotal(items), [items]);
 	  ```
 	    
-	  **📌 Notes:**  
+	  **📌 Notes:**
 	- Only recomputes when dependencies change.
-	    
-
 	- ### 8️⃣ `useImperativeHandle` → *Expose Custom Methods to Parent*
 	    
 	  **✅ Purpose:** Allow parents to **call methods** on child components via `ref`.  
@@ -312,19 +279,15 @@
 	  }));
 	  ```
 	    
-	  **📌 Notes:**  
+	  **📌 Notes:**
 	- Must be used with `forwardRef`.
-	    
-
 	- ### 9️⃣ `useLayoutEffect` → *Run Effect Before Paint*
 	    
 	  **✅ Purpose:** Similar to `useEffect`, but runs **synchronously before paint**.  
 	    
-	  **📌 Notes:**  
+	  **📌 Notes:**
 	- Use when you need to **measure layout** or update styles **before screen paint**.
 	- Use sparingly; can block visual rendering.
-	    
-
 	- ### 🔟 `useDebugValue` → *Show Custom Hook Info in DevTools*
 	    
 	  **✅ Purpose:** Enhance visibility of custom hook values in React DevTools.  
@@ -333,8 +296,6 @@
 	  ```jsx
 	  useDebugValue(value);
 	  ```
-	    
-
 	- ## 🛠️ **Custom Hooks**
 	    
 	  > Encapsulate and reuse logic across components.  
@@ -348,11 +309,9 @@
 	  }
 	  ```
 	    
-	  **📌 Notes:**  
+	  **📌 Notes:**
 	- Must start with `use`.
 	- Keeps components **clean** and **DRY**.
-	    
-
 	- ## 🧠 **Hook Comparison Table**
 	    
 	  | Hook | Purpose | Equivalent (Class Component) |
@@ -367,8 +326,6 @@
 	  | `useImperativeHandle` | Expose methods via ref | Class method with `ref` |
 	  | `useLayoutEffect` | Sync effect before DOM paint | Sync version of `componentDidMount` |
 	  | `useDebugValue` | Debug custom hook info | — |
-	    
-
 	- ## ✅ **Best Practices with Hooks**
 	- Keep Hooks **at the top** of your component.
 	- Avoid using Hooks **conditionally**.
@@ -376,36 +333,32 @@
 	- Prefer `useReducer` for **complex or nested state**.
 	- Extract custom logic to **custom hooks**.
 	- Avoid **over-using** `useMemo` / `useCallback` — only use when needed.
-	    
-
-
 - # 🧰 **Libs & Framework**
 	- ## 🔗 Official Docs & Tools
 	- **React Official Website**:   
-	  [https://react.dev](https://react.dev) (new docs)  
+	  [https://react.dev](https://react.dev) (new docs)
 	- **React GitHub Repo**:  
-	  [https://github.com/facebook/react](https://github.com/facebook/react)  
+	  [https://github.com/facebook/react](https://github.com/facebook/react)
 	- ## 📦 Popular Libraries (React Ecosystem)
 	- **React Router** – Declarative routing for React apps.  
-	  🔗 [https://reactrouter.com](https://reactrouter.com)  
+	  🔗 [https://reactrouter.com](https://reactrouter.com)
 	- **Redux Toolkit** – Predictable state management.  
-	  🔗 [https://redux-toolkit.js.org](https://redux-toolkit.js.org)  
+	  🔗 [https://redux-toolkit.js.org](https://redux-toolkit.js.org)
 	- **React Query** – Data-fetching and caching for server-state.  
-	  🔗 [https://tanstack.com/query/latest](https://tanstack.com/query/latest)  
+	  🔗 [https://tanstack.com/query/latest](https://tanstack.com/query/latest)
 	- **Formik** – For building forms in React.  
-	  🔗 [https://formik.org](https://formik.org)  
+	  🔗 [https://formik.org](https://formik.org)
 	- **Yup** – Schema validation (commonly used with Formik).  
-	  🔗 [https://github.com/jquense/yup](https://github.com/jquense/yup)  
+	  🔗 [https://github.com/jquense/yup](https://github.com/jquense/yup)
 	- **Zustand** – Lightweight state management alternative.  
-	  🔗 [https://zustand-demo.pmnd.rs](https://zustand-demo.pmnd.rs)  
+	  🔗 [https://zustand-demo.pmnd.rs](https://zustand-demo.pmnd.rs)
 	- **Jotai / Recoil** – Minimalistic and experimental state libraries.  
 	  🔗 [https://jotai.org](https://jotai.org)  
-	  🔗 [https://recoiljs.org](https://recoiljs.org)  
+	  🔗 [https://recoiljs.org](https://recoiljs.org)
 	- ## 🧩 Frameworks Built on React
 	- **Next.js** – Full-stack React framework with SSR, API routes, and more.  
-	  🔗 [https://nextjs.org](https://nextjs.org)  
+	  🔗 [https://nextjs.org](https://nextjs.org)
 	- **Gatsby** – Static site generator for React.  
-	  🔗 [https://www.gatsbyjs.com](https://www.gatsbyjs.com)  
+	  🔗 [https://www.gatsbyjs.com](https://www.gatsbyjs.com)
 	- **Remix** – Full-stack React framework with focus on performance & data loading.  
-	  🔗 [https://remix.run](https://remix.run)  
-	    
+	  🔗 [https://remix.run](https://remix.run)
