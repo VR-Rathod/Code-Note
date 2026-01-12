@@ -725,3 +725,4 @@
 	- [Cheat Sheets for c++](https://hackingcpp.com/cpp/cheat_sheets.html)
 	- [Docs Book](https://cplusplus.com/doc/tutorial/)
 	- [C++ references](https://en.cppreference.com/w/)
+   	- [C++ Advance Ref.](https://en.cppreference.com/w/cpp/utility/functional/ref.html)
