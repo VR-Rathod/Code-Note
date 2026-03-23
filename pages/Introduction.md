@@ -3,7 +3,6 @@
 -
 -
 - ## Programming Languages
-  collapsed:: true
 	-
 	- [[Python]] :- A beginner-friendly language known for its readability and extensive libraries.
 	-
@@ -84,7 +83,6 @@
 	- [[Zig]]: A systems programming language that aims to replace C with a focus on simplicity, performance, and safety.
 -
 - ## Databases
-  collapsed:: true
 	- [[MySQL]] : One of the most widely used open-source relational database management systems (RDBMS), especially in web applications.
 	-
 	- [[PostgreSQL]] : An advanced, open-source relational database that emphasizes extensibility, SQL compliance, and performance.
@@ -101,7 +99,6 @@
 	- [[GraphQL]] - **GraphQL** is a query language for APIs and a runtime for executing those queries with your existing data. It was developed by **Facebook** and offers a more flexible and efficient alternative to REST APIs.
 -
 - ## CMS (Content Management Systems)
-  collapsed:: true
 	- [[WordPress]] :- A widely used, open-source CMS known for its ease of use, vast theme/plugin ecosystem, and flexibility for building various websites from blogs to e-commerce stores.
 	-
 	- [[Joomla]] :- A flexible and powerful CMS that allows for the creation of complex websites with various extensions and templates.
@@ -126,7 +123,6 @@
 	- [[Shopify]] - it is a **hosted e-commerce platform** that includes **some CMS-like features**.
 -
 - ## Operating Systems & Kernels
-  collapsed:: true
 	- ## Linux
 		- [[Kali Linux]] :- A Debian-based distribution designed for penetration testing and cybersecurity professionals, featuring numerous security tools.
 		-
@@ -147,16 +143,13 @@
 	- ## Windows
 -
 - ## Frameworks, Libraries Common Elements
-  collapsed:: true
 	- You Can find particular lib & Frameworks  in that programing page
 	- [[Api]] - You can find specific APIs and related documentation on the respective programming language or framework page.
 -
 - ## Data Structures , Algorithms & OOP
-  collapsed:: true
 	- [[DSA , Algo & System Design]]: The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for searching, sorting, and optimization.
 -
 - ## DevOps & CI/CD
-  collapsed:: true
 	- ## DevOps Concepts
 		- [[Collaboration & Communication]]: Emphasizes enhanced communication between development and operations teams to improve the software development lifecycle (SDLC).
 		-
@@ -258,6 +251,13 @@
 -
 - ## Cybersecurity
 	- [[Cybersecurity]] - This page contains DevOps Concepts
+-
+- ## Game Development & Graphics
+	- For game engines, 3D tools, design software, and all related applications, see [[Software]].
+	-
+	- ### Graphics Programming & Rendering
+		- [[PathTracer Learning]] :- Deep-dive learning series for building a GPU path tracer from scratch — covers math foundations, CPU ray tracing, Vulkan ray tracing, and Godot rendering internals.
+	-
 -
 - ## Software Information
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f

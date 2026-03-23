@@ -1,0 +1,124 @@
+tags:: phase, advanced, restir, dlss, denoising, production
+title:: PathTracer Learning - Phase 5 - Advanced Topics
+
+- # Phase 5 — Advanced Topics
+	- Production-quality rendering techniques. These are what separate a toy path tracer from a real-time renderer.
+	- Parent: [[PathTracer Learning]]
+- ---
+- ## 5.1 Denoising
+	- [[PathTracer Learning - DLSS and Denoising]]
+		- Full breakdown of temporal and AI-based denoising
+	- [[PathTracer Learning - Concept - Temporal Accumulation]]
+	- [[PathTracer Learning - Concept - Temporal Rejection]]
+	- Why denoising is necessary
+		- Real-time path tracing can only afford 1-4 samples per pixel per frame
+		- 1 spp produces extremely noisy images
+		- Denoising reconstructs a clean image from noisy input
+	- Denoiser types
+		- Temporal: accumulate samples over time (free, but ghosting artifacts)
+		- Spatial: blur neighboring pixels (fast, but loses detail)
+		- AI: DLSS, OIDN — trained on clean/noisy pairs (best quality)
+		- Hybrid: temporal + spatial + AI (what production renderers use)
+	- G-buffer requirements for denoising
+		- World-space normals (not view-space — more stable across frames)
+		- Albedo (demodulated from lighting)
+		- Depth or linear depth
+		- Motion vectors (for temporal reprojection)
+	- Demodulation
+		- Separate albedo from lighting before denoising
+		- `noisy_lighting = noisy_color / max(albedo, 0.001)`
+		- Denoise `noisy_lighting`, then remodulate: `denoised_color = denoised_lighting * albedo`
+		- Why: albedo has high-frequency texture detail that denoiser would blur
+- ---
+- ## 5.2 ReSTIR
+	- [[PathTracer Learning - ReSTIR]]
+		- Reservoir-based Spatiotemporal Importance Resampling
+		- Dramatically improves direct lighting quality with many lights
+	- ReSTIR DI (Direct Illumination)
+		- Handles scenes with thousands of lights efficiently
+		- Temporal reuse: reuse reservoir from previous frame
+		- Spatial reuse: share reservoirs with neighboring pixels
+	- ReSTIR GI (Global Illumination)
+		- Extends ReSTIR to indirect lighting paths
+		- Reuses entire path segments, not just light samples
+		- Requires careful MIS weighting to avoid bias
+	- ReSTIR PT (Path Tracing)
+		- Full path resampling — reuse entire light paths
+		- Paper: "Generalized Resampled Importance Sampling" (Kettunen et al. 2023)
+- ---
+- ## 5.3 Multiple Importance Sampling (MIS)
+	- [[PathTracer Learning - Concept - MIS]]
+		- Full derivation and implementation details
+	- Balance heuristic: `w_i = p_i / Σ p_j`
+	- Power heuristic (β=2): `w_i = p_i² / Σ p_j²` — usually better
+	- Veach MIS weight for NEE + BRDF
+		- `w_nee  = p_light² / (p_light² + p_brdf²)`
+		- `w_brdf = p_brdf²  / (p_light² + p_brdf²)`
+- ---
+- ## 5.4 Spectral Rendering
+	- RGB vs spectral
+		- RGB: 3 wavelength samples — fast but physically inaccurate
+		- Spectral: sample many wavelengths — accurate but expensive
+		- Hero wavelength sampling: trace 4 wavelengths per ray (good compromise)
+	- Dispersion
+		- Different wavelengths refract at different angles (prism effect)
+		- IOR varies with wavelength: `n(λ) = A + B/λ²` (Cauchy's equation)
+	- Fluorescence
+		- Material absorbs one wavelength, emits another
+		- Requires full spectral representation (not possible with RGB)
+- ---
+- ## 5.5 Volumetric Rendering
+	- Participating media: fog, smoke, clouds, subsurface scattering
+	- Volume rendering equation
+		- `L(x, ω) = ∫ T(x,y) [σ_s(y) L_s(y,ω) + σ_a(y) L_e(y,ω)] dy + T(x,x_s) L(x_s,ω)`
+		- `T` — transmittance, `σ_s` — scattering, `σ_a` — absorption
+	- Phase functions
+		- Henyey-Greenstein: `p(θ) = (1-g²) / (4π * (1 + g² - 2g*cos(θ))^(3/2))`
+		- `g ∈ [-1,1]`: `g=0` isotropic, `g>0` forward scattering
+	- Delta tracking (Woodcock tracking)
+		- Efficient unbiased sampling of heterogeneous volumes
+		- Uses majorant `σ_maj ≥ σ_t(x)` everywhere — null collisions for rejection
+	- Subsurface scattering (SSS)
+		- BSSRDF: `S(x_i, ω_i, x_o, ω_o)` — generalization of BRDF
+		- Dipole approximation: fast but limited
+		- Path-traced SSS: accurate but expensive
+- ---
+- ## 5.6 Path Guiding
+	- Learn the light distribution and sample it directly
+	- SD-Tree (Müller et al. 2017)
+		- Spatial tree (octree) × directional tree (quadtree)
+		- Adapts sampling distribution to the scene's light field
+	- Neural radiance caching (NRC)
+		- Small neural network caches radiance at surface points
+		- NVIDIA NRC: trains in real-time, used in Cyberpunk 2077 path tracing
+		- Replaces long path tails with cached values — huge performance win
+- ---
+- ## 5.7 Caustics
+	- Focused light through specular surfaces (glass, water)
+	- Extremely difficult for path tracing (low probability paths)
+	- Photon mapping: shoot photons from lights, gather at shading point
+	- VCM (Vertex Connection and Merging): combines BDPT and photon mapping
+- ---
+- ## 5.8 Tone Mapping and Display
+	- [[PathTracer Learning - Concept - Tone Mapping]]
+		- HDR radiance → LDR display values
+		- ACES filmic, Reinhard, AgX
+	- Color spaces
+		- Always work in linear, convert to sRGB at output
+		- ACEScg: wide gamut, used in film production
+		- Rec. 2020: HDR display standard
+- ---
+- ## Phase 5 Checklist
+	- [ ] Implement temporal accumulation with motion vector reprojection
+	- [ ] Implement temporal rejection (discard stale samples)
+	- [ ] Integrate OIDN or implement a simple spatial denoiser (SVGF)
+	- [ ] Implement MIS for NEE + BRDF sampling
+	- [ ] Implement demodulation (separate albedo from lighting for denoiser)
+	- [ ] Study ReSTIR DI paper and implement basic version
+	- [ ] Understand DLSS 3.5 Ray Reconstruction API
+	- [ ] Implement HDR tone mapping (ACES or AgX)
+	- [ ] Implement basic volumetric fog with delta tracking
+- ---
+- ## Navigation
+	- Previous: [[PathTracer Learning - Phase 4 - Godot Internals]]
+	- Next: [[PathTracer Learning]]
