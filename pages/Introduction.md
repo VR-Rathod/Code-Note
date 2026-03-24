@@ -253,10 +253,28 @@
 	- [[Cybersecurity]] - This page contains DevOps Concepts
 -
 - ## Game Development & Graphics
-	- For game engines, 3D tools, design software, and all related applications, see [[Software]].
+	- For a full categorized list of game engines, 3D tools, and design software, see [[Software]].
+	-
+	- ### Core Concepts
+		- [[Game Development]] :- Core game dev concepts from basics to advanced — game loop, ECS, physics, rendering pipeline, AI, shaders, networking, optimization, and more.
+	-
+	- ### Game Engines
+		- [[Godot]] :- Open-source engine supporting GDScript, C#, and C++. Full A-Z reference: scenes, physics, animation, shaders, networking, GDExtension.
+		- [[Unity]] :- Cross-platform engine for 2D and 3D games, widely used in indie and professional studios. Scripted in C#.
+		- [[Unreal Engine]] :- High-fidelity 3D engine by Epic Games, used in AAA titles and real-time visualization. Powered by C++ and Blueprints.
+		- [[Bevy]] :- Data-driven game engine built in Rust, focused on ECS architecture.
+		- [[Fyrox]] :- Feature-rich 3D/2D game engine written in Rust with a built-in scene editor.
+		- [[NcEngine]] :- Lightweight 3D game engine written in modern C++ and Vulkan.
+		- [[Thunder Engine]] :- Cross-platform open-source C++ game engine with a modular Qt-based editor.
+		- [[Panda3D]] :- Python/C++ game engine used in research, simulation, and indie development.
+		- [[Pygame]] :- Python library for 2D game development, great for learning and rapid prototyping.
+	-
+	- ### Game Development Assets
+		- [[Free Assets]] :- Collection of free 2D assets, fonts, and resources for game development.
 	-
 	- ### Graphics Programming & Rendering
-		- [[PathTracer Learning]] :- Deep-dive learning series for building a GPU path tracer from scratch — covers math foundations, CPU ray tracing, Vulkan ray tracing, and Godot rendering internals.
+		- [[PathTracer Learning]] :- Deep-dive learning series for building a GPU path tracer from scratch — covers math foundations, CPU ray tracing, Vulkan ray tracing, and Godot rendering internals. Full index of all concepts, phases, and projects.
+		- [[Binary Space Partitioning]] :- Spatial data structure used in game engines for rendering optimization and collision detection.
 	-
 -
 - ## Software Information
