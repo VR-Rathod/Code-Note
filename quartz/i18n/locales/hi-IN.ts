@@ -66,8 +66,8 @@ export default {
       lastFewNotes: ({ count }) => `अंतिम ${count} नोट्स`,
     },
     error: {
-      title: "नहीं मिला",
-      notFound: "यह पृष्ठ या तो निजी है या मौजूद नहीं है।",
+      title: "नोट उपलब्ध नहीं",
+      notFound: "यह नोट अभी उपलब्ध नहीं है। जल्द ही यहाँ सामग्री जोड़ी जाएगी।",
       home: "मुखपृष्ठ पर वापस जाएं",
     },
     folderContent: {

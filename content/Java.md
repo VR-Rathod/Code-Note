@@ -1,4 +1,4 @@
-# History
+## History
 	- **How**:
 		- Developed by **James Gosling** and **Mike Sheridan** at **Sun Microsystems** in **1991**.
 		- Initially created as part of the **Green Project** with the goal of developing software for consumer electronics.
@@ -16,7 +16,7 @@
 		- To provide a secure, reliable, and high-performance language that could be used across multiple platforms, leveraging the **Java Virtual Machine (JVM)** for portability.
 		- To allow developers to write code once and have it run anywhere, which made it particularly popular for web applications, enterprise solutions, and mobile development (with **Android**).
 -
-- # introduction
+- ## introduction
 	- ## Advantages :
 		- **Performance and Optimization**:
 		  Java, while not as fast as low-level languages like C, offers **JIT (Just-In-Time) compilation** via the **Java Virtual Machine (JVM)**, which allows for **runtime optimizations**. Java programs can achieve high performance, especially with JVM optimizations and modern hardware.

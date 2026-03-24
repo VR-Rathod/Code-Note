@@ -15,7 +15,7 @@ const config: QuartzConfig = {
     analytics: {
       provider: "vercel",
     },
-    locale: "hi-IN",
+    locale: "en-US",
     baseUrl: "code-note-gamma.vercel.app",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",

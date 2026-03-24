@@ -1,4 +1,4 @@
-# History
+## History
 	- **How**:
 		- Developed by **Dennis Ritchie** in the early 1970s at **Bell Labs**.
 		- Designed as an evolution of the B programming language, with the goal of providing more control over hardware and efficient system programming.
