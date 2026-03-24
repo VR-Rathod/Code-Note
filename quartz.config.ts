@@ -16,7 +16,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "hi-IN",
-    baseUrl: "code-note-gamma.vercel.app",
+    baseUrl: "code-note-VR-Rathod.vercel.app",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
