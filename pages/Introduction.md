@@ -1,6 +1,5 @@
-# Welcome to Your Code Book!
+## Welcome to Your Code Book!
 	- Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
--
 -
 - ## Programming Languages
 	-
@@ -12,7 +11,7 @@
 	-
 	- [[C++]] :- An extension of C that adds object-oriented features, often used in system/software development and game programming(unreal Engine).
 	-
-	- [[C#]] :- A modern, object-oriented language built for simplicity, used in web, desktop, and game development (especially with .NET and Unity).
+	- [[CSharp]] :- A modern, object-oriented language built for simplicity, used in web, desktop, and game development (especially with .NET and Unity).
 	-
 	- [[Go]] :- A statically typed language developed by Google, known for its performance and simplicity in building scalable applications.
 	-
@@ -83,6 +82,7 @@
 	- [[Zig]]: A systems programming language that aims to replace C with a focus on simplicity, performance, and safety.
 -
 - ## Databases
+  collapsed:: true
 	- [[MySQL]] : One of the most widely used open-source relational database management systems (RDBMS), especially in web applications.
 	-
 	- [[PostgreSQL]] : An advanced, open-source relational database that emphasizes extensibility, SQL compliance, and performance.
@@ -96,9 +96,11 @@
 	- [[Microsoft SQL Server]] : A relational database management system developed by Microsoft, often used in enterprise environments.
 -
 - ## APIs & Query Languages
+  collapsed:: true
 	- [[GraphQL]] - **GraphQL** is a query language for APIs and a runtime for executing those queries with your existing data. It was developed by **Facebook** and offers a more flexible and efficient alternative to REST APIs.
 -
 - ## CMS (Content Management Systems)
+  collapsed:: true
 	- [[WordPress]] :- A widely used, open-source CMS known for its ease of use, vast theme/plugin ecosystem, and flexibility for building various websites from blogs to e-commerce stores.
 	-
 	- [[Joomla]] :- A flexible and powerful CMS that allows for the creation of complex websites with various extensions and templates.
@@ -120,9 +122,11 @@
 	- [[TYPO3]] :- A scalable, open-source CMS suitable for both small businesses and large enterprise-level websites, offering powerful content management and flexibility.
 -
 - ## SaaS ( Software as Service)
+  collapsed:: true
 	- [[Shopify]] - it is a **hosted e-commerce platform** that includes **some CMS-like features**.
 -
 - ## Operating Systems & Kernels
+  collapsed:: true
 	- ## Linux
 		- [[Kali Linux]] :- A Debian-based distribution designed for penetration testing and cybersecurity professionals, featuring numerous security tools.
 		-
@@ -143,13 +147,16 @@
 	- ## Windows
 -
 - ## Frameworks, Libraries Common Elements
+  collapsed:: true
 	- You Can find particular lib & Frameworks  in that programing page
 	- [[Api]] - You can find specific APIs and related documentation on the respective programming language or framework page.
 -
 - ## Data Structures , Algorithms & OOP
+  collapsed:: true
 	- [[DSA , Algo & System Design]]: The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for searching, sorting, and optimization.
 -
 - ## DevOps & CI/CD
+  collapsed:: true
 	- ## DevOps Concepts
 		- [[Collaboration & Communication]]: Emphasizes enhanced communication between development and operations teams to improve the software development lifecycle (SDLC).
 		-
@@ -250,6 +257,7 @@
 		- [[Asana]]: A task and project management tool used for tracking work, collaborating with teams, and ensuring smooth project delivery.
 -
 - ## Cybersecurity
+  collapsed:: true
 	- [[Cybersecurity]] - This page contains DevOps Concepts
 -
 - ## Game Development & Graphics
@@ -261,7 +269,7 @@
 	- ### Game Engines
 		- [[Godot]] :- Open-source engine supporting GDScript, C#, and C++. Full A-Z reference: scenes, physics, animation, shaders, networking, GDExtension.
 		- [[Unity]] :- Cross-platform engine for 2D and 3D games, widely used in indie and professional studios. Scripted in C#.
-		- [[Unreal Engine]] :- High-fidelity 3D engine by Epic Games, used in AAA titles and real-time visualization. Powered by C++ and Blueprints.
+		- [[Unreal Engine]] :- High-fidelity 3D engine by Epic Games. Full A-Z reference: Blueprints, C++, GAS, Nanite, Lumen, networking, AI, UMG, Niagara, Sequencer.
 		- [[Bevy]] :- Data-driven game engine built in Rust, focused on ECS architecture.
 		- [[Fyrox]] :- Feature-rich 3D/2D game engine written in Rust with a built-in scene editor.
 		- [[NcEngine]] :- Lightweight 3D game engine written in modern C++ and Vulkan.
@@ -279,6 +287,7 @@
 -
 - ## Software Information
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
+  collapsed:: true
 	- [[Software]] - This page showcases all types of software, categorized by their functionality and purpose.
 -
 - # Free Books

@@ -75,6 +75,3 @@ title:: PathTracer Learning
 	- [[PathTracer Learning - Project - CPU Path Tracer]]
 	- [[PathTracer Learning - Project - Vulkan RT]]
 - ---
-- ## Progress Journal
-	- [[journals/2026_03_20]]
-	- [[journals/2026_03_23]]

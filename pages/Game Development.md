@@ -2,8 +2,8 @@
 - **How**: Game development evolved from simple 2D arcade games (1970s) to complex 3D real-time simulations powered by GPUs, physics engines, and networked multiplayer.
 - **Who**: Pioneered by companies like Atari, id Software (Doom, Quake), Epic Games (Unreal), and Valve — whose engines became the foundation of modern game dev.
 - **Why**: To create interactive real-time experiences — combining graphics, physics, audio, AI, and networking into a cohesive system.
-
 - # Introduction
+  collapsed:: true
 	- Game development is the discipline of building interactive real-time software. It spans multiple domains: rendering, physics, audio, AI, networking, and tooling. Understanding the core concepts applies to any engine — Unity, Unreal, Godot, or custom.
 	-
 	- ## Core Domains
@@ -14,9 +14,8 @@
 		- **AI** — Pathfinding, state machines, behavior trees.
 		- **Networking** — Multiplayer, synchronization, lag compensation.
 		- **Tools** — Editors, asset pipelines, build systems.
-
+-
 - # The Game Loop
-  collapsed:: true
 	- ## Core Concept
 	  collapsed:: true
 		- The game loop is the heartbeat of every game — it runs continuously, processing input, updating state, and rendering frames.
@@ -74,7 +73,7 @@
 		    60 FPS — Standard smooth gameplay
 		    120+ FPS — Competitive gaming, VR (90/120Hz required)
 		  ```
-
+-
 - # Entity Component System (ECS)
   collapsed:: true
 	- ## Concept
@@ -129,9 +128,8 @@
 		  }
 		  ```
 		- Engines using ECS: **Bevy** (pure ECS), **Unity DOTS**, **Flecs** (C++ ECS library).
-
+-
 - # Rendering Pipeline
-  collapsed:: true
 	- ## Rasterization Pipeline (Traditional GPU)
 	  collapsed:: true
 		- ```
@@ -187,7 +185,6 @@
 		  ```
 	-
 	- ## Ray Tracing vs Rasterization
-	  collapsed:: true
 		- ```
 		  Rasterization:
 		    - Projects geometry onto screen
@@ -207,7 +204,7 @@
 		    - Real-time path tracing emerging (NVIDIA RTXDI, ReSTIR)
 		  ```
 		- See [[PathTracer Learning]] for full path tracing deep dive.
-
+-
 - # Lighting & Shading
   collapsed:: true
 	- ## Light Types
@@ -264,7 +261,7 @@
 		  Lumen (UE5)   — Fully dynamic GI using ray tracing + SDF.
 		  ReSTIR GI     — Real-time path traced GI with reservoir sampling.
 		  ```
-
+-
 - # Physics Engine
   collapsed:: true
 	- ## Core Concepts
@@ -324,7 +321,7 @@
 		  Ball Joint      — Free rotation in all directions (shoulder)
 		  Spring Joint    — Elastic connection with damping
 		  ```
-
+-
 - # Game AI
   collapsed:: true
 	- ## Finite State Machine (FSM)
@@ -415,7 +412,7 @@
 		    - Time since last seen
 		    - Threat level
 		  ```
-
+-
 - # Game Math
   collapsed:: true
 	- ## Vectors
@@ -487,7 +484,7 @@
 		  sin/cos/tan         — trigonometry (radians)
 		  atan2(y, x)         — angle from origin to point
 		  ```
-
+-
 - # Shaders
   collapsed:: true
 	- ## What is a Shader?
@@ -548,7 +545,7 @@
 		    Heat distortion    — UV distortion using noise
 		    Hologram           — scanlines + rim light + transparency
 		  ```
-
+-
 - # Multiplayer & Networking
   collapsed:: true
 	- ## Network Architectures
@@ -609,7 +606,7 @@
 		  WebSocket — TCP-based, works in browsers. Used for web games.
 		  WebRTC    — P2P in browsers. Used for browser multiplayer.
 		  ```
-
+-
 - # Audio in Games
   collapsed:: true
 	- ## Audio Concepts
@@ -647,7 +644,7 @@
 		  
 		  Both integrate with Unity, Unreal, Godot via plugins.
 		  ```
-
+-
 - # Asset Pipeline
   collapsed:: true
 	- ## 3D Asset Workflow
@@ -694,7 +691,7 @@
 		  Fonts:
 		    TTF, OTF, WOFF
 		  ```
-
+-
 - # Game Design Patterns
   collapsed:: true
 	- ## Common Patterns
@@ -748,7 +745,7 @@
 		      }
 		  };
 		  ```
-
+-
 - # Performance & Optimization
   collapsed:: true
 	- ## CPU Optimization
@@ -813,7 +810,7 @@
 		    Close  — High-res shadow map
 		    Far    — No shadow or baked only
 		  ```
-
+-
 - # Advanced Rendering Topics
   collapsed:: true
 	- ## Post-Processing Effects
@@ -870,7 +867,7 @@
 		    L-Systems          — Procedural plants and trees
 		    Dungeon generation — BSP trees, cellular automata, room placement
 		  ```
-
+-
 - # Game Engines Overview
   collapsed:: true
 	- ## Engine Comparison
@@ -895,7 +892,7 @@
 		  Python prototype?         → Pygame
 		  Custom engine?            → C++ + SDL2/SFML + OpenGL/Vulkan
 		  ```
-
+-
 - # Libs, Tools & Resources
   collapsed:: true
 	- ## Graphics APIs
@@ -930,3 +927,4 @@
 		- [[Bevy]] — Rust ECS game engine
 		- [[Unity]] — Unity engine reference
 		- [[Unreal Engine]] — Unreal Engine reference
+-

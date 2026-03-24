@@ -1,3 +1,9 @@
+---
+title: "C#"
+aliases:
+  - C#
+  - csharp
+---
 # History
 	- **How**:
 		- Developed by **Anders Hejlsberg** and his team at **Microsoft** in the early 2000s.
