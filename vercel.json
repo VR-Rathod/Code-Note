@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npx quartz build",
+  "outputDirectory": "public",
+  "framework": null,
+  "rewrites": [{ "source": "/(.*)", "destination": "/404.html" }]
+}
