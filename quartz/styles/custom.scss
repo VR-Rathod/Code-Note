@@ -1,0 +1,14 @@
+@use "./base.scss";
+
+// put your custom CSS here!
+
+// Add spacing between list items (matches Logseq outline feel)
+article ul li,
+article ol li {
+    margin-bottom: 0.4em;
+}
+
+article ul li:last-child,
+article ol li:last-child {
+    margin-bottom: 0;
+}

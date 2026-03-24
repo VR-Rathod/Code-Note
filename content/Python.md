@@ -1,0 +1,162 @@
+# History
+- **How**:
+	- Developed by Guido van Rossum in the late 1980s.
+	- Initially released in 1991 as Python 0.9.0.
+	- Designed as a high-level, interpreted, and general-purpose programming language.
+-
+- **Who**:
+	- Guido van Rossum, Dutch programmer, and the creator of Python.
+	- Python Software Foundation (PSF), which now oversees Python's development.
+-
+- **Why**:
+	- To create a language that is easy to read and write, with an emphasis on simplicity and clarity.
+	- Intended as an alternative to more complex languages like C and C++.
+-
+- # Introduction
+	- ## Advantages:
+		- Easy-to-read syntax, reducing the learning curve for new programmers.
+		- Strong support for multiple programming paradigms (procedural, object-oriented, and functional).
+		- Large standard library with built-in modules for tasks like file handling, web development, and data processing.
+		- Excellent support for third-party libraries and frameworks (e.g., Django, Flask, Pandas, NumPy).
+		- Cross-platform support (Linux, macOS, Windows).
+-
+	- ## Disadvantages:
+		- Slower execution speed compared to compiled languages like C or Java.
+		- Global Interpreter Lock (GIL) limits Python's effectiveness in multi-threaded CPU-bound applications.
+		- Limited mobile development support (although frameworks like Kivy and BeeWare exist).
+		- Runtime errors can occur due to dynamic typing, which can lead to unexpected behavior.
+-
+	- # Key Features
+		- **Interpreted Language**: Python code is executed line by line by an interpreter, rather than being compiled into machine code.
+		- **Dynamic Typing**: Variable types do not need to be declared explicitly, but can lead to runtime errors if the types are used incorrectly.
+		- **Garbage Collection**: Python automatically manages memory by removing objects that are no longer in use.
+		- **Comprehensive Standard Library**: Python comes with a vast standard library that can handle everything from file I/O to networking.
+		- **Indentation-Based Syntax**: Python uses indentation to define code blocks, making the code more readable and concise.
+-
+- # Notes
+	- **Download link** - https://www.python.org/
+	-
+	- You can create page by write {filename}.py
+	- print() - use for Print cmd
+	- You can learn python by click [here](https://learnxinyminutes.com/docs/python/)
+-
+-
+- # Libs & Framework
+	- ## 1. Web Development
+		- [[Django]]: High-level web framework for building robust web applications.
+		- [[Flask]]: Lightweight web framework for small to medium web apps.
+		- [[FastAPI]] : Modern, fast (high-performance) web framework for building APIs.
+	-
+	- ## 2. Data Science & Machine Learning
+		- [[NumPy]]: Fundamental package for scientific computing (handling arrays and matrices).
+		- [[Pandas]]: Library for data manipulation and analysis, especially for structured data.
+		- [[Matplotlib]]: Plotting library for creating static, animated, and interactive visualizations.
+		- [[Scikit-learn]]: Machine learning library for data mining and analysis.
+		- [[PyTorch]]: Deep learning libraries for building neural networks.
+		- [[XGBoost]]: Optimized gradient boosting library for machine learning.
+	-
+	- ## 3. Data Visualization
+		- [[Seaborn]]: Statistical data visualization based on Matplotlib.
+		- [[Plotly]]: Interactive graphing library for making interactive plots.
+		- [[Bokeh]]: Interactive visualization library for web applications.
+		- [[Altair]]: Declarative statistical visualization library.
+	-
+	- ## 4. Natural Language Processing (NLP)
+		- [[NLTK]]: Toolkit for working with human language data (text).
+		- [[spaCy]]: Industrial-strength NLP library for advanced text processing.
+		- [[Transformers (by Hugging Face)]]: Pre-trained models for NLP tasks such as text classification, translation, etc.
+	-
+	- ## 5. Web Scraping
+		- [[BeautifulSoup]]: Library for parsing HTML and XML documents and extracting data from them.
+		- [[Scrapy]]: Framework for large-scale web scraping and crawling.
+		- [[Selenium]]: Web testing tool that can be used for scraping dynamic web pages.
+	-
+	- ## 6. Automation & Scripting
+		- [[Celery]]: Distributed task queue for running asynchronous tasks in the background.
+		- [[PyAutoGUI]]: GUI automation library for controlling the mouse and keyboard.
+		- [[Watchdog]]: Library to monitor file system events and changes.
+	-
+	- ## 7. Computer Vision
+		- [[OpenCV]]: Open-source computer vision and machine learning software library.
+		- [[Pillow]]: Python Imaging Library (PIL) fork for image processing tasks.
+		- [[scikit-image]]: Collection of algorithms for image processing in Python.
+	-
+	- ## 8. Game Development
+		- [[Pygame]]: Set of Python modules for writing video games.
+		- [[Panda3D]]: Game engine and 3D rendering library.
+	-
+	- ## 9. Testing
+		- [[unittest]]: Python's built-in library for writing unit tests.
+		- [[pytest]]: Framework for writing simple and scalable test cases.
+		- [[nose2]]: Another unit testing framework that extends the built-in `unittest`.
+	-
+	- ## 10. Database Interaction
+		- [[SQLAlchemy]]: SQL toolkit and Object-Relational Mapping (ORM) library.
+		- [[Peewee]]: Simple ORM for SQLite, MySQL, and PostgreSQL.
+		- [[Django ORM]]: Built-in ORM for Django web framework.
+	-
+	- ## 11. Networking
+		- [[Socket]]: Built-in Python library for low-level networking.
+		- [[Twisted]]: Event-driven networking engine for building network applications.
+		- [[requests]]: Simple, elegant HTTP library for interacting with web APIs.
+	-
+	- ## 12. Cybersecurity & Cryptography
+		- [[PyCryptodome]]: Cryptography library that supports various encryption algorithms.
+		- [[Scapy]]: Tool for packet manipulation and network testing.
+		- [[cryptography]]: Library for implementing secure encryption algorithms.
+	-
+	- ## 13. GUI Development
+		- [[Tkinter]]: Python's built-in library for creating desktop GUI applications.
+		- [[PyQt]]: Python bindings for Qt, a popular C++ framework for GUI development.
+		- [[Kivy]]: Open-source Python library for developing multitouch applications.
+	-
+	- ## 14. Scientific Computing & Engineering
+		- [[SciPy]]: Library for scientific and technical computing, built on top of NumPy.
+		- [[SymPy]]: Symbolic mathematics library.
+		- [[Astropy]]: Library for astronomy-related calculations.
+	-
+	- ## 15. DevOps & Infrastructure Automation
+		- [[Ansible]]: Automation tool for IT configuration management and deployment.
+		- [[Fabric]]: Library for automating system administration tasks via SSH.
+		- [[SaltStack]]: Infrastructure automation tool that allows the management of systems.
+	-
+	- ## 16. Image Processing & Manipulation
+		- [[OpenCV]]: Computer vision and image manipulation library.
+		- [[Pillow]]: Python Imaging Library (PIL) for image manipulation tasks.
+		- [[Imageio]]: Library for reading and writing image data.
+	-
+	- ## 17. Cloud Computing & Serverless
+		- [[Boto3]]: Amazon Web Services (AWS) SDK for Python.
+		- [[Google Cloud Client Libraries]]: Python libraries for interacting with Google Cloud services.
+		- [[Azure SDK for Python]]: Python library for Microsoft Azure services.
+	-
+	- ## 18. File Handling & Compression
+		- [[shutil]]: High-level file operations, such as copying and archiving files.
+		- [[zipfile]]: Built-in library for working with ZIP archives.
+		- [[tarfile]]: Built-in library for reading and writing tar archives.
+	-
+	- ## 19. File Formats
+		- [[openpyxl]]: For reading/writing Excel (xlsx) files.
+		- [[xlrd]]: For reading Excel files (older versions like xls).
+		- [[PyYAML]]: For parsing and writing YAML files.
+	-
+	- ## 20. Time & Date Manipulation
+		- [[Pendulum]]: Another date/time library that provides a more intuitive API.
+-
+- # more learn
+	- Explore the following links for valuable resources, communities, and tools to enhance your skills :-
+		-
+		- ## github & Webs
+			-
+			- [Python Roadmap](https://github.com/DjangoEx/awesome-python-roadmaps)
+			- [Python Patterns](https://github.com/faif/python-patterns)
+			- [Track Like samurai🐱‍👤](https://github.com/yangchris11/samurai)
+			-
+			- <ins>ML Concepts</ins>
+				- [Lean Machine Learning ](https://mlu-explain.github.io/)
+			-
+			- <ins>Hacking Support</ins>
+				- [SherLock](https://github.com/sherlock-project/sherlock?tab=coc-ov-file)
+- ```python
+  print(input() == input()[::-1])
+  ```

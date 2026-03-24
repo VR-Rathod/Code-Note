@@ -1,0 +1,28 @@
+.language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+
+    .lang-option {
+        background: none;
+        border: 1px solid var(--lightgray);
+        border-radius: 4px;
+        color: var(--darkgray);
+        cursor: pointer;
+        font-size: 0.75rem;
+        padding: 0.15rem 0.45rem;
+        transition: all 0.15s ease;
+
+        &:hover {
+            border-color: var(--gray);
+            color: var(--dark);
+        }
+
+        &.active {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            color: #fff;
+        }
+    }
+}

@@ -1,6 +1,5 @@
-# Welcome to Your Code Book!
-	- Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
--
+- ## Welcome to Your Code Book
+	Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
 -
 - ## Programming Languages
 	-
@@ -12,7 +11,7 @@
 	-
 	- [[C++]] :- An extension of C that adds object-oriented features, often used in system/software development and game programming(unreal Engine).
 	-
-	- [[C#]] :- A modern, object-oriented language built for simplicity, used in web, desktop, and game development (especially with .NET and Unity).
+	- [[CSharp]] :- A modern, object-oriented language built for simplicity, used in web, desktop, and game development (especially with .NET and Unity).
 	-
 	- [[Go]] :- A statically typed language developed by Google, known for its performance and simplicity in building scalable applications.
 	-
@@ -279,7 +278,6 @@
 -
 - ## Software Information
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
-  collapsed:: true
 	- [[Software]] - This page showcases all types of software, categorized by their functionality and purpose.
 -
 - # Free Books
