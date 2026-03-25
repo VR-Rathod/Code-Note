@@ -1,3 +1,15 @@
+---
+seoTitle: C# Programming Reference – .NET Syntax and Features Guide
+description: "CSharp reference covering LINQ, async/await, generics, delegates, events, .NET 6/7/8 features, and object-oriented patterns for desktop, web, and game development."
+keywords: "csharp, C# programming, C# reference, LINQ, async await, generics, delegates, .NET, Unity, ASP.NET, C# syntax, object-oriented"
+---
+
+---
+title: "C#"
+aliases:
+  - C#
+  - csharp
+---
 # History
 	- **How**:
 		- Developed by **Anders Hejlsberg** and his team at **Microsoft** in the early 2000s.

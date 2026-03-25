@@ -1,3 +1,9 @@
+---
+seoTitle: TYPO3 CMS Reference – Extensions, TypoScript, and Admin Guide
+description: "TYPO3 is an enterprise open-source CMS. Covers TypoScript, Fluid templates, extensions, backend configuration, TYPO3 12 features, and multilingual content."
+keywords: "TYPO3, CMS, TypoScript, Fluid templates, extensions, backend configuration, TYPO3 12, multilingual, enterprise CMS, PHP CMS, content management, web development"
+---
+
 # History
 	- **How**: TYPO3 was first released in **1997** by **Kaspar Szymanski** as an open-source content management system (CMS) aimed at providing flexibility and scalability for enterprise-level websites.
 	-

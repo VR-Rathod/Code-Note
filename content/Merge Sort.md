@@ -1,3 +1,9 @@
+---
+seoTitle: Merge Sort Algorithm – Divide and Conquer Sorting Explained
+description: "Merge sort divides the array in half, sorts each half, then merges. Covers O(n log n) guaranteed time, stable sort, external sort applications, and top-down vs."
+keywords: "merge sort, divide and conquer, O(n log n), stable sort, external sort, recursive sort, time complexity, space complexity, comparison sort, algorithm implementation"
+---
+
 # Explanation
 	- **Merge Sort** is a divide-and-conquer sorting algorithm. It divides the list into smaller sublists, sorts each sublist recursively, and then merges the sorted sublists to produce the final sorted list.
 -

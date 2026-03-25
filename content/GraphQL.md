@@ -1,3 +1,9 @@
+---
+seoTitle: GraphQL Reference – Queries, Mutations, Schemas, and Resolvers
+description: "GraphQL is a query language for APIs. Covers schema definition, queries, mutations, subscriptions, resolvers, fragments, variables, and Python/JavaScript."
+keywords: "GraphQL, GraphQL queries, mutations, schema, resolvers, subscriptions, fragments, variables, GraphQL Python, graphene, Apollo, API development"
+---
+
 # History
 	- **How**: GraphQL was developed internally by **Facebook** in **2012** to improve the way mobile apps interacted with APIs. It was created to solve issues with over-fetching and under-fetching of data in traditional REST APIs.
 	-

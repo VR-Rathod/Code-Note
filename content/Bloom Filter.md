@@ -1,3 +1,9 @@
+---
+seoTitle: Bloom Filter Explained – Probabilistic Data Structure Guide
+description: "Bloom filters are space-efficient probabilistic structures for set membership queries. Learn hash functions, false positive rates, and real-world use cases."
+keywords: "Bloom filter, probabilistic data structure, set membership, false positive, hash functions, space efficiency, time complexity, cache filtering, distributed systems, algorithm"
+---
+
 # Explanation
 	- A **Bloom Filter** is a space-efficient probabilistic data structure used to test whether an element is a member of a set. It can produce false positives but never false negatives.
 -

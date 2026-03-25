@@ -1,3 +1,9 @@
+---
+seoTitle: Fibonacci Heap Explained – Amortized Efficient Priority Queue
+description: "Fibonacci heaps support decrease-key in O(1) amortized time, enabling faster Dijkstra. Learn lazy merging, cascading cut, mark bits, and amortized complexity."
+keywords: "Fibonacci heap, priority queue, amortized complexity, decrease key, lazy merge, cascading cut, O(1) amortized, time complexity, space complexity, graph algorithms"
+---
+
 # Explanation
 	- A **Fibonacci Heap** is a collection of heap-ordered trees where each tree follows the heap property. It is used to optimize priority queues and supports very efficient **decrease-key** and **delete-min** operations.
 	-

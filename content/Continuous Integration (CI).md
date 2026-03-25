@@ -1,2 +1,0 @@
-- **Automated Testing**: Running tests (unit, integration, UI) automatically to verify the correctness of code changes.
-- **Build Automation**: Automatically compiling and packaging code to ensure consistent builds.

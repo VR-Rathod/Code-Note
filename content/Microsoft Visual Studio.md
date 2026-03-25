@@ -1,3 +1,9 @@
+---
+seoTitle: Microsoft Visual Studio Reference – IDE Tips and Features Guide
+description: "Visual Studio reference covering debugging, IntelliSense, extensions, refactoring, Git integration, testing tools, and productivity features for ."
+keywords: "Microsoft Visual Studio, IDE, debugging, IntelliSense, extensions, refactoring, Git integration, .NET development, C++ development, Visual Studio 2022, productivity"
+---
+
 ## 1. History
 -
 	- **How**: Microsoft Visual Studio was first released in 1997 as an integrated development environment (IDE) for software development.

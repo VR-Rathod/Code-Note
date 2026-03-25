@@ -1,3 +1,9 @@
+---
+seoTitle: Wix Reference – Website Builder, Velo, and E-commerce Guide
+description: "Wix reference covering drag-and-drop editor, Wix Velo (JavaScript API), e-commerce, SEO, Wix Studio, and building dynamic websites with Wix CMS."
+keywords: "Wix, website builder, Wix Velo, JavaScript API, e-commerce, SEO, Wix Studio, drag-and-drop, dynamic website, Wix CMS, no-code, web design"
+---
+
 # **History**
 	- **How**: Wix was founded in **2006** by **Avishai Abrahami**, **Nadav Abrahami**, and **Gidi Torbey** as an easy-to-use website builder designed to help individuals and businesses create websites without coding skills.
 	- **Who**: Wix was developed by **Wix.com Ltd.**, a company based in Tel Aviv, Israel, with a goal of providing a drag-and-drop website builder accessible to users of all technical levels.

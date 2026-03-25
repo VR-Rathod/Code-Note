@@ -1,3 +1,9 @@
+---
+seoTitle: Finger Tree Explained – Functional Sequence Data Structure
+description: "Finger trees are functional data structures supporting O(1) access at both ends and O(log n) splits. Covers 2-3 finger trees, monoid annotations, and deque."
+keywords: "finger tree, functional data structure, deque, O(1) access, O(log n) split, monoid annotation, 2-3 tree, time complexity, space complexity, persistent data structure"
+---
+
 # Explanation
 	- A **Finger Tree** is a data structure that supports efficient access and updates at both ends of a sequence (like a deque) and allows efficient range queries and updates.
 	-

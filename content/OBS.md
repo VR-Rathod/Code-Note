@@ -1,3 +1,9 @@
+---
+seoTitle: OBS Studio Reference – Streaming and Screen Recording Guide
+description: "OBS Studio reference covering scenes, sources, audio mixer, stream settings, recording, filters, plugins, and live streaming to Twitch, YouTube, and more."
+keywords: "OBS Studio, screen recording, live streaming, scenes, sources, audio mixer, stream settings, filters, plugins, Twitch, YouTube, open source"
+---
+
 ## 1. History
 -
 	- **How**: OBS Studio was developed by Hugh "Jim" Bailey and launched in 2012 as an open-source streaming and recording software.

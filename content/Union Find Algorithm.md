@@ -1,3 +1,9 @@
+---
+seoTitle: Union-Find Algorithm – Disjoint Set with Path Compression
+description: "Union-Find tracks disjoint sets with near O(1) amortized operations. Covers union by rank, path compression, inverse Ackermann complexity, and MST applications."
+keywords: "Union-Find, disjoint set, path compression, union by rank, inverse Ackermann, O(alpha n), time complexity, space complexity, connected components, MST"
+---
+
 # Explanation
 	- **Union-Find** is a data structure that is used to keep track of a collection of disjoint sets.
 	-

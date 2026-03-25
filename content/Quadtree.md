@@ -1,3 +1,9 @@
+---
+seoTitle: Quadtree Explained – 2D Spatial Partitioning Data Structure
+description: "Quadtrees recursively subdivide 2D space into four quadrants for spatial queries. Covers point quadtree, region quadtree, nearest neighbor search, and game."
+keywords: "quadtree, spatial partitioning, 2D space, point quadtree, region quadtree, nearest neighbor, collision detection, time complexity, space complexity, game development"
+---
+
 # Explanation:
 	- A **Quadtree** is a tree data structure used to partition a two-dimensional space by recursively subdividing it into four quadrants or regions.
 	-

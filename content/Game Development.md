@@ -1,14 +1,15 @@
 ---
-seoTitle: Game Development Notes – Engines, Concepts & Resources
-description: "Complete game development reference — game loop, ECS, physics, rendering pipeline, AI, shaders, networking, optimization. Covers Godot, Unity, Unreal Engine, Bevy, and more."
-keywords: "game development, game engine, game loop, ECS architecture, game physics, rendering pipeline, game AI, game shaders, Godot, Unity, Unreal Engine, indie game development"
+seoTitle: Game Development Reference – Concepts, Engines, and Design Guide
+description: "Game development overview covering game loops, physics, rendering, AI, audio, input handling, popular engines (Unity, Unreal, Godot), and career paths."
+keywords: "game development, game loop, physics engine, rendering, game AI, audio, input handling, Unity, Unreal Engine, Godot, game design, indie game"
 ---
 
 # History
+- **How**: Game development evolved from simple 2D arcade games (1970s) to complex 3D real-time simulations powered by GPUs, physics engines, and networked multiplayer.
 - **Who**: Pioneered by companies like Atari, id Software (Doom, Quake), Epic Games (Unreal), and Valve — whose engines became the foundation of modern game dev.
 - **Why**: To create interactive real-time experiences — combining graphics, physics, audio, AI, and networking into a cohesive system.
-
 - # Introduction
+  collapsed:: true
 	- Game development is the discipline of building interactive real-time software. It spans multiple domains: rendering, physics, audio, AI, networking, and tooling. Understanding the core concepts applies to any engine — Unity, Unreal, Godot, or custom.
 	-
 	- ## Core Domains
@@ -19,9 +20,8 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		- **AI** — Pathfinding, state machines, behavior trees.
 		- **Networking** — Multiplayer, synchronization, lag compensation.
 		- **Tools** — Editors, asset pipelines, build systems.
-
+-
 - # The Game Loop
-  collapsed:: true
 	- ## Core Concept
 	  collapsed:: true
 		- The game loop is the heartbeat of every game — it runs continuously, processing input, updating state, and rendering frames.
@@ -79,7 +79,7 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		    60 FPS — Standard smooth gameplay
 		    120+ FPS — Competitive gaming, VR (90/120Hz required)
 		  ```
-
+-
 - # Entity Component System (ECS)
   collapsed:: true
 	- ## Concept
@@ -134,9 +134,8 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		  }
 		  ```
 		- Engines using ECS: **Bevy** (pure ECS), **Unity DOTS**, **Flecs** (C++ ECS library).
-
+-
 - # Rendering Pipeline
-  collapsed:: true
 	- ## Rasterization Pipeline (Traditional GPU)
 	  collapsed:: true
 		- ```
@@ -192,7 +191,6 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		  ```
 	-
 	- ## Ray Tracing vs Rasterization
-	  collapsed:: true
 		- ```
 		  Rasterization:
 		    - Projects geometry onto screen
@@ -212,7 +210,7 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		    - Real-time path tracing emerging (NVIDIA RTXDI, ReSTIR)
 		  ```
 		- See [[PathTracer Learning]] for full path tracing deep dive.
-
+-
 - # Lighting & Shading
   collapsed:: true
 	- ## Light Types
@@ -269,7 +267,7 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		  Lumen (UE5)   — Fully dynamic GI using ray tracing + SDF.
 		  ReSTIR GI     — Real-time path traced GI with reservoir sampling.
 		  ```
-
+-
 - # Physics Engine
   collapsed:: true
 	- ## Core Concepts
@@ -329,7 +327,7 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		  Ball Joint      — Free rotation in all directions (shoulder)
 		  Spring Joint    — Elastic connection with damping
 		  ```
-
+-
 - # Game AI
   collapsed:: true
 	- ## Finite State Machine (FSM)
@@ -420,7 +418,7 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		    - Time since last seen
 		    - Threat level
 		  ```
-
+-
 - # Game Math
   collapsed:: true
 	- ## Vectors
@@ -492,7 +490,7 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		  sin/cos/tan         — trigonometry (radians)
 		  atan2(y, x)         — angle from origin to point
 		  ```
-
+-
 - # Shaders
   collapsed:: true
 	- ## What is a Shader?
@@ -553,7 +551,7 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		    Heat distortion    — UV distortion using noise
 		    Hologram           — scanlines + rim light + transparency
 		  ```
-
+-
 - # Multiplayer & Networking
   collapsed:: true
 	- ## Network Architectures
@@ -614,7 +612,7 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		  WebSocket — TCP-based, works in browsers. Used for web games.
 		  WebRTC    — P2P in browsers. Used for browser multiplayer.
 		  ```
-
+-
 - # Audio in Games
   collapsed:: true
 	- ## Audio Concepts
@@ -652,7 +650,7 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		  
 		  Both integrate with Unity, Unreal, Godot via plugins.
 		  ```
-
+-
 - # Asset Pipeline
   collapsed:: true
 	- ## 3D Asset Workflow
@@ -699,7 +697,7 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		  Fonts:
 		    TTF, OTF, WOFF
 		  ```
-
+-
 - # Game Design Patterns
   collapsed:: true
 	- ## Common Patterns
@@ -753,7 +751,7 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		      }
 		  };
 		  ```
-
+-
 - # Performance & Optimization
   collapsed:: true
 	- ## CPU Optimization
@@ -818,7 +816,7 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		    Close  — High-res shadow map
 		    Far    — No shadow or baked only
 		  ```
-
+-
 - # Advanced Rendering Topics
   collapsed:: true
 	- ## Post-Processing Effects
@@ -875,7 +873,7 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		    L-Systems          — Procedural plants and trees
 		    Dungeon generation — BSP trees, cellular automata, room placement
 		  ```
-
+-
 - # Game Engines Overview
   collapsed:: true
 	- ## Engine Comparison
@@ -900,7 +898,7 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		  Python prototype?         → Pygame
 		  Custom engine?            → C++ + SDL2/SFML + OpenGL/Vulkan
 		  ```
-
+-
 - # Libs, Tools & Resources
   collapsed:: true
 	- ## Graphics APIs
@@ -935,3 +933,4 @@ keywords: "game development, game engine, game loop, ECS architecture, game phys
 		- [[Bevy]] — Rust ECS game engine
 		- [[Unity]] — Unity engine reference
 		- [[Unreal Engine]] — Unreal Engine reference
+-

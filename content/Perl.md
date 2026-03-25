@@ -1,3 +1,9 @@
+---
+seoTitle: Perl Programming Language – Syntax Reference and Scripting Guide
+description: "Perl reference covering regular expressions, file handling, references, modules, CPAN, and text processing for system administration and bioinformatics."
+keywords: "Perl programming, Perl language, regular expressions, file handling, references, CPAN, modules, text processing, system administration, bioinformatics, syntax reference"
+---
+
 # History
 	- **How**:
 		- **Perl** was created by **Larry Wall** in **1987** as a general-purpose programming language for text processing, inspired by existing languages like **C**, **sed**, **awk**, and **shell scripting**. Initially, Perl was designed to make report processing easier by combining the power of C with the ease of scripting.

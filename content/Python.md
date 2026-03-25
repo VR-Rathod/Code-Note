@@ -1,7 +1,7 @@
 ---
-seoTitle: Python Programming Notes – Complete Reference
-description: "Complete Python reference — history, syntax, OOP, libraries for web dev, data science, ML, automation, testing, and more. Free Python notes with frameworks like Django, Flask, FastAPI, NumPy, Pandas."
-keywords: "Python programming, Python tutorial, Python libraries, Django, Flask, FastAPI, NumPy, Pandas, Python data science, Python machine learning, Python web scraping, Python automation"
+seoTitle: Python Programming Language – Syntax Reference and Cheat Sheet
+description: "Python reference covering list comprehensions, decorators, generators, context managers, type hints, Python 3.10+ features, and standard library essentials."
+keywords: "Python programming, Python reference, list comprehensions, decorators, generators, context managers, type hints, Python 3, standard library, syntax cheat sheet"
 ---
 
 # History

@@ -1,3 +1,9 @@
+---
+seoTitle: Elixir Programming Language – Functional Syntax Reference Guide
+description: "Elixir reference covering pattern matching, processes, OTP, GenServer, Phoenix framework, pipelines, and functional programming for concurrent distributed."
+keywords: "Elixir programming, Elixir language, OTP, GenServer, Phoenix, pattern matching, processes, functional programming, concurrent, distributed systems, syntax reference"
+---
+
 # History
 	- **How**:
 		- **Elixir** was created by **José Valim** and first released in **2011**. It is a functional, concurrent language built on the **Erlang VM** (BEAM), which was originally developed for telecom applications by Ericsson in the 1980s.

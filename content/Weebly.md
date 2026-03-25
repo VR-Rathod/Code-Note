@@ -1,3 +1,9 @@
+---
+seoTitle: Weebly Reference – Website Builder and E-commerce Setup Guide
+description: "Weebly is a drag-and-drop website builder. Covers themes, e-commerce setup, SEO tools, app center, custom HTML/CSS, and Square integration for online stores."
+keywords: "Weebly, website builder, drag-and-drop, themes, e-commerce, SEO tools, app center, custom CSS, Square integration, online store, no-code, web design"
+---
+
 # History
 	- **How**: Weebly was founded in **2006** by **David Rusenko**, **Chris Fanini**, and **Dan Veltri** as a website builder aimed at helping individuals and small businesses create websites without needing coding skills.
 	-

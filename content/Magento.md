@@ -1,3 +1,9 @@
+---
+seoTitle: Magento E-commerce Reference – Store Setup and Development Guide
+description: "Magento is a powerful e-commerce platform. Covers catalog management, checkout, payment gateways, themes, modules, Magento 2 architecture, and REST API."
+keywords: "Magento, e-commerce, Magento 2, catalog management, checkout, payment gateway, themes, modules, REST API, Adobe Commerce, PHP e-commerce, store setup"
+---
+
 # **History**
 - **How**: Magento was launched in **2008** by **Roy Rubin** and **Yoav Kutner** as an open-source e-commerce platform designed to provide flexibility and scalability for online retailers. It was acquired by **eBay** in 2011, and later sold to **Adobe** in 2018.
 -

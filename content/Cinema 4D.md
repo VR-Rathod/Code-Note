@@ -1,3 +1,9 @@
+---
+seoTitle: Cinema 4D Reference – 3D Modeling and Motion Graphics Guide
+description: "Cinema 4D reference covering modeling, MoGraph, dynamics, rendering with Redshift, character animation, and motion graphics for broadcast and film."
+keywords: "Cinema 4D, 3D modeling, MoGraph, dynamics, Redshift, character animation, motion graphics, broadcast design, 3D software, rendering, C4D, visual effects"
+---
+
 ## 1. History
 -
 	- **How**: Cinema 4D was developed by Maxon Computer GmbH, with its first version released in 1990. It has evolved significantly over the years with multiple updates and new features.

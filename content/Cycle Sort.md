@@ -1,3 +1,9 @@
+---
+seoTitle: Cycle Sort Algorithm – Minimum Write Sorting Explained
+description: "Cycle sort minimizes the number of writes to memory by placing each element in its correct cycle position. Covers cycle detection, O(n^2) time, and use cases."
+keywords: "cycle sort, sorting algorithm, minimum writes, in-place sort, cycle detection, O(n^2), time complexity, space complexity, comparison sort, memory writes"
+---
+
 # Explanation
 	- **Cycle Sort** is a non-comparative sorting algorithm that places elements at their correct positions by cycling them through the array. It is efficient for sorting arrays where the elements are distinct.
 -

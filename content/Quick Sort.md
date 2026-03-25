@@ -1,3 +1,9 @@
+---
+seoTitle: Quick Sort Algorithm – Partitioning and Complexity Analysis
+description: "Quick sort partitions around a pivot and recursively sorts subarrays. Covers Lomuto and Hoare schemes, randomized pivot, O(n log n) average, and O(n^2) worst."
+keywords: "quick sort, sorting algorithm, partitioning, pivot selection, O(n log n), randomized quicksort, time complexity, space complexity, in-place sort, comparison sort"
+---
+
 # Explanation
 	- **Quick Sort** is another divide-and-conquer sorting algorithm. It works by selecting a pivot element and partitioning the array into two subarrays — elements less than the pivot and elements greater than the pivot. The subarrays are then sorted recursively.
 -

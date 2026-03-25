@@ -1,3 +1,9 @@
+---
+seoTitle: GIMP Reference – Open Source Image Editing and Retouching Guide
+description: "GIMP reference covering layers, selections, filters, color correction, paths, scripts, and photo retouching workflows as a free Photoshop alternative."
+keywords: "GIMP, image editing, photo retouching, layers, selections, filters, color correction, paths, scripts, free Photoshop alternative, open source, image manipulation"
+---
+
 ## 1. History
 -
 	- **How**: GIMP (GNU Image Manipulation Program) was developed as a free and open-source image editing software, first released in 1996.

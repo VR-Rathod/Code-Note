@@ -1,3 +1,9 @@
+---
+seoTitle: Go Programming Language – Syntax Reference and Concurrency Guide
+description: "Go language reference covering goroutines, channels, interfaces, error handling, modules, standard library, and idiomatic Go patterns for backend and CLI."
+keywords: "Go programming, Golang, goroutines, channels, interfaces, error handling, Go modules, standard library, concurrency, backend development, Go syntax, cheat sheet"
+---
+
 # History
 	- **How**:
 		- Developed by **Rob Pike**, **Ken Thompson**, and **Robert Griesemer** at **Google** in 2007, with the goal of improving programming productivity for large-scale systems.

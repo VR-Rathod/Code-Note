@@ -1,3 +1,9 @@
+---
+seoTitle: Line Sweep Algorithm – Computational Geometry Technique Guide
+description: "Line sweep processes geometric events in sorted order to solve intersection and area problems. Covers event queue, sweep line, interval tree, and O(n log n)."
+keywords: "line sweep, sweep line, computational geometry, event queue, interval intersection, O(n log n), time complexity, space complexity, geometric algorithm, segment intersection"
+---
+
 # Explanation
 	- The **Line Sweep Algorithm** is used to solve geometric problems like finding intersections of line segments, closest pair of points, and convex hulls. It involves sweeping a line across the plane, processing events (like endpoints or intersections) in order, and maintaining a data structure to store active segments.
 -

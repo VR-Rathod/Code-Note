@@ -1,3 +1,9 @@
+---
+seoTitle: Inheritance in OOP – Single, Multiple, and Multilevel Guide
+description: "Inheritance allows classes to derive properties from parent classes. Covers single, multiple, multilevel inheritance, method overriding, super(), and diamond."
+keywords: "inheritance, OOP, object-oriented programming, single inheritance, multiple inheritance, multilevel inheritance, method overriding, super, diamond problem, is-a relationship"
+---
+
 # Explanation
 	- Inheritance is a fundamental OOP concept where a new class (child class) derives properties and behaviors (methods) from an existing class (parent class). This allows the child class to reuse code from the parent class, making code more reusable and modular. The child class can also extend or override the functionality of the parent class.
 	  

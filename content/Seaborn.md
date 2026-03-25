@@ -1,1 +1,7 @@
+---
+seoTitle: Seaborn Python Library – Statistical Data Visualization Guide
+description: "Seaborn builds statistical visualizations on top of Matplotlib. Covers distribution plots, categorical plots, heatmaps, pair plots, regression plots, and."
+keywords: "Seaborn, Python visualization, statistical plots, heatmap, pair plot, distribution plot, categorical plot, regression plot, Matplotlib, Python library, data science"
+---
+
 - [Docs]( https://seaborn.pydata.org/)

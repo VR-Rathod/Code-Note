@@ -1,3 +1,9 @@
+---
+seoTitle: VHDL Reference – Hardware Description Language Syntax Guide
+description: "VHDL reference covering entities, architectures, signals, processes, concurrent statements, testbenches, and FPGA synthesis for digital circuit design."
+keywords: "VHDL, hardware description language, entity, architecture, signals, processes, testbench, FPGA, digital design, synthesis, concurrent statements, syntax reference"
+---
+
 # History
 	- **History**:
 		- VHDL (VHSIC Hardware Description Language) is a hardware description language that was developed in the 1980s as part of the **VHSIC** (Very High-Speed Integrated Circuit) program initiated by the **U.S. Department of Defense**. The goal was to standardize the design process of digital systems and to provide a way to describe the structure and behavior of digital systems at a high level of abstraction.

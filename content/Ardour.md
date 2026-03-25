@@ -1,3 +1,9 @@
+---
+seoTitle: Ardour DAW Reference – Open Source Audio Recording Guide
+description: "Ardour is an open-source DAW for recording, editing, and mixing. Covers tracks, regions, MIDI, plugins, routing, export, and professional audio workflows."
+keywords: "Ardour, DAW, open source, audio recording, MIDI, plugins, audio mixing, tracks, regions, routing, export, music production"
+---
+
 ## 1. History
 	- **How**: Ardour was started in 2000 by Paul Davis as an open-source digital audio workstation (DAW) focused on professional audio recording and editing.
 	- **Who**: Developed and maintained by Paul Davis and an active open-source community of contributors, mainly focused on Linux but now cross-platform.

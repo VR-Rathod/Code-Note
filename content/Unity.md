@@ -1,3 +1,9 @@
+---
+seoTitle: Unity Game Engine Reference – C# Scripting and Development Guide
+description: "Unity reference covering GameObjects, components, CSharp scripting, physics, animation, UI, shaders, Unity 6 features, and 2D/3D game development workflows."
+keywords: "Unity, game engine, C# scripting, GameObjects, components, physics, animation, UI, shaders, Unity 6, 2D game, 3D game"
+---
+
 ## 1. History
 -
 	- **How**: Unity was developed by Unity Technologies, with its first version released in 2005. It was designed to simplify game development for multiple platforms.

@@ -1,3 +1,9 @@
+---
+seoTitle: Oracle Database Reference – PL/SQL and Administration Guide
+description: "Oracle Database reference covering PL/SQL, stored procedures, indexes, partitioning, RAC, Data Guard, Oracle 19c/21c features, and performance tuning."
+keywords: "Oracle Database, PL/SQL, stored procedures, indexes, partitioning, RAC, Data Guard, Oracle 19c, Oracle 21c, database administration, RDBMS, performance tuning"
+---
+
 # History
 	- **How**:
 		- **Oracle Database**, originally known as **Oracle RDBMS**, was created by **Larry Ellison**, **Bob Miner**, and **Ed Oates** in **1977** as part of a project at **Software Development Laboratories** (SDL), later renamed **Oracle Corporation**.

@@ -1,3 +1,9 @@
+---
+seoTitle: LMMS Reference – Open Source DAW for Music Production Guide
+description: "LMMS (Linux MultiMedia Studio) reference covering Beat+Bassline editor, Song editor, instruments, effects, MIDI, and music production on Linux and Windows."
+keywords: "LMMS, DAW, open source, music production, Beat+Bassline editor, Song editor, instruments, effects, MIDI, Linux audio, free DAW, electronic music"
+---
+
 ## 1. History
 - **How**: LMMS was started by a developer named Jonathan "Japalom" Gevaryahu in 2004 as a free digital audio workstation (DAW) focused on music production.
 - **Who**: Developed by an open-source community and maintained by volunteers worldwide, with contributions from programmers, musicians, and sound engineers.

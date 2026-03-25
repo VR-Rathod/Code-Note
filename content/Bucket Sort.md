@@ -1,3 +1,9 @@
+---
+seoTitle: Bucket Sort Algorithm – Distribution Sorting Explained
+description: "Bucket sort distributes elements into buckets then sorts each bucket. Covers uniform distribution assumption, O(n+k) average case, and implementation details."
+keywords: "bucket sort, distribution sort, sorting algorithm, O(n+k), uniform distribution, hash buckets, time complexity, space complexity, integer sort, floating point sort"
+---
+
 # Explanation
 	- **Bucket Sort** is a distribution-based sorting algorithm that divides the range of the input elements into a number of buckets, sorts each bucket, and then concatenates the sorted buckets.
 	-

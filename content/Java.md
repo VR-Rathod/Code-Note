@@ -1,10 +1,12 @@
 ---
-seoTitle: Java Programming Notes – Complete Reference
-description: "Complete Java reference — history, OOP, syntax, frameworks, Spring, Android development, JVM, multithreading, and enterprise Java. Free Java notes for beginners and professionals."
-keywords: "Java programming, Java tutorial, Java OOP, Spring framework, Android development, Java multithreading, JVM, Java interview questions, Java notes"
+seoTitle: Java Programming Language – Syntax Reference and OOP Guide
+description: "Java reference covering collections, generics, streams, lambdas, concurrency, JVM internals, Java 11/17/21 features, and object-oriented design patterns."
+keywords: "Java programming, Java reference, collections, generics, streams, lambdas, concurrency, JVM, Java 17, Java 21, object-oriented, design patterns"
 ---
 
-## History
+# History
+	- **How**:
+		- Developed by **James Gosling** and **Mike Sheridan** at **Sun Microsystems** in **1991**.
 		- Initially created as part of the **Green Project** with the goal of developing software for consumer electronics.
 		- Initially called **Oak**, the language was later renamed to **Java** in 1995.
 		- Designed as a platform-independent language that could run on any device with the Java Virtual Machine (JVM), making it "write once, run anywhere."
@@ -20,7 +22,7 @@ keywords: "Java programming, Java tutorial, Java OOP, Spring framework, Android 
 		- To provide a secure, reliable, and high-performance language that could be used across multiple platforms, leveraging the **Java Virtual Machine (JVM)** for portability.
 		- To allow developers to write code once and have it run anywhere, which made it particularly popular for web applications, enterprise solutions, and mobile development (with **Android**).
 -
-- ## introduction
+- # introduction
 	- ## Advantages :
 		- **Performance and Optimization**:
 		  Java, while not as fast as low-level languages like C, offers **JIT (Just-In-Time) compilation** via the **Java Virtual Machine (JVM)**, which allows for **runtime optimizations**. Java programs can achieve high performance, especially with JVM optimizations and modern hardware.

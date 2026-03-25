@@ -1,3 +1,9 @@
+---
+seoTitle: Affinity Designer Reference – Vector Graphics Design Guide
+description: "Affinity Designer reference covering vector and pixel personas, nodes, curves, symbols, grids, export options, and professional illustration workflows."
+keywords: "Affinity Designer, vector graphics, illustration, vector persona, pixel persona, nodes, curves, symbols, export, graphic design, Illustrator alternative, design tool"
+---
+
 ## 1. History
 -
 	- **How**: Affinity Designer was developed by Serif and first released in 2014 as part of the Affinity suite of creative software.

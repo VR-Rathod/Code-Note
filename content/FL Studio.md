@@ -1,3 +1,9 @@
+---
+seoTitle: FL Studio Reference – DAW Guide for Beat Making and Production
+description: "FL Studio reference covering Pattern and Song mode, mixer, piano roll, plugins, automation, sampling, and music production workflows for producers."
+keywords: "FL Studio, DAW, beat making, music production, Pattern mode, Song mode, mixer, piano roll, plugins, automation, sampling, electronic music"
+---
+
 ## 1. History
 -
 	- **How**: FL Studio was developed by Belgian company Image-Line and first released in 1997 as Fruity Loops.

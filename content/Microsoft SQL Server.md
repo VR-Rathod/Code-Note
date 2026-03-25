@@ -1,3 +1,9 @@
+---
+seoTitle: Microsoft SQL Server Reference – T-SQL and Database Admin Guide
+description: "SQL Server reference covering T-SQL, stored procedures, indexes, query optimization, replication, Always On, SSMS, and SQL Server 2019/2022 features."
+keywords: "Microsoft SQL Server, T-SQL, stored procedures, indexes, query optimization, replication, Always On, SSMS, SQL Server 2022, database administration, RDBMS"
+---
+
 # History
 	- **How**:
 		- **Microsoft SQL Server** was first released in **1989** as a result of a collaboration between **Microsoft** and **Sybase**. Initially, it was based on Sybase’s database engine but later evolved into its own product with unique features and optimizations.

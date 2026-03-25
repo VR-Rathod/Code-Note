@@ -1,3 +1,9 @@
+---
+seoTitle: Bubble Sort Algorithm – Implementation and Complexity Analysis
+description: "Bubble sort repeatedly swaps adjacent elements to sort an array. Learn optimized bubble sort with early termination, best/worst/average case complexity, and."
+keywords: "bubble sort, sorting algorithm, adjacent swap, O(n^2), stable sort, in-place sort, time complexity, space complexity, comparison sort, algorithm implementation"
+---
+
 # Explanation
 	- **Bubble Sort** is a simple comparison-based sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The process is repeated until the list is sorted.
 -
