@@ -1,3 +1,9 @@
+---
+seoTitle: Shopify Reference – Store Setup, Liquid Themes, and API Guide
+description: "Shopify reference covering store setup, Liquid templating, Shopify CLI, theme development, Storefront API, Admin API, and app development with Polaris."
+keywords: "Shopify, e-commerce, Liquid template, Shopify CLI, theme development, Storefront API, Admin API, Polaris, Shopify app, online store, headless commerce"
+---
+
 # History
 collapsed:: true
 	- **How**: Shopify was founded in **2006** by **Tobias Lütke**, **Daniel Weinand**, and **Scott Lake** as an e-commerce platform designed to help merchants build their own online stores. The founders originally wanted to sell snowboards online, but created the platform when they couldn’t find a suitable e-commerce solution.

@@ -1,3 +1,9 @@
+---
+seoTitle: Abstraction in OOP – Principles, Examples, and Best Practices
+description: "Abstraction hides implementation details and exposes only essential features. Covers data abstraction, procedural abstraction, abstract classes, interfaces,."
+keywords: "abstraction, OOP, object-oriented programming, data abstraction, procedural abstraction, abstract classes, interfaces, encapsulation, design principles, software design"
+---
+
 # Explanation
 	- Abstraction is the OOP concept where you hide the complex implementation details and show only the essential features of an object. It allows you to focus on what an object does rather than how it performs the task. In Python, abstraction is typically implemented using abstract classes and abstract methods, where the class provides a skeleton and the subclass implements the details.
 	  

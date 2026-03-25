@@ -1,3 +1,9 @@
+---
+seoTitle: Cuckoo Hashing Explained – Collision Resolution Technique
+description: "Cuckoo hashing resolves collisions by displacing existing keys to alternate positions. Covers two-table scheme, rehashing, O(1) worst-case lookup, and load."
+keywords: "cuckoo hashing, hash table, collision resolution, O(1) lookup, two hash functions, rehashing, load factor, time complexity, space complexity, open addressing"
+---
+
 # Explanation
 	- **Cuckoo Hashing** is a hash table algorithm that resolves collisions using two hash functions. If an item collides at one position, it is "kicked out" and reinserted into another position using a second hash function.
 -

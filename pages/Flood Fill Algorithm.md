@@ -1,3 +1,9 @@
+---
+seoTitle: Flood Fill Algorithm – BFS and DFS Implementation Guide
+description: "Flood fill fills connected regions in a grid, used in paint tools and game maps. Covers BFS and DFS approaches, 4-connectivity vs 8-connectivity, and."
+keywords: "flood fill, BFS, DFS, grid algorithm, connected region, paint bucket, 4-connectivity, 8-connectivity, time complexity, space complexity, image processing"
+---
+
 # Explanation
 	- **Flood Fill** is an algorithm used to determine the area connected to a given node in a multi-dimensional array.
 	-

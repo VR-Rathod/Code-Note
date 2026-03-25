@@ -1,3 +1,9 @@
+---
+seoTitle: Abstract Classes in OOP – Definition, Usage, and Examples Guide
+description: "Abstract classes define interfaces with partial implementation in OOP. Covers abstract methods, inheritance, differences from interfaces, and language-specific."
+keywords: "abstract classes, OOP, object-oriented programming, abstract methods, inheritance, interfaces, polymorphism, Java abstract class, Python ABC, C# abstract, design patterns"
+---
+
 # Explanation
 	- An **Abstract Class** is a class that cannot be instantiated directly. It defines a blueprint for subclasses to follow, and may contain abstract methods (methods without implementation) that must be implemented by concrete subclasses.
 	- **"Enforces a contract"**: Abstract classes ensure that subclasses implement the required methods.

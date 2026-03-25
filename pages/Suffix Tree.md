@@ -1,3 +1,9 @@
+---
+seoTitle: Suffix Tree Explained – Fast String Matching Data Structure
+description: "Suffix trees enable O(m) pattern matching and many string operations. Covers Ukkonen's algorithm, suffix links, applications in bioinformatics, and compressed."
+keywords: "suffix tree, string matching, Ukkonen algorithm, suffix links, pattern matching, O(m), time complexity, space complexity, bioinformatics, compressed trie"
+---
+
 # Explanation:
 	- A **Suffix Tree** is a compressed trie of all suffixes of a given string.
 	-

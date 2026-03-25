@@ -1,3 +1,9 @@
+---
+seoTitle: Software Development Reference – Concepts, Practices, and Tools
+description: "Software development reference covering SDLC, agile, version control, testing, code review, documentation, design patterns, and software engineering best."
+keywords: "software development, SDLC, agile, version control, testing, code review, documentation, design patterns, software engineering, best practices, Git, CI/CD"
+---
+
 # **Software Organization:**
 	- Organize software data into three main categories:
 		- **All Software List** :- Comprehensive overview of available software.

@@ -1,3 +1,9 @@
+---
+seoTitle: Environment Maps in Path Tracing – IBL and HDRI Lighting Guide
+description: "Environment maps provide image-based lighting in path tracers. Covers HDRI loading, equirectangular projection, importance sampling, and IBL in Vulkan ray."
+keywords: "environment map, IBL, HDRI, image-based lighting, path tracing, ray tracing, equirectangular, importance sampling, GPU rendering, Vulkan, physically-based rendering"
+---
+
 tags:: concept, lighting, ibl, environment-map, hdr
 title:: PathTracer Learning - Concept - Environment Map
 

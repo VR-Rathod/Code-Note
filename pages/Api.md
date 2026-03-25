@@ -1,3 +1,9 @@
+---
+seoTitle: API Development Reference – REST, GraphQL, and Web API Guide
+description: "Comprehensive API reference covering REST principles, HTTP methods, status codes, authentication, versioning, GraphQL, OpenAPI specification, and API design."
+keywords: "API, REST API, GraphQL, HTTP methods, status codes, authentication, API versioning, OpenAPI, Swagger, API design, web API, JSON"
+---
+
 # History
 	- **How**:
 		- The history of APIs (Application Programming Interfaces) began as software systems needed a way to communicate with one another across different platforms. The term "API" started gaining traction in the 1960s but gained significant importance with the rise of web services.

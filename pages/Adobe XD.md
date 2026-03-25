@@ -1,3 +1,9 @@
+---
+seoTitle: Adobe XD Reference – UI/UX Design and Prototyping Guide
+description: "Adobe XD reference covering artboards, components, prototyping, auto-animate, plugins, design systems, and handoff to developers for UI/UX design."
+keywords: "Adobe XD, UI design, UX design, prototyping, artboards, components, auto-animate, design systems, developer handoff, wireframing, interaction design, plugins"
+---
+
 ## 1. History
 -
 	- **How**: Adobe XD was developed by Adobe Inc., first released in 2016 as part of the Adobe Creative Cloud suite.

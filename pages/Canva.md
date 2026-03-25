@@ -1,3 +1,9 @@
+---
+seoTitle: Canva Reference – Graphic Design and Template Creation Guide
+description: "Canva reference covering templates, design elements, brand kit, photo editing, presentations, social media graphics, and Canva Pro features for designers."
+keywords: "Canva, graphic design, templates, brand kit, photo editing, presentations, social media graphics, Canva Pro, design tool, no-code design, visual content"
+---
+
 ## 1. History
 -
 	- **How**: Canva was developed by Melanie Perkins, Cliff Obrecht, and Cameron Adams, launched in 2013 as a web-based graphic design platform.

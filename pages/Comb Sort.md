@@ -1,3 +1,9 @@
+---
+seoTitle: Comb Sort Algorithm – Improved Bubble Sort Implementation
+description: "Comb sort improves bubble sort by using a gap sequence to eliminate turtles. Covers shrink factor, gap calculation, time complexity, and comparison with shell."
+keywords: "comb sort, sorting algorithm, gap sequence, bubble sort improvement, shrink factor, time complexity, space complexity, comparison sort, in-place sort, algorithm"
+---
+
 # Explanation
 	- **Comb Sort** is a variation of **Bubble Sort** that improves on it by using a gap sequence. It eliminates small values near the end of the list more quickly by using a larger gap between comparisons.
 - # Steps:

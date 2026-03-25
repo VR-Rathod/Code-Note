@@ -1,3 +1,9 @@
+---
+seoTitle: BLAS and TLAS in Ray Tracing – Acceleration Structure Guide
+description: "BLAS and TLAS are two-level acceleration structures for ray tracing. Covers bottom-level and top-level AS construction, instancing, BVH, and Vulkan ray tracing."
+keywords: "BLAS, TLAS, acceleration structure, ray tracing, BVH, Vulkan ray tracing, bottom-level AS, top-level AS, instancing, path tracing, GPU rendering, RTX"
+---
+
 tags:: vulkan, acceleration-structure, bvh, blas, tlas
 title:: PathTracer Learning - BLAS and TLAS
 

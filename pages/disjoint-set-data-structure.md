@@ -1,3 +1,9 @@
+---
+seoTitle: Disjoint Set Data Structure – Union-Find with Path Compression
+description: "Disjoint set (Union-Find) tracks non-overlapping sets with near-constant operations. Covers union by rank, path compression, inverse Ackermann complexity, and."
+keywords: "disjoint set, Union-Find, path compression, union by rank, inverse Ackermann, connected components, O(alpha n), time complexity, space complexity, graph algorithm"
+---
+
 # Explanation
 	- The **Disjoint-set** (or **Union-Find**) data structure is used to efficiently manage a collection of disjoint sets. It supports two main operations: **find** (finding the representative or leader of a set) and **union** (merging two sets).
 -

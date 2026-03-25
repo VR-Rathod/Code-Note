@@ -1,3 +1,9 @@
+---
+seoTitle: MongoDB Python Reference – PyMongo and Motor Driver Guide
+description: "MongoDB with Python covers CRUD operations, aggregation pipeline, indexing, PyMongo, Motor async driver, and schema design for document-oriented databases."
+keywords: "MongoDB, PyMongo, Motor, Python MongoDB, CRUD operations, aggregation pipeline, indexing, document database, NoSQL, Python library, async MongoDB"
+---
+
 # History
 	- **How**:
 		- **MongoDB** was first developed in **2007** by **Dwight Merriman**, **Eliot Horowitz**, and **Kevin Ryan** as part of the **10gen** company (now MongoDB, Inc.).

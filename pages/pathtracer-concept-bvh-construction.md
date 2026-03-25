@@ -1,3 +1,9 @@
+---
+seoTitle: BVH Construction – Building Bounding Volume Hierarchies Guide
+description: "BVH construction organizes scene geometry for fast ray intersection. Covers SAH, median split, LBVH, HLBVH, GPU BVH construction, and quality vs build time."
+keywords: "BVH construction, bounding volume hierarchy, SAH, surface area heuristic, LBVH, ray tracing, path tracing, GPU rendering, Vulkan, acceleration structure, BVH"
+---
+
 tags:: concept, bvh, acceleration-structure, algorithm
 title:: PathTracer Learning - Concept - BVH Construction
 

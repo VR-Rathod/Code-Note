@@ -1,3 +1,9 @@
+---
+seoTitle: Next Event Estimation in Path Tracing – Direct Light Sampling
+description: "Next event estimation explicitly samples light sources to reduce variance. Covers shadow rays, area light sampling, MIS combination, and implementation in."
+keywords: "next event estimation, NEE, path tracing, ray tracing, direct light sampling, shadow rays, area light, MIS, variance reduction, GPU rendering, Vulkan, rendering"
+---
+
 tags:: concept, direct-lighting, variance-reduction, nee
 title:: PathTracer Learning - Concept - Next Event Estimation
 

@@ -1,3 +1,9 @@
+---
+seoTitle: Node.js Reference – JavaScript Runtime and Backend Dev Guide
+description: "Node.js reference covering event loop, streams, modules, npm, Express, async patterns, file system, HTTP server, and building scalable backend applications."
+keywords: "nodejs, Node.js, JavaScript runtime, event loop, streams, npm, Express, async, file system, HTTP server, backend development, REST API"
+---
+
 # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills : -
 	-

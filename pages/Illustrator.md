@@ -1,3 +1,9 @@
+---
+seoTitle: Adobe Illustrator Reference – Vector Design and Illustration Guide
+description: "Illustrator reference covering pen tool, shapes, typography, color swatches, artboards, effects, symbols, and professional vector illustration workflows."
+keywords: "Adobe Illustrator, vector design, illustration, pen tool, typography, color swatches, artboards, effects, symbols, graphic design, vector graphics, Adobe CC"
+---
+
 ## 1. History
 -
 	- **How**: Adobe Illustrator was developed by Adobe Inc., first released in 1987 as a vector graphics editor.

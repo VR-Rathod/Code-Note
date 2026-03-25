@@ -1,3 +1,9 @@
+---
+seoTitle: Logseq Reference – Knowledge Management and Note-Taking Guide
+description: "Logseq is an open-source knowledge management tool. Covers blocks, pages, queries, templates, plugins, graph view, and building a personal knowledge base."
+keywords: "Logseq, knowledge management, note-taking, blocks, pages, queries, templates, plugins, graph view, personal knowledge base, PKM, open source"
+---
+
 ## 1. History
 -
 	- **How**: Logseq was developed by a community of open-source enthusiasts, launched in 2020 as a knowledge management tool.

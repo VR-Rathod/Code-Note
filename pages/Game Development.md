@@ -1,3 +1,9 @@
+---
+seoTitle: Game Development Reference – Concepts, Engines, and Design Guide
+description: "Game development overview covering game loops, physics, rendering, AI, audio, input handling, popular engines (Unity, Unreal, Godot), and career paths."
+keywords: "game development, game loop, physics engine, rendering, game AI, audio, input handling, Unity, Unreal Engine, Godot, game design, indie game"
+---
+
 # History
 - **How**: Game development evolved from simple 2D arcade games (1970s) to complex 3D real-time simulations powered by GPUs, physics engines, and networked multiplayer.
 - **Who**: Pioneered by companies like Atari, id Software (Doom, Quake), Epic Games (Unreal), and Valve — whose engines became the foundation of modern game dev.

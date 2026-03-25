@@ -1,3 +1,9 @@
+---
+seoTitle: Java Programming Language – Syntax Reference and OOP Guide
+description: "Java reference covering collections, generics, streams, lambdas, concurrency, JVM internals, Java 11/17/21 features, and object-oriented design patterns."
+keywords: "Java programming, Java reference, collections, generics, streams, lambdas, concurrency, JVM, Java 17, Java 21, object-oriented, design patterns"
+---
+
 # History
 	- **How**:
 		- Developed by **James Gosling** and **Mike Sheridan** at **Sun Microsystems** in **1991**.

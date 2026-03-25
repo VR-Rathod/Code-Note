@@ -1,3 +1,9 @@
+---
+seoTitle: MySQL Reference – SQL Queries, Indexes, and Administration Guide
+description: "MySQL reference covering SQL syntax, joins, indexes, stored procedures, triggers, replication, InnoDB, MySQL 8 features, and performance optimization."
+keywords: "MySQL, SQL, joins, indexes, stored procedures, triggers, replication, InnoDB, MySQL 8, database administration, RDBMS, query optimization"
+---
+
 # History
 	- **How**:
 		- SQL (Structured Query Language) was first developed in the early **1970s** at **IBM** by **Donald D. Chamberlin** and **Ray Boyce** as part of the **System R project** to manage and query relational databases.

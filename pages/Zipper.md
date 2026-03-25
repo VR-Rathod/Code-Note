@@ -1,3 +1,9 @@
+---
+seoTitle: Zipper Data Structure – Functional Navigation in Tree Structures
+description: "Zippers provide a cursor into a data structure for efficient local updates. Covers list zipper, tree zipper, context representation, and functional programming."
+keywords: "zipper data structure, functional programming, tree navigation, list zipper, tree zipper, cursor, context, O(1) local update, time complexity, space complexity, Haskell"
+---
+
 # Explanation
 	- A **Zipper** is a data structure used to efficiently navigate and manipulate sequences. It’s often used in functional programming to manage pairs of sequences, typically by "zipping" together two lists.
 -

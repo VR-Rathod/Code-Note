@@ -1,3 +1,9 @@
+---
+seoTitle: Dijkstra's Algorithm – Shortest Path in Weighted Graphs
+description: "Dijkstra's algorithm finds shortest paths from a source in non-negative weighted graphs. Covers priority queue implementation, O((V+E) log V) complexity, and."
+keywords: "Dijkstra algorithm, shortest path, weighted graph, priority queue, greedy algorithm, O(V+E log V), time complexity, space complexity, non-negative weights, graph algorithm"
+---
+
 # Explanation
 	- **Dijkstra's Algorithm** is a greedy algorithm used to find the shortest paths from a source vertex to all other vertices in a **weighted graph** with **non-negative edge weights**.
 	-

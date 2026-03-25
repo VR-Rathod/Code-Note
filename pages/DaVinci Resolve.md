@@ -1,3 +1,9 @@
+---
+seoTitle: DaVinci Resolve Reference – Video Editing and Color Grading Guide
+description: "DaVinci Resolve reference covering Cut, Edit, Fusion, Color, Fairlight pages, color grading, VFX, audio mixing, and professional video post-production."
+keywords: "DaVinci Resolve, video editing, color grading, Fusion, Fairlight, Cut page, Edit page, VFX, audio mixing, post-production, free video editor, Blackmagic"
+---
+
 ## 1. History
 -
 	- **How**: DaVinci Resolve was originally developed by DaVinci Systems as a color correction tool and was first released in the late 1980s. It evolved significantly after being acquired by Blackmagic Design in 2009.

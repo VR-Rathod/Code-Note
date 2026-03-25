@@ -1,3 +1,9 @@
+---
+seoTitle: Manacher's Algorithm – Longest Palindromic Substring in O(n)
+description: "Manacher's algorithm finds the longest palindromic substring in linear time. Covers center expansion, palindrome radius array, O(n) time, and string."
+keywords: "Manacher algorithm, longest palindrome, palindromic substring, O(n), linear time, string algorithm, center expansion, palindrome radius, time complexity, space complexity"
+---
+
 # Explanation:
 	- **Manacher's Algorithm** is an efficient algorithm to find the **longest palindromic substring** in linear time **O(n)**.
 	-

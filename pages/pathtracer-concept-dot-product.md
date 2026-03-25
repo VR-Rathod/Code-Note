@@ -1,3 +1,9 @@
+---
+seoTitle: Dot Product in 3D Graphics – Vector Math for Shading and Rays
+description: "The dot product measures vector alignment, essential for lighting and ray tracing. Covers cosine angle, diffuse shading, specular highlights, and GLSL/HLSL."
+keywords: "dot product, vector math, 3D graphics, ray tracing, path tracing, diffuse shading, specular highlights, GLSL, HLSL, GPU rendering, Vulkan, linear algebra"
+---
+
 tags:: concept, math, vectors, linear-algebra
 title:: PathTracer Learning - Concept - Dot Product
 

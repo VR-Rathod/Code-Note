@@ -1,3 +1,9 @@
+---
+seoTitle: R Programming Language – Syntax Reference and Data Science Guide
+description: "R language reference covering vectors, data frames, ggplot2, dplyr, tidyverse, statistical functions, and data visualization for data science and analysis."
+keywords: "R programming, R language, data frames, ggplot2, dplyr, tidyverse, statistical analysis, data visualization, data science, R syntax, cheat sheet"
+---
+
 # History
 	- **How**:
 		- Developed by **Ross Ihaka** and **Robert Gentleman** in the early 1990s at the University of Auckland, New Zealand.

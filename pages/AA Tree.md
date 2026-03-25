@@ -1,3 +1,9 @@
+---
+seoTitle: AA Tree Explained – Balanced BST Implementation Guide
+description: "AA tree is a balanced binary search tree variant of red-black trees. Learn insertion, deletion, skew, split operations, and time complexity analysis."
+keywords: "AA tree, balanced BST, self-balancing tree, binary search tree, skew operation, split operation, time complexity, space complexity, tree rotation, data structures"
+---
+
 # Explanation
 	- The **AA Tree** is a self-balancing binary search tree (BST). It’s a variation of the Red-Black Tree but with a simpler set of rules. The primary difference lies in how the tree is balanced, and it ensures that operations like insertion, deletion, and searching remain efficient.
 -

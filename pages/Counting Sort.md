@@ -1,3 +1,9 @@
+---
+seoTitle: Counting Sort Algorithm – Linear Time Integer Sorting Guide
+description: "Counting sort achieves O(n+k) time by counting element frequencies. Learn stable counting sort, prefix sum technique, limitations, and comparison with radix."
+keywords: "counting sort, integer sort, O(n+k), linear time sort, stable sort, prefix sum, frequency array, time complexity, space complexity, non-comparison sort"
+---
+
 # Explanation
 	- **Counting Sort** is a non-comparison-based sorting algorithm that counts the occurrences of each distinct element in the input array and uses this count to place elements in the correct position in the sorted output.
 	-

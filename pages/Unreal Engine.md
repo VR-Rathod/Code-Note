@@ -1,3 +1,9 @@
+---
+seoTitle: Unreal Engine Reference – Blueprints and C++ Development Guide
+description: "Unreal Engine reference covering Blueprints, C++ gameplay, materials, Lumen, Nanite, animation, Chaos physics, and Unreal Engine 5 features for AAA development."
+keywords: "Unreal Engine, Blueprints, C++ gameplay, materials, Lumen, Nanite, animation, Chaos physics, Unreal Engine 5, UE5, game development, AAA games"
+---
+
 # History
 - **How**: Developed by **Epic Games**, first released in **1998** with the game *Unreal*. UE4 (2014) brought it to modern PBR/physically-based era. UE5 (2022) introduced Nanite and Lumen.
 - **Who**: Founded by **Tim Sweeney**. Epic Games continues active development.

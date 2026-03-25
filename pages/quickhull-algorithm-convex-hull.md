@@ -1,3 +1,9 @@
+---
+seoTitle: Quickhull Algorithm – Convex Hull via Divide and Conquer
+description: "Quickhull finds the convex hull by recursively finding the farthest point from each edge. Covers O(n log n) average, O(n^2) worst case, and comparison with."
+keywords: "Quickhull, convex hull, divide and conquer, computational geometry, farthest point, O(n log n), time complexity, space complexity, point set, geometric algorithm"
+---
+
 # Explanation
 	- **Quickhull Algorithm** is a divide and conquer approach for finding the convex hull of a set of points. It works by selecting the two extreme points (leftmost and rightmost), and then recursively dividing the set of points into two subsets (one on the left and one on the right) and finding the convex hull for each subset.
 -

@@ -1,3 +1,9 @@
+---
+seoTitle: Audacity Reference – Audio Editing and Recording Guide
+description: "Audacity is a free audio editor. Covers recording, editing, effects, noise reduction, multi-track mixing, export formats, and podcast production workflows."
+keywords: "Audacity, audio editing, audio recording, effects, noise reduction, multi-track, export, podcast production, free audio editor, waveform, audio software"
+---
+
 ## 1. History
 -
 	- **How**: Audacity was developed by Dominic Mazzoni and Roger D. Smith, first released in 2000 as a free audio editing software.

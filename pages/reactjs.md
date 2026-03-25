@@ -1,3 +1,9 @@
+---
+seoTitle: React.js Reference – Components, Hooks, and State Management Guide
+description: "React reference covering functional components, hooks, context, Redux, React Router, performance optimization, React 18 features, and testing with React."
+keywords: "reactjs, React, React.js, components, hooks, useState, useEffect, context, Redux, React Router, React 18, React Testing Library"
+---
+
 # 📜 **History**
 	- **How**:
 		- Developed by Jordan Walke, a software engineer at Facebook, in 2011.

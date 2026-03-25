@@ -1,3 +1,9 @@
+---
+seoTitle: Fibonacci Sequence – Algorithms, Complexity, and Implementations
+description: "Explore Fibonacci number computation via recursion, memoization, dynamic programming, and matrix exponentiation."
+keywords: "Fibonacci sequence, dynamic programming, memoization, matrix exponentiation, recursion, O(n), O(log n), time complexity, space complexity, golden ratio, algorithm"
+---
+
 - Useful for moderate n values
 - ```C++
   // Usefull for small Numbers

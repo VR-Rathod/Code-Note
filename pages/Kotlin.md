@@ -1,3 +1,9 @@
+---
+seoTitle: Kotlin Programming Language – Syntax Reference and Android Guide
+description: "Kotlin reference covering null safety, coroutines, extension functions, data classes, sealed classes, and Android development patterns with Jetpack Compose."
+keywords: "Kotlin programming, Kotlin reference, null safety, coroutines, extension functions, data classes, sealed classes, Android, Jetpack Compose, syntax cheat sheet"
+---
+
 # History
 	- **How**:
 		- Developed by **JetBrains**, Kotlin was officially announced in 2011 and released in 2016 as an open-source language.

@@ -1,3 +1,9 @@
+---
+seoTitle: Splay Tree Explained – Self-Adjusting BST with Amortized O(log n)
+description: "Splay trees move recently accessed nodes to the root via splaying rotations. Covers zig, zig-zig, zig-zag cases, amortized O(log n), and cache-friendly access."
+keywords: "splay tree, self-adjusting BST, splaying, zig rotation, zig-zig, zig-zag, amortized O(log n), time complexity, space complexity, cache-friendly, data structure"
+---
+
 # Explanation
 	- A **Splay Tree** is a self-adjusting binary search tree that automatically moves the accessed element to the root via **splaying**.
 	-

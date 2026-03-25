@@ -1,3 +1,9 @@
+---
+seoTitle: Cybersecurity Reference – Threats, Defense, and Security Guide
+description: "Cybersecurity reference covering threat models, OWASP Top 10, penetration testing, network security, cryptography, incident response, and security best."
+keywords: "cybersecurity, security, OWASP, penetration testing, network security, cryptography, incident response, threat modeling, vulnerability, firewall, ethical hacking"
+---
+
 # History
 	- **How:**
 	  Cybersecurity emerged as a field in the late 20th century as the internet and networked systems began to grow. It evolved as a response to the increasing sophistication and scale of digital threats.

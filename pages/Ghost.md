@@ -1,3 +1,9 @@
+---
+seoTitle: Ghost CMS Reference – Publishing Platform Setup and API Guide
+description: "Ghost is a modern publishing platform for blogs and newsletters. Covers themes, Ghost Content API, members, subscriptions, integrations, and self-hosting setup."
+keywords: "Ghost CMS, publishing platform, blog, newsletter, Ghost themes, Content API, members, subscriptions, self-hosting, headless CMS, Ghost Pro, web publishing"
+---
+
 # **History**
 	- **How**: Ghost was created in **2013** by **John O'Nolan** as an open-source publishing platform designed for bloggers and content creators, focusing on simplicity, speed, and flexibility.
 	-

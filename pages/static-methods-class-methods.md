@@ -1,3 +1,9 @@
+---
+seoTitle: Static Methods and Class Methods – OOP Reference and Examples
+description: "Static and class methods belong to the class rather than instances. Covers @staticmethod, @classmethod, factory methods, utility functions, and language."
+keywords: "static methods, class methods, OOP, @staticmethod, @classmethod, factory methods, utility functions, Python static, Java static, C++ static, object-oriented programming"
+---
+
 # Explanation
 	- **Static methods** and **class methods** are both methods that belong to the class itself rather than instances of the class.
 	- **Static Method**: Doesn’t take `self` or `cls` as its first argument. It can be called on the class itself or instances, but it doesn’t modify class state or instance state.

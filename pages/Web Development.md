@@ -1,3 +1,9 @@
+---
+seoTitle: Web Development Reference – Frontend, Backend, and Full Stack Guide
+description: "Web development reference covering HTML, CSS, JavaScript, frontend frameworks, backend APIs, databases, deployment, performance, and modern web development."
+keywords: "web development, frontend, backend, full stack, HTML, CSS, JavaScript, React, Node.js, databases, deployment, REST API"
+---
+
 # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills : -
 	-

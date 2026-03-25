@@ -1,3 +1,9 @@
+---
+seoTitle: C++ Programming Reference – Modern C++ Syntax and Features
+description: "Comprehensive C++ reference covering STL, templates, smart pointers, lambdas, move semantics, C++11/14/17/20 features, and object-oriented programming patterns."
+keywords: "cpp, C++ programming, C++ reference, STL, templates, smart pointers, lambdas, move semantics, C++17, C++20, object-oriented, modern C++"
+---
+
 # History
 - **How**:
 	- Developed by **Bjarne Stroustrup** in 1979 at **Bell Labs**.

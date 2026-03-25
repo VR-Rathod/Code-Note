@@ -1,3 +1,9 @@
+---
+seoTitle: Eulerian Path – Hierholzer's Algorithm Implementation Guide
+description: "Hierholzer's algorithm finds Eulerian circuits and paths in O(E) time. Covers Eulerian circuit conditions, directed and undirected graphs, and stack-based."
+keywords: "Eulerian path, Eulerian circuit, Hierholzer algorithm, graph theory, O(E) time, directed graph, undirected graph, time complexity, space complexity, edge traversal"
+---
+
 # Explanation
 	- **Eulerian Path** in a graph is a path that visits every edge exactly once. **Hierholzer's Algorithm** is used to find Eulerian paths or circuits in a graph.
 	-

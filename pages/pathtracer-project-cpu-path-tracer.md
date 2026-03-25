@@ -1,3 +1,9 @@
+---
+seoTitle: CPU Path Tracer Project – Implementation Notes and Architecture
+description: "CPU path tracer project covering scene representation, BVH, materials, camera, Monte Carlo sampling, and progressive rendering implementation details."
+keywords: "CPU path tracer, path tracing, ray tracing, BVH, materials, camera, Monte Carlo, progressive rendering, C++ path tracer, project notes, GPU rendering"
+---
+
 tags:: project, cpu, path-tracing, implementation
 title:: PathTracer Learning - Project - CPU Path Tracer
 

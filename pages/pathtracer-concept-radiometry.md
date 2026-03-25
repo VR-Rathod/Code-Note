@@ -1,3 +1,9 @@
+---
+seoTitle: Radiometry in Path Tracing – Radiance, Irradiance, and Flux Guide
+description: "Radiometry provides the physical basis for light measurement in rendering. Covers radiance, irradiance, flux, solid angle, BRDF, and the rendering equation."
+keywords: "radiometry, radiance, irradiance, flux, solid angle, rendering equation, path tracing, ray tracing, physically-based rendering, GPU rendering, Vulkan, light measurement"
+---
+
 tags:: concept, math, radiometry, physics
 title:: PathTracer Learning - Concept - Radiometry
 

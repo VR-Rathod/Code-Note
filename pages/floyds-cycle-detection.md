@@ -1,3 +1,9 @@
+---
+seoTitle: Floyd's Cycle Detection – Tortoise and Hare Algorithm Guide
+description: "Floyd's cycle detection finds cycles in sequences using two pointers at different speeds. Covers cycle start detection, cycle length, O(n) time, O(1) space."
+keywords: "Floyd cycle detection, tortoise and hare, two pointers, linked list cycle, cycle detection, O(n) time, O(1) space, time complexity, space complexity, algorithm"
+---
+
 # Explanation
 	- Floyd’s Cycle Detection Algorithm, also known as **Tortoise and Hare**, is used to detect if there is a cycle in a linked list. It uses two pointers moving at different speeds.
 -

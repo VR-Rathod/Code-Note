@@ -1,3 +1,9 @@
+---
+seoTitle: Kadane's Algorithm – Maximum Subarray Sum in Linear Time
+description: "Kadane's algorithm finds the maximum subarray sum in O(n) time using dynamic programming. Covers local and global maximum tracking, negative arrays, and 2D."
+keywords: "Kadane algorithm, maximum subarray, dynamic programming, O(n), linear time, subarray sum, time complexity, space complexity, array algorithm, negative numbers"
+---
+
 # Explanation
 	- Kadane’s Algorithm is used to find the **maximum sum subarray** in a given array of integers. It works in **O(n)** time.
 -

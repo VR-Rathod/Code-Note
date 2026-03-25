@@ -1,3 +1,9 @@
+---
+seoTitle: Joomla CMS Reference – Extensions, Templates, and Admin Guide
+description: "Joomla is a flexible open-source CMS. Covers articles, categories, extensions, templates, user management, Joomla 4/5 features, and multilingual sites."
+keywords: "Joomla, CMS, content management, Joomla extensions, templates, articles, categories, user management, Joomla 4, multilingual, PHP CMS, web development"
+---
+
 # History
 	- **How**: Joomla was released in **2005** as a fork of the **Mambo** CMS, aiming to provide a flexible, open-source platform for creating websites with ease and extensibility.
 	- **Who**: It was developed by **Andrew Eddie**, **Brian Teeman**, and others, overseen by **Open Source Matters** and supported by a large global community of developers and users.

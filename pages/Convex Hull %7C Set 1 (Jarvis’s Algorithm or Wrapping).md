@@ -1,3 +1,9 @@
+---
+seoTitle: Convex Hull – Jarvis March (Gift Wrapping) Algorithm
+description: "Jarvis March computes the convex hull by gift-wrapping around the outermost points. Covers orientation test, O(nh) complexity, and implementation in."
+keywords: "convex hull, Jarvis march, gift wrapping, computational geometry, orientation test, O(nh) complexity, time complexity, space complexity, polygon, point set"
+---
+
 # Explanation
 	- **Jarvis's Algorithm (Gift Wrapping)** is a simple algorithm for finding the convex hull of a set of points in the plane. It starts from the leftmost point and repeatedly selects the point that is the most counterclockwise relative to the current point.
 -

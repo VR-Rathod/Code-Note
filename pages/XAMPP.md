@@ -1,3 +1,9 @@
+---
+seoTitle: XAMPP Reference – Local Web Server Setup and Configuration Guide
+description: "XAMPP provides a local Apache, MySQL, PHP, and Perl development environment. Covers installation, virtual hosts, phpMyAdmin, SSL setup, and troubleshooting."
+keywords: "XAMPP, local web server, Apache, MySQL, PHP, phpMyAdmin, virtual hosts, SSL, local development, web development, PHP development, localhost setup"
+---
+
 ## 1. History
 -
 	- **How**: XAMPP was developed by Apache Friends, first released in 2002 as an easy-to-install Apache distribution.

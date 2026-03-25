@@ -1,3 +1,9 @@
+---
+seoTitle: Free Code Notes – Programming Knowledge Base Home and Overview
+description: "Free Code Notes is a programming knowledge base covering algorithms, data structures, languages, frameworks, tools, and software engineering concepts."
+keywords: "index, Free Code Notes, programming knowledge base, algorithms, data structures, programming languages, frameworks, tools, software engineering, Logseq, notes, index"
+---
+
 ## Welcome to Your Code Book!
 	- Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
 -

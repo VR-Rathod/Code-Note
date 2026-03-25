@@ -1,3 +1,9 @@
+---
+seoTitle: Johnson's Algorithm – All-Pairs Shortest Path for Sparse Graphs
+description: "Johnson's algorithm finds all-pairs shortest paths efficiently using reweighting and Dijkstra. Covers Bellman-Ford reweighting, O(V^2 log V + VE) complexity,."
+keywords: "Johnson algorithm, all-pairs shortest path, sparse graph, reweighting, Dijkstra, Bellman-Ford, O(V^2 log V), time complexity, space complexity, graph algorithm"
+---
+
 # Explanation
 	- **Johnson's Algorithm** is used to find **all pairs shortest paths** in a **weighted directed graph**. It works by transforming the graph to ensure there are no negative weight edges, applying Bellman-Ford, and then running Dijkstra’s algorithm from each vertex.
 	-

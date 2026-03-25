@@ -1,3 +1,9 @@
+---
+seoTitle: PostgreSQL Reference – SQL, Extensions, and Administration Guide
+description: "PostgreSQL reference covering advanced SQL, JSONB, full-text search, extensions, replication, partitioning, PostgreSQL 15/16 features, and performance tuning."
+keywords: "PostgreSQL, SQL, JSONB, full-text search, extensions, replication, partitioning, PostgreSQL 16, database administration, RDBMS, query optimization, psql"
+---
+
 # History
 	- **How**:
 		- **PostgreSQL** is an open-source, object-relational database management system (DBMS) that originated from the **Ingres project** at the **University of California, Berkeley** in the 1980s.

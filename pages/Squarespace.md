@@ -1,3 +1,9 @@
+---
+seoTitle: Squarespace Reference – Website Builder and Design Guide
+description: "Squarespace reference covering templates, blocks, CSS customization, e-commerce setup, SEO settings, domains, and Squarespace 7.1 features for website building."
+keywords: "Squarespace, website builder, templates, CSS customization, e-commerce, SEO, domains, Squarespace 7.1, web design, no-code, online store, blog platform"
+---
+
 # **History**
 	- **How**: Squarespace was founded in **2003** by **Anthony Casalena** as a website-building platform with a focus on design, enabling individuals and small businesses to create professional websites without coding.
 	-

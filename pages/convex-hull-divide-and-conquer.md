@@ -1,3 +1,9 @@
+---
+seoTitle: Convex Hull – Divide and Conquer Algorithm Explained
+description: "Divide and conquer convex hull splits the point set recursively and merges hulls. Covers upper and lower tangent computation, O(n log n) complexity, and."
+keywords: "convex hull, divide and conquer, computational geometry, upper tangent, lower tangent, O(n log n), time complexity, space complexity, merge hull, point set"
+---
+
 # Explanation
 	- **Convex Hull** is the smallest convex polygon that can enclose a set of points in a plane. The **Divide and Conquer Algorithm** for finding the Convex Hull works by dividing the set of points into smaller subsets, solving the Convex Hull problem for each subset, and then merging the results to form the final convex hull.
 -

@@ -1,3 +1,9 @@
+---
+seoTitle: Hungarian Algorithm – Optimal Assignment Problem Solution
+description: "The Hungarian algorithm solves the assignment problem in O(n^3) time. Covers cost matrix, augmenting paths, zero covering, and applications in scheduling and."
+keywords: "Hungarian algorithm, Munkres algorithm, assignment problem, bipartite matching, O(n^3), cost matrix, augmenting path, time complexity, space complexity, optimization"
+---
+
 # Explanation
 	- The **Hungarian Algorithm** (also known as the **Kuhn-Munkres Algorithm**) is a combinatorial optimization algorithm used for solving the **assignment problem**. Given a cost matrix, it finds the optimal way to assign `n` tasks to `n` workers such that the total cost is minimized.
 -

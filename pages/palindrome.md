@@ -1,3 +1,9 @@
+---
+seoTitle: Palindrome Algorithms – Detection, Counting, and Longest Substring
+description: "Explore palindrome detection, counting palindromic substrings, and finding the longest palindrome. Covers dynamic programming, Manacher's algorithm, and."
+keywords: "palindrome, palindrome detection, longest palindromic substring, dynamic programming, two pointers, Manacher algorithm, time complexity, space complexity, string algorithm"
+---
+
 - ```python
   # sum
   arr= [1,1,1,2,3,6,6,2]

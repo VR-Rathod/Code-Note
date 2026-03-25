@@ -1,3 +1,9 @@
+---
+seoTitle: Polymorphism in OOP – Types, Examples, and Implementation Guide
+description: "Polymorphism allows objects of different types to be treated uniformly. Covers compile-time and runtime polymorphism, method overloading, overriding, and duck."
+keywords: "polymorphism, OOP, object-oriented programming, compile-time polymorphism, runtime polymorphism, method overloading, method overriding, duck typing, software design"
+---
+
 # Explanation
 	- Polymorphism allows different classes to provide their own implementation of a method that is defined in a parent class. It allows you to use the same method name for different behaviors depending on the object that is calling it. Polymorphism can be achieved through **method overriding** in the subclass or **method overloading** (though Python doesn’t support method overloading directly).
 	  

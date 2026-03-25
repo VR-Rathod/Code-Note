@@ -1,3 +1,9 @@
+---
+seoTitle: Swift Programming Language – Syntax Reference and iOS Dev Guide
+description: "Swift reference covering optionals, protocols, generics, closures, concurrency with async/await, SwiftUI basics, and iOS/macOS development patterns."
+keywords: "Swift programming, Swift language, optionals, protocols, generics, closures, async await, SwiftUI, iOS development, macOS, Swift 5, syntax reference"
+---
+
 # History
 	- **How**:
 		- Developed by **Apple**, Swift was introduced in **2014** as a modern programming language designed to replace **Objective-C** for iOS and macOS development.

@@ -1,3 +1,9 @@
+---
+seoTitle: Importance Sampling in Path Tracing – Variance Reduction Guide
+description: "Importance sampling reduces variance in Monte Carlo rendering by sampling proportional to the integrand."
+keywords: "importance sampling, path tracing, ray tracing, Monte Carlo, variance reduction, cosine-weighted sampling, BRDF sampling, MIS, GPU rendering, Vulkan, rendering"
+---
+
 tags:: concept, math, probability, variance-reduction
 title:: PathTracer Learning - Concept - Importance Sampling
 

@@ -1,3 +1,9 @@
+---
+seoTitle: Temporal Rejection in Path Tracing – Disocclusion and Motion Guide
+description: "Temporal rejection discards invalid history samples in temporal rendering. Covers disocclusion detection, motion vectors, depth comparison, and ReSTIR."
+keywords: "temporal rejection, path tracing, ray tracing, disocclusion, motion vectors, depth comparison, ReSTIR, temporal accumulation, GPU rendering, Vulkan, denoising"
+---
+
 tags:: concept, temporal, denoising, rejection
 title:: PathTracer Learning - Concept - Temporal Rejection
 

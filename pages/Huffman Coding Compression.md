@@ -1,3 +1,9 @@
+---
+seoTitle: Huffman Coding – Lossless Data Compression Algorithm Guide
+description: "Huffman coding assigns shorter codes to frequent characters for optimal prefix-free compression. Covers greedy tree construction, encoding, decoding, and."
+keywords: "Huffman coding, data compression, lossless compression, prefix-free code, greedy algorithm, entropy, frequency table, time complexity, space complexity, binary tree"
+---
+
 # Explanation
 	- **Huffman Coding** is a **lossless data compression** algorithm that assigns variable-length codes to input characters based on their frequencies.
 	-

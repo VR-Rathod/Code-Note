@@ -1,3 +1,9 @@
+---
+seoTitle: Sublime Text Reference – Code Editor Tips and Shortcuts Guide
+description: "Sublime Text reference covering multi-cursor editing, command palette, packages, snippets, build systems, key bindings, and productivity tips for developers."
+keywords: "Sublime Text, code editor, multi-cursor, command palette, packages, snippets, build systems, key bindings, productivity, text editor, developer tools, Sublime Text 4"
+---
+
 ## 1. History
 -
 	- **How**: Sublime Text was developed by Jon Skinner and was first released in 2008 as a text editor aimed at developers.

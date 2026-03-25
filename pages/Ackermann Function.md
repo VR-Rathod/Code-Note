@@ -1,3 +1,9 @@
+---
+seoTitle: Ackermann Function Explained – Recursion and Complexity
+description: "The Ackermann function is a total computable function that is not primitive recursive. Explore its definition, recursion depth, and complexity analysis."
+keywords: "Ackermann function, recursion, primitive recursive, computability theory, recursive function, time complexity, space complexity, theoretical computer science, call stack"
+---
+
 # Explanation
 	- The **Ackermann function** is a well-known recursive function that grows very quickly. It is often used in theoretical computer science to illustrate the difference between primitive recursive functions and general recursive functions.
 -

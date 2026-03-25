@@ -1,3 +1,9 @@
+---
+seoTitle: Delegation Pattern in OOP – Design Pattern Reference Guide
+description: "Delegation forwards method calls to a helper object. Covers delegation vs inheritance, delegate pattern, event delegation, and language-specific."
+keywords: "delegation, OOP, design pattern, delegate pattern, method forwarding, composition, event delegation, software design, object-oriented programming, helper object"
+---
+
 # Explanation
 	- **Delegation** is a design pattern where an object delegates responsibility for certain tasks to another object. Instead of doing the work itself, the delegating object asks another object (delegate) to perform the work.
 	- **"Has-A" relationship**: The delegating object "has a" reference to the delegating object and uses it to delegate responsibilities.

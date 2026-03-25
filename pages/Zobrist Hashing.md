@@ -1,3 +1,9 @@
+---
+seoTitle: Zobrist Hashing – Incremental Hash for Board Game States
+description: "Zobrist hashing efficiently hashes board game states using XOR of random bitstrings. Covers incremental update, collision probability, transposition tables,."
+keywords: "Zobrist hashing, board game hashing, XOR hash, transposition table, incremental hash, chess engine, collision probability, time complexity, space complexity, game AI"
+---
+
 # Explanation
 	- **Zobrist Hashing** is a hashing technique used in computer games (like chess) to represent game states efficiently. It works by assigning a random bitstring to each possible move or position, then XORing the bitstrings together to create a unique hash for the current game state.
 -

@@ -1,3 +1,9 @@
+---
+seoTitle: Tone Mapping in Path Tracing – HDR to LDR Conversion Guide
+description: "Tone mapping converts HDR radiance values to displayable LDR images. Covers Reinhard, ACES, Filmic, exposure control, gamma correction, and Vulkan."
+keywords: "tone mapping, HDR, LDR, path tracing, ray tracing, Reinhard, ACES, Filmic, exposure, gamma correction, GPU rendering, Vulkan"
+---
+
 tags:: concept, post-processing, hdr, display, color
 title:: PathTracer Learning - Concept - Tone Mapping
 

@@ -1,3 +1,9 @@
+---
+seoTitle: Adobe Photoshop Reference – Photo Editing and Design Guide
+description: "Photoshop reference covering layers, masks, selections, adjustments, filters, smart objects, Camera Raw, neural filters, and professional photo editing."
+keywords: "Adobe Photoshop, photo editing, layers, masks, selections, adjustments, filters, smart objects, Camera Raw, neural filters, graphic design, Adobe CC"
+---
+
 ## 1. History
 -
 	- **How**: Adobe Photoshop was developed by Thomas and John Knoll, first released in 1988 as a photo editing software.

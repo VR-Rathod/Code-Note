@@ -1,3 +1,9 @@
+---
+seoTitle: PyCharm Reference – Python IDE Tips, Shortcuts, and Features
+description: "PyCharm reference covering debugging, refactoring, virtual environments, database tools, Django support, testing integration, and productivity shortcuts."
+keywords: "PyCharm, Python IDE, debugging, refactoring, virtual environments, database tools, Django support, testing, JetBrains, productivity, Python development, shortcuts"
+---
+
 ## 1. History
 -
 	- **How**: PyCharm was developed by JetBrains and first released in 2010 as an IDE specifically for Python programming.

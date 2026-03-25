@@ -1,3 +1,9 @@
+---
+seoTitle: CPU Ray Tracing – Building a Software Ray Tracer from Scratch
+description: "CPU ray tracing implementation covering ray-sphere intersection, shading, reflections, BVH, and building a complete software ray tracer in C++ or Python."
+keywords: "CPU ray tracing, software ray tracer, ray-sphere intersection, shading, reflections, BVH, C++ ray tracer, path tracing, ray tracing, Monte Carlo, rendering"
+---
+
 tags:: phase, cpu, ray-tracing, bvh, brdf
 title:: PathTracer Learning - Phase 2 - CPU Ray Tracing
 

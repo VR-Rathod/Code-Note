@@ -1,3 +1,9 @@
+---
+seoTitle: BRDF in Path Tracing – Bidirectional Reflectance Distribution Guide
+description: "BRDF models how light reflects off surfaces in physically-based rendering. Covers Lambertian, GGX, Cook-Torrance, importance sampling, and energy conservation."
+keywords: "BRDF, bidirectional reflectance, path tracing, ray tracing, Lambertian, GGX, Cook-Torrance, importance sampling, physically-based rendering, PBR, GPU rendering, Vulkan"
+---
+
 tags:: concept, brdf, materials, shading
 title:: PathTracer Learning - Concept - BRDF
 

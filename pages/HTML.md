@@ -1,3 +1,9 @@
+---
+seoTitle: HTML Reference – Elements, Attributes, and Semantic Markup Guide
+description: "Complete HTML5 reference covering semantic elements, forms, tables, media, accessibility attributes, meta tags, and best practices for modern web development."
+keywords: "HTML, HTML5, semantic elements, forms, tables, media, accessibility, meta tags, web development, HTML reference, attributes, cheat sheet"
+---
+
 # History
 	- **How**:
 		- Developed by Tim Berners-Lee in 1991 as the foundational markup language for the World Wide Web.

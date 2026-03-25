@@ -1,3 +1,9 @@
+---
+seoTitle: Dart Programming Language – Syntax Reference and Flutter Guide
+description: "Dart language reference covering null safety, async/await, streams, generics, mixins, and Flutter-specific patterns for cross-platform mobile development."
+keywords: "Dart programming, Dart language, Flutter, null safety, async await, streams, generics, mixins, cross-platform, mobile development, Dart syntax, cheat sheet"
+---
+
 # History
 	- **How**:
 		- Developed by **Google**, Dart was introduced in 2011 as a modern, object-oriented programming language designed to address the limitations of JavaScript in building large-scale applications.

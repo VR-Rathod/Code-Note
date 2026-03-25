@@ -1,3 +1,9 @@
+---
+seoTitle: Fresnel Effect in Path Tracing – Reflectance and Schlick Guide
+description: "The Fresnel effect describes how reflectance varies with viewing angle. Covers Schlick approximation, conductor and dielectric Fresnel, and PBR material models."
+keywords: "Fresnel effect, Schlick approximation, path tracing, ray tracing, reflectance, dielectric, conductor, physically-based rendering, PBR, GPU rendering, Vulkan, BRDF"
+---
+
 tags:: concept, brdf, materials, fresnel, optics
 title:: PathTracer Learning - Concept - Fresnel Effect
 

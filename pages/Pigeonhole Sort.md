@@ -1,3 +1,9 @@
+---
+seoTitle: Pigeonhole Sort Algorithm – Integer Sorting by Key Mapping
+description: "Pigeonhole sort places elements into pigeonholes based on their key values. Covers O(n+range) time, comparison with counting sort, and use cases for small key."
+keywords: "pigeonhole sort, integer sort, O(n+range), counting sort, key mapping, non-comparison sort, time complexity, space complexity, small range, algorithm implementation"
+---
+
 # Explanation
 	- **Pigeonhole Sort** is a comparison-based sorting algorithm that works well when the range of the elements is small. It maps each element to a "hole" (index) and places it in the corresponding location.
 - # Steps:

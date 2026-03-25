@@ -1,3 +1,9 @@
+---
+seoTitle: Figma Reference – UI Design, Prototyping, and Collaboration Guide
+description: "Figma reference covering frames, components, auto layout, variables, prototyping, design systems, plugins, and collaborative UI/UX design workflows."
+keywords: "Figma, UI design, UX design, prototyping, components, auto layout, variables, design systems, plugins, collaboration, wireframing, Figma 2024"
+---
+
 ## 1. History
 -
 	- **How**: Figma was developed by Dylan Field and Evan Wallace, first released in 2016 as a web-based design tool for UI/UX design.

@@ -1,3 +1,9 @@
+---
+seoTitle: CSS Reference – Selectors, Flexbox, Grid, and Animations Guide
+description: "Complete CSS reference covering selectors, box model, flexbox, CSS grid, animations, transitions, custom properties, and responsive design techniques."
+keywords: "CSS, CSS reference, flexbox, CSS grid, selectors, animations, transitions, custom properties, responsive design, CSS3, media queries, cheat sheet"
+---
+
 # History
 	- **How**:
 		- Developed by **Håkon Wium Lie** and **Bert Bos** in **1994** at **W3C** (World Wide Web Consortium).

@@ -1,3 +1,9 @@
+---
+seoTitle: Classes in OOP – Definition, Attributes, Methods, and Examples
+description: "Classes are blueprints for objects in OOP. Covers class definition, attributes, methods, constructors, access modifiers, static members, and class vs object."
+keywords: "class, OOP, object-oriented programming, attributes, methods, constructor, access modifiers, static members, class definition, Python class, Java class, C++ class"
+---
+
 # Explanation
 	- A class is a blueprint for creating objects (instances). It defines the properties (attributes) and behaviors (methods) that the objects created from it will have. In Python, a class is created using the `class` keyword.
 -

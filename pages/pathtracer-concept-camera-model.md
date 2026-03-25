@@ -1,3 +1,9 @@
+---
+seoTitle: Camera Model in Path Tracing – Pinhole, Lens, and DOF Guide
+description: "Camera models define how rays are generated in path tracers. Covers pinhole camera, thin lens model, depth of field, field of view, and physically-based."
+keywords: "camera model, path tracing, ray tracing, pinhole camera, thin lens, depth of field, field of view, physically-based rendering, GPU rendering, Vulkan, ray generation"
+---
+
 tags:: concept, camera, ray-generation, optics
 title:: PathTracer Learning - Concept - Camera Model
 

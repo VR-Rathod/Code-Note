@@ -1,3 +1,9 @@
+---
+seoTitle: Async Compute in GPU Rendering – Overlap and Pipeline Guide
+description: "Async compute overlaps graphics and compute workloads on the GPU. Covers compute queues, synchronization, barriers, and performance gains in path tracing."
+keywords: "async compute, GPU rendering, compute queue, synchronization, barriers, pipeline overlap, path tracing, ray tracing, Vulkan, GPU optimization, performance, graphics"
+---
+
 tags:: concept, vulkan, gpu, async-compute, performance
 title:: PathTracer Learning - Concept - Async Compute
 

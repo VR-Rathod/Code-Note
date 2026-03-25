@@ -1,3 +1,9 @@
+---
+seoTitle: DSA and System Design Reference – Interview Preparation Guide
+description: "Data structures, algorithms, and system design reference for technical interviews. Covers arrays, trees, graphs, sorting, design patterns, scalability, and."
+keywords: "DSA, data structures, algorithms, system design, technical interview, arrays, trees, graphs, sorting, design patterns, scalability, coding interview"
+---
+
 # OOP consepts
 	- ## The  **core concepts**  of OOP are indeed  **14** :-
 		- [[Class]] - Blueprint for creating objects, defining properties and methods.

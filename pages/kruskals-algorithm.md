@@ -1,3 +1,9 @@
+---
+seoTitle: Kruskal's Algorithm – Minimum Spanning Tree with Union-Find
+description: "Kruskal's algorithm builds the MST by greedily adding the cheapest non-cycle edge. Covers Union-Find data structure, edge sorting, O(E log E) complexity."
+keywords: "Kruskal algorithm, minimum spanning tree, MST, Union-Find, greedy algorithm, edge sorting, O(E log E), time complexity, space complexity, graph algorithm"
+---
+
 # Explanation
 	- **Kruskal’s Algorithm** is a greedy algorithm used to find the **minimum spanning tree (MST)** of a graph. It selects edges in increasing weight order, ensuring no cycles are formed, and the graph remains connected.
 -

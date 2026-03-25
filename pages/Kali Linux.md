@@ -1,3 +1,9 @@
+---
+seoTitle: Kali Linux Reference – Penetration Testing Tools and Commands
+description: "Kali Linux reference covering penetration testing tools, Metasploit, Nmap, Wireshark, Burp Suite, wireless security, and ethical hacking workflows."
+keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, Wireshark, Burp Suite, wireless security, security tools, cybersecurity, Linux commands"
+---
+
 # History
 collapsed:: true
 	- This is Backtrack replacement

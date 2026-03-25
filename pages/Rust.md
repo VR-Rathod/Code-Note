@@ -1,3 +1,9 @@
+---
+seoTitle: Rust Programming Language – Ownership, Borrowing, and Syntax Guide
+description: "Rust reference covering ownership, borrowing, lifetimes, traits, enums, pattern matching, async/await, and systems programming with memory safety guarantees."
+keywords: "Rust programming, Rust language, ownership, borrowing, lifetimes, traits, enums, pattern matching, async await, systems programming, memory safety, syntax reference"
+---
+
 # History
 	- **How**:
 		- **Developed by** **Graydon Hoare** at **Mozilla Research** in 2010, Rust was designed to provide memory safety, concurrency, and performance while avoiding the pitfalls of languages like C and C++.

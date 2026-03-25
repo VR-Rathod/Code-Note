@@ -1,3 +1,9 @@
+---
+seoTitle: WordPress Reference – Themes, Plugins, and Development Guide
+description: "WordPress reference covering themes, plugins, Gutenberg blocks, REST API, WooCommerce, custom post types, hooks, and WordPress 6 full site editing."
+keywords: "WordPress, CMS, themes, plugins, Gutenberg, REST API, WooCommerce, custom post types, hooks, WordPress 6, full site editing, PHP"
+---
+
 # History
 	- **How**
 		- Developed by: **Matt Mullenweg** and **Mike Little** in 2003.

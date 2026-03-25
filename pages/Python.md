@@ -1,3 +1,9 @@
+---
+seoTitle: Python Programming Language – Syntax Reference and Cheat Sheet
+description: "Python reference covering list comprehensions, decorators, generators, context managers, type hints, Python 3.10+ features, and standard library essentials."
+keywords: "Python programming, Python reference, list comprehensions, decorators, generators, context managers, type hints, Python 3, standard library, syntax cheat sheet"
+---
+
 # History
 - **How**:
 	- Developed by Guido van Rossum in the late 1980s.
