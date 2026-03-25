@@ -5,6 +5,53 @@ import { googleFontHref, googleFontSubsetHref } from "../util/theme"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { unescapeHTML } from "../util/escape"
 import { CustomOgImagesEmitterName } from "../plugins/emitters/ogImage"
+
+function buildJsonLd(
+  cfg: QuartzComponentProps["cfg"],
+  fileData: QuartzComponentProps["fileData"],
+  pageUrl: string,
+  description: string,
+  title: string,
+) {
+  const baseUrl = `https://${cfg.baseUrl}`
+
+  if (fileData.slug === "index") {
+    return {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: cfg.pageTitle,
+      url: baseUrl,
+      description,
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${baseUrl}/search?q={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
+    }
+  }
+
+  const ld: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    name: title,
+    url: pageUrl,
+    description,
+  }
+
+  if (fileData.dates?.created) {
+    try {
+      ld.datePublished = fileData.dates.created.toISOString()
+    } catch (_) {}
+  }
+  if (fileData.dates?.modified) {
+    try {
+      ld.dateModified = fileData.dates.modified.toISOString()
+    } catch (_) {}
+  }
+
+  return ld
+}
+
 export default (() => {
   const Head: QuartzComponent = ({
     cfg,
@@ -13,8 +60,13 @@ export default (() => {
     ctx,
   }: QuartzComponentProps) => {
     const titleSuffix = cfg.pageTitleSuffix ?? ""
-    const title =
-      (fileData.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title) + titleSuffix
+    // seoTitle overrides title for the <title> tag only
+    const rawTitle =
+      (fileData.frontmatter?.seoTitle as string | undefined) ??
+      fileData.frontmatter?.title ??
+      i18n(cfg.locale).propertyDefaults.title
+    const title = rawTitle + titleSuffix
+
     const description =
       fileData.frontmatter?.socialDescription ??
       fileData.frontmatter?.description ??
@@ -31,19 +83,32 @@ export default (() => {
     const socialUrl =
       fileData.slug === "404" ? url.toString() : joinSegments(url.toString(), fileData.slug!)
 
+    // Canonical URL: frontmatter override takes priority
+    const canonicalHref =
+      (fileData.frontmatter?.canonicalUrl as string | undefined) ?? socialUrl
+
     const usesCustomOgImage = ctx.cfg.plugins.emitters.some(
       (e) => e.name === CustomOgImagesEmitterName,
     )
     const ogImageDefaultPath = `https://${cfg.baseUrl}/static/og-image.png`
 
+    const noindex = fileData.frontmatter?.noindex === true
+
     return (
       <head>
         <title>{title}</title>
         <meta charSet="utf-8" />
+
+        {/* DNS prefetch for faster external resource resolution */}
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+
         {cfg.theme.cdnCaching && cfg.theme.fontOrigin === "googleFonts" && (
           <>
             <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+            {/* Preload font stylesheet to reduce render-blocking */}
+            <link rel="preload" href={googleFontHref(cfg.theme)} as="style" />
             <link rel="stylesheet" href={googleFontHref(cfg.theme)} />
             {cfg.theme.typography.title && (
               <link rel="stylesheet" href={googleFontSubsetHref(cfg.theme, cfg.pageTitle)} />
@@ -52,6 +117,15 @@ export default (() => {
         )}
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        {/* Theme color for mobile browsers */}
+        <meta name="theme-color" content={cfg.theme.colors.lightMode.light} />
+
+        {/* Robots meta — noindex when frontmatter noindex: true */}
+        {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+        {/* Canonical URL */}
+        {fileData.slug !== "404" && <link rel="canonical" href={canonicalHref} />}
 
         <meta name="og:site_name" content={cfg.pageTitle}></meta>
         <meta property="og:title" content={title} />
@@ -66,6 +140,8 @@ export default (() => {
           <>
             <meta property="og:image" content={ogImageDefaultPath} />
             <meta property="og:image:url" content={ogImageDefaultPath} />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
             <meta name="twitter:image" content={ogImageDefaultPath} />
             <meta
               property="og:image:type"
@@ -85,6 +161,26 @@ export default (() => {
         <link rel="icon" href={iconPath} />
         <meta name="description" content={description} />
         <meta name="generator" content="Quartz" />
+
+        {/* RSS autodiscovery */}
+        {cfg.baseUrl && (
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="RSS Feed"
+            href={`https://${cfg.baseUrl}/index.xml`}
+          />
+        )}
+
+        {/* JSON-LD structured data */}
+        {fileData.slug !== "404" && cfg.baseUrl && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(buildJsonLd(cfg, fileData, canonicalHref, description as string, rawTitle as string)),
+            }}
+          />
+        )}
 
         {css.map((resource) => CSSResourceToStyleElement(resource, true))}
         {js

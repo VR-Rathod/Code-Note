@@ -13,6 +13,10 @@ replit.nix
 /.obsidian
 /.quartz-cache
 
+# Logseq auto-generated backup files — never needed in git or production
+logseq/bak/
+logseq/.recycle/
+
 # Quartz upstream files (not needed for personal site)
 docs/
 CODE_OF_CONDUCT.md

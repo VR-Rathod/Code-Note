@@ -7,6 +7,17 @@ footer {
     margin-bottom: 0.5rem;
   }
 
+  & .license-notice {
+    font-size: 0.78rem;
+    opacity: 0.8;
+    margin-bottom: 0.75rem;
+
+    & a {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+  }
+
   & ul {
     list-style: none;
     margin: 0;

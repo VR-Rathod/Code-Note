@@ -9,7 +9,7 @@ import * as Plugin from "./quartz/plugins"
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "Vaibhav Rathod's Notes",
-    pageTitleSuffix: "",
+    pageTitleSuffix: " | Vaibhav Rathod's Notes",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
@@ -17,7 +17,7 @@ const config: QuartzConfig = {
     },
     locale: "en-US",
     baseUrl: "code-note-gamma.vercel.app",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: ["private", "templates", ".obsidian", "logseq/bak", "logseq/.recycle"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",

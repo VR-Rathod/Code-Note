@@ -35,18 +35,6 @@ export const defaultContentPageLayout: PageLayout = {
         },
         { Component: Component.Darkmode() },
         { Component: Component.ReaderMode() },
-        {
-          Component: Component.LanguageSwitcher({
-            languages: [
-              { label: "EN", locale: "en-US" },
-              { label: "हि", locale: "hi-IN" },
-              { label: "日本語", locale: "ja-JP" },
-              { label: "中文", locale: "zh-CN" },
-              { label: "DE", locale: "de-DE" },
-              { label: "FR", locale: "fr-FR" },
-            ],
-          }),
-        },
       ],
     }),
     Component.Explorer(),
@@ -56,26 +44,26 @@ export const defaultContentPageLayout: PageLayout = {
       localGraph: {
         drag: true,
         zoom: true,
-        depth: 2,
-        scale: 1.1,
-        repelForce: 0.5,
-        centerForce: 0.3,
-        linkDistance: 30,
-        fontSize: 0.6,
+        depth: 1,        // only direct neighbors — keeps it clean
+        scale: 1.2,
+        repelForce: 0.8, // push nodes apart so labels don't overlap
+        centerForce: 0.4,
+        linkDistance: 50, // more breathing room between nodes
+        fontSize: 0.45,
         opacityScale: 1,
-        showTags: true,
+        showTags: false,  // hide tag nodes — reduces clutter
       },
       globalGraph: {
         drag: true,
         zoom: true,
-        depth: -1,
-        scale: 0.9,
-        repelForce: 0.5,
+        depth: 2,         // limit global graph depth too
+        scale: 0.7,
+        repelForce: 0.6,
         centerForce: 0.3,
-        linkDistance: 30,
-        fontSize: 0.6,
-        opacityScale: 1,
-        showTags: true,
+        linkDistance: 40,
+        fontSize: 0.35,
+        opacityScale: 0.8,
+        showTags: false,
       },
     }),
     Component.DesktopOnly(Component.TableOfContents()),

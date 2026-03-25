@@ -1,8 +1,6 @@
 @use "./base.scss";
 
-// put your custom CSS here!
-
-// Add spacing between list items (matches Logseq outline feel)
+// ── List spacing (Logseq outline feel) ────────────────────────────────────────
 article ul li,
 article ol li {
     margin-bottom: 0.4em;
@@ -11,4 +9,162 @@ article ol li {
 article ul li:last-child,
 article ol li:last-child {
     margin-bottom: 0;
+}
+
+// ── Smooth scrolling ──────────────────────────────────────────────────────────
+html {
+    scroll-behavior: smooth;
+}
+
+// ── Article body — subtle card with breathing room ───────────────────────────
+article.popover-hint {
+    padding: 0 0.5rem;
+}
+
+// ── Headings — accent left border on h2 ──────────────────────────────────────
+article h2 {
+    border-left: 3px solid var(--secondary);
+    padding-left: 0.6rem;
+    margin-top: 2rem;
+}
+
+article h3 {
+    margin-top: 1.5rem;
+    color: var(--secondary);
+}
+
+// ── Inline code — pill style ──────────────────────────────────────────────────
+article :not(pre)>code {
+    background: var(--highlight);
+    border-radius: 4px;
+    padding: 0.15em 0.4em;
+    font-size: 0.88em;
+}
+
+// ── Code blocks — rounded corners + subtle shadow ────────────────────────────
+article pre {
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+    margin: 1.2rem 0;
+}
+
+// ── Internal wiki links — styled distinctly ──────────────────────────────────
+article a[href^="/"]:not(.external) {
+    color: var(--secondary);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--secondary);
+    transition: color 0.2s, border-color 0.2s;
+
+    &:hover {
+        color: var(--tertiary);
+        border-bottom-color: var(--tertiary);
+        border-bottom-style: solid;
+    }
+}
+
+// ── External links — subtle icon hint ────────────────────────────────────────
+article a.external::after {
+    content: " ↗";
+    font-size: 0.75em;
+    opacity: 0.6;
+}
+
+// ── Page title — larger on index ─────────────────────────────────────────────
+.page-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+// ── Index page hero banner ────────────────────────────────────────────────────
+// Targets the index page article title area
+body[data-slug="index"] .article-title {
+    font-size: 2rem;
+    background: linear-gradient(135deg, var(--secondary), var(--tertiary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.25rem;
+}
+
+body[data-slug="index"] .content-meta {
+    opacity: 0.6;
+    font-size: 0.85rem;
+}
+
+// ── Tag pills ─────────────────────────────────────────────────────────────────
+.tag-link {
+    border-radius: 999px !important;
+    padding: 0.15em 0.7em !important;
+    font-size: 0.78rem !important;
+    transition: background 0.2s, color 0.2s;
+
+    &:hover {
+        background: var(--secondary) !important;
+        color: var(--light) !important;
+    }
+}
+
+// ── Graph view — compact title ────────────────────────────────────────────────
+#graph-container {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+// ── Explorer — tighter spacing ────────────────────────────────────────────────
+.explorer-content ul {
+    padding-left: 0.8rem;
+}
+
+// ── Backlinks section — card style ───────────────────────────────────────────
+.backlinks>ul {
+    border: 1px solid var(--lightgray);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    margin-top: 0.5rem;
+}
+
+// ── Table of contents — sticky on desktop ────────────────────────────────────
+@media (min-width: 1200px) {
+    #toc-content {
+        position: sticky;
+        top: 2rem;
+    }
+}
+
+// ── Scrollbar — thin and themed ──────────────────────────────────────────────
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--lightgray);
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gray);
+}
+
+// ── Focus ring — accessibility ────────────────────────────────────────────────
+:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+// ── Mobile — tighter padding ──────────────────────────────────────────────────
+@media (max-width: 800px) {
+    article {
+        padding: 0 0.25rem;
+    }
+
+    article h2 {
+        font-size: 1.3rem;
+    }
 }
