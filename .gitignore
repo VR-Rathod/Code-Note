@@ -17,20 +17,9 @@ replit.nix
 logseq/bak/
 logseq/.recycle/
 
-# Kiro IDE files — local dev tool only, not needed for deployment
-.kiro/
-
 # Quartz upstream files (not needed for personal site)
 docs/
+
 CODE_OF_CONDUCT.md
-.github/
-docs/
-.github/dependabot.yml
-.github/FUNDING.yml
-.github/pull_request_template.md
-.github/ISSUE_TEMPLATE/bug_report.md
-.github/ISSUE_TEMPLATE/feature_request.md
-.github/workflows/build-preview.yaml
-.github/workflows/ci.yaml
-.github/workflows/deploy-preview.yaml
-.github/workflows/docker-build-push.yaml
+
+
