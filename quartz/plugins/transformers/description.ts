@@ -11,7 +11,7 @@ export interface Options {
 
 const defaultOptions: Options = {
   descriptionLength: 150,
-  maxDescriptionLength: 300,
+  maxDescriptionLength: 160, // Google truncates at ~160 chars
   replaceExternalLinks: true,
 }
 
@@ -19,6 +19,21 @@ const urlRegex = new RegExp(
   /(https?:\/\/)?(?<domain>([\da-z\.-]+)\.([a-z\.]{2,6})(:\d+)?)(?<path>[\/\w\.-]*)(\?[\/\w\.=&;-]*)?/,
   "g",
 )
+
+// Patterns to skip — Logseq metadata, empty bullets, short fragments
+const skipPatterns = [
+  /^\s*\S+::\s*/,           // Logseq block properties (id::, collapsed::)
+  /^[-*]\s*$/,              // bare bullet points
+  /^\s*#\s/,                // headings only
+  /^https?:\/\//,           // bare URLs
+  /^\s*$/,                  // empty lines
+]
+
+function isUsableSentence(s: string): boolean {
+  const trimmed = s.trim()
+  if (trimmed.length < 20) return false
+  return !skipPatterns.some((p) => p.test(trimmed))
+}
 
 export const Description: QuartzTransformerPlugin<Partial<Options>> = (userOpts) => {
   const opts = { ...defaultOptions, ...userOpts }
@@ -39,41 +54,37 @@ export const Description: QuartzTransformerPlugin<Partial<Options>> = (userOpts)
               text = text.replace(urlRegex, "$<domain>" + "$<path>")
             }
 
+            // Frontmatter description takes priority — always use it if present
             if (frontMatterDescription) {
               file.data.description = frontMatterDescription
               file.data.text = text
               return
             }
 
-            // otherwise, use the text content
-            const desc = text
-            const sentences = desc.replace(/\s+/g, " ").split(/\.\s/)
+            // Auto-generate from content — smarter extraction for Logseq files
+            const cleaned = text.replace(/\s+/g, " ").trim()
+            const sentences = cleaned.split(/(?<=[.!?])\s+/)
+
             let finalDesc = ""
-            let sentenceIdx = 0
-
-            // Add full sentences until we exceed the guideline length
-            while (sentenceIdx < sentences.length) {
-              const sentence = sentences[sentenceIdx]
-              if (!sentence) break
-
-              const currentSentence = sentence.endsWith(".") ? sentence : sentence + "."
-              const nextLength = finalDesc.length + currentSentence.length + (finalDesc ? 1 : 0)
-
-              // Add the sentence if we're under the guideline length
-              // or if this is the first sentence (always include at least one)
-              if (nextLength <= opts.descriptionLength || sentenceIdx === 0) {
-                finalDesc += (finalDesc ? " " : "") + currentSentence
-                sentenceIdx++
+            for (const sentence of sentences) {
+              if (!isUsableSentence(sentence)) continue
+              const candidate = sentence.trim()
+              if (finalDesc.length === 0) {
+                finalDesc = candidate
+              } else if (finalDesc.length + candidate.length + 1 <= opts.descriptionLength) {
+                finalDesc += " " + candidate
               } else {
                 break
               }
+              if (finalDesc.length >= opts.descriptionLength) break
             }
 
-            // truncate to max length if necessary
-            file.data.description =
-              finalDesc.length > opts.maxDescriptionLength
-                ? finalDesc.slice(0, opts.maxDescriptionLength) + "..."
-                : finalDesc
+            // Truncate to max and ensure it ends cleanly
+            if (finalDesc.length > opts.maxDescriptionLength) {
+              finalDesc = finalDesc.slice(0, opts.maxDescriptionLength).replace(/\s+\S*$/, "") + "..."
+            }
+
+            file.data.description = finalDesc || cleaned.slice(0, opts.maxDescriptionLength)
             file.data.text = text
           }
         },

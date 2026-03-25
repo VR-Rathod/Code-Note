@@ -1,3 +1,9 @@
+---
+seoTitle: Python Programming Notes – Complete Reference
+description: "Complete Python reference — history, syntax, OOP, libraries for web dev, data science, ML, automation, testing, and more. Free Python notes with frameworks like Django, Flask, FastAPI, NumPy, Pandas."
+keywords: "Python programming, Python tutorial, Python libraries, Django, Flask, FastAPI, NumPy, Pandas, Python data science, Python machine learning, Python web scraping, Python automation"
+---
+
 # History
 - **How**:
 	- Developed by Guido van Rossum in the late 1980s.

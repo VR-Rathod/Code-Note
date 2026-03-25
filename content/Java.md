@@ -1,6 +1,10 @@
+---
+seoTitle: Java Programming Notes – Complete Reference
+description: "Complete Java reference — history, OOP, syntax, frameworks, Spring, Android development, JVM, multithreading, and enterprise Java. Free Java notes for beginners and professionals."
+keywords: "Java programming, Java tutorial, Java OOP, Spring framework, Android development, Java multithreading, JVM, Java interview questions, Java notes"
+---
+
 ## History
-	- **How**:
-		- Developed by **James Gosling** and **Mike Sheridan** at **Sun Microsystems** in **1991**.
 		- Initially created as part of the **Green Project** with the goal of developing software for consumer electronics.
 		- Initially called **Oak**, the language was later renamed to **Java** in 1995.
 		- Designed as a platform-independent language that could run on any device with the Java Virtual Machine (JVM), making it "write once, run anywhere."

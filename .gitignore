@@ -17,6 +17,9 @@ replit.nix
 logseq/bak/
 logseq/.recycle/
 
+# Kiro IDE files — local dev tool only, not needed for deployment
+.kiro/
+
 # Quartz upstream files (not needed for personal site)
 docs/
 CODE_OF_CONDUCT.md

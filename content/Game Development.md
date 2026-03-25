@@ -1,5 +1,10 @@
+---
+seoTitle: Game Development Notes – Engines, Concepts & Resources
+description: "Complete game development reference — game loop, ECS, physics, rendering pipeline, AI, shaders, networking, optimization. Covers Godot, Unity, Unreal Engine, Bevy, and more."
+keywords: "game development, game engine, game loop, ECS architecture, game physics, rendering pipeline, game AI, game shaders, Godot, Unity, Unreal Engine, indie game development"
+---
+
 # History
-- **How**: Game development evolved from simple 2D arcade games (1970s) to complex 3D real-time simulations powered by GPUs, physics engines, and networked multiplayer.
 - **Who**: Pioneered by companies like Atari, id Software (Doom, Quake), Epic Games (Unreal), and Valve — whose engines became the foundation of modern game dev.
 - **Why**: To create interactive real-time experiences — combining graphics, physics, audio, AI, and networking into a cohesive system.
 

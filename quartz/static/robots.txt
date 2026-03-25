@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://code-note-gamma.vercel.app/sitemap.xml
+Sitemap: https://code-note-vr.vercel.app/sitemap.xml

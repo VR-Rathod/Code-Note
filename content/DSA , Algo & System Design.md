@@ -1,3 +1,9 @@
+---
+seoTitle: DSA, Algorithms & System Design Notes – Complete Reference
+description: "Complete reference for Data Structures, Algorithms, OOP concepts, and System Design. Covers sorting, searching, graphs, trees, dynamic programming, design patterns, and FAANG interview prep."
+keywords: "DSA notes, data structures algorithms, system design, OOP concepts, sorting algorithms, graph algorithms, binary search, dynamic programming, FAANG interview prep, coding interview"
+---
+
 # OOP consepts
 	- ## The  **core concepts**  of OOP are indeed  **14** :-
 		- [[Class]] - Blueprint for creating objects, defining properties and methods.

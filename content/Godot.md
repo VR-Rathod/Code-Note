@@ -1,5 +1,10 @@
+---
+seoTitle: Godot Engine Notes – Complete GDScript & Game Dev Reference
+description: "Complete Godot 4 reference — GDScript, scenes, nodes, physics, animation, shaders, networking, UI, audio, and 3D development. Free Godot engine notes for beginners and advanced developers."
+keywords: "Godot engine, GDScript tutorial, Godot 4, game development, Godot nodes, Godot physics, Godot animation, Godot shaders, open source game engine, 2D game development, 3D game development"
+---
+
 # History
-- **How**: Developed by **Juan Linietsky** and **Ariel Manzur**, first released publicly in **2014** as open-source.
 - **Who**: Maintained by the Godot Engine community and the Godot Foundation.
 - **Why**: To provide a fully free, open-source game engine with no royalties, no vendor lock-in, and a clean scene-based architecture.
 -

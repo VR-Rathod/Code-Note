@@ -1,5 +1,10 @@
+---
+seoTitle: JavaScript Notes – Complete Reference Guide
+description: "Complete JavaScript reference — ES6+, DOM manipulation, async/await, closures, prototypes, React, Node.js, and web development. Free JavaScript notes for beginners to advanced developers."
+keywords: "JavaScript tutorial, JavaScript notes, ES6, async await, JavaScript DOM, React JavaScript, Node.js, JavaScript interview questions, web development JavaScript, JavaScript frameworks"
+---
+
 # History
-collapsed:: true
 	- **How**:
 		- Developed by Brendan Eich in 1995 at Netscape.
 		- Initially created in just 10 days as a client-side scripting language for web browsers.

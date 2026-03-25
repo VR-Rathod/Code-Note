@@ -8,15 +8,15 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Vaibhav Rathod's Notes",
-    pageTitleSuffix: " | Vaibhav Rathod's Notes",
+    pageTitle: "Code Notes – Free Programming Reference by Vaibhav Rathod",
+    pageTitleSuffix: " | Free Coding Notes & Programming Reference",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
       provider: "vercel",
     },
     locale: "en-US",
-    baseUrl: "code-note-gamma.vercel.app",
+    baseUrl: "code-note-vr.vercel.app",
     ignorePatterns: ["private", "templates", ".obsidian", "logseq/bak", "logseq/.recycle"],
     defaultDateType: "modified",
     theme: {

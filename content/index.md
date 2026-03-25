@@ -1,5 +1,8 @@
 ---
-title: Introduction
+title: Introduction – Free Programming Notes & Developer Reference
+description: "Complete programming reference covering 40+ languages, DSA, algorithms, game development, DevOps, cybersecurity, and software tools. Free coding notes by Vaibhav Rathod."
+keywords: "free programming notes, coding reference, learn programming, Python tutorial, JavaScript guide, DSA algorithms, data structures, game development, Godot engine, web development, DevOps, cybersecurity, C++ notes, Java reference"
+seoTitle: "Introduction – Free Programming Notes & Developer Reference"
 ---
 
 - ## Welcome to Your Code Book
