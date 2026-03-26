@@ -1,10 +1,10 @@
 ---
 seoTitle: Free Code Notes – Programming Knowledge Base Home and Overview
 description: "Free Code Notes is a programming knowledge base covering algorithms, data structures, languages, frameworks, tools, and software engineering concepts."
-keywords: "index, Free Code Notes, programming knowledge base, algorithms, data structures, programming languages, frameworks, tools, software engineering, Logseq, notes, index"
+keywords: "index, Free Code Notes, programming knowledge base, algorithms, data structures, programming languages, frameworks, tools, software engineering, Logseq, notes, index, VR-Rathod, Code-Note, code note vr, vr book, programming notes, developer notes, code reference, free programming notes"
 ---
 
-## Welcome to Your Code Book!
+- ## Welcome to Your Code Book!
 	- Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
 -
 - ## Programming Languages
@@ -15,7 +15,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 	-
 	- [[C]]: A procedural language known for efficiency and low-level memory access, commonly used in system programming.
 	-
-	- [[C++]] :- An extension of C that adds object-oriented features, often used in system/software development and game programming(unreal Engine).
+	- [[Cpp]] :- An extension of C that adds object-oriented features, often used in system/software development and game programming(unreal Engine).
 	-
 	- [[CSharp]] :- A modern, object-oriented language built for simplicity, used in web, desktop, and game development (especially with .NET and Unity).
 	-
@@ -162,8 +162,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 	- [[DSA , Algo & System Design]]: The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for searching, sorting, and optimization.
 -
 - ## DevOps & CI/CD
-  collapsed:: true
-	- ## DevOps Concepts
+	- ### DevOps Concepts
 		- [[Collaboration & Communication]]: Emphasizes enhanced communication between development and operations teams to improve the software development lifecycle (SDLC).
 		-
 		- [[Automation]]: Automating manual tasks such as testing, deployments, and infrastructure provisioning to reduce errors and increase efficiency.
@@ -176,7 +175,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		-
 		- [[Containerization]]: Using containers (e.g., Docker) to package applications and their dependencies to ensure consistent environments across different platforms.
 	- ---
-	- ## CI/CD Concepts
+	- ### CI/CD Concepts
 		- [[Continuous Integration (CI)]]: The practice of automatically integrating and testing code changes in a shared repository multiple times a day, ensuring that code is always in a working state.
 		-
 		- [[Continuous Delivery (CD)]]: Extends CI by automating the deployment process to staging or production environments, making sure code is always ready to be deployed with minimal manual intervention.
@@ -185,7 +184,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		-
 		- [[Continuous Monitoring]]: Monitoring the application and infrastructure during and after deployment to ensure the system is running smoothly and catching any issues early.
 	-
-	- ## CI/CD Tools
+	- ### CI/CD Tools
 		- [[Jenkins]]: A widely used open-source automation server for automating the CI/CD pipeline with plugins for building, testing, and deploying code.
 		-
 		- [[GitLab CI]]: An integrated CI/CD tool built into GitLab, offering version control, CI/CD pipelines, and project management in a single platform.
@@ -204,7 +203,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		-
 		- [[ArgoCD]]: A continuous delivery tool for Kubernetes that implements GitOps, where Git repositories are the source of truth for Kubernetes deployment.
 	-
-	- ## Containerization & Orchestration
+	- ### Containerization & Orchestration
 		- [[Docker]]: A platform for building, shipping, and running applications inside containers, which encapsulate an application and its dependencies.
 		-
 		- [[Kubernetes]]: A container orchestration platform that automates the deployment, scaling, and management of containerized applications.
@@ -213,7 +212,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		-
 		- [[Docker Compose]]: A tool for defining and running multi-container Docker applications, useful for local development environments.
 	-
-	- ## Infrastructure as Code (IaC) Tools
+	- ### Infrastructure as Code (IaC) Tools
 		- [[Terraform]]: An open-source IaC tool for provisioning and managing infrastructure using configuration files, supporting multiple cloud providers.
 		-
 		- [[Ansible]]: A configuration management and automation tool that automates infrastructure provisioning, deployment, and management.
@@ -224,7 +223,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		-
 		- [[CloudFormation]]: AWS’s IaC tool for provisioning and managing AWS resources using declarative templates written in JSON or YAML.
 	-
-	- ## Cloud Platforms & Services
+	- ### Cloud Platforms & Services
 		- [[Amazon Web Services (AWS)]]: A leading cloud provider offering services like EC2, S3, Lambda, CodePipeline, and CodeDeploy for DevOps automation.
 		-
 		- [[Microsoft Azure]]: A cloud platform offering services for version control, CI/CD, Kubernetes management, and more.
@@ -233,7 +232,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		-
 		- [[DigitalOcean]]: A cloud computing platform known for simplicity and ease of use, often employed by small to medium-sized DevOps teams.
 	-
-	- ## Monitoring & Logging
+	- ### Monitoring & Logging
 		- [[Prometheus]]: An open-source monitoring and alerting toolkit often used with Kubernetes for gathering metrics and system health data.
 		-
 		- [[Grafana]]: A visualization and analytics platform that integrates with Prometheus to create real-time dashboards for monitoring system performance.
@@ -246,7 +245,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		-
 		- [[Nagios]]: An open-source monitoring system for checking the status of applications, services, and network infrastructure.
 	-
-	- ## Security in DevOps (DevSecOps)
+	- ### Security in DevOps (DevSecOps)
 		- [[SonarQube]]: A tool for continuous code quality inspection to detect bugs, vulnerabilities, and code smells.
 		-
 		- [[OWASP ZAP]]: A security scanner used for finding vulnerabilities in web applications during the development process.
@@ -255,7 +254,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		-
 		- [[Aqua Security]]: A container security platform that scans for vulnerabilities in container images and Kubernetes clusters.
 	-
-	- ## Agile & Project Management Tools
+	- ### Agile & Project Management Tools
 		- [[Jira]]: A project management tool often used in DevOps teams for managing tasks, bugs, and user stories, integrated with CI/CD pipelines.
 		-
 		- [[Trello]]: A visual project management tool to organize tasks and workflows in a simple board format, ideal for small teams and quick task tracking.
@@ -263,7 +262,6 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		- [[Asana]]: A task and project management tool used for tracking work, collaborating with teams, and ensuring smooth project delivery.
 -
 - ## Cybersecurity
-  collapsed:: true
 	- [[Cybersecurity]] - This page contains DevOps Concepts
 -
 - ## Game Development & Graphics
@@ -293,13 +291,12 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 -
 - ## Software Information
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
-  collapsed:: true
 	- [[Software]] - This page showcases all types of software, categorized by their functionality and purpose.
 -
-- # Free Books
+- ## Free Books
 	- [[Books & Free Res]] - This page will provide free Pdf Books and resource with can downloadable.
 -
-- # more learn
+- ## more learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills:-
 	-
 	- ## Github & Webs

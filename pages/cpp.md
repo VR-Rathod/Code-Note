@@ -1,7 +1,7 @@
 ---
 seoTitle: C++ Programming Reference – Modern C++ Syntax and Features
 description: "Comprehensive C++ reference covering STL, templates, smart pointers, lambdas, move semantics, C++11/14/17/20 features, and object-oriented programming patterns."
-keywords: "cpp, C++ programming, C++ reference, STL, templates, smart pointers, lambdas, move semantics, C++17, C++20, object-oriented, modern C++"
+keywords: "cpp, C++ programming, C++ reference, STL, templates, smart pointers, lambdas, move semantics, C++17, C++20, object-oriented, modern C++, cpp notes, cpp cheatsheet, cpp guide, c++ tutorial, VR-Rathod, Code-Note, code note vr, vr book"
 ---
 
 # History

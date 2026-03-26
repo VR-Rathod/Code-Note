@@ -1,7 +1,7 @@
 ---
 seoTitle: Magento E-commerce Reference – Store Setup and Development Guide
 description: "Magento is a powerful e-commerce platform. Covers catalog management, checkout, payment gateways, themes, modules, Magento 2 architecture, and REST API."
-keywords: "Magento, e-commerce, Magento 2, catalog management, checkout, payment gateway, themes, modules, REST API, Adobe Commerce, PHP e-commerce, store setup"
+keywords: "Magento, e-commerce, Magento 2, catalog management, checkout, payment gateway, themes, modules, REST API, Adobe Commerce, PHP e-commerce, store setup, magento notes, magento guide, magento cheatsheet, VR-Rathod, Code-Note, code note vr, vr book"
 ---
 
 # **History**
