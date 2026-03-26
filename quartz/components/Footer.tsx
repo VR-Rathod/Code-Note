@@ -13,7 +13,7 @@ export default ((opts?: Options) => {
       <footer class={`${displayClass ?? ""}`}>
         <p>
           Created by{" "}
-          <a href="https://github.com/VR-Rathod/Code-Note" rel="noopener">Vaibhav Rathod</a> © {year}
+          <a href="https://github.com/VR-Rathod/" rel="noopener">Vaibhav Rathod</a> © {year}
         </p>
         <p class="license-notice">
           Content licensed under{" "}

@@ -248,7 +248,6 @@ aliases:
 -
 - # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills : -
-	  id:: 674052a3-8202-4a99-9aa3-1523ecb7801a
 		-
 		- [Microsoft C# Guide](https://learn.microsoft.com/en-us/dotnet/csharp/)
 		- [Learn On W3School](https://www.w3schools.com/cs/index.php)

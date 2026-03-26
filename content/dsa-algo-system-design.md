@@ -23,7 +23,6 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 		- [[Polymorphism]] - Ability for objects of different types to be treated as instances of a common superclass.
 		  logseq.order-list-type:: number
 		- [[Composition]] - Creating complex objects by combining simpler objects, a "has-a" relationship.
-		  id:: 67e63024-2a0a-4a19-aff1-05ad33f056cf
 		  logseq.order-list-type:: number
 		- [[Interface]] - Defines a contract that classes must follow, without providing implementation.
 		  logseq.order-list-type:: number

@@ -532,9 +532,31 @@ async function fillDocument(data: ContentIndex) {
 
 document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   const currentSlug = e.detail.url
-  const data = await fetchData
-  const searchElement = document.getElementsByClassName("search")
-  for (const element of searchElement) {
-    await setupSearch(element, currentSlug, data)
+  const searchElements = document.getElementsByClassName("search")
+
+  for (const element of searchElements) {
+    const searchButton = element.querySelector(".search-button") as HTMLButtonElement
+    if (!searchButton) continue
+
+    let initialized = false
+    const initSearch = async () => {
+      if (initialized) return
+      initialized = true
+      const data = await fetchData
+      await setupSearch(element, currentSlug, data)
+    }
+
+    // lazy init: only fetch contentIndex when search is first opened
+    searchButton.addEventListener("click", initSearch, { once: true })
+    // also support keyboard shortcut (Ctrl/Cmd+K)
+    document.addEventListener(
+      "keydown",
+      (ev) => {
+        if (ev.key === "k" && (ev.ctrlKey || ev.metaKey) && !ev.shiftKey) {
+          initSearch()
+        }
+      },
+      { once: true },
+    )
   }
 })

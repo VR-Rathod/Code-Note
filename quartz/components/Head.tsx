@@ -200,7 +200,6 @@ export default (() => {
         {/* ── Resource hints ─────────────────────────────────────────────── */}
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-        <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
 
         {cfg.theme.cdnCaching && cfg.theme.fontOrigin === "googleFonts" && (
           <>
@@ -213,15 +212,10 @@ export default (() => {
             )}
           </>
         )}
-        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
-
-        {/* Preload OG image for LCP improvement */}
-        {!usesCustomOgImage && (
-          <link rel="preload" href={ogImageDefaultPath} as="image" />
-        )}
 
         {/* ── Core meta ──────────────────────────────────────────────────── */}
         <meta name="description" content={description} />
+        <meta name="google-site-verification" content="_MkAeUbJlNRBEVoHeWrmpu8JiP2EcKy2u7ZPXT8iyy8" />
         <meta name="keywords" content={keywords} />
         <meta name="author" content={AUTHOR.name} />
         <meta name="theme-color" content={cfg.theme.colors.lightMode.light} />

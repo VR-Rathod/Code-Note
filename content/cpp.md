@@ -3119,7 +3119,6 @@ keywords: "cpp, C++ programming, C++ reference, STL, templates, smart pointers, 
 		  ```
 -
 - # Library & Frameworks
-  id:: 673ac308-24d0-40b6-b0d7-a4b6cac5b79a
   collapsed:: true
 	- [[STL (Standard Template Library)]] - Vectors, maps, sets, algorithms, iterators — the backbone of every C++ program.
 	-

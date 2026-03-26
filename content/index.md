@@ -20,7 +20,7 @@ seoTitle: "Introduction – Free Programming Notes & Developer Reference"
 	-
 	- [[CSharp]] :- A modern, object-oriented language built for simplicity, used in web, desktop, and game development (especially with .NET and Unity).
 	-
-	- [[Go]] :- A statically typed language developed by Google, known for its performance and simplicity in building scalable applications.
+	- [[Go|Go Language]] :- A statically typed language developed by Google, known for its performance and simplicity in building scalable applications.
 	-
 	- [[Swift]] :- A powerful and intuitive language for iOS and macOS app development.
 	-
@@ -284,7 +284,6 @@ seoTitle: "Introduction – Free Programming Notes & Developer Reference"
 	-
 -
 - ## Software Information
-  id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
 	- [[Software]] - This page showcases all types of software, categorized by their functionality and purpose.
 -
 - # Free Books

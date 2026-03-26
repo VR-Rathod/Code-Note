@@ -193,15 +193,32 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     {} as Record<(typeof cssVars)[number], string>,
   )
 
-  // calculate color
+  // calculate color — colorful nodes based on tag/visited/current state
+  const nodeColors = [
+    "#e8a838", "#e05c5c", "#5cb8e0", "#7ec87e", "#b07ee0",
+    "#e07eb0", "#5ce0c8", "#e0a05c", "#7097d4", "#d47097",
+  ]
+  const tagColorMap = new Map<string, string>()
+  let colorIdx = 0
+
   const color = (d: NodeData) => {
     const isCurrent = d.id === slug
     if (isCurrent) {
       return computedStyleMap["--secondary"]
-    } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
+    } else if (visited.has(d.id)) {
+      return computedStyleMap["--tertiary"]
+    } else if (d.id.startsWith("tags/")) {
       return computedStyleMap["--tertiary"]
     } else {
-      return computedStyleMap["--gray"]
+      // assign a stable color per node based on its first tag or index
+      const firstTag = d.tags?.[0]
+      if (firstTag) {
+        if (!tagColorMap.has(firstTag)) {
+          tagColorMap.set(firstTag, nodeColors[colorIdx++ % nodeColors.length])
+        }
+        return tagColorMap.get(firstTag)!
+      }
+      return nodeColors[Math.abs(d.id.split("").reduce((a, c) => a + c.charCodeAt(0), 0)) % nodeColors.length]
     }
   }
 
