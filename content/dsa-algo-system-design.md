@@ -1,10 +1,10 @@
 ---
 seoTitle: DSA and System Design Reference – Interview Preparation Guide
 description: "Data structures, algorithms, and system design reference for technical interviews. Covers arrays, trees, graphs, sorting, design patterns, scalability, and."
-keywords: "DSA, data structures, algorithms, system design, technical interview, arrays, trees, graphs, sorting, design patterns, scalability, coding interview"
+keywords: "DSA, data structures, algorithms, system design, technical interview, arrays, trees, graphs, sorting, design patterns, scalability, coding interview, dsa notes, dsa cheatsheet, dsa guide, algorithm reference, competitive programming, VR-Rathod, Code-Note, code note vr, vr book"
 ---
 
-# OOP consepts
+- # OOP consepts
 	- ## The  **core concepts**  of OOP are indeed  **14** :-
 		- [[Class]] - Blueprint for creating objects, defining properties and methods.
 		  logseq.order-list-type:: number
@@ -23,6 +23,7 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 		- [[Polymorphism]] - Ability for objects of different types to be treated as instances of a common superclass.
 		  logseq.order-list-type:: number
 		- [[Composition]] - Creating complex objects by combining simpler objects, a "has-a" relationship.
+		  id:: 67e63024-2a0a-4a19-aff1-05ad33f056cf
 		  logseq.order-list-type:: number
 		- [[Interface]] - Defines a contract that classes must follow, without providing implementation.
 		  logseq.order-list-type:: number

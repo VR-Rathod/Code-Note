@@ -1,7 +1,7 @@
 ---
 seoTitle: Unreal Engine Reference – Blueprints and C++ Development Guide
 description: "Unreal Engine reference covering Blueprints, C++ gameplay, materials, Lumen, Nanite, animation, Chaos physics, and Unreal Engine 5 features for AAA development."
-keywords: "Unreal Engine, Blueprints, C++ gameplay, materials, Lumen, Nanite, animation, Chaos physics, Unreal Engine 5, UE5, game development, AAA games"
+keywords: "Unreal Engine, Blueprints, C++ gameplay, materials, Lumen, Nanite, animation, Chaos physics, Unreal Engine 5, UE5, game development, AAA games, unreal engine notes, unreal engine guide, ue5 cheatsheet, unreal reference, VR-Rathod, Code-Note, code note vr, vr book"
 ---
 
 # History

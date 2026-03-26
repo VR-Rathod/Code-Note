@@ -1,7 +1,7 @@
 ---
 seoTitle: Adobe XD Reference – UI/UX Design and Prototyping Complete Guide
 description: "Adobe XD complete reference covering artboards, components, auto-animate, prototyping, design systems, plugins, developer handoff, and UI/UX workflows."
-keywords: "Adobe XD, UI design, UX design, prototyping, artboards, components, auto-animate, design systems, developer handoff, wireframing, interaction design, plugins, repeat grid"
+keywords: "Adobe XD, UI design, UX design, prototyping, artboards, components, auto-animate, design systems, developer handoff, wireframing, interaction design, plugins, repeat grid, adobe xd notes, adobe xd guide, ui ux cheatsheet, VR-Rathod, Code-Note, code note vr, vr book"
 ---
 
 - # History
