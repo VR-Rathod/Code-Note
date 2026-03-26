@@ -8,7 +8,6 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 	- Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
 -
 - ## Programming Languages
-	-
 	- [[Python]] :- A beginner-friendly language known for its readability and extensive libraries.
 	-
 	- [[Java]] :- A robust, object-oriented language commonly used in enterprise applications and Android development.
@@ -174,7 +173,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		- [[Microservices Architecture]]: Designing applications as a set of independent services, each with its own functionality, that communicate over APIs.
 		-
 		- [[Containerization]]: Using containers (e.g., Docker) to package applications and their dependencies to ensure consistent environments across different platforms.
-	- ---
+	-
 	- ### CI/CD Concepts
 		- [[Continuous Integration (CI)]]: The practice of automatically integrating and testing code changes in a shared repository multiple times a day, ensuring that code is always in a working state.
 		-
@@ -262,6 +261,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		- [[Asana]]: A task and project management tool used for tracking work, collaborating with teams, and ensuring smooth project delivery.
 -
 - ## Cybersecurity
+  collapsed:: true
 	- [[Cybersecurity]] - This page contains DevOps Concepts
 -
 - ## Game Development & Graphics

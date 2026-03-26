@@ -4,12 +4,6 @@ description: "CSharp reference covering LINQ, async/await, generics, delegates, 
 keywords: "csharp, C# programming, C# reference, LINQ, async await, generics, delegates, .NET, Unity, ASP.NET, C# syntax, object-oriented"
 ---
 
----
-title: "C#"
-aliases:
-  - C#
-  - csharp
----
 # History
 	- **How**:
 		- Developed by **Anders Hejlsberg** and his team at **Microsoft** in the early 2000s.
