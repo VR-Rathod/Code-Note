@@ -1444,6 +1444,6 @@ keywords: "Unreal Engine, Blueprints, C++ gameplay, materials, Lumen, Nanite, an
 	-
 	- ## Related Pages
 		- [[Game Development]] — Core game dev concepts (ECS, rendering pipeline, physics, AI)
-		- [[C++]] — C++ fundamentals for Unreal development
+		- [[Cpp]] — C++ fundamentals for Unreal development
 		- [[Godot]] — Godot engine A-Z reference
 		- [[PathTracer Learning]] — GPU path tracing and rendering research

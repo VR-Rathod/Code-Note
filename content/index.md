@@ -16,7 +16,7 @@ seoTitle: "Introduction – Free Programming Notes & Developer Reference"
 	-
 	- [[C]]: A procedural language known for efficiency and low-level memory access, commonly used in system programming.
 	-
-	- [[C++]] :- An extension of C that adds object-oriented features, often used in system/software development and game programming(unreal Engine).
+	- [[Cpp]] :- An extension of C that adds object-oriented features, often used in system/software development and game programming(unreal Engine).
 	-
 	- [[CSharp]] :- A modern, object-oriented language built for simplicity, used in web, desktop, and game development (especially with .NET and Unity).
 	-

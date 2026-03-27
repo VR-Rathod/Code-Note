@@ -928,7 +928,7 @@ keywords: "game development, game loop, physics engine, rendering, game AI, audi
 	- ## Related Pages
 		- [[Godot]] — Godot engine deep dive
 		- [[PathTracer Learning]] — GPU path tracing, Vulkan RT, rendering research
-		- [[C++]] — C++ for game/engine development
+		- [[Cpp]] — C++ for game/engine development
 		- [[Binary Space Partitioning]] — Spatial data structure for rendering
 		- [[Bevy]] — Rust ECS game engine
 		- [[Unity]] — Unity engine reference
