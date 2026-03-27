@@ -210,14 +210,22 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
   const enablePreview = searchLayout.dataset.preview === "true"
   let preview: HTMLDivElement | undefined = undefined
   let previewInner: HTMLDivElement | undefined = undefined
-  const results = document.createElement("div")
-  results.className = "results-container"
-  appendLayout(results)
+
+  // Reuse existing containers if already present (e.g. after SPA navigation)
+  let results: HTMLDivElement = searchLayout.querySelector<HTMLDivElement>(".results-container") ?? (() => {
+    const el = document.createElement("div")
+    el.className = "results-container"
+    appendLayout(el)
+    return el
+  })()
 
   if (enablePreview) {
-    preview = document.createElement("div")
-    preview.className = "preview-container"
-    appendLayout(preview)
+    preview = searchLayout.querySelector<HTMLDivElement>(".preview-container") ?? (() => {
+      const el = document.createElement("div")
+      el.className = "preview-container"
+      appendLayout(el)
+      return el
+    })()
   }
 
   function hideSearch() {

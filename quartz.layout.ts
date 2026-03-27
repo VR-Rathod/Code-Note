@@ -35,7 +35,6 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Explorer(),
   ],
   right: [
-    Component.DesktopOnly(Component.TableOfContents()),
     Component.DesktopOnly(Component.Graph({
       localGraph: {
         drag: true, zoom: true, depth: 1,
@@ -48,13 +47,19 @@ export const defaultContentPageLayout: PageLayout = {
         linkDistance: 40, fontSize: 0.35, opacityScale: 0.8, showTags: false,
       },
     })),
+    Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
-    // Recently updated in right sidebar — compact, below backlinks
     Component.DesktopOnly(Component.RecentNotes({
       title: "Recently Updated",
-      limit: 6,
+      limit: 9,
       showTags: false,
-      filter: (f) => f.slug !== "index" && !f.frontmatter?.noindex,
+      filter: (f) => {
+        if (f.slug === "index" || f.frontmatter?.noindex) return false
+        const modified = f.dates?.modified
+        if (!modified) return false
+        const days = (Date.now() - modified.getTime()) / (1000 * 60 * 60 * 24)
+        return days <= 7
+      },
     })),
   ],
 }
