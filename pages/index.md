@@ -157,8 +157,9 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 	- [[Api]] - You can find specific APIs and related documentation on the respective programming language or framework page.
 -
 - ## Data Structures , Algorithms & OOP
-  collapsed:: true
-	- [[DSA , Algo & System Design]]: The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for searching, sorting, and optimization.
+	- [[DSA Algo System Design]]: The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for searching, sorting, and optimization.
+	-
+	- [[System Design]]: In-depth guide to designing scalable, reliable, and high-performance systems — covering load balancing, caching, databases, microservices, CAP theorem, message queues, API design, and real-world case studies.
 -
 - ## DevOps & CI/CD
 	- ### DevOps Concepts
@@ -170,7 +171,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		-
 		- [[Continuous Monitoring & Logging]]: Continuous observation of applications and infrastructure to track performance and issues in real-time.
 		-
-		- [[Microservices Architecture]]: Designing applications as a set of independent services, each with its own functionality, that communicate over APIs.
+		- [[Microservices Architecture]]: Designing applications as a set of independent services, each with its own functionality, that communicate over APIs. See also [[System Design]] for in-depth microservices patterns.
 		-
 		- [[Containerization]]: Using containers (e.g., Docker) to package applications and their dependencies to ensure consistent environments across different platforms.
 	-
@@ -184,6 +185,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		- [[Continuous Monitoring]]: Monitoring the application and infrastructure during and after deployment to ensure the system is running smoothly and catching any issues early.
 	-
 	- ### CI/CD Tools
+	  collapsed:: true
 		- [[Jenkins]]: A widely used open-source automation server for automating the CI/CD pipeline with plugins for building, testing, and deploying code.
 		-
 		- [[GitLab CI]]: An integrated CI/CD tool built into GitLab, offering version control, CI/CD pipelines, and project management in a single platform.

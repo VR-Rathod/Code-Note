@@ -143,6 +143,9 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 - # Binary systemm
 	- [[binary]] - every type of binary calculations
 -
+- # System Design
+	- For in-depth system design notes covering scalability, load balancing, caching, databases, microservices, CAP theorem, message queues, API design, and real-world case studies, see [[System Design]].
+-
 - # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills:
 	-

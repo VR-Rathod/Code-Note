@@ -4,7 +4,7 @@ description: "Complete Godot 4 reference — GDScript, scenes, nodes, physics, a
 keywords: "Godot engine, GDScript tutorial, Godot 4, game development, Godot nodes, Godot physics, Godot animation, Godot shaders, open source game engine, 2D game development, 3D game development, godot notes, godot guide, godot cheatsheet, godot reference, VR-Rathod, Code-Note, code note vr, vr book"
 ---
 
-# History
+- # History
 - **How**: Developed by **Juan Linietsky** and **Ariel Manzur**, first released publicly in **2014** as open-source.
 - **Who**: Maintained by the Godot Engine community and the Godot Foundation.
 - **Why**: To provide a fully free, open-source game engine with no royalties, no vendor lock-in, and a clean scene-based architecture.
@@ -60,10 +60,9 @@ keywords: "Godot engine, GDScript tutorial, Godot 4, game development, Godot nod
 		  ```
 -
 - # Scene & Node System
-  collapsed:: true
 	- ## Core Concept
 	  collapsed:: true
-		- Everything in Godot is a **Node**. A **Scene** is a tree of nodes saved as a `.tscn` file.
+		- Everything in Godot is a **Node**. A **Scene** is a tree of nodes saved as a file.
 		- Scenes can be **instanced** inside other scenes — this is the primary composition pattern.
 		- ```
 		  Node (root)
@@ -72,25 +71,42 @@ keywords: "Godot engine, GDScript tutorial, Godot 4, game development, Godot nod
 		  └── AudioStreamPlayer
 		  ```
 	-
-	- ## Common Node Types
-	  collapsed:: true
+	- ## Scene & Resource File Formats
 		- ```
-		  Node2D          Base for all 2D nodes (has position, rotation, scale)
-		  Sprite2D        Displays a texture in 2D
-		  AnimatedSprite2D  Sprite with frame animation
-		  CollisionShape2D  Defines collision area shape
-		  Area2D          Detects overlaps (no physics response)
-		  CharacterBody2D  Kinematic body for player/enemies
-		  RigidBody2D     Physics-simulated body
-		  StaticBody2D    Immovable physics body (walls, floors)
-		  Camera2D        2D camera with follow/zoom
-		  Label           UI text
-		  Button          UI button
-		  CanvasLayer     UI layer (always on top of game world)
+		  .tscn   Text Scene   — human-readable, version-control friendly (default for scenes)
+		  .scn    Binary Scene — compiled binary, faster to load, used in exported builds
+		  .tres   Text Resource — human-readable resource (materials, custom data, etc.)
+		  .res    Binary Resource — compiled binary version of .tres
+		  .escn   Exported Scene — identical to .tscn but marks the file as externally exported
+		                           (e.g. from Blender); auto-compiled to .scn on import
+		  ```
+		- When you **export** your game, Godot automatically converts `.tscn` → `.scn` and `.tres` → `.res` for performance.
+		- Use `.tscn` / `.tres` during development (readable diffs in git), and let the exporter handle the rest.
+		- ```gdscript
+		  # Loading works the same regardless of format:
+		  var scene = preload("res://scenes/Player.tscn")   # text scene
+		  var scene = preload("res://scenes/Player.scn")    # binary scene (exported)
+		  var data  = preload("res://data/item.tres")       # text resource
+		  var data  = preload("res://data/item.res")        # binary resource
+		  ```
+	-
+	- ## Common Node Types
+		- ```
+		  Node2D/3D          		Base for all 2D/3D nodes (has position, rotation, scale)
+		  Sprite2D/3D				Displays a texture in 2D/3D
+		  AnimatedSprite2D/3D  	Sprite with frame animation
+		  CollisionShape2D/3D		Defines collision area shape
+		  Area2D/3D          		Detects overlaps (no physics response)
+		  CharacterBody2D/3D  	Kinematic body for player/enemies
+		  RigidBody2D/3D     		Physics-simulated body
+		  StaticBody2D/3D    		Immovable physics body (walls, floors)
+		  Camera2D/3D        		2D/3D camera with follow/zoom
+		  Label           		UI text
+		  Button          		UI button
+		  CanvasLayer     		UI layer (always on top of game world)
 		  ```
 	-
 	- ## 3D Node Types
-	  collapsed:: true
 		- ```
 		  Node3D          Base for all 3D nodes
 		  MeshInstance3D  Renders a 3D mesh
@@ -1006,6 +1022,436 @@ keywords: "Godot engine, GDScript tutorial, Godot 4, game development, Godot nod
 		  env.fog_density = 0.01
 		  env.glow_enabled = true
 		  env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
+		  ```
+-
+- # Networking & Multiplayer
+  collapsed:: true
+	- ## High-Level Multiplayer API
+	  collapsed:: true
+		- ```gdscript
+		  # Server setup (ENet — UDP-based, low latency)
+		  var peer = ENetMultiplayerPeer.new()
+		  peer.create_server(PORT, MAX_CLIENTS)   # PORT e.g. 9999
+		  multiplayer.multiplayer_peer = peer
+		  
+		  # Client setup
+		  var peer = ENetMultiplayerPeer.new()
+		  peer.create_client("127.0.0.1", PORT)
+		  multiplayer.multiplayer_peer = peer
+		  
+		  # Signals
+		  multiplayer.peer_connected.connect(_on_peer_connected)
+		  multiplayer.peer_disconnected.connect(_on_peer_disconnected)
+		  multiplayer.connected_to_server.connect(_on_connected)
+		  multiplayer.connection_failed.connect(_on_failed)
+		  
+		  func _on_peer_connected(id: int) -> void:
+		      print("Peer joined: ", id)
+		  ```
+	-
+	- ## RPC — Remote Procedure Calls
+	  collapsed:: true
+		- ```gdscript
+		  # Annotate functions with @rpc to call them on remote peers
+		  
+		  @rpc("any_peer")                    # any peer can call this
+		  func take_damage(amount: int) -> void:
+		      health -= amount
+		  
+		  @rpc("authority", "call_local")     # only server calls, runs locally too
+		  func sync_position(pos: Vector2) -> void:
+		      position = pos
+		  
+		  @rpc("any_peer", "reliable")        # guaranteed delivery (like TCP)
+		  func chat_message(msg: String) -> void:
+		      print(msg)
+		  
+		  # Call on specific peer
+		  take_damage.rpc_id(peer_id, 25)
+		  
+		  # Call on all peers
+		  sync_position.rpc(global_position)
+		  ```
+	-
+	- ## MultiplayerSpawner & MultiplayerSynchronizer
+	  collapsed:: true
+		- ```gdscript
+		  # MultiplayerSpawner — auto-spawns nodes on all clients
+		  # Add MultiplayerSpawner node, set spawn_path and auto_spawn_list in editor
+		  
+		  # MultiplayerSynchronizer — syncs properties automatically
+		  # Add MultiplayerSynchronizer node, configure replication in editor
+		  # Or in code:
+		  var sync = $MultiplayerSynchronizer
+		  sync.root_path = NodePath("..")
+		  # Then add properties to replicate via editor or:
+		  # ReplicationConfig resource → add properties like "position", "health"
+		  ```
+	-
+	- ## WebSocket (for Web exports)
+	  collapsed:: true
+		- ```gdscript
+		  # Server
+		  var ws_server = WebSocketMultiplayerPeer.new()
+		  ws_server.create_server(PORT)
+		  multiplayer.multiplayer_peer = ws_server
+		  
+		  # Client (works in browser)
+		  var ws_client = WebSocketMultiplayerPeer.new()
+		  ws_client.create_client("ws://localhost:9999")
+		  multiplayer.multiplayer_peer = ws_client
+		  ```
+-
+- # Debugging & Profiling
+  collapsed:: true
+	- ## Print & Assertions
+	  collapsed:: true
+		- ```gdscript
+		  print("value: ", health)           # basic print
+		  print_rich("[color=red]Error![/color]")  # colored output
+		  push_warning("Low health!")        # shows in debugger as warning
+		  push_error("Critical failure!")    # shows as error, doesn't stop execution
+		  assert(health > 0, "Health must be positive")  # crashes in debug builds
+		  
+		  # Print only in debug builds
+		  if OS.is_debug_build():
+		      print("Debug info: ", position)
+		  ```
+	-
+	- ## Debugger Panel
+	  collapsed:: true
+		- ```
+		  Bottom panel → Debugger tab:
+		    Errors     — runtime errors and warnings
+		    Stack Trace — call stack when paused/crashed
+		    Inspector  — live node property inspection while running
+		    Profiler   — CPU time per function (enable before running)
+		    Visual Profiler — GPU frame time breakdown
+		    Network    — RPC and sync traffic monitor
+		    Monitors   — FPS, memory, physics objects, draw calls
+		  ```
+	-
+	- ## Breakpoints
+	  collapsed:: true
+		- ```
+		  Click the line number gutter in the script editor to set a breakpoint.
+		  Run the game → execution pauses at the breakpoint.
+		  Use Step Over (F10), Step Into (F11), Continue (F12) to navigate.
+		  Inspect local variables in the Debugger → Stack Locals panel.
+		  ```
+	-
+	- ## Performance Tips
+	  collapsed:: true
+		- ```gdscript
+		  # Use _physics_process for physics, _process for visuals only
+		  # Cache node references with @onready instead of $Node in loops
+		  @onready var player = $Player   # cached once
+		  
+		  # Avoid get_node() in hot loops
+		  # Use object pooling for bullets/particles instead of queue_free + instantiate
+		  
+		  # Check draw calls: Debug → Visible Collision Shapes / Navigation
+		  # Use VisibleOnScreenNotifier2D/3D to disable off-screen processing
+		  
+		  # Profile with:
+		  var time = Time.get_ticks_usec()
+		  # ... code ...
+		  print("Took: ", Time.get_ticks_usec() - time, " µs")
+		  ```
+-
+- # Exporting Your Game
+  collapsed:: true
+	- ## Export Setup
+	  collapsed:: true
+		- ```
+		  1. Editor → Export → Add preset (Windows, Linux, macOS, Android, iOS, Web)
+		  2. Download export templates: Editor → Manage Export Templates
+		  3. Configure per-platform settings (icon, name, permissions)
+		  4. Click Export Project → choose output folder
+		  ```
+	-
+	- ## Export Presets
+	  collapsed:: true
+		- ```
+		  Windows Desktop  → .exe + .pck  (or embedded single .exe)
+		  Linux/X11        → ELF binary + .pck
+		  macOS            → .app bundle
+		  Android          → .apk or .aab (needs Android SDK + JDK)
+		  iOS              → Xcode project (needs macOS + Xcode)
+		  Web (HTML5)      → .html + .js + .wasm + .pck
+		  ```
+	-
+	- ## PCK Files
+	  collapsed:: true
+		- ```gdscript
+		  # .pck = packed resource file containing all game assets
+		  # Can be distributed separately from the executable
+		  # Useful for DLC or updates
+		  
+		  # Load external .pck at runtime:
+		  ProjectSettings.load_resource_pack("res://dlc_pack.pck")
+		  ```
+	-
+	- ## Android Export
+	  collapsed:: true
+		- ```
+		  Requirements:
+		    - Android SDK (API 28+)
+		    - JDK 17+
+		    - Godot Android export templates
+		  
+		  Editor → Export → Android:
+		    - Set package name (e.g. com.yourname.yourgame)
+		    - Set keystore for release builds
+		    - Enable permissions (INTERNET, VIBRATE, etc.)
+		    - Min SDK: 21 (Android 5.0)
+		  ```
+-
+- # C# in Godot 4
+  collapsed:: true
+	- ## Setup
+	  collapsed:: true
+		- ```
+		  Use the Godot .NET version (not the standard build).
+		  Download: godotengine.org → .NET version
+		  Requires: .NET SDK 6.0 or later
+		  IDE: VS Code (with C# extension) or JetBrains Rider
+		  ```
+	-
+	- ## C# Script Basics
+	  collapsed:: true
+		- ```csharp
+		  using Godot;
+		  
+		  public partial class Player : CharacterBody2D
+		  {
+		      [Export] public float Speed = 200.0f;
+		      [Export] public int Health = 100;
+		  
+		      public override void _Ready()
+		      {
+		          GD.Print("Player ready!");
+		      }
+		  
+		      public override void _PhysicsProcess(double delta)
+		      {
+		          var velocity = Velocity;
+		  
+		          var direction = Input.GetAxis("move_left", "move_right");
+		          velocity.X = direction * Speed;
+		  
+		          Velocity = velocity;
+		          MoveAndSlide();
+		      }
+		  
+		      public void TakeDamage(int amount)
+		      {
+		          Health -= amount;
+		          if (Health <= 0) QueueFree();
+		      }
+		  }
+		  ```
+	-
+	- ## Signals in C#
+	  collapsed:: true
+		- ```csharp
+		  // Define signal
+		  [Signal] public delegate void HealthChangedEventHandler(int newHealth);
+		  
+		  // Emit
+		  EmitSignal(SignalName.HealthChanged, Health);
+		  
+		  // Connect
+		  someNode.HealthChanged += OnHealthChanged;
+		  
+		  private void OnHealthChanged(int newHealth)
+		  {
+		      GD.Print("Health: ", newHealth);
+		  }
+		  ```
+	-
+	- ## GDScript vs C# — When to Use
+	  collapsed:: true
+		- ```
+		  GDScript:
+		    + Faster iteration, no compile step
+		    + Tightly integrated with Godot API
+		    + Best for game logic, UI, scripting
+		    - Slower than C# for heavy computation
+		  
+		  C#:
+		    + Faster execution (JIT compiled)
+		    + Strong typing, better IDE support
+		    + Familiar for Unity developers
+		    - Requires .NET build, slower hot-reload
+		    - Some Godot 4 features lag behind GDScript support
+		  ```
+-
+- # GDExtension (C++ / Rust / Other Languages)
+  collapsed:: true
+	- ## What is GDExtension
+	  collapsed:: true
+		- ```
+		  GDExtension lets you write native code (C++, Rust, Swift, etc.)
+		  that integrates with Godot as if it were built-in.
+		  Use it for: performance-critical systems, existing C++ libraries,
+		  custom physics, or platform-specific features.
+		  
+		  Replaces GDNative from Godot 3.
+		  Uses godot-cpp bindings (official C++ library).
+		  ```
+	-
+	- ## Minimal C++ GDExtension
+	  collapsed:: true
+		- ```cpp
+		  // my_node.h
+		  #include <godot_cpp/classes/node.hpp>
+		  using namespace godot;
+		  
+		  class MyNode : public Node {
+		      GDCLASS(MyNode, Node)
+		  
+		  static void _bind_methods();
+		  public:
+		      void hello();
+		  };
+		  
+		  // my_node.cpp
+		  #include "my_node.h"
+		  #include <godot_cpp/core/class_db.hpp>
+		  
+		  void MyNode::_bind_methods() {
+		      ClassDB::bind_method(D_METHOD("hello"), &MyNode::hello);
+		  }
+		  
+		  void MyNode::hello() {
+		      UtilityFunctions::print("Hello from C++!");
+		  }
+		  ```
+		- Build with SCons, output a `.gdextension` file pointing to your `.dll`/`.so`.
+-
+- # Useful Patterns & Tips
+  collapsed:: true
+	- ## State Machine Pattern
+	  collapsed:: true
+		- ```gdscript
+		  enum State { IDLE, RUN, JUMP, ATTACK }
+		  var current_state: State = State.IDLE
+		  
+		  func _physics_process(delta: float) -> void:
+		      match current_state:
+		          State.IDLE:   _state_idle(delta)
+		          State.RUN:    _state_run(delta)
+		          State.JUMP:   _state_jump(delta)
+		          State.ATTACK: _state_attack(delta)
+		  
+		  func _state_idle(_delta: float) -> void:
+		      if Input.get_axis("move_left", "move_right") != 0:
+		          current_state = State.RUN
+		      if Input.is_action_just_pressed("jump"):
+		          current_state = State.JUMP
+		  ```
+	-
+	- ## Object Pooling
+	  collapsed:: true
+		- ```gdscript
+		  # Reuse nodes instead of instantiate/queue_free every frame
+		  var pool: Array[Node] = []
+		  
+		  func get_from_pool() -> Node:
+		      for node in pool:
+		          if not node.visible:
+		              node.visible = true
+		              return node
+		      var new_node = bullet_scene.instantiate()
+		      add_child(new_node)
+		      pool.append(new_node)
+		      return new_node
+		  
+		  func return_to_pool(node: Node) -> void:
+		      node.visible = false
+		  ```
+	-
+	- ## Event Bus (Decoupled Signals)
+	  collapsed:: true
+		- ```gdscript
+		  # EventBus.gd — autoload singleton
+		  extends Node
+		  
+		  signal enemy_died(enemy_id: int)
+		  signal score_updated(new_score: int)
+		  signal level_completed
+		  
+		  # Any script can emit:
+		  EventBus.enemy_died.emit(id)
+		  
+		  # Any script can listen:
+		  EventBus.enemy_died.connect(_on_enemy_died)
+		  ```
+	-
+	- ## @tool Scripts (Editor Scripts)
+	  collapsed:: true
+		- ```gdscript
+		  @tool
+		  extends Node2D
+		  
+		  @export var tile_count: int = 10 : set = _set_tile_count
+		  
+		  func _set_tile_count(value: int) -> void:
+		      tile_count = value
+		      _rebuild()  # runs in editor when you change the value
+		  
+		  func _rebuild() -> void:
+		      # Generate tiles procedurally in the editor
+		      for child in get_children():
+		          child.queue_free()
+		      for i in tile_count:
+		          var tile = preload("res://scenes/Tile.tscn").instantiate()
+		          tile.position.x = i * 64
+		          add_child(tile)
+		  ```
+	-
+	- ## Coroutines with await
+	  collapsed:: true
+		- ```gdscript
+		  # await pauses execution until a signal fires or a time passes
+		  
+		  func show_message(text: String) -> void:
+		      $Label.text = text
+		      $Label.visible = true
+		      await get_tree().create_timer(2.0).timeout
+		      $Label.visible = false
+		  
+		  # await animation finish
+		  $AnimationPlayer.play("attack")
+		  await $AnimationPlayer.animation_finished
+		  $AnimationPlayer.play("idle")
+		  
+		  # await signal
+		  await player_died
+		  get_tree().reload_current_scene()
+		  ```
+	-
+	- ## Navigation & Pathfinding
+	  collapsed:: true
+		- ```gdscript
+		  # 2D: NavigationRegion2D + NavigationAgent2D
+		  extends CharacterBody2D
+		  
+		  @onready var nav_agent = $NavigationAgent2D
+		  
+		  func move_to(target_pos: Vector2) -> void:
+		      nav_agent.target_position = target_pos
+		  
+		  func _physics_process(delta: float) -> void:
+		      if nav_agent.is_navigation_finished():
+		          return
+		      var next = nav_agent.get_next_path_position()
+		      var dir = (next - global_position).normalized()
+		      velocity = dir * speed
+		      move_and_slide()
+		  
+		  # 3D: NavigationRegion3D + NavigationAgent3D (same pattern)
 		  ```
 -
 - # More Learn
