@@ -49,16 +49,17 @@ article pre {
 }
 
 // ── Internal wiki links — styled distinctly ──────────────────────────────────
+article a.internal,
 article a[href^="/"]:not(.external) {
-    color: var(--secondary);
-    text-decoration: none;
-    border-bottom: 1px dashed var(--secondary);
+    color: var(--secondary) !important;
+    text-decoration: none !important;
+    border-bottom: 1px dashed var(--secondary) !important;
     transition: color 0.2s, border-color 0.2s;
 
     &:hover {
-        color: var(--tertiary);
-        border-bottom-color: var(--tertiary);
-        border-bottom-style: solid;
+        color: var(--tertiary) !important;
+        border-bottom-color: var(--tertiary) !important;
+        border-bottom-style: solid !important;
     }
 }
 
@@ -353,12 +354,38 @@ ul.toc-content {
     margin-top: 0.5rem;
 }
 
-// ── Right sidebar — scrollable so TOC + Graph + Backlinks all accessible ──────
+// ── Search — fix first-open flash and double-click ───────────────────────────
+// Prevent the empty search-space box from showing before input is ready
+.search-container.active>.search-space {
+    animation: search-fade-in 0.12s ease forwards;
+}
+
+@keyframes search-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// ── Right sidebar — hide at tablet width (800px–1200px) ──────────────────────
+// At tablet, the right sidebar drops below content in a row — looks broken.
+// Hide it entirely so the content takes full width.
+@media (min-width: 800px) and (max-width: 1200px) {
+    .sidebar.right {
+        display: none !important;
+    }
+}
+
+// ── Right sidebar — scrollable at desktop ─────────────────────────────────────
 @media (min-width: 1200px) {
     .sidebar.right {
         overflow-y: auto;
         overflow-x: hidden;
-        // thin scrollbar so it doesn't look heavy
         scrollbar-width: thin;
         scrollbar-color: var(--lightgray) transparent;
     }
@@ -436,16 +463,6 @@ ul.toc-content.overflow {
     article pre {
         max-width: 100%;
         overflow-x: auto;
-    }
-}
-
-// ── Right sidebar — scrollable ────────────────────────────────────────────────
-@media (min-width: 1200px) {
-    .sidebar.right {
-        overflow-y: auto;
-        overflow-x: hidden;
-        scrollbar-width: thin;
-        scrollbar-color: var(--lightgray) transparent;
     }
 }
 

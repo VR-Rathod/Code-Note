@@ -313,6 +313,13 @@ export default (() => {
           />
         )}
 
+        {/* ── Vercel Speed Insights ──────────────────────────────────────── */}
+        <script
+          defer
+          src="https://va.vercel-scripts.com/v1/speed-insights/script.js"
+          data-endpoint="/_vercel/speed-insights/vitals"
+        />
+
         {css.map((resource) => CSSResourceToStyleElement(resource, true))}
         {js
           .filter((resource) => resource.loadTime === "beforeDOMReady")

@@ -539,21 +539,32 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
     if (!searchButton) continue
 
     let initialized = false
-    const initSearch = async () => {
+    const initSearch = async (openImmediately = false) => {
       if (initialized) return
       initialized = true
       const data = await fetchData
       await setupSearch(element, currentSlug, data)
+      // If triggered by a click/keydown, open the search immediately after init
+      if (openImmediately) {
+        const container = element.querySelector(".search-container") as HTMLElement
+        const searchBar = element.querySelector(".search-bar") as HTMLInputElement
+        const sidebar = container?.closest(".sidebar") as HTMLElement | null
+        if (container && searchBar) {
+          if (sidebar) sidebar.style.zIndex = "1"
+          container.classList.add("active")
+          searchBar.focus()
+        }
+      }
     }
 
     // lazy init: only fetch contentIndex when search is first opened
-    searchButton.addEventListener("click", initSearch, { once: true })
+    searchButton.addEventListener("click", () => initSearch(true), { once: true })
     // also support keyboard shortcut (Ctrl/Cmd+K)
     document.addEventListener(
       "keydown",
       (ev) => {
         if (ev.key === "k" && (ev.ctrlKey || ev.metaKey) && !ev.shiftKey) {
-          initSearch()
+          initSearch(true)
         }
       },
       { once: true },
