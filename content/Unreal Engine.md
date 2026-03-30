@@ -4,7 +4,7 @@ description: "Unreal Engine reference covering Blueprints, C++ gameplay, materia
 keywords: "Unreal Engine, Blueprints, C++ gameplay, materials, Lumen, Nanite, animation, Chaos physics, Unreal Engine 5, UE5, game development, AAA games, unreal engine notes, unreal engine guide, ue5 cheatsheet, unreal reference, VR-Rathod, Code-Note, code note vr, vr book"
 ---
 
-# History
+- # History
 - **How**: Developed by **Epic Games**, first released in **1998** with the game *Unreal*. UE4 (2014) brought it to modern PBR/physically-based era. UE5 (2022) introduced Nanite and Lumen.
 - **Who**: Founded by **Tim Sweeney**. Epic Games continues active development.
 - **Why**: To push real-time graphics to cinematic quality — used in AAA games, films, archviz, automotive, and XR.
@@ -1444,6 +1444,6 @@ keywords: "Unreal Engine, Blueprints, C++ gameplay, materials, Lumen, Nanite, an
 	-
 	- ## Related Pages
 		- [[Game Development]] — Core game dev concepts (ECS, rendering pipeline, physics, AI)
-		- [[Cpp]] — C++ fundamentals for Unreal development
+		- [[C++]] — C++ fundamentals for Unreal development
 		- [[Godot]] — Godot engine A-Z reference
 		- [[PathTracer Learning]] — GPU path tracing and rendering research

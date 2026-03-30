@@ -4,7 +4,7 @@ description: "Huffman coding assigns shorter codes to frequent characters for op
 keywords: "Huffman coding, data compression, lossless compression, prefix-free code, greedy algorithm, entropy, frequency table, time complexity, space complexity, binary tree"
 ---
 
-# Explanation
+- # Explanation
 	- **Huffman Coding** is a **lossless data compression** algorithm that assigns variable-length codes to input characters based on their frequencies.
 	-
 	- The idea is to give shorter codes to characters that appear more frequently and longer codes to less frequent characters. This results in compressed data representation.

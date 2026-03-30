@@ -4,7 +4,7 @@ description: "Complete CSS reference covering selectors, box model, flexbox, CSS
 keywords: "CSS, CSS reference, flexbox, CSS grid, selectors, animations, transitions, custom properties, responsive design, CSS3, media queries, cheat sheet"
 ---
 
-# History
+- # History
 	- **How**:
 		- Developed by **Håkon Wium Lie** and **Bert Bos** in **1994** at **W3C** (World Wide Web Consortium).
 		- Designed to separate **content** (HTML) from **presentation** (layout and style), enabling web developers to control the look and feel of a webpage without affecting its structure.

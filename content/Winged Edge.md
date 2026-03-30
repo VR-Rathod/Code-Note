@@ -4,7 +4,7 @@ description: "Winged-edge represents polygon meshes with efficient adjacency tra
 keywords: "winged-edge, polygon mesh, half-edge, mesh representation, adjacency traversal, 3D geometry, face traversal, time complexity, space complexity, computational geometry"
 ---
 
-# Explanation
+- # Explanation
 	- The **Winged Edge** data structure is used to represent **polygonal meshes** and is a way to store a topological representation of the mesh. It associates edges with the two adjacent faces and the vertices connected by those edges. This data structure is particularly useful in computer graphics, computational geometry, and mesh processing.
 -
 - # Steps

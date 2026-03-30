@@ -4,7 +4,7 @@ description: "Boyer-Moore majority vote finds the majority element in O(n) time 
 keywords: "Boyer-Moore majority vote, majority element, linear time, O(n), O(1) space, voting algorithm, array algorithm, time complexity, space complexity, streaming algorithm"
 ---
 
-# Explanation
+- # Explanation
 	- The Boyer-Moore Majority Vote Algorithm is used to find the **majority element** (the element that appears more than n/2 times) in an array.
 -
 - # Steps

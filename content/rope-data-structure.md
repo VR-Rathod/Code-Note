@@ -4,7 +4,7 @@ description: "Ropes represent strings as binary trees for O(log n) concatenation
 keywords: "rope data structure, string manipulation, O(log n) concatenation, binary tree, text editor, gap buffer, rebalancing, time complexity, space complexity, functional string"
 ---
 
-# Explanation
+- # Explanation
 	- A **Rope** is a tree-based data structure used for efficiently concatenating and splitting strings. It avoids the inefficiencies of directly manipulating large strings in memory.
 -
 - # Steps

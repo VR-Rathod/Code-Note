@@ -4,7 +4,7 @@ description: "Comprehensive C++ reference covering STL, templates, smart pointer
 keywords: "cpp, C++ programming, C++ reference, STL, templates, smart pointers, lambdas, move semantics, C++17, C++20, object-oriented, modern C++, cpp notes, cpp cheatsheet, cpp guide, c++ tutorial, VR-Rathod, Code-Note, code note vr, vr book"
 ---
 
-# History
+- # History
 - **How**:
 	- Developed by **Bjarne Stroustrup** in 1979 at **Bell Labs**.
 	- Originally called "C with Classes", renamed to **C++** in 1983.

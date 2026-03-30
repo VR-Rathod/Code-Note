@@ -30,7 +30,6 @@ keywords: "nestjs, nest.js, nodejs framework, typescript, modules, controllers, 
 		- Overkill for small/simple APIs.
 		- Heavy boilerplate compared to Express.
 		- Decorator-heavy code can feel verbose.
-
 - # Setup & CLI
   collapsed:: true
 	- ## Installation
@@ -85,7 +84,6 @@ keywords: "nestjs, nest.js, nodejs framework, typescript, modules, controllers, 
 		      └── entities/
 		          └── user.entity.ts
 		  ```
-
 - # Core Building Blocks
   collapsed:: true
 	- ## main.ts — Bootstrap
@@ -216,7 +214,6 @@ keywords: "nestjs, nest.js, nodejs framework, typescript, modules, controllers, 
 		      }
 		  }
 		  ```
-
 - # DTOs & Validation
   collapsed:: true
 	- ## Setup
@@ -280,7 +277,6 @@ keywords: "nestjs, nest.js, nodejs framework, typescript, modules, controllers, 
 		  @ValidateNested()      validate nested object
 		  @Type(() => NestedDto) transform nested type
 		  ```
-
 - # Dependency Injection
   collapsed:: true
 	- ## How DI Works
@@ -328,7 +324,6 @@ keywords: "nestjs, nest.js, nodejs framework, typescript, modules, controllers, 
 		      constructor(@Inject('CONFIG') private config: any) {}
 		  }
 		  ```
-
 - # Guards, Interceptors, Pipes, Middleware
   collapsed:: true
 	- ## Guards — Authentication / Authorization
@@ -442,7 +437,6 @@ keywords: "nestjs, nest.js, nodejs framework, typescript, modules, controllers, 
 		      }
 		  }
 		  ```
-
 - # Exception Filters
   collapsed:: true
 	- ## Built-in HTTP Exceptions
@@ -487,7 +481,6 @@ keywords: "nestjs, nest.js, nodejs framework, typescript, modules, controllers, 
 		  // Apply globally
 		  app.useGlobalFilters(new HttpExceptionFilter());
 		  ```
-
 - # Configuration
   collapsed:: true
 	- ## @nestjs/config
@@ -544,7 +537,6 @@ keywords: "nestjs, nest.js, nodejs framework, typescript, modules, controllers, 
 		  this.config.port    // typed as number
 		  this.config.dbUrl   // typed as string
 		  ```
-
 - # Database with TypeORM
   collapsed:: true
 	- ## Setup
@@ -649,7 +641,6 @@ keywords: "nestjs, nest.js, nodejs framework, typescript, modules, controllers, 
 		      }
 		  }
 		  ```
-
 - # JWT Authentication
   collapsed:: true
 	- ## Setup
@@ -723,7 +714,6 @@ keywords: "nestjs, nest.js, nodejs framework, typescript, modules, controllers, 
 		      return req.user;
 		  }
 		  ```
-
 - # Request Lifecycle
   collapsed:: true
 	- ```

@@ -4,7 +4,7 @@ description: "Haskell reference covering type classes, monads, functors, lazy ev
 keywords: "Haskell programming, Haskell language, type classes, monads, functors, lazy evaluation, pattern matching, GHC, functional programming, do-notation, syntax reference"
 ---
 
-# History
+- # History
 	- **How**:
 		- Haskell was first designed in **1987** by a committee of researchers in functional programming, primarily to serve as a standardized language for functional programming.
 		- It was developed to overcome the limitations of earlier functional programming languages, emphasizing purity, laziness, and type safety.

@@ -4,7 +4,7 @@ description: "Maya reference covering polygon modeling, rigging, skinning, anima
 keywords: "Autodesk Maya, 3D animation, polygon modeling, rigging, skinning, dynamics, Arnold renderer, MEL scripting, Python, film production, game development, 3D software"
 ---
 
-# Maya Notes
+- # Maya Notes
 - ## 1. History
 	-
 	- **How**: Maya was developed by Alias Systems Corporation, first released in 1998. It evolved from earlier products like PowerAnimator.

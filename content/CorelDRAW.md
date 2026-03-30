@@ -4,7 +4,7 @@ description: "CorelDRAW reference covering vector drawing, node editing, typogra
 keywords: "CorelDRAW, vector illustration, graphic design, node editing, typography, color management, export, CorelDRAW 2024, design software, vector graphics, layout"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: CorelDRAW was developed by Corel Corporation and first released in 1989 as a vector graphic design software.
 	- **Who**: The software was created by a team of developers at Corel, including founder Dr. Michael Cowpland.

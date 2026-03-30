@@ -4,7 +4,7 @@ description: "Singleton ensures only one instance of a class exists. Covers thre
 keywords: "singleton pattern, design pattern, creational pattern, thread-safe singleton, lazy initialization, double-checked locking, OOP, software design, anti-pattern, instance control"
 ---
 
-# Explanation
+- # Explanation
 	- The **Singleton Pattern** is a creational design pattern that ensures a class has only one instance, and provides a global point of access to that instance.
 	- **"Single Instance"**: The Singleton ensures that only one object of the class is created throughout the application.
 	- **Use Case**: Useful when you need to control access to shared resources, like database connections or logging.

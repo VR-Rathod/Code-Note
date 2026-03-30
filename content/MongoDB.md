@@ -4,7 +4,7 @@ description: "MongoDB with Python covers CRUD operations, aggregation pipeline, 
 keywords: "MongoDB, PyMongo, Motor, Python MongoDB, CRUD operations, aggregation pipeline, indexing, document database, NoSQL, Python library, async MongoDB"
 ---
 
-# History
+- # History
 	- **How**:
 		- **MongoDB** was first developed in **2007** by **Dwight Merriman**, **Eliot Horowitz**, and **Kevin Ryan** as part of the **10gen** company (now MongoDB, Inc.).
 		- MongoDB was designed to address the limitations of traditional relational databases, especially in terms of scalability, flexibility, and ease of use when handling large volumes of unstructured or semi-structured data.

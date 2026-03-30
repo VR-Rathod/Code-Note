@@ -4,7 +4,7 @@ description: "Loose coupling and high cohesion are key software design principle
 keywords: "loose coupling, high cohesion, software design, SOLID principles, dependency injection, module design, refactoring, maintainability, object-oriented programming, design principles"
 ---
 
-# Explanation
+- # Explanation
 	- **Loose Coupling**: Reduces dependencies between objects, making the system more flexible and easier to maintain.
 	- **High Cohesion**: Ensures that a class or module is focused on a specific responsibility, improving clarity and maintainability.
 -

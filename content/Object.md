@@ -4,7 +4,7 @@ description: "Objects are instances of classes with state, behavior, and identit
 keywords: "object, OOP, object-oriented programming, instance, state, behavior, identity, instance variables, methods, object lifecycle, class instantiation, software design"
 ---
 
-# Explanation
+- # Explanation
 	- An object is an instance of a class. While a class is a blueprint or template, an object is a specific entity created from that class. Objects have attributes (also called properties or fields) and methods (also called functions or behaviors) that are defined by the class.
 -
 - # steps

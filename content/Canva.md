@@ -4,7 +4,7 @@ description: "Canva reference covering templates, design elements, brand kit, ph
 keywords: "Canva, graphic design, templates, brand kit, photo editing, presentations, social media graphics, Canva Pro, design tool, no-code design, visual content"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: Canva was developed by Melanie Perkins, Cliff Obrecht, and Cameron Adams, launched in 2013 as a web-based graphic design platform.
 	- **Who**: The platform was created by a team at Canva Pty Ltd, aiming to make design accessible to everyone, regardless of skill level.

@@ -4,7 +4,7 @@ description: "Heap sort builds a max-heap then repeatedly extracts the maximum. 
 keywords: "heap sort, sorting algorithm, max-heap, heapify, O(n log n), in-place sort, comparison sort, time complexity, space complexity, binary heap, algorithm"
 ---
 
-# Explanation
+- # Explanation
 	- **Heap Sort** is a comparison-based sorting algorithm that uses a binary heap data structure. The algorithm works by building a max heap (or min heap) and then repeatedly extracting the largest (or smallest) element and rebuilding the heap until the list is sorted.
 	-
 - # Steps:

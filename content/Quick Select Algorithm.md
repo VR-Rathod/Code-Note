@@ -4,7 +4,7 @@ description: "Quick select finds the kth smallest element in O(n) average time u
 keywords: "quick select, kth smallest, order statistics, partitioning, O(n) average, median of medians, time complexity, space complexity, selection algorithm, array"
 ---
 
-# Explanation
+- # Explanation
 	- Quick Select is used to find the **k-th smallest element** in an unordered array. It is similar to QuickSort but only partially sorts the array.
 -
 - # Steps

@@ -4,7 +4,7 @@ description: "SketchUp reference covering push/pull modeling, components, groups
 keywords: "SketchUp, 3D modeling, architecture, push/pull, components, groups, materials, scenes, LayOut, extensions, architectural visualization, interior design"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: SketchUp was developed by Last Software and first released in 2000. Google acquired it in 2006, and later it became part of Trimble Inc. in 2012.
 	- **Who**: The software was created by Brad Schell and Joe Edkins at Last Software.

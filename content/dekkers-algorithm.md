@@ -4,7 +4,7 @@ description: "Dekker's algorithm is the first known correct solution to the mutu
 keywords: "Dekker algorithm, mutual exclusion, concurrency, critical section, busy waiting, flag variable, turn variable, time complexity, concurrent programming, synchronization"
 ---
 
-# Explanation
+- # Explanation
 	- **Dekker’s Algorithm** is a mutual exclusion algorithm used to ensure that only one process accesses the critical section at a time. It is one of the first algorithms to solve the mutual exclusion problem in concurrent programming.
 -
 - # Steps

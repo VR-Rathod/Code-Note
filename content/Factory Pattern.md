@@ -4,7 +4,7 @@ description: "Factory pattern creates objects without specifying exact classes. 
 keywords: "factory pattern, design pattern, creational pattern, factory method, abstract factory, object creation, OOP, software design, dependency injection, SOLID principles"
 ---
 
-# Explanation
+- # Explanation
 	- The **Factory Pattern** is a creational design pattern that provides a method for creating objects without specifying the exact class of object that will be created.
 	- **"Encapsulates object creation"**: The factory method encapsulates the instantiation logic and can return different objects based on conditions.
 	- **Use Case**: Useful when object creation logic is complex or when you want to provide different implementations for the same interface.

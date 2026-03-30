@@ -4,7 +4,7 @@ description: "Web scraping reference covering requests, BeautifulSoup, Scrapy, S
 keywords: "web scraping, Python scraping, BeautifulSoup, Scrapy, Selenium, requests, JavaScript rendering, rate limiting, robots.txt, data extraction, ethical scraping"
 ---
 
-# What Is Web Scraping
+- # What Is Web Scraping
 	- It's Use For Get Data From web pages
 	- web scraping also used for convert unstructured Data to Structured Data
 	- types of data :-

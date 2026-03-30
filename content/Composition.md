@@ -4,7 +4,7 @@ description: "Composition builds complex objects by combining simpler ones. Cove
 keywords: "composition, OOP, object-oriented programming, has-a relationship, composition over inheritance, dependency injection, design patterns, software design, flexibility"
 ---
 
-# Explanation
+- # Explanation
 	- **Composition** is an OOP principle where one object is made up of other objects, i.e., it has instances of other classes as attributes. Composition represents a "has-a" relationship between objects.
 	- **Has-A Relationship**: This means that an object can contain other objects, which may represent part of its functionality.
 -

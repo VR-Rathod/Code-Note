@@ -4,7 +4,7 @@ description: "Shell sort generalizes insertion sort by sorting elements far apar
 keywords: "shell sort, sorting algorithm, gap sequence, insertion sort, Knuth gap, Ciura gap, O(n log^2 n), time complexity, space complexity, comparison sort, in-place sort"
 ---
 
-# Explanation
+- # Explanation
 	- **Shell Sort** is an in-place comparison-based sorting algorithm that generalizes **Insertion Sort** to allow the exchange of far apart elements. It works by comparing elements that are a certain gap apart, and gradually reducing the gap.
 -
 - # Steps:

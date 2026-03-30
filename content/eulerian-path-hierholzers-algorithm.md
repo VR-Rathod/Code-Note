@@ -4,7 +4,7 @@ description: "Hierholzer's algorithm finds Eulerian circuits and paths in O(E) t
 keywords: "Eulerian path, Eulerian circuit, Hierholzer algorithm, graph theory, O(E) time, directed graph, undirected graph, time complexity, space complexity, edge traversal"
 ---
 
-# Explanation
+- # Explanation
 	- **Eulerian Path** in a graph is a path that visits every edge exactly once. **Hierholzer's Algorithm** is used to find Eulerian paths or circuits in a graph.
 	-
 	- An Eulerian **Circuit** exists if all vertices have an even degree. An **Eulerian Path** exists if exactly two vertices have an odd degree.

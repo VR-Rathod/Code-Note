@@ -4,7 +4,7 @@ description: "Photoshop reference covering layers, masks, selections, adjustment
 keywords: "Adobe Photoshop, photo editing, layers, masks, selections, adjustments, filters, smart objects, Camera Raw, neural filters, graphic design, Adobe CC"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: Adobe Photoshop was developed by Thomas and John Knoll, first released in 1988 as a photo editing software.
 	- **Who**: Created by Adobe Inc., it quickly became the standard for photo editing and manipulation.

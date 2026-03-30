@@ -4,7 +4,7 @@ description: "Euclid's algorithm computes the greatest common divisor efficientl
 keywords: "Euclid algorithm, GCD, greatest common divisor, extended Euclidean, Bezout identity, LCM, modular arithmetic, time complexity, space complexity, number theory"
 ---
 
-# Explanation
+- # Explanation
 	- **Euclid's Algorithm** is an efficient way to compute the **Greatest Common Divisor (GCD)** of two integers.
 	-
 	- The algorithm works on the principle that the GCD of two numbers also divides their difference. In mathematical terms:

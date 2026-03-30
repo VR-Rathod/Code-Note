@@ -4,7 +4,7 @@ description: "Game development overview covering game loops, physics, rendering,
 keywords: "game development, game loop, physics engine, rendering, game AI, audio, input handling, Unity, Unreal Engine, Godot, game design, indie game, game dev notes, game dev guide, game programming, game development reference, VR-Rathod, Code-Note, code note vr, vr book"
 ---
 
-# History
+- # History
 - **How**: Game development evolved from simple 2D arcade games (1970s) to complex 3D real-time simulations powered by GPUs, physics engines, and networked multiplayer.
 - **Who**: Pioneered by companies like Atari, id Software (Doom, Quake), Epic Games (Unreal), and Valve — whose engines became the foundation of modern game dev.
 - **Why**: To create interactive real-time experiences — combining graphics, physics, audio, AI, and networking into a cohesive system.
@@ -928,7 +928,7 @@ keywords: "game development, game loop, physics engine, rendering, game AI, audi
 	- ## Related Pages
 		- [[Godot]] — Godot engine deep dive
 		- [[PathTracer Learning]] — GPU path tracing, Vulkan RT, rendering research
-		- [[Cpp]] — C++ for game/engine development
+		- [[C++]] — C++ for game/engine development
 		- [[Binary Space Partitioning]] — Spatial data structure for rendering
 		- [[Bevy]] — Rust ECS game engine
 		- [[Unity]] — Unity engine reference

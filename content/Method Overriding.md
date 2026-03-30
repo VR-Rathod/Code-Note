@@ -4,7 +4,7 @@ description: "Method overriding redefines a parent class method in a subclass. C
 keywords: "method overriding, OOP, runtime polymorphism, @Override, virtual methods, covariant return, Java overriding, Python overriding, C++ override, object-oriented programming"
 ---
 
-# Explanation
+- # Explanation
 	- **Method Overriding** allows a subclass to provide its own specific implementation of a method that is already defined in its parent class. This is one of the key features of polymorphism.
 	- Overriding is done when a child class defines a method with the same name and signature as a method in the parent class.
 -

@@ -4,7 +4,7 @@ description: "Crit-bit trees are compact binary tries for fast string and intege
 keywords: "crit-bit tree, binary trie, prefix tree, string lookup, critical bit, radix tree, time complexity, space complexity, data structure, key-value store"
 ---
 
-# Explanation
+- # Explanation
 	- A **Crit-bit Tree** is a binary search tree used for storing strings, especially strings of arbitrary length, in a compressed form.
 	-
 	- The **Crit-bit** refers to the bit position in the common prefix of two strings where they differ. The tree is a form of **binary trie** with a compressed path.

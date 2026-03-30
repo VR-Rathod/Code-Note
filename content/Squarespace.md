@@ -4,7 +4,7 @@ description: "Squarespace reference covering templates, blocks, CSS customizatio
 keywords: "Squarespace, website builder, templates, CSS customization, e-commerce, SEO, domains, Squarespace 7.1, web design, no-code, online store, blog platform"
 ---
 
-# **History**
+- # **History**
 	- **How**: Squarespace was founded in **2003** by **Anthony Casalena** as a website-building platform with a focus on design, enabling individuals and small businesses to create professional websites without coding.
 	-
 	- **Who**: Developed by **Anthony Casalena** and his team at **Squarespace, Inc.**, which is based in New York City. The platform has grown to be a leading website builder known for its sleek design templates.

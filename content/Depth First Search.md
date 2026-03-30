@@ -4,7 +4,7 @@ description: "DFS explores graphs by going as deep as possible before backtracki
 keywords: "depth first search, DFS, graph traversal, recursion, backtracking, cycle detection, topological sort, connected components, time complexity, space complexity"
 ---
 
-# Explanation
+- # Explanation
 	- Depth First Search (DFS) is a searching algorithm used in graph or tree data structures. It starts from a given node and explores as far as possible along each branch before backtracking. DFS is implemented using recursion or a stack.
 -
 - # Steps:

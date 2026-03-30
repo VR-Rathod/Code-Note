@@ -4,7 +4,7 @@ description: "Swift reference covering optionals, protocols, generics, closures,
 keywords: "Swift programming, Swift language, optionals, protocols, generics, closures, async await, SwiftUI, iOS development, macOS, Swift 5, syntax reference"
 ---
 
-# History
+- # History
 	- **How**:
 		- Developed by **Apple**, Swift was introduced in **2014** as a modern programming language designed to replace **Objective-C** for iOS and macOS development.
 		- Swift was created to provide a safer, more efficient, and easier-to-learn alternative to Objective-C, combining the best features of dynamic and static languages.

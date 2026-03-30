@@ -4,7 +4,7 @@ description: "Scala reference covering case classes, pattern matching, implicits
 keywords: "Scala programming, Scala language, case classes, pattern matching, implicits, futures, Akka, Apache Spark, functional programming, JVM, syntax reference, cheat sheet"
 ---
 
-# History
+- # History
 	- **How**:
 		- Scala was created by **Martin Odersky** and was first released in **2003**. It was designed to address the limitations of Java while running on the Java Virtual Machine (JVM), providing a modern language that supports both object-oriented and functional programming paradigms.
 		- Scala was developed to provide a language that could offer a concise and expressive syntax, while also being fully interoperable with Java, allowing Java developers to seamlessly integrate with Scala code.

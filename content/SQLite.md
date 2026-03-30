@@ -4,7 +4,7 @@ description: "Python's sqlite3 module provides a lightweight embedded database. 
 keywords: "SQLite, Python sqlite3, embedded database, CRUD operations, transactions, parameterized queries, row factory, Python standard library, database, SQL, lightweight DB"
 ---
 
-# History
+- # History
 	- **How**:
 		- SQLite was created in **2000** by **D. Richard Hipp** as a lightweight, serverless, self-contained SQL database engine.
 		- SQLite was developed to provide an embedded database system that could be used within applications without requiring a separate server process or complex configuration.

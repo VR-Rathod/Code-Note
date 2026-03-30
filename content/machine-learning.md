@@ -4,7 +4,7 @@ description: "Machine learning reference covering supervised, unsupervised, and 
 keywords: "machine learning, supervised learning, unsupervised learning, reinforcement learning, neural networks, model evaluation, feature engineering, Scikit-learn, PyTorch, TensorFlow"
 ---
 
-# More learn
+- # More learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills :-
 	-
 	- ## Github & Webs

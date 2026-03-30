@@ -4,7 +4,7 @@ description: "Ruby reference covering blocks, procs, lambdas, modules, mixins, m
 keywords: "Ruby programming, Ruby language, blocks, procs, lambdas, modules, mixins, metaprogramming, Ruby on Rails, Rails, syntax reference, cheat sheet"
 ---
 
-# history
+- # history
 	- **How**:
 		- Developed by **Yukihiro "Matz" Matsumoto** in Japan, Ruby was created in the mid-1990s, with its first public release in 1995.
 		- Designed as a **dynamic, interpreted** language with a focus on simplicity and productivity, Ruby combines elements of object-oriented programming (OOP) and functional programming.

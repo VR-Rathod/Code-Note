@@ -7,6 +7,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 - # Introduction to System Design
   collapsed:: true
 	- ## Beginner to Advanced Roadmap
+	  collapsed:: true
 		- ```
 		  BEGINNER (Start Here):
 		    1. What is System Design? HLD vs LLD
@@ -15,7 +16,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    4. Databases: SQL vs NoSQL
 		    5. Caching fundamentals (Redis)
 		    6. Load Balancing basics
-
+		  
 		  INTERMEDIATE:
 		    7. CAP Theorem, PACELC
 		    8. Database Replication & Sharding
@@ -25,7 +26,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    12. Rate Limiting algorithms
 		    13. Authentication (JWT, OAuth 2.0)
 		    14. Consistent Hashing
-
+		  
 		  ADVANCED:
 		    15. Distributed Patterns (Circuit Breaker, Saga, Outbox)
 		    16. Event Sourcing & CQRS
@@ -59,9 +60,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  Step 6 → Identify bottlenecks and trade-offs
 		  Step 7 → Discuss failure scenarios and recovery
 		  ```
-
 - # Scalability
-  collapsed:: true
 	- ## What is Scalability?
 		- The ability of a system to handle **growing amounts of work** by adding resources.
 		- Two main strategies:
@@ -72,7 +71,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    [Server 4 CPU] → [Server 16 CPU]
 		    Pros: Simple, no code changes
 		    Cons: Hardware limits, single point of failure, expensive
-
+		  
 		  Horizontal Scaling:
 		    [Server] → [Server] [Server] [Server]
 		    Pros: Virtually unlimited, fault tolerant
@@ -87,7 +86,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  Example:
 		  Latency:    200ms per request
 		  Throughput: 5000 requests/second
-
+		  
 		  Amdahl's Law: Speedup is limited by the sequential portion of a task.
 		  If 20% of work is sequential → max speedup = 1 / 0.20 = 5x (no matter how many cores)
 		  ```
@@ -102,11 +101,11 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  CP Systems (Consistency + Partition Tolerance):
 		    → HBase, Zookeeper, MongoDB (default config)
 		    → Returns error if can't guarantee consistency
-
+		  
 		  AP Systems (Availability + Partition Tolerance):
 		    → Cassandra, CouchDB, DynamoDB
 		    → Returns possibly stale data but always responds
-
+		  
 		  CA Systems (Consistency + Availability):
 		    → Only possible in single-node (no partition tolerance)
 		    → Traditional RDBMS on single server
@@ -118,7 +117,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  PACELC:
 		    If Partition → choose between Availability or Consistency
 		    Else (no partition) → choose between Latency or Consistency
-
+		  
 		  Examples:
 		    DynamoDB → PA/EL (available during partition, low latency else)
 		    HBase    → PC/EC (consistent always, higher latency)
@@ -135,7 +134,6 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  99.99%  → 52.6 minutes downtime/year
 		  99.999% → 5.26 minutes downtime/year
 		  ```
-
 - # Load Balancing
   collapsed:: true
 	- ## What is a Load Balancer?
@@ -160,7 +158,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Request 2 → Server B
 		    Request 3 → Server C
 		    Request 4 → Server A (cycle repeats)
-
+		  
 		  Least Connections:
 		    Server A: 10 active connections
 		    Server B: 3 active connections  ← next request goes here
@@ -173,7 +171,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		- ```
 		  L4 Example:
 		    Route all TCP traffic on port 443 to backend pool
-
+		  
 		  L7 Example:
 		    /api/*    → API servers
 		    /static/* → CDN / static servers
@@ -193,7 +191,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  Active-Passive:
 		    Primary LB handles traffic
 		    Secondary LB takes over if primary fails (heartbeat monitoring)
-
+		  
 		  Active-Active:
 		    Both LBs handle traffic simultaneously
 		    DNS round-robin or anycast routing
@@ -204,7 +202,6 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		- **HAProxy** — Reliable, high-performance TCP/HTTP load balancer.
 		- **AWS ALB/NLB** — Managed cloud load balancers (Application/Network layer).
 		- **Cloudflare** — Global anycast load balancing with DDoS protection.
-
 - # Caching
   collapsed:: true
 	- ## What is Caching?
@@ -213,7 +210,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		- ```
 		  Without Cache:
 		    Request → DB query (100ms) → Response
-
+		  
 		  With Cache:
 		    Request → Cache hit (1ms) → Response
 		    Request → Cache miss → DB (100ms) → Store in cache → Response
@@ -260,12 +257,12 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Write → Cache + DB (synchronous)
 		    Pros: Always consistent
 		    Cons: Write latency = DB latency
-
+		  
 		  Write-Back:
 		    Write → Cache → (async) → DB
 		    Pros: Very fast writes
 		    Cons: Data loss if cache crashes before sync
-
+		  
 		  Write-Around:
 		    Write → DB (skip cache)
 		    Pros: Cache not polluted with write-once data
@@ -283,7 +280,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    2. Cache miss → query DB
 		    3. Store result in cache with TTL
 		    4. Return result
-
+		  
 		  On update:
 		    1. Update DB
 		    2. Delete/invalidate cache key
@@ -311,7 +308,6 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  Use Case         Sessions, queues,        Simple key-value
 		                   leaderboards, cache      cache, high throughput
 		  ```
-
 - # Databases at Scale
   collapsed:: true
 	- ## SQL vs NoSQL
@@ -323,7 +319,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Query:       SQL — powerful joins, aggregations
 		    Use When:    Complex relationships, financial data, reporting
 		    Examples:    PostgreSQL, MySQL, Oracle, SQL Server
-
+		  
 		  NoSQL:
 		    Structure:   Document, Key-Value, Column-family, Graph
 		    ACID:        Eventual consistency (mostly), some support ACID
@@ -342,12 +338,12 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Write → [Primary DB] → replicates → [Replica 1]
 		                                      → [Replica 2]
 		    Read  → [Replica 1] or [Replica 2]
-
+		  
 		  Benefits:
 		    - Read scalability (distribute reads)
 		    - Failover (promote replica if primary fails)
 		    - Backups without impacting primary
-
+		  
 		  Replication Lag:
 		    - Async replication → replicas may be slightly behind
 		    - Sync replication → consistent but slower writes
@@ -358,23 +354,23 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		- Each shard holds a subset of the data.
 		- ```
 		  Sharding Strategies:
-
+		  
 		  1. Range-Based Sharding:
 		     User IDs 1-1M    → Shard 1
 		     User IDs 1M-2M   → Shard 2
 		     Pros: Simple, range queries easy
 		     Cons: Hot spots if data not evenly distributed
-
+		  
 		  2. Hash-Based Sharding:
 		     shard = hash(user_id) % num_shards
 		     Pros: Even distribution
 		     Cons: Range queries hard, resharding is painful
-
+		  
 		  3. Directory-Based Sharding:
 		     Lookup table maps keys to shards
 		     Pros: Flexible
 		     Cons: Lookup table is a bottleneck/SPOF
-
+		  
 		  4. Geographic Sharding:
 		     US users → US shard
 		     EU users → EU shard
@@ -385,28 +381,28 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		- An index is a data structure that speeds up data retrieval at the cost of extra storage and slower writes.
 		- ```
 		  Types of Indexes:
-
+		  
 		  B-Tree Index (default in most RDBMS):
 		    → Good for range queries, equality, ORDER BY
 		    → Used in: PostgreSQL, MySQL
-
+		  
 		  Hash Index:
 		    → O(1) exact match lookups
 		    → Bad for range queries
-
+		  
 		  Composite Index:
 		    CREATE INDEX idx ON users(last_name, first_name);
 		    → Efficient for queries filtering on both columns
 		    → Left-prefix rule: (last_name) alone works, (first_name) alone doesn't
-
+		  
 		  Covering Index:
 		    → Index contains all columns needed by query
 		    → No need to access the actual table rows
-
+		  
 		  Full-Text Index:
 		    → For text search (LIKE '%keyword%' is slow)
 		    → Used in: Elasticsearch, PostgreSQL tsvector
-
+		  
 		  Partial Index:
 		    CREATE INDEX idx ON orders(user_id) WHERE status = 'active';
 		    → Index only a subset of rows
@@ -423,7 +419,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    READ COMMITTED   → only reads committed data (default in many DBs)
 		    REPEATABLE READ  → same query returns same result within transaction
 		    SERIALIZABLE     → transactions execute as if sequential (slowest, safest)
-
+		  
 		  Anomalies:
 		    Dirty Read       → reading uncommitted data
 		    Non-Repeatable   → same row returns different value in same transaction
@@ -435,13 +431,13 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		- ```
 		  Without Pool:
 		    Request → Open connection → Query → Close connection (slow)
-
+		  
 		  With Pool:
 		    App starts → Create 10 connections → Pool
 		    Request → Borrow connection → Query → Return to pool (fast)
-
+		  
 		  Popular: PgBouncer (PostgreSQL), HikariCP (Java), SQLAlchemy pool (Python)
-
+		  
 		  Key settings:
 		    min_connections: 5
 		    max_connections: 100
@@ -459,7 +455,6 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    else:
 		        use replica_db  # round-robin across replicas
 		  ```
-
 - # Networking & Communication
   collapsed:: true
 	- ## HTTP vs HTTPS vs HTTP/2 vs HTTP/3
@@ -467,19 +462,19 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  HTTP/1.1:
 		    → Text-based, one request per connection (keep-alive helps)
 		    → Head-of-line blocking
-
+		  
 		  HTTP/2:
 		    → Binary protocol, multiplexing (multiple requests over one connection)
 		    → Header compression (HPACK)
 		    → Server push
 		    → Still TCP-based (TCP HOL blocking)
-
+		  
 		  HTTP/3:
 		    → Built on QUIC (UDP-based)
 		    → Eliminates TCP head-of-line blocking
 		    → Faster connection setup (0-RTT)
 		    → Better for mobile/lossy networks
-
+		  
 		  HTTPS:
 		    → HTTP + TLS encryption
 		    → Prevents eavesdropping and MITM attacks
@@ -494,14 +489,14 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Pros:       Simple, widely understood, cacheable
 		    Cons:       Over-fetching, under-fetching, multiple round trips
 		    Use When:   Public APIs, CRUD operations
-
+		  
 		  GraphQL:
 		    Protocol:   HTTP
 		    Format:     JSON
 		    Pros:       Fetch exactly what you need, single endpoint, strongly typed
 		    Cons:       Complex caching, N+1 query problem, learning curve
 		    Use When:   Mobile apps, complex data requirements, BFF pattern
-
+		  
 		  gRPC:
 		    Protocol:   HTTP/2
 		    Format:     Protocol Buffers (binary)
@@ -516,19 +511,19 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Client → Request every N seconds → Server
 		    Pros: Simple
 		    Cons: Wasteful, high latency
-
+		  
 		  Long Polling:
 		    Client → Request → Server holds until data available → Response
 		    Client immediately sends next request
 		    Pros: Near real-time, works everywhere
 		    Cons: Server holds connections, overhead per message
-
+		  
 		  WebSockets:
 		    Client ↔ Server (persistent bidirectional connection)
 		    Pros: True real-time, low overhead after handshake
 		    Cons: Stateful (harder to scale), not cacheable
 		    Use When: Chat, gaming, live collaboration, trading
-
+		  
 		  SSE (Server-Sent Events):
 		    Server → Client (one-way persistent stream)
 		    Pros: Simple, auto-reconnect, works over HTTP
@@ -543,7 +538,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Browser → DNS Cache → OS Cache → Recursive Resolver
 		    → Root Nameserver → TLD Nameserver (.com)
 		    → Authoritative Nameserver → IP Address
-
+		  
 		  DNS Record Types:
 		    A      → domain → IPv4 address
 		    AAAA   → domain → IPv6 address
@@ -552,7 +547,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    TXT    → arbitrary text (SPF, DKIM, verification)
 		    NS     → nameservers for domain
 		    TTL    → how long to cache the record
-
+		  
 		  DNS for Load Balancing:
 		    → Multiple A records for same domain (round-robin DNS)
 		    → GeoDNS: return different IPs based on client location
@@ -563,23 +558,22 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		- ```
 		  Without CDN:
 		    User in India → Server in US (200ms latency)
-
+		  
 		  With CDN:
 		    User in India → CDN Edge in Mumbai (10ms latency)
-
+		  
 		  CDN Caches:
 		    → Static assets: images, CSS, JS, videos
 		    → Dynamic content: some CDNs support edge computing
-
+		  
 		  CDN Providers:
 		    Cloudflare, AWS CloudFront, Akamai, Fastly, Azure CDN
-
+		  
 		  Cache-Control Headers:
 		    Cache-Control: public, max-age=86400   → cache for 1 day
 		    Cache-Control: no-cache                → always revalidate
 		    Cache-Control: no-store                → never cache
 		  ```
-
 - # Message Queues & Event-Driven Architecture
   collapsed:: true
 	- ## What is a Message Queue?
@@ -589,7 +583,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  Synchronous (tight coupling):
 		    Service A → calls Service B → waits → continues
 		    Problem: If B is slow/down, A is blocked
-
+		  
 		  Asynchronous (loose coupling):
 		    Service A → puts message in Queue → continues immediately
 		    Service B → reads from Queue → processes at its own pace
@@ -617,7 +611,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Throughput:  Millions of messages/second
 		    Use When:    Event sourcing, stream processing, audit logs, high throughput
 		    Consumers:   Pull-based, consumer groups, replay from any offset
-
+		  
 		  RabbitMQ:
 		    Type:        Traditional message broker (AMQP)
 		    Retention:   Messages deleted after consumption
@@ -625,7 +619,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Throughput:  Tens of thousands/second
 		    Use When:    Task queues, RPC, complex routing, low latency
 		    Consumers:   Push-based
-
+		  
 		  AWS SQS:
 		    Type:        Managed cloud queue
 		    Retention:   Up to 14 days
@@ -641,12 +635,12 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    → Store state as a sequence of events, not current state
 		    → Replay events to reconstruct state at any point in time
 		    → Audit trail built-in
-
+		  
 		  CQRS (Command Query Responsibility Segregation):
 		    → Separate models for reads (Query) and writes (Command)
 		    → Write model: optimized for consistency
 		    → Read model: optimized for query performance (denormalized)
-
+		  
 		  Saga Pattern:
 		    → Manage distributed transactions across microservices
 		    → Choreography: each service publishes events, others react
@@ -660,7 +654,6 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 			- **Consumer scaling** — Add more consumer instances.
 			- **Drop messages** — Discard low-priority messages under load.
 			- **Circuit breaker** — Stop sending if downstream is overwhelmed.
-
 - # Microservices Architecture
   collapsed:: true
 	- ## Monolith vs Microservices
@@ -670,7 +663,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Pros: Simple to develop, test, deploy initially
 		    Cons: Hard to scale specific parts, slow deploys, tech lock-in,
 		          one bug can crash everything
-
+		  
 		  Microservices:
 		    → Each service is independent, deployed separately
 		    Pros: Independent scaling, independent deploys, tech diversity,
@@ -686,7 +679,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  When to use Sync:
 		    → User-facing requests needing immediate response
 		    → Simple request-response flows
-
+		  
 		  When to use Async:
 		    → Background processing (email, notifications)
 		    → Long-running tasks
@@ -702,7 +695,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    → Consul, Eureka, etcd, Zookeeper
 		    → Services register on startup, deregister on shutdown
 		    → Health checks remove unhealthy instances
-
+		  
 		  DNS-based Discovery:
 		    → Kubernetes uses DNS: service-name.namespace.svc.cluster.local
 		  ```
@@ -714,7 +707,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		                        → User Service
 		                        → Order Service
 		                        → Product Service
-
+		  
 		  API Gateway Responsibilities:
 		    → Authentication & Authorization
 		    → Rate limiting & throttling
@@ -723,7 +716,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    → Request/response transformation
 		    → Logging & monitoring
 		    → Caching
-
+		  
 		  Popular: Kong, AWS API Gateway, Nginx, Traefik, Envoy
 		  ```
 	-
@@ -734,13 +727,13 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    CLOSED   → Normal operation, requests pass through
 		    OPEN     → Service is failing, requests fail fast (no actual call)
 		    HALF-OPEN → Test if service recovered (allow limited requests)
-
+		  
 		  Flow:
 		    Requests fail N times → Circuit OPENS
 		    After timeout → Circuit goes HALF-OPEN
 		    If test request succeeds → Circuit CLOSES
 		    If test request fails → Circuit stays OPEN
-
+		  
 		  Libraries: Hystrix (Java), Resilience4j, Polly (.NET)
 		  ```
 	-
@@ -750,7 +743,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  Step 1: New features built as microservices
 		  Step 2: Existing features gradually extracted to services
 		  Step 3: Monolith shrinks until fully replaced
-
+		  
 		  Traffic routing via API Gateway or proxy:
 		    /new-feature → Microservice
 		    /old-feature → Monolith (until migrated)
@@ -764,10 +757,9 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		              → Service B (span 2)
 		                  → DB query (span 3)
 		              → Service C (span 4)
-
+		  
 		  Tools: Jaeger, Zipkin, AWS X-Ray, Datadog APM, OpenTelemetry
 		  ```
-
 - # Storage Systems
   collapsed:: true
 	- ## Block Storage vs Object Storage vs File Storage
@@ -777,12 +769,12 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    → Low latency, high IOPS
 		    → Use: Databases, VMs, boot volumes
 		    → Examples: AWS EBS, Azure Disk
-
+		  
 		  File Storage (NAS):
 		    → Hierarchical file system, shared across servers
 		    → Use: Shared files, home directories, CMS
 		    → Examples: AWS EFS, Azure Files, NFS
-
+		  
 		  Object Storage:
 		    → Flat namespace, store any file as object with metadata
 		    → Infinitely scalable, cheap, accessed via HTTP API
@@ -801,12 +793,12 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Client → API Server → Generate unique key (UUID/hash)
 		    → Upload to Object Store (S3)
 		    → Store metadata (key, size, owner, timestamp) in DB
-
+		  
 		  Download Flow:
 		    Client → API Server → Lookup metadata in DB
 		    → Generate pre-signed URL (time-limited direct access)
 		    → Client downloads directly from S3 (bypasses app server)
-
+		  
 		  Chunked Upload (large files):
 		    → Split file into chunks (5MB each)
 		    → Upload chunks in parallel
@@ -824,18 +816,17 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  Problem with simple hash:
 		    hash(key) % N_servers
 		    If N changes (add/remove server) → almost all keys remap → cache invalidation storm
-
+		  
 		  Consistent Hashing:
 		    → Place servers and keys on a virtual ring (0 to 2^32)
 		    → Key maps to nearest server clockwise on ring
 		    → Adding/removing a server only affects keys between it and its predecessor
-
+		  
 		  Virtual Nodes:
 		    → Each physical server has multiple virtual nodes on the ring
 		    → Better load distribution
 		    → Used in: Cassandra, DynamoDB, Memcached
 		  ```
-
 - # Rate Limiting & Throttling
   collapsed:: true
 	- ## What is Rate Limiting?
@@ -853,11 +844,11 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Bucket capacity: 10 tokens
 		    Refill rate: 2 tokens/second
 		    Request cost: 1 token
-
+		  
 		    t=0: 10 tokens, 5 requests → 5 tokens left
 		    t=1: 7 tokens (refilled 2), 3 requests → 4 tokens left
 		    t=2: 6 tokens, 10 requests → only 6 allowed, 4 rejected
-
+		  
 		  Fixed Window Problem:
 		    Window: 0-60s, limit: 100 req
 		    User sends 100 req at t=59s → allowed
@@ -872,12 +863,12 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    → All app servers check/update counter in Redis
 		    → Atomic INCR + EXPIRE commands
 		    → Consistent but Redis is a bottleneck
-
+		  
 		  Approach 2: Local + Sync
 		    → Each server tracks locally
 		    → Periodically sync with central store
 		    → Slightly inaccurate but scalable
-
+		  
 		  Redis Rate Limit (Lua script for atomicity):
 		    local count = redis.call('INCR', key)
 		    if count == 1 then redis.call('EXPIRE', key, window) end
@@ -894,7 +885,6 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  X-RateLimit-Reset: 1711440000
 		  Retry-After: 60
 		  ```
-
 - # Security in System Design
   collapsed:: true
 	- ## Authentication vs Authorization
@@ -908,7 +898,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    → API Keys
 		    → MFA (Multi-Factor Authentication)
 		    → SSO (Single Sign-On)
-
+		  
 		  Authorization Models:
 		    → RBAC (Role-Based): user has role, role has permissions
 		    → ABAC (Attribute-Based): permissions based on attributes
@@ -921,13 +911,13 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Header:    {"alg": "HS256", "typ": "JWT"}
 		    Payload:   {"sub": "user123", "role": "admin", "exp": 1711440000}
 		    Signature: HMACSHA256(base64(header) + "." + base64(payload), secret)
-
+		  
 		  Flow:
 		    1. User logs in → Server creates JWT → Returns to client
 		    2. Client stores JWT (localStorage or httpOnly cookie)
 		    3. Client sends JWT in Authorization header: Bearer <token>
 		    4. Server verifies signature → extracts claims → authorizes
-
+		  
 		  Pros: Stateless, scalable (no server-side session store)
 		  Cons: Cannot invalidate before expiry (use short TTL + refresh tokens)
 		  ```
@@ -941,7 +931,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    4. Google redirects back with authorization code
 		    5. App exchanges code for access_token + refresh_token (server-side)
 		    6. App uses access_token to call Google APIs
-
+		  
 		  PKCE (Proof Key for Code Exchange):
 		    → Extension for mobile/SPA apps
 		    → Prevents authorization code interception attacks
@@ -955,7 +945,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    3. Client verifies certificate against CA
 		    4. Key exchange (ECDHE) → shared session key
 		    5. Encrypted communication begins
-
+		  
 		  Certificate Pinning:
 		    → App hardcodes expected certificate/public key
 		    → Prevents MITM even with compromised CA
@@ -966,24 +956,23 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  SQL Injection:
 		    Attack:  SELECT * FROM users WHERE id = '1 OR 1=1'
 		    Fix:     Use parameterized queries / prepared statements
-
+		  
 		  XSS (Cross-Site Scripting):
 		    Attack:  Inject <script>steal_cookies()</script> into page
 		    Fix:     Sanitize/escape output, Content-Security-Policy header
-
+		  
 		  CSRF (Cross-Site Request Forgery):
 		    Attack:  Malicious site triggers authenticated request to your API
 		    Fix:     CSRF tokens, SameSite cookie attribute
-
+		  
 		  IDOR (Insecure Direct Object Reference):
 		    Attack:  GET /api/orders/123 → change to /api/orders/124 (another user's order)
 		    Fix:     Always verify ownership/authorization server-side
-
+		  
 		  DDoS:
 		    Attack:  Flood server with traffic
 		    Fix:     Rate limiting, CDN, WAF, anycast routing
 		  ```
-
 - # Design Patterns for Distributed Systems
   collapsed:: true
 	- ## Retry Pattern
@@ -995,9 +984,9 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Attempt 3: wait 4s
 		    Attempt 4: wait 8s + random jitter (0-1s)
 		    Max retries: 5
-
+		  
 		  Jitter prevents thundering herd (all clients retrying at same time)
-
+		  
 		  Idempotency:
 		    → Retried requests must be safe to repeat
 		    → Use idempotency keys for POST requests
@@ -1011,10 +1000,10 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Service A: 20 threads
 		    Service B: 20 threads
 		    Service C: 20 threads
-
+		  
 		    If Service A is slow and exhausts its 20 threads,
 		    Services B and C are unaffected (separate pools)
-
+		  
 		  Semaphore Bulkhead:
 		    Limit concurrent calls to a dependency
 		  ```
@@ -1024,7 +1013,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		- ```
 		  Main Container: App logic
 		  Sidecar Container: Logging, monitoring, service mesh proxy (Envoy)
-
+		  
 		  Used in: Kubernetes pods, Istio service mesh
 		  Benefits: Separation of concerns, language-agnostic infrastructure
 		  ```
@@ -1035,12 +1024,12 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  Problem:
 		    1. Write to DB ✓
 		    2. Publish to Kafka ✗ (crash) → message lost!
-
+		  
 		  Outbox Solution:
 		    1. Write to DB + write to outbox table (same transaction) ✓
 		    2. Background worker reads outbox → publishes to Kafka
 		    3. Mark outbox record as published
-
+		  
 		  Guarantees at-least-once delivery (make consumers idempotent)
 		  ```
 	-
@@ -1050,11 +1039,11 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  Phase 1 (Prepare):
 		    Coordinator → asks all participants: "Can you commit?"
 		    Participants → lock resources, respond Yes/No
-
+		  
 		  Phase 2 (Commit/Abort):
 		    If all Yes → Coordinator sends Commit
 		    If any No  → Coordinator sends Abort
-
+		  
 		  Problems:
 		    → Blocking protocol (coordinator crash = all participants stuck)
 		    → Not suitable for high-throughput systems
@@ -1068,13 +1057,12 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    → Raft consensus algorithm (used in etcd, CockroachDB)
 		    → Zookeeper ephemeral nodes (first to create wins)
 		    → Bully algorithm
-
+		  
 		  Use Cases:
 		    → Primary DB selection
 		    → Distributed cron job (only leader runs the job)
 		    → Kafka partition leader
 		  ```
-
 - # Back-of-the-Envelope Estimation
   collapsed:: true
 	- ## Key Numbers Every Engineer Should Know
@@ -1103,7 +1091,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    1 GB = 10^9 bytes
 		    1 TB = 10^12 bytes
 		    1 PB = 10^15 bytes
-
+		  
 		  Common sizes:
 		    ASCII char:    1 byte
 		    Unicode char:  2-4 bytes
@@ -1123,22 +1111,21 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    50% use daily → 150M DAU
 		    Each user reads 100 tweets/day
 		    Each user posts 2 tweets/day
-
+		  
 		  Read QPS:
 		    150M users × 100 tweets / 86,400 sec = ~174,000 QPS
 		    Peak (2x): ~350,000 QPS
-
+		  
 		  Write QPS:
 		    150M users × 2 tweets / 86,400 sec = ~3,500 QPS
 		    Peak (2x): ~7,000 QPS
-
+		  
 		  Storage (tweets):
 		    3,500 writes/sec × 86,400 sec × 365 days
 		    = ~110 billion tweets/year
 		    Each tweet: 280 bytes text + 500 bytes metadata = ~780 bytes
 		    110B × 780 bytes = ~86 TB/year
 		  ```
-
 - # Real-World System Design Case Studies
   collapsed:: true
 	- ## Design a URL Shortener (like bit.ly)
@@ -1157,12 +1144,12 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 			  Option 1: MD5/SHA256 hash of long URL → take first 7 chars
 			    Pros: Deterministic (same URL = same short code)
 			    Cons: Hash collisions possible
-
+			  
 			  Option 2: Base62 encoding of auto-increment ID
 			    Characters: [a-z A-Z 0-9] = 62 chars
 			    7 chars = 62^7 = ~3.5 trillion unique URLs
 			    ID 12345 → base62 → "dnh"
-
+			  
 			  Option 3: Distributed ID generator (Snowflake)
 			    → Unique IDs across multiple servers
 			  ```
@@ -1182,7 +1169,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 			  1. Check Redis cache for "abc123"
 			  2. Cache hit → return 301/302 redirect to long URL
 			  3. Cache miss → query DB → cache result → redirect
-
+			  
 			  301 (Permanent): Browser caches redirect → less server load
 			  302 (Temporary): Every request hits server → better analytics
 			  ```
@@ -1197,12 +1184,12 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 			  Message Delivery Protocol:
 			    → WebSocket for real-time bidirectional communication
 			    → Long polling as fallback
-
+			  
 			  Message Storage:
 			    → NoSQL (Cassandra/HBase) for high write throughput
 			    → Partition key: conversation_id
 			    → Sort key: timestamp (for ordered retrieval)
-
+			  
 			  Message ID:
 			    → Snowflake ID (time-ordered, unique across servers)
 			    → Ensures messages display in correct order
@@ -1211,15 +1198,15 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 			- ```
 			  Client A ←WebSocket→ [Chat Server 1]
 			  Client B ←WebSocket→ [Chat Server 2]
-
+			  
 			  Chat Server 1 → [Message Queue (Kafka)]
 			                → [Presence Service]
 			                → [Push Notification Service]
-
+			  
 			  Message Queue → [Message Storage Service] → [Cassandra]
-
+			  
 			  Presence Service → [Redis] (user_id: last_seen_timestamp)
-
+			  
 			  Service Discovery:
 			    → [ZooKeeper] tracks which chat server each user is connected to
 			    → Server 1 needs to send to user on Server 2 → lookup ZooKeeper → route via internal API
@@ -1256,7 +1243,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 			    → Video split into small segments (2-10 seconds each)
 			    → Player monitors bandwidth → switches quality dynamically
 			    → HLS (HTTP Live Streaming) or DASH protocol
-
+			  
 			  CDN Strategy:
 			    → Popular videos cached at edge nodes globally
 			    → Long-tail videos served from origin
@@ -1267,7 +1254,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 			  Search:
 			    → Elasticsearch for full-text search on title, description, tags
 			    → Autocomplete via Trie or Elasticsearch suggest
-
+			  
 			  Recommendations:
 			    → Collaborative filtering (users with similar history)
 			    → Content-based filtering (similar video metadata)
@@ -1287,12 +1274,12 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 			   Friend request)                   ├── Push Worker → FCM/APNs
 			                                     ├── Email Worker → SendGrid/SES
 			                                     └── SMS Worker → Twilio
-
+			  
 			  User Preferences:
 			    → Store per-user notification settings in DB
 			    → Check preferences before sending
 			    → Respect quiet hours, opt-outs
-
+			  
 			  Deduplication:
 			    → Use idempotency key (event_id) to prevent duplicate sends
 			    → Store sent notifications in Redis with TTL
@@ -1309,17 +1296,16 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 			                                        ↓
 			                           Allow → forward to backend
 			                           Deny  → 429 Too Many Requests
-
+			  
 			  Rules Storage:
 			    → Rate limit rules in DB (per API key, per endpoint, per user tier)
 			    → Cache rules in memory (refresh every 60s)
-
+			  
 			  Multi-tier limits:
 			    → Per second: 10 req/s (burst protection)
 			    → Per minute: 100 req/min
 			    → Per day: 10,000 req/day
 			  ```
-
 - # Monitoring, Observability & Reliability
   collapsed:: true
 	- ## The Three Pillars of Observability
@@ -1330,12 +1316,12 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  Metrics Example (Prometheus format):
 		    http_requests_total{method="GET", status="200"} 1234
 		    http_request_duration_seconds{quantile="0.99"} 0.45
-
+		  
 		  Log Example (structured JSON):
 		    {"timestamp": "2026-03-26T10:00:00Z", "level": "ERROR",
 		     "service": "order-service", "trace_id": "abc123",
 		     "message": "Payment failed", "user_id": "u456"}
-
+		  
 		  Trace Example:
 		    Trace ID: abc123
 		    ├── Span: API Gateway (2ms)
@@ -1351,12 +1337,12 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Rate     → requests per second
 		    Errors   → error rate (%)
 		    Duration → latency (p50, p95, p99)
-
+		  
 		  USE Method (for resources):
 		    Utilization → % time resource is busy
 		    Saturation  → queue length / wait time
 		    Errors       → error count
-
+		  
 		  Golden Signals (Google SRE):
 		    Latency, Traffic, Errors, Saturation
 		  ```
@@ -1368,7 +1354,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  Bad alert:  CPU > 80% for 5 minutes (not user-facing)
 		  Good alert: Error rate > 1% for 5 minutes (user-facing)
 		  Good alert: p99 latency > 2s for 10 minutes
-
+		  
 		  Alert Severity:
 		    P1 (Critical): Page on-call immediately (service down)
 		    P2 (High):     Page on-call (degraded service)
@@ -1385,9 +1371,9 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    3. Introduce failure (kill a server, add latency, drop packets)
 		    4. Observe if steady state is maintained
 		    5. Fix weaknesses found
-
+		  
 		  Tools: Chaos Monkey (Netflix), Gremlin, Chaos Mesh (Kubernetes)
-
+		  
 		  Failure Types to Test:
 		    → Kill random instances
 		    → Introduce network latency (100ms, 1s)
@@ -1401,18 +1387,17 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  RTO (Recovery Time Objective):
 		    → Maximum acceptable downtime after a disaster
 		    → "We must be back online within 4 hours"
-
+		  
 		  RPO (Recovery Point Objective):
 		    → Maximum acceptable data loss
 		    → "We can lose at most 1 hour of data"
-
+		  
 		  Strategies (cheapest to most expensive):
 		    Backup & Restore:  RTO hours, RPO hours
 		    Pilot Light:       RTO 10s of minutes, RPO minutes
 		    Warm Standby:      RTO minutes, RPO seconds
 		    Multi-Site Active: RTO near-zero, RPO near-zero
 		  ```
-
 - # API Design Best Practices
   collapsed:: true
 	- ## RESTful API Design
@@ -1424,15 +1409,15 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    ✓ PUT    /users/123      → replace user 123
 		    ✓ PATCH  /users/123      → partial update user 123
 		    ✓ DELETE /users/123      → delete user 123
-
+		  
 		    ✗ GET /getUser
 		    ✗ POST /createUser
 		    ✗ GET /users/123/delete
-
+		  
 		  Nested Resources:
 		    GET  /users/123/orders       → orders for user 123
 		    GET  /users/123/orders/456   → specific order
-
+		  
 		  HTTP Status Codes:
 		    200 OK              → success
 		    201 Created         → resource created (POST)
@@ -1452,13 +1437,13 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  URL Versioning (most common):
 		    /api/v1/users
 		    /api/v2/users
-
+		  
 		  Header Versioning:
 		    Accept: application/vnd.myapi.v2+json
-
+		  
 		  Query Parameter:
 		    /api/users?version=2
-
+		  
 		  Best Practice:
 		    → Support at least 2 versions simultaneously
 		    → Deprecate old versions with sunset headers
@@ -1472,14 +1457,14 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    SQL: SELECT * FROM users LIMIT 20 OFFSET 40
 		    Pros: Simple, jump to any page
 		    Cons: Slow for large offsets, inconsistent if data changes
-
+		  
 		  Cursor Pagination (recommended for large datasets):
 		    GET /users?cursor=eyJ1c2VyX2lkIjoxMDB9&limit=20
 		    cursor = base64({"user_id": 100})
 		    SQL: SELECT * FROM users WHERE id > 100 LIMIT 20
 		    Pros: Consistent, fast regardless of position
 		    Cons: Can't jump to arbitrary page
-
+		  
 		  Response format:
 		    {
 		      "data": [...],
@@ -1495,18 +1480,17 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		- ```
 		  Idempotent methods: GET, PUT, DELETE, HEAD
 		  Non-idempotent: POST (creates new resource each time)
-
+		  
 		  Making POST idempotent with Idempotency-Key:
 		    POST /payments
 		    Idempotency-Key: a8098c1a-f86e-11da-bd1a-00112444be1e
-
+		  
 		  Server behavior:
 		    1. Check if key exists in DB
 		    2. If yes → return cached response (don't process again)
 		    3. If no  → process request, store response with key
 		    4. Key expires after 24 hours
 		  ```
-
 - # Proxy & Reverse Proxy
   collapsed:: true
 	- ## Forward Proxy vs Reverse Proxy
@@ -1515,12 +1499,12 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Client → [Forward Proxy] → Internet
 		    → Client's IP is hidden from the server
 		    → Use: VPNs, corporate firewalls, content filtering, anonymity
-
+		  
 		  Reverse Proxy (server-side):
 		    Client → [Reverse Proxy] → Backend Servers
 		    → Server's internal IPs are hidden from the client
 		    → Use: Load balancing, SSL termination, caching, DDoS protection
-
+		  
 		  Key Difference:
 		    Forward proxy: protects/represents the CLIENT
 		    Reverse proxy: protects/represents the SERVER
@@ -1551,18 +1535,17 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		- ```
 		  Without Service Mesh:
 		    Service A → manually handles retries, auth, tracing, TLS → Service B
-
+		  
 		  With Service Mesh (Istio/Linkerd):
 		    Service A → [Envoy Sidecar] → [Envoy Sidecar] → Service B
 		    Sidecar handles: mTLS, retries, circuit breaking, tracing, metrics
-
+		  
 		  Benefits:
 		    → Zero-trust security (mTLS between all services)
 		    → Observability without code changes
 		    → Traffic management (canary, A/B testing)
 		    → Language-agnostic
 		  ```
-
 - # Search Systems
   collapsed:: true
 	- ## Full-Text Search Architecture
@@ -1571,11 +1554,11 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    → Full table scan → O(n) → extremely slow at scale
 		    → No relevance ranking
 		    → No typo tolerance
-
+		  
 		  Inverted Index (how search engines work):
 		    Document 1: "the quick brown fox"
 		    Document 2: "the lazy brown dog"
-
+		  
 		    Inverted Index:
 		      "the"   → [Doc1, Doc2]
 		      "quick" → [Doc1]
@@ -1583,7 +1566,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		      "fox"   → [Doc1]
 		      "lazy"  → [Doc2]
 		      "dog"   → [Doc2]
-
+		  
 		    Query "brown fox" → intersect [Doc1,Doc2] ∩ [Doc1] → Doc1
 		  ```
 	-
@@ -1595,19 +1578,19 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Document  → like a row (stored as JSON)
 		    Shard     → index split into shards for distribution
 		    Replica   → copy of shard for fault tolerance
-
+		  
 		  Cluster Architecture:
 		    [Master Node] → manages cluster state, index creation
 		    [Data Nodes]  → store shards, execute queries
 		    [Coord Node]  → routes requests, merges results
-
+		  
 		  Write Flow:
 		    Client → Coord Node → Primary Shard → Replica Shards
-
+		  
 		  Read Flow:
 		    Client → Coord Node → round-robin across primary/replica shards
 		    → merge + rank results → return top N
-
+		  
 		  Key Features:
 		    → Full-text search with relevance scoring (TF-IDF, BM25)
 		    → Fuzzy matching (typo tolerance)
@@ -1621,21 +1604,20 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  Indexing Pipeline:
 		    DB Change → [CDC (Change Data Capture)] → [Kafka]
 		    → [Indexing Service] → [Elasticsearch]
-
+		  
 		  CDC Tools: Debezium (reads DB transaction log)
-
+		  
 		  Search Query Flow:
 		    User types → [Autocomplete Service] → [Trie / Elasticsearch suggest]
 		    User submits → [Search Service] → [Elasticsearch]
 		    → [Ranking Service] (personalization, ML re-ranking)
 		    → Results
-
+		  
 		  Relevance Tuning:
 		    → Boost recent content
 		    → Boost by user engagement (clicks, likes)
 		    → Personalize by user history
 		  ```
-
 - # Distributed Locking & Coordination
   collapsed:: true
 	- ## Why Distributed Locking?
@@ -1647,7 +1629,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Server B reads inventory: 1 item left
 		    Server A decrements → 0 items
 		    Server B decrements → -1 items (oversold!)
-
+		  
 		  With distributed lock:
 		    Server A acquires lock → reads → decrements → releases
 		    Server B waits → acquires lock → reads 0 → rejects order
@@ -1659,14 +1641,14 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    SET lock_key unique_value NX PX 30000
 		    NX = only set if not exists
 		    PX 30000 = expire in 30 seconds (auto-release if crash)
-
+		  
 		  Release (Lua script for atomicity):
 		    if redis.call("GET", key) == value then
 		        return redis.call("DEL", key)
 		    else
 		        return 0
 		    end
-
+		  
 		  Redlock (multi-node):
 		    → Acquire lock on N/2+1 Redis nodes
 		    → If majority acquired within timeout → lock held
@@ -1680,14 +1662,14 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    → Leader election
 		    → Service registry
 		    → Configuration management
-
+		  
 		  Ephemeral Node Lock:
 		    1. Client creates /locks/my-lock (ephemeral sequential node)
 		    2. Client lists all nodes under /locks/
 		    3. If client's node has lowest sequence → it holds the lock
 		    4. Otherwise → watch the node with next lower sequence
 		    5. When watched node deleted → client re-checks
-
+		  
 		  Used by: Kafka (broker coordination), HBase, Hadoop
 		  ```
 	-
@@ -1700,7 +1682,6 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    3. Storage rejects any request with token < current max seen
 		    4. If zombie client sends with old token=31 → rejected
 		  ```
-
 - # Data Pipelines & Stream Processing
   collapsed:: true
 	- ## Batch vs Stream Processing
@@ -1710,7 +1691,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    → High latency (hours), high throughput
 		    → Use: Daily reports, ETL, ML training
 		    → Tools: Apache Spark, Hadoop MapReduce, AWS Glue
-
+		  
 		  Stream Processing:
 		    → Process data continuously as it arrives
 		    → Low latency (milliseconds to seconds)
@@ -1725,7 +1706,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Batch Layer:   Process all historical data → accurate but slow
 		    Speed Layer:   Process recent data in real-time → fast but approximate
 		    Serving Layer: Merge batch + speed results → serve queries
-
+		  
 		  Problem: Maintaining two codebases (batch + stream)
 		  Solution: Kappa Architecture (stream-only, replay for batch)
 		  ```
@@ -1737,14 +1718,14 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    → Reads from Kafka topics, processes, writes back to Kafka
 		    → Stateful operations: joins, aggregations, windowing
 		    → Exactly-once semantics
-
+		  
 		  Apache Flink:
 		    → Distributed stream processing cluster
 		    → True streaming (not micro-batch like Spark Streaming)
 		    → Event time processing (handle late-arriving events)
 		    → Stateful computations with checkpointing
 		    → Use: Complex event processing, real-time ML inference
-
+		  
 		  Windowing:
 		    Tumbling Window: fixed non-overlapping (0-60s, 60-120s)
 		    Sliding Window:  overlapping (last 60s, updated every 10s)
@@ -1757,18 +1738,17 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    → Transform data before loading into warehouse
 		    → Traditional approach, good for structured data
 		    → Tools: Informatica, Talend, AWS Glue
-
+		  
 		  ELT (Extract → Load → Transform):
 		    → Load raw data first, transform inside warehouse
 		    → Modern approach, leverages warehouse compute power
 		    → Tools: dbt (data build tool) + Snowflake/BigQuery/Redshift
-
+		  
 		  Data Lake vs Data Warehouse:
 		    Data Lake:      Raw data in any format (S3, HDFS)
 		    Data Warehouse: Structured, processed, query-optimized (Snowflake, BigQuery)
 		    Data Lakehouse:  Combines both (Delta Lake, Apache Iceberg)
 		  ```
-
 - # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your system design skills:
 	-

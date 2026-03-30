@@ -4,7 +4,7 @@ description: "A Cartesian tree satisfies both BST and heap properties simultaneo
 keywords: "Cartesian tree, treap, heap property, BST property, range minimum query, RMQ, binary tree, time complexity, space complexity, data structure, array to tree"
 ---
 
-# Explanation:
+- # Explanation:
 	- A **Cartesian Tree** is a binary tree in which the heap property is satisfied (the value of each node is less than or equal to its children) and the inorder traversal of the tree gives a sorted sequence of elements.
 	-
 	- The Cartesian Tree is a binary search tree (BST) in terms of the **inorder** traversal but satisfies the **heap property** in terms of node values.

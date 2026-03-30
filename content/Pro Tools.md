@@ -4,7 +4,7 @@ description: "Pro Tools reference covering sessions, tracks, editing, mixing, pl
 keywords: "Pro Tools, professional audio, recording, mixing, sessions, tracks, editing, plugins, MIDI, Avid, audio post-production, music production"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: Pro Tools was developed by Avid Technology and first released in 1991 as a digital audio workstation (DAW) for music and audio production.
 	- **Who**: Originally created by Dave Lebolt and a team at Digidesign, which later became part of Avid Technology.

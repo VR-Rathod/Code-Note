@@ -4,7 +4,7 @@ description: "Software development reference covering SDLC, agile, version contr
 keywords: "software development, SDLC, agile, version control, testing, code review, documentation, design patterns, software engineering, best practices, Git, CI/CD"
 ---
 
-# **Software Organization:**
+- # **Software Organization:**
 	- Organize software data into three main categories:
 		- **All Software List** :- Comprehensive overview of available software.
 		- **Free Software** :- Tools and applications accessible at no cost.

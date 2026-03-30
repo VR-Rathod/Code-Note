@@ -4,7 +4,7 @@ description: "FM-index enables compressed full-text search using Burrows-Wheeler
 keywords: "FM-index, full-text search, Burrows-Wheeler transform, suffix array, backward search, LF-mapping, compressed index, time complexity, space complexity, bioinformatics"
 ---
 
-# Explanation
+- # Explanation
 	- The **FM-index** is a data structure used for efficient full-text searching, especially for applications like searching within compressed texts. It is based on the Burrows-Wheeler Transform (BWT) and allows fast searching while using less space than traditional indexing methods.
 -
 - # Steps

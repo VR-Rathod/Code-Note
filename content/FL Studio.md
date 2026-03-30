@@ -4,7 +4,7 @@ description: "FL Studio reference covering Pattern and Song mode, mixer, piano r
 keywords: "FL Studio, DAW, beat making, music production, Pattern mode, Song mode, mixer, piano roll, plugins, automation, sampling, electronic music"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: FL Studio was developed by Belgian company Image-Line and first released in 1997 as Fruity Loops.
 	- **Who**: The software was created by Didier Dambrin and a team at Image-Line, focusing on music production and beat making.

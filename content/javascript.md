@@ -4,8 +4,8 @@ description: "JavaScript reference covering ES6+ features, promises, async/await
 keywords: "JavaScript, JavaScript reference, ES6, promises, async await, closures, prototypes, DOM, event handling, modern JavaScript, Node.js, syntax cheat sheet"
 ---
 
-# History
-collapsed:: true
+- # History
+  collapsed:: true
 	- **How**:
 		- Developed by Brendan Eich in 1995 at Netscape.
 		- Initially created in just 10 days as a client-side scripting language for web browsers.

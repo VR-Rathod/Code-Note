@@ -4,7 +4,7 @@ description: "R language reference covering vectors, data frames, ggplot2, dplyr
 keywords: "R programming, R language, data frames, ggplot2, dplyr, tidyverse, statistical analysis, data visualization, data science, R syntax, cheat sheet"
 ---
 
-# History
+- # History
 	- **How**:
 		- Developed by **Ross Ihaka** and **Robert Gentleman** in the early 1990s at the University of Auckland, New Zealand.
 		- **Released** in 1995 as an open-source project, inspired by the S programming language.

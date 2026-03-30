@@ -4,7 +4,7 @@ description: "GIMP reference covering layers, selections, filters, color correct
 keywords: "GIMP, image editing, photo retouching, layers, selections, filters, color correction, paths, scripts, free Photoshop alternative, open source, image manipulation"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: GIMP (GNU Image Manipulation Program) was developed as a free and open-source image editing software, first released in 1996.
 	- **Who**: The project was initiated by Spencer Kimball and Peter Mattis while they were students at the University of California, Berkeley.

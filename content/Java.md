@@ -472,7 +472,6 @@ keywords: "java, Java programming, Java reference, collections, streams, generic
 		  // Formatted (Java 15+)
 		  String s = "Hello %s".formatted("World"); // Hello World
 		  ```
-
 - # OOP — Object-Oriented Programming
   collapsed:: true
 	- ## Classes & Objects
@@ -596,7 +595,6 @@ keywords: "java, Java programming, Java reference, collections, streams, generic
 		      }
 		  }
 		  ```
-
 - # OOP — Inheritance
   collapsed:: true
 	- ## Single Inheritance
@@ -725,7 +723,6 @@ keywords: "java, Java programming, Java reference, collections, streams, generic
 		  d.land();  // Landing... (default method)
 		  Flyable.info(); // Flyable interface (static method)
 		  ```
-
 - # OOP — Polymorphism
   collapsed:: true
 	- ## Runtime Polymorphism
@@ -780,7 +777,6 @@ keywords: "java, Java programming, Java reference, collections, streams, generic
 		      };
 		  }
 		  ```
-
 - # OOP — Advanced Concepts
   collapsed:: true
 	- ## Generics
@@ -867,7 +863,6 @@ keywords: "java, Java programming, Java reference, collections, streams, generic
 		  // UnaryOperator<T> — T -> T
 		  // BinaryOperator<T>— (T,T) -> T
 		  ```
-
 - # Collections Framework
   collapsed:: true
 	- ## Collections Overview
@@ -970,7 +965,6 @@ keywords: "java, Java programming, Java reference, collections, streams, generic
 		  // Max-heap
 		  PriorityQueue<Integer> maxPq = new PriorityQueue<>(Collections.reverseOrder());
 		  ```
-
 - # Streams API (Java 8+)
   collapsed:: true
 	- ## Stream Basics
@@ -1065,7 +1059,6 @@ keywords: "java, Java programming, Java reference, collections, streams, generic
 		  // From nullable
 		  Optional<String> nullable = Optional.ofNullable(null); // empty
 		  ```
-
 - # Exception Handling
   collapsed:: true
 	- ## try / catch / finally
@@ -1162,7 +1155,6 @@ keywords: "java, Java programming, Java reference, collections, streams, generic
 		      System.err.println("IO or SQL error: " + e.getMessage());
 		  }
 		  ```
-
 - # Modern Java Features
   collapsed:: true
 	- ## Java 8 Key Features
@@ -1268,7 +1260,6 @@ keywords: "java, Java programming, Java reference, collections, streams, generic
 		  sc.getLast();  // "c"
 		  sc.reversed(); // ["c","b","a"]
 		  ```
-
 - # Concurrency & Multithreading
   collapsed:: true
 	- ## Thread Basics
@@ -1375,7 +1366,6 @@ keywords: "java, Java programming, Java reference, collections, streams, generic
 		  // Compare-and-swap
 		  counter.compareAndSet(5, 10);    // if 5, set to 10
 		  ```
-
 - # File I/O
   collapsed:: true
 	- ## Reading & Writing Files
@@ -1445,7 +1435,6 @@ keywords: "java, Java programming, Java reference, collections, streams, generic
 		  System.out.println(Files.size(p));
 		  System.out.println(Files.getLastModifiedTime(p));
 		  ```
-
 - # Design Patterns
   collapsed:: true
 	- ## Singleton

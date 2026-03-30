@@ -4,7 +4,7 @@ description: "Cybersecurity reference covering threat models, OWASP Top 10, pene
 keywords: "cybersecurity, security, OWASP, penetration testing, network security, cryptography, incident response, threat modeling, vulnerability, firewall, ethical hacking"
 ---
 
-# History
+- # History
 	- **How:**
 	  Cybersecurity emerged as a field in the late 20th century as the internet and networked systems began to grow. It evolved as a response to the increasing sophistication and scale of digital threats.
 		- Initially focused on securing computer systems from unauthorized access, data theft, and malicious software.

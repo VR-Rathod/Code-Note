@@ -4,7 +4,7 @@ description: "Pigeonhole sort places elements into pigeonholes based on their ke
 keywords: "pigeonhole sort, integer sort, O(n+range), counting sort, key mapping, non-comparison sort, time complexity, space complexity, small range, algorithm implementation"
 ---
 
-# Explanation
+- # Explanation
 	- **Pigeonhole Sort** is a comparison-based sorting algorithm that works well when the range of the elements is small. It maps each element to a "hole" (index) and places it in the corresponding location.
 - # Steps:
 	- Find the minimum and maximum values in the input.

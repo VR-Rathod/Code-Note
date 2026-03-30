@@ -4,7 +4,7 @@ description: "Blender reference covering modeling, rigging, animation, sculpting
 keywords: "Blender, 3D modeling, animation, sculpting, rigging, shading, Cycles, EEVEE, geometry nodes, rendering, Blender 4, open source 3D"
 ---
 
-## 1. History
+- ## 1. History
 - **How**: Blender was initially developed as an in-house tool by NeoGeo, a Dutch animation studio, in 1994.
 - **Who**: Ton Roosendaal is the founder and key figure behind Blender's development.
 - **Why**: Blender was created to provide a free, open-source tool for 3D modeling, animation, and rendering, allowing artists and developers to collaborate and innovate without financial barriers.

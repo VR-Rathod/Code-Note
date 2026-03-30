@@ -4,7 +4,7 @@ description: "React reference covering functional components, hooks, context, Re
 keywords: "reactjs, React, React.js, components, hooks, useState, useEffect, context, Redux, React Router, React 18, React Testing Library"
 ---
 
-# 📜 **History**
+- # 📜 **History**
 	- **How**:
 		- Developed by Jordan Walke, a software engineer at Facebook, in 2011.
 		- First deployed on Facebook’s newsfeed in 2011 and later on Instagram in 2012.

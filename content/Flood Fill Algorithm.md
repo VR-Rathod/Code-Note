@@ -4,7 +4,7 @@ description: "Flood fill fills connected regions in a grid, used in paint tools 
 keywords: "flood fill, BFS, DFS, grid algorithm, connected region, paint bucket, 4-connectivity, 8-connectivity, time complexity, space complexity, image processing"
 ---
 
-# Explanation
+- # Explanation
 	- **Flood Fill** is an algorithm used to determine the area connected to a given node in a multi-dimensional array.
 	-
 - # Steps:

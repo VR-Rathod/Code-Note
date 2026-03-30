@@ -4,7 +4,7 @@ description: "Circular buffers use a fixed-size array as a ring for efficient FI
 keywords: "circular buffer, ring buffer, FIFO queue, head pointer, tail pointer, O(1) operations, fixed-size buffer, time complexity, space complexity, data structure, embedded systems"
 ---
 
-# Explanation
+- # Explanation
 	- A **Circular Buffer** is a data structure that works like a fixed-size queue, but it "wraps around" once it reaches the end, making it ideal for situations where a continuous stream of data must be processed, such as in real-time systems or buffering.
 -
 - # Steps

@@ -4,7 +4,7 @@ description: "Union-Find tracks disjoint sets with near O(1) amortized operation
 keywords: "Union-Find, disjoint set, path compression, union by rank, inverse Ackermann, O(alpha n), time complexity, space complexity, connected components, MST"
 ---
 
-# Explanation
+- # Explanation
 	- **Union-Find** is a data structure that is used to keep track of a collection of disjoint sets.
 	-
 	- It supports two main operations:

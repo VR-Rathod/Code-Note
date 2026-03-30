@@ -4,7 +4,7 @@ description: "Comprehensive API reference covering REST principles, HTTP methods
 keywords: "API, REST API, GraphQL, HTTP methods, status codes, authentication, API versioning, OpenAPI, Swagger, API design, web API, JSON"
 ---
 
-# History
+- # History
 	- **How**:
 		- The history of APIs (Application Programming Interfaces) began as software systems needed a way to communicate with one another across different platforms. The term "API" started gaining traction in the 1960s but gained significant importance with the rise of web services.
 		- The first major API interfaces were introduced in the 1990s with companies offering software platforms and web-based services. As the internet grew, APIs became a standard for remote communication.

@@ -4,7 +4,7 @@ description: "Complete C language reference covering pointers, memory management
 keywords: "C programming, C language, pointers, memory management, C99, C11, structs, file I/O, preprocessor, standard library, malloc, free"
 ---
 
-# History
+- # History
 	- **How**:
 		- Developed by **Dennis Ritchie** in the early 1970s at **Bell Labs**.
 		- Designed as an evolution of the B programming language, with the goal of providing more control over hardware and efficient system programming.

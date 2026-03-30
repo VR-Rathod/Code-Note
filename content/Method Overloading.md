@@ -4,7 +4,7 @@ description: "Method overloading defines multiple methods with the same name but
 keywords: "method overloading, OOP, compile-time polymorphism, static polymorphism, parameter types, Java overloading, C++ overloading, Python overloading, software design"
 ---
 
-# Explanation
+- # Explanation
 	- **Method Overloading** allows a class to have multiple methods with the same name but different parameters (number or type of parameters). However, Python **does not support method overloading** natively. In Python, the last method definition overrides any previous ones with the same name.
 	- In languages like Java, you can overload methods with different argument types or numbers, but Python handles this differently by allowing only one method definition per name.
 -

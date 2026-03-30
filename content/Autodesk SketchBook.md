@@ -4,7 +4,7 @@ description: "Autodesk SketchBook reference covering brushes, layers, symmetry t
 keywords: "Autodesk SketchBook, digital drawing, digital painting, brushes, layers, symmetry, perspective guides, illustration, concept art, digital art, drawing software"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: Autodesk SketchBook was developed by Autodesk and was first released in 2009. It originated from the earlier SketchBook Pro software created by Alias Systems Corporation.
 	- **Who**: The development team at Autodesk, including artists and engineers, focused on creating a user-friendly digital drawing application.

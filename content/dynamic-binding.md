@@ -4,7 +4,7 @@ description: "Dynamic binding resolves method calls at runtime enabling polymorp
 keywords: "dynamic binding, OOP, runtime polymorphism, virtual functions, vtable, late binding, override, method dispatch, object-oriented programming, C++ virtual, Java polymorphism"
 ---
 
-# Explanation
+- # Explanation
 	- **Dynamic Binding** (also known as **Late Binding**) refers to the process where the method to be called is determined at runtime, rather than at compile-time. This is a key feature of polymorphism in OOP, where method calls are resolved based on the object’s type at runtime.
 -
 - # Steps
