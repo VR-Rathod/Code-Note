@@ -21,6 +21,7 @@ title: Cpp
 -
 - # Introduction
 	- ## Advantages
+	  collapsed:: true
 		- **Performance & Control** — Direct memory access via pointers, zero-cost abstractions, ideal for games, OS, embedded systems.
 		- **Multi-Paradigm** — Supports procedural, object-oriented, and generic programming (templates).
 		- **STL** — Rich standard library: vectors, maps, algorithms, iterators.
@@ -29,6 +30,7 @@ title: Cpp
 		- **Cross-Platform** — Compiles on Linux, Windows, macOS, embedded targets.
 	-
 	- ## Disadvantages
+	  collapsed:: true
 		- **Complex Syntax** — Steeper learning curve than Python or Java.
 		- **Manual Memory Management** — Risk of memory leaks and segfaults without smart pointers.
 		- **Long Compile Times** — Heavy template usage can slow builds significantly.
