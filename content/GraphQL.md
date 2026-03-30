@@ -1,0 +1,37 @@
+---
+seoTitle: GraphQL Reference – Queries, Mutations, Schemas, and Resolvers
+description: "GraphQL is a query language for APIs. Covers schema definition, queries, mutations, subscriptions, resolvers, fragments, variables, and Python/JavaScript."
+keywords: "GraphQL, GraphQL queries, mutations, schema, resolvers, subscriptions, fragments, variables, GraphQL Python, graphene, Apollo, API development"
+---
+
+- # History
+	- **How**: GraphQL was developed internally by **Facebook** in **2012** to improve the way mobile apps interacted with APIs. It was created to solve issues with over-fetching and under-fetching of data in traditional REST APIs.
+	-
+	- **Who**: The technology was created by a team at **Facebook**, led by **Lee Byron**, **Dan Schafer**, and **Nick Schrock**. It was later open-sourced in **2015**, and is now maintained by the **GraphQL Foundation**, hosted by the **Linux Foundation**.
+	-
+	- **Why**: GraphQL was designed to give clients more control over the data they receive, allowing for more efficient and flexible querying of APIs. It aims to simplify data fetching and improve performance in client-server communication.
+-
+- # Introduction
+	- ## Advantages:
+	- **Precise Data Fetching**: Clients can request exactly the data they need—no more, no less—reducing over-fetching and under-fetching of data.
+	- **Single Endpoint**: Unlike REST, which uses multiple endpoints for different resources, GraphQL uses a single endpoint to serve all queries.
+	- **Strongly Typed Schema**: GraphQL APIs are defined by a type system, providing clear structure and enabling powerful developer tools like auto-complete and static validation.
+	- **Real-Time Data with Subscriptions**: Supports real-time updates using **GraphQL Subscriptions**, making it useful for live data apps like chats or dashboards.
+	- **Efficient for Mobile and Frontend**: Ideal for frontend and mobile development where bandwidth and performance are critical.
+	- **Introspective and Self-Documenting**: GraphQL APIs can be queried for their own structure, which makes documentation and onboarding easier.
+	-
+	- ## Disadvantages:
+		- **Complexity for Simple APIs**: For small projects or simple data needs, GraphQL can be overkill compared to REST.
+		- **Performance Overhead**: Complex queries can lead to performance issues on the server side if not carefully managed.
+		- **Caching Challenges**: Unlike REST, where URLs can be easily cached, GraphQL responses are harder to cache due to their dynamic nature.
+		- **Security Concerns**: The flexibility of GraphQL can lead to potential security issues like deeply nested queries or data exposure if not properly secured (e.g. query depth limits, rate limiting).
+		- **Learning Curve**: Developers may face a learning curve when transitioning from REST to GraphQL, especially with concepts like schemas, resolvers, and query languages.
+	-
+	- ## Remember Points:
+		- **Client-Centric**: GraphQL puts the client in control of the data they receive, improving efficiency and flexibility.
+		- **Schema-Driven Development**: The API structure is defined by a schema, improving consistency, validation, and tooling.
+		- **Single Endpoint, Multiple Queries**: All data is accessed through a single endpoint using structured queries.
+		- **Optimized for Frontend**: Especially powerful in apps where minimizing data and bandwidth is critical.
+		- **Needs Proper Management**: Caching, security, and performance optimization require additional planning compared to REST.
+-
+-

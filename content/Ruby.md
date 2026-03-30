@@ -1,0 +1,94 @@
+---
+seoTitle: Ruby Programming Language – Syntax Reference and Rails Overview
+description: "Ruby reference covering blocks, procs, lambdas, modules, mixins, metaprogramming, Ruby on Rails basics, and idiomatic Ruby patterns."
+keywords: "Ruby programming, Ruby language, blocks, procs, lambdas, modules, mixins, metaprogramming, Ruby on Rails, Rails, syntax reference, cheat sheet"
+---
+
+- # history
+	- **How**:
+		- Developed by **Yukihiro "Matz" Matsumoto** in Japan, Ruby was created in the mid-1990s, with its first public release in 1995.
+		- Designed as a **dynamic, interpreted** language with a focus on simplicity and productivity, Ruby combines elements of object-oriented programming (OOP) and functional programming.
+		- Ruby was intended to be a language that made programming more enjoyable for developers, emphasizing human-readable code and developer happiness.
+		- Over the years, Ruby has grown in popularity, particularly with the introduction of **Ruby on Rails** in the mid-2000s, which propelled Ruby to prominence as a language for web development.
+		- Key versions include Ruby 1.8 (early development), Ruby 1.9 (improvements to performance and language features), and Ruby 2.x (major performance optimizations and language enhancements).
+	-
+	- **Who**:
+		- **Yukihiro Matsumoto (Matz)**, a Japanese computer scientist, is the creator and chief designer of Ruby. He sought to create a language that prioritized the developer's joy and productivity over rigid syntactical rules.
+		- **Ruby community**: Ruby is an open-source project, developed and maintained by a community of contributors, with Matz continuing to guide its evolution.
+	-
+	- **Why**:
+		- To create a language that was both powerful and easy to use, blending the best aspects of languages like Perl, Smalltalk, and Lisp, while focusing on programmer happiness and productivity.
+		- Ruby’s design emphasizes **flexibility**, **simplicity**, and **readability**, making it an excellent choice for rapid development of web applications, scripts, and systems programming.
+		- Ruby's most notable framework, **Ruby on Rails**, has made Ruby a go-to language for web development, particularly for startups and developers seeking to build high-quality web applications quickly.
+-
+- ## Introduction
+	- ## Advantages:
+		- **Object-Oriented**: Ruby is a purely object-oriented language, where everything (including numbers, strings, and other data types) is an object. This makes it flexible and easy to extend.
+		- **Concise and Readable Syntax**: Ruby’s syntax is designed to be intuitive and easy to read, making it a good choice for beginners and experienced developers alike.
+		- **Dynamic and Flexible**: Ruby is dynamically typed, meaning variables don’t need to have a type explicitly declared. It also allows for dynamic methods and the ability to modify classes and objects at runtime.
+		- **Garbage Collection**: Ruby automatically handles memory management with garbage collection, reducing the risk of memory leaks.
+		- **Rich Ecosystem**: Ruby has a wealth of gems (libraries) available through **RubyGems**, covering everything from web development to machine learning and data processing.
+		- **Rails Framework**: **Ruby on Rails**, a full-stack web application framework, provides a set of tools and conventions for building powerful web apps quickly and efficiently.
+	-
+	- ## Disadvantages:
+		- **Performance**: Ruby is often criticized for being slower than compiled languages like C, C++, or Java, as it is an interpreted language.
+		- **Memory Usage**: Due to Ruby’s high-level nature and object-oriented design, it may use more memory compared to languages like C or Go.
+		- **Concurrency**: While Ruby offers threads, the language’s Global Interpreter Lock (GIL) can limit true multi-threading performance, especially in CPU-bound tasks.
+		- **Learning Curve for Advanced Features**: Ruby’s dynamic nature can be both a strength and a weakness, as advanced features like metaprogramming may pose a challenge to new developers.
+	-
+	- ## Remember Points:
+		- **Everything is an Object**: Ruby is a fully object-oriented language, and even simple data types (like numbers and strings) are objects.
+		- **Ruby on Rails**: Ruby's most famous framework, Rails, emphasizes convention over configuration and facilitates rapid development for web applications.
+		- **Metaprogramming**: Ruby supports metaprogramming, allowing developers to write code that manipulates other code, enabling highly flexible and reusable software.
+-
+- # Notes
+-
+- # Libraries & Frameworks
+	- ## Core Libraries and Frameworks:
+		- [[Ruby Standard Library]] - Ruby comes with a comprehensive standard library, including modules for file handling, HTTP requests, regular expressions, and JSON parsing.
+		- [[RubyGems]] - The package manager for Ruby, providing a vast collection of open-source libraries (gems) to extend Ruby's functionality.
+		- [[ActiveSupport]] - A set of utility libraries and extensions to Ruby's core classes, often used with Rails but also available independently.
+	-
+	- ## Web Development Frameworks:
+		- [[Ruby on Rails]] - The most popular framework for building web applications with Ruby. Rails follows the **MVC (Model-View-Controller)** architecture and emphasizes **convention over configuration**, making it easy to create database-backed applications with minimal code.
+		- [[Sinatra]] - A minimal and flexible web framework for Ruby, often used for small web applications, APIs, and microservices.
+		- [[Hanami]] - A modern full-stack framework for Ruby, focusing on simplicity, speed, and modularity. It follows a more lightweight approach compared to Rails.
+	-
+	- ## Database and Data Management:
+		- [[ActiveRecord]] - The default Object-Relational Mapping (ORM) library used in Ruby on Rails, which simplifies interactions with databases using Ruby objects.
+		- [[Sequel]] - A powerful ORM for Ruby, offering a simpler and more flexible alternative to ActiveRecord.
+		- [[Mongoid]] - An ODM (Object-Document Mapper) for MongoDB, making it easier to work with MongoD1B databases in Ruby.
+	-
+	- ## Testing:
+		- [[RSpec]] - A widely-used testing framework for Ruby, focusing on Behavior-Driven Development (BDD) and providing a readable syntax for writing tests.
+		- [[Minitest]] - A smaller, simpler testing framework that is part of Ruby’s standard library, providing both unit and specification-style testing.
+		- [[Capybara]] - A tool used for integration testing of web applications, commonly used with RSpec to test interactions with web pages.
+	-
+	- ## Networking:
+		- [[Faraday]] - An HTTP client library for Ruby, offering an easy way to make HTTP requests, with middleware support for things like authentication, error handling, and logging.
+		- [[EventMachine]] - An event-driven I/O framework for building scalable and high-performance network applications, such as chat servers or real-time applications.
+	-
+	- ## Logging:
+		- [[Logger]] - A simple and effective logging library included in Ruby's standard library.
+		- [[Log4r]] - A flexible, powerful logging library for Ruby, offering a wide range of configuration options.
+	-
+	- ## Concurrency:
+		- [[Thread]] - Ruby’s built-in support for multi-threading, allowing for concurrent execution of code, though limited by the Global Interpreter Lock (GIL).
+		- [[Concurrent-Ruby]] - A library for providing advanced concurrency primitives like futures, promises, and thread pools, overcoming some of Ruby’s concurrency limitations.
+	-
+	- ## Data Serialization:
+		- [[JSON]] - Ruby’s standard library for parsing and generating JSON data, commonly used in web development and APIs.
+		- [[MessagePack]] - A binary format for serializing Ruby objects, designed to be compact and faster than JSON for serialization.
+	-
+	- ## Cryptography and Security:
+		- [[OpenSSL]] - Ruby’s interface to the OpenSSL library, providing encryption, hashing, and SSL/TLS support.
+		- [[Devise]] - A popular authentication solution for Rails applications, offering support for user authentication, session management, and security features like password resets.
+	-
+	- ## Miscellaneous:
+		- [[Pry]] - An advanced REPL (Read-Eval-Print Loop) for Ruby, offering powerful debugging and introspection capabilities.
+		- [[ActiveJob]] - A framework for declaring jobs and making them run on a variety of queuing backends in Ruby on Rails.
+		- [[Sidekiq]] - A background job processing library for Ruby, allowing for the execution of tasks asynchronously using Redis as the job queue.
+-
+- # More Learn
+	- Explore the following links for valuable resources, communities, and tools to enhance your skills : -
+		-

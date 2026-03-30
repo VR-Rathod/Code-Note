@@ -1,0 +1,62 @@
+---
+seoTitle: HTML Reference – Elements, Attributes, and Semantic Markup Guide
+description: "Complete HTML5 reference covering semantic elements, forms, tables, media, accessibility attributes, meta tags, and best practices for modern web development."
+keywords: "HTML, HTML5, semantic elements, forms, tables, media, accessibility, meta tags, web development, HTML reference, attributes, cheat sheet"
+---
+
+- # History
+	- **How**:
+		- Developed by Tim Berners-Lee in 1991 as the foundational markup language for the World Wide Web.
+		- HTML, which stands for HyperText Markup Language, was designed to structure content on the web.
+		- Initially intended to display documents with text, links, images, and forms, HTML has evolved to support multimedia and dynamic content.
+	-
+	- **Who**:
+		- Tim Berners-Lee, British computer scientist, and the creator of HTML.
+		- World Wide Web Consortium (W3C), which oversees HTML's development and standardization.
+	-
+	- **Why**:
+		- To create a universal and standardized way to structure documents on the web.
+		- HTML provides a way to represent and link content on the web, enabling the interconnected nature of the internet.
+-
+- # Introduction
+	- ## Advantages:
+		- Simple to learn and widely adopted as the standard for web content.
+		- Platform-independent, supported by all modern browsers (Chrome, Firefox, Safari, etc.).
+		- Allows for the creation of multimedia-rich web pages through embedding images, videos, and interactive content.
+		- Semantic elements (like `<header>`, `<footer>`, `<article>`, etc.) improve web accessibility and SEO.
+		- Easily extensible through integration with CSS (for styling) and JavaScript (for interactivity).
+	-
+	- ## Disadvantages:
+		- Limited interactivity compared to languages like JavaScript or server-side technologies.
+		- No logic capabilities on its own (requires integration with JavaScript or other programming languages for dynamic behavior).
+		- Basic HTML lacks built-in support for complex layouts (requires CSS).
+		- Dependent on external technologies (CSS, JavaScript) to fully realize modern web functionality.
+	-
+	- # Key Features
+		- **Markup Language**: HTML is a markup language, meaning it uses tags to define the structure and content of web pages.
+		- **Hyperlinks**: HTML's `<a>` tag allows the creation of links, making the web navigable by connecting different documents.
+		- **Text Formatting**: HTML provides various tags for text styling and formatting (e.g., `<h1>`, `<p>`, `<strong>`, `<em>`).
+		- **Multimedia Integration**: HTML supports embedding images, videos, audio, and interactive elements via tags like `<img>`, `<video>`, and `<audio>`.
+		- **Forms and Inputs**: HTML allows the creation of interactive forms for user input through `<form>`, `<input>`, `<select>`, and other form elements.
+		- **Responsive Design**: With the help of CSS, HTML can be used to create responsive designs that adapt to different screen sizes (mobile, tablet, desktop).
+		- **Semantic HTML**: The introduction of semantic elements improves the meaning of content for accessibility tools and search engines (e.g., `<section>`, `<nav>`, `<article>`).
+-
+- # Notes
+	- that uses tags to structure content on the web. `<html></html>`
+	- divided in 2 parts :-
+		- Head
+		  logseq.order-list-type:: number
+		- Body
+		  logseq.order-list-type:: number
+	-
+	- [This is List of All Tags.](https://www.fing.edu.uy/tecnoinf/mvd/cursos/ria/material/teorico/html-tags-chart.pdf)
+	- [Tag's And Definitions](https://www.coderepublics.com/HTML/images/HTML%20Tags%20List.pdf)
+-
+- # More Learn
+	- Explore the following links for valuable resources, communities, and tools to enhance your skills :-
+	-
+	- [Heading Special](https://github.com/joshbuchea/HEAD)
+	- [Boilerplate Special](https://github.com/h5bp/html5-boilerplate)
+	- [all Basic Html](https://github.com/learning-zone/html-basics)
+	- [Html Interview Questions](https://github.com/Devinterview-io/html5-interview-questions)
+	-

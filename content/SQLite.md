@@ -1,0 +1,68 @@
+---
+seoTitle: SQLite Python Reference – sqlite3 Module Usage and SQL Guide
+description: "Python's sqlite3 module provides a lightweight embedded database. Covers connection, cursor, CRUD operations, transactions, parameterized queries, and row."
+keywords: "SQLite, Python sqlite3, embedded database, CRUD operations, transactions, parameterized queries, row factory, Python standard library, database, SQL, lightweight DB"
+---
+
+- # History
+	- **How**:
+		- SQLite was created in **2000** by **D. Richard Hipp** as a lightweight, serverless, self-contained SQL database engine.
+		- SQLite was developed to provide an embedded database system that could be used within applications without requiring a separate server process or complex configuration.
+		- It was designed to be **compact**, **efficient**, and **easy to integrate**, making it suitable for mobile, desktop, and embedded systems where the overhead of a full database server is not necessary.
+		- Unlike traditional relational database management systems (RDBMS), SQLite is a **self-contained** library that stores the entire database in a single file, making it portable and easy to manage.
+		- SQLite gained widespread popularity due to its simplicity, low resource requirements, and ease of use, becoming the default database for many applications, especially mobile apps, desktop applications, and IoT devices.
+	-
+	- **Who**:
+		- **D. Richard Hipp** is the creator of SQLite and has been the primary developer since its inception.
+		- The SQLite project is maintained by a small core team of developers, with contributions from the open-source community.
+		- SQLite is a public domain project, meaning it is free to use, modify, and distribute without licensing fees.
+	-
+	- **Why**:
+		- SQLite was created to provide a **lightweight**, **embedded database solution** that would be simple to use, with minimal configuration, and ideal for applications that do not require the overhead of a full-fledged RDBMS.
+		- Its design is focused on portability and ease of integration, making it perfect for **mobile apps**, **IoT devices**, **desktop applications**, and **web browsers**.
+		- SQLite was developed to allow developers to use SQL-based data storage without needing to set up or maintain a separate database server.
+-
+- Here’s a similar note structure for **SQLite**:
+  
+  ---
+- # **History**
+- **How**:
+	- **SQLite** was created in **2000** by **D. Richard Hipp** as a lightweight, serverless, self-contained SQL database engine.
+	- SQLite was developed to provide an embedded database system that could be used within applications without requiring a separate server process or complex configuration.
+	- It was designed to be **compact**, **efficient**, and **easy to integrate**, making it suitable for mobile, desktop, and embedded systems where the overhead of a full database server is not necessary.
+	- Unlike traditional relational database management systems (RDBMS), SQLite is a **self-contained** library that stores the entire database in a single file, making it portable and easy to manage.
+	- SQLite gained widespread popularity due to its simplicity, low resource requirements, and ease of use, becoming the default database for many applications, especially mobile apps, desktop applications, and IoT devices.
+- **Who**:
+	- **D. Richard Hipp** is the creator of SQLite and has been the primary developer since its inception.
+	- The SQLite project is maintained by a small core team of developers, with contributions from the open-source community.
+	- SQLite is a public domain project, meaning it is free to use, modify, and distribute without licensing fees.
+- **Why**:
+	- SQLite was created to provide a **lightweight**, **embedded database solution** that would be simple to use, with minimal configuration, and ideal for applications that do not require the overhead of a full-fledged RDBMS.
+	- Its design is focused on portability and ease of integration, making it perfect for **mobile apps**, **IoT devices**, **desktop applications**, and **web browsers**.
+	- SQLite was developed to allow developers to use SQL-based data storage without needing to set up or maintain a separate database server.
+	  
+	  ---
+- # Introduction
+	- ## Advantages:
+		- **Serverless**: SQLite is a **serverless** database, meaning it does not require a database server to operate. This makes it easy to integrate directly into applications without the need for complex setup or administration.
+		- **Lightweight and Efficient**: SQLite has a small footprint and is very lightweight, making it ideal for environments with limited resources, such as mobile apps, embedded devices, and desktop software.
+		- **Single-File Storage**: SQLite stores the entire database in a single file, making it extremely portable. You can easily move or back up the entire database with a single file copy.
+		- **ACID Compliant**: Despite being lightweight, SQLite is fully **ACID compliant** (Atomicity, Consistency, Isolation, Durability), ensuring data integrity and reliability in transactions.
+		- **Zero Configuration**: SQLite is designed to be simple to use, requiring no server setup or configuration. Developers can start using it immediately by including the SQLite library in their application.
+		- **Cross-Platform**: SQLite is highly portable, with support for most major operating systems, including Windows, macOS, Linux, iOS, and Android. This makes it a great choice for applications that need to run across different platforms.
+		- **Widely Used**: SQLite is widely used across a variety of applications, including **mobile apps** (iOS/Android), **browsers** (e.g., Firefox, Chrome), and other embedded systems, making it a familiar and trusted choice for developers.
+		-
+	- ## Disadvantages :
+		- **Limited Concurrency**: SQLite is not designed for high-concurrency scenarios. It does not support concurrent writes well, making it unsuitable for applications that require frequent, concurrent access to the database from multiple users or processes.
+		- **Limited Scalability**: While SQLite can handle moderate-sized databases efficiently, it is not designed for large-scale, high-performance applications. For larger datasets or systems that require horizontal scalability, other databases like MySQL, PostgreSQL, or MongoDB are more suitable.
+		- **Lack of Advanced Features**: SQLite lacks some advanced features found in full-fledged RDBMS systems, such as **stored procedures**, **user-defined functions**, and **advanced optimization techniques**. While it supports most SQL features, certain complex tasks may be more difficult to implement.
+		- **Not Designed for Heavy Traffic**: SQLite is optimized for embedded use cases and is not intended for heavy transaction loads or high-traffic, enterprise-level applications.
+		- **No User Management**: SQLite does not include built-in user authentication or management features like other database systems (e.g., MySQL or PostgreSQL), which may be a limitation for applications requiring granular user permissions and access control.
+	-
+	- ## Remember Points :
+		- **Serverless and Embedded**: SQLite is serverless, which means no separate server process is required. It is embedded directly into applications, making it ideal for lightweight, standalone apps.
+		- **Single-File Database**: SQLite uses a single file to store the entire database, offering simplicity in management and portability.
+		- **ACID Compliant**: SQLite provides full ACID compliance, ensuring that transactions are reliable and data integrity is maintained.
+		- **Simple to Use**: SQLite is easy to integrate and does not require any server configuration or maintenance, making it ideal for rapid development and small-scale applications.
+		- **Best for Low to Medium Traffic**: While SQLite excels in low to medium traffic environments, it is not ideal for applications that require high concurrency or massive scalability.
+		- **Widely Supported**: SQLite is used in a wide range of platforms and applications, such as mobile apps, browsers, and IoT devices, making it a reliable choice for many developers.
