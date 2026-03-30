@@ -12,7 +12,8 @@ replit.nix
 /.vscode
 /.obsidian
 /.quartz-cache
-content/
+content/*.md
+!content/index.md
 
 # Logseq auto-generated backup files — never needed in git or production
 logseq/bak/

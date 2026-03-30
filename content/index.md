@@ -1,0 +1,337 @@
+---
+seoTitle: Free Code Notes – Programming Knowledge Base Home and Overview
+description: "Free Code Notes is a programming knowledge base covering algorithms, data structures, languages, frameworks, tools, and software engineering concepts."
+keywords: "index, Free Code Notes, programming knowledge base, algorithms, data structures, programming languages, frameworks, tools, software engineering, Logseq, notes, index, VR-Rathod, Code-Note, code note vr, vr book, programming notes, developer notes, code reference, free programming notes"
+---
+
+- ## Welcome to Your Code Book!
+	- Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
+-
+- ## Programming Languages
+	- [[Python]] :- A beginner-friendly language known for its readability and extensive libraries.
+	-
+	- [[Java]] :- A robust, object-oriented language commonly used in enterprise applications and Android development.
+	-
+	- [[C]]: A procedural language known for efficiency and low-level memory access, commonly used in system programming.
+	-
+	- [[Cpp]] :- An extension of C that adds object-oriented features, often used in system/software development and game programming(unreal Engine).
+	-
+	- [[CSharp]] :- A modern, object-oriented language built for simplicity, used in web, desktop, and game development (especially with .NET and Unity).
+	-
+	- [[Go]] :- A statically typed language developed by Google, known for its performance and simplicity in building scalable applications.
+	-
+	- [[Swift]] :- A powerful and intuitive language for iOS and macOS app development.
+	-
+	- [[Rust]] :- A systems programming language that focuses on safety and performance, gaining popularity for its concurrency features.
+	-
+	- [[Kotlin]] :- A modern language that runs on the Java Virtual Machine, widely used for Android app development.
+	-
+	- [[HTML]]: The standard markup language for creating web pages, providing the structure and content.
+	-
+	- [[CSS]]: A stylesheet language used for describing the presentation of a document written in HTML, enabling design and layout customization.
+	-
+	- [[Java Script]] : A versatile scripting language that brings interactivity and dynamic content to websites.
+	-
+	- [[TypeScript]]: A superset of JavaScript that adds static types, enhancing code quality and maintainability.
+	-
+	- [[PHP]]: A server-side scripting language widely used for web development, powering many dynamic websites.
+	-
+	- [[Ruby]]: A dynamic, object-oriented language often used for web applications, particularly with Ruby on Rails.
+	-
+	- [[GDScript]]: A Python-like language created specifically for Godot Engine, used for game development.
+	-
+	- [[Lua]]: A lightweight, high-level scripting language often embedded in applications for customization, particularly in game development.
+	-
+	- [[R]]: A language and environment for statistical computing and graphics, popular in data analysis and research.
+	-
+	- [[Dart]]: A language developed by Google, mainly used for building mobile, desktop, and web applications (with Flutter).
+	-
+	- [[Haskell]]: A functional programming language known for its strong type system and lazy evaluation.
+	-
+	- [[Scala]]: A language that blends object-oriented and functional programming paradigms, often used for scalable applications.
+	-
+	- [[Elixir]]: A functional, concurrent language built on the Erlang virtual machine, used for highly scalable and fault-tolerant systems.
+	-
+	- [[Perl]]: A high-level language known for its text processing capabilities, used in web development, system administration, and bioinformatics.
+	-
+	- [[Shell Script]]: A scripting language for command-line interface environments used to automate system tasks.
+	-
+	- [[VHDL]]: A hardware description language used in electronic design automation to model digital systems.
+	-
+	- [[Verilog]]: Another hardware description language used for designing circuits and systems.
+	-
+	- [[Objective-C]]: A general-purpose, object-oriented language that was used for macOS and iOS development before Swift.
+	-
+	- [[COBOL]]: A legacy programming language primarily used in business, finance, and administrative systems for companies and governments.
+	-
+	- [[Fortran]]: One of the oldest programming languages, widely used in scientific computing and numerical simulations.
+	-
+	- [[ActionScript]]: A scripting language for the Adobe Flash platform, used for developing rich internet applications.
+	-
+	- [[F Sharp]]: A functional-first language that runs on the .NET platform, used for data analysis and web programming.
+	-
+	- [[Tcl]]: A scripting language often used for rapid prototyping and embedded systems.
+	-
+	- [[Scheme]]: A minimalist dialect of Lisp, known for its clean syntax and functional programming features.
+	-
+	- [[OCaml]]: A general-purpose functional programming language, known for its strong type system and performance.
+	-
+	- [[Erlang]]: A functional, concurrent language used for building scalable and fault-tolerant systems, especially in telecoms.
+	-
+	- [[Smalltalk]]: An object-oriented language known for its simple syntax and early influence on object-oriented design.
+	-
+	- [[Ada]]: A structured, statically typed language used for real-time systems and safety-critical applications, especially in aerospace and military contexts.
+	-
+	- [[Crystal]]: A compiled language with syntax similar to Ruby but with performance comparable to C, designed for high performance.
+	-
+	- [[Zig]]: A systems programming language that aims to replace C with a focus on simplicity, performance, and safety.
+-
+- ## Databases
+  collapsed:: true
+	- [[MySQL]] : One of the most widely used open-source relational database management systems (RDBMS), especially in web applications.
+	-
+	- [[PostgreSQL]] : An advanced, open-source relational database that emphasizes extensibility, SQL compliance, and performance.
+	-
+	- [[MongoDB]] : A NoSQL database that stores data in flexible, JSON-like documents instead of tables.
+	-
+	- [[SQLite]] : A lightweight, serverless relational database that is often embedded in mobile and desktop applications.
+	-
+	- [[Oracle Database]] : A comprehensive, multi-model database management system known for its robust features and high performance.
+	-
+	- [[Microsoft SQL Server]] : A relational database management system developed by Microsoft, often used in enterprise environments.
+-
+- ## APIs & Query Languages
+  collapsed:: true
+	- [[GraphQL]] - **GraphQL** is a query language for APIs and a runtime for executing those queries with your existing data. It was developed by **Facebook** and offers a more flexible and efficient alternative to REST APIs.
+-
+- ## CMS (Content Management Systems)
+  collapsed:: true
+	- [[WordPress]] :- A widely used, open-source CMS known for its ease of use, vast theme/plugin ecosystem, and flexibility for building various websites from blogs to e-commerce stores.
+	-
+	- [[Joomla]] :- A flexible and powerful CMS that allows for the creation of complex websites with various extensions and templates.
+	-
+	- [[Drupal]] :- A highly customizable and scalable CMS, ideal for large, complex websites with advanced content management needs and security features.
+	-
+	- [[Shopify]] :- A hosted CMS tailored for e-commerce, allowing users to easily create online stores with integrated payment systems and app support.
+	-
+	- [[Wix]] :- A website builder with drag-and-drop functionality, offering templates and easy-to-use tools for building websites without technical expertise.
+	-
+	- [[Squarespace]] :- A user-friendly, all-in-one CMS designed for building visually appealing websites, particularly for creatives and small businesses.
+	-
+	- [[Magento]] :- A robust, open-source e-commerce platform that provides powerful tools for managing online stores and customer experiences.
+	-
+	- [[Weebly]] :- A drag-and-drop website builder that allows users to create websites and online stores with ease, featuring customizable templates and e-commerce tools.
+	-
+	- [[Ghost]] :- A minimalist, open-source CMS focused on blogging and publishing, known for its speed, simplicity, and modern user interface.
+	-
+	- [[TYPO3]] :- A scalable, open-source CMS suitable for both small businesses and large enterprise-level websites, offering powerful content management and flexibility.
+-
+- ## SaaS ( Software as Service)
+  collapsed:: true
+	- [[Shopify]] - it is a **hosted e-commerce platform** that includes **some CMS-like features**.
+-
+- ## Operating Systems & Kernels
+  collapsed:: true
+	- ## Linux
+		- [[Kali Linux]] :- A Debian-based distribution designed for penetration testing and cybersecurity professionals, featuring numerous security tools.
+		-
+		- [[Ubuntu]] :- A user-friendly Linux distribution popular for desktops and servers, known for its ease of use and strong community support.
+		-
+		- [[Fedora]] :- A cutting-edge distribution that showcases the latest in open-source software, ideal for developers and enthusiasts.
+		-
+		- [[CentOS]] :-  A free, enterprise-class Linux distribution derived from Red Hat Enterprise Linux, often used for servers.
+		-
+		- [[Arch Linux]] :-  A lightweight and flexible distribution that follows a rolling release model, known for its simplicity and customization options.
+		-
+		- [[Debian]] :-  A stable and versatile distribution that serves as the foundation for many other distributions, known for its package management.
+		-
+		- [[OpenSUSE]] :-  A community-driven distribution with strong support for development and server environments, offering both stable and rolling release options.
+		-
+		- [[Linux Mint]] :- A user-friendly distribution based on Ubuntu, designed to provide a familiar interface for users transitioning from Windows.
+	-
+	- ## Windows
+-
+- ## Frameworks, Libraries Common Elements
+  collapsed:: true
+	- You Can find particular lib & Frameworks  in that programing page
+	- [[Api]] - You can find specific APIs and related documentation on the respective programming language or framework page.
+-
+- ## Data Structures , Algorithms & OOP
+  collapsed:: true
+	- [[DSA Algo System Design]]: The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for searching, sorting, and optimization.
+	-
+	- [[System Design]]: In-depth guide to designing scalable, reliable, and high-performance systems — covering load balancing, caching, databases, microservices, CAP theorem, message queues, API design, and real-world case studies.
+-
+- ## DevOps & CI/CD
+  collapsed:: true
+	- ### DevOps Concepts
+		- [[Collaboration & Communication]]: Emphasizes enhanced communication between development and operations teams to improve the software development lifecycle (SDLC).
+		-
+		- [[Automation]]: Automating manual tasks such as testing, deployments, and infrastructure provisioning to reduce errors and increase efficiency.
+		-
+		- [[Infrastructure as Code (IaC)]]: Managing and provisioning infrastructure using code, enabling version control and reproducibility in environments.
+		-
+		- [[Continuous Monitoring & Logging]]: Continuous observation of applications and infrastructure to track performance and issues in real-time.
+		-
+		- [[Microservices Architecture]]: Designing applications as a set of independent services, each with its own functionality, that communicate over APIs. See also [[System Design]] for in-depth microservices patterns.
+		-
+		- [[Containerization]]: Using containers (e.g., Docker) to package applications and their dependencies to ensure consistent environments across different platforms.
+	-
+	- ### CI/CD Concepts
+		- [[Continuous Integration (CI)]]: The practice of automatically integrating and testing code changes in a shared repository multiple times a day, ensuring that code is always in a working state.
+		-
+		- [[Continuous Delivery (CD)]]: Extends CI by automating the deployment process to staging or production environments, making sure code is always ready to be deployed with minimal manual intervention.
+		-
+		- [[Continuous Testing]]: Ensuring automated tests are executed throughout the entire CI/CD pipeline to maintain code quality and prevent issues.
+		-
+		- [[Continuous Monitoring]]: Monitoring the application and infrastructure during and after deployment to ensure the system is running smoothly and catching any issues early.
+	-
+	- ### CI/CD Tools
+	  collapsed:: true
+		- [[Jenkins]]: A widely used open-source automation server for automating the CI/CD pipeline with plugins for building, testing, and deploying code.
+		-
+		- [[GitLab CI]]: An integrated CI/CD tool built into GitLab, offering version control, CI/CD pipelines, and project management in a single platform.
+		-
+		- [[CircleCI]]: A cloud-based CI/CD service for automating workflows, providing a fast and scalable solution for integrating, testing, and deploying code.
+		-
+		- [[Travis CI]]: A cloud-based CI/CD tool that automatically tests and deploys code from GitHub repositories, commonly used for open-source projects.
+		-
+		- [[Azure DevOps]]: A Microsoft platform that integrates development tools for CI/CD pipelines, version control, and project management, primarily for enterprise applications.
+		-
+		- [[GitHub Actions]]: A CI/CD solution integrated with GitHub repositories that allows users to automate workflows for building, testing, and deploying applications.
+		-
+		- [[TeamCity]]: A JetBrains CI/CD server that provides support for multiple build configurations and integrates with a wide range of tools for managing projects.
+		-
+		- [[Bamboo]]: An Atlassian CI/CD tool that integrates with other Atlassian products (like Jira) for automating builds and deployments across the SDLC.
+		-
+		- [[ArgoCD]]: A continuous delivery tool for Kubernetes that implements GitOps, where Git repositories are the source of truth for Kubernetes deployment.
+	-
+	- ### Containerization & Orchestration
+		- [[Docker]]: A platform for building, shipping, and running applications inside containers, which encapsulate an application and its dependencies.
+		-
+		- [[Kubernetes]]: A container orchestration platform that automates the deployment, scaling, and management of containerized applications.
+		-
+		- [[Helm]]: A Kubernetes package manager that simplifies the deployment of applications by using pre-configured charts for Kubernetes resources.
+		-
+		- [[Docker Compose]]: A tool for defining and running multi-container Docker applications, useful for local development environments.
+	-
+	- ### Infrastructure as Code (IaC) Tools
+		- [[Terraform]]: An open-source IaC tool for provisioning and managing infrastructure using configuration files, supporting multiple cloud providers.
+		-
+		- [[Ansible]]: A configuration management and automation tool that automates infrastructure provisioning, deployment, and management.
+		-
+		- [[Puppet]]: A configuration management tool used for automating infrastructure and application deployments across large environments.
+		-
+		- [[Chef]]: A configuration management and automation tool that uses "recipes" and "cookbooks" to manage infrastructure.
+		-
+		- [[CloudFormation]]: AWS’s IaC tool for provisioning and managing AWS resources using declarative templates written in JSON or YAML.
+	-
+	- ### Cloud Platforms & Services
+		- [[Amazon Web Services (AWS)]]: A leading cloud provider offering services like EC2, S3, Lambda, CodePipeline, and CodeDeploy for DevOps automation.
+		-
+		- [[Microsoft Azure]]: A cloud platform offering services for version control, CI/CD, Kubernetes management, and more.
+		-
+		- [[Google Cloud Platform (GCP)]]: Google’s cloud service offering CI/CD tools like Cloud Build, Kubernetes Engine (GKE), and Cloud Functions for DevOps.
+		-
+		- [[DigitalOcean]]: A cloud computing platform known for simplicity and ease of use, often employed by small to medium-sized DevOps teams.
+	-
+	- ### Monitoring & Logging
+		- [[Prometheus]]: An open-source monitoring and alerting toolkit often used with Kubernetes for gathering metrics and system health data.
+		-
+		- [[Grafana]]: A visualization and analytics platform that integrates with Prometheus to create real-time dashboards for monitoring system performance.
+		-
+		- [[ELK Stack (Elasticsearch, Logstash, Kibana)]]: A popular toolset for collecting, storing, and visualizing logs for improved observability.
+		-
+		- [[Datadog]]: A cloud-based monitoring platform that provides observability into the infrastructure, applications, and services.
+		-
+		- [[New Relic]]: A performance monitoring and analytics platform used to track the health and performance of applications in real-time.
+		-
+		- [[Nagios]]: An open-source monitoring system for checking the status of applications, services, and network infrastructure.
+	-
+	- ### Security in DevOps (DevSecOps)
+		- [[SonarQube]]: A tool for continuous code quality inspection to detect bugs, vulnerabilities, and code smells.
+		-
+		- [[OWASP ZAP]]: A security scanner used for finding vulnerabilities in web applications during the development process.
+		-
+		- [[HashiCorp Vault]]: A tool for securely managing sensitive data such as API keys, passwords, and certificates.
+		-
+		- [[Aqua Security]]: A container security platform that scans for vulnerabilities in container images and Kubernetes clusters.
+	-
+	- ### Agile & Project Management Tools
+		- [[Jira]]: A project management tool often used in DevOps teams for managing tasks, bugs, and user stories, integrated with CI/CD pipelines.
+		-
+		- [[Trello]]: A visual project management tool to organize tasks and workflows in a simple board format, ideal for small teams and quick task tracking.
+		-
+		- [[Asana]]: A task and project management tool used for tracking work, collaborating with teams, and ensuring smooth project delivery.
+-
+- ## Cybersecurity
+  collapsed:: true
+	- [[Cybersecurity]] - This page contains DevOps Concepts
+-
+- ## Game Development & Graphics
+  collapsed:: true
+	- For a full categorized list of game engines, 3D tools, and design software, see [[Software]].
+	-
+	- ### Core Concepts
+		- [[Game Development]] :- Core game dev concepts from basics to advanced — game loop, ECS, physics, rendering pipeline, AI, shaders, networking, optimization, and more.
+	-
+	- ### Game Engines
+		- [[Godot]] :- Open-source engine supporting GDScript, C#, and C++. Full A-Z reference: scenes, physics, animation, shaders, networking, GDExtension.
+		- [[Unity]] :- Cross-platform engine for 2D and 3D games, widely used in indie and professional studios. Scripted in C#.
+		- [[Unreal Engine]] :- High-fidelity 3D engine by Epic Games. Full A-Z reference: Blueprints, C++, GAS, Nanite, Lumen, networking, AI, UMG, Niagara, Sequencer.
+		- [[Bevy]] :- Data-driven game engine built in Rust, focused on ECS architecture.
+		- [[Fyrox]] :- Feature-rich 3D/2D game engine written in Rust with a built-in scene editor.
+		- [[NcEngine]] :- Lightweight 3D game engine written in modern C++ and Vulkan.
+		- [[Thunder Engine]] :- Cross-platform open-source C++ game engine with a modular Qt-based editor.
+		- [[Panda3D]] :- Python/C++ game engine used in research, simulation, and indie development.
+		- [[Pygame]] :- Python library for 2D game development, great for learning and rapid prototyping.
+	-
+	- ### Game Development Assets
+		- [[Free Assets]] :- Collection of free 2D assets, fonts, and resources for game development.
+	-
+	- ### Graphics Programming & Rendering
+		- [[PathTracer Learning]] :- Deep-dive learning series for building a GPU path tracer from scratch — covers math foundations, CPU ray tracing, Vulkan ray tracing, and Godot rendering internals. Full index of all concepts, phases, and projects.
+		- [[Binary Space Partitioning]] :- Spatial data structure used in game engines for rendering optimization and collision detection.
+	-
+-
+- ## Software Information
+  id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
+  collapsed:: true
+	- [[Software]] - This page showcases all types of software, categorized by their functionality and purpose.
+-
+- ## Free Books
+	- [[Books & Free Res]] - This page will provide free Pdf Books and resource with can downloadable.
+-
+- ## more learn
+	- Explore the following links for valuable resources, communities, and tools to enhance your skills:-
+	-
+	- ## Github & Webs
+		- [What are getting famous in GitHub?](https://github.com/EvanLi/Github-Ranking/tree/master)
+		- [Roadmap for Learn 🏆](https://github.com/kamranahmedse/developer-roadmap)
+		- [All Type of Roadmap 📣](https://roadmap.sh/)
+		- [Free For dev](https://github.com/ripienaar/free-for-dev)
+		- [Quick Reference](https://quickref.me/index.html)
+		- [You wanna Help on CSS Degine?](https://uiverse.io/cssbuttons-io/wonderful-baboon-62)
+		- [How to build Anything ?](https://github.com/codecrafters-io/build-your-own-x)
+		- [I want Free Engineering Projects it will Be Helpful😉](https://www.enggroom.com/)
+		- [Are You Finding It jobs  ?](https://github.com/poteto/hiring-without-whiteboards)
+		- [Free Programing E-Books 📚](https://github.com/EbookFoundation/free-programming-books)
+		- [The Algorithms community](https://github.com/TheAlgorithms)
+		- [lfs-folderStore For remote LFS media store](https://github.com/sinbad/lfs-folderstore)
+		- [Get Free APIs🐱‍🏍](https://github.com/public-apis/public-apis)
+		- [Learn Basic About  API](https://aws.amazon.com/what-is/api/)
+		- [Interview Preparation⚔](https://www.indiabix.com/)
+	-
+	- ## Lib
+		- [bhartiya Digital lib](https://ndl.iitkgp.ac.in/)
+		- [Online Biggest Lib](https://archive.org/details/internetarchivebooks)
+		-
+	- ## Master PlayLists Youtube📺 Free
+		- [Blander 3D🧁](https://youtube.com/playlist?list=PLPMIlPa0MRx4xhit8wjYU3Zwz6DgAL5bo&si=oembX0dwhlWS5MxG)
+		- [Learn 2D Animation Consepts🎨](https://youtube.com/playlist?list=PLPMIlPa0MRx56RShbo-NYVWP1LdSyFhdJ&si=jd0ALYKpEj0CSGcY)
+		- [Hardware Chips 👾](https://youtube.com/playlist?list=PLPMIlPa0MRx5U3s8CGuiH6ODgLUTDMlZx&si=H7OH0f-DG75bygYC)
+		- [Godot Engine Learn.🤖](https://youtube.com/playlist?list=PLPMIlPa0MRx6asDFZk9R6CTHMaY7j6cDk&si=3r6ADTPOcQ4t_yEM)
+		- [Grafics Design Ideas✨](https://youtube.com/playlist?list=PLPMIlPa0MRx5NTnZs_bbCN2vadNeScqwJ&si=inL4162f-c_L1VLf)
+		- [AI Models Learn Res🎆](https://youtube.com/playlist?list=PLPMIlPa0MRx7X6LjaxlkQflYOwRaYfjQe&si=zvw0xsx_VdPC_cfW)
+		- [DSA and Algo with Videos 🌿🧠🌿](https://youtube.com/playlist?list=PLPMIlPa0MRx5c_1s2e4VDQkORCO56W21B&si=9dXvGjjV_dbV_l0o)
+		- [Andriod App Dev 🤙📱](https://youtube.com/playlist?list=PLPMIlPa0MRx6goy6W4OSLv6jXFpyumjra&si=6xpSlF4fXF7NT2l7)
