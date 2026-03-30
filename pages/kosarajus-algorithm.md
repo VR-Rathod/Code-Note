@@ -4,7 +4,7 @@ description: "Kosaraju's algorithm finds all SCCs in a directed graph using two 
 keywords: "Kosaraju algorithm, strongly connected components, SCC, directed graph, DFS, transpose graph, O(V+E), time complexity, space complexity, graph algorithm"
 ---
 
-# Explanation
+- # Explanation
 	- **Kosaraju's Algorithm** is used to find the **strongly connected components (SCC)** of a directed graph. It works by performing two depth-first searches (DFS).
 -
 - # Steps:

@@ -4,7 +4,7 @@ description: "Constructors initialize objects when they are created. Covers defa
 keywords: "constructor, OOP, object-oriented programming, default constructor, parameterized constructor, copy constructor, constructor overloading, constructor chaining, initialization"
 ---
 
-# Explanation
+- # Explanation
 	- A **constructor** is a special method that is called automatically when an object is created. In Python, the constructor is defined using the `__init__()` method. The constructor is used to initialize the attributes of the object when it is created.
 	  
 	  **Key Points**:

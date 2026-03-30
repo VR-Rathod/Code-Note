@@ -4,7 +4,7 @@ description: "Visual Studio reference covering debugging, IntelliSense, extensio
 keywords: "Microsoft Visual Studio, IDE, debugging, IntelliSense, extensions, refactoring, Git integration, .NET development, C++ development, Visual Studio 2022, productivity"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: Microsoft Visual Studio was first released in 1997 as an integrated development environment (IDE) for software development.
 	- **Who**: Developed by Microsoft, with contributions from a large team of software engineers and designers.

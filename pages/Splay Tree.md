@@ -4,7 +4,7 @@ description: "Splay trees move recently accessed nodes to the root via splaying 
 keywords: "splay tree, self-adjusting BST, splaying, zig rotation, zig-zig, zig-zag, amortized O(log n), time complexity, space complexity, cache-friendly, data structure"
 ---
 
-# Explanation
+- # Explanation
 	- A **Splay Tree** is a self-adjusting binary search tree that automatically moves the accessed element to the root via **splaying**.
 	-
 	- The **splaying** operation brings the accessed node to the root by performing rotations.

@@ -4,7 +4,7 @@ description: "Jaganath Hora is a Vedic astrology software for planetary hour cal
 keywords: "Jaganath Hora, Vedic astrology, planetary hours, hora chart, Jyotish, planetary periods, astrological timing, astrology software, Hindu astrology, Vedic chart"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: Jaganath Hora was developed by P.V.R. Narasimha Rao, first released in the early 2000s as astrology software.
 	-

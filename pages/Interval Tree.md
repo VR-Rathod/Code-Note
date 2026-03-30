@@ -4,7 +4,7 @@ description: "Interval trees efficiently find all intervals overlapping a query 
 keywords: "interval tree, overlapping intervals, augmented BST, O(log n + k), range query, scheduling, segment overlap, time complexity, space complexity, data structure"
 ---
 
-# Explanation:
+- # Explanation:
 	- An **Interval Tree** is a balanced binary search tree used to store intervals. It allows querying for all intervals that overlap with a given interval.
 	-
 	- It is particularly useful in applications like scheduling, computational geometry, and range queries.

@@ -4,7 +4,7 @@ description: "Insertion sort builds a sorted array one element at a time by inse
 keywords: "insertion sort, sorting algorithm, adaptive sort, O(n^2), stable sort, in-place sort, time complexity, space complexity, comparison sort, small arrays"
 ---
 
-# Explanation
+- # Explanation
 	- **Insertion Sort** is a simple sorting algorithm that builds the final sorted array one item at a time. It works by gradually taking each element from the unsorted portion and inserting it into its correct position within the sorted portion of the array.
 -
 - # Steps:

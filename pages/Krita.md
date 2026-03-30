@@ -4,7 +4,7 @@ description: "Krita reference covering brushes, layers, color management, animat
 keywords: "Krita, digital painting, illustration, brushes, layers, color management, animation, vector tools, concept art, open source, free painting software, digital art"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: Krita was developed by the KDE community, first released in 2005 as a free and open-source painting program.
 	- **Who**: Created by a team of developers and artists with a focus on digital painting and concept art.

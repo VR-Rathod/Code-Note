@@ -4,7 +4,7 @@ description: "Sumatra PDF is a fast, lightweight PDF viewer for Windows. Covers 
 keywords: "Sumatra PDF, PDF viewer, lightweight, keyboard shortcuts, EPUB, MOBI, CBZ, Windows PDF reader, fast PDF viewer, free PDF reader, document viewer"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: Sumatra PDF was developed by Krzysztof Kowalczyk, first released in 2006 as a lightweight PDF reader.
 	- **Who**: Created by a solo developer aiming to provide a simple, fast PDF viewing experience.

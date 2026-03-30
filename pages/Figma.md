@@ -4,7 +4,7 @@ description: "Figma reference covering frames, components, auto layout, variable
 keywords: "Figma, UI design, UX design, prototyping, components, auto layout, variables, design systems, plugins, collaboration, wireframing, Figma 2024"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: Figma was developed by Dylan Field and Evan Wallace, first released in 2016 as a web-based design tool for UI/UX design.
 	- **Who**: The software was created by a team at Figma Inc., aiming to improve collaboration in design workflows.

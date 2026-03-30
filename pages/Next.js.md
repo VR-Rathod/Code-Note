@@ -34,7 +34,6 @@ keywords: "nextjs, next.js, react framework, app router, pages router, SSR, SSG,
 		- Vendor lock-in risk with Vercel-specific features.
 		- Large bundle size for complex apps.
 		- Opinionated — less flexible than plain React + Vite.
-
 - # Setup
   collapsed:: true
 	- ## Create New Project
@@ -73,7 +72,6 @@ keywords: "nextjs, next.js, react framework, app router, pages router, SSR, SSG,
 		  ├── next.config.js
 		  └── package.json
 		  ```
-
 - # App Router — Core Concepts
   collapsed:: true
 	- ## File Conventions
@@ -163,7 +161,6 @@ keywords: "nextjs, next.js, react framework, app router, pages router, SSR, SSG,
 		      );
 		  }
 		  ```
-
 - # Server vs Client Components
   collapsed:: true
 	- ## Comparison
@@ -244,7 +241,6 @@ keywords: "nextjs, next.js, react framework, app router, pages router, SSR, SSG,
 		      );
 		  }
 		  ```
-
 - # Data Fetching
   collapsed:: true
 	- ## fetch in Server Components
@@ -308,7 +304,6 @@ keywords: "nextjs, next.js, react framework, app router, pages router, SSR, SSG,
 		  revalidatePath('/blog');         // invalidate specific path
 		  revalidatePath('/blog/[slug]', 'page'); // invalidate dynamic path
 		  ```
-
 - # API Routes (Route Handlers)
   collapsed:: true
 	- ## Basic Route Handler
@@ -383,7 +378,6 @@ keywords: "nextjs, next.js, react framework, app router, pages router, SSR, SSG,
 		  response.headers.set('X-Custom', 'value');
 		  return response;
 		  ```
-
 - # Server Actions
   collapsed:: true
 	- ## What Are Server Actions
@@ -453,7 +447,6 @@ keywords: "nextjs, next.js, react framework, app router, pages router, SSR, SSG,
 		      );
 		  }
 		  ```
-
 - # Routing
   collapsed:: true
 	- ## Dynamic Routes
@@ -504,7 +497,6 @@ keywords: "nextjs, next.js, react framework, app router, pages router, SSR, SSG,
 		  import { permanentRedirect } from 'next/navigation';
 		  permanentRedirect('/new-url');
 		  ```
-
 - # Middleware
   collapsed:: true
 	- ## middleware.ts
@@ -537,7 +529,6 @@ keywords: "nextjs, next.js, react framework, app router, pages router, SSR, SSG,
 		      matcher: ['/dashboard/:path*', '/login'],
 		  };
 		  ```
-
 - # Metadata & SEO
   collapsed:: true
 	- ## Static Metadata
@@ -581,7 +572,6 @@ keywords: "nextjs, next.js, react framework, app router, pages router, SSR, SSG,
 		      };
 		  }
 		  ```
-
 - # Built-in Components
   collapsed:: true
 	- ## Image Optimization
@@ -643,7 +633,6 @@ keywords: "nextjs, next.js, react framework, app router, pages router, SSR, SSG,
 		  // beforeInteractive — load before hydration (use sparingly)
 		  <Script src="/critical.js" strategy="beforeInteractive" />
 		  ```
-
 - # next.config.js
   collapsed:: true
 	- ```js

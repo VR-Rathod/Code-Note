@@ -30,7 +30,6 @@ keywords: "nodejs, node.js, javascript runtime, npm, async, event loop, streams,
 		- npm dependency hell — large `node_modules`, security risks.
 		- Weak type safety (use TypeScript to fix this).
 		- Error handling can be tricky in async code.
-
 - # Basics
   collapsed:: true
 	- ## Hello World & Running Files
@@ -83,7 +82,6 @@ keywords: "nodejs, node.js, javascript runtime, npm, async, event loop, streams,
 		      console.error('Unhandled rejection:', reason);
 		  });
 		  ```
-
 - # Modules
   collapsed:: true
 	- ## CommonJS (CJS) — Default in Node.js
@@ -139,7 +137,6 @@ keywords: "nodejs, node.js, javascript runtime, npm, async, event loop, streams,
 		  Default in Node   Yes                     No (opt-in)
 		  Browser support   No                      Yes
 		  ```
-
 - # npm & package.json
   collapsed:: true
 	- ## Essential npm Commands
@@ -204,7 +201,6 @@ keywords: "nodejs, node.js, javascript runtime, npm, async, event loop, streams,
 		  nvm use        # reads .nvmrc automatically
 		  nvm install    # installs version from .nvmrc
 		  ```
-
 - # Async Patterns
   collapsed:: true
 	- ## Callbacks (old style)
@@ -281,7 +277,6 @@ keywords: "nodejs, node.js, javascript runtime, npm, async, event loop, streams,
 		  const data = await readFile('file.txt', 'utf8');
 		  console.log(data);
 		  ```
-
 - # Event Loop
   collapsed:: true
 	- ## How It Works
@@ -326,7 +321,6 @@ keywords: "nodejs, node.js, javascript runtime, npm, async, event loop, streams,
 		  // 5 - setTimeout 0  ← timers phase
 		  // 4 - setImmediate  ← check phase
 		  ```
-
 - # File System (fs)
   collapsed:: true
 	- ## Read & Write Files
@@ -399,7 +393,6 @@ keywords: "nodejs, node.js, javascript runtime, npm, async, event loop, streams,
 		  // Safe cross-platform paths (use join, not string concat)
 		  const filePath = path.join(__dirname, 'data', 'users.json');
 		  ```
-
 - # Events (EventEmitter)
   collapsed:: true
 	- ## Basic EventEmitter
@@ -459,7 +452,6 @@ keywords: "nodejs, node.js, javascript runtime, npm, async, event loop, streams,
 		  db.on('error', (err) => console.error('DB Error:', err));
 		  db.connect('mongodb://localhost:27017');
 		  ```
-
 - # Streams
   collapsed:: true
 	- ## Stream Types
@@ -530,7 +522,6 @@ keywords: "nodejs, node.js, javascript runtime, npm, async, event loop, streams,
 		  );
 		  console.log('Compression complete');
 		  ```
-
 - # HTTP Server (built-in)
   collapsed:: true
 	- ## Basic HTTP Server
@@ -583,7 +574,6 @@ keywords: "nodejs, node.js, javascript runtime, npm, async, event loop, streams,
 		  
 		  server.listen(3000);
 		  ```
-
 - # Express.js
   collapsed:: true
 	- ## Setup
@@ -677,7 +667,6 @@ keywords: "nodejs, node.js, javascript runtime, npm, async, event loop, streams,
 		  res.cookie('token', 'abc', { httpOnly: true, secure: true })
 		  res.clearCookie('token')
 		  ```
-
 - # Environment Variables
   collapsed:: true
 	- ## .env & dotenv
@@ -713,7 +702,6 @@ keywords: "nodejs, node.js, javascript runtime, npm, async, event loop, streams,
 		      app.use(morgan('dev')); // verbose logging in dev only
 		  }
 		  ```
-
 - # Error Handling
   collapsed:: true
 	- ## Sync Errors
@@ -784,7 +772,6 @@ keywords: "nodejs, node.js, javascript runtime, npm, async, event loop, streams,
 		      res.status(status).json({ error: err.message });
 		  });
 		  ```
-
 - # Worker Threads & Cluster
   collapsed:: true
 	- ## Worker Threads (CPU-intensive tasks)
@@ -838,7 +825,6 @@ keywords: "nodejs, node.js, javascript runtime, npm, async, event loop, streams,
 		      console.log(`Worker ${process.pid} started`);
 		  }
 		  ```
-
 - # Useful Built-in Modules
   collapsed:: true
 	- ## os Module
@@ -901,7 +887,6 @@ keywords: "nodejs, node.js, javascript runtime, npm, async, event loop, streams,
 		  const params = new URLSearchParams({ q: 'node', page: 1 });
 		  params.toString() // 'q=node&page=1'
 		  ```
-
 - # Essential npm Packages
   collapsed:: true
 	- ```

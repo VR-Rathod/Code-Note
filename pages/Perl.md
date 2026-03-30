@@ -4,7 +4,7 @@ description: "Perl reference covering regular expressions, file handling, refere
 keywords: "Perl programming, Perl language, regular expressions, file handling, references, CPAN, modules, text processing, system administration, bioinformatics, syntax reference"
 ---
 
-# History
+- # History
 	- **How**:
 		- **Perl** was created by **Larry Wall** in **1987** as a general-purpose programming language for text processing, inspired by existing languages like **C**, **sed**, **awk**, and **shell scripting**. Initially, Perl was designed to make report processing easier by combining the power of C with the ease of scripting.
 		- Over time, Perl evolved into a more powerful language with support for object-oriented programming, regular expressions, and a vast array of libraries. Its flexibility and expressiveness led to it being widely used for web development, system administration, and data manipulation.

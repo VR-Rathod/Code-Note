@@ -4,7 +4,7 @@ description: "BFS traverses graphs level by level using a queue. Covers shortest
 keywords: "breadth first search, BFS, graph traversal, queue, shortest path, unweighted graph, connected components, bipartite graph, time complexity, space complexity, tree traversal"
 ---
 
-# Explanation
+- # Explanation
 	- Breadth First Search (BFS) is a graph traversal algorithm used to search nodes in a graph or tree data structure. It explores all the neighboring nodes at the present level before moving on to nodes at the next level. BFS uses a queue data structure to keep track of the nodes to be processed.
 -
 - # Steps:

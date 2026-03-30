@@ -4,7 +4,7 @@ description: "Mo's algorithm answers range queries offline in O((n+q) sqrt(n)) t
 keywords: "Mo's algorithm, distinct elements, range query, offline algorithm, block decomposition, sqrt decomposition, time complexity, space complexity, subarray query, algorithm"
 ---
 
-# Explanation
+- # Explanation
 	- **Mo’s Algorithm** is a square root decomposition technique for answering range queries efficiently. It is especially useful for problems where we need to find distinct elements in a subarray. The algorithm sorts the queries and processes them in a way that minimizes the movement of the window boundaries, resulting in efficient querying.
 -
 - # Steps

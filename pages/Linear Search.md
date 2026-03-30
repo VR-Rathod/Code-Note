@@ -4,7 +4,7 @@ description: "Linear search scans each element sequentially to find a target. Co
 keywords: "linear search, sequential search, O(n), unsorted array, search algorithm, time complexity, space complexity, sentinel search, brute force, algorithm implementation"
 ---
 
-# Explanation
+- # Explanation
 	- Linear Search is a simple searching algorithm used to find an element in a list or array. This algorithm checks each element of the list one by one until it finds the target element.
 -
 - # Steps:

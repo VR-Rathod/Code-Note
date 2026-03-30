@@ -4,7 +4,7 @@ description: "Destructors clean up resources when objects are destroyed. Covers 
 keywords: "destructors, OOP, memory management, RAII, finalizers, garbage collection, C++ destructor, Python __del__, resource cleanup, object lifecycle, object-oriented programming"
 ---
 
-# Explanation
+- # Explanation
 	- A **destructor** is a special method in a class that is automatically called when an object is destroyed. In Python, this is done through the `__del__()` method. The destructor is typically used to clean up resources or perform any final tasks when an object is no longer needed.
 	- **Python does not have a traditional destructor** (like in C++ or Java), but the `__del__()` method can be used for cleanup when the object is about to be destroyed.
 -

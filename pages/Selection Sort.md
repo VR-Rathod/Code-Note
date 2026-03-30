@@ -4,7 +4,7 @@ description: "Selection sort finds the minimum element and places it at the fron
 keywords: "selection sort, sorting algorithm, O(n^2), in-place sort, unstable sort, minimum selection, time complexity, space complexity, comparison sort, algorithm implementation"
 ---
 
-# Explanation
+- # Explanation
 	- **Selection Sort** is a simple comparison-based sorting algorithm. It works by repeatedly selecting the smallest (or largest, depending on sorting order) element from the unsorted part of the list and swapping it with the first unsorted element. This process is repeated until the entire list is sorted.
 	-
 - # Steps:

@@ -4,7 +4,7 @@ description: "PHP reference covering arrays, OOP, PDO, Composer, namespaces, PHP
 keywords: "PHP programming, PHP reference, arrays, OOP, PDO, Composer, namespaces, PHP 8, Laravel, server-side, web development, syntax cheat sheet"
 ---
 
-# History & Intro
+- # History & Intro
 	- This is server side Scripting-launguage
 	- use Build dynamic web pages
 	- Run on Server

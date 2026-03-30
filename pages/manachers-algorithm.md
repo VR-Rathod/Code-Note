@@ -4,7 +4,7 @@ description: "Manacher's algorithm finds the longest palindromic substring in li
 keywords: "Manacher algorithm, longest palindrome, palindromic substring, O(n), linear time, string algorithm, center expansion, palindrome radius, time complexity, space complexity"
 ---
 
-# Explanation:
+- # Explanation:
 	- **Manacher's Algorithm** is an efficient algorithm to find the **longest palindromic substring** in linear time **O(n)**.
 	-
 	- It avoids redundant checks by expanding around possible centers while using previously computed results to minimize effort.

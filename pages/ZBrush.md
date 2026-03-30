@@ -4,7 +4,7 @@ description: "ZBrush reference covering sculpting brushes, ZSpheres, DynaMesh, S
 keywords: "ZBrush, digital sculpting, 3D modeling, sculpting brushes, ZSpheres, DynaMesh, SubDiv, polypainting, ZRemesher, character sculpting, game art, film VFX"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: ZBrush was developed by Pixologic and first released in 1999. It was created to provide artists with a powerful digital sculpting tool.
 	- **Who**: The development was led by Joseph Drust and his team at Pixologic.

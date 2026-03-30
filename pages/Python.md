@@ -4,7 +4,7 @@ description: "Python reference covering list comprehensions, decorators, generat
 keywords: "Python programming, Python reference, list comprehensions, decorators, generators, context managers, type hints, Python 3, standard library, syntax cheat sheet"
 ---
 
-# History
+- # History
 - **How**:
 	- Developed by Guido van Rossum in the late 1980s.
 	- Initially released in 1991 as Python 0.9.0.

@@ -4,7 +4,7 @@ description: "Delegation forwards method calls to a helper object. Covers delega
 keywords: "delegation, OOP, design pattern, delegate pattern, method forwarding, composition, event delegation, software design, object-oriented programming, helper object"
 ---
 
-# Explanation
+- # Explanation
 	- **Delegation** is a design pattern where an object delegates responsibility for certain tasks to another object. Instead of doing the work itself, the delegating object asks another object (delegate) to perform the work.
 	- **"Has-A" relationship**: The delegating object "has a" reference to the delegating object and uses it to delegate responsibilities.
 	- **Use Case**: Useful when you want to separate concerns and avoid making a class too complex.

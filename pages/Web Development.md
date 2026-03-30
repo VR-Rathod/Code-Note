@@ -4,7 +4,7 @@ description: "Web development reference covering HTML, CSS, JavaScript, frontend
 keywords: "web development, frontend, backend, full stack, HTML, CSS, JavaScript, React, Node.js, databases, deployment, REST API"
 ---
 
-# More Learn
+- # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills : -
 	-
 	- [Start Learning Web Dev](https://github.com/microsoft/Web-Dev-For-Beginners)

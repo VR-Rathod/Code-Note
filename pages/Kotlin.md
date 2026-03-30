@@ -4,7 +4,7 @@ description: "Kotlin reference covering null safety, coroutines, extension funct
 keywords: "Kotlin programming, Kotlin reference, null safety, coroutines, extension functions, data classes, sealed classes, Android, Jetpack Compose, syntax cheat sheet"
 ---
 
-# History
+- # History
 	- **How**:
 		- Developed by **JetBrains**, Kotlin was officially announced in 2011 and released in 2016 as an open-source language.
 		- Kotlin is designed as a modern alternative to Java that addresses many of Java's shortcomings while maintaining full interoperability with Java code. It integrates features from functional and object-oriented programming paradigms.

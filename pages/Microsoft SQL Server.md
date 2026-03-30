@@ -4,7 +4,7 @@ description: "SQL Server reference covering T-SQL, stored procedures, indexes, q
 keywords: "Microsoft SQL Server, T-SQL, stored procedures, indexes, query optimization, replication, Always On, SSMS, SQL Server 2022, database administration, RDBMS"
 ---
 
-# History
+- # History
 	- **How**:
 		- **Microsoft SQL Server** was first released in **1989** as a result of a collaboration between **Microsoft** and **Sybase**. Initially, it was based on Sybase’s database engine but later evolved into its own product with unique features and optimizations.
 		- SQL Server was originally created to serve the needs of the **Windows NT** operating system, providing a relational database management system (RDBMS) tightly integrated with Microsoft technologies.

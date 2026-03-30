@@ -4,7 +4,7 @@ description: "Lua reference covering tables, metatables, coroutines, closures, m
 keywords: "Lua programming, Lua language, tables, metatables, coroutines, closures, modules, game scripting, C embedding, Lua 5.4, syntax reference, cheat sheet"
 ---
 
-# History
+- # History
 	- **How**:
 	  Lua is a lightweight, high-level, embeddable scripting language, created in 1993 by Roberto Ierusalimschy, Luiz Henrique de Figueiredo, and Waldemar Celes at the **Pontifical Catholic University of Rio de Janeiro**, Brazil. Lua was originally designed for embedded systems and to be used as a **scripting language** for applications. It was developed to be **fast**, **small**, and **flexible**, making it suitable for a variety of applications, from gaming to networking.
 		-

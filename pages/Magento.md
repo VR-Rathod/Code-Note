@@ -4,7 +4,7 @@ description: "Magento is a powerful e-commerce platform. Covers catalog manageme
 keywords: "Magento, e-commerce, Magento 2, catalog management, checkout, payment gateway, themes, modules, REST API, Adobe Commerce, PHP e-commerce, store setup, magento notes, magento guide, magento cheatsheet, VR-Rathod, Code-Note, code note vr, vr book"
 ---
 
-# **History**
+- # **History**
 - **How**: Magento was launched in **2008** by **Roy Rubin** and **Yoav Kutner** as an open-source e-commerce platform designed to provide flexibility and scalability for online retailers. It was acquired by **eBay** in 2011, and later sold to **Adobe** in 2018.
 -
 - **Who**: Developed by **Magento, Inc.**, which became a part of **Adobe**. Magento is widely used by developers and businesses to create customized e-commerce solutions.

@@ -4,7 +4,7 @@ description: "WordPress reference covering themes, plugins, Gutenberg blocks, RE
 keywords: "WordPress, CMS, themes, plugins, Gutenberg, REST API, WooCommerce, custom post types, hooks, WordPress 6, full site editing, PHP"
 ---
 
-# History
+- # History
 	- **How**
 		- Developed by: **Matt Mullenweg** and **Mike Little** in 2003.
 		- **Release**: WordPress was initially released as a **fork** of a previous CMS called **b2/cafelog**, with the goal of creating a simple, user-friendly blogging platform.

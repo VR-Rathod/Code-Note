@@ -4,7 +4,7 @@ description: "Prim's algorithm grows the MST one vertex at a time using a priori
 keywords: "Prim algorithm, minimum spanning tree, MST, priority queue, greedy algorithm, O(E log V), time complexity, space complexity, dense graph, graph algorithm"
 ---
 
-# Explanation
+- # Explanation
 	- **Prim’s Algorithm** is a greedy algorithm used to find the **minimum spanning tree (MST)** of a graph. It builds the MST by starting from an arbitrary node and adding the smallest edge connecting a vertex in the MST to a vertex outside it.
 -
 - # Steps:

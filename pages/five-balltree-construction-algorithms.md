@@ -4,7 +4,7 @@ description: "Ball trees partition metric spaces for fast nearest neighbor searc
 keywords: "five ball tree, nearest neighbor search, metric space, KD-tree, tree construction, split strategy, time complexity, space complexity, machine learning, spatial indexing"
 ---
 
-# Explanation
+- # Explanation
 	- A **Ball Tree** is a data structure used for efficient nearest neighbor search. It recursively divides space into balls (hyperspheres) to organize data points. The "Five Balltree Construction Algorithms" are variants of ball trees for optimizing nearest-neighbor search in high-dimensional data.
 -
 - # Steps

@@ -4,7 +4,7 @@ description: "Observer pattern defines a one-to-many dependency for event notifi
 keywords: "observer pattern, design pattern, behavioral pattern, subject, observer, publish-subscribe, event system, reactive programming, OOP, software design, event-driven"
 ---
 
-# Explanation
+- # Explanation
 	- The **Observer Pattern** is a behavioral design pattern where an object (the **subject**) maintains a list of observers that need to be notified when the subject’s state changes.
 	- **"Subject-Observer"**: The subject is responsible for notifying its observers about changes.
 	- **Use Case**: Ideal for event-driven systems, where you need to update multiple components when the state of an object changes.

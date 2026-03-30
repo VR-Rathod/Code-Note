@@ -4,7 +4,7 @@ description: "VS Code reference covering extensions, keyboard shortcuts, debuggi
 keywords: "Visual Studio Code, VS Code, extensions, keyboard shortcuts, debugging, integrated terminal, Git, settings sync, code editor, developer tools, IntelliSense"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: Visual Studio Code (VS Code) was developed by Microsoft and first released in 2015 as a lightweight, open-source code editor.
 	- **Who**: The development was led by a team at Microsoft, focusing on providing a versatile tool for developers.

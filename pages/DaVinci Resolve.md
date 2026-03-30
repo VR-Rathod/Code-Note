@@ -4,7 +4,7 @@ description: "DaVinci Resolve reference covering Cut, Edit, Fusion, Color, Fairl
 keywords: "DaVinci Resolve, video editing, color grading, Fusion, Fairlight, Cut page, Edit page, VFX, audio mixing, post-production, free video editor, Blackmagic"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: DaVinci Resolve was originally developed by DaVinci Systems as a color correction tool and was first released in the late 1980s. It evolved significantly after being acquired by Blackmagic Design in 2009.
 	- **Who**: The software was created by a team at DaVinci Systems, including key figures like Grant Petty at Blackmagic Design.

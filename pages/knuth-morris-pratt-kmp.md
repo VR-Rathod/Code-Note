@@ -4,7 +4,7 @@ description: "KMP searches for a pattern in a string in O(n+m) time using a fail
 keywords: "KMP algorithm, Knuth-Morris-Pratt, string search, pattern matching, failure function, prefix function, O(n+m), time complexity, space complexity, substring search"
 ---
 
-# Explanation
+- # Explanation
 	- The KMP algorithm is used for **pattern matching** in a text. It improves upon the naive approach by avoiding unnecessary re-evaluations of characters.
 -
 - # Steps

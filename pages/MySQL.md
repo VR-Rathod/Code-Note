@@ -4,7 +4,7 @@ description: "MySQL reference covering SQL syntax, joins, indexes, stored proced
 keywords: "MySQL, SQL, joins, indexes, stored procedures, triggers, replication, InnoDB, MySQL 8, database administration, RDBMS, query optimization"
 ---
 
-# History
+- # History
 	- **How**:
 		- SQL (Structured Query Language) was first developed in the early **1970s** at **IBM** by **Donald D. Chamberlin** and **Ray Boyce** as part of the **System R project** to manage and query relational databases.
 		- It was created to provide a standardized language for interacting with relational databases, following the theoretical principles of the **relational model** proposed by **Edgar F. Codd**.

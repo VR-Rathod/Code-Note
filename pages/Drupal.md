@@ -4,7 +4,7 @@ description: "Drupal is an open-source CMS for building complex websites. Covers
 keywords: "Drupal, CMS, content management, Drupal modules, Drupal themes, views, hooks, Drupal 10, headless Drupal, web development, PHP CMS, content types"
 ---
 
-# History
+- # History
 	- **How**: Drupal was first released in **2001** by **Dries Buytaert** as a simple message board, later evolving into a powerful content management system (CMS) with robust features for developers.
 	- **Who**: Developed by **Dries Buytaert** and the **Drupal community**, the project has grown through contributions from thousands of developers worldwide, with **Dries Buytaert** serving as the project's lead.
 	- **Why**: Drupal was created to be a flexible, scalable, and secure CMS capable of building complex websites and web applications. It focuses on providing advanced features for developers while maintaining a user-friendly interface for content management.

@@ -4,7 +4,7 @@ description: "Audacity is a free audio editor. Covers recording, editing, effect
 keywords: "Audacity, audio editing, audio recording, effects, noise reduction, multi-track, export, podcast production, free audio editor, waveform, audio software"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: Audacity was developed by Dominic Mazzoni and Roger D. Smith, first released in 2000 as a free audio editing software.
 	- **Who**: Created by a team of volunteers as part of the Audacity Team, focusing on open-source development.

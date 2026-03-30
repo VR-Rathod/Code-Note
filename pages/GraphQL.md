@@ -4,7 +4,7 @@ description: "GraphQL is a query language for APIs. Covers schema definition, qu
 keywords: "GraphQL, GraphQL queries, mutations, schema, resolvers, subscriptions, fragments, variables, GraphQL Python, graphene, Apollo, API development"
 ---
 
-# History
+- # History
 	- **How**: GraphQL was developed internally by **Facebook** in **2012** to improve the way mobile apps interacted with APIs. It was created to solve issues with over-fetching and under-fetching of data in traditional REST APIs.
 	-
 	- **Who**: The technology was created by a team at **Facebook**, led by **Lee Byron**, **Dan Schafer**, and **Nick Schrock**. It was later open-sourced in **2015**, and is now maintained by the **GraphQL Foundation**, hosted by the **Linux Foundation**.

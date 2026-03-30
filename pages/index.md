@@ -68,7 +68,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 	-
 	- [[ActionScript]]: A scripting language for the Adobe Flash platform, used for developing rich internet applications.
 	-
-	- [[F#]]: A functional-first language that runs on the .NET platform, used for data analysis and web programming.
+	- [[F Sharp]]: A functional-first language that runs on the .NET platform, used for data analysis and web programming.
 	-
 	- [[Tcl]]: A scripting language often used for rapid prototyping and embedded systems.
 	-
@@ -157,11 +157,13 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 	- [[Api]] - You can find specific APIs and related documentation on the respective programming language or framework page.
 -
 - ## Data Structures , Algorithms & OOP
+  collapsed:: true
 	- [[DSA Algo System Design]]: The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for searching, sorting, and optimization.
 	-
 	- [[System Design]]: In-depth guide to designing scalable, reliable, and high-performance systems — covering load balancing, caching, databases, microservices, CAP theorem, message queues, API design, and real-world case studies.
 -
 - ## DevOps & CI/CD
+  collapsed:: true
 	- ### DevOps Concepts
 		- [[Collaboration & Communication]]: Emphasizes enhanced communication between development and operations teams to improve the software development lifecycle (SDLC).
 		-
@@ -267,6 +269,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 	- [[Cybersecurity]] - This page contains DevOps Concepts
 -
 - ## Game Development & Graphics
+  collapsed:: true
 	- For a full categorized list of game engines, 3D tools, and design software, see [[Software]].
 	-
 	- ### Core Concepts
@@ -293,6 +296,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 -
 - ## Software Information
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
+  collapsed:: true
 	- [[Software]] - This page showcases all types of software, categorized by their functionality and purpose.
 -
 - ## Free Books

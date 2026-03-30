@@ -4,7 +4,7 @@ description: "Boruvka's algorithm finds the minimum spanning tree by repeatedly 
 keywords: "Boruvka algorithm, minimum spanning tree, MST, graph algorithm, greedy algorithm, time complexity, space complexity, connected components, edge weight, spanning tree"
 ---
 
-# Explanation
+- # Explanation
 	- **Boruvka's Algorithm** is another greedy algorithm used to find the **minimum spanning tree (MST)** of a graph. It repeatedly adds the minimum weight edge from each component until only one component remains.
 -
 - # Steps:

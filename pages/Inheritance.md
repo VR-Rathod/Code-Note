@@ -4,7 +4,7 @@ description: "Inheritance allows classes to derive properties from parent classe
 keywords: "inheritance, OOP, object-oriented programming, single inheritance, multiple inheritance, multilevel inheritance, method overriding, super, diamond problem, is-a relationship"
 ---
 
-# Explanation
+- # Explanation
 	- Inheritance is a fundamental OOP concept where a new class (child class) derives properties and behaviors (methods) from an existing class (parent class). This allows the child class to reuse code from the parent class, making code more reusable and modular. The child class can also extend or override the functionality of the parent class.
 	  
 	  **Key Points**:

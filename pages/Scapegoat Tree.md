@@ -4,7 +4,7 @@ description: "Scapegoat trees maintain balance by rebuilding subtrees when imbal
 keywords: "scapegoat tree, balanced BST, amortized complexity, alpha-weight balance, tree rebuild, O(log n), time complexity, space complexity, self-balancing tree, data structure"
 ---
 
-# Explanation:
+- # Explanation:
 	- A **Scapegoat Tree** is a type of self-balancing binary search tree that uses an amortized **O(log n)** time complexity for insertion and deletion.
 	-
 	- Unlike AVL and Red-Black Trees, it does not maintain a strict balance at every node but ensures that the tree does not become unbalanced by periodically rebuilding subtrees.

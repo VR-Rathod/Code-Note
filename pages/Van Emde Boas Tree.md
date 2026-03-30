@@ -4,7 +4,7 @@ description: "Van Emde Boas trees support integer operations in O(log log u) tim
 keywords: "Van Emde Boas tree, vEB tree, O(log log u), integer priority queue, successor query, predecessor query, universe size, time complexity, space complexity, data structure"
 ---
 
-# Explanation
+- # Explanation
 	- A **Van Emde Boas Tree** is a data structure that supports **efficient priority queue** operations.
 	-
 	- It works for integer keys in a specific range and allows operations like **insert**, **delete**, and **minimum** in O(log log n) time.

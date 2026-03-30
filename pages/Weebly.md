@@ -4,7 +4,7 @@ description: "Weebly is a drag-and-drop website builder. Covers themes, e-commer
 keywords: "Weebly, website builder, drag-and-drop, themes, e-commerce, SEO tools, app center, custom CSS, Square integration, online store, no-code, web design"
 ---
 
-# History
+- # History
 	- **How**: Weebly was founded in **2006** by **David Rusenko**, **Chris Fanini**, and **Dan Veltri** as a website builder aimed at helping individuals and small businesses create websites without needing coding skills.
 	-
 	- **Who**: Developed by **Weebly, Inc.**, which was acquired by **Square** (now **Block, Inc.**) in **2018**. Weebly provides an easy-to-use platform primarily for building small business websites, blogs, and e-commerce stores.

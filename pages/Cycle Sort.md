@@ -4,7 +4,7 @@ description: "Cycle sort minimizes the number of writes to memory by placing eac
 keywords: "cycle sort, sorting algorithm, minimum writes, in-place sort, cycle detection, O(n^2), time complexity, space complexity, comparison sort, memory writes"
 ---
 
-# Explanation
+- # Explanation
 	- **Cycle Sort** is a non-comparative sorting algorithm that places elements at their correct positions by cycling them through the array. It is efficient for sorting arrays where the elements are distinct.
 -
 - # Steps:

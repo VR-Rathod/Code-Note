@@ -4,5 +4,5 @@ description: "Arrow provides a sensible, human-friendly approach to dates and ti
 keywords: "Arrow, Python datetime, date time library, timezone handling, date parsing, date formatting, humanize, Python library, Arrow library, datetime alternative"
 ---
 
-# How to Learn
+- # How to Learn
 	- [Arrow Docs](https://pypi.org/project/arrow/)

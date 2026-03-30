@@ -4,7 +4,7 @@ description: "Inkscape reference covering SVG editing, nodes, paths, text, filte
 keywords: "Inkscape, vector graphics, SVG editor, nodes, paths, text, filters, extensions, open source, free Illustrator alternative, graphic design, vector illustration"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: Inkscape was developed as a free and open-source vector graphics editor, first released in 2003.
 	- **Who**: The project was initiated by a group of developers including Bryce Harrington, who sought to create a powerful alternative to proprietary software like Adobe Illustrator.

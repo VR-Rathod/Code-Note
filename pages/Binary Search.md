@@ -4,7 +4,7 @@ description: "Binary search efficiently finds elements in sorted arrays by halvi
 keywords: "binary search, search algorithm, sorted array, O(log n), divide and conquer, iterative binary search, recursive binary search, time complexity, space complexity, algorithm implementation"
 ---
 
-# Explanation
+- # Explanation
 	- Binary Search is an efficient algorithm used to find an element in a sorted list or array. It works by dividing the list into two halves and repeatedly narrowing down the search space until the target element is found.
 -
 - # Steps:

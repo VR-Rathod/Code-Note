@@ -4,7 +4,7 @@ description: "Notepad++ reference covering syntax highlighting, plugins, macros,
 keywords: "Notepad++, text editor, syntax highlighting, plugins, macros, regex search, column editing, compare plugin, developer tools, Windows text editor, code editor"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: Notepad++ was developed by Don Ho and first released in 2003 as a free and open-source text editor.
 	- **Who**: The project is maintained by Don Ho and a community of contributors, aimed at providing a robust text editing tool for programmers and writers.

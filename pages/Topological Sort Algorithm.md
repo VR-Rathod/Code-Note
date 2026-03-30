@@ -4,7 +4,7 @@ description: "Topological sort orders vertices of a DAG so all edges go forward.
 keywords: "topological sort, DAG, directed acyclic graph, DFS, Kahn algorithm, BFS, cycle detection, O(V+E), time complexity, space complexity, dependency resolution"
 ---
 
-# Explanation
+- # Explanation
 	- **Topological Sort** is used to order the vertices of a **directed acyclic graph (DAG)** such that for every directed edge `(u, v)`, vertex `u` appears before `v`.
 -
 - # Steps:

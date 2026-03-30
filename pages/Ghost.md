@@ -4,7 +4,7 @@ description: "Ghost is a modern publishing platform for blogs and newsletters. C
 keywords: "Ghost CMS, publishing platform, blog, newsletter, Ghost themes, Content API, members, subscriptions, self-hosting, headless CMS, Ghost Pro, web publishing"
 ---
 
-# **History**
+- # **History**
 	- **How**: Ghost was created in **2013** by **John O'Nolan** as an open-source publishing platform designed for bloggers and content creators, focusing on simplicity, speed, and flexibility.
 	-
 	- **Who**: Developed by **Ghost Foundation**, with John O'Nolan as the lead developer. The platform started as a Kickstarter project and has since grown into a popular platform for content-focused websites.

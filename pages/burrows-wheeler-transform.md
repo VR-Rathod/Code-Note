@@ -4,7 +4,7 @@ description: "The Burrows-Wheeler Transform rearranges characters to improve com
 keywords: "Burrows-Wheeler transform, BWT, data compression, suffix array, bzip2, string transformation, inverse BWT, time complexity, space complexity, text compression"
 ---
 
-# Explanation
+- # Explanation
 	- The **Burrows-Wheeler Transform (BWT)** is a string transformation algorithm used in data compression. It reorders the characters of a string into runs of similar characters, making it easier to compress.
 -
 - # Steps

@@ -4,7 +4,7 @@ description: "Houdini reference covering procedural modeling, VEX, SOPs, DOPs, s
 keywords: "Houdini, procedural 3D, VFX, VEX, SOPs, DOPs, simulations, Karma renderer, SideFX, film VFX, game development, procedural generation"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: Houdini was developed by SideFX, with its first version released in 1996. It was created to provide a powerful platform for 3D animation and visual effects.
 	- **Who**: The software was founded by Greg Hermanovic and his team at SideFX.

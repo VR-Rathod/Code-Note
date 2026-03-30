@@ -4,7 +4,7 @@ description: "XAMPP provides a local Apache, MySQL, PHP, and Perl development en
 keywords: "XAMPP, local web server, Apache, MySQL, PHP, phpMyAdmin, virtual hosts, SSL, local development, web development, PHP development, localhost setup"
 ---
 
-## 1. History
+- ## 1. History
 -
 	- **How**: XAMPP was developed by Apache Friends, first released in 2002 as an easy-to-install Apache distribution.
 	- **Who**: Created by a team of developers aiming to simplify the process of setting up a local web server.

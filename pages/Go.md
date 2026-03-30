@@ -4,7 +4,7 @@ description: "Go language reference covering goroutines, channels, interfaces, e
 keywords: "Go programming, Golang, goroutines, channels, interfaces, error handling, Go modules, standard library, concurrency, backend development, Go syntax, cheat sheet"
 ---
 
-# History
+- # History
 	- **How**:
 		- Developed by **Rob Pike**, **Ken Thompson**, and **Robert Griesemer** at **Google** in 2007, with the goal of improving programming productivity for large-scale systems.
 		- Designed as a simple, efficient, and concurrent programming language, Go was created to overcome shortcomings in existing programming languages like C++ and Java, especially in terms of performance and ease of use.

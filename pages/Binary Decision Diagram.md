@@ -4,7 +4,7 @@ description: "Binary Decision Diagrams represent Boolean functions as directed a
 keywords: "binary decision diagram, BDD, ROBDD, Boolean function, formal verification, DAG, variable ordering, apply algorithm, time complexity, space complexity, logic synthesis"
 ---
 
-# Explanation
+- # Explanation
 	- A **Binary Decision Diagram (BDD)** is a data structure used to represent boolean functions. It uses a directed acyclic graph where each node represents a decision based on a variable, and the edges represent the outcomes of that decision.
 -
 - # Steps

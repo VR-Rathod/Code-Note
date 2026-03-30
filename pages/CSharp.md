@@ -4,7 +4,7 @@ description: "CSharp reference covering LINQ, async/await, generics, delegates, 
 keywords: "csharp, C# programming, C# reference, LINQ, async await, generics, delegates, .NET, Unity, ASP.NET, C# syntax, object-oriented"
 ---
 
-# History
+- # History
 	- **How**:
 		- Developed by **Anders Hejlsberg** and his team at **Microsoft** in the early 2000s.
 		- Designed as a modern, object-oriented language that combines the power of C++ with the ease of use of languages like Java.

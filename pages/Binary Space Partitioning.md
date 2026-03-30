@@ -4,7 +4,7 @@ description: "BSP trees recursively partition space with hyperplanes for efficie
 keywords: "binary space partitioning, BSP tree, 3D rendering, hyperplane, painter's algorithm, collision detection, game engine, time complexity, space complexity, spatial data structure"
 ---
 
-#### Explanation:
+- #### Explanation:
 	- **Binary Space Partitioning** is a technique used for recursively dividing a space into two half-spaces by hyperplanes (lines in 2D, planes in 3D).
 	-
 	- It is used in **computer graphics**, **collision detection**, and **ray tracing**.
