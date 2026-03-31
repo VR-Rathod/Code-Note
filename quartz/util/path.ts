@@ -63,7 +63,8 @@ function sluggify(s: string): string {
         .replace(/&/g, "-and-")
         .replace(/%/g, "-percent")
         .replace(/\?/g, "")
-        .replace(/#/g, ""),
+        .replace(/#/g, "")
+        .toLowerCase(),
     )
     .join("/") // always use / as sep
     .replace(/\/$/, "")
