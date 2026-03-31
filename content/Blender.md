@@ -2,6 +2,7 @@
 seoTitle: Blender Complete Guide – 3D Modeling, Animation, Rendering & VFX
 description: "Comprehensive Blender reference covering interface, modeling, sculpting, rigging, animation, shading, Cycles/EEVEE rendering, geometry nodes, compositing, and Python scripting."
 keywords: "Blender, 3D modeling, animation, sculpting, rigging, shading, Cycles, EEVEE, geometry nodes, rendering, compositing, Python scripting, Blender 4, open source 3D, VFX, VR-Rathod, Code-Note, code note vr, vr book"
+displayTitle: Blender
 ---
 
 - # History
@@ -34,6 +35,7 @@ keywords: "Blender, 3D modeling, animation, sculpting, rigging, shading, Cycles,
 		- Some industry pipelines prefer Maya/Houdini for specific tasks.
 		- This Note even there Documentation can lag behind rapid development.
 - # Installation & System Requirements
+  collapsed:: true
 	- ## Download
 		- Official site: https://www.blender.org/download/
 		- Available as installer or portable `.zip` (Windows), `.dmg` (macOS), `.tar.xz` (Linux).
@@ -56,6 +58,7 @@ keywords: "Blender, 3D modeling, animation, sculpting, rigging, shading, Cycles,
 		- **Apple Silicon**: Metal backend
 		- Enable in: Edit → Preferences → System → Cycles Render Devices
 - # Interface & Navigation
+  collapsed:: true
 	- ## Main Areas
 		- ```
 		  Area                    Purpose
@@ -339,6 +342,7 @@ keywords: "Blender, 3D modeling, animation, sculpting, rigging, shading, Cycles,
 		- **Radius/Size** — larger = softer shadows (Area light).
 		- **Shadow** — enable/disable per light.
 		- **Light Linking** (Blender 4+) — control which objects a light affects.
+
 - # Rendering — Cycles vs EEVEE
   collapsed:: true
 	- ## Cycles (Path Tracer)
@@ -387,6 +391,7 @@ keywords: "Blender, 3D modeling, animation, sculpting, rigging, shading, Cycles,
 		- Output Path: Output Properties → Output → set folder path.
 		- File Format: PNG (single frame), FFmpeg Video (animation), OpenEXR (compositing).
 		- Render image: F12. Render animation: Ctrl + F12.
+
 - # Rigging & Armatures
   collapsed:: true
 	- ## What is Rigging?
@@ -427,6 +432,7 @@ keywords: "Blender, 3D modeling, animation, sculpting, rigging, shading, Cycles,
 		- **Basis** = rest shape. Add new keys and sculpt/edit them.
 		- Animate the Value (0–1) to blend between shapes.
 		- Used for: lip sync, blink, smile, corrective shapes on joints.
+
 - # Animation
   collapsed:: true
 	- ## Keyframe Basics
@@ -481,3 +487,351 @@ keywords: "Blender, 3D modeling, animation, sculpting, rigging, shading, Cycles,
 		  Solid Drawing           3D form and weight in poses
 		  Appeal                  Charisma and clarity in character design
 		  ```
+
+- # Geometry Nodes
+  collapsed:: true
+	- ## What Are Geometry Nodes?
+		- A procedural, node-based system to generate and modify geometry.
+		- Non-destructive — the base mesh is unchanged; nodes compute the result.
+		- Introduced in Blender 2.92, massively expanded in 3.x and 4.x.
+		- Used for: scatter systems, procedural buildings, VFX, simulations.
+	-
+	- ## Basic Node Categories
+		- ```
+		  Category            Example Nodes
+		  Input               Object Info, Position, Index, Named Attribute
+		  Output              Group Output
+		  Geometry            Join Geometry, Transform Geometry, Merge by Distance
+		  Mesh                Mesh Primitive, Extrude Mesh, Subdivide Mesh
+		  Curve               Curve Primitive, Resample Curve, Curve to Mesh
+		  Instances           Instance on Points, Realize Instances
+		  Point               Distribute Points on Faces, Points
+		  Volume              Points to Volume, Volume Cube
+		  Utilities           Math, Vector Math, Switch, Compare, Random Value
+		  Attribute           Store Named Attribute, Capture Attribute
+		  ```
+	-
+	- ## Common Workflow: Scatter Objects on Surface
+		- ```
+		  [Object Info] → [Distribute Points on Faces] → [Instance on Points] → [Group Output]
+		  
+		  Steps:
+		  1. Add Geometry Nodes modifier to a plane
+		  2. Distribute Points on Faces — set density
+		  3. Instance on Points — pick the object to scatter
+		  4. Add Random Value nodes for rotation/scale variation
+		  ```
+	-
+	- ## Fields System
+		- Geometry Nodes uses a **field** system — values computed per-element (per vertex, per face, etc.).
+		- Allows per-point variation without loops.
+		- Example: `Random Value` node outputs a different random number per instance.
+
+
+- # Simulations
+  collapsed:: true
+	- ## Physics Systems Overview
+		- ```
+		  System              Use
+		  Rigid Body          Hard objects falling, colliding (boxes, rocks)
+		  Soft Body           Elastic/jelly objects (cloth-like but volume-based)
+		  Cloth               Fabric simulation (shirts, flags, curtains)
+		  Fluid (Mantaflow)   Liquid and smoke/fire simulation
+		  Particles           Hair, fur, rain, sparks, crowd systems
+		  Dynamic Paint       Paint/wave effects driven by collisions
+		  Force Fields        Wind, turbulence, vortex, magnetic forces
+		  ```
+	-
+	- ## Rigid Body Simulation
+		- Select object → Physics Properties → Rigid Body.
+		- **Active**: affected by gravity/forces. **Passive**: static collider.
+		- Bake simulation: Scene Properties → Rigid Body World → Bake.
+	-
+	- ## Cloth Simulation
+		- Physics Properties → Cloth.
+		- Key settings: Stiffness (how rigid), Damping, Self Collision.
+		- Add **Collision** modifier to objects the cloth interacts with.
+		- Pin cloth to armature using **Vertex Groups** (pin group).
+	-
+	- ## Fluid Simulation (Mantaflow)
+		- Domain object: Physics → Fluid → Domain (Liquid or Gas).
+		- Flow object: Physics → Fluid → Flow (Inflow/Outflow/Geometry).
+		- Effector: Physics → Fluid → Effector (collision).
+		- Bake data, then bake mesh for final geometry.
+	-
+	- ## Particle Systems
+		- Object → Properties → Particles → +.
+		- **Emitter**: particles emitted over time (rain, sparks, smoke).
+		- **Hair**: static strands for fur, grass, hair.
+		- Use **Particle Edit Mode** to comb/cut/style hair particles.
+		- **Children**: generate child particles from parents for dense fur.
+
+
+- # Compositing
+  collapsed:: true
+	- ## What is Compositing?
+		- Post-processing the render output using a node graph.
+		- Combine render passes, add effects, color grade, composite VFX elements.
+		- Open: Compositing workspace or Shift + F3 (set editor to Compositor).
+		- Enable: check **Use Nodes** in the Compositor.
+	-
+	- ## Render Passes
+		- Enable in View Layer Properties → Passes.
+		- ```
+		  Pass                Use
+		  Combined            Full final render
+		  Diffuse Color       Surface color only
+		  Diffuse Light       Diffuse lighting only
+		  Glossy              Specular/reflection pass
+		  Shadow              Shadow information
+		  Ambient Occlusion   AO pass for compositing
+		  Depth (Z)           Distance from camera (for DOF, fog)
+		  Normal              Surface normals
+		  Cryptomatte         Object/material ID masks
+		  ```
+	-
+	- ## Common Compositor Nodes
+		- ```
+		  Node                Use
+		  Render Layers       Input — the rendered image + passes
+		  Composite           Output — final composited result
+		  Viewer              Preview node output in Image Editor
+		  Color Balance       Color grading (lift/gamma/gain)
+		  Hue Saturation      Adjust color
+		  Glare               Bloom, streaks, fog glow
+		  Lens Distortion     Barrel/pincushion distortion
+		  Blur                Gaussian, bokeh, motion blur
+		  Mix                 Blend two images
+		  Alpha Over          Composite with transparency
+		  Cryptomatte         Isolate objects by ID for masking
+		  Denoise             Intel OIDN denoising in compositor
+		  ```
+
+
+- # Python Scripting
+  collapsed:: true
+	- ## Blender Python API
+		- Blender has a full Python API (`bpy`) for automation, add-on development, and procedural workflows.
+		- Access via: Scripting workspace → Text Editor + Python Console.
+	-
+	- ## Basic bpy Usage
+		- ```python
+		  import bpy
+		  
+		  # Access the active object
+		  obj = bpy.context.active_object
+		  print(obj.name)  # e.g., "Cube"
+		  
+		  # Move object
+		  obj.location.x = 2.0
+		  
+		  # Add a new mesh object
+		  bpy.ops.mesh.primitive_cube_add(location=(0, 0, 0))
+		  
+		  # Delete all objects
+		  bpy.ops.object.select_all(action='SELECT')
+		  bpy.ops.object.delete()
+		  
+		  # Iterate all objects in scene
+		  for obj in bpy.data.objects:
+		      print(obj.name, obj.type)
+		  ```
+	-
+	- ## Useful bpy Modules
+		- ```python
+		  bpy.context    # Current state (active object, scene, mode)
+		  bpy.data       # All data blocks (objects, meshes, materials, etc.)
+		  bpy.ops        # Operators (same as menu actions)
+		  bpy.types      # Type definitions for custom properties/panels
+		  bpy.utils      # Utility functions (register, unregister)
+		  bpy.props      # Property types for add-ons (IntProperty, FloatProperty, etc.)
+		  ```
+	-
+	- ## Simple Add-on Template
+		- ```python
+		  bl_info = {
+		      "name": "My Add-on",
+		      "blender": (4, 0, 0),
+		      "category": "Object",
+		  }
+		  
+		  import bpy
+		  
+		  class OBJECT_OT_hello(bpy.types.Operator):
+		      bl_idname = "object.hello_world"
+		      bl_label = "Hello World"
+		  
+		      def execute(self, context):
+		          print("Hello from add-on!")
+		          return {'FINISHED'}
+		  
+		  def register():
+		      bpy.utils.register_class(OBJECT_OT_hello)
+		  
+		  def unregister():
+		      bpy.utils.unregister_class(OBJECT_OT_hello)
+		  
+		  if __name__ == "__main__":
+		      register()
+		  ```
+	-
+	- ## Useful Scripting Tips
+		- Hover over any UI element → right-click → **Copy Python Command** to get the operator call.
+		- Enable **Python Tooltips** in Preferences → Interface for inline API hints.
+		- Use the **Info Editor** to see all operator calls as you work — great for learning the API.
+
+
+- # Import & Export
+  collapsed:: true
+	- ## Supported Formats
+		- ```
+		  Format      Import  Export  Notes
+		  .blend      ✓       ✓       Native Blender format
+		  .fbx        ✓       ✓       Game engines (Unity, Unreal)
+		  .obj        ✓       ✓       Universal, no animation
+		  .gltf/.glb  ✓       ✓       Web/game standard, supports animation
+		  .abc        ✓       ✓       Alembic — VFX pipeline, baked animation
+		  .usd        ✓       ✓       Universal Scene Description (Pixar)
+		  .svg        ✓       ✓       2D vector import (converted to curves)
+		  .stl        ✓       ✓       3D printing
+		  .dae        ✓       ✓       Collada
+		  .ply        ✓       ✓       Point clouds, 3D scans
+		  ```
+	-
+	- ## Linking & Appending
+		- **Append** (File → Append): Copy data from another .blend file into current scene.
+		- **Link** (File → Link): Reference data from another .blend — changes in source update here.
+		- Useful for asset libraries and collaborative pipelines.
+	-
+	- ## Asset Library
+		- Blender 3.0+ has a built-in Asset Library.
+		- Mark any object/material/node group as an asset: right-click → Mark as Asset.
+		- Browse assets in the Asset Browser editor.
+		- Set library paths in Preferences → File Paths → Asset Libraries.
+
+
+- # Performance & Optimization
+  collapsed:: true
+	- ## Viewport Performance
+		- Use **Solid** or **Material Preview** mode while working — only switch to Rendered for final checks.
+		- Disable **Overlays** and **Gizmos** when not needed.
+		- Use **Level of Detail** (LOD) add-ons for complex scenes.
+		- Simplify modifier levels: Render Properties → Simplify.
+	-
+	- ## Render Optimization
+		- ```
+		  Tip                             Effect
+		  Use GPU rendering               10–50x faster than CPU in Cycles
+		  Enable denoising                Allows lower sample counts
+		  Use render regions (Ctrl+B)     Render only part of frame
+		  Reduce light bounces            Faster at cost of some realism
+		  Use EEVEE for previews          Instant feedback
+		  Bake lighting                   Pre-compute GI for static scenes
+		  Use Persistent Data             Reuse BVH between frames
+		  Tile size (CPU: 32, GPU: 256)   Optimal tile sizes per device
+		  ```
+	-
+	- ## Memory Management
+		- Pack all external files: File → External Data → Pack Resources.
+		- Purge unused data: File → Clean Up → Purge Unused Data.
+		- Use **Linked Libraries** instead of appending for large shared assets.
+		- Compress .blend files: File → Save → check Compress File.
+
+
+- # Essential Shortcuts Reference
+  collapsed:: true
+	- ## Universal
+		- ```
+		  Action                      Shortcut
+		  Search menu                 F3
+		  Undo                        Ctrl + Z
+		  Redo                        Ctrl + Shift + Z
+		  Save                        Ctrl + S
+		  Render image                F12
+		  Render animation            Ctrl + F12
+		  Toggle fullscreen area      Ctrl + Space
+		  Preferences                 Edit → Preferences
+		  ```
+	-
+	- ## 3D Viewport
+		- ```
+		  Action                      Shortcut
+		  Add object                  Shift + A
+		  Delete                      X
+		  Duplicate                   Shift + D
+		  Grab                        G
+		  Rotate                      R
+		  Scale                       S
+		  Confirm                     Left-click or Enter
+		  Cancel                      Right-click or Esc
+		  Snap toggle                 Ctrl (while transforming)
+		  Proportional edit           O
+		  Toggle X-ray                Alt + Z
+		  Frame all                   Numpad .
+		  Local view (isolate)        Numpad /
+		  ```
+	-
+	- ## Edit Mode
+		- ```
+		  Action                      Shortcut
+		  Vertex/Edge/Face select     1 / 2 / 3
+		  Extrude                     E
+		  Inset                       I
+		  Loop cut                    Ctrl + R
+		  Bevel                       Ctrl + B
+		  Knife                       K
+		  Merge                       M
+		  Fill                        F
+		  Subdivide                   Right-click → Subdivide
+		  Separate                    P
+		  ```
+
+
+- # Useful Add-ons
+  collapsed:: true
+	- ## Built-in Add-ons (enable in Preferences → Add-ons)
+		- ```
+		  Add-on                  Use
+		  Node Wrangler           Power-user node editing shortcuts
+		  Looptools               Extra mesh editing tools (circle, relax, etc.)
+		  Extra Objects           More primitive shapes
+		  Import Images as Planes Import images as flat mesh with material
+		  Rigify                  Auto-generate production-ready rigs
+		  Cell Fracture           Break objects into fragments
+		  Archimesh               Architectural elements (walls, rooms, stairs)
+		  ```
+	-
+	- ## Popular Third-Party Add-ons
+		- ```
+		  Add-on              Use
+		  Hard Ops / BoxCutter Hard-surface modeling workflow
+		  Fluent              Procedural hard-surface modeling
+		  Botaniq             Realistic plant/tree library
+		  Scatter             Advanced scattering system
+		  Geo-Scatter         Geometry Nodes-based scatter
+		  Stylized Shader Pack Toon/NPR shading
+		  Retopoflow          Retopology tools
+		  Speedflow           Fast modeling operations
+		  ```
+
+
+- # More Learn
+	- ## Github & Webs
+		- Official Site: https://www.blender.org
+		- Official Manual: https://docs.blender.org/manual/en/latest/
+		- Python API Docs: https://docs.blender.org/api/current/
+		- Blender GitHub: https://github.com/blender/blender
+		- Blender Artists Forum: https://blenderartists.org
+		- Blender Market (add-ons): https://blendermarket.com
+		- Free HDRIs / Textures / Models: https://polyhaven.com
+		- Free Textures: https://ambientcg.com
+		- Blender Stack Exchange: https://blender.stackexchange.com
+	-
+	- ## Master Playlists YouTube
+		- Blender Guru — Donut Tutorial (Beginner): https://www.youtube.com/watch?v=nIoXOplUvAw
+		- Grant Abbitt — Complete Beginner Series: https://www.youtube.com/watch?v=jnj2BL4chaQ
+		- CG Cookie — Blender Fundamentals: https://www.youtube.com/c/CGCookieBlender
+		- Blender Official YouTube: https://www.youtube.com/@BlenderOfficial
+		- Stylized Station — Stylized Art in Blender: https://www.youtube.com/@StylizedStation
+		- Ducky 3D — Shader & Motion Graphics: https://www.youtube.com/@Ducky3D
+		- Default Cube — Geometry Nodes: https://www.youtube.com/@DefaultCube
