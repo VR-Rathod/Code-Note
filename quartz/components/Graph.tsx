@@ -19,6 +19,12 @@ export interface D3Config {
   showTags: boolean
   focusOnHover?: boolean
   enableRadial?: boolean
+  neuronMode?: boolean
+  driftAmplitude?: number
+  driftFrequency?: number
+  glowRadius?: number
+  glowAlpha?: number
+  pulseSpeed?: number
 }
 
 interface GraphOptions {
@@ -41,6 +47,12 @@ const defaultOptions: GraphOptions = {
     removeTags: [],
     focusOnHover: false,
     enableRadial: false,
+    neuronMode: true,
+    driftAmplitude: 0.3,
+    driftFrequency: 0.0006,
+    glowRadius: 3,
+    glowAlpha: 0.5,
+    pulseSpeed: 2500,
   },
   globalGraph: {
     drag: true,
@@ -56,6 +68,12 @@ const defaultOptions: GraphOptions = {
     removeTags: [],
     focusOnHover: true,
     enableRadial: true,
+    neuronMode: true,
+    driftAmplitude: 0.25,
+    driftFrequency: 0.0005,
+    glowRadius: 4,
+    glowAlpha: 0.5,
+    pulseSpeed: 3000,
   },
 }
 

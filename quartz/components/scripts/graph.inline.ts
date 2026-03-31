@@ -14,7 +14,7 @@ import {
   drag,
   zoom,
 } from "d3"
-import { Text, Graphics, Application, Container, Circle } from "pixi.js"
+import { Text, Graphics, Application, Container, Circle, BlurFilter } from "pixi.js"
 import { Group as TweenGroup, Tween as Tweened } from "@tweenjs/tween.js"
 import { registerEscapeHandler, removeAllChildren } from "./util"
 import { FullSlug, SimpleSlug, getFullSlug, resolveRelative, simplifySlug } from "../../util/path"
@@ -50,6 +50,8 @@ type LinkRenderData = GraphicsInfo & {
 type NodeRenderData = GraphicsInfo & {
   simulationData: NodeData
   label: Text
+  glowGfx: Graphics
+  driftPhase: number
 }
 
 const localStorageKey = "graph-visited"
@@ -87,6 +89,12 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     showTags,
     focusOnHover,
     enableRadial,
+    neuronMode,
+    driftAmplitude,
+    driftFrequency,
+    glowRadius,
+    glowAlpha,
+    pulseSpeed,
   } = JSON.parse(graph.dataset["cfg"]!) as D3Config
 
   const data: Map<SimpleSlug, ContentDetails> = new Map(
@@ -170,6 +178,7 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     .force("center", forceCenter().strength(centerForce))
     .force("link", forceLink(graphData.links).distance(linkDistance))
     .force("collide", forceCollide<NodeData>((n) => nodeRadius(n)).iterations(3))
+    .velocityDecay(0.6)
 
   const radius = (Math.min(width, height) / 2) * 0.8
   if (enableRadial) simulation.force("radial", forceRadial(radius).strength(0.2))
@@ -193,10 +202,13 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     {} as Record<(typeof cssVars)[number], string>,
   )
 
-  // calculate color — colorful nodes based on tag/visited/current state
+  // neuron-palette: cool blue/cyan/violet tones that read as neural tissue
   const nodeColors = [
-    "#e8a838", "#e05c5c", "#5cb8e0", "#7ec87e", "#b07ee0",
-    "#e07eb0", "#5ce0c8", "#e0a05c", "#7097d4", "#d47097",
+    "#58a6ff", "#79c0ff", "#a5d6ff",
+    "#bc8cff", "#d2a8ff",
+    "#56d364", "#3fb950",
+    "#ffa657", "#f0883e",
+    "#ff7b72",
   ]
   const tagColorMap = new Map<string, string>()
   let colorIdx = 0
@@ -204,13 +216,12 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   const color = (d: NodeData) => {
     const isCurrent = d.id === slug
     if (isCurrent) {
-      return computedStyleMap["--secondary"]
+      return "#79c0ff"  // bright blue for current node
     } else if (visited.has(d.id)) {
-      return computedStyleMap["--tertiary"]
+      return "#58a6ff"
     } else if (d.id.startsWith("tags/")) {
-      return computedStyleMap["--tertiary"]
+      return "#bc8cff"  // violet for tag nodes
     } else {
-      // assign a stable color per node based on its first tag or index
       const firstTag = d.tags?.[0]
       if (firstTag) {
         if (!tagColorMap.has(firstTag)) {
@@ -271,16 +282,22 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     const tweenGroup = new TweenGroup()
 
     for (const l of linkRenderData) {
-      let alpha = 1
+      let alpha: number
 
-      // if we are hovering over a node, we want to highlight the immediate neighbours
-      // with full alpha and the rest with default alpha
       if (hoveredNodeId) {
-        alpha = l.active ? 1 : 0.2
+        if (l.active) {
+          alpha = 0.9  // active links — pulse will be applied in animate loop
+          l.color = "#58a6ff"  // bright blue axon when active
+        } else {
+          alpha = 0.05  // non-connected links nearly invisible
+          l.color = "#30363d"
+        }
+      } else {
+        alpha = 0.5  // idle default — visible but subtle
+        l.color = "#30363d"
       }
 
-      l.color = l.active ? computedStyleMap["--gray"] : computedStyleMap["--lightgray"]
-      tweenGroup.add(new Tweened<LinkRenderData>(l).to({ alpha }, 200))
+      tweenGroup.add(new Tweened<LinkRenderData>(l).to({ alpha }, 250))
     }
 
     tweenGroup.getAll().forEach((tw) => tw.start())
@@ -297,29 +314,26 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     const tweenGroup = new TweenGroup()
 
     const defaultScale = 1 / scale
-    const activeScale = defaultScale * 1.1
+    const activeScale = defaultScale * 1.15
+
     for (const n of nodeRenderData) {
       const nodeId = n.simulationData.id
 
-      if (hoveredNodeId === nodeId) {
+      if (hoveredNodeId === null) {
         tweenGroup.add(
-          new Tweened<Text>(n.label).to(
-            {
-              alpha: 1,
-              scale: { x: activeScale, y: activeScale },
-            },
-            100,
-          ),
+          new Tweened<Text>(n.label).to({ alpha: 0, scale: { x: defaultScale, y: defaultScale } }, 200)
+        )
+      } else if (nodeId === hoveredNodeId) {
+        tweenGroup.add(
+          new Tweened<Text>(n.label).to({ alpha: 1.0, scale: { x: activeScale, y: activeScale } }, 120)
+        )
+      } else if (hoveredNeighbours.has(nodeId)) {
+        tweenGroup.add(
+          new Tweened<Text>(n.label).to({ alpha: 0.75, scale: { x: defaultScale, y: defaultScale } }, 150)
         )
       } else {
         tweenGroup.add(
-          new Tweened<Text>(n.label).to(
-            {
-              alpha: n.label.alpha,
-              scale: { x: defaultScale, y: defaultScale },
-            },
-            100,
-          ),
+          new Tweened<Text>(n.label).to({ alpha: 0, scale: { x: defaultScale, y: defaultScale } }, 200)
         )
       }
     }
@@ -327,33 +341,49 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     tweenGroup.getAll().forEach((tw) => tw.start())
     tweens.set("label", {
       update: tweenGroup.update.bind(tweenGroup),
-      stop() {
-        tweenGroup.getAll().forEach((tw) => tw.stop())
-      },
+      stop() { tweenGroup.getAll().forEach((tw) => tw.stop()) },
     })
   }
 
   function renderNodes() {
     tweens.get("hover")?.stop()
-
     const tweenGroup = new TweenGroup()
+
     for (const n of nodeRenderData) {
       let alpha = 1
+      let targetScale = { x: 1, y: 1 }
+      let targetGlowAlpha = glowAlpha ?? 0.35
 
-      // if we are hovering over a node, we want to highlight the immediate neighbours
       if (hoveredNodeId !== null && focusOnHover) {
-        alpha = n.active ? 1 : 0.2
+        if (n.simulationData.id === hoveredNodeId) {
+          targetScale = { x: 1.3, y: 1.3 }
+          targetGlowAlpha = 0.9
+        } else if (n.active) {
+          alpha = 1
+          targetScale = { x: 1.1, y: 1.1 }
+          targetGlowAlpha = 0.9
+        } else {
+          alpha = 0.15
+        }
+      } else if (hoveredNodeId !== null) {
+        // focusOnHover is false but we still want scale pop
+        if (n.simulationData.id === hoveredNodeId) {
+          targetScale = { x: 1.3, y: 1.3 }
+          targetGlowAlpha = 0.9
+        } else if (n.active) {
+          targetScale = { x: 1.1, y: 1.1 }
+          targetGlowAlpha = 0.9
+        }
       }
 
-      tweenGroup.add(new Tweened<Graphics>(n.gfx, tweenGroup).to({ alpha }, 200))
+      tweenGroup.add(new Tweened<Graphics>(n.gfx, tweenGroup).to({ alpha, scale: targetScale }, 200))
+      tweenGroup.add(new Tweened<Graphics>(n.glowGfx, tweenGroup).to({ alpha: targetGlowAlpha }, 200))
     }
 
     tweenGroup.getAll().forEach((tw) => tw.start())
     tweens.set("hover", {
       update: tweenGroup.update.bind(tweenGroup),
-      stop() {
-        tweenGroup.getAll().forEach((tw) => tw.stop())
-      },
+      stop() { tweenGroup.getAll().forEach((tw) => tw.stop()) },
     })
   }
 
@@ -386,7 +416,9 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   const labelsContainer = new Container<Text>({ zIndex: 3, isRenderGroup: true })
   const nodesContainer = new Container<Graphics>({ zIndex: 2, isRenderGroup: true })
   const linkContainer = new Container<Graphics>({ zIndex: 1, isRenderGroup: true })
-  stage.addChild(nodesContainer, labelsContainer, linkContainer)
+  const glowContainer = new Container<Graphics>({ zIndex: 0, isRenderGroup: true })
+  glowContainer.filters = [new BlurFilter({ strength: glowRadius ?? 8 })]
+  stage.addChild(glowContainer, linkContainer, nodesContainer, labelsContainer)
 
   for (const n of graphData.nodes) {
     const nodeId = n.id
@@ -396,11 +428,17 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
       eventMode: "none",
       text: n.text,
       alpha: 0,
-      anchor: { x: 0.5, y: 1.2 },
+      anchor: { x: 0.5, y: 1.6 },
       style: {
-        fontSize: fontSize * 15,
-        fill: computedStyleMap["--dark"],
+        fontSize: fontSize * 13,
+        fill: "#e6edf3",
         fontFamily: computedStyleMap["--bodyFont"],
+        dropShadow: {
+          color: "#000000",
+          blur: 4,
+          distance: 0,
+          alpha: 0.8,
+        },
       },
       resolution: window.devicePixelRatio * 4,
     })
@@ -416,14 +454,25 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
       cursor: "pointer",
     })
       .circle(0, 0, nodeRadius(n))
-      .fill({ color: isTagNode ? computedStyleMap["--light"] : color(n) })
-      .on("pointerover", (e) => {
-        updateHoverInfo(e.target.label)
-        oldLabelOpacity = label.alpha
-        if (!dragging) {
-          renderPixiFromD3()
-        }
-      })
+      .fill({ color: isTagNode ? "#bc8cff" : color(n) })
+
+    const degree = graphData.links.filter(
+      (l) => l.source.id === n.id || l.target.id === n.id,
+    ).length
+    if (degree > 5) {
+      // subtle inner ring for hub nodes — same radius as node, just a faint outline
+      gfx
+        .circle(0, 0, nodeRadius(n) * 1.3)
+        .stroke({ width: 0.5, color: isTagNode ? computedStyleMap["--light"] : color(n), alpha: 0.2 })
+    }
+
+    gfx.on("pointerover", (e) => {
+      updateHoverInfo(e.target.label)
+      oldLabelOpacity = label.alpha
+      if (!dragging) {
+        renderPixiFromD3()
+      }
+    })
       .on("pointerleave", () => {
         updateHoverInfo(null)
         label.alpha = oldLabelOpacity
@@ -433,11 +482,17 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
       })
 
     if (isTagNode) {
-      gfx.stroke({ width: 2, color: computedStyleMap["--tertiary"] })
+      gfx.stroke({ width: 1.5, color: "#bc8cff" })
     }
 
     nodesContainer.addChild(gfx)
     labelsContainer.addChild(label)
+
+    const glowGfx = new Graphics({ interactive: false, eventMode: "none" })
+      .circle(0, 0, nodeRadius(n) * 1.4)
+      .fill({ color: isTagNode ? "#bc8cff" : color(n) })
+    glowGfx.alpha = glowAlpha ?? 0.5
+    glowContainer.addChild(glowGfx)
 
     const nodeRenderDatum: NodeRenderData = {
       simulationData: n,
@@ -446,6 +501,8 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
       color: color(n),
       alpha: 1,
       active: false,
+      glowGfx,
+      driftPhase: Math.random() * Math.PI * 2,
     }
 
     nodeRenderData.push(nodeRenderDatum)
@@ -458,8 +515,8 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     const linkRenderDatum: LinkRenderData = {
       simulationData: l,
       gfx,
-      color: computedStyleMap["--lightgray"],
-      alpha: 1,
+      color: "#30363d",  // dark axon color
+      alpha: 0.5,
       active: false,
     }
 
@@ -526,14 +583,16 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
           stage.scale.set(transform.k, transform.k)
           stage.position.set(transform.x, transform.y)
 
-          // zoom adjusts opacity of labels too
+          // zoom adjusts opacity of labels too (disabled in neuronMode — hover controls visibility)
           const scale = transform.k * opacityScale
           let scaleOpacity = Math.max((scale - 1) / 3.75, 0)
           const activeNodes = nodeRenderData.filter((n) => n.active).flatMap((n) => n.label)
 
-          for (const label of labelsContainer.children) {
-            if (!activeNodes.includes(label)) {
-              label.alpha = scaleOpacity
+          if (!neuronMode) {
+            for (const label of labelsContainer.children) {
+              if (!activeNodes.includes(label)) {
+                label.alpha = scaleOpacity
+              }
             }
           }
         }),
@@ -541,14 +600,43 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   }
 
   let stopAnimation = false
+  let frameSkip = 0
+  let paused = false
+  const onVisibilityChange = () => { paused = document.hidden }
+  document.addEventListener("visibilitychange", onVisibilityChange)
+
   function animate(time: number) {
     if (stopAnimation) return
+    if (paused) { requestAnimationFrame(animate); return }
+
+    const isIdle = hoveredNodeId === null && simulation.alpha() < 0.05
+    if (isIdle) {
+      frameSkip++
+      if (frameSkip % 2 !== 0) { requestAnimationFrame(animate); return }
+    } else {
+      frameSkip = 0
+    }
+
+    if (simulation.alpha() < 0.1) {
+      for (const n of graphData.nodes) {
+        const phase = (n as any).driftPhase ?? 0
+        const t = time * (driftFrequency ?? 0.0008)
+        n.vx = (n.vx ?? 0) + (driftAmplitude ?? 0.4) * Math.sin(t + phase)
+        n.vy = (n.vy ?? 0) + (driftAmplitude ?? 0.4) * Math.cos(t * 0.7 + phase)
+      }
+    }
+
     for (const n of nodeRenderData) {
       const { x, y } = n.simulationData
       if (!x || !y) continue
       n.gfx.position.set(x + width / 2, y + height / 2)
+      n.glowGfx.position.set(x + width / 2, y + height / 2)
       if (n.label) {
         n.label.position.set(x + width / 2, y + height / 2)
+      }
+      if (!n.active) {
+        const pulse = Math.sin((time / (pulseSpeed ?? 2000)) * Math.PI * 2 + n.driftPhase) * 0.5 + 0.5
+        n.glowGfx.alpha = (glowAlpha ?? 0.35) * (0.6 + 0.4 * pulse)
       }
     }
 
@@ -556,9 +644,14 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
       const linkData = l.simulationData
       l.gfx.clear()
       l.gfx.moveTo(linkData.source.x! + width / 2, linkData.source.y! + height / 2)
-      l.gfx
-        .lineTo(linkData.target.x! + width / 2, linkData.target.y! + height / 2)
-        .stroke({ alpha: l.alpha, width: 1, color: l.color })
+      if (l.active) {
+        const pulseAlpha = 0.6 + 0.4 * Math.sin(time * 0.004)
+        l.gfx.lineTo(linkData.target.x! + width / 2, linkData.target.y! + height / 2)
+          .stroke({ alpha: pulseAlpha, width: 1.2, color: "#58a6ff" })
+      } else {
+        l.gfx.lineTo(linkData.target.x! + width / 2, linkData.target.y! + height / 2)
+          .stroke({ alpha: l.alpha, width: 0.6, color: l.color })
+      }
     }
 
     tweens.forEach((t) => t.update(time))
@@ -569,6 +662,7 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   requestAnimationFrame(animate)
   return () => {
     stopAnimation = true
+    document.removeEventListener("visibilitychange", onVisibilityChange)
     app.destroy()
   }
 }
