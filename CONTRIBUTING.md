@@ -35,6 +35,7 @@ Every page **must** start with SEO frontmatter:
 seoTitle: <Page Name> Complete Guide – <Short Description>
 description: "Comprehensive <topic> reference covering <key topics>."
 keywords: "<keyword1>, <keyword2>, ..., VR-Rathod, Code-Note, code note vr, vr book , <You'r name / your code tags>"
+displayTitle: C++  # This is title of page (not required for  all page)
 ---
 ```
 

@@ -1,4 +1,6 @@
 ---
+title: index
+displayTitle: Introduction
 seoTitle: Free Code Notes – Programming Knowledge Base Home and Overview
 description: "Free Code Notes is a programming knowledge base covering algorithms, data structures, languages, frameworks, tools, and software engineering concepts."
 keywords: "index, Free Code Notes, programming knowledge base, algorithms, data structures, programming languages, frameworks, tools, software engineering, Logseq, notes, index, VR-Rathod, Code-Note, code note vr, vr book, programming notes, developer notes, code reference, free programming notes"

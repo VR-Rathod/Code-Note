@@ -2,7 +2,7 @@
 seoTitle: C++ Programming Reference – Modern C++ Syntax and Features
 description: "Comprehensive C++ reference covering STL, templates, smart pointers, lambdas, move semantics, C++11/14/17/20 features, and object-oriented programming patterns."
 keywords: "cpp, C++ programming, C++ reference, STL, templates, smart pointers, lambdas, move semantics, C++17, C++20, object-oriented, modern C++, cpp notes, cpp cheatsheet, cpp guide, c++ tutorial, VR-Rathod, Code-Note, code note vr, vr book"
-title: Cpp
+displayTitle: C++
 ---
 
 - # History
@@ -67,7 +67,7 @@ title: Cpp
 		  double pi = 3.14159265;   // Double precision float (8 bytes)
 		  char grade = 'A';         // Single character (1 byte)
 		  bool isActive = true;     // Boolean (1 byte)
-		  std::string name = "Kiro"; // String (from <string>)
+		  std::string name = "VR bro"; // String (from <string>)
 		  
 		  // Constants
 		  const int MAX = 100;
@@ -3148,7 +3148,7 @@ title: Cpp
 	-
 	- [[SDL (Simple DirectMedia Layer)]] - Cross-platform multimedia: audio, graphics, input for games.
 	-
-	- [[fmtlib / std::format]] - Fast, safe string formatting (basis for C++20 `<format>`).
+	- [[std::format]] - Fast, safe string formatting (basis for C++20 `<format>`).
 	-
 	- [[Catch2]] - Modern, header-only C++ testing framework — simpler than gtest.
 	-
