@@ -160,13 +160,16 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 -
 - ## Data Structures , Algorithms & OOP
   collapsed:: true
-	- [[DSA Algo System Design]]: The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for searching, sorting, and optimization.
+	- [[DSA Algo & System Design]] : The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for searching, sorting, and optimization.
+	-
+	- [[Binary Space Partitioning]] :- Spatial data structure used in game engines for rendering optimization and collision detection.
 	-
 	- [[System Design]]: In-depth guide to designing scalable, reliable, and high-performance systems — covering load balancing, caching, databases, microservices, CAP theorem, message queues, API design, and real-world case studies.
 -
 - ## DevOps & CI/CD
   collapsed:: true
 	- ### DevOps Concepts
+	  collapsed:: true
 		- [[Collaboration & Communication]]: Emphasizes enhanced communication between development and operations teams to improve the software development lifecycle (SDLC).
 		-
 		- [[Automation]]: Automating manual tasks such as testing, deployments, and infrastructure provisioning to reduce errors and increase efficiency.
@@ -180,6 +183,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		- [[Containerization]]: Using containers (e.g., Docker) to package applications and their dependencies to ensure consistent environments across different platforms.
 	-
 	- ### CI/CD Concepts
+	  collapsed:: true
 		- [[Continuous Integration (CI)]]: The practice of automatically integrating and testing code changes in a shared repository multiple times a day, ensuring that code is always in a working state.
 		-
 		- [[Continuous Delivery (CD)]]: Extends CI by automating the deployment process to staging or production environments, making sure code is always ready to be deployed with minimal manual intervention.
@@ -209,6 +213,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		- [[ArgoCD]]: A continuous delivery tool for Kubernetes that implements GitOps, where Git repositories are the source of truth for Kubernetes deployment.
 	-
 	- ### Containerization & Orchestration
+	  collapsed:: true
 		- [[Docker]]: A platform for building, shipping, and running applications inside containers, which encapsulate an application and its dependencies.
 		-
 		- [[Kubernetes]]: A container orchestration platform that automates the deployment, scaling, and management of containerized applications.
@@ -218,6 +223,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		- [[Docker Compose]]: A tool for defining and running multi-container Docker applications, useful for local development environments.
 	-
 	- ### Infrastructure as Code (IaC) Tools
+	  collapsed:: true
 		- [[Terraform]]: An open-source IaC tool for provisioning and managing infrastructure using configuration files, supporting multiple cloud providers.
 		-
 		- [[Ansible]]: A configuration management and automation tool that automates infrastructure provisioning, deployment, and management.
@@ -229,6 +235,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		- [[CloudFormation]]: AWS’s IaC tool for provisioning and managing AWS resources using declarative templates written in JSON or YAML.
 	-
 	- ### Cloud Platforms & Services
+	  collapsed:: true
 		- [[Amazon Web Services (AWS)]]: A leading cloud provider offering services like EC2, S3, Lambda, CodePipeline, and CodeDeploy for DevOps automation.
 		-
 		- [[Microsoft Azure]]: A cloud platform offering services for version control, CI/CD, Kubernetes management, and more.
@@ -238,6 +245,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		- [[DigitalOcean]]: A cloud computing platform known for simplicity and ease of use, often employed by small to medium-sized DevOps teams.
 	-
 	- ### Monitoring & Logging
+	  collapsed:: true
 		- [[Prometheus]]: An open-source monitoring and alerting toolkit often used with Kubernetes for gathering metrics and system health data.
 		-
 		- [[Grafana]]: A visualization and analytics platform that integrates with Prometheus to create real-time dashboards for monitoring system performance.
@@ -251,6 +259,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		- [[Nagios]]: An open-source monitoring system for checking the status of applications, services, and network infrastructure.
 	-
 	- ### Security in DevOps (DevSecOps)
+	  collapsed:: true
 		- [[SonarQube]]: A tool for continuous code quality inspection to detect bugs, vulnerabilities, and code smells.
 		-
 		- [[OWASP ZAP]]: A security scanner used for finding vulnerabilities in web applications during the development process.
@@ -260,6 +269,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		- [[Aqua Security]]: A container security platform that scans for vulnerabilities in container images and Kubernetes clusters.
 	-
 	- ### Agile & Project Management Tools
+	  collapsed:: true
 		- [[Jira]]: A project management tool often used in DevOps teams for managing tasks, bugs, and user stories, integrated with CI/CD pipelines.
 		-
 		- [[Trello]]: A visual project management tool to organize tasks and workflows in a simple board format, ideal for small teams and quick task tracking.
@@ -271,38 +281,28 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 	- [[Cybersecurity]] - This page contains DevOps Concepts
 -
 - ## Game Development & Graphics
-  collapsed:: true
-	- For a full categorized list of game engines, 3D tools, and design software, see [[Software]].
+	- ### 1. Core Concepts
+		- [[Game Development]] :- Engine-agnostic fundamentals with a full concept index — game loop, ECS, physics, rendering pipeline, AI, shaders, networking, optimization, assets, and graphics deep-dives.
 	-
-	- ### Core Concepts
-		- [[Game Development]] :- Core game dev concepts from basics to advanced — game loop, ECS, physics, rendering pipeline, AI, shaders, networking, optimization, and more.
+	- ### 2. Game Engines
+		- [[Godot]] :- Open-source engine. GDScript, C#, C++. Covers scenes, physics, animation, shaders, networking, GDExtension.
+		- [[Unity]] :- Cross-platform 2D/3D engine. C# scripting, URP/HDRP, asset store.
+		- [[Unreal Engine]] :- AAA-grade engine by Epic. Blueprints, C++, Nanite, Lumen, Chaos physics, UMG, Niagara.
+		- [[Bevy]] :- Data-driven ECS engine in Rust.
+		- [[Fyrox]] :- 3D/2D engine in Rust with a built-in scene editor.
+		- [[NcEngine]] :- Lightweight 3D engine in modern C++ and Vulkan.
+		- [[Thunder Engine]] :- Cross-platform open-source C++ engine with a modular Qt-based editor.
+		- [[Panda3D]] :- Python/C++ engine for research, simulation, and indie dev.
+		- [[Pygame]] :- Python library for 2D games, great for learning and rapid prototyping.
+		-
+		- For a full categorized list of all game engines and 3D tools, see [[Software]].
 	-
-	- ### Game Engines
-		- [[Godot]] :- Open-source engine supporting GDScript, C#, and C++. Full A-Z reference: scenes, physics, animation, shaders, networking, GDExtension.
-		- [[Unity]] :- Cross-platform engine for 2D and 3D games, widely used in indie and professional studios. Scripted in C#.
-		- [[Unreal Engine]] :- High-fidelity 3D engine by Epic Games. Full A-Z reference: Blueprints, C++, GAS, Nanite, Lumen, networking, AI, UMG, Niagara, Sequencer.
-		- [[Bevy]] :- Data-driven game engine built in Rust, focused on ECS architecture.
-		- [[Fyrox]] :- Feature-rich 3D/2D game engine written in Rust with a built-in scene editor.
-		- [[NcEngine]] :- Lightweight 3D game engine written in modern C++ and Vulkan.
-		- [[Thunder Engine]] :- Cross-platform open-source C++ game engine with a modular Qt-based editor.
-		- [[Panda3D]] :- Python/C++ game engine used in research, simulation, and indie development.
-		- [[Pygame]] :- Python library for 2D game development, great for learning and rapid prototyping.
-	-
-	- ### Game Development Assets
-		- [[Free Assets]] :- Collection of free 2D assets, fonts, and resources for game development.
-	-
-	- ### Graphics Programming & Rendering
-		- [[PathTracer Learning]] :- Deep-dive learning series for building a GPU path tracer from scratch — covers math foundations, CPU ray tracing, Vulkan ray tracing, and Godot rendering internals. Full index of all concepts, phases, and projects.
-		- [[Binary Space Partitioning]] :- Spatial data structure used in game engines for rendering optimization and collision detection.
-	-
+	- ### 3. Graphics Programming & Rendering
+		- [[PathTracer Learning]] :- Step-by-step series for building a GPU path tracer — math foundations, CPU ray tracing, Vulkan RT pipeline, and Godot rendering internals.
 -
 - ## Software Information
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
-  collapsed:: true
 	- [[Software]] - This page showcases all types of software, categorized by their functionality and purpose.
--
-- ## Free Books
-	- [[Books & Free Res]] - This page will provide free Pdf Books and resource with can downloadable.
 -
 - ## more learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills:-

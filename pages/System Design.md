@@ -39,6 +39,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  ```
 	-
 	- ## What is System Design?
+	  collapsed:: true
 		- System design is the process of defining the **architecture**, **components**, **modules**, **interfaces**, and **data flow** of a system to satisfy specified requirements.
 		- It bridges the gap between **requirements** and **implementation** — answering *how* a system will work, not just *what* it will do.
 		- Two main types:
@@ -60,8 +61,11 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  Step 6 → Identify bottlenecks and trade-offs
 		  Step 7 → Discuss failure scenarios and recovery
 		  ```
+-
 - # Scalability
+  collapsed:: true
 	- ## What is Scalability?
+	  collapsed:: true
 		- The ability of a system to handle **growing amounts of work** by adding resources.
 		- Two main strategies:
 			- **Vertical Scaling (Scale Up)** — Add more CPU/RAM to existing machine.
@@ -79,6 +83,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  ```
 	-
 	- ## Latency vs Throughput
+	  collapsed:: true
 		- **Latency** — Time to complete a single request (ms). Lower is better.
 		- **Throughput** — Number of requests handled per second (RPS/QPS). Higher is better.
 		- They often trade off — optimizing for one can hurt the other.
@@ -92,6 +97,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  ```
 	-
 	- ## Availability vs Consistency (CAP Theorem)
+	  collapsed:: true
 		- **CAP Theorem**: A distributed system can only guarantee **2 of 3**:
 			- **C**onsistency — Every read gets the most recent write.
 			- **A**vailability — Every request gets a response (not necessarily latest data).
@@ -112,6 +118,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  ```
 	-
 	- ## PACELC Theorem (Extension of CAP)
+	  collapsed:: true
 		- Even when there's **no partition**, you still trade off **latency vs consistency**.
 		- ```
 		  PACELC:
@@ -124,6 +131,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  ```
 	-
 	- ## SLA, SLO, SLI
+	  collapsed:: true
 		- **SLI** (Service Level Indicator) — Actual measured metric (e.g., 99.5% uptime).
 		- **SLO** (Service Level Objective) — Internal target (e.g., 99.9% uptime).
 		- **SLA** (Service Level Agreement) — Contract with users/customers (e.g., 99.9% or refund).
@@ -134,6 +142,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  99.99%  → 52.6 minutes downtime/year
 		  99.999% → 5.26 minutes downtime/year
 		  ```
+-
 - # Load Balancing
   collapsed:: true
 	- ## What is a Load Balancer?
@@ -202,6 +211,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		- **HAProxy** — Reliable, high-performance TCP/HTTP load balancer.
 		- **AWS ALB/NLB** — Managed cloud load balancers (Application/Network layer).
 		- **Cloudflare** — Global anycast load balancing with DDoS protection.
+-
 - # Caching
   collapsed:: true
 	- ## What is Caching?
@@ -308,6 +318,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  Use Case         Sessions, queues,        Simple key-value
 		                   leaderboards, cache      cache, high throughput
 		  ```
+-
 - # Databases at Scale
   collapsed:: true
 	- ## SQL vs NoSQL
@@ -455,6 +466,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    else:
 		        use replica_db  # round-robin across replicas
 		  ```
+-
 - # Networking & Communication
   collapsed:: true
 	- ## HTTP vs HTTPS vs HTTP/2 vs HTTP/3
@@ -574,6 +586,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Cache-Control: no-cache                → always revalidate
 		    Cache-Control: no-store                → never cache
 		  ```
+-
 - # Message Queues & Event-Driven Architecture
   collapsed:: true
 	- ## What is a Message Queue?
@@ -654,6 +667,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 			- **Consumer scaling** — Add more consumer instances.
 			- **Drop messages** — Discard low-priority messages under load.
 			- **Circuit breaker** — Stop sending if downstream is overwhelmed.
+-
 - # Microservices Architecture
   collapsed:: true
 	- ## Monolith vs Microservices
@@ -760,6 +774,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  
 		  Tools: Jaeger, Zipkin, AWS X-Ray, Datadog APM, OpenTelemetry
 		  ```
+-
 - # Storage Systems
   collapsed:: true
 	- ## Block Storage vs Object Storage vs File Storage
@@ -827,6 +842,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    → Better load distribution
 		    → Used in: Cassandra, DynamoDB, Memcached
 		  ```
+-
 - # Rate Limiting & Throttling
   collapsed:: true
 	- ## What is Rate Limiting?
@@ -885,6 +901,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		  X-RateLimit-Reset: 1711440000
 		  Retry-After: 60
 		  ```
+-
 - # Security in System Design
   collapsed:: true
 	- ## Authentication vs Authorization
@@ -973,6 +990,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Attack:  Flood server with traffic
 		    Fix:     Rate limiting, CDN, WAF, anycast routing
 		  ```
+-
 - # Design Patterns for Distributed Systems
   collapsed:: true
 	- ## Retry Pattern
@@ -1063,6 +1081,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    → Distributed cron job (only leader runs the job)
 		    → Kafka partition leader
 		  ```
+-
 - # Back-of-the-Envelope Estimation
   collapsed:: true
 	- ## Key Numbers Every Engineer Should Know
@@ -1126,6 +1145,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Each tweet: 280 bytes text + 500 bytes metadata = ~780 bytes
 		    110B × 780 bytes = ~86 TB/year
 		  ```
+-
 - # Real-World System Design Case Studies
   collapsed:: true
 	- ## Design a URL Shortener (like bit.ly)
@@ -1306,6 +1326,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 			    → Per minute: 100 req/min
 			    → Per day: 10,000 req/day
 			  ```
+-
 - # Monitoring, Observability & Reliability
   collapsed:: true
 	- ## The Three Pillars of Observability
@@ -1398,6 +1419,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Warm Standby:      RTO minutes, RPO seconds
 		    Multi-Site Active: RTO near-zero, RPO near-zero
 		  ```
+-
 - # API Design Best Practices
   collapsed:: true
 	- ## RESTful API Design
@@ -1491,6 +1513,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    3. If no  → process request, store response with key
 		    4. Key expires after 24 hours
 		  ```
+-
 - # Proxy & Reverse Proxy
   collapsed:: true
 	- ## Forward Proxy vs Reverse Proxy
@@ -1546,6 +1569,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    → Traffic management (canary, A/B testing)
 		    → Language-agnostic
 		  ```
+-
 - # Search Systems
   collapsed:: true
 	- ## Full-Text Search Architecture
@@ -1618,6 +1642,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    → Boost by user engagement (clicks, likes)
 		    → Personalize by user history
 		  ```
+-
 - # Distributed Locking & Coordination
   collapsed:: true
 	- ## Why Distributed Locking?
@@ -1682,6 +1707,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    3. Storage rejects any request with token < current max seen
 		    4. If zombie client sends with old token=31 → rejected
 		  ```
+-
 - # Data Pipelines & Stream Processing
   collapsed:: true
 	- ## Batch vs Stream Processing
@@ -1749,6 +1775,7 @@ keywords: "system design, scalability, load balancing, caching, microservices, C
 		    Data Warehouse: Structured, processed, query-optimized (Snowflake, BigQuery)
 		    Data Lakehouse:  Combines both (Delta Lake, Apache Iceberg)
 		  ```
+-
 - # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your system design skills:
 	-

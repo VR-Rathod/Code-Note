@@ -1,7 +1,7 @@
 ---
-seoTitle: Godot Engine Notes – Complete GDScript & Game Dev Reference
-description: "Complete Godot 4 reference — GDScript, scenes, nodes, physics, animation, shaders, networking, UI, audio, and 3D development. Free Godot engine notes for beginners and advanced developers."
-keywords: "Godot engine, GDScript tutorial, Godot 4, game development, Godot nodes, Godot physics, Godot animation, Godot shaders, open source game engine, 2D game development, 3D game development, godot notes, godot guide, godot cheatsheet, godot reference, VR-Rathod, Code-Note, code note vr, vr book"
+seoTitle: Godot Engine Notes – Complete Game Dev Reference
+description: "Complete Godot 4 reference — scenes, nodes, physics, animation, shaders, networking, UI, audio, and 3D development. GDScript language reference is in the dedicated GDScript note."
+keywords: "Godot engine, Godot 4, game development, Godot nodes, Godot physics, Godot animation, Godot shaders, open source game engine, 2D game development, 3D game development, godot notes, godot guide, godot cheatsheet, godot reference, GDScript, VR-Rathod, Code-Note, code note vr, vr book"
 ---
 
 - # History
@@ -60,6 +60,7 @@ keywords: "Godot engine, GDScript tutorial, Godot 4, game development, Godot nod
 		  ```
 -
 - # Scene & Node System
+  collapsed:: true
 	- ## Core Concept
 	  collapsed:: true
 		- Everything in Godot is a **Node**. A **Scene** is a tree of nodes saved as a file.
@@ -72,6 +73,7 @@ keywords: "Godot engine, GDScript tutorial, Godot 4, game development, Godot nod
 		  ```
 	-
 	- ## Scene & Resource File Formats
+	  collapsed:: true
 		- ```
 		  .tscn   Text Scene   — human-readable, version-control friendly (default for scenes)
 		  .scn    Binary Scene — compiled binary, faster to load, used in exported builds
@@ -91,6 +93,7 @@ keywords: "Godot engine, GDScript tutorial, Godot 4, game development, Godot nod
 		  ```
 	-
 	- ## Common Node Types
+	  collapsed:: true
 		- ```
 		  Node2D/3D          		Base for all 2D/3D nodes (has position, rotation, scale)
 		  Sprite2D/3D				Displays a texture in 2D/3D
@@ -107,6 +110,7 @@ keywords: "Godot engine, GDScript tutorial, Godot 4, game development, Godot nod
 		  ```
 	-
 	- ## 3D Node Types
+	  collapsed:: true
 		- ```
 		  Node3D          Base for all 3D nodes
 		  MeshInstance3D  Renders a 3D mesh
@@ -133,198 +137,29 @@ keywords: "Godot engine, GDScript tutorial, Godot 4, game development, Godot nod
 		      get_parent().add_child(bullet)
 		  ```
 -
-- # GDScript — Basics
+- # GDScript
   collapsed:: true
-	- ## Variables & Types
-	  collapsed:: true
+	- GDScript is Godot's built-in scripting language — Python-like syntax, tightly integrated with the engine, supports static typing, signals, coroutines, lambdas, and full OOP.
+	- For the complete in-depth GDScript language reference (variables, types, OOP, signals, annotations, coroutines, patterns, and more), see the dedicated [[GDScript]] note.
+	- Quick reference:
 		- ```gdscript
-		  # Dynamic typing (default)
-		  var health = 100
-		  var name = "Player"
-		  var speed = 3.14
-		  var is_alive = true
+		  extends CharacterBody2D  # inherit a Godot class
+		  class_name Player        # register as global class
 		  
-		  # Static typing (recommended for performance + safety)
-		  var health: int = 100
-		  var name: String = "Player"
-		  var speed: float = 3.14
-		  var is_alive: bool = true
+		  @export var speed: float = 200.0   # editable in Inspector
+		  @onready var anim := $AnimationPlayer  # assigned at _ready
 		  
-		  # Constants
-		  const MAX_HEALTH: int = 200
-		  const GRAVITY: float = 9.8
+		  signal health_changed(new_hp: int)
 		  
-		  # Typed arrays
-		  var items: Array[String] = ["sword", "shield"]
-		  var scores: Array[int] = [10, 20, 30]
-		  ```
-	-
-	- ## Functions
-	  collapsed:: true
-		- ```gdscript
-		  func greet(name: String) -> String:
-		      return "Hello, " + name
+		  var health: int = 100:
+		      set(v):
+		          health = clamp(v, 0, 100)
+		          health_changed.emit(health)
 		  
-		  func add(a: int, b: int) -> int:
-		      return a + b
-		  
-		  # Default arguments
-		  func spawn(x: float = 0.0, y: float = 0.0) -> void:
-		      position = Vector2(x, y)
-		  
-		  # Calling
-		  print(greet("Godot"))   # Hello, Godot
-		  print(add(3, 4))        # 7
-		  ```
-	-
-	- ## Control Flow
-	  collapsed:: true
-		- ```gdscript
-		  # if / elif / else
-		  if health > 50:
-		      print("Healthy")
-		  elif health > 0:
-		      print("Hurt")
-		  else:
-		      print("Dead")
-		  
-		  # match (like switch)
-		  match state:
-		      "idle":   play_animation("idle")
-		      "run":    play_animation("run")
-		      "jump":   play_animation("jump")
-		      _:        play_animation("idle")  # default
-		  
-		  # for loop
-		  for i in range(5):
-		      print(i)   # 0 1 2 3 4
-		  
-		  for item in items:
-		      print(item)
-		  
-		  # while loop
-		  while health > 0:
-		      health -= 10
-		  ```
-	-
-	- ## Built-in Types
-	  collapsed:: true
-		- ```gdscript
-		  # Vector2 / Vector3
-		  var pos = Vector2(100, 200)
-		  var dir = Vector3(0, 1, 0)
-		  pos += Vector2(10, 0)
-		  print(pos.length())          # magnitude
-		  print(pos.normalized())      # unit vector
-		  print(Vector2.UP)            # (0, -1)
-		  
-		  # Color
-		  var red = Color(1, 0, 0, 1)  # RGBA 0-1
-		  var blue = Color.BLUE
-		  
-		  # Rect2
-		  var rect = Rect2(Vector2(0,0), Vector2(100, 50))
-		  print(rect.has_point(Vector2(50, 25)))  # true
-		  
-		  # Transform2D / Transform3D
-		  var t = Transform2D()
-		  t = t.translated(Vector2(10, 0))
-		  ```
--
-- # GDScript — OOP & Classes
-  collapsed:: true
-	- ## Classes & extends
-	  collapsed:: true
-		- ```gdscript
-		  # Every script implicitly extends a Node type
-		  extends CharacterBody2D
-		  
-		  class_name Player  # registers as a global class
-		  
-		  var health: int = 100
-		  var speed: float = 200.0
-		  
-		  func _ready() -> void:
-		      print("Player ready!")
-		  
-		  func take_damage(amount: int) -> void:
-		      health -= amount
-		      if health <= 0:
-		          die()
-		  
-		  func die() -> void:
-		      queue_free()  # removes node from scene
-		  ```
-	-
-	- ## Inner Classes
-	  collapsed:: true
-		- ```gdscript
-		  class_name Inventory
-		  
-		  class Item:
-		      var name: String
-		      var value: int
-		  
-		      func _init(n: String, v: int) -> void:
-		          name = n
-		          value = v
-		  
-		  var items: Array[Item] = []
-		  
-		  func add_item(n: String, v: int) -> void:
-		      items.append(Item.new(n, v))
-		  ```
-	-
-	- ## Inheritance
-	  collapsed:: true
-		- ```gdscript
-		  # Base class
-		  class_name Enemy
-		  extends CharacterBody2D
-		  
-		  var health: int = 50
-		  
-		  func take_damage(amount: int) -> void:
-		      health -= amount
-		  
-		  # Derived class
-		  class_name Boss
-		  extends Enemy
-		  
-		  var phase: int = 1
-		  
-		  func take_damage(amount: int) -> void:
-		      super.take_damage(amount / 2)  # call parent method
-		      if health < 25:
-		          phase = 2
-		  ```
-	-
-	- ## Signals (Observer Pattern)
-	  collapsed:: true
-		- ```gdscript
-		  # Define signal
-		  signal health_changed(new_health: int)
-		  signal player_died
-		  
-		  # Emit signal
-		  func take_damage(amount: int) -> void:
-		      health -= amount
-		      health_changed.emit(health)
-		      if health <= 0:
-		          player_died.emit()
-		  
-		  # Connect in code
-		  func _ready() -> void:
-		      health_changed.connect(_on_health_changed)
-		      player_died.connect(_on_player_died)
-		  
-		  func _on_health_changed(new_health: int) -> void:
-		      $HealthBar.value = new_health
-		  
-		  func _on_player_died() -> void:
-		      get_tree().reload_current_scene()
-		  
-		  # Connect in editor: Node panel → Signals tab → connect to method
+		  func _physics_process(delta: float) -> void:
+		      var dir = Input.get_axis("move_left", "move_right")
+		      velocity.x = dir * speed
+		      move_and_slide()
 		  ```
 -
 - # Core Lifecycle Methods
