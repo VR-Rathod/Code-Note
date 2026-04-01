@@ -44,10 +44,6 @@ jobs:
           # Copy all .md files from Logseq pages/
           cp -r "$SOURCE"/. "$DEST"/
 
-          # Restore index.md if it was overwritten (Quartz needs its own index)
-          cd quartz-site
-          git checkout HEAD -- content/index.md 2>/dev/null || true
-
           # Count files after
           after=$(find "../$DEST" -name "*.md" ! -name "index.md" | wc -l)
           echo "files_before=$before" >> $GITHUB_OUTPUT
