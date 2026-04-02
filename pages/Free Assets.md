@@ -1,11 +1,504 @@
 ---
-seoTitle: Free Assets for Developers – Icons, Fonts, Images, and Tools
-description: "Curated collection of free assets for developers and designers including icons, fonts, stock images, UI kits, color palettes, and open-source design resources."
-keywords: "free assets, icons, fonts, stock images, UI kits, color palettes, open source, design resources, developer tools, free resources, web design, graphic design"
+seoTitle: Free Assets & Resources for Developers – Complete Free Resource Directory
+description: "The ultimate collection of 100% free, open-source, and lifetime-free resources for developers and designers — tools, courses, books, APIs, assets, fonts, icons, music, and more."
+keywords: "free assets, free developer tools, free programming resources, free courses, free books, free APIs, free fonts, free icons, free stock images, free game assets, free music, open source tools, free hosting, free databases, free AI tools, VR-Rathod, Code-Note, code note vr, vr book"
+displayTitle: Free Assets & Resources
 ---
 
-- # 2D Assets
+- # What is This Page?
+	- The biggest curated collection of 100% free, open-source, and lifetime-free resources for developers, designers, and creators. Every single resource here is completely free forever or open-source. No trials, no credit cards, no paywalls, no "free tier with paid upgrade" traps.
+-
+- # Learning & Courses
+  collapsed:: true
+	- ## Full Curriculum Platforms
+	  collapsed:: true
+		- [freeCodeCamp](https://www.freecodecamp.org/) — 3,000+ hours of free coding curriculum. Certifications in web dev, data science, ML, and more. 100% free forever.
+		- [The Odin Project](https://www.theodinproject.com/) — Open-source full-stack web dev curriculum (HTML, CSS, JS, Node, Ruby). No account needed.
+		- [The Odin Project – JavaScript Path](https://www.theodinproject.com/paths/full-stack-javascript) — Free full-stack JavaScript curriculum.
+		- [CS50 – Harvard University](https://cs50.harvard.edu/) — Harvard's legendary intro to computer science. Free on edX.
+		- [MIT OpenCourseWare](https://ocw.mit.edu/) — Free lecture notes, exams, and videos from actual MIT courses: algorithms, AI, systems, math.
+		- [Khan Academy – Computing](https://www.khanacademy.org/computing) — Free CS fundamentals, algorithms, and programming for all levels.
+		- [Open Source Society University (OSSU)](https://github.com/ossu/computer-science) — Free, self-paced CS degree curriculum using only free online courses.
+		- [Google Digital Garage](https://learndigital.withgoogle.com/digitalgarage) — Free courses on digital marketing, data, and career development. Google-certified.
+		- [Microsoft Learn](https://learn.microsoft.com/) — Free learning paths for Azure, .NET, Python, TypeScript. Official Microsoft content.
+		- [AWS Skill Builder](https://skillbuilder.aws/) — Free cloud learning from Amazon. Hundreds of free courses on AWS services.
+		- [Kaggle Learn](https://www.kaggle.com/learn) — Free micro-courses on Python, ML, SQL, data visualization, deep learning. Hands-on notebooks.
+	-
+	- ## Specialized Free Courses
+	  collapsed:: true
+		- [Google ML Crash Course](https://developers.google.com/machine-learning/crash-course) — Google's free, practical ML course with TensorFlow exercises.
+		- [Fast.ai – Practical Deep Learning](https://www.fast.ai/) — Free top-down deep learning course. No PhD required. Used by researchers worldwide.
+		- [Full Stack Open – University of Helsinki](https://fullstackopen.com/) — Free full-stack web dev course: React, Node, GraphQL, TypeScript, CI/CD.
+		- [Roadmap.sh](https://roadmap.sh/) — Visual, community-driven roadmaps for every tech role. Frontend, backend, DevOps, data science, AI.
+		- [Developer Roadmap – GitHub](https://github.com/kamranahmedse/developer-roadmap) — Original open-source roadmap repo. 300k+ stars.
+		- [Coding Interview University](https://github.com/jwasham/coding-interview-university) — Complete self-study plan to become a software engineer at a top company.
+		- [Web.dev – Google](https://web.dev/learn/) — Free courses on modern web development: HTML, CSS, performance, accessibility, PWA.
+		- [Assembly Programming – TutorialsPoint](https://www.tutorialspoint.com/assembly_programming/index.htm) — Free assembly language tutorial from basics to advanced.
+		- [Computer Organization & Architecture – GeeksforGeeks](https://www.geeksforgeeks.org/computer-organization-architecture/computer-organization-and-architecture-tutorials/) — Free comprehensive guide to computer organization and architecture.
+		- [Awesome C++ – GitHub](https://github.com/fffaraz/awesome-cpp) — Curated list of C++ frameworks, libraries, and resources. Free.
+		- [The VFX School – Free Tutorials](https://thevfxschool.com/) — Free VFX and Houdini tutorials for artists.
+		- [3D Artists Handbook](https://sidney-eliot.github.io/3d-artists-handbook/) — Free, open-source handbook for 3D artists covering modeling, rigging, rendering, and more.
+		- [Houdini Learning Library – SideFX](https://www.sidefx.com/learn/learning-library/tutorials/) — Free official Houdini tutorials from SideFX. Beginner to advanced.
+		- [Free Engineering Projects](https://www.enggroom.com/) — Free engineering project ideas and resources.
+		- [GeeksforGeeks](https://www.geeksforgeeks.org/) — Free tutorials, articles, and practice problems for CS topics.
+		- [TutorialsPoint](https://www.tutorialspoint.com/) — Free tutorials for 500+ technologies and programming languages.
+- # Books & Documentation
+  collapsed:: true
+	- ## Free Programming Books
+	  collapsed:: true
+		- [Free Programming Books – GitHub](https://github.com/EbookFoundation/free-programming-books) — Largest curated list of free programming books in 30+ languages. 350k+ stars.
+		- [GoalKicker Free Books](https://goalkicker.com/) — Free PDF notes for Python, Java, C++, SQL, Git, Linux.
+		- [Pro Git – Official Free Book](https://git-scm.com/book/en/v2) — The complete, official Git book. Free online and as PDF.
+		- [The Linux Command Line – Free Book](https://linuxcommand.org/tlcl.php) — Complete free book on Linux command line and shell scripting.
+		- [Eloquent JavaScript – Free Book](https://eloquentjavascript.net/) — Modern JavaScript programming book. Free online, updated for ES2023.
+		- [You Don't Know JS – GitHub](https://github.com/getify/You-Dont-Know-JS) — Deep dive into JavaScript mechanics. Free to read on GitHub.
+		- [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/) — Free online Python book focused on practical automation.
+		- [The Rust Programming Language – Official](https://doc.rust-lang.org/book/) — The official free Rust book. Comprehensive and beginner-friendly.
+		- [Dive Into Deep Learning](https://d2l.ai/) — Free interactive deep learning book with code in PyTorch, TensorFlow, and JAX.
+		- [Internet Archive – Open Library](https://archive.org/details/internetarchivebooks) — Millions of free books including programming classics.
+		- [Bhartiya Digital Library – NDLI](https://ndl.iitkgp.ac.in/) — India's national digital library with millions of free academic resources.
+		- [Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/9780262510875/structure-and-interpretation-of-computer-programs/) — Classic MIT CS textbook. Free online.
+		- [Think Python – Free Book](https://greenteapress.com/wp/think-python-2e/) — Free Python book for beginners by Allen Downey.
+	-
+	- ## Documentation & References
+	  collapsed:: true
+		- [DevDocs](https://devdocs.io/) — Fast, offline-capable unified docs for 100+ languages and frameworks in one place.
+		- [Zeal – Offline Docs](https://zealdocs.org/) — Free offline documentation browser for 200+ APIs. Open-source.
+		- [MDN Web Docs](https://developer.mozilla.org/) — The definitive free reference for HTML, CSS, JavaScript, and Web APIs by Mozilla.
+		- [Quick Reference – Cheatsheets](https://quickref.me/index.html) — Clean cheatsheets for 100+ languages and tools.
+		- [OverAPI – Visual Cheatsheets](https://overapi.com/) — Visual cheatsheets for HTML, CSS, JS, Python, Git, Linux, and more.
+		- [TLDR Pages](https://tldr.sh/) — Simplified, community-driven man pages. Quick command references. Open-source.
+		- [Free For Dev – GitHub](https://github.com/ripienaar/free-for-dev) — Massive list of SaaS, PaaS, and IaaS with free tiers for developers. 90k+ stars.
+- # Practice & Interview Prep
+  collapsed:: true
+	- [LeetCode](https://leetcode.com/) — 3,000+ algorithm problems. Free problems cover most interview needs.
+	- [HackerRank](https://www.hackerrank.com/) — Free coding challenges in algorithms, data structures, SQL, regex, and more.
+	- [Codewars](https://www.codewars.com/) — Community-driven coding challenges (kata) in 50+ languages. Fully free.
+	- [Exercism](https://exercism.org/) — Free coding exercises in 70+ languages with optional human mentoring.
+	- [Project Euler](https://projecteuler.net/) — 800+ challenging math/programming problems. Completely free.
+	- [Advent of Code](https://adventofcode.com/) — Free annual programming puzzles every December. All past years available.
+	- [VisuAlgo](https://visualgo.net/en) — Visualize data structures and algorithms through animation. Free. Great for learning DSA.
+	- [Build Your Own X – GitHub](https://github.com/codecrafters-io/build-your-own-x) — Build your own Git, Docker, Redis, SQLite from scratch. Open-source guides.
+	- [Company-Wise DSA – GitHub](https://github.com/nishant-Tiwari24/company-wise-dsa) — DSA problems organized by company (Google, Amazon, Meta, etc.). Free.
+	- [System Design Primer – GitHub](https://github.com/donnemartin/system-design-primer) — Learn to design large-scale systems. 280k+ stars. Completely free.
+	- [Tech Interview Handbook](https://www.techinterviewhandbook.org/) — Free, curated guide for software engineering interviews.
+	- [Interview Preparation – IndiaBix](https://www.indiabix.com/) — Free aptitude, verbal, and technical interview preparation.
+	- [Hiring Without Whiteboards](https://github.com/poteto/hiring-without-whiteboards) — Companies that use practical interviews instead of algorithm puzzles.
+	- [NeetCode](https://neetcode.io/) — Free curated LeetCode problem lists with video explanations. Best structured prep resource.
+	- [CS Visualized](https://dev.to/lydiahallie) — Visual explanations of CS concepts. Free articles.
+	- [Big-O Cheat Sheet](https://www.bigocheatsheet.com/) — Free reference for time and space complexity of common algorithms.
+- # Developer Tools & Utilities
+  collapsed:: true
+	- ## Online IDEs & Coding Environments
+	  collapsed:: true
+		- [Replit](https://replit.com/) — Browser-based IDE supporting 50+ languages. Free for personal use.
+		- [GitHub Codespaces](https://github.com/features/codespaces) — Full VS Code in the browser. 60 free hours/month.
+		- [GitPod](https://www.gitpod.io/) — Open-source cloud dev environment. 50 free hours/month.
+		- [CodeSandbox](https://codesandbox.io/) — Instant online IDE for web development. Free for personal projects.
+		- [StackBlitz](https://stackblitz.com/) — Online IDE for web apps. Runs Node.js in the browser. Free for open-source.
+		- [Compiler Explorer – Godbolt](https://godbolt.org/) — See real-time assembly output for C, C++, Rust, Go, and more. Completely free.
+		- [Python Tutor](https://pythontutor.com/) — Visualize Python, Java, C, C++, JS code execution step by step. Completely free.
+		- [Wandbox](https://wandbox.org/) — Free online compiler supporting 50+ languages. No account needed.
+		- [OneCompiler](https://onecompiler.com/) — Free online compiler for 60+ languages. No account needed.
+	-
+	- ## Code Utilities
+	  collapsed:: true
+		- [Regex101](https://regex101.com/) — Free online regex tester and debugger with explanation. Supports PCRE, Python, JS, Go.
+		- [JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/) — Free online JSON formatter, validator, and viewer.
+		- [Codebeautify](https://codebeautify.org/) — Free online formatter for JSON, XML, HTML, CSS, SQL, and more.
+		- [Carbon – Code Screenshots](https://carbon.now.sh/) — Create beautiful images of your source code for sharing. Free.
+		- [Ray.so – Code Image Generator](https://ray.so/) — Generate stunning code screenshots. Free.
+		- [Prettier Playground](https://prettier.io/playground/) — Format code online with Prettier. Free.
+		- [JSFiddle](https://jsfiddle.net/) — Online HTML/CSS/JS playground. Free.
+		- [CodePen](https://codepen.io/) — Front-end playground for HTML, CSS, JS. Free for public projects.
+		- [Crontab Guru](https://crontab.guru/) — Free cron expression editor and explainer. No account needed.
+		- [Transform Tools](https://transform.tools/) — Free online converter for JSON, GraphQL, TypeScript, CSS, and more.
+	-
+	- ## Diagramming & Whiteboarding
+	  collapsed:: true
+		- [Excalidraw](https://excalidraw.com/) — Open-source virtual whiteboard for sketching diagrams. No account needed. Free.
+		- [draw.io / diagrams.net](https://app.diagrams.net/) — Free, open-source diagramming tool. Works offline. No account needed.
+		- [Mermaid Live Editor](https://mermaid.live/) — Create diagrams from text/code. Free and open-source.
+		- [tldraw](https://www.tldraw.com/) — Free, open-source infinite canvas whiteboard. No account needed.
+		- [Whimsical](https://whimsical.com/) — Flowcharts, wireframes, mind maps. Free for personal use.
+	-
+	- ## Downloader Tools
+	  collapsed:: true
+		- [YouTube Playlist Downloader – GitHub](https://github.com/shaked6540/YoutubePlaylistDownloaderhttps://github.com/shaked6540/YoutubePlaylistDownloader) — Free, open-source YouTube playlist downloader. Windows app.
+		- [VidBee – GitHub](https://github.com/nexmoe/VidBee) — Free, open-source video downloader. Supports multiple platforms.
+		- [yt-dlp – GitHub](https://github.com/yt-dlp/yt-dlp) — Free, open-source command-line video downloader. Supports 1,000+ sites.
+		- [Cobalt](https://cobalt.tools/) — Free, open-source web-based video/audio downloader. No ads, no tracking.
+- # Hosting & Deployment (Free Forever Plans)
+  collapsed:: true
+	- ## Frontend & Static Hosting
+	  collapsed:: true
+		- [Vercel](https://vercel.com/) — Deploy frontend apps for free. Unlimited personal projects. Best for Next.js.
+		- [Netlify](https://www.netlify.com/) — Free hosting for static sites and JAMstack apps. 100GB bandwidth/month.
+		- [GitHub Pages](https://pages.github.com/) — Free static site hosting directly from a GitHub repo. Custom domain supported.
+		- [Cloudflare Pages](https://pages.cloudflare.com/) — Free static site hosting with unlimited bandwidth. Fast global CDN.
+		- [Surge.sh](https://surge.sh/) — Simple, free static web publishing from the command line.
+		- [Tiiny.host](https://tiiny.host/) — Free static site hosting. No account needed for basic use.
+	-
+	- ## Backend & Full-Stack Hosting
+	  collapsed:: true
+		- [Supabase](https://supabase.com/) — Open-source Firebase alternative. Free plan: Postgres, auth, storage, realtime. Self-hostable.
+		- [Firebase](https://firebase.google.com/) — Google's app platform. Free Spark plan: hosting, Firestore, auth, functions.
+		- [PocketBase](https://pocketbase.io/) — Open-source backend in a single file. Self-host for free forever. SQLite-based.
+		- [Appwrite](https://appwrite.io/) — Open-source Firebase alternative. Self-host for free forever.
+		- [Deno Deploy](https://deno.com/deploy) — Deploy JavaScript/TypeScript edge functions. Free plan available.
+		- [Coolify](https://coolify.io/) — Open-source, self-hostable Heroku/Netlify alternative. Free forever when self-hosted.
+	-
+	- ## Domain & DNS
+	  collapsed:: true
+		- [Cloudflare DNS](https://www.cloudflare.com/dns/) — Free, fast DNS with DDoS protection.
+		- [Duck DNS](https://www.duckdns.org/) — Free dynamic DNS service. Completely free.
+		- [FreeDNS – afraid.org](https://freedns.afraid.org/) — Free DNS hosting and dynamic DNS. Completely free.
 - # Fonts
-	- ## free
-		- [Google fonts](https://fonts.google.com/)
-		-
+  collapsed:: true
+	- ## Free Font Libraries
+	  collapsed:: true
+		- [Google Fonts](https://fonts.google.com/) — 1,500+ free, open-source fonts. Direct CSS import. Most used font service on the web.
+		- [Font Squirrel](https://www.fontsquirrel.com/) — Free fonts licensed for commercial use. High quality, hand-selected.
+		- [Fontshare](https://www.fontshare.com/) — Free, high-quality fonts from Indian Type Foundry. Commercial use allowed.
+		- [DaFont](https://www.dafont.com/) — Thousands of free fonts. Check license per font.
+		- [1001 Fonts](https://www.1001fonts.com/) — Large collection of free fonts. Filter by commercial-use license.
+		- [Bunny Fonts](https://fonts.bunny.net/) — Privacy-friendly Google Fonts alternative. Same fonts, GDPR compliant. Free.
+		- [Uncut.wtf](https://uncut.wtf/) — Free, open-source typefaces. Curated selection of modern fonts.
+		- [The League of Moveable Type](https://www.theleagueofmoveabletype.com/) — Open-source, high-quality fonts. Free for all use.
+		- [Open Foundry](https://open-foundry.com/) — Curated open-source fonts. Free for personal and commercial use.
+		- [Velvetyne Type Foundry](https://velvetyne.fr/) — Free, open-source fonts. SIL Open Font License.
+		- [Fontesk](https://fontesk.com/) — Free fonts for commercial use. Curated collection.
+		- [Befonts](https://befonts.com/) — Free fonts for designers. Commercial use available on many.
+	-
+	- ## Monospace / Coding Fonts
+	  collapsed:: true
+		- [JetBrains Mono](https://www.jetbrains.com/lp/mono/) — Free, open-source monospace font designed for code. Ligatures included.
+		- [Fira Code](https://github.com/tonsky/FiraCode) — Free monospace font with programming ligatures. Open-source.
+		- [Cascadia Code – Microsoft](https://github.com/microsoft/cascadia-code) — Free monospace font by Microsoft. Used in Windows Terminal. Open-source.
+		- [Hack](https://sourcefoundry.org/hack/) — Free, open-source monospace font designed for source code.
+		- [Iosevka](https://typeof.net/Iosevka/) — Slender, open-source monospace font. Highly customizable. Free.
+		- [Nerd Fonts](https://www.nerdfonts.com/) — Patched fonts with icons for terminal use. Free and open-source.
+		- [Commit Mono](https://commitmono.com/) — Free, open-source neutral programming font. SIL Open Font License.
+		- [Monaspace – GitHub](https://monaspace.githubnext.com/) — Free font superfamily for code by GitHub Next. Open-source.
+- # Icons & SVGs
+  collapsed:: true
+	- [Heroicons](https://heroicons.com/) — Beautiful, free SVG icons by the Tailwind CSS team. MIT license.
+	- [Lucide Icons](https://lucide.dev/) — Open-source icon library. Fork of Feather Icons. MIT license. 1,400+ icons.
+	- [Feather Icons](https://feathericons.com/) — Simply beautiful open-source icons. MIT license.
+	- [Phosphor Icons](https://phosphoricons.com/) — Flexible icon family. 9,000+ icons. MIT license. Multiple weights.
+	- [Tabler Icons](https://tabler.io/icons) — 5,000+ free, open-source SVG icons. MIT license.
+	- [Bootstrap Icons](https://icons.getbootstrap.com/) — 2,000+ free, open-source icons from Bootstrap. MIT license.
+	- [Material Icons – Google](https://fonts.google.com/icons) — 2,500+ free Material Design icons by Google. Apache 2.0 license.
+	- [Font Awesome Free](https://fontawesome.com/) — 2,000+ free icons. Free version is open-source (CC BY 4.0 + MIT).
+	- [Remix Icon](https://remixicon.com/) — 2,800+ open-source neutral-style icons. Apache 2.0 license.
+	- [Iconoir](https://iconoir.com/) — 1,500+ free SVG icons. MIT license. Clean, minimal style.
+	- [Simple Icons](https://simpleicons.org/) — Free SVG icons for 3,000+ popular brands. CC0 license.
+	- [Devicons](https://devicon.dev/) — Icons for programming languages, frameworks, and tools. MIT license.
+	- [SVG Repo](https://www.svgrepo.com/) — 500,000+ free SVG icons and vectors. Check license per icon.
+	- [Flaticon Free Section](https://www.flaticon.com/free-icons) — Free icons with attribution (CC BY).
+	- [The Noun Project Free](https://thenounproject.com/icons/) — Free icons with attribution (CC BY).
+	- [Lordicon Free](https://lordicon.com/free-icons) — Free animated Lottie icons. No account needed.
+	- [Icones](https://icones.js.org/) — Browse and search 150,000+ open-source icons from all major icon sets. Free.
+	- [Iconify](https://iconify.design/) — Unified icon framework. 200,000+ open-source icons. Free.
+	- [Flowbite Icons](https://flowbite.com/icons/) — Free, open-source SVG icons. MIT license.
+	- [Solar Icons](https://www.figma.com/community/file/1166831539721848736) — Free icon set. 7,000+ icons. MIT license.
+- # Stock Images & Videos
+  collapsed:: true
+	- ## Free Stock Photos
+	  collapsed:: true
+		- [Unsplash](https://unsplash.com/) — 3M+ free high-resolution photos. Free for commercial use, no attribution required.
+		- [Pexels](https://www.pexels.com/) — Free stock photos and videos. CC0 license. No attribution required.
+		- [Pixabay](https://pixabay.com/) — 4M+ free images, videos, and music. Free for commercial use.
+		- [StockSnap.io](https://stocksnap.io/) — Hundreds of free high-res photos added weekly. CC0 license.
+		- [Burst by Shopify](https://www.shopify.com/stock-photos) — Free stock photos for entrepreneurs. CC0 license.
+		- [Reshot](https://www.reshot.com/) — Free handpicked stock photos and icons. Free for commercial use.
+		- [Life of Pix](https://www.lifeofpix.com/) — Free high-resolution photos. CC0 license.
+		- [Gratisography](https://gratisography.com/) — Quirky, creative free photos. Free for personal and commercial use.
+		- [Kaboompics](https://kaboompics.com/) — Free lifestyle and fashion photos. Free, no attribution required.
+		- [ISO Republic](https://isorepublic.com/) — Free high-resolution photos and videos. CC0 license.
+		- [Negative Space](https://negativespace.co/) — Free stock photos. CC0 license.
+		- [Picjumbo](https://picjumbo.com/) — Free stock photos. Free for personal and commercial use.
+		- [Foodiesfeed](https://www.foodiesfeed.com/) — Free food photography. CC0 license.
+	-
+	- ## Free Stock Videos
+	  collapsed:: true
+		- [Pexels Videos](https://www.pexels.com/videos/) — Free stock videos. CC0 license. No attribution required.
+		- [Pixabay Videos](https://pixabay.com/videos/) — Free stock footage. Free for commercial use.
+		- [Coverr](https://coverr.co/) — Free website background videos. CC0 license.
+		- [Mixkit Videos](https://mixkit.co/free-stock-video/) — Free stock videos. Free for commercial use.
+		- [Life of Vids](https://www.lifeofvids.com/) — Free videos and loops. CC0 license.
+		- [Videezy](https://www.videezy.com/) — Free HD and 4K stock footage. Free with attribution.
+	-
+	- ## Free Illustrations & Vector Art
+	  collapsed:: true
+		- [unDraw](https://undraw.co/) — Open-source SVG illustrations. Customizable color. MIT license. Free forever.
+		- [Storyset](https://storyset.com/) — Free customizable illustrations. Free with attribution.
+		- [Humaaans](https://www.humaaans.com/) — Mix-and-match illustration library of people. CC BY 4.0.
+		- [Open Doodles](https://www.opendoodles.com/) — Free sketchy illustrations. CC0 license.
+		- [Illustrations.co](https://illlustrations.co/) — 100+ free open-source illustrations. MIT license.
+		- [DrawKit Free](https://www.drawkit.com/free) — Free hand-drawn illustrations. MIT license.
+		- [Skribbl Illustrations](https://weareskribbl.com/) — Free hand-drawn illustrations. CC0 license.
+		- [Absurd Design](https://absurd.design/) — Free surreal illustrations. CC BY 4.0.
+		- [Blush Design Free](https://blush.design/) — Free illustrations from global artists.
+- # Colors & Design
+  collapsed:: true
+	- ## Color Palettes & Tools
+	  collapsed:: true
+		- [Coolors](https://coolors.co/) — Fast color palette generator. Press spacebar to generate. Free.
+		- [Adobe Color](https://color.adobe.com/) — Free color wheel and palette generator by Adobe. No subscription needed.
+		- [fffuel – Design Tools Collection](https://www.fffuel.co/) — Free collection of color tools, SVG generators, and design utilities. All free.
+		- [pppalette by fffuel](https://www.fffuel.co/pppalette/) — Free color palette generator with beautiful gradients.
+		- [Paletton](https://paletton.com/) — Color scheme designer. Free.
+		- [Color Hunt](https://colorhunt.co/) — Curated color palettes. Free, community-driven.
+		- [Flat UI Colors](https://flatuicolors.com/) — Flat design color palettes. Free.
+		- [Open Color](https://yeun.github.io/open-color/) — Open-source color scheme optimized for UI. Free.
+		- [Gradient Hunt](https://gradienthunt.com/) — Free gradient color palettes. Community-driven.
+		- [CSS Gradient](https://cssgradient.io/) — Free CSS gradient generator with visual editor.
+		- [uiGradients](https://uigradients.com/) — Beautiful CSS gradients. Free.
+		- [Muzli Colors](https://colors.muz.li/) — Color palette generator with UI preview. Free.
+		- [Colorable](https://colorable.jxnblk.com/) — Free contrast checker for accessible color combinations.
+		- [Accessible Colors](https://accessible-colors.com/) — Free WCAG color contrast checker.
+		- [Realtime Colors](https://www.realtimecolors.com/) — Visualize color palettes on a real UI. Free.
+	-
+	- ## Design Inspiration & Resources
+	  collapsed:: true
+		- [Awesome Design – GitHub](https://github.com/gztchan/awesome-design) — Curated list of the best design resources, tools, and inspiration. Free.
+		- [Dribbble](https://dribbble.com/) — Design inspiration and community. Free to browse.
+		- [Behance](https://www.behance.net/) — Creative portfolio platform by Adobe. Free to browse.
+		- [Awwwards](https://www.awwwards.com/) — Best web design awards. Free to browse.
+		- [Land-book](https://land-book.com/) — Landing page design gallery. Free.
+		- [Screenlane](https://screenlane.com/) — Mobile UI design inspiration. Free to browse.
+		- [Godly](https://godly.website/) — Astronomically good web design inspiration. Free to browse.
+		- [Mobbin](https://mobbin.com/) — Mobile and web UI design patterns. Free to browse.
+		- [Pttrns](https://www.pttrns.com/) — Mobile UI design patterns. Free to browse.
+- # UI Kits & Components
+  collapsed:: true
+	- [UIverse](https://uiverse.io/) — Open-source UI elements built with pure CSS and Tailwind. Free.
+	- [Shadcn/ui](https://ui.shadcn.com/) — Free, open-source React component library. Copy-paste components. MIT license.
+	- [DaisyUI](https://daisyui.com/) — Free Tailwind CSS component library. Open-source. MIT license.
+	- [Flowbite](https://flowbite.com/) — Free Tailwind CSS components. Open-source core. MIT license.
+	- [Headless UI](https://headlessui.com/) — Unstyled, accessible UI components for React and Vue. MIT license.
+	- [Radix UI](https://www.radix-ui.com/) — Low-level, accessible UI primitives for React. MIT license.
+	- [Chakra UI](https://chakra-ui.com/) — Free, accessible React component library. MIT license.
+	- [Material UI Community](https://mui.com/) — React components implementing Material Design. Free community edition. MIT license.
+	- [Ant Design](https://ant.design/) — Enterprise-grade React UI library. Free and open-source. MIT license.
+	- [Bootstrap](https://getbootstrap.com/) — The most popular CSS framework. Free and open-source. MIT license.
+	- [Tailwind CSS](https://tailwindcss.com/) — Utility-first CSS framework. Free and open-source. MIT license.
+	- [Bulma](https://bulma.io/) — Free, open-source CSS framework based on Flexbox. MIT license.
+	- [Skeleton](https://www.skeleton.dev/) — Free UI toolkit for Svelte and Tailwind. MIT license.
+	- [Open Props](https://open-props.style/) — Free CSS custom properties for design systems. MIT license.
+	- [Animate.css](https://animate.style/) — Free CSS animation library. MIT license.
+	- [GSAP Community Edition](https://gsap.com/) — Professional JavaScript animation library. Free for personal and open-source use.
+	- [Lottie Files Free](https://lottiefiles.com/featured) — Free Lottie animations for web and mobile.
+	- [Pines UI](https://devdojo.com/pines) — Free Alpine.js and Tailwind CSS UI library. MIT license.
+	- [Preline UI](https://preline.co/) — Free Tailwind CSS component library. MIT license.
+- # Game Assets 2D & 3D
+  collapsed:: true
+	- ## Free 2D Game Assets
+	  collapsed:: true
+		- [Kenney Assets](https://kenney.nl/assets) — 40,000+ free game assets (sprites, tiles, UI, audio). CC0 — no attribution required. Best free game asset source.
+		- [OpenGameArt](https://opengameart.org/) — Free 2D/3D art, music, and sound effects for games. Open-source licenses.
+		- [itch.io Free Game Assets](https://itch.io/game-assets/free) — Thousands of free game assets from indie creators.
+		- [CraftPix Freebies](https://craftpix.net/freebies/) — Free 2D game assets: characters, tilesets, backgrounds, GUI.
+		- [Game Art 2D Freebies](https://www.gameart2d.com/freebies.html) — Free 2D game sprites and tilesets.
+		- [Lospec – Pixel Art](https://lospec.com/) — Free pixel art palettes, tutorials, and community resources.
+		- [Spriters Resource](https://www.spriters-resource.com/) — Free sprite sheets ripped from games (for learning/fan projects).
+		- [Itch.io – Free Pixel Art](https://itch.io/game-assets/free/tag-pixel-art) — Free pixel art assets from indie creators.
+	-
+	- ## Free 3D Game Assets & HDRIs
+	  collapsed:: true
+		- [Poly Pizza](https://poly.pizza/) — Free low-poly 3D models. CC0 license. Great for game dev.
+		- [Quaternius](https://quaternius.com/) — Free low-poly 3D game assets. CC0 license.
+		- [Mixamo](https://www.mixamo.com/) — Free 3D character animations by Adobe. No account needed to download.
+		- [Polyhaven](https://polyhaven.com/) — Free 3D assets: HDRIs, textures, and models. CC0 license. High quality.
+		- [OpenHDRI](https://openhdri.org/) — Free, open-source HDRI images for 3D rendering. CC0 license.
+		- [Blendswap](https://www.blendswap.com/) — Free Blender models shared by the community. CC licenses.
+		- [Sketchfab Free Models](https://sketchfab.com/features/free-3d-models) — Thousands of free 3D models. Check license per model.
+		- [FragCoord – Shader Explorer](https://fragcoord.xyz/explore) — Free shader and graphics programming explorer. Great for learning GLSL.
+	-
+	- ## Free Textures & Materials
+	  collapsed:: true
+		- [Polyhaven Textures](https://polyhaven.com/textures) — Free PBR textures. CC0 license. High resolution.
+		- [ambientCG](https://ambientcg.com/) — Free PBR materials and HDRIs. CC0 license.
+		- [Texture Ninja](https://texture.ninja/) — Free photographic textures. CC0 license. No account needed.
+		- [3DTextures.me](https://3dtextures.me/) — Free seamless PBR textures. CC0 license.
+		- [Freepbr.com](https://freepbr.com/) — Free PBR materials and textures. Free for personal and commercial use.
+		- [ShareTextures](https://www.sharetextures.com/) — Free PBR textures. CC0 license.
+		- [TextureCan](https://www.texturecan.com/) — Free PBR textures. CC0 license.
+- # 3D Models
+  collapsed:: true
+	- [Polyhaven](https://polyhaven.com/models) — Free high-quality 3D models. CC0 license.
+	- [Poly Pizza](https://poly.pizza/) — Free low-poly 3D models. CC0 license. Great for games and apps.
+	- [Quaternius](https://quaternius.com/) — Free low-poly 3D game assets. CC0 license.
+	- [NASA 3D Resources](https://nasa3d.arc.nasa.gov/) — Free 3D models of spacecraft, planets, and astronauts by NASA.
+	- [Smithsonian 3D](https://3d.si.edu/) — Free 3D scans of museum artifacts. CC0 license.
+	- [Thingiverse](https://www.thingiverse.com/) — Free 3D printable models. Large community. Various CC licenses.
+	- [Printables](https://www.printables.com/) — Free 3D printable models by Prusa. CC licenses.
+	- [GrabCAD](https://grabcad.com/library) — Free CAD models. Large engineering community.
+	- [Sketchfab Free Models](https://sketchfab.com/features/free-3d-models) — Largest 3D model community. Thousands of free models. Check license per model.
+	- [3D Artists Handbook](https://sidney-eliot.github.io/3d-artists-handbook/) — Free, open-source handbook for 3D artists covering modeling, rigging, rendering, and more.
+- # Audio & Music
+  collapsed:: true
+	- ## Free Sound Effects
+	  collapsed:: true
+		- [Freesound](https://freesound.org/) — Community-driven database of free audio samples and sound effects. CC licenses.
+		- [Mixkit Sound Effects](https://mixkit.co/free-sound-effects/) — Free sound effects. Free for commercial use.
+		- [Zapsplat](https://www.zapsplat.com/) — 140,000+ free sound effects and music. Free with account.
+		- [SoundBible](https://soundbible.com/) — Free sound clips and sound effects. Various licenses.
+		- [BBC Sound Effects](https://sound-effects.bbcrewind.co.uk/) — 33,000+ free BBC sound effects. Free for personal/research use.
+		- [OpenGameArt Audio](https://opengameart.org/content/browse_search?type=music) — Free game music and sound effects. Open-source licenses.
+		- [Kenney Audio](https://kenney.nl/assets?q=audio) — Free game audio packs. CC0 license.
+		- [SoundJay](https://www.soundjay.com/) — Free sound effects. Free for personal and commercial use.
+	-
+	- ## Free Music & Background Tracks
+	  collapsed:: true
+		- [Free Music Archive](https://freemusicarchive.org/) — Free, legal music downloads. Various CC licenses.
+		- [ccMixter](https://ccmixter.org/) — Free music for creative projects. CC licenses.
+		- [Dogmazic](https://www.dogmazic.net/?lang=en) — Free music under libre licenses (CC, Art Libre). Large catalog of independent artists.
+		- [Incompetech – Kevin MacLeod](https://incompetech.com/) — Royalty-free music. CC BY license (attribution required).
+		- [Bensound](https://www.bensound.com/) — Free royalty-free music. Free with attribution.
+		- [Pixabay Music](https://pixabay.com/music/) — Free music tracks. Free for commercial use.
+		- [Mixkit Music](https://mixkit.co/free-stock-music/) — Free music tracks. Free for commercial use.
+		- [YouTube Audio Library](https://studio.youtube.com/channel/music) — Free music and sound effects for YouTube creators.
+		- [Musopen](https://musopen.org/) — Free classical music recordings and sheet music. Public domain.
+		- [Jamendo](https://www.jamendo.com/) — Free music under Creative Commons licenses.
+		- [dig.ccMixter](http://dig.ccmixter.org/) — Free music for film, video, and games. CC licenses.
+	-
+	- ## Free Music Production Tools
+	  collapsed:: true
+		- [LMMS](https://lmms.io/) — Open-source DAW for music production. Free alternative to FL Studio.
+		- [Audacity](https://www.audacityteam.org/) — Open-source audio editor and recorder. Completely free.
+		- [Ardour](https://ardour.org/) — Open-source DAW for recording, editing, and mixing. Free on Linux.
+		- [Cakewalk by BandLab](https://www.bandlab.com/products/cakewalk) — Professional DAW. Completely free forever.
+		- [GarageBand](https://www.apple.com/mac/garageband/) — Free DAW for macOS and iOS by Apple.
+		- [Tracktion Waveform Free](https://www.tracktion.com/products/waveform-free) — Full-featured DAW. Completely free forever, no time limit.
+		- [Hydrogen](http://hydrogen-music.org/) — Open-source drum machine and sequencer. Free.
+		- [MuseScore](https://musescore.org/) — Free, open-source music notation software.
+		- [Sonic Pi](https://sonic-pi.net/) — Free, open-source live coding music synth. Great for learning.
+- # AI & Machine Learning
+  collapsed:: true
+	- ## Run AI Locally (100% Free, No API Key)
+	  collapsed:: true
+		- [Ollama](https://ollama.com/) — Run Llama, Mistral, Gemma, Phi locally for free. Open-source.
+		- [LM Studio](https://lmstudio.ai/) — Run local LLMs with a GUI. Free. Supports most GGUF models.
+		- [Jan.ai](https://jan.ai/) — Open-source, offline AI assistant. Run LLMs locally. Free.
+		- [GPT4All](https://gpt4all.io/) — Free, open-source local LLM runner. No internet required.
+		- [Stable Diffusion – Automatic1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui) — Free, open-source image generation. Run locally.
+		- [ComfyUI](https://github.com/comfyanonymous/ComfyUI) — Free, open-source node-based Stable Diffusion UI.
+		- [InvokeAI](https://github.com/invoke-ai/InvokeAI) — Free, open-source Stable Diffusion interface. Run locally.
+		- [Kobold.cpp](https://github.com/LostRuins/koboldcpp) — Free, open-source local LLM runner. Single executable.
+	-
+	- ## Free AI Web Tools
+	  collapsed:: true
+		- [Hugging Face](https://huggingface.co/) — The GitHub of ML. Free access to 500k+ models, datasets, and Spaces. Open-source.
+		- [Bing Copilot](https://copilot.microsoft.com/) — Microsoft's AI assistant powered by GPT-4. Completely free.
+		- [Groq](https://groq.com/) — Free API for ultra-fast LLM inference. Llama, Mixtral, Gemma. No credit card needed.
+		- [Google AI Studio](https://aistudio.google.com/) — Free access to Gemini models via API. No credit card needed.
+		- [Mistral AI Free API](https://mistral.ai/) — Open-weight models. Free API tier. No credit card needed.
+		- [Perplexity AI](https://www.perplexity.ai/) — AI-powered search engine. Free plan available.
+	-
+	- ## Free ML Learning & Data
+	  collapsed:: true
+		- [MLU-Explain](https://mlu-explain.github.io/) — Free, visual explanations of core ML concepts by Amazon. Interactive and beginner-friendly.
+		- [Kaggle](https://www.kaggle.com/) — Free ML courses, 50k+ public datasets, and competitions. Completely free.
+		- [Fast.ai](https://www.fast.ai/) — Free practical deep learning course. No PhD required.
+		- [Google ML Crash Course](https://developers.google.com/machine-learning/crash-course) — Free ML course with TensorFlow by Google.
+		- [Papers With Code](https://paperswithcode.com/) — ML papers with open-source implementations. Free.
+		- [OpenAI Cookbook](https://github.com/openai/openai-cookbook) — Official examples for OpenAI APIs. Open-source.
+		- [LangChain Docs](https://python.langchain.com/) — Build LLM apps. Open-source, free.
+		- [Distill.pub](https://distill.pub/) — Free, interactive ML research articles with beautiful visualizations.
+- # APIs & Public Data
+  collapsed:: true
+	- [Public APIs – GitHub](https://github.com/public-apis/public-apis) — 1,400+ free public APIs organized by category. 300k+ stars.
+	- [NASA Open APIs](https://api.nasa.gov/) — Free APIs: astronomy pictures, Mars rover photos, asteroid data, ISS location.
+	- [REST Countries](https://restcountries.com/) — Free API for country data. No key required.
+	- [Open Library API](https://openlibrary.org/developers/api) — Free API for book metadata from the Internet Archive.
+	- [OpenWeatherMap Free](https://openweathermap.org/api) — Free weather API. 1,000 calls/day. No credit card needed.
+	- [Open-Meteo](https://open-meteo.com/) — Free, open-source weather API. No key required. No rate limits.
+	- [World Bank Open Data](https://data.worldbank.org/) — Free global development data and APIs.
+	- [Kaggle Datasets](https://www.kaggle.com/datasets) — 50,000+ free public datasets for data science.
+	- [Google Dataset Search](https://datasetsearch.research.google.com/) — Search engine for free datasets. Indexes millions of datasets.
+	- [UCI ML Repository](https://archive.ics.uci.edu/) — Free machine learning datasets. Classic benchmark datasets.
+	- [Data.gov](https://data.gov/) — Free US government open data. Thousands of datasets.
+	- [Awesome Public Datasets – GitHub](https://github.com/awesomedata/awesome-public-datasets) — Curated list of high-quality public datasets. Free.
+	- [JSONPlaceholder](https://jsonplaceholder.typicode.com/) — Free fake REST API for testing and prototyping. No key needed.
+	- [Open Trivia DB](https://opentdb.com/) — Free trivia questions API. No key required.
+	- [PokeAPI](https://pokeapi.co/) — Free Pokemon data API. No key required. Great for learning.
+	- [The Movie DB API](https://www.themoviedb.org/documentation/api) — Free movie and TV data API. Free with account.
+	- [Open Food Facts API](https://world.openfoodfacts.org/data) — Free food product database API. CC0 license.
+- # Databases & Backend Tools
+  collapsed:: true
+	- [PostgreSQL](https://www.postgresql.org/) — The world's most advanced open-source relational database. Completely free.
+	- [MySQL Community Edition](https://www.mysql.com/products/community/) — Free, open-source relational database. Powers most of the web.
+	- [MongoDB Community](https://www.mongodb.com/try/download/community) — Free community edition of the most popular NoSQL database.
+	- [Redis Community](https://redis.io/) — Open-source in-memory data store. Free community edition.
+	- [SQLite](https://www.sqlite.org/) — Serverless, zero-config SQL database. Completely free and open-source.
+	- [MariaDB](https://mariadb.org/) — Free, open-source MySQL fork. Community-driven.
+	- [PocketBase](https://pocketbase.io/) — Open-source backend in a single file. SQLite-based. Self-host for free.
+	- [Appwrite](https://appwrite.io/) — Open-source Firebase alternative. Self-host for free.
+	- [DBeaver Community](https://dbeaver.io/) — Free, open-source database GUI for MySQL, PostgreSQL, SQLite, and 80+ more.
+	- [Beekeeper Studio Community](https://www.beekeeperstudio.io/) — Free, open-source SQL editor and database manager.
+	- [DB Fiddle](https://www.db-fiddle.com/) — Free online SQL playground. Supports MySQL, PostgreSQL, SQLite.
+- # Version Control & Collaboration
+  collapsed:: true
+	- [Git](https://git-scm.com/) — The standard version control system. Free and open-source.
+	- [GitHub](https://github.com/) — Free unlimited public and private repos. Industry standard.
+	- [GitLab Community Edition](https://gitlab.com/) — Free, open-source. Self-host or use gitlab.com free plan.
+	- [Gitea](https://gitea.io/) — Open-source, self-hosted Git service. Lightweight and free.
+	- [Forgejo](https://forgejo.org/) — Community fork of Gitea. Open-source, self-hosted. Free.
+	- [GitHub Student Developer Pack](https://education.github.com/pack) — Free access to 100+ developer tools for students.
+	- [Obsidian](https://obsidian.md/) — Free local markdown knowledge base. No subscription for personal use.
+	- [Logseq](https://logseq.com/) — Free, open-source knowledge management. Local-first.
+	- [Joplin](https://joplinapp.org/) — Free, open-source note-taking app with sync. Markdown support.
+	- [Notion Free Plan](https://www.notion.so/) — Free plan for personal use. Notes, wikis, project management.
+- # Cybersecurity Tools & Learning
+  collapsed:: true
+	- [TryHackMe](https://tryhackme.com/) — Hands-on cybersecurity training. Free rooms available. Best for beginners.
+	- [Hack The Box Free](https://www.hackthebox.com/) — Free ethical hacking labs and challenges.
+	- [OverTheWire Wargames](https://overthewire.org/wargames/) — Free security wargames to learn Linux and hacking fundamentals.
+	- [OWASP](https://owasp.org/) — Open-source web application security project. Free guides, tools, and checklists.
+	- [Wireshark](https://www.wireshark.org/) — Open-source network protocol analyzer. Free.
+	- [Nmap](https://nmap.org/) — Open-source network discovery and security auditing tool. Free.
+	- [Metasploit Framework](https://www.metasploit.com/) — Open-source penetration testing framework. Free community edition.
+	- [Burp Suite Community Edition](https://portswigger.net/burp/communitydownload) — Free web security testing tool.
+	- [OWASP ZAP](https://www.zaproxy.org/) — Free, open-source web application security scanner.
+	- [Kali Linux](https://www.kali.org/) — Free, open-source Linux distro for penetration testing.
+	- [CyberChef](https://gchq.github.io/CyberChef/) — Free, open-source web app for encoding, decoding, and analyzing data. By GCHQ.
+	- [GTFOBins](https://gtfobins.github.io/) — Free reference for Unix binaries that can be exploited. Open-source.
+- # Free YouTube Playlists & Channels
+  collapsed:: true
+	- ## Programming & CS
+	  collapsed:: true
+		- [DSA and Algorithms](https://youtube.com/playlist?list=PLPMIlPa0MRx5c_1s2e4VDQkORCO56W21B&si=9dXvGjjV_dbV_l0o)
+		- [AI & Machine Learning Models](https://youtube.com/playlist?list=PLPMIlPa0MRx7X6LjaxlkQflYOwRaYfjQe&si=zvw0xsx_VdPC_cfW)
+		- [Android App Development](https://youtube.com/playlist?list=PLPMIlPa0MRx6goy6W4OSLv6jXFpyumjra&si=6xpSlF4fXF7NT2l7)
+		- [3Blue1Brown – Math & Neural Networks](https://www.youtube.com/@3blue1brown)
+		- [Fireship – Fast Tech Explainers](https://www.youtube.com/@Fireship)
+		- [Traversy Media – Web Dev Tutorials](https://www.youtube.com/@TraversyMedia)
+		- [Andrej Karpathy – Neural Networks from Scratch](https://www.youtube.com/@AndrejKarpathy)
+		- [StatQuest – ML & Statistics Visually](https://www.youtube.com/@statquest)
+		- [NetworkChuck – Networking & Cybersecurity](https://www.youtube.com/@NetworkChuck)
+		- [TechWorld with Nana – DevOps](https://www.youtube.com/@TechWorldwithNana)
+		- [The Coding Train – Creative Coding](https://www.youtube.com/@TheCodingTrain)
+		- [CS Dojo – Python & Algorithms](https://www.youtube.com/@CSDojo)
+		- [Corey Schafer – Python Tutorials](https://www.youtube.com/@coreyms)
+		- [Computerphile – CS Concepts](https://www.youtube.com/@Computerphile)
+		- [Sebastian Lague – Programming Projects](https://www.youtube.com/@SebastianLague)
+	-
+	- ## Game Development & 3D
+	  collapsed:: true
+		- [Godot Engine Game Development](https://youtube.com/playlist?list=PLPMIlPa0MRx6asDFZk9R6CTHMaY7j6cDk&si=3r6ADTPOcQ4t_yEM)
+		- [Blender 3D Modeling](https://youtube.com/playlist?list=PLPMIlPa0MRx4xhit8wjYU3Zwz6DgAL5bo&si=oembX0dwhlWS5MxG)
+		- [Hardware & Chips](https://youtube.com/playlist?list=PLPMIlPa0MRx5U3s8CGuiH6ODgLUTDMlZx&si=H7OH0f-DG75bygYC)
+		- [GDQuest – Godot Tutorials](https://www.youtube.com/@Gdquest)
+		- [Brackeys – Game Dev Tutorials](https://www.youtube.com/@Brackeys)
+		- [The Art of Code – Shader Programming](https://www.youtube.com/@TheArtofCodeIsCool)
+		- [Acerola – Graphics Programming](https://www.youtube.com/@Acerola_t)
+	-
+	- ## Design & Creative
+	  collapsed:: true
+		- [2D Animation Concepts](https://youtube.com/playlist?list=PLPMIlPa0MRx56RShbo-NYVWP1LdSyFhdJ&si=jd0ALYKpEj0CSGcY)
+		- [Graphics Design Ideas](https://youtube.com/playlist?list=PLPMIlPa0MRx5NTnZs_bbCN2vadNeScqwJ&si=inL4162f-c_L1VLf)
+		- [Flux Academy – Web Design](https://www.youtube.com/@FluxAcademy)
+		- [DesignCourse – UI/UX](https://www.youtube.com/@DesignCourse)
+		- [Juxtopposed – CSS & Design](https://www.youtube.com/@juxtopposed)

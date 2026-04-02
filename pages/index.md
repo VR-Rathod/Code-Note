@@ -1,15 +1,16 @@
 ---
 title: index
-displayTitle: Introduction
-seoTitle: Free Code Notes – Programming Knowledge Base Home and Overview
-description: "Free Code Notes is a programming knowledge base covering algorithms, data structures, languages, frameworks, tools, and software engineering concepts."
-keywords: "index, Free Code Notes, programming knowledge base, algorithms, data structures, programming languages, frameworks, tools, software engineering, Logseq, notes, index, VR-Rathod, Code-Note, code note vr, vr book, programming notes, developer notes, code reference, free programming notes"
+displayTitle: Free Code Notes – Complete Programming Knowledge Base
+seoTitle: Free Code Notes – Programming, DSA, DevOps, Game Dev & Data Science
+description: "Free Code Notes is a comprehensive programming knowledge base covering languages, algorithms, data structures, data science, DevOps, game development, cybersecurity, and free developer resources."
+keywords: "free code notes, programming knowledge base, algorithms, data structures, programming languages, data science, machine learning, DevOps, game development, cybersecurity, free programming resources, free developer tools, free coding courses, open source tools, VR-Rathod, Code-Note, code note vr, vr book, programming notes, developer notes, code reference, free programming notes"
 ---
 
 - ## Welcome to Your Code Book!
 	- Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
 -
 - ## Programming Languages
+  collapsed:: true
 	- [[Python]] :- A beginner-friendly language known for its readability and extensive libraries.
 	-
 	- [[Java]] :- A robust, object-oriented language commonly used in enterprise applications and Android development.
@@ -85,12 +86,14 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 	- [[Ada]]: A structured, statically typed language used for real-time systems and safety-critical applications, especially in aerospace and military contexts.
 	-
 	- [[Crystal]]: A compiled language with syntax similar to Ruby but with performance comparable to C, designed for high performance.
+	  collapsed:: true
 	-
 	- [[Zig]]: A systems programming language that aims to replace C with a focus on simplicity, performance, and safety.
 -
 - ## Databases
   collapsed:: true
 	- [[MySQL]] : One of the most widely used open-source relational database management systems (RDBMS), especially in web applications.
+	  collapsed:: true
 	-
 	- [[PostgreSQL]] : An advanced, open-source relational database that emphasizes extensibility, SQL compliance, and performance.
 	-
@@ -165,6 +168,17 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 	- [[Binary Space Partitioning]] :- Spatial data structure used in game engines for rendering optimization and collision detection.
 	-
 	- [[System Design]]: In-depth guide to designing scalable, reliable, and high-performance systems — covering load balancing, caching, databases, microservices, CAP theorem, message queues, API design, and real-world case studies.
+-
+- ## Data Science & Machine Learning
+  collapsed:: true
+	- ### Core
+		- [[Data Science]] :- Interdisciplinary field combining statistics, programming, and ML to extract insights from data. Covers the full pipeline from EDA to MLOps — beginner to advanced.
+	-
+	- ### Visualization
+		- Matplotlib, Seaborn, Plotly — covered inside [[Data Science]]
+	-
+	- ### Big Data
+		- Apache Spark, Hadoop, Kafka — covered inside [[Data Science]]
 -
 - ## DevOps & CI/CD
   collapsed:: true
@@ -293,16 +307,17 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		- [[NcEngine]] :- Lightweight 3D engine in modern C++ and Vulkan.
 		- [[Thunder Engine]] :- Cross-platform open-source C++ engine with a modular Qt-based editor.
 		- [[Panda3D]] :- Python/C++ engine for research, simulation, and indie dev.
-		- [[Pygame]] :- Python library for 2D games, great for learning and rapid prototyping.
 		-
 		- For a full categorized list of all game engines and 3D tools, see [[Software]].
 	-
 	- ### 3. Graphics Programming & Rendering
 		- [[PathTracer Learning]] :- Step-by-step series for building a GPU path tracer — math foundations, CPU ray tracing, Vulkan RT pipeline, and Godot rendering internals.
 -
-- ## Software Information
+- ## Useful Listing
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
 	- [[Software]] - This page showcases all types of software, categorized by their functionality and purpose.
+	-
+	- [[Free Assets]] - The ultimate directory of free and open-source resources for developers and creators — fonts, icons, stock images, game assets, 3D models, audio, UI kits, APIs, tools, courses, and more. Everything is free forever or open-source.
 -
 - ## more learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills:-
@@ -323,6 +338,7 @@ keywords: "index, Free Code Notes, programming knowledge base, algorithms, data 
 		- [Get Free APIs🐱‍🏍](https://github.com/public-apis/public-apis)
 		- [Learn Basic About  API](https://aws.amazon.com/what-is/api/)
 		- [Interview Preparation⚔](https://www.indiabix.com/)
+		- [Powerful Text and design And Animation⚜](https://github.com/chenglou/pretext)
 	-
 	- ## Lib
 		- [bhartiya Digital lib](https://ndl.iitkgp.ac.in/)

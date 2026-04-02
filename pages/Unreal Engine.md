@@ -1,7 +1,7 @@
 ---
-seoTitle: Unreal Engine Reference – Blueprints and C++ Development Guide
-description: "Unreal Engine reference covering Blueprints, C++ gameplay, materials, Lumen, Nanite, animation, Chaos physics, and Unreal Engine 5 features for AAA development."
-keywords: "Unreal Engine, Blueprints, C++ gameplay, materials, Lumen, Nanite, animation, Chaos physics, Unreal Engine 5, UE5, game development, AAA games, unreal engine notes, unreal engine guide, ue5 cheatsheet, unreal reference, VR-Rathod, Code-Note, code note vr, vr book"
+seoTitle: Unreal Engine Reference – Beginner to Advanced C++ & Blueprint Guide
+description: "Complete Unreal Engine 5 reference from beginner to super advanced — Blueprints, C++ gameplay, GAS, Nanite, Lumen, Chaos Physics, Mass Entity ECS, Niagara VFX, materials, networking, PCG, profiling, and engine module development."
+keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability System, Nanite, Lumen, Chaos Physics, Mass Entity, ECS, Niagara VFX, materials, HLSL, networking, replication, PCG, procedural generation, World Partition, MetaHuman, Control Rig, Motion Matching, Sequencer, profiling, optimization, engine modules, plugin development, unreal engine notes, unreal engine guide, ue5 cheatsheet, unreal reference, VR-Rathod, Code-Note, code note vr, vr book"
 ---
 
 - # History
@@ -1447,3 +1447,1625 @@ keywords: "Unreal Engine, Blueprints, C++ gameplay, materials, Lumen, Nanite, an
 		- [[C++]] — C++ fundamentals for Unreal development
 		- [[Godot]] — Godot engine A-Z reference
 		- [[PathTracer Learning]] — GPU path tracing and rendering research
+- # Gameplay Ability System (GAS)
+  collapsed:: true
+	- ## Overview
+	  collapsed:: true
+		- ```
+		  GAS is Unreal's built-in framework for complex ability systems.
+		  Used in: Fortnite, Lyra, most AAA UE games.
+		  
+		  Core classes:
+		    AbilitySystemComponent (ASC) — attached to Actor, owns all GAS data
+		    GameplayAbility (GA)         — one ability (jump, fire, dash)
+		    GameplayEffect (GE)          — modifies attributes (damage, heal, buff)
+		    AttributeSet (AS)            — defines stats (Health, Mana, Stamina)
+		    GameplayTag                  — hierarchical string tag (Ability.Fire, State.Dead)
+		    GameplayCue                  — cosmetic effects (particles, sounds) triggered by tags
+		  ```
+	-
+	- ## Setup
+	  collapsed:: true
+		- ```cpp
+		  // 1. Enable plugin: Edit → Plugins → Gameplay Abilities
+		  // 2. Add to Build.cs:
+		  PublicDependencyModuleNames.AddRange(new string[] {
+		      "GameplayAbilities", "GameplayTags", "GameplayTasks"
+		  });
+		  
+		  // 3. Add ASC to Character
+		  UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+		  UAbilitySystemComponent* AbilitySystemComponent;
+		  
+		  // Implement IAbilitySystemInterface
+		  virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override
+		  {
+		      return AbilitySystemComponent;
+		  }
+		  ```
+	-
+	- ## AttributeSet
+	  collapsed:: true
+		- ```cpp
+		  UCLASS()
+		  class UMyAttributeSet : public UAttributeSet
+		  {
+		      GENERATED_BODY()
+		  public:
+		      UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Health)
+		      FGameplayAttributeData Health;
+		      ATTRIBUTE_ACCESSORS(UMyAttributeSet, Health)
+		  
+		      UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_MaxHealth)
+		      FGameplayAttributeData MaxHealth;
+		      ATTRIBUTE_ACCESSORS(UMyAttributeSet, MaxHealth)
+		  
+		      // Called before attribute change — clamp values here
+		      virtual void PreAttributeChange(const FGameplayAttribute& Attribute,
+		          float& NewValue) override
+		      {
+		          if (Attribute == GetHealthAttribute())
+		              NewValue = FMath::Clamp(NewValue, 0.f, GetMaxHealth());
+		      }
+		  
+		      // Called after GameplayEffect applied
+		      virtual void PostGameplayEffectExecute(
+		          const FGameplayEffectModCallbackData& Data) override;
+		  };
+		  ```
+	-
+	- ## GameplayAbility
+	  collapsed:: true
+		- ```cpp
+		  UCLASS()
+		  class UGA_FireWeapon : public UGameplayAbility
+		  {
+		      GENERATED_BODY()
+		  public:
+		      UGA_FireWeapon()
+		      {
+		          // Ability can only be activated once at a time
+		          InstancingPolicy = EGameplayAbilityInstancingPolicy::InstancedPerActor;
+		          // Tag required on owner to activate
+		          ActivationRequiredTags.AddTag(FGameplayTag::RequestGameplayTag("State.Armed"));
+		          // Tag applied while active
+		          ActivationOwnedTags.AddTag(FGameplayTag::RequestGameplayTag("Ability.Firing"));
+		      }
+		  
+		      virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle,
+		          const FGameplayAbilityActorInfo* ActorInfo,
+		          const FGameplayAbilityActivationInfo ActivationInfo,
+		          const FGameplayEventData* TriggerEventData) override
+		      {
+		          // Commit (check/consume cost + cooldown)
+		          if (!CommitAbility(Handle, ActorInfo, ActivationInfo))
+		          {
+		              EndAbility(Handle, ActorInfo, ActivationInfo, true, true);
+		              return;
+		          }
+		          // Do the thing
+		          SpawnProjectile();
+		          EndAbility(Handle, ActorInfo, ActivationInfo, true, false);
+		      }
+		  };
+		  ```
+	-
+	- ## GameplayEffect
+	  collapsed:: true
+		- ```
+		  GameplayEffect types:
+		    Instant    — apply once (damage, instant heal)
+		    Duration   — apply for N seconds (burn, slow)
+		    Infinite   — apply until removed (passive buff, aura)
+		  
+		  Modifiers:
+		    Add, Multiply, Override, Divide
+		    Target: specific attribute (Health, MoveSpeed)
+		  
+		  Stacking:
+		    AggregateBySource — each source has own stack
+		    AggregateByTarget — all sources share one stack
+		  
+		  Applying in C++:
+		    FGameplayEffectContextHandle Context = ASC->MakeEffectContext();
+		    FGameplayEffectSpecHandle Spec = ASC->MakeOutgoingSpec(
+		        DamageEffectClass, Level, Context);
+		    ASC->ApplyGameplayEffectSpecToTarget(*Spec.Data.Get(), TargetASC);
+		  ```
+	-
+	- ## GameplayTags
+	  collapsed:: true
+		- ```cpp
+		  // Define tags in DefaultGameplayTags.ini or via editor
+		  // Tags are hierarchical: "Ability.Fire" is child of "Ability"
+		  
+		  // Check tag
+		  if (ASC->HasMatchingGameplayTag(
+		      FGameplayTag::RequestGameplayTag("State.Dead")))
+		  { ... }
+		  
+		  // Add/remove tag
+		  ASC->AddLooseGameplayTag(FGameplayTag::RequestGameplayTag("State.Stunned"));
+		  ASC->RemoveLooseGameplayTag(FGameplayTag::RequestGameplayTag("State.Stunned"));
+		  
+		  // Tag containers
+		  FGameplayTagContainer Tags;
+		  Tags.AddTag(FGameplayTag::RequestGameplayTag("Ability.Fire"));
+		  bool bHasAny = ASC->HasAnyMatchingGameplayTags(Tags);
+		  ```
+- # Materials & Shaders
+  collapsed:: true
+	- ## Material Basics
+	  collapsed:: true
+		- ```
+		  Material — shader program defining surface appearance.
+		  Material Instance — parameterized copy of a Material (fast, no recompile).
+		  Material Function — reusable node subgraph.
+		  
+		  Blend Modes:
+		    Opaque       — solid surface (default, cheapest)
+		    Masked       — binary transparency (foliage, fences)
+		    Translucent  — full alpha blend (glass, water, particles)
+		    Additive     — adds color to background (fire, glow)
+		  
+		  Shading Models:
+		    Default Lit     — standard PBR
+		    Unlit           — no lighting (UI, emissive-only)
+		    Subsurface      — skin, wax, marble
+		    Clear Coat      — car paint, lacquer
+		    Two Sided Foliage — leaves with back-face lighting
+		    Hair            — Kajiya-Kay hair shading
+		    Eye             — realistic eye rendering
+		  ```
+	-
+	- ## PBR Inputs
+	  collapsed:: true
+		- ```
+		  Base Color    — albedo (no lighting). RGB 0-1.
+		  Metallic      — 0 = dielectric, 1 = metal. Binary in practice.
+		  Roughness     — 0 = mirror, 1 = fully diffuse.
+		  Specular      — non-metal specular intensity (default 0.5).
+		  Normal        — tangent-space normal map (blue-ish).
+		  Emissive      — self-illumination. HDR values drive Bloom.
+		  Ambient Occlusion — pre-baked crevice darkening.
+		  Opacity       — for Masked/Translucent modes.
+		  World Position Offset — vertex displacement (cloth, water waves).
+		  ```
+	-
+	- ## Material Nodes (Key)
+	  collapsed:: true
+		- ```
+		  Texture Sample       — sample texture at UV
+		  TextureCoordinate    — UV channel (tiling, offset)
+		  Panner               — animate UVs (scrolling water, lava)
+		  Rotator              — rotate UVs
+		  Lerp                 — blend between A and B by Alpha
+		  Multiply / Add       — math on colors/values
+		  Fresnel              — rim/edge glow effect
+		  VertexColor          — per-vertex color from mesh
+		  WorldPosition        — absolute world XYZ of pixel
+		  CameraVector         — direction from pixel to camera
+		  Time                 — current game time (for animation)
+		  Noise                — procedural noise (Perlin, Voronoi, etc.)
+		  BreakOutFloat3Components — split RGB into R, G, B
+		  MakeFloat3           — combine R, G, B into RGB
+		  ```
+	-
+	- ## Dynamic Material Instances
+	  collapsed:: true
+		- ```cpp
+		  // Create dynamic instance at runtime
+		  UMaterialInstanceDynamic* DynMat =
+		      UMaterialInstanceDynamic::Create(BaseMaterial, this);
+		  Mesh->SetMaterial(0, DynMat);
+		  
+		  // Set scalar parameter
+		  DynMat->SetScalarParameterValue(TEXT("Opacity"), 0.5f);
+		  
+		  // Set vector parameter (color)
+		  DynMat->SetVectorParameterValue(TEXT("EmissiveColor"),
+		      FLinearColor(1.f, 0.2f, 0.f));
+		  
+		  // Set texture parameter
+		  DynMat->SetTextureParameterValue(TEXT("DiffuseTexture"), MyTexture);
+		  ```
+	-
+	- ## Custom HLSL in Materials
+	  collapsed:: true
+		- ```hlsl
+		  // Custom node in Material Editor — write raw HLSL
+		  // Inputs: named pins you define
+		  // Output: return value
+		  
+		  // Example: remap value from [InMin,InMax] to [OutMin,OutMax]
+		  // Inputs: Value, InMin, InMax, OutMin, OutMax
+		  return OutMin + (Value - InMin) / (InMax - InMin) * (OutMax - OutMin);
+		  
+		  // Example: triplanar projection
+		  float3 weights = abs(Normal);
+		  weights = pow(weights, 4.0);
+		  weights /= (weights.x + weights.y + weights.z);
+		  float4 xTex = tex2D(Texture, WorldPos.yz * Scale);
+		  float4 yTex = tex2D(Texture, WorldPos.xz * Scale);
+		  float4 zTex = tex2D(Texture, WorldPos.xy * Scale);
+		  return xTex * weights.x + yTex * weights.y + zTex * weights.z;
+		  ```
+- # Niagara VFX System
+  collapsed:: true
+	- ## Overview
+	  collapsed:: true
+		- ```
+		  Niagara is UE5's particle/VFX system (replaces Cascade).
+		  
+		  Hierarchy:
+		    Niagara System    — top-level asset, contains emitters
+		    Niagara Emitter   — one particle type (sparks, smoke, etc.)
+		    Niagara Module    — reusable logic block (Initialize, Update, Render)
+		  
+		  Simulation stages:
+		    Emitter Update    — runs once per emitter per frame
+		    Particle Spawn    — runs when particle is born
+		    Particle Update   — runs every frame per particle
+		    Event Handler     — respond to collision/death events
+		  ```
+	-
+	- ## Key Modules
+	  collapsed:: true
+		- ```
+		  Spawn Rate / Burst  — how many particles, when
+		  Initialize Particle — set initial position, velocity, color, size, lifetime
+		  Add Velocity        — constant or random velocity
+		  Gravity Force       — apply gravity
+		  Drag                — air resistance
+		  Curl Noise Force    — turbulent swirling motion
+		  Collision           — particles bounce off world geometry
+		  Scale Color         — fade in/out over lifetime
+		  Scale Sprite Size   — grow/shrink over lifetime
+		  Sprite Renderer     — render as camera-facing quad
+		  Mesh Renderer       — render as 3D mesh
+		  Ribbon Renderer     — connect particles as ribbon (trails)
+		  ```
+	-
+	- ## Spawning from C++
+	  collapsed:: true
+		- ```cpp
+		  #include "NiagaraFunctionLibrary.h"
+		  #include "NiagaraComponent.h"
+		  
+		  UPROPERTY(EditDefaultsOnly)
+		  UNiagaraSystem* ExplosionEffect;
+		  
+		  // Spawn at location (fire and forget)
+		  UNiagaraFunctionLibrary::SpawnSystemAtLocation(
+		      GetWorld(), ExplosionEffect, GetActorLocation());
+		  
+		  // Spawn attached (follows actor)
+		  UNiagaraComponent* NiagaraComp =
+		      UNiagaraFunctionLibrary::SpawnSystemAttached(
+		          ExplosionEffect, RootComponent,
+		          NAME_None, FVector::ZeroVector,
+		          FRotator::ZeroRotator,
+		          EAttachLocation::KeepRelativeOffset, true);
+		  
+		  // Set Niagara parameter from C++
+		  NiagaraComp->SetVariableFloat(TEXT("SpawnRate"), 100.f);
+		  NiagaraComp->SetVariableLinearColor(TEXT("Color"), FLinearColor::Red);
+		  NiagaraComp->SetVariableVec3(TEXT("EmitterVelocity"), Velocity);
+		  ```
+	-
+	- ## GPU Simulation
+	  collapsed:: true
+		- ```
+		  CPU Simulation:
+		    - Runs on CPU, flexible, supports full Blueprint/C++ interaction
+		    - Max ~100k particles before performance issues
+		  
+		  GPU Simulation:
+		    - Runs entirely on GPU
+		    - Millions of particles possible
+		    - Limited interaction with CPU (no per-particle C++ callbacks)
+		    - Enable: Emitter Properties → Sim Target → GPU Compute Sim
+		  
+		  GPU Raytracing Particles:
+		    - Enable in Project Settings for RT shadows on particles
+		  ```
+- # Nanite — Virtualized Geometry
+  collapsed:: true
+	- ## How Nanite Works
+	  collapsed:: true
+		- ```
+		  Nanite is UE5's virtualized micropolygon geometry system.
+		  
+		  Traditional LOD problem:
+		    - Artist creates LOD0 (high), LOD1, LOD2, LOD3 manually
+		    - Engine switches between them based on distance
+		    - Still limited by triangle budget per frame
+		  
+		  Nanite solution:
+		    - Mesh stored as hierarchical cluster DAG (Directed Acyclic Graph)
+		    - At runtime: GPU selects exactly the right detail level per cluster
+		    - Clusters are ~128 triangles each
+		    - Only clusters covering ~1 pixel are rendered
+		    - Result: billions of triangles, no manual LODs needed
+		  
+		  Limitations:
+		    - No skeletal mesh (static meshes only — use for environment, props)
+		    - No world position offset (WPO) by default (UE5.1+ has limited WPO)
+		    - No translucent/masked materials (opaque only)
+		    - Requires DX12 / Vulkan / Metal
+		  ```
+	-
+	- ## Enabling Nanite
+	  collapsed:: true
+		- ```
+		  Per mesh:
+		    Static Mesh Editor → Details → Nanite Settings → Enable Nanite ✓
+		  
+		  Import setting:
+		    Import dialog → Nanite → Build Nanite ✓
+		  
+		  Visualize:
+		    Viewport → View Mode → Nanite Visualization → Triangles / Clusters / Overdraw
+		  
+		  Console commands:
+		    r.Nanite 1/0          — enable/disable Nanite
+		    r.Nanite.ShowStats 1  — show Nanite stats overlay
+		  ```
+	-
+	- ## Nanite Landscape & Foliage
+	  collapsed:: true
+		- ```
+		  UE5.1+: Nanite Tessellation for landscapes
+		    - Landscape → Details → Enable Nanite ✓
+		    - Displacement maps drive actual geometry (not just normal maps)
+		  
+		  Foliage with Nanite:
+		    - Foliage Tool → Mesh → Enable Nanite
+		    - Millions of foliage instances with full geometric detail
+		    - Combine with WPO for wind animation (UE5.1+ WPO support)
+		  ```
+- # Lumen — Dynamic Global Illumination
+  collapsed:: true
+	- ## How Lumen Works
+	  collapsed:: true
+		- ```
+		  Lumen is UE5's fully dynamic GI and reflection system.
+		  
+		  Two rendering paths:
+		  
+		  Software Lumen (default):
+		    - Uses Signed Distance Fields (SDF) of meshes
+		    - Screen traces + SDF traces for GI
+		    - Works on any DX11+ GPU
+		    - Lower quality, faster
+		  
+		  Hardware Lumen (Ray Tracing):
+		    - Uses GPU ray tracing (RTX / RDNA2+)
+		    - Higher quality reflections and GI
+		    - Enable: Project Settings → Rendering → Lumen → Use Hardware Ray Tracing
+		  
+		  Lumen covers:
+		    - Indirect diffuse lighting (bounced light)
+		    - Reflections (replaces reflection captures)
+		    - Sky light (dynamic sky GI)
+		  ```
+	-
+	- ## Lumen Settings
+	  collapsed:: true
+		- ```
+		  Project Settings → Rendering → Global Illumination:
+		    Dynamic Global Illumination Method → Lumen
+		    Reflection Method → Lumen
+		  
+		  Post Process Volume:
+		    Lumen Global Illumination:
+		      Final Gather Quality    — 1 (default) to 4 (high quality)
+		      Scene Detail            — affects SDF resolution
+		    Lumen Reflections:
+		      Quality                 — 1-4
+		      Ray Lighting Mode       — Surface Cache (fast) / Hit Lighting (accurate)
+		  
+		  Console commands:
+		    r.Lumen.DiffuseIndirect.Allow 1/0
+		    r.Lumen.Reflections.Allow 1/0
+		    r.Lumen.TraceMeshSDFs 1/0
+		  ```
+	-
+	- ## Lumen Performance Tips
+	  collapsed:: true
+		- ```
+		  - Use Emissive materials to act as area lights (Lumen picks them up)
+		  - Sky Atmosphere + Directional Light → Lumen sky GI works automatically
+		  - Avoid too many small emissive meshes (expensive SDF updates)
+		  - Use Lumen Scene Detail setting to balance quality vs performance
+		  - For indoor scenes: place Sky Light with Lumen enabled
+		  - Hardware Lumen: requires r.RayTracing 1 and DXR-capable GPU
+		  - Lumen doesn't support translucent surfaces as GI emitters
+		  ```
+- # Chaos Physics
+  collapsed:: true
+	- ## Overview
+	  collapsed:: true
+		- ```
+		  Chaos is UE5's built-in physics engine (replaced PhysX in UE5).
+		  
+		  Features:
+		    Rigid body simulation    — standard physics objects
+		    Chaos Destruction        — real-time fracture/destruction
+		    Chaos Cloth              — cloth simulation
+		    Chaos Vehicles           — wheeled vehicle physics
+		    Chaos Flesh (UE5.1+)     — soft body / muscle simulation
+		  ```
+	-
+	- ## Chaos Destruction (Geometry Collections)
+	  collapsed:: true
+		- ```
+		  Workflow:
+		  1. Select static mesh → Fracture Mode (toolbar)
+		  2. Fracture: Uniform, Voronoi, Planar, Brick, Cluster
+		  3. Generate Geometry Collection asset
+		  4. Place in level → add Geometry Collection Component
+		  5. Set Damage Threshold — how much force to trigger break
+		  
+		  In C++:
+		  ```
+		- ```cpp
+		  // Apply external strain to trigger fracture
+		  #include "GeometryCollection/GeometryCollectionComponent.h"
+		  
+		  UPROPERTY(VisibleAnywhere)
+		  UGeometryCollectionComponent* DestructibleComp;
+		  
+		  void AMyDestructible::TakeHit(FVector ImpactPoint, float Force)
+		  {
+		      // Apply radial impulse to trigger fracture
+		      DestructibleComp->AddRadialImpulse(
+		          ImpactPoint, 200.f, Force, RIF_Linear, true);
+		  }
+		  ```
+	-
+	- ## Chaos Cloth
+	  collapsed:: true
+		- ```
+		  Setup:
+		  1. Skeletal mesh with cloth mesh section
+		  2. Clothing Tool (editor) → paint cloth weights
+		     Max Distance — how far vertex can move from animated position
+		     Backstop     — prevents cloth from penetrating body
+		  3. Cloth Config: stiffness, damping, gravity scale, wind
+		  
+		  In C++:
+		    UClothingAssetBase* ClothAsset = SkeletalMesh->GetClothingAsset(0);
+		    // Cloth simulates automatically when SkeletalMeshComponent ticks
+		  ```
+	-
+	- ## Chaos Vehicles
+	  collapsed:: true
+		- ```cpp
+		  // Enable plugin: ChaosVehicles
+		  // Base class: UChaosWheeledVehicleMovementComponent
+		  
+		  UPROPERTY(VisibleAnywhere)
+		  UChaosWheeledVehicleMovementComponent* VehicleMovement;
+		  
+		  // In constructor:
+		  VehicleMovement = CreateDefaultSubobject<UChaosWheeledVehicleMovementComponent>(
+		      TEXT("VehicleMovement"));
+		  
+		  // Input binding:
+		  void AMyVehicle::SetThrottle(float Value)
+		  {
+		      VehicleMovement->SetThrottleInput(Value);
+		  }
+		  void AMyVehicle::SetSteering(float Value)
+		  {
+		      VehicleMovement->SetSteeringInput(Value);
+		  }
+		  void AMyVehicle::SetBrake(float Value)
+		  {
+		      VehicleMovement->SetBrakeInput(Value);
+		  }
+		  ```
+- # World Partition & Open World
+  collapsed:: true
+	- ## World Partition
+	  collapsed:: true
+		- ```
+		  World Partition replaces World Composition for open worlds.
+		  
+		  How it works:
+		    - Level is one large map (no sub-levels needed)
+		    - World is divided into cells (configurable size, e.g., 128m x 128m)
+		    - Cells stream in/out based on player position
+		    - Each cell can have its own loading distance
+		  
+		  Enable:
+		    World Settings → World Partition → Enable World Partition ✓
+		  
+		  HLOD (Hierarchical LOD):
+		    - Distant cells replaced by simplified proxy meshes
+		    - Auto-generated: World Partition → HLOD → Build HLODs
+		  
+		  Data Layers:
+		    - Tag actors with Data Layers (Day/Night, Quest states)
+		    - Load/unload layers at runtime
+		  ```
+	-
+	- ## Data Layers
+	  collapsed:: true
+		- ```cpp
+		  // Load/unload data layer at runtime
+		  #include "WorldPartition/DataLayer/DataLayerSubsystem.h"
+		  
+		  UDataLayerSubsystem* DLS = GetWorld()->GetSubsystem<UDataLayerSubsystem>();
+		  
+		  // Set layer state
+		  DLS->SetDataLayerRuntimeState(DayLayerAsset,
+		      EDataLayerRuntimeState::Activated);
+		  DLS->SetDataLayerRuntimeState(NightLayerAsset,
+		      EDataLayerRuntimeState::Unloaded);
+		  ```
+	-
+	- ## Level Streaming (Legacy)
+	  collapsed:: true
+		- ```cpp
+		  // Stream sub-level in/out (pre-World Partition approach)
+		  UGameplayStatics::LoadStreamLevel(this,
+		      FName("Level_Cave"), true, false, FLatentActionInfo());
+		  
+		  UGameplayStatics::UnloadStreamLevel(this,
+		      FName("Level_Cave"), FLatentActionInfo(), false);
+		  
+		  // Check if loaded
+		  ULevelStreaming* StreamingLevel = UGameplayStatics::GetStreamingLevel(
+		      this, FName("Level_Cave"));
+		  bool bLoaded = StreamingLevel && StreamingLevel->IsLevelLoaded();
+		  ```
+- # Procedural Content Generation (PCG)
+  collapsed:: true
+	- ## Overview
+	  collapsed:: true
+		- ```
+		  PCG Framework (UE5.2+) — node-based procedural generation.
+		  
+		  Use cases:
+		    - Scatter foliage/rocks along splines
+		    - Generate roads, rivers, paths
+		    - Populate open worlds with props
+		    - Runtime procedural level generation
+		  
+		  Core concepts:
+		    PCG Graph     — node graph defining generation logic
+		    PCG Component — attached to Actor, runs the graph
+		    Point Data    — set of 3D points with attributes (position, rotation, scale)
+		    Attribute     — custom data per point (type, density, etc.)
+		  ```
+	-
+	- ## Key PCG Nodes
+	  collapsed:: true
+		- ```
+		  Get Spline Data       — sample points along a spline
+		  Get Landscape Data    — sample landscape surface
+		  Surface Sampler       — scatter points on a surface
+		  Density Filter        — remove points by density/noise
+		  Projection            — project points onto surface
+		  Static Mesh Spawner   — spawn meshes at point positions
+		  Transform Points      — offset/rotate/scale points
+		  Difference            — subtract one point set from another
+		  Intersection          — keep only overlapping points
+		  Attribute Operation   — math on point attributes
+		  ```
+	-
+	- ## PCG from C++
+	  collapsed:: true
+		- ```cpp
+		  // Custom PCG node
+		  UCLASS()
+		  class UPCGMyCustomNode : public UPCGSettings
+		  {
+		      GENERATED_BODY()
+		  
+		      UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		      float Radius = 100.f;
+		  
+		  #if WITH_EDITOR
+		      virtual FName GetDefaultNodeName() const override
+		      { return FName("MyCustomNode"); }
+		  #endif
+		  
+		      virtual TArray<FPCGPinProperties> InputPinProperties() const override;
+		      virtual TArray<FPCGPinProperties> OutputPinProperties() const override;
+		      virtual FPCGElementPtr CreateElement() const override;
+		  };
+		  ```
+- # Mass Entity System (ECS)
+  collapsed:: true
+	- ## Overview
+	  collapsed:: true
+		- ```
+		  Mass Entity is UE5's data-oriented ECS framework.
+		  Used for: large crowds, flocks, traffic, thousands of AI agents.
+		  
+		  Core concepts:
+		    Entity          — lightweight ID (no components directly)
+		    Fragment        — data struct (like ECS component)
+		    Tag             — zero-size marker fragment
+		    Archetype       — unique combination of fragments
+		    Processor       — system that queries and processes entities
+		    EntityManager   — owns all entities and archetypes
+		  
+		  Plugins needed:
+		    MassEntity, MassGameplay, MassAI, MassSpawner, ZoneGraph
+		  ```
+	-
+	- ## Fragments & Processors
+	  collapsed:: true
+		- ```cpp
+		  // Define a Fragment (pure data)
+		  USTRUCT()
+		  struct FMassVelocityFragment : public FMassFragment
+		  {
+		      GENERATED_BODY()
+		      FVector Value = FVector::ZeroVector;
+		  };
+		  
+		  // Define a Processor (system)
+		  UCLASS()
+		  class UMassMovementProcessor : public UMassProcessor
+		  {
+		      GENERATED_BODY()
+		  public:
+		      UMassMovementProcessor();
+		  
+		      virtual void ConfigureQueries() override
+		      {
+		          // Query entities that have both Transform and Velocity
+		          EntityQuery.AddRequirement<FTransformFragment>(
+		              EMassFragmentAccess::ReadWrite);
+		          EntityQuery.AddRequirement<FMassVelocityFragment>(
+		              EMassFragmentAccess::ReadOnly);
+		      }
+		  
+		      virtual void Execute(FMassEntityManager& EntityManager,
+		          FMassExecutionContext& Context) override
+		      {
+		          EntityQuery.ForEachEntityChunk(EntityManager, Context,
+		              [](FMassExecutionContext& Ctx)
+		          {
+		              auto Transforms = Ctx.GetMutableFragmentView<FTransformFragment>();
+		              auto Velocities = Ctx.GetFragmentView<FMassVelocityFragment>();
+		              float DeltaTime = Ctx.GetDeltaTimeSeconds();
+		  
+		              for (int32 i = 0; i < Ctx.GetNumEntities(); i++)
+		              {
+		                  Transforms[i].GetMutableTransform().AddToTranslation(
+		                      Velocities[i].Value * DeltaTime);
+		              }
+		          });
+		      }
+		  };
+		  ```
+	-
+	- ## Mass + Smart Objects + ZoneGraph
+	  collapsed:: true
+		- ```
+		  ZoneGraph:
+		    - Defines lanes/paths for Mass agents to follow
+		    - Replaces NavMesh for large-scale crowd movement
+		    - Zones: roads, sidewalks, corridors
+		  
+		  Smart Objects:
+		    - Interactable world objects (bench, vending machine, door)
+		    - Mass agents claim and interact with Smart Objects
+		    - Handles concurrent access (only N agents at once)
+		  
+		  MassSpawner:
+		    - Spawns thousands of entities efficiently
+		    - Configures entity templates (fragment sets)
+		    - Integrates with World Partition for streaming
+		  ```
+- # Advanced C++ Patterns
+  collapsed:: true
+	- ## Subsystems
+	  collapsed:: true
+		- ```cpp
+		  // Subsystems are auto-instanced singletons tied to a lifetime scope
+		  // Cleaner alternative to GameInstance variables or static singletons
+		  
+		  // Types:
+		  //   UGameInstanceSubsystem  — lives as long as GameInstance
+		  //   UWorldSubsystem         — lives as long as World
+		  //   ULocalPlayerSubsystem   — per local player
+		  //   UEngineSubsystem        — lives as long as engine
+		  
+		  UCLASS()
+		  class UInventorySubsystem : public UGameInstanceSubsystem
+		  {
+		      GENERATED_BODY()
+		  public:
+		      virtual void Initialize(FSubsystemCollectionBase& Collection) override;
+		      virtual void Deinitialize() override;
+		  
+		      void AddItem(FName ItemID, int32 Count);
+		      int32 GetItemCount(FName ItemID) const;
+		  
+		  private:
+		      TMap<FName, int32> Inventory;
+		  };
+		  
+		  // Access from anywhere:
+		  UInventorySubsystem* Inv = GetGameInstance()
+		      ->GetSubsystem<UInventorySubsystem>();
+		  Inv->AddItem("Sword", 1);
+		  ```
+	-
+	- ## Object Pooling in UE
+	  collapsed:: true
+		- ```cpp
+		  // UE-style object pool using TArray
+		  UCLASS()
+		  class UBulletPoolSubsystem : public UWorldSubsystem
+		  {
+		      GENERATED_BODY()
+		  
+		      TArray<ABullet*> Pool;
+		  
+		  public:
+		      ABullet* Acquire(FVector Location, FRotator Rotation)
+		      {
+		          ABullet* Bullet = nullptr;
+		          if (Pool.Num() > 0)
+		          {
+		              Bullet = Pool.Pop();
+		              Bullet->SetActorLocationAndRotation(Location, Rotation);
+		              Bullet->SetActorHiddenInGame(false);
+		              Bullet->SetActorEnableCollision(true);
+		          }
+		          else
+		          {
+		              FActorSpawnParameters Params;
+		              Bullet = GetWorld()->SpawnActor<ABullet>(
+		                  ABullet::StaticClass(), Location, Rotation, Params);
+		          }
+		          return Bullet;
+		      }
+		  
+		      void Release(ABullet* Bullet)
+		      {
+		          Bullet->SetActorHiddenInGame(true);
+		          Bullet->SetActorEnableCollision(false);
+		          Pool.Add(Bullet);
+		      }
+		  };
+		  ```
+	-
+	- ## Async Tasks & Background Work
+	  collapsed:: true
+		- ```cpp
+		  // Async task on background thread
+		  AsyncTask(ENamedThreads::AnyBackgroundThreadNormalTask, [this]()
+		  {
+		      // Heavy computation here (NOT game thread)
+		      TArray<FVector> Result = ComputePathfinding();
+		  
+		      // Return to game thread
+		      AsyncTask(ENamedThreads::GameThread, [this, Result]()
+		      {
+		          ApplyPath(Result);
+		      });
+		  });
+		  
+		  // UE Task Graph (UE5.1+)
+		  UE::Tasks::Launch(TEXT("MyTask"),
+		      [this]()
+		      {
+		          DoHeavyWork();
+		      },
+		      UE::Tasks::ETaskPriority::BackgroundNormal);
+		  
+		  // Async loading assets
+		  FStreamableManager& Streamable = UAssetManager::GetStreamableManager();
+		  Streamable.RequestAsyncLoad(SoftObjectPath,
+		      FStreamableDelegate::CreateUObject(this, &AMyActor::OnAssetLoaded));
+		  ```
+	-
+	- ## Soft References & Asset Manager
+	  collapsed:: true
+		- ```cpp
+		  // Hard reference — always loaded (avoid for large assets)
+		  UPROPERTY(EditDefaultsOnly)
+		  UTexture2D* HardRef;  // loaded when class loads
+		  
+		  // Soft reference — path only, load on demand
+		  UPROPERTY(EditDefaultsOnly)
+		  TSoftObjectPtr<UTexture2D> SoftRef;
+		  
+		  UPROPERTY(EditDefaultsOnly)
+		  TSoftClassPtr<AEnemy> EnemyClass;
+		  
+		  // Load synchronously (blocks — use sparingly)
+		  UTexture2D* Tex = SoftRef.LoadSynchronous();
+		  
+		  // Load asynchronously (preferred)
+		  FStreamableManager& SM = UAssetManager::GetStreamableManager();
+		  SM.RequestAsyncLoad(SoftRef.ToSoftObjectPath(),
+		      [this]() { OnTextureLoaded(); });
+		  
+		  // Spawn from soft class
+		  TSubclassOf<AEnemy> LoadedClass = EnemyClass.LoadSynchronous();
+		  GetWorld()->SpawnActor<AEnemy>(LoadedClass, SpawnTransform);
+		  ```
+- # Save System
+  collapsed:: true
+	- ## SaveGame Class
+	  collapsed:: true
+		- ```cpp
+		  // 1. Create SaveGame class
+		  UCLASS()
+		  class UMySaveGame : public USaveGame
+		  {
+		      GENERATED_BODY()
+		  public:
+		      UPROPERTY()
+		      FString PlayerName;
+		  
+		      UPROPERTY()
+		      int32 Level = 1;
+		  
+		      UPROPERTY()
+		      float Health = 100.f;
+		  
+		      UPROPERTY()
+		      FVector LastPosition;
+		  
+		      UPROPERTY()
+		      TArray<FName> UnlockedAbilities;
+		  };
+		  
+		  // 2. Save
+		  UMySaveGame* SaveData = Cast<UMySaveGame>(
+		      UGameplayStatics::CreateSaveGameObject(UMySaveGame::StaticClass()));
+		  SaveData->PlayerName = "VR";
+		  SaveData->Level = 5;
+		  UGameplayStatics::SaveGameToSlot(SaveData, TEXT("Slot1"), 0);
+		  
+		  // 3. Load
+		  UMySaveGame* Loaded = Cast<UMySaveGame>(
+		      UGameplayStatics::LoadGameFromSlot(TEXT("Slot1"), 0));
+		  if (Loaded)
+		  {
+		      PlayerLevel = Loaded->Level;
+		  }
+		  
+		  // 4. Delete
+		  UGameplayStatics::DeleteGameInSlot(TEXT("Slot1"), 0);
+		  
+		  // 5. Check exists
+		  bool bExists = UGameplayStatics::DoesSaveGameExist(TEXT("Slot1"), 0);
+		  ```
+	-
+	- ## Async Save/Load
+	  collapsed:: true
+		- ```cpp
+		  // Async save (non-blocking)
+		  UGameplayStatics::AsyncSaveGameToSlot(SaveData, TEXT("Slot1"), 0,
+		      FAsyncSaveGameToSlotDelegate::CreateUObject(
+		          this, &AMyGameMode::OnSaveComplete));
+		  
+		  void AMyGameMode::OnSaveComplete(const FString& SlotName,
+		      int32 UserIndex, bool bSuccess)
+		  {
+		      UE_LOG(LogTemp, Log, TEXT("Save %s: %s"),
+		          *SlotName, bSuccess ? TEXT("OK") : TEXT("FAILED"));
+		  }
+		  
+		  // Async load
+		  UGameplayStatics::AsyncLoadGameFromSlot(TEXT("Slot1"), 0,
+		      FAsyncLoadGameFromSlotDelegate::CreateUObject(
+		          this, &AMyGameMode::OnLoadComplete));
+		  ```
+- # Performance Profiling & Optimization
+  collapsed:: true
+	- ## Profiling Tools
+	  collapsed:: true
+		- ```
+		  Unreal Insights:
+		    - Full-featured profiler (CPU, GPU, memory, networking)
+		    - Launch: UnrealInsights.exe
+		    - In game: -trace=cpu,gpu,memory,log
+		    - Trace channels: CPU, GPU, Frame, Log, Bookmark, Object
+		  
+		  Stat Commands (in-game console ~):
+		    stat fps              — FPS + frame time
+		    stat unit             — Game/Draw/GPU thread times
+		    stat unitgraph        — frame time graph
+		    stat game             — game thread breakdown
+		    stat gpu              — GPU pass breakdown
+		    stat scenerendering   — draw calls, triangles
+		    stat memory           — memory usage
+		    stat streaming        — asset streaming stats
+		    stat particles        — particle system stats
+		  
+		  GPU Visualizer:
+		    Ctrl+Shift+, (comma) — open GPU frame breakdown
+		  ```
+	-
+	- ## CPU Optimization
+	  collapsed:: true
+		- ```
+		  Tick optimization:
+		    - Disable tick on actors that don't need it:
+		      PrimaryActorTick.bCanEverTick = false;
+		    - Reduce tick interval:
+		      PrimaryActorTick.TickInterval = 0.1f; // 10 times/sec
+		    - Use timers instead of Tick for infrequent logic
+		  
+		  Blueprint vs C++:
+		    - Move hot-path Blueprint logic to C++
+		    - Blueprint function calls have overhead (~10x vs C++)
+		  
+		  Collision:
+		    - Use simple collision shapes (capsule > convex > mesh)
+		    - Disable complex collision on non-interactive meshes
+		    - Use async line traces for non-critical queries
+		  
+		  AI:
+		    - Stagger AI updates (not all AI every frame)
+		    - Use Mass Entity for large crowds
+		    - Sleep distant AI (LOD AI system)
+		  ```
+	-
+	- ## GPU Optimization
+	  collapsed:: true
+		- ```
+		  Draw Calls:
+		    - Merge static meshes (HLOD, Merge Actors tool)
+		    - Use Instanced Static Mesh (ISM) for repeated objects
+		    - Use Hierarchical ISM (HISM) for foliage
+		    - Nanite eliminates LOD draw call overhead
+		  
+		  Shader complexity:
+		    - View Mode → Shader Complexity (green=cheap, red=expensive)
+		    - Reduce instruction count in hot materials
+		    - Use Material LOD (simpler material at distance)
+		  
+		  Overdraw:
+		    - View Mode → Quad Overdraw
+		    - Sort translucent objects back-to-front
+		    - Use Depth Fade for soft particle edges (cheaper than full blend)
+		  
+		  Texture:
+		    - Use texture streaming (enabled by default)
+		    - Set correct LOD Bias per texture
+		    - Use texture atlases for small UI/decal textures
+		  ```
+	-
+	- ## Memory Optimization
+	  collapsed:: true
+		- ```
+		  Asset audit:
+		    - Window → Developer Tools → Asset Audit
+		    - Find oversized textures, duplicate assets
+		  
+		  Texture compression:
+		    - Use BC7 for color, BC5 for normals, BC4 for grayscale
+		    - Set max texture size per platform
+		  
+		  Mesh:
+		    - Remove unused UV channels
+		    - Reduce vertex count on distant/small meshes
+		  
+		  Memory tracking:
+		    stat memory
+		    memreport -full  — detailed memory report to log
+		    obj list class=Texture2D — list all loaded textures
+		  ```
+- # Rendering Pipeline Internals
+  collapsed:: true
+	- ## UE Rendering Architecture
+	  collapsed:: true
+		- ```
+		  Threads:
+		    Game Thread    — gameplay logic, actor ticks, Blueprint
+		    Render Thread  — builds render commands, manages scene proxy
+		    RHI Thread     — translates to DX12/Vulkan/Metal API calls
+		    GPU            — executes draw calls
+		  
+		  Scene Proxy:
+		    - Each UPrimitiveComponent has a FPrimitiveSceneProxy on render thread
+		    - Game thread sends data via render commands (ENQUEUE_RENDER_COMMAND)
+		    - Never access UObjects from render thread directly
+		  
+		  Render passes (simplified):
+		    1. PrePass (Depth)       — early-Z for occlusion
+		    2. Base Pass             — GBuffer fill (deferred) or lit (forward)
+		    3. Lighting              — deferred lighting passes
+		    4. Lumen GI              — indirect lighting
+		    5. Reflections           — Lumen / SSR / reflection captures
+		    6. Translucency          — forward-rendered transparent objects
+		    7. Post Processing       — bloom, DOF, tone mapping, AA
+		    8. UI                    — Slate / UMG rendered last
+		  ```
+	-
+	- ## Custom Render Pass (Advanced)
+	  collapsed:: true
+		- ```cpp
+		  // Add custom pass via SceneViewExtension
+		  class FMySceneViewExtension : public FSceneViewExtensionBase
+		  {
+		  public:
+		      FMySceneViewExtension(const FAutoRegister& AutoRegister)
+		          : FSceneViewExtensionBase(AutoRegister) {}
+		  
+		      virtual void PrePostProcessPass_RenderThread(
+		          FRDGBuilder& GraphBuilder,
+		          const FSceneView& View,
+		          const FPostProcessingInputs& Inputs) override
+		      {
+		          // Add custom RDG passes here
+		          // RDG = Render Dependency Graph (UE5 render API)
+		          AddPass(GraphBuilder, RDG_EVENT_NAME("MyCustomPass"),
+		              [](FRHICommandList& RHICmdList)
+		          {
+		              // Raw RHI commands
+		          });
+		      }
+		  };
+		  
+		  // Register:
+		  TSharedRef<FMySceneViewExtension> Ext =
+		      FSceneViewExtensions::NewExtension<FMySceneViewExtension>();
+		  ```
+	-
+	- ## Global Shaders
+	  collapsed:: true
+		- ```cpp
+		  // Define a global shader (runs outside material system)
+		  class FMyComputeShader : public FGlobalShader
+		  {
+		      DECLARE_GLOBAL_SHADER(FMyComputeShader)
+		      SHADER_USE_PARAMETER_STRUCT(FMyComputeShader, FGlobalShader)
+		  
+		      BEGIN_SHADER_PARAMETER_STRUCT(FParameters, )
+		          SHADER_PARAMETER_RDG_BUFFER_UAV(RWBuffer<float4>, OutputBuffer)
+		          SHADER_PARAMETER(uint32, NumElements)
+		      END_SHADER_PARAMETER_STRUCT()
+		  
+		      static bool ShouldCompilePermutation(
+		          const FGlobalShaderPermutationParameters& Parameters)
+		      {
+		          return IsFeatureLevelSupported(Parameters.Platform, ERHIFeatureLevel::SM5);
+		      }
+		  };
+		  IMPLEMENT_GLOBAL_SHADER(FMyComputeShader,
+		      "/Project/Shaders/MyCompute.usf", "MainCS", SF_Compute);
+		  ```
+- # Engine Modules & Plugin Development
+  collapsed:: true
+	- ## Module Structure
+	  collapsed:: true
+		- ```
+		  Every UE project/plugin is made of modules.
+		  
+		  Module types:
+		    Runtime       — ships with game (gameplay code)
+		    Editor        — editor-only tools (never ships)
+		    Developer     — tools for both editor and non-editor builds
+		    ThirdParty    — external libraries
+		  
+		  Module files:
+		    MyModule/
+		      Public/           — headers exposed to other modules
+		      Private/          — implementation files
+		      MyModule.Build.cs — dependency declarations
+		      MyModule.h        — module interface
+		      MyModule.cpp      — StartupModule / ShutdownModule
+		  ```
+	-
+	- ## Build.cs
+	  collapsed:: true
+		- ```csharp
+		  public class MyModule : ModuleRules
+		  {
+		      public MyModule(ReadOnlyTargetRules Target) : base(Target)
+		      {
+		          PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+		  
+		          PublicDependencyModuleNames.AddRange(new string[] {
+		              "Core", "CoreUObject", "Engine", "InputCore"
+		          });
+		  
+		          PrivateDependencyModuleNames.AddRange(new string[] {
+		              "Slate", "SlateCore",
+		              "GameplayAbilities", "GameplayTags"
+		          });
+		  
+		          // Editor-only dependency
+		          if (Target.bBuildEditor)
+		          {
+		              PrivateDependencyModuleNames.Add("UnrealEd");
+		          }
+		  
+		          // Third-party library
+		          PublicIncludePaths.Add(Path.Combine(ModuleDirectory,
+		              "ThirdParty/MyLib/include"));
+		          PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory,
+		              "ThirdParty/MyLib/lib/MyLib.lib"));
+		      }
+		  }
+		  ```
+	-
+	- ## Editor Tools (Detail Customization)
+	  collapsed:: true
+		- ```cpp
+		  // Custom Details panel for a class
+		  class FMyActorDetails : public IDetailCustomization
+		  {
+		  public:
+		      static TSharedRef<IDetailCustomization> MakeInstance()
+		      {
+		          return MakeShareable(new FMyActorDetails);
+		      }
+		  
+		      virtual void CustomizeDetails(IDetailLayoutBuilder& DetailBuilder) override
+		      {
+		          IDetailCategoryBuilder& Category =
+		              DetailBuilder.EditCategory("MyCategory");
+		  
+		          Category.AddCustomRow(FText::FromString("My Button"))
+		          [
+		              SNew(SButton)
+		              .Text(FText::FromString("Do Something"))
+		              .OnClicked_Lambda([&DetailBuilder]()
+		              {
+		                  // Custom editor action
+		                  return FReply::Handled();
+		              })
+		          ];
+		      }
+		  };
+		  
+		  // Register in module StartupModule:
+		  FPropertyEditorModule& PropModule =
+		      FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
+		  PropModule.RegisterCustomClassLayout(
+		      AMyActor::StaticClass()->GetFName(),
+		      FOnGetDetailCustomizationInstance::CreateStatic(
+		          &FMyActorDetails::MakeInstance));
+		  ```
+- # Advanced Networking
+  collapsed:: true
+	- ## Network Roles
+	  collapsed:: true
+		- ```
+		  Every Actor has a Role and RemoteRole:
+		  
+		  ROLE_Authority     — server owns this actor (authoritative)
+		  ROLE_SimulatedProxy — client simulates movement (other players)
+		  ROLE_AutonomousProxy — client controls this actor (local player)
+		  ROLE_None          — not replicated
+		  
+		  Check in C++:
+		    HasAuthority()           — true on server
+		    IsLocallyControlled()    — true on owning client
+		    GetLocalRole()           — this machine's role
+		    GetRemoteRole()          — other machine's role
+		  
+		  Common pattern:
+		    if (HasAuthority()) { /* server logic */ }
+		    if (IsLocallyControlled()) { /* local player input */ }
+		  ```
+	-
+	- ## Prediction & Reconciliation
+	  collapsed:: true
+		- ```
+		  UCharacterMovementComponent has built-in prediction:
+		    - Client predicts movement locally
+		    - Server validates and corrects
+		    - Handles latency transparently
+		  
+		  Custom prediction (advanced):
+		    - Override PredictedMoveAbility in GAS
+		    - Use FPredictionKey to correlate client/server actions
+		    - Rollback state on misprediction
+		  
+		  Network smoothing:
+		    NetworkSmoothingMode:
+		      Disabled   — snap to server position
+		      Linear     — lerp to server position
+		      Exponential — smooth exponential correction (default)
+		  ```
+	-
+	- ## Iris Replication System (UE5.1+)
+	  collapsed:: true
+		- ```
+		  Iris is UE5's next-gen replication system (replaces legacy replication).
+		  
+		  Key improvements:
+		    - Batch replication (fewer RPCs, better bandwidth)
+		    - Prioritization per connection
+		    - Filtering (don't send irrelevant data to clients)
+		    - Delta compression
+		  
+		  Enable:
+		    Project Settings → Network → Use Iris Replication System ✓
+		  
+		  Iris ReplicationFragment (replaces GetLifetimeReplicatedProps):
+		    - Define replication state as structs
+		    - Automatic delta serialization
+		  ```
+	-
+	- ## Dedicated Server Build
+	  collapsed:: true
+		- ```
+		  Build dedicated server:
+		    UnrealBuildTool MyGame Win64 Development -Server
+		  
+		  Server-only code:
+		    #if UE_SERVER
+		        // Only compiled in server builds
+		    #endif
+		  
+		    if (IsRunningDedicatedServer()) { ... }
+		  
+		  Listen server vs Dedicated server:
+		    Listen server  — one player hosts + plays (peer hosting)
+		    Dedicated server — headless server, no local player
+		  
+		  Online Subsystem:
+		    IOnlineSubsystem* OSS = IOnlineSubsystem::Get();
+		    IOnlineSessionPtr Sessions = OSS->GetSessionInterface();
+		    // Create/find/join sessions (Steam, EOS, NULL)
+		  ```
+- # MetaHuman & Animation Advanced
+  collapsed:: true
+	- ## MetaHuman
+	  collapsed:: true
+		- ```
+		  MetaHuman Creator — web-based photorealistic human creator.
+		  
+		  Workflow:
+		  1. Create at metahuman.unrealengine.com
+		  2. Download via Quixel Bridge in UE editor
+		  3. MetaHuman comes with:
+		     - Full body skeletal mesh (LOD0-LOD3)
+		     - Face rig with 330+ blend shapes
+		     - Hair groom (Strand-based)
+		     - Clothing meshes
+		     - Animation Blueprint (face + body)
+		  
+		  Performance:
+		    LOD0 — ~80k triangles (cinematic, close-up)
+		    LOD1 — ~30k triangles (gameplay)
+		    LOD2 — ~10k triangles (background)
+		    LOD3 — ~3k triangles (crowd)
+		  ```
+	-
+	- ## Control Rig
+	  collapsed:: true
+		- ```
+		  Control Rig — procedural animation system in UE5.
+		  
+		  Use cases:
+		    - Full-body IK (FBIK)
+		    - Procedural secondary motion (tail, ears, cloth)
+		    - Custom rig controls for animators
+		    - Runtime deformation (muscle bulge, squash/stretch)
+		  
+		  Key nodes:
+		    FABRIK          — Forward And Backward Reaching IK
+		    CCDIK           — Cyclic Coordinate Descent IK
+		    Spline IK       — spine/tail along spline
+		    Look At         — bone tracks target
+		    Point At        — aim constraint
+		    Twist Corrective — fix elbow/knee twist artifacts
+		  ```
+	-
+	- ## Motion Matching (UE5.3+)
+	  collapsed:: true
+		- ```
+		  Motion Matching — data-driven animation selection.
+		  Replaces hand-crafted state machines with pose search.
+		  
+		  How it works:
+		    1. Large animation database (mocap clips)
+		    2. Each frame: search database for best matching pose
+		       based on: current pose + desired trajectory
+		    3. Blend to best match
+		  
+		  Result:
+		    - Natural transitions without explicit state machine
+		    - Handles complex locomotion (turns, starts, stops)
+		    - Used in Fortnite Chapter 4+
+		  
+		  Setup:
+		    - PoseSearch plugin (enable in plugins)
+		    - Create PoseSearchDatabase asset
+		    - Add animation clips
+		    - Use MotionMatching node in Anim Graph
+		  ```
+	-
+	- ## Sequencer (Cinematics)
+	  collapsed:: true
+		- ```
+		  Sequencer — UE's non-linear animation/cinematic editor.
+		  
+		  Track types:
+		    Actor Track       — animate any actor property
+		    Camera Cut Track  — switch between cameras
+		    Skeletal Animation — play animation clips on characters
+		    Audio Track       — sync audio to sequence
+		    Event Track       — fire Blueprint events at specific frames
+		    Fade Track        — fade in/out
+		    Level Visibility  — show/hide levels
+		  
+		  In C++:
+		  ```
+		- ```cpp
+		  // Play sequence from C++
+		  #include "LevelSequencePlayer.h"
+		  
+		  UPROPERTY(EditDefaultsOnly)
+		  ULevelSequence* CinematicSequence;
+		  
+		  void AMyGameMode::PlayCinematic()
+		  {
+		      ALevelSequenceActor* SeqActor;
+		      ULevelSequencePlayer* Player =
+		          ULevelSequencePlayer::CreateLevelSequencePlayer(
+		              GetWorld(), CinematicSequence,
+		              FMovieSceneSequencePlaybackSettings(), SeqActor);
+		      Player->Play();
+		  }
+		  ```
+- # Common Patterns & Best Practices
+  collapsed:: true
+	- ## Project Architecture
+	  collapsed:: true
+		- ```
+		  Recommended folder structure:
+		  Content/
+		    _Core/          — base classes, game mode, player controller
+		    Characters/     — player, enemies, NPCs
+		    Weapons/        — weapon actors, projectiles
+		    UI/             — widgets, HUD
+		    Environment/    — meshes, materials, landscapes
+		    VFX/            — Niagara systems, materials
+		    Audio/          — sound waves, cues, MetaSounds
+		    Blueprints/     — gameplay blueprints
+		    Maps/           — levels
+		  
+		  Naming conventions (Epic standard):
+		    BP_   — Blueprint class (BP_PlayerCharacter)
+		    SM_   — Static Mesh (SM_Rock_01)
+		    SK_   — Skeletal Mesh (SK_Mannequin)
+		    ABP_  — Animation Blueprint (ABP_Character)
+		    M_    — Material (M_Rock_Mossy)
+		    MI_   — Material Instance (MI_Rock_Mossy_Wet)
+		    T_    — Texture (T_Rock_D, T_Rock_N)
+		    NS_   — Niagara System (NS_Explosion)
+		    WBP_  — Widget Blueprint (WBP_HUD)
+		    DA_   — Data Asset (DA_WeaponStats)
+		  ```
+	-
+	- ## Data Assets
+	  collapsed:: true
+		- ```cpp
+		  // Data Asset — config/data container (no gameplay logic)
+		  // Better than Blueprint defaults for data-heavy configs
+		  
+		  UCLASS(BlueprintType)
+		  class UWeaponDataAsset : public UPrimaryDataAsset
+		  {
+		      GENERATED_BODY()
+		  public:
+		      UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		      FText WeaponName;
+		  
+		      UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		      float Damage = 25.f;
+		  
+		      UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		      float FireRate = 0.1f;
+		  
+		      UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		      int32 MagazineSize = 30;
+		  
+		      UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		      TSoftObjectPtr<USkeletalMesh> WeaponMesh;
+		  
+		      UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		      TSoftObjectPtr<USoundBase> FireSound;
+		  
+		      // Required for Asset Manager
+		      virtual FPrimaryAssetId GetPrimaryAssetId() const override
+		      {
+		          return FPrimaryAssetId("WeaponData", GetFName());
+		      }
+		  };
+		  ```
+	-
+	- ## Interface Pattern
+	  collapsed:: true
+		- ```cpp
+		  // UE Interface — cleaner than Cast for interaction
+		  UINTERFACE(MinimalAPI, BlueprintType)
+		  class UInteractable : public UInterface
+		  {
+		      GENERATED_BODY()
+		  };
+		  
+		  class IInteractable
+		  {
+		      GENERATED_BODY()
+		  public:
+		      UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+		      void Interact(APlayerCharacter* Interactor);
+		  
+		      UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+		      FText GetInteractPrompt();
+		  };
+		  
+		  // Implement on any Actor:
+		  class AChest : public AActor, public IInteractable
+		  {
+		      void Interact_Implementation(APlayerCharacter* Interactor) override
+		      {
+		          OpenChest();
+		      }
+		  };
+		  
+		  // Call without knowing exact type:
+		  if (HitActor->Implements<UInteractable>())
+		  {
+		      IInteractable::Execute_Interact(HitActor, PlayerCharacter);
+		  }
+		  ```
+	-
+	- ## Debug Helpers
+	  collapsed:: true
+		- ```cpp
+		  // Draw debug shapes (editor + PIE only in shipping builds)
+		  #include "DrawDebugHelpers.h"
+		  
+		  DrawDebugLine(World, Start, End, FColor::Red, false, 2.f, 0, 2.f);
+		  DrawDebugSphere(World, Center, Radius, 12, FColor::Green, false, 2.f);
+		  DrawDebugBox(World, Center, Extent, FColor::Blue, false, 2.f);
+		  DrawDebugCapsule(World, Center, HalfHeight, Radius,
+		      FQuat::Identity, FColor::Yellow, false, 2.f);
+		  DrawDebugString(World, Location, TEXT("Hello"), nullptr,
+		      FColor::White, 2.f);
+		  DrawDebugDirectionalArrow(World, Start, End, 50.f,
+		      FColor::Cyan, false, 2.f);
+		  
+		  // Conditional debug (only in non-shipping)
+		  #if !UE_BUILD_SHIPPING
+		      DrawDebugSphere(GetWorld(), GetActorLocation(), 50.f, 8,
+		          FColor::Red, false, -1.f);
+		  #endif
+		  ```
+- # Packaging & Shipping
+  collapsed:: true
+	- ## Build Configurations
+	  collapsed:: true
+		- ```
+		  Debug          — full debug info, no optimization. Slow.
+		  DebugGame      — engine optimized, game code debug. Good for gameplay debugging.
+		  Development    — optimized, some debug info. Default for development.
+		  Shipping       — fully optimized, no debug. For release builds.
+		  Test           — like Shipping but with some profiling enabled.
+		  
+		  Build targets:
+		    Editor        — runs in UE editor
+		    Game          — standalone game
+		    Server        — dedicated server (no rendering)
+		    Client        — client-only (no server code)
+		  ```
+	-
+	- ## Packaging
+	  collapsed:: true
+		- ```
+		  Package project:
+		    Platforms → Windows → Package Project
+		    or: File → Package Project → [Platform]
+		  
+		  Key settings (Project Settings → Packaging):
+		    Build Configuration  → Shipping (for release)
+		    Cook only maps       → list maps to include
+		    Compress content     → smaller package size
+		    Use Pak File         → bundle assets into .pak
+		    Encrypt Pak          → protect assets
+		  
+		  Command line packaging:
+		    RunUAT.bat BuildCookRun
+		      -project="MyGame.uproject"
+		      -platform=Win64
+		      -configuration=Shipping
+		      -cook -build -stage -pak -archive
+		      -archivedirectory="D:/Build"
+		  ```
+	-
+	- ## Platform-Specific
+	  collapsed:: true
+		- ```
+		  Console (PS5/Xbox):
+		    - Requires platform SDK + dev kit
+		    - NDA with Sony/Microsoft required
+		    - Epic provides platform-specific plugins
+		  
+		  Mobile (iOS/Android):
+		    - Android: requires Android Studio + NDK
+		    - iOS: requires Mac + Xcode + Apple Developer account
+		    - Use Mobile Preview in editor for quick testing
+		    - Reduce texture sizes, disable Lumen/Nanite for mobile
+		    - Use Forward Rendering for mobile (better performance)
+		  
+		  VR/XR:
+		    - Enable XR plugin (OpenXR, Oculus, SteamVR)
+		    - Use VR Preview in editor
+		    - Target 90Hz (11ms frame budget)
+		    - Use Instanced Stereo Rendering
+		    - Disable expensive post-process (DOF, motion blur)
+		  ```
+- # Testing & Automation
+  collapsed:: true
+	- ## Automation Testing
+	  collapsed:: true
+		- ```cpp
+		  // Unit test with UE Automation Framework
+		  #include "Misc/AutomationTest.h"
+		  
+		  IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMyMathTest,
+		      "MyGame.Math.VectorNormalize",
+		      EAutomationTestFlags::ApplicationContextMask |
+		      EAutomationTestFlags::ProductFilter)
+		  
+		  bool FMyMathTest::RunTest(const FString& Parameters)
+		  {
+		      FVector v(3.f, 4.f, 0.f);
+		      FVector normalized = v.GetSafeNormal();
+		  
+		      TestEqual("Length should be 1", normalized.Size(), 1.f, 0.001f);
+		      TestTrue("X should be 0.6", FMath::IsNearlyEqual(normalized.X, 0.6f));
+		      TestTrue("Y should be 0.8", FMath::IsNearlyEqual(normalized.Y, 0.8f));
+		  
+		      return true;
+		  }
+		  
+		  // Run tests:
+		  // Session Frontend → Automation tab
+		  // or: -ExecCmds="Automation RunTests MyGame"
+		  ```
+	-
+	- ## Functional Tests
+	  collapsed:: true
+		- ```
+		  Functional Test Actor — place in level, runs gameplay tests.
+		  
+		  1. Place AFunctionalTest actor in test level
+		  2. Override StartTest() in Blueprint or C++
+		  3. Use AssertEqual, AssertTrue, FinishTest(Success/Failed)
+		  
+		  Good for:
+		    - Testing gameplay mechanics in context
+		    - Regression testing level setups
+		    - CI/CD integration
+		  ```
+	-
+	- ## Gauntlet (CI Testing)
+	  collapsed:: true
+		- ```
+		  Gauntlet — UE's automated test framework for CI/CD.
+		  
+		  Runs tests on:
+		    - Multiple platforms simultaneously
+		    - Dedicated server + client configurations
+		    - Performance benchmarks
+		  
+		  Integration:
+		    RunUAT.bat RunUnreal
+		      -project=MyGame.uproject
+		      -platform=Win64
+		      -configuration=Development
+		      -test=MyGame.FunctionalTests
+		  ```
