@@ -342,7 +342,6 @@ displayTitle: Blender
 		- **Radius/Size** — larger = softer shadows (Area light).
 		- **Shadow** — enable/disable per light.
 		- **Light Linking** (Blender 4+) — control which objects a light affects.
-
 - # Rendering — Cycles vs EEVEE
   collapsed:: true
 	- ## Cycles (Path Tracer)
@@ -391,7 +390,6 @@ displayTitle: Blender
 		- Output Path: Output Properties → Output → set folder path.
 		- File Format: PNG (single frame), FFmpeg Video (animation), OpenEXR (compositing).
 		- Render image: F12. Render animation: Ctrl + F12.
-
 - # Rigging & Armatures
   collapsed:: true
 	- ## What is Rigging?
@@ -432,7 +430,6 @@ displayTitle: Blender
 		- **Basis** = rest shape. Add new keys and sculpt/edit them.
 		- Animate the Value (0–1) to blend between shapes.
 		- Used for: lip sync, blink, smile, corrective shapes on joints.
-
 - # Animation
   collapsed:: true
 	- ## Keyframe Basics
@@ -487,7 +484,6 @@ displayTitle: Blender
 		  Solid Drawing           3D form and weight in poses
 		  Appeal                  Charisma and clarity in character design
 		  ```
-
 - # Geometry Nodes
   collapsed:: true
 	- ## What Are Geometry Nodes?
@@ -526,8 +522,6 @@ displayTitle: Blender
 		- Geometry Nodes uses a **field** system — values computed per-element (per vertex, per face, etc.).
 		- Allows per-point variation without loops.
 		- Example: `Random Value` node outputs a different random number per instance.
-
-
 - # Simulations
   collapsed:: true
 	- ## Physics Systems Overview
@@ -565,8 +559,6 @@ displayTitle: Blender
 		- **Hair**: static strands for fur, grass, hair.
 		- Use **Particle Edit Mode** to comb/cut/style hair particles.
 		- **Children**: generate child particles from parents for dense fur.
-
-
 - # Compositing
   collapsed:: true
 	- ## What is Compositing?
@@ -606,8 +598,6 @@ displayTitle: Blender
 		  Cryptomatte         Isolate objects by ID for masking
 		  Denoise             Intel OIDN denoising in compositor
 		  ```
-
-
 - # Python Scripting
   collapsed:: true
 	- ## Blender Python API
@@ -679,8 +669,6 @@ displayTitle: Blender
 		- Hover over any UI element → right-click → **Copy Python Command** to get the operator call.
 		- Enable **Python Tooltips** in Preferences → Interface for inline API hints.
 		- Use the **Info Editor** to see all operator calls as you work — great for learning the API.
-
-
 - # Import & Export
   collapsed:: true
 	- ## Supported Formats
@@ -708,8 +696,6 @@ displayTitle: Blender
 		- Mark any object/material/node group as an asset: right-click → Mark as Asset.
 		- Browse assets in the Asset Browser editor.
 		- Set library paths in Preferences → File Paths → Asset Libraries.
-
-
 - # Performance & Optimization
   collapsed:: true
 	- ## Viewport Performance
@@ -736,8 +722,6 @@ displayTitle: Blender
 		- Purge unused data: File → Clean Up → Purge Unused Data.
 		- Use **Linked Libraries** instead of appending for large shared assets.
 		- Compress .blend files: File → Save → check Compress File.
-
-
 - # Essential Shortcuts Reference
   collapsed:: true
 	- ## Universal
@@ -785,8 +769,6 @@ displayTitle: Blender
 		  Subdivide                   Right-click → Subdivide
 		  Separate                    P
 		  ```
-
-
 - # Useful Add-ons
   collapsed:: true
 	- ## Built-in Add-ons (enable in Preferences → Add-ons)
@@ -813,8 +795,6 @@ displayTitle: Blender
 		  Retopoflow          Retopology tools
 		  Speedflow           Fast modeling operations
 		  ```
-
-
 - # More Learn
 	- ## Github & Webs
 		- Official Site: https://www.blender.org
