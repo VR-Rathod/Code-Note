@@ -141,9 +141,8 @@ function highlight(searchTerm: string, text: string, trim?: boolean) {
     })
     .join(" ")
 
-  return `${startIndex === 0 ? "" : "..."}${slice}${
-    endIndex === tokenizedText.length - 1 ? "" : "..."
-  }`
+  return `${startIndex === 0 ? "" : "..."}${slice}${endIndex === tokenizedText.length - 1 ? "" : "..."
+    }`
 }
 
 function highlightHTML(searchTerm: string, el: HTMLElement) {
@@ -566,16 +565,16 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
     }
 
     // lazy init: only fetch contentIndex when search is first opened
-    searchButton.addEventListener("click", () => initSearch(true), { once: true })
+    const clickHandler = () => initSearch(true)
+    searchButton.addEventListener("click", clickHandler, { once: true })
+    window.addCleanup(() => searchButton.removeEventListener("click", clickHandler))
     // also support keyboard shortcut (Ctrl/Cmd+K)
-    document.addEventListener(
-      "keydown",
-      (ev) => {
-        if (ev.key === "k" && (ev.ctrlKey || ev.metaKey) && !ev.shiftKey) {
-          initSearch(true)
-        }
-      },
-      { once: true },
-    )
+    const keydownHandler = (ev: KeyboardEvent) => {
+      if (ev.key === "k" && (ev.ctrlKey || ev.metaKey) && !ev.shiftKey) {
+        initSearch(true)
+      }
+    }
+    document.addEventListener("keydown", keydownHandler)
+    window.addCleanup(() => document.removeEventListener("keydown", keydownHandler))
   }
 })
