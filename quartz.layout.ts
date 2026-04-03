@@ -8,6 +8,9 @@ export const sharedPageComponents: SharedLayout = {
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/VR-Rathod/Code-Note",
+      Instagram: "https://www.instagram.com/_vebhavvv_",
+      Sketchfab: "https://sketchfab.com/VR-Bro",
+      Artstation: "https://www.artstation.com/vbro"
     },
   }),
 }

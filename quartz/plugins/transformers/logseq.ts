@@ -1,14 +1,14 @@
 import { QuartzTransformerPlugin } from "../types"
 import { PluggableList } from "unified"
 import { visit, SKIP } from "unist-util-visit"
-import { Root, List, ListItem, Paragraph, Text, Heading, Code, BlockContent } from "mdast"
+import { Root, List, ListItem, Paragraph, Text, Heading, Code, Table, BlockContent } from "mdast"
 import { BuildVisitor } from "unist-util-visit"
 
 /**
  * Cleans up Logseq-flavored markdown for Quartz rendering:
  * - Removes empty bullet points (bare `- ` lines)
  * - Removes Logseq block property lines (e.g. `id:: ...`, `collapsed:: true`)
- * - Unwraps list items that contain headings or code blocks into proper block elements
+ * - Unwraps list items that contain headings, code blocks, or tables into proper block elements
  */
 export const LogseqFlavoredMarkdown: QuartzTransformerPlugin = () => {
   return {
@@ -40,7 +40,7 @@ export const LogseqFlavoredMarkdown: QuartzTransformerPlugin = () => {
               .map((c) => (c.type === "text" ? (c as Text).value : ""))
               .join("")
             if (/^\s*\S+::\s*\S*/.test(text)) {
-              ;(parent.children as Root["children"]).splice(index, 1)
+              ; (parent.children as Root["children"]).splice(index, 1)
               return [SKIP, index]
             }
           }) as BuildVisitor<Root, "paragraph">)
@@ -72,6 +72,8 @@ export const LogseqFlavoredMarkdown: QuartzTransformerPlugin = () => {
                     hoistable.push(child as Heading)
                   } else if (child.type === "code") {
                     hoistable.push(child as Code)
+                  } else if (child.type === "table") {
+                    hoistable.push(child as Table)
                   } else if (child.type === "list") {
                     nestedLists.push(child as List)
                   } else {
@@ -151,7 +153,7 @@ export const LogseqFlavoredMarkdown: QuartzTransformerPlugin = () => {
             })
 
             if (node.children.length === 0 && parent && index !== undefined) {
-              ;(parent.children as Root["children"]).splice(index, 1)
+              ; (parent.children as Root["children"]).splice(index, 1)
             }
           }) as BuildVisitor<Root, "list">)
         },
