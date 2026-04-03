@@ -1,4 +1,6 @@
 ---
+author: Vaibhav Rathod
+authorUrl: https://google.com
 seoTitle: AA Tree Explained – Self-Balancing BST with C++ Implementation
 description: "AA Tree is a simplified variant of Red-Black Tree. Learn skew, split, insertion, deletion, and search with C++ code examples and complexity analysis."
 keywords: "AA tree, balanced BST, self-balancing tree, skew, split, C++, data structures, algorithms, binary search tree, tree rotation"
