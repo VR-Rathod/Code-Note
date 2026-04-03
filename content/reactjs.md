@@ -2,6 +2,8 @@
 seoTitle: React.js Reference – Components, Hooks, and State Management Guide
 description: "React reference covering functional components, hooks, context, Redux, React Router, performance optimization, React 18 features, and testing with React."
 keywords: "reactjs, React, React.js, components, hooks, useState, useEffect, context, Redux, React Router, React 18, React Testing Library"
+author: Nirmit Kotadiya
+authorUrl: https://github.com/nirmitkotadiya
 ---
 
 - # 📜 **History**
