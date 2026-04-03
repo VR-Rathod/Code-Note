@@ -8,6 +8,96 @@ displayTitle: Free Assets & Resources
 - # What is This Page?
 	- The biggest curated collection of 100% free, open-source, and lifetime-free resources for developers, designers, and creators. Every single resource here is completely free forever or open-source. No trials, no credit cards, no paywalls, no "free tier with paid upgrade" traps.
 -
+- # Fonts
+  collapsed:: true
+	- ## Free Font Libraries
+	  collapsed:: true
+		- [Google Fonts](https://fonts.google.com/) — 1,500+ free, open-source fonts. Direct CSS import. Most used font service on the web.
+		- [Font Squirrel](https://www.fontsquirrel.com/) — Free fonts licensed for commercial use. High quality, hand-selected.
+		- [Fontshare](https://www.fontshare.com/) — Free, high-quality fonts from Indian Type Foundry. Commercial use allowed.
+		- [DaFont](https://www.dafont.com/) — Thousands of free fonts. Check license per font.
+		- [1001 Fonts](https://www.1001fonts.com/) — Large collection of free fonts. Filter by commercial-use license.
+		- [Bunny Fonts](https://fonts.bunny.net/) — Privacy-friendly Google Fonts alternative. Same fonts, GDPR compliant. Free.
+		- [Uncut.wtf](https://uncut.wtf/) — Free, open-source typefaces. Curated selection of modern fonts.
+		- [The League of Moveable Type](https://www.theleagueofmoveabletype.com/) — Open-source, high-quality fonts. Free for all use.
+		- [Open Foundry](https://open-foundry.com/) — Curated open-source fonts. Free for personal and commercial use.
+		- [Velvetyne Type Foundry](https://velvetyne.fr/) — Free, open-source fonts. SIL Open Font License.
+		- [Fontesk](https://fontesk.com/) — Free fonts for commercial use. Curated collection.
+		- [Befonts](https://befonts.com/) — Free fonts for designers. Commercial use available on many.
+	-
+	- ## Monospace / Coding Fonts
+	  collapsed:: true
+		- [JetBrains Mono](https://www.jetbrains.com/lp/mono/) — Free, open-source monospace font designed for code. Ligatures included.
+		- [Fira Code](https://github.com/tonsky/FiraCode) — Free monospace font with programming ligatures. Open-source.
+		- [Cascadia Code – Microsoft](https://github.com/microsoft/cascadia-code) — Free monospace font by Microsoft. Used in Windows Terminal. Open-source.
+		- [Hack](https://sourcefoundry.org/hack/) — Free, open-source monospace font designed for source code.
+		- [Iosevka](https://typeof.net/Iosevka/) — Slender, open-source monospace font. Highly customizable. Free.
+		- [Nerd Fonts](https://www.nerdfonts.com/) — Patched fonts with icons for terminal use. Free and open-source.
+		- [Commit Mono](https://commitmono.com/) — Free, open-source neutral programming font. SIL Open Font License.
+		- [Monaspace – GitHub](https://monaspace.githubnext.com/) — Free font superfamily for code by GitHub Next. Open-source.
+-
+- # Icons & SVGs
+  collapsed:: true
+	- [Heroicons](https://heroicons.com/) — Beautiful, free SVG icons by the Tailwind CSS team. MIT license.
+	- [Lucide Icons](https://lucide.dev/) — Open-source icon library. Fork of Feather Icons. MIT license. 1,400+ icons.
+	- [Feather Icons](https://feathericons.com/) — Simply beautiful open-source icons. MIT license.
+	- [Phosphor Icons](https://phosphoricons.com/) — Flexible icon family. 9,000+ icons. MIT license. Multiple weights.
+	- [Tabler Icons](https://tabler.io/icons) — 5,000+ free, open-source SVG icons. MIT license.
+	- [Bootstrap Icons](https://icons.getbootstrap.com/) — 2,000+ free, open-source icons from Bootstrap. MIT license.
+	- [Material Icons – Google](https://fonts.google.com/icons) — 2,500+ free Material Design icons by Google. Apache 2.0 license.
+	- [Font Awesome Free](https://fontawesome.com/) — 2,000+ free icons. Free version is open-source (CC BY 4.0 + MIT).
+	- [Remix Icon](https://remixicon.com/) — 2,800+ open-source neutral-style icons. Apache 2.0 license.
+	- [Iconoir](https://iconoir.com/) — 1,500+ free SVG icons. MIT license. Clean, minimal style.
+	- [Simple Icons](https://simpleicons.org/) — Free SVG icons for 3,000+ popular brands. CC0 license.
+	- [Devicons](https://devicon.dev/) — Icons for programming languages, frameworks, and tools. MIT license.
+	- [SVG Repo](https://www.svgrepo.com/) — 500,000+ free SVG icons and vectors. Check license per icon.
+	- [Flaticon Free Section](https://www.flaticon.com/free-icons) — Free icons with attribution (CC BY).
+	- [The Noun Project Free](https://thenounproject.com/icons/) — Free icons with attribution (CC BY).
+	- [Lordicon Free](https://lordicon.com/free-icons) — Free animated Lottie icons. No account needed.
+	- [Icones](https://icones.js.org/) — Browse and search 150,000+ open-source icons from all major icon sets. Free.
+	- [Iconify](https://iconify.design/) — Unified icon framework. 200,000+ open-source icons. Free.
+	- [Flowbite Icons](https://flowbite.com/icons/) — Free, open-source SVG icons. MIT license.
+	- [Solar Icons](https://www.figma.com/community/file/1166831539721848736) — Free icon set. 7,000+ icons. MIT license.
+-
+- # Stock Images & Videos
+  collapsed:: true
+	- ## Free Stock Photos
+	  collapsed:: true
+		- [Unsplash](https://unsplash.com/) — 3M+ free high-resolution photos. Free for commercial use, no attribution required.
+		- [Pexels](https://www.pexels.com/) — Free stock photos and videos. CC0 license. No attribution required.
+		- [Pixabay](https://pixabay.com/) — 4M+ free images, videos, and music. Free for commercial use.
+		- [StockSnap.io](https://stocksnap.io/) — Hundreds of free high-res photos added weekly. CC0 license.
+		- [Burst by Shopify](https://www.shopify.com/stock-photos) — Free stock photos for entrepreneurs. CC0 license.
+		- [Reshot](https://www.reshot.com/) — Free handpicked stock photos and icons. Free for commercial use.
+		- [Life of Pix](https://www.lifeofpix.com/) — Free high-resolution photos. CC0 license.
+		- [Gratisography](https://gratisography.com/) — Quirky, creative free photos. Free for personal and commercial use.
+		- [Kaboompics](https://kaboompics.com/) — Free lifestyle and fashion photos. Free, no attribution required.
+		- [ISO Republic](https://isorepublic.com/) — Free high-resolution photos and videos. CC0 license.
+		- [Negative Space](https://negativespace.co/) — Free stock photos. CC0 license.
+		- [Picjumbo](https://picjumbo.com/) — Free stock photos. Free for personal and commercial use.
+		- [Foodiesfeed](https://www.foodiesfeed.com/) — Free food photography. CC0 license.
+	-
+	- ## Free Stock Videos
+	  collapsed:: true
+		- [Pexels Videos](https://www.pexels.com/videos/) — Free stock videos. CC0 license. No attribution required.
+		- [Pixabay Videos](https://pixabay.com/videos/) — Free stock footage. Free for commercial use.
+		- [Coverr](https://coverr.co/) — Free website background videos. CC0 license.
+		- [Mixkit Videos](https://mixkit.co/free-stock-video/) — Free stock videos. Free for commercial use.
+		- [Life of Vids](https://www.lifeofvids.com/) — Free videos and loops. CC0 license.
+		- [Videezy](https://www.videezy.com/) — Free HD and 4K stock footage. Free with attribution.
+	-
+	- ## Free Illustrations & Vector Art
+	  collapsed:: true
+		- [unDraw](https://undraw.co/) — Open-source SVG illustrations. Customizable color. MIT license. Free forever.
+		- [Storyset](https://storyset.com/) — Free customizable illustrations. Free with attribution.
+		- [Humaaans](https://www.humaaans.com/) — Mix-and-match illustration library of people. CC BY 4.0.
+		- [Open Doodles](https://www.opendoodles.com/) — Free sketchy illustrations. CC0 license.
+		- [Illustrations.co](https://illlustrations.co/) — 100+ free open-source illustrations. MIT license.
+		- [DrawKit Free](https://www.drawkit.com/free) — Free hand-drawn illustrations. MIT license.
+		- [Skribbl Illustrations](https://weareskribbl.com/) — Free hand-drawn illustrations. CC0 license.
+		- [Absurd Design](https://absurd.design/) — Free surreal illustrations. CC BY 4.0.
+		- [Blush Design Free](https://blush.design/) — Free illustrations from global artists.
+-
 - # Learning & Courses
   collapsed:: true
 	- ## Full Curriculum Platforms
@@ -42,6 +132,7 @@ displayTitle: Free Assets & Resources
 		- [Free Engineering Projects](https://www.enggroom.com/) — Free engineering project ideas and resources.
 		- [GeeksforGeeks](https://www.geeksforgeeks.org/) — Free tutorials, articles, and practice problems for CS topics.
 		- [TutorialsPoint](https://www.tutorialspoint.com/) — Free tutorials for 500+ technologies and programming languages.
+-
 - # Books & Documentation
   collapsed:: true
 	- ## Free Programming Books
@@ -69,6 +160,7 @@ displayTitle: Free Assets & Resources
 		- [OverAPI – Visual Cheatsheets](https://overapi.com/) — Visual cheatsheets for HTML, CSS, JS, Python, Git, Linux, and more.
 		- [TLDR Pages](https://tldr.sh/) — Simplified, community-driven man pages. Quick command references. Open-source.
 		- [Free For Dev – GitHub](https://github.com/ripienaar/free-for-dev) — Massive list of SaaS, PaaS, and IaaS with free tiers for developers. 90k+ stars.
+-
 - # Practice & Interview Prep
   collapsed:: true
 	- [LeetCode](https://leetcode.com/) — 3,000+ algorithm problems. Free problems cover most interview needs.
@@ -87,6 +179,7 @@ displayTitle: Free Assets & Resources
 	- [NeetCode](https://neetcode.io/) — Free curated LeetCode problem lists with video explanations. Best structured prep resource.
 	- [CS Visualized](https://dev.to/lydiahallie) — Visual explanations of CS concepts. Free articles.
 	- [Big-O Cheat Sheet](https://www.bigocheatsheet.com/) — Free reference for time and space complexity of common algorithms.
+-
 - # Developer Tools & Utilities
   collapsed:: true
 	- ## Online IDEs & Coding Environments
@@ -128,6 +221,7 @@ displayTitle: Free Assets & Resources
 		- [VidBee – GitHub](https://github.com/nexmoe/VidBee) — Free, open-source video downloader. Supports multiple platforms.
 		- [yt-dlp – GitHub](https://github.com/yt-dlp/yt-dlp) — Free, open-source command-line video downloader. Supports 1,000+ sites.
 		- [Cobalt](https://cobalt.tools/) — Free, open-source web-based video/audio downloader. No ads, no tracking.
+-
 - # Hosting & Deployment (Free Forever Plans)
   collapsed:: true
 	- ## Frontend & Static Hosting
@@ -153,93 +247,7 @@ displayTitle: Free Assets & Resources
 		- [Cloudflare DNS](https://www.cloudflare.com/dns/) — Free, fast DNS with DDoS protection.
 		- [Duck DNS](https://www.duckdns.org/) — Free dynamic DNS service. Completely free.
 		- [FreeDNS – afraid.org](https://freedns.afraid.org/) — Free DNS hosting and dynamic DNS. Completely free.
-- # Fonts
-  collapsed:: true
-	- ## Free Font Libraries
-	  collapsed:: true
-		- [Google Fonts](https://fonts.google.com/) — 1,500+ free, open-source fonts. Direct CSS import. Most used font service on the web.
-		- [Font Squirrel](https://www.fontsquirrel.com/) — Free fonts licensed for commercial use. High quality, hand-selected.
-		- [Fontshare](https://www.fontshare.com/) — Free, high-quality fonts from Indian Type Foundry. Commercial use allowed.
-		- [DaFont](https://www.dafont.com/) — Thousands of free fonts. Check license per font.
-		- [1001 Fonts](https://www.1001fonts.com/) — Large collection of free fonts. Filter by commercial-use license.
-		- [Bunny Fonts](https://fonts.bunny.net/) — Privacy-friendly Google Fonts alternative. Same fonts, GDPR compliant. Free.
-		- [Uncut.wtf](https://uncut.wtf/) — Free, open-source typefaces. Curated selection of modern fonts.
-		- [The League of Moveable Type](https://www.theleagueofmoveabletype.com/) — Open-source, high-quality fonts. Free for all use.
-		- [Open Foundry](https://open-foundry.com/) — Curated open-source fonts. Free for personal and commercial use.
-		- [Velvetyne Type Foundry](https://velvetyne.fr/) — Free, open-source fonts. SIL Open Font License.
-		- [Fontesk](https://fontesk.com/) — Free fonts for commercial use. Curated collection.
-		- [Befonts](https://befonts.com/) — Free fonts for designers. Commercial use available on many.
-	-
-	- ## Monospace / Coding Fonts
-	  collapsed:: true
-		- [JetBrains Mono](https://www.jetbrains.com/lp/mono/) — Free, open-source monospace font designed for code. Ligatures included.
-		- [Fira Code](https://github.com/tonsky/FiraCode) — Free monospace font with programming ligatures. Open-source.
-		- [Cascadia Code – Microsoft](https://github.com/microsoft/cascadia-code) — Free monospace font by Microsoft. Used in Windows Terminal. Open-source.
-		- [Hack](https://sourcefoundry.org/hack/) — Free, open-source monospace font designed for source code.
-		- [Iosevka](https://typeof.net/Iosevka/) — Slender, open-source monospace font. Highly customizable. Free.
-		- [Nerd Fonts](https://www.nerdfonts.com/) — Patched fonts with icons for terminal use. Free and open-source.
-		- [Commit Mono](https://commitmono.com/) — Free, open-source neutral programming font. SIL Open Font License.
-		- [Monaspace – GitHub](https://monaspace.githubnext.com/) — Free font superfamily for code by GitHub Next. Open-source.
-- # Icons & SVGs
-  collapsed:: true
-	- [Heroicons](https://heroicons.com/) — Beautiful, free SVG icons by the Tailwind CSS team. MIT license.
-	- [Lucide Icons](https://lucide.dev/) — Open-source icon library. Fork of Feather Icons. MIT license. 1,400+ icons.
-	- [Feather Icons](https://feathericons.com/) — Simply beautiful open-source icons. MIT license.
-	- [Phosphor Icons](https://phosphoricons.com/) — Flexible icon family. 9,000+ icons. MIT license. Multiple weights.
-	- [Tabler Icons](https://tabler.io/icons) — 5,000+ free, open-source SVG icons. MIT license.
-	- [Bootstrap Icons](https://icons.getbootstrap.com/) — 2,000+ free, open-source icons from Bootstrap. MIT license.
-	- [Material Icons – Google](https://fonts.google.com/icons) — 2,500+ free Material Design icons by Google. Apache 2.0 license.
-	- [Font Awesome Free](https://fontawesome.com/) — 2,000+ free icons. Free version is open-source (CC BY 4.0 + MIT).
-	- [Remix Icon](https://remixicon.com/) — 2,800+ open-source neutral-style icons. Apache 2.0 license.
-	- [Iconoir](https://iconoir.com/) — 1,500+ free SVG icons. MIT license. Clean, minimal style.
-	- [Simple Icons](https://simpleicons.org/) — Free SVG icons for 3,000+ popular brands. CC0 license.
-	- [Devicons](https://devicon.dev/) — Icons for programming languages, frameworks, and tools. MIT license.
-	- [SVG Repo](https://www.svgrepo.com/) — 500,000+ free SVG icons and vectors. Check license per icon.
-	- [Flaticon Free Section](https://www.flaticon.com/free-icons) — Free icons with attribution (CC BY).
-	- [The Noun Project Free](https://thenounproject.com/icons/) — Free icons with attribution (CC BY).
-	- [Lordicon Free](https://lordicon.com/free-icons) — Free animated Lottie icons. No account needed.
-	- [Icones](https://icones.js.org/) — Browse and search 150,000+ open-source icons from all major icon sets. Free.
-	- [Iconify](https://iconify.design/) — Unified icon framework. 200,000+ open-source icons. Free.
-	- [Flowbite Icons](https://flowbite.com/icons/) — Free, open-source SVG icons. MIT license.
-	- [Solar Icons](https://www.figma.com/community/file/1166831539721848736) — Free icon set. 7,000+ icons. MIT license.
-- # Stock Images & Videos
-  collapsed:: true
-	- ## Free Stock Photos
-	  collapsed:: true
-		- [Unsplash](https://unsplash.com/) — 3M+ free high-resolution photos. Free for commercial use, no attribution required.
-		- [Pexels](https://www.pexels.com/) — Free stock photos and videos. CC0 license. No attribution required.
-		- [Pixabay](https://pixabay.com/) — 4M+ free images, videos, and music. Free for commercial use.
-		- [StockSnap.io](https://stocksnap.io/) — Hundreds of free high-res photos added weekly. CC0 license.
-		- [Burst by Shopify](https://www.shopify.com/stock-photos) — Free stock photos for entrepreneurs. CC0 license.
-		- [Reshot](https://www.reshot.com/) — Free handpicked stock photos and icons. Free for commercial use.
-		- [Life of Pix](https://www.lifeofpix.com/) — Free high-resolution photos. CC0 license.
-		- [Gratisography](https://gratisography.com/) — Quirky, creative free photos. Free for personal and commercial use.
-		- [Kaboompics](https://kaboompics.com/) — Free lifestyle and fashion photos. Free, no attribution required.
-		- [ISO Republic](https://isorepublic.com/) — Free high-resolution photos and videos. CC0 license.
-		- [Negative Space](https://negativespace.co/) — Free stock photos. CC0 license.
-		- [Picjumbo](https://picjumbo.com/) — Free stock photos. Free for personal and commercial use.
-		- [Foodiesfeed](https://www.foodiesfeed.com/) — Free food photography. CC0 license.
-	-
-	- ## Free Stock Videos
-	  collapsed:: true
-		- [Pexels Videos](https://www.pexels.com/videos/) — Free stock videos. CC0 license. No attribution required.
-		- [Pixabay Videos](https://pixabay.com/videos/) — Free stock footage. Free for commercial use.
-		- [Coverr](https://coverr.co/) — Free website background videos. CC0 license.
-		- [Mixkit Videos](https://mixkit.co/free-stock-video/) — Free stock videos. Free for commercial use.
-		- [Life of Vids](https://www.lifeofvids.com/) — Free videos and loops. CC0 license.
-		- [Videezy](https://www.videezy.com/) — Free HD and 4K stock footage. Free with attribution.
-	-
-	- ## Free Illustrations & Vector Art
-	  collapsed:: true
-		- [unDraw](https://undraw.co/) — Open-source SVG illustrations. Customizable color. MIT license. Free forever.
-		- [Storyset](https://storyset.com/) — Free customizable illustrations. Free with attribution.
-		- [Humaaans](https://www.humaaans.com/) — Mix-and-match illustration library of people. CC BY 4.0.
-		- [Open Doodles](https://www.opendoodles.com/) — Free sketchy illustrations. CC0 license.
-		- [Illustrations.co](https://illlustrations.co/) — 100+ free open-source illustrations. MIT license.
-		- [DrawKit Free](https://www.drawkit.com/free) — Free hand-drawn illustrations. MIT license.
-		- [Skribbl Illustrations](https://weareskribbl.com/) — Free hand-drawn illustrations. CC0 license.
-		- [Absurd Design](https://absurd.design/) — Free surreal illustrations. CC BY 4.0.
-		- [Blush Design Free](https://blush.design/) — Free illustrations from global artists.
+-
 - # Colors & Design
   collapsed:: true
 	- ## Color Palettes & Tools
@@ -271,6 +279,7 @@ displayTitle: Free Assets & Resources
 		- [Godly](https://godly.website/) — Astronomically good web design inspiration. Free to browse.
 		- [Mobbin](https://mobbin.com/) — Mobile and web UI design patterns. Free to browse.
 		- [Pttrns](https://www.pttrns.com/) — Mobile UI design patterns. Free to browse.
+-
 - # UI Kits & Components
   collapsed:: true
 	- [UIverse](https://uiverse.io/) — Open-source UI elements built with pure CSS and Tailwind. Free.
@@ -292,6 +301,7 @@ displayTitle: Free Assets & Resources
 	- [Lottie Files Free](https://lottiefiles.com/featured) — Free Lottie animations for web and mobile.
 	- [Pines UI](https://devdojo.com/pines) — Free Alpine.js and Tailwind CSS UI library. MIT license.
 	- [Preline UI](https://preline.co/) — Free Tailwind CSS component library. MIT license.
+-
 - # Game Assets 2D & 3D
   collapsed:: true
 	- ## Free 2D Game Assets
@@ -325,6 +335,7 @@ displayTitle: Free Assets & Resources
 		- [Freepbr.com](https://freepbr.com/) — Free PBR materials and textures. Free for personal and commercial use.
 		- [ShareTextures](https://www.sharetextures.com/) — Free PBR textures. CC0 license.
 		- [TextureCan](https://www.texturecan.com/) — Free PBR textures. CC0 license.
+-
 - # 3D Models
   collapsed:: true
 	- [Polyhaven](https://polyhaven.com/models) — Free high-quality 3D models. CC0 license.
@@ -337,6 +348,7 @@ displayTitle: Free Assets & Resources
 	- [GrabCAD](https://grabcad.com/library) — Free CAD models. Large engineering community.
 	- [Sketchfab Free Models](https://sketchfab.com/features/free-3d-models) — Largest 3D model community. Thousands of free models. Check license per model.
 	- [3D Artists Handbook](https://sidney-eliot.github.io/3d-artists-handbook/) — Free, open-source handbook for 3D artists covering modeling, rigging, rendering, and more.
+-
 - # Audio & Music
   collapsed:: true
 	- ## Free Sound Effects
@@ -375,10 +387,9 @@ displayTitle: Free Assets & Resources
 		- [Hydrogen](http://hydrogen-music.org/) — Open-source drum machine and sequencer. Free.
 		- [MuseScore](https://musescore.org/) — Free, open-source music notation software.
 		- [Sonic Pi](https://sonic-pi.net/) — Free, open-source live coding music synth. Great for learning.
+-
 - # AI & Machine Learning
-  collapsed:: true
 	- ## Run AI Locally (100% Free, No API Key)
-	  collapsed:: true
 		- [Ollama](https://ollama.com/) — Run Llama, Mistral, Gemma, Phi locally for free. Open-source.
 		- [LM Studio](https://lmstudio.ai/) — Run local LLMs with a GUI. Free. Supports most GGUF models.
 		- [Jan.ai](https://jan.ai/) — Open-source, offline AI assistant. Run LLMs locally. Free.
@@ -407,6 +418,7 @@ displayTitle: Free Assets & Resources
 		- [OpenAI Cookbook](https://github.com/openai/openai-cookbook) — Official examples for OpenAI APIs. Open-source.
 		- [LangChain Docs](https://python.langchain.com/) — Build LLM apps. Open-source, free.
 		- [Distill.pub](https://distill.pub/) — Free, interactive ML research articles with beautiful visualizations.
+-
 - # APIs & Public Data
   collapsed:: true
 	- [Public APIs – GitHub](https://github.com/public-apis/public-apis) — 1,400+ free public APIs organized by category. 300k+ stars.
@@ -426,9 +438,9 @@ displayTitle: Free Assets & Resources
 	- [PokeAPI](https://pokeapi.co/) — Free Pokemon data API. No key required. Great for learning.
 	- [The Movie DB API](https://www.themoviedb.org/documentation/api) — Free movie and TV data API. Free with account.
 	- [Open Food Facts API](https://world.openfoodfacts.org/data) — Free food product database API. CC0 license.
+-
 - # Databases & Backend Tools
-  collapsed:: true
-	- [PostgreSQL](https://www.postgresql.org/) — The world's most advanced open-source relational database. Completely free.
+	- [[PostgreSQL]] — The world's most advanced open-source relational database. Completely free.
 	- [MySQL Community Edition](https://www.mysql.com/products/community/) — Free, open-source relational database. Powers most of the web.
 	- [MongoDB Community](https://www.mongodb.com/try/download/community) — Free community edition of the most popular NoSQL database.
 	- [Redis Community](https://redis.io/) — Open-source in-memory data store. Free community edition.
@@ -439,8 +451,8 @@ displayTitle: Free Assets & Resources
 	- [DBeaver Community](https://dbeaver.io/) — Free, open-source database GUI for MySQL, PostgreSQL, SQLite, and 80+ more.
 	- [Beekeeper Studio Community](https://www.beekeeperstudio.io/) — Free, open-source SQL editor and database manager.
 	- [DB Fiddle](https://www.db-fiddle.com/) — Free online SQL playground. Supports MySQL, PostgreSQL, SQLite.
+-
 - # Version Control & Collaboration
-  collapsed:: true
 	- [Git](https://git-scm.com/) — The standard version control system. Free and open-source.
 	- [GitHub](https://github.com/) — Free unlimited public and private repos. Industry standard.
 	- [GitLab Community Edition](https://gitlab.com/) — Free, open-source. Self-host or use gitlab.com free plan.
@@ -451,8 +463,8 @@ displayTitle: Free Assets & Resources
 	- [Logseq](https://logseq.com/) — Free, open-source knowledge management. Local-first.
 	- [Joplin](https://joplinapp.org/) — Free, open-source note-taking app with sync. Markdown support.
 	- [Notion Free Plan](https://www.notion.so/) — Free plan for personal use. Notes, wikis, project management.
+-
 - # Cybersecurity Tools & Learning
-  collapsed:: true
 	- [TryHackMe](https://tryhackme.com/) — Hands-on cybersecurity training. Free rooms available. Best for beginners.
 	- [Hack The Box Free](https://www.hackthebox.com/) — Free ethical hacking labs and challenges.
 	- [OverTheWire Wargames](https://overthewire.org/wargames/) — Free security wargames to learn Linux and hacking fundamentals.
@@ -465,10 +477,9 @@ displayTitle: Free Assets & Resources
 	- [Kali Linux](https://www.kali.org/) — Free, open-source Linux distro for penetration testing.
 	- [CyberChef](https://gchq.github.io/CyberChef/) — Free, open-source web app for encoding, decoding, and analyzing data. By GCHQ.
 	- [GTFOBins](https://gtfobins.github.io/) — Free reference for Unix binaries that can be exploited. Open-source.
+-
 - # Free YouTube Playlists & Channels
-  collapsed:: true
 	- ## Programming & CS
-	  collapsed:: true
 		- [DSA and Algorithms](https://youtube.com/playlist?list=PLPMIlPa0MRx5c_1s2e4VDQkORCO56W21B&si=9dXvGjjV_dbV_l0o)
 		- [AI & Machine Learning Models](https://youtube.com/playlist?list=PLPMIlPa0MRx7X6LjaxlkQflYOwRaYfjQe&si=zvw0xsx_VdPC_cfW)
 		- [Android App Development](https://youtube.com/playlist?list=PLPMIlPa0MRx6goy6W4OSLv6jXFpyumjra&si=6xpSlF4fXF7NT2l7)
@@ -486,7 +497,6 @@ displayTitle: Free Assets & Resources
 		- [Sebastian Lague – Programming Projects](https://www.youtube.com/@SebastianLague)
 	-
 	- ## Game Development & 3D
-	  collapsed:: true
 		- [Godot Engine Game Development](https://youtube.com/playlist?list=PLPMIlPa0MRx6asDFZk9R6CTHMaY7j6cDk&si=3r6ADTPOcQ4t_yEM)
 		- [Blender 3D Modeling](https://youtube.com/playlist?list=PLPMIlPa0MRx4xhit8wjYU3Zwz6DgAL5bo&si=oembX0dwhlWS5MxG)
 		- [Hardware & Chips](https://youtube.com/playlist?list=PLPMIlPa0MRx5U3s8CGuiH6ODgLUTDMlZx&si=H7OH0f-DG75bygYC)
@@ -496,7 +506,6 @@ displayTitle: Free Assets & Resources
 		- [Acerola – Graphics Programming](https://www.youtube.com/@Acerola_t)
 	-
 	- ## Design & Creative
-	  collapsed:: true
 		- [2D Animation Concepts](https://youtube.com/playlist?list=PLPMIlPa0MRx56RShbo-NYVWP1LdSyFhdJ&si=jd0ALYKpEj0CSGcY)
 		- [Graphics Design Ideas](https://youtube.com/playlist?list=PLPMIlPa0MRx5NTnZs_bbCN2vadNeScqwJ&si=inL4162f-c_L1VLf)
 		- [Flux Academy – Web Design](https://www.youtube.com/@FluxAcademy)

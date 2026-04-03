@@ -6,11 +6,11 @@ description: "Free Code Notes is a comprehensive programming knowledge base cove
 keywords: "free code notes, programming knowledge base, algorithms, data structures, programming languages, data science, machine learning, DevOps, game development, cybersecurity, free programming resources, free developer tools, free coding courses, open source tools, VR-Rathod, Code-Note, code note vr, vr book, programming notes, developer notes, code reference, free programming notes"
 ---
 
-- ## Welcome to Your Code Book!
+-
+- # Welcome to Your Code Book!
 	- Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
 -
 - ## Programming Languages
-  collapsed:: true
 	- [[Python]] :- A beginner-friendly language known for its readability and extensive libraries.
 	-
 	- [[Java]] :- A robust, object-oriented language commonly used in enterprise applications and Android development.
@@ -136,11 +136,10 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	- [[Shopify]] - it is a **hosted e-commerce platform** that includes **some CMS-like features**.
 -
 - ## Operating Systems & Kernels
-  collapsed:: true
 	- ## Linux
 		- [[Kali Linux]] :- A Debian-based distribution designed for penetration testing and cybersecurity professionals, featuring numerous security tools.
 		-
-		- [[Ubuntu]] :- A user-friendly Linux distribution popular for desktops and servers, known for its ease of use and strong community support.
+		- [[Ubuntu]] :- A comprehensive guide to Ubuntu covering installation, kernel, shell, APT/Snap packages, networking, UFW, SSH, LAMP/LEMP stack, GNOME desktop, security, LVM, and server administration.
 		-
 		- [[Fedora]] :- A cutting-edge distribution that showcases the latest in open-source software, ideal for developers and enthusiasts.
 		-
@@ -155,6 +154,10 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		- [[Linux Mint]] :- A user-friendly distribution based on Ubuntu, designed to provide a familiar interface for users transitioning from Windows.
 	-
 	- ## Windows
+		- [[Windows 10]] :- A comprehensive guide to Windows 10 covering architecture, kernel, CMD, PowerShell, registry, networking, security, WSL, Hyper-V, and system administration.
+		-
+		- [[Windows 11]] :- A comprehensive guide to Windows 11 covering TPM 2.0, new architecture, VBS/HVCI security, CMD, PowerShell, registry tweaks, networking, WSL2, Hyper-V, Snap Layouts, and system administration.
+	-
 -
 - ## Frameworks, Libraries Common Elements
   collapsed:: true
@@ -292,21 +295,27 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 -
 - ## Cybersecurity
   collapsed:: true
-	- [[Cybersecurity]] - This page contains DevOps Concepts
+	- [[Cybersecurity]] :- Comprehensive cybersecurity reference covering CIA triad, cryptography, networking security, OWASP Top 10, threat landscape, attack types, security architecture, ethical hacking methodology, OSINT, security tools, IAM, cloud security, incident response, DevSecOps, and career paths. Strictly for educational purposes.
+		-
+		- [[Cybersecurity Architecture]] :- Enterprise security architecture covering Zero Trust, network design, IAM, cloud security (AWS/Azure/GCP), SIEM/SOAR, detection engineering, DevSecOps pipeline, IaC security, and compliance frameworks (ISO 27001, PCI DSS, GDPR, NIST).
+		-
+		- [[Ethical Hacking Advanced]] :- Advanced ethical hacking concepts covering reconnaissance, web app exploitation, Active Directory attacks (Kerberoasting, DCSync, Golden Ticket), privilege escalation, post-exploitation, evasion techniques, and CTF methodology. For authorized security professionals only.
+		-
+		- [[Linux Advanced]] :- Deep Linux internals covering kernel architecture, system calls, memory management, process lifecycle, networking stack, filesystem internals, performance analysis (perf, eBPF), security hardening (SELinux, AppArmor, auditd, AIDE), and advanced shell scripting.
 -
 - ## Game Development & Graphics
 	- ### 1. Core Concepts
 		- [[Game Development]] :- Engine-agnostic fundamentals with a full concept index — game loop, ECS, physics, rendering pipeline, AI, shaders, networking, optimization, assets, and graphics deep-dives.
 	-
 	- ### 2. Game Engines
-		- [[Godot]] :- Open-source engine. GDScript, C#, C++. Covers scenes, physics, animation, shaders, networking, GDExtension.
-		- [[Unity]] :- Cross-platform 2D/3D engine. C# scripting, URP/HDRP, asset store.
-		- [[Unreal Engine]] :- AAA-grade engine by Epic. Blueprints, C++, Nanite, Lumen, Chaos physics, UMG, Niagara.
-		- [[Bevy]] :- Data-driven ECS engine in Rust.
-		- [[Fyrox]] :- 3D/2D engine in Rust with a built-in scene editor.
-		- [[NcEngine]] :- Lightweight 3D engine in modern C++ and Vulkan.
-		- [[Thunder Engine]] :- Cross-platform open-source C++ engine with a modular Qt-based editor.
-		- [[Panda3D]] :- Python/C++ engine for research, simulation, and indie dev.
+		- [[Godot]] :- **Open-source** engine. GDScript, C#, C++. Covers scenes, physics, animation, shaders, networking, GDExtension.
+		- [[Unity]] :- **Cross-platform** 2D/3D engine. C# scripting, URP/HDRP, asset store.
+		- [[Unreal Engine]] :- **AAA-grade** engine by Epic. Blueprints, C++, Nanite, Lumen, Chaos physics, UMG, Niagara.
+		- [[Bevy]] :- Data-driven ECS **engine in Rust**.
+		- [[Fyrox]] :- 3D/2D engine in **Rust** with a **built-in scene editor**.
+		- [[NcEngine]] :- Lightweight 3D engine in **modern C++ and Vulkan**.
+		- [[Thunder Engine]] :- Cross-platform **open-source C++ engine** with a modular **Qt-based editor**.
+		- [[Panda3D]] :- Python/C++ engine for **research, simulation, and indie dev**.
 		-
 		- For a full categorized list of all game engines and 3D tools, see [[Software]].
 	-
