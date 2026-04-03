@@ -31,18 +31,31 @@ Thank you for contributing! This guide defines the **exact format and structure*
 Every page **must** start with SEO frontmatter:
 
 ```yaml
----
+
 seoTitle: <Page Name> Complete Guide – <Short Description>
 description: "Comprehensive <topic> reference covering <key topics>."
 keywords: "<keyword1>, <keyword2>, ..., VR-Rathod, Code-Note, code note vr, vr book , <You'r name / your code tags>"
 displayTitle: Better Title  # This is title of page (not required for  all page)
----
-```
-
 - `seoTitle` — Keep under 60 characters. Format: `Topic Name – Subtitle`
 - `description` — 1-2 sentences, 120-160 characters. Mention key subtopics.
 - `keywords` — Comma-separated. Always end with the standard author tags.
+```
 
+### For Single Writer
+```yaml
+author: Your Name (Default Vaibav Rathod) 
+authorUrl: Youe Website URl (Default Git profile VR-Rathod)
+```
+
+### For Multiple writers
+```yaml
+authors:
+  - name: Name 1
+    url: Url 1
+
+  - name : Name 2
+    url: Url 2
+```
 ---
 
 ## Programming Page Format
