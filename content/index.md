@@ -136,28 +136,52 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	- [[Shopify]] - it is a **hosted e-commerce platform** that includes **some CMS-like features**.
 -
 - ## Operating Systems & Kernels
-	- ## Linux
-		- [[Kali Linux]] :- A Debian-based distribution designed for penetration testing and cybersecurity professionals, featuring numerous security tools.
+	- ### Linux
+		- [[Kali Linux]] :- A Debian-based distribution designed for penetration testing and cybersecurity professionals, featuring 600+ pre-installed security tools, Metasploit, Nmap, Wireshark, Burp Suite, and full pentest methodology.
 		-
 		- [[Ubuntu]] :- A comprehensive guide to Ubuntu covering installation, kernel, shell, APT/Snap packages, networking, UFW, SSH, LAMP/LEMP stack, GNOME desktop, security, LVM, and server administration.
 		-
-		- [[Fedora]] :- A cutting-edge distribution that showcases the latest in open-source software, ideal for developers and enthusiasts.
+		- [[Fedora]] :- A comprehensive guide to Fedora Linux covering DNF package management, SELinux, Btrfs, Podman/Buildah, Cockpit, Wayland, Silverblue (immutable desktop), CoreOS, firewalld, security hardening, developer workflows, and KVM virtualization.
 		-
-		- [[CentOS]] :-  A free, enterprise-class Linux distribution derived from Red Hat Enterprise Linux, often used for servers.
+		- [[Debian]] :- The rock-solid foundation for Ubuntu, Kali, and Raspberry Pi OS. Covers APT, stable/testing/unstable branches, minimal server setup, and long-term support.
 		-
-		- [[Arch Linux]] :-  A lightweight and flexible distribution that follows a rolling release model, known for its simplicity and customization options.
+		- [[CentOS]] :- A free, enterprise-class Linux distribution derived from Red Hat Enterprise Linux. CentOS Stream is the upstream for RHEL — covers DNF, SELinux, firewalld, and enterprise server administration.
 		-
-		- [[Debian]] :-  A stable and versatile distribution that serves as the foundation for many other distributions, known for its package management.
+		- [[Arch Linux]] :- A lightweight, rolling-release distribution built from scratch. Covers pacman, AUR (yay/paru), systemd, manual partitioning, and full system customization for power users.
 		-
-		- [[OpenSUSE]] :-  A community-driven distribution with strong support for development and server environments, offering both stable and rolling release options.
+		- [[OpenSUSE]] :- A community-driven distribution with Leap (stable) and Tumbleweed (rolling) flavors. Covers Zypper, YaST admin tool, Btrfs snapshots, and enterprise-grade configuration.
 		-
-		- [[Linux Mint]] :- A user-friendly distribution based on Ubuntu, designed to provide a familiar interface for users transitioning from Windows.
+		- [[Linux Mint]] :- An Ubuntu-based distribution with a familiar Windows-like Cinnamon desktop. Ideal for users switching from Windows — covers APT, Timeshift backups, and driver management.
+		-
+		- [[Rocky Linux]] :- A community-driven 1:1 RHEL binary-compatible clone and the spiritual successor to CentOS. Covers DNF, AppStream modules, SELinux, firewalld, LAMP/Nginx/PostgreSQL server setup, Cockpit, and enterprise security hardening.
+		-
+		- [[Alma Linux]] :- A free RHEL-compatible clone backed by CloudLinux. ABI-compatible with RHEL, popular for web hosting and enterprise workloads.
+		-
+		- [[Parrot OS]] :- A Debian-based security and privacy distro, lighter than Kali. Covers AnonSurf (system-wide Tor routing), Firejail sandboxing, MAT2 metadata cleaner, pentesting tools, digital forensics, reverse engineering, and Parrot Home for daily use.
+		-
+		- [[Alpine Linux]] :- An extremely minimal Linux distro (~5MB base) using musl libc, BusyBox, and OpenRC. Covers apk, diskless mode, lbu, Docker multi-stage builds, container optimization, and embedded/Raspberry Pi use.
+		-
+		- [[Raspberry Pi OS]] :- The official Debian-based OS for Raspberry Pi boards. Covers GPIO, camera module, headless setup, and IoT projects.
+		-
+		- [[Nix OS]] :- A unique declarative Linux distro where the entire system is configured in a single Nix file. Reproducible builds, atomic upgrades, and easy rollbacks.
+		-
+		- [[Garuda Linux]] :- An Arch-based gaming and performance-focused distribution. Covers Garuda Gamer tools, Btrfs + Snapper auto-snapshots, ZRAM, gaming optimizations (GameMode, MangoHud, Proton), Chaotic-AUR, Dr460nized KDE desktop, and system tuning.
+		-
+		- [[Linux Advanced]] :- Deep Linux internals covering kernel architecture, system calls, memory management, process lifecycle, networking stack, filesystem internals, performance analysis (perf, eBPF), and security hardening (SELinux, AppArmor, auditd, AIDE).
 	-
-	- ## Windows
+	- ### Windows
 		- [[Windows 10]] :- A comprehensive guide to Windows 10 covering architecture, kernel, CMD, PowerShell, registry, networking, security, WSL, Hyper-V, and system administration.
 		-
 		- [[Windows 11]] :- A comprehensive guide to Windows 11 covering TPM 2.0, new architecture, VBS/HVCI security, CMD, PowerShell, registry tweaks, networking, WSL2, Hyper-V, Snap Layouts, and system administration.
 	-
+	- ### macOS & BSD
+		- macOS :- Apple's Unix-based OS for Mac hardware. Homebrew package manager, zsh default shell, XCode toolchain, and Rosetta 2 for Apple Silicon compatibility.
+		-
+		- FreeBSD :- A complete OS derived from BSD Unix — not Linux. Known for ZFS, jails (lightweight containers), pf firewall, and rock-solid networking. Powers Netflix CDN and PlayStation OS.
+		-
+		- OpenBSD :- A security-first BSD OS with a minimal attack surface, strong cryptography defaults, and the origin of OpenSSH. Used in firewalls, routers, and high-security environments.
+		-
+		- NetBSD :- A highly portable BSD OS that runs on almost any hardware architecture — from servers to embedded systems and retro hardware.
 -
 - ## Frameworks, Libraries Common Elements
   collapsed:: true
@@ -296,12 +320,12 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 - ## Cybersecurity
   collapsed:: true
 	- [[Cybersecurity]] :- Comprehensive cybersecurity reference covering CIA triad, cryptography, networking security, OWASP Top 10, threat landscape, attack types, security architecture, ethical hacking methodology, OSINT, security tools, IAM, cloud security, incident response, DevSecOps, and career paths. Strictly for educational purposes.
-		-
-		- [[Cybersecurity Architecture]] :- Enterprise security architecture covering Zero Trust, network design, IAM, cloud security (AWS/Azure/GCP), SIEM/SOAR, detection engineering, DevSecOps pipeline, IaC security, and compliance frameworks (ISO 27001, PCI DSS, GDPR, NIST).
-		-
-		- [[Ethical Hacking Advanced]] :- Advanced ethical hacking concepts covering reconnaissance, web app exploitation, Active Directory attacks (Kerberoasting, DCSync, Golden Ticket), privilege escalation, post-exploitation, evasion techniques, and CTF methodology. For authorized security professionals only.
-		-
-		- [[Linux Advanced]] :- Deep Linux internals covering kernel architecture, system calls, memory management, process lifecycle, networking stack, filesystem internals, performance analysis (perf, eBPF), security hardening (SELinux, AppArmor, auditd, AIDE), and advanced shell scripting.
+	-
+	- [[Cybersecurity Architecture]] :- Enterprise security architecture covering Zero Trust, network design, IAM, cloud security (AWS/Azure/GCP), SIEM/SOAR, detection engineering, DevSecOps pipeline, IaC security, and compliance frameworks (ISO 27001, PCI DSS, GDPR, NIST).
+	-
+	- [[Ethical Hacking Advanced]] :- Advanced ethical hacking concepts covering reconnaissance, web app exploitation, Active Directory attacks (Kerberoasting, DCSync, Golden Ticket), privilege escalation, post-exploitation, evasion techniques, and CTF methodology. For authorized security professionals only.
+	-
+	- [[Linux Advanced]] :- Deep Linux internals covering kernel architecture, system calls, memory management, process lifecycle, networking stack, filesystem internals, performance analysis (perf, eBPF), security hardening (SELinux, AppArmor, auditd, AIDE), and advanced shell scripting.
 -
 - ## Game Development & Graphics
 	- ### 1. Core Concepts
