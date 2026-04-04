@@ -1,6 +1,4 @@
 ---
-author: 
-authorUrl: 
 seoTitle: Ableton Live Reference – DAW Guide for Music Production
 description: "Ableton Live reference covering Session and Arrangement views, clips, MIDI, audio effects, instruments, Max for Live, and music production workflows."
 keywords: "Ableton Live, DAW, music production, Session view, Arrangement view, MIDI, audio effects, Max for Live, instruments, music software, electronic music, recording"
