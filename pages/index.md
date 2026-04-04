@@ -317,6 +317,10 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		-
 		- [[Asana]]: A task and project management tool used for tracking work, collaborating with teams, and ensuring smooth project delivery.
 -
+- ## QA & Testing
+  collapsed:: true
+	- [[QA and Testing]] :- Complete quality assurance and software testing reference — testing types (unit, integration, E2E, performance), methodologies (TDD, BDD, Agile QA), tools (Playwright, Cypress, Selenium, Postman, JMeter, k6), bug lifecycle, test planning, automation patterns, CI/CD integration, and security testing basics.
+-
 - ## Cybersecurity
   collapsed:: true
 	- [[Cybersecurity]] :- Comprehensive cybersecurity reference covering CIA triad, cryptography, networking security, OWASP Top 10, threat landscape, attack types, security architecture, ethical hacking methodology, OSINT, security tools, IAM, cloud security, incident response, DevSecOps, and career paths. Strictly for educational purposes.
