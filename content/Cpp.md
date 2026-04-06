@@ -3124,6 +3124,10 @@ displayTitle: C++
 - # Library & Frameworks
   id:: 673ac308-24d0-40b6-b0d7-a4b6cac5b79a
   collapsed:: true
+	- ## Game Engines
+	  collapsed:: true
+		- [[Cpp for Unreal]] - Unreal-specific C++ patterns: UObject system, UPROPERTY/UFUNCTION macros, TArray/TMap, delegates, GC, networking replication.
+	-
 	- [[STL (Standard Template Library)]] - Vectors, maps, sets, algorithms, iterators — the backbone of every C++ program.
 	-
 	- [[Boost]] - Peer-reviewed libraries extending C++: threading, filesystem, smart pointers, regex, and more.
@@ -3148,11 +3152,9 @@ displayTitle: C++
 	-
 	- [[SDL (Simple DirectMedia Layer)]] - Cross-platform multimedia: audio, graphics, input for games.
 	-
-	- [[std::format]] - Fast, safe string formatting (basis for C++20 `<format>`).
-	-
 	- [[Catch2]] - Modern, header-only C++ testing framework — simpler than gtest.
 	-
-	- [[nlohmann/json]] - Single-header JSON library, the most popular C++ JSON parser.
+	- [[nlohmann json]] - Single-header JSON library, the most popular C++ JSON parser.
 	-
 	- [[spdlog]] - Fast, header-only logging library for C++.
 -
