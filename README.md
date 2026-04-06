@@ -58,7 +58,9 @@ Welcome to the Free Code Notes repository! This project is designed to provide a
 - ## Author
 - [@VR-Rathod](https://github.com/VR-Rathod)
 - ## contributer
+- [@Aashish Rathod](https://github.com/Aashish1923)
 - [@Nirmit Kotadiya](https://github.com/nirmitkotadiya)
+- 
 - ## contribution query
 - You can Give Your feedback on [Discussions](https://github.com/VR-Rathod/Code-Note/discussions)
 - if you interested to share your note please read and follow instructions written on [Dev](https://github.com/VR-Rathod/Code-Note/blob/Admin/Dev/format.md)
