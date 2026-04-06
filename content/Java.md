@@ -473,7 +473,8 @@ keywords: "java, Java programming, Java reference, collections, streams, generic
 		  String s = "Hello %s".formatted("World"); // Hello World
 		  ```
 - # OOP — Object-Oriented Programming
-  collapsed:: true
+	- [[DSA Algo & System Design]] - visit this page for in-depth Learning
+	-
 	- ## Classes & Objects
 	  collapsed:: true
 		- ```java
@@ -595,6 +596,7 @@ keywords: "java, Java programming, Java reference, collections, streams, generic
 		      }
 		  }
 		  ```
+-
 - # OOP — Inheritance
   collapsed:: true
 	- ## Single Inheritance
