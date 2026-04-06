@@ -750,7 +750,8 @@ displayTitle: C#
 		  ```
 -
 - # OOP — Inheritance & Polymorphism
-  collapsed:: true
+	- [[DSA Algo & System Design]] - visit this page for in-depth Learning
+	-
 	- ## Inheritance
 	  collapsed:: true
 		- ```csharp
