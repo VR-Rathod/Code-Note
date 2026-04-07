@@ -20,23 +20,24 @@ Welcome to the Free Code Notes repository! This project is designed to provide a
    git clone https://github.com/VR-Rathod/Code-Note.git
    cd code-note
     ```
+   
 - 2. **Usefull Software**
 - ## Logseq
       Logseq is an open-source, non-linear outliner notebook that helps you organize and share your knowledge.
   
       You can download it by [Clicking Here](https://logseq.com/).
 - ## Sumitra
-      Sumitra is an open-source tool designed to help you annotate and manage PDF documents efficiently. With its intuitive interface, you can highlight, comment, and create outlines from your PDFs.
+  Sumitra is an open-source tool designed to help you annotate and manage PDF documents efficiently. With its intuitive interface, you can highlight, comment, and create outlines from your PDFs.
       You can download it by [Clicking Here](https://www.sumatrapdfreader.org/free-pdf-reader).
   
-      ------------
-      Both tools can be used together to enhance your productivity and knowledge management!
+  Both tools can be used together to enhance your productivity and knowledge management!
     
-      After **Download** That software
+     After **Download** That software
        
-      Then open Your project Like This: -
+     Then open Your project Like This: -
       
-      https://github.com/user-attachments/assets/e4cd771b-a7f0-4656-8737-4ea55ac40a5e
+     https://github.com/user-attachments/assets/e4cd771b-a7f0-4656-8737-4ea55ac40a5e
+  
 - 3. ### **The Final Gift**
      
       You can Directorly View on github but i suggest open in logseq for Better view and update This repo regulerly...
