@@ -4,7 +4,27 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
+  afterBody: [
+    Component.ConditionalRender({
+      component: Component.Comments({
+        provider: "giscus",
+        options: {
+          repo: "VR-Rathod/Code-Note",
+          repoId: "R_kgDONH-grA",
+          category: "Comments",
+          categoryId: "DIC_kwDONH-grM4C6LCN",
+          mapping: "pathname",
+          strict: true,
+          reactionsEnabled: true,
+          inputPosition: "top",
+          lightTheme: "light",
+          darkTheme: "dark",
+          lang: "en",
+        },
+      }),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
+  ],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/VR-Rathod/Code-Note",
