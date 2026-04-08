@@ -136,6 +136,7 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	- [[Shopify]] - it is a **hosted e-commerce platform** that includes **some CMS-like features**.
 -
 - ## Operating Systems & Kernels
+  collapsed:: true
 	- ### Linux
 		- [[Kali Linux]] :- A Debian-based distribution designed for penetration testing and cybersecurity professionals, featuring 600+ pre-installed security tools, Metasploit, Nmap, Wireshark, Burp Suite, and full pentest methodology.
 		-
@@ -189,7 +190,6 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	- [[Api]] - You can find specific APIs and related documentation on the respective programming language or framework page.
 -
 - ## Data Structures , Algorithms & OOP
-  collapsed:: true
 	- [[DSA Algo & System Design]] : The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for searching, sorting, and optimization.
 	-
 	- [[Binary Space Partitioning]] :- Spatial data structure used in game engines for rendering optimization and collision detection.
@@ -316,6 +316,10 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		- [[Trello]]: A visual project management tool to organize tasks and workflows in a simple board format, ideal for small teams and quick task tracking.
 		-
 		- [[Asana]]: A task and project management tool used for tracking work, collaborating with teams, and ensuring smooth project delivery.
+-
+- ## QA & Testing
+  collapsed:: true
+	- [[QA and Testing]] :- Complete quality assurance and software testing reference — testing types (unit, integration, E2E, performance), methodologies (TDD, BDD, Agile QA), tools (Playwright, Cypress, Selenium, Postman, JMeter, k6), bug lifecycle, test planning, automation patterns, CI/CD integration, and security testing basics.
 -
 - ## Cybersecurity
   collapsed:: true
