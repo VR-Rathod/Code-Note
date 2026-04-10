@@ -136,6 +136,7 @@ keywords: "game development, game loop, physics engine, rendering, game AI, audi
 		- Engines using ECS: **Bevy** (pure ECS), **Unity DOTS**, **Flecs** (C++ ECS library).
 -
 - # Rendering Pipeline
+  collapsed:: true
 	- ## Rasterization Pipeline (Traditional GPU)
 	  collapsed:: true
 		- ```

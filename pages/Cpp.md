@@ -3124,10 +3124,7 @@ displayTitle: C++
 -
 - # Library & Frameworks
   id:: 673ac308-24d0-40b6-b0d7-a4b6cac5b79a
-  collapsed:: true
-	- ## Game Engines
-	  collapsed:: true
-		- [[Cpp for Unreal]] - Unreal-specific C++ patterns: UObject system, UPROPERTY/UFUNCTION macros, TArray/TMap, delegates, GC, networking replication.
+	- [[Cpp for Unreal]] - Unreal-specific C++ patterns: UObject system, UPROPERTY/UFUNCTION macros, TArray/TMap, delegates, GC, networking replication.
 	-
 	- [[STL (Standard Template Library)]] - Vectors, maps, sets, algorithms, iterators — the backbone of every C++ program.
 	-

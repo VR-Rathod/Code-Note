@@ -1,4 +1,4 @@
-﻿---
+---
 seoTitle: Unity Engine Reference – Complete C# Scripting and Game Dev Guide
 description: "Complete Unity reference covering GameObjects, MonoBehaviour, C# scripting, physics, animation, UI, audio, shaders, networking, and Unity 6 features for 2D/3D game development."
 keywords: "Unity, Unity engine, Unity C#, MonoBehaviour, GameObjects, components, physics, animation, UI, shaders, Unity 6, 2D game, 3D game, unity notes, unity guide, unity cheatsheet, unity reference, unity tutorial, VR-Rathod, Code-Note, code note vr, vr book"
@@ -10,7 +10,6 @@ displayTitle: Unity
 	- **How**: Developed by Unity Technologies, first released in **2005** at Apple's Worldwide Developers Conference as a Mac-exclusive engine. Became cross-platform in 2008.
 	- **Who**: Co-founded by **David Helgason**, **Nicholas Francis**, and **Joachim Ante**.
 	- **Why**: To democratize game development — give indie developers access to a professional-grade engine without the cost of Unreal or proprietary tools.
-
 - # Introduction
   collapsed:: true
 	- Unity is the world's most widely used real-time 3D engine. It powers over 50% of mobile games and is used for 2D, 3D, AR/VR, and simulation. Scripting is done in **C#** via **MonoBehaviour**.
@@ -30,7 +29,6 @@ displayTitle: Unity
 		- Editor can be slow for large projects.
 		- C# garbage collection can cause frame spikes without careful management.
 		- HDRP and URP have different shader/material workflows — not interchangeable.
-
 - # Editor & Project Setup
   collapsed:: true
 	- ## Editor Layout
@@ -88,7 +86,6 @@ displayTitle: Unity
 		    Scripting Backend: Mono (fast iteration) / IL2CPP (better performance)
 		    API Compatibility Level: .NET Standard 2.1 / .NET Framework
 		  ```
-
 - # Core Concepts — GameObjects & Components
   collapsed:: true
 	- ## GameObject
@@ -181,7 +178,6 @@ displayTitle: Unity
 		  Destroy(bullet, 3f);       // after 3 seconds
 		  Destroy(gameObject);       // destroy self
 		  ```
-
 - # MonoBehaviour — Scripting Basics
   collapsed:: true
 	- ## Script Structure & Lifecycle
@@ -333,7 +329,6 @@ displayTitle: Unity
 		      body.AddForce(Vector3.up);
 		  }
 		  ```
-
 - # Input System
   collapsed:: true
 	- ## New Input System (Recommended)
@@ -415,7 +410,6 @@ displayTitle: Unity
 		      if (Input.GetButton("Jump"))      HoldJump();
 		  }
 		  ```
-
 - # Physics
   collapsed:: true
 	- ## Rigidbody (3D)
@@ -554,7 +548,6 @@ displayTitle: Unity
 		      }
 		  }
 		  ```
-
 - # 2D Game Development
   collapsed:: true
 	- ## Rigidbody2D & Movement
@@ -645,7 +638,6 @@ displayTitle: Unity
 		      }
 		  }
 		  ```
-
 - # 3D Game Development
   collapsed:: true
 	- ## Transform Operations
@@ -757,7 +749,6 @@ displayTitle: Unity
 		      }
 		  }
 		  ```
-
 - # Animation System
   collapsed:: true
 	- ## Animator & Animator Controller
@@ -827,7 +818,6 @@ displayTitle: Unity
 		      cc.Move(anim.deltaPosition);
 		  }
 		  ```
-
 - # UI System (uGUI & TextMeshPro)
   collapsed:: true
 	- ## Canvas Setup
@@ -914,7 +904,6 @@ displayTitle: Unity
 		      }
 		  }
 		  ```
-
 - # Audio System
   collapsed:: true
 	- ## AudioSource & AudioClip
@@ -975,7 +964,6 @@ displayTitle: Unity
 		  AudioMixerSnapshot snapshot = mixer.FindSnapshot("Underwater");
 		  snapshot.TransitionTo(0.5f); // blend over 0.5 seconds
 		  ```
-
 - # Scene Management
   collapsed:: true
 	- ## Loading Scenes
@@ -1047,7 +1035,6 @@ displayTitle: Unity
 		  // Access from anywhere
 		  GameManager.Instance.AddScore(100);
 		  ```
-
 - # Coroutines
   collapsed:: true
 	- ## IEnumerator Basics
@@ -1098,7 +1085,6 @@ displayTitle: Unity
 		      gameObject.SetActive(false);
 		  }
 		  ```
-
 - # Object Pooling
   collapsed:: true
 	- ## Unity Object Pool (Unity 2021+)
@@ -1139,7 +1125,6 @@ displayTitle: Unity
 		      }
 		  }
 		  ```
-
 - # Saving & Loading Data
   collapsed:: true
 	- ## PlayerPrefs (Simple Key-Value)
@@ -1201,7 +1186,6 @@ displayTitle: Unity
 		  SaveSystem.Save(data);
 		  SaveData loaded = SaveSystem.Load();
 		  ```
-
 - # AI & Navigation
   collapsed:: true
 	- ## NavMesh Agent
@@ -1249,7 +1233,6 @@ displayTitle: Unity
 		      agent.SetDestination(hit.position);
 		  }
 		  ```
-
 - # Shaders & Rendering
   collapsed:: true
 	- ## Shader Graph (URP/HDRP)
@@ -1320,7 +1303,6 @@ displayTitle: Unity
 		      bloom.intensity.value = Mathf.PingPong(Time.time, 2f);
 		  }
 		  ```
-
 - # Debugging & Profiling
   collapsed:: true
 	- ## Debug Utilities
@@ -1377,7 +1359,6 @@ displayTitle: Unity
 		      s_MyMarker.End();
 		  }
 		  ```
-
 - # C# for Unity — Unity-Specific Patterns
   collapsed:: true
 	- For the full C# language reference see [[CSharp]]. For Unity-specific scripting patterns in depth, see [[CSharp for Unity]].
@@ -1479,7 +1460,6 @@ displayTitle: Unity
 		          damageable.TakeDamage(25);
 		  }
 		  ```
-
 - # Library & Frameworks
   collapsed:: true
 	- ## Core Unity Packages
@@ -1502,7 +1482,6 @@ displayTitle: Unity
 		- [[Newtonsoft.Json for Unity]] - Full-featured JSON serialization.
 		- [[UniTask]] - Zero-allocation async/await for Unity.
 		- [[NaughtyAttributes]] - Extra Inspector attributes.
-
 - # More Learn
 	- [Unity Manual](https://docs.unity3d.com/Manual/index.html)
 	- [Unity Scripting API](https://docs.unity3d.com/ScriptReference/)
