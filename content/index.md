@@ -332,23 +332,57 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	- [[Linux Advanced]] :- Deep Linux internals covering kernel architecture, system calls, memory management, process lifecycle, networking stack, filesystem internals, performance analysis (perf, eBPF), security hardening (SELinux, AppArmor, auditd, AIDE), and advanced shell scripting.
 -
 - ## Game Development & Graphics
-	- ### 1. Core Concepts
-		- [[Game Development]] :- Engine-agnostic fundamentals with a full concept index — game loop, ECS, physics, rendering pipeline, AI, shaders, networking, optimization, assets, and graphics deep-dives.
+	- Start here if you're new → [[Game Development]] → pick an engine → go deep.
 	-
-	- ### 2. Game Engines
-		- [[Godot]] :- **Open-source** engine. GDScript, C#, C++. Covers scenes, physics, animation, shaders, networking, GDExtension.
-		- [[Unity]] :- **Cross-platform** 2D/3D engine. C# scripting, URP/HDRP, asset store.
-		- [[Unreal Engine]] :- **AAA-grade** engine by Epic. Blueprints, C++, Nanite, Lumen, Chaos physics, UMG, Niagara.
-		- [[Bevy]] :- Data-driven ECS **engine in Rust**.
-		- [[Fyrox]] :- 3D/2D engine in **Rust** with a **built-in scene editor**.
-		- [[NcEngine]] :- Lightweight 3D engine in **modern C++ and Vulkan**.
-		- [[Thunder Engine]] :- Cross-platform **open-source C++ engine** with a modular **Qt-based editor**.
-		- [[Panda3D]] :- Python/C++ engine for **research, simulation, and indie dev**.
+	- Already know an engine? Jump straight to its page or the scripting language it uses.
+	-
+	- ### 1. Foundations (Start Here)
+		- [[Game Development]] :- Engine-agnostic fundamentals every game dev must know — game loop, ECS, physics, rendering pipeline, lighting, shaders, AI, audio, networking, optimization, asset pipeline, and design patterns. Beginner to advanced.
+	-
+	- ### 2. Game Design & Theory
+		- [[Game Design]] :- How to design fun games — MDA framework, core/meta/social loops, player psychology, level design, mechanics, balancing, game economy, narrative design, UI/UX for games, monetization models, and genre-specific patterns (FPS, RPG, RTS, Platformer). Beginner to super advanced.
+	-
+	- ### 3. Game Engines
+		- [[Godot]] :- **Open-source**, free forever. Best for indie and learning. GDScript (Python-like), C#, C++. Covers scenes, nodes, physics, animation, shaders, networking, GDExtension. → Scripting: [[GDScript]]
 		-
-		- For a full categorized list of all game engines and 3D tools, see [[Software]].
+		- [[Unity]] :- **Cross-platform** 2D/3D engine. Massive asset store, huge community. C# scripting, URP/HDRP pipelines. → Scripting: [[CSharp for Unity]]
+		-
+		- [[Unreal Engine]] :- **AAA-grade** engine by Epic Games. Industry standard for high-fidelity games and film. Blueprints (visual scripting) + C++. Nanite, Lumen, Chaos physics, UMG, Niagara VFX, GAS. → Scripting: [[Cpp for Unreal]]
+		-
+		- #### Specialized / Research
+			- [[Bevy]] :- Data-driven ECS **engine in Rust**. Modern architecture, no OOP hierarchy.
+			- [[Fyrox]] :- 3D/2D engine in **Rust** with a **built-in scene editor**.
+			- [[NcEngine]] :- Lightweight 3D engine in **modern C++ and Vulkan**.
+			- [[Thunder Engine]] :- Cross-platform **open-source C++ engine** with a modular **Qt-based editor**.
+			- [[Panda3D]] :- Python/C++ engine for **research, simulation, and indie dev**.
+		-
+		- For a full categorized list of all game engines and tools, see [[Software]].
 	-
-	- ### 3. Graphics Programming & Rendering
-		- [[PathTracer Learning]] :- Step-by-step series for building a GPU path tracer — math foundations, CPU ray tracing, Vulkan RT pipeline, and Godot rendering internals.
+	- ### 4. Engine Scripting Languages
+	  collapsed:: true
+		- [[GDScript]] :- Python-like language built into Godot. Variables, OOP, signals, coroutines, lambdas, annotations. Tightly integrated — zero setup.
+		- [[CSharp for Unity]] :- Unity-specific C# patterns — MonoBehaviour lifecycle, coroutines, ScriptableObjects, events, physics, UI, performance patterns.
+		- [[Cpp for Unreal]] :- UE5-specific C++ — UObject system, UPROPERTY/UFUNCTION macros, GAS, replication, async, memory management, TArray/TMap.
+		- [[Lua]] :- Lightweight scripting language embedded in many engines and games (Roblox, Love2D, custom engines).
+	-
+	- ### 5. Game Dev Libraries (No Engine)
+	  collapsed:: true
+		- [[SDL (Simple DirectMedia Layer)]] :- Low-level C/C++ library for window, rendering, input, audio. Cross-platform. Foundation of many indie engines.
+		- [[SFML (Simple and Fast Multimedia Library)]] :- Modern C++ OOP alternative to SDL. 5 modules: System, Window, Graphics, Audio, Network.
+		- [[Pygame]] :- Python 2D game library built on SDL. Great for learning and rapid prototyping.
+		- [[OpenCV]] :- Computer vision library — used in AR, motion detection, and camera-based games.
+	-
+	- ### 6. Graphics Programming & Rendering
+	  collapsed:: true
+		- [[Advanced Graphics]] :- Low-level graphics programming — Vulkan, DirectX 12, Metal, WebGPU, HLSL, GLSL advanced, compute shaders, render graphs, GPU architecture, and modern rendering techniques. Intermediate to super advanced.
+		- [[PathTracer Learning]] :- Deep-dive series for building a GPU path tracer from scratch — math foundations (vectors, radiometry, Monte Carlo), CPU ray tracing, Vulkan RT pipeline, BVH, ReSTIR, DLSS, and Godot rendering internals. Intermediate to super advanced.
+	-
+	- ### 7. 3D Art & Asset Creation
+		- [[Blender]] :- Free, open-source 3D suite. Modeling, UV unwrap, rigging, animation, rendering (Cycles/EEVEE), geometry nodes, and Grease Pencil.
+		- [[Maya]] :- Industry-standard 3D for film and games. Advanced rigging, animation, and simulation.
+		- [[ZBrush]] :- Digital sculpting for high-poly characters and organic shapes. Used for AAA game assets.
+		- [[Houdini]] :- Procedural 3D and VFX. Node-based workflow for simulations, terrain, and procedural generation.
+		- [[Free Assets]] :- Curated directory of free game assets — 2D sprites, 3D models, HDRIs, PBR textures, audio, animations (Mixamo, Kenney, Polyhaven, OpenGameArt).
 -
 - ## Useful Listing
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
