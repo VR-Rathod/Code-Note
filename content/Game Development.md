@@ -5,14 +5,17 @@ keywords: "game development, game loop, physics engine, rendering, game AI, audi
 ---
 
 - # History
-- **How**: Game development evolved from simple 2D arcade games (1970s) to complex 3D real-time simulations powered by GPUs, physics engines, and networked multiplayer.
-- **Who**: Pioneered by companies like Atari, id Software (Doom, Quake), Epic Games (Unreal), and Valve — whose engines became the foundation of modern game dev.
-- **Why**: To create interactive real-time experiences — combining graphics, physics, audio, AI, and networking into a cohesive system.
+  collapsed:: true
+	- **How**: Game development evolved from simple 2D arcade games (1970s) to complex 3D real-time simulations powered by GPUs, physics engines, and networked multiplayer.
+	- **Who**: Pioneered by companies like Atari, id Software (Doom, Quake), Epic Games (Unreal), and Valve — whose engines became the foundation of modern game dev.
+	- **Why**: To create interactive real-time experiences — combining graphics, physics, audio, AI, and networking into a cohesive system.
+-
 - # Introduction
   collapsed:: true
 	- Game development is the discipline of building interactive real-time software. It spans multiple domains: rendering, physics, audio, AI, networking, and tooling. Understanding the core concepts applies to any engine — Unity, Unreal, Godot, or custom.
 	-
 	- ## Core Domains
+	  collapsed:: true
 		- **Rendering** — Drawing pixels: rasterization, ray tracing, shaders, lighting.
 		- **Physics** — Simulating the physical world: collision, rigid bodies, constraints.
 		- **Input** — Handling keyboard, mouse, gamepad, touch.
@@ -20,6 +23,27 @@ keywords: "game development, game loop, physics engine, rendering, game AI, audi
 		- **AI** — Pathfinding, state machines, behavior trees.
 		- **Networking** — Multiplayer, synchronization, lag compensation.
 		- **Tools** — Editors, asset pipelines, build systems.
+-
+- # Game Design & Theory
+  collapsed:: true
+	- ## Core Principles
+	  collapsed:: true
+		- **Core Loop**: The primary repeating sequence of actions a player takes (e.g., jump -> collect -> reach goal).
+		- **Player Agency**: The degree to which a player feels their choices matter.
+		- **Level Design**: Constructing spaces to guide flow and pacing using lighting, geometry, and placement of enemies/items.
+		- **Mechanics Design**: The underlying rules governing entity interactions and physical world state.
+		- **Balancing**: Meticulously adjusting variables (health, drop rates) ensuring fair challenge without dominant strategies.
+		- **Monetization & Economy**: Managing premium/freemium models and balancing hard (paid)/soft (earned) currency to avoid hyperinflation.
+-
+- # Game-Specific Systems
+  collapsed:: true
+	- ## Gameplay Architecture
+	  collapsed:: true
+		- **Inventory Systems**: Data serialization, grid/slot management, capacity limits, and UI synchronization.
+		- **Quest Systems**: State machines for objective progression, branching paths, and tracking prerequisites.
+		- **Dialogue Systems**: Managing conversation trees, local variables, voice-over timing, and emitting game events.
+		- **Save/Load Systems**: Deep serialization of world and entity state (JSON/binary) to disk and rigorous corruption recovery.
+		- **Achievement Systems**: Validating gameplay milestones and invoking platform APIs (Steamworks, Xbox Live, PSN).
 -
 - # The Game Loop
 	- ## Core Concept
@@ -598,6 +622,18 @@ keywords: "game development, game loop, physics engine, rendering, game AI, audi
 		    - Correct when new data arrives
 		  ```
 	-
+	- ## Matchmaking & Anti-Cheat
+	  collapsed:: true
+		- ```
+		  Matchmaking:
+		    - Algorithms pairing players by skill (ELO, TrueSkill) and network latency.
+		    - Dedicated lobby services and backend databases tracking historical MM ratings.
+		  
+		  Anti-Cheat Systems:
+		    - Client Side: Services like Easy Anti-Cheat (EAC) or BattlEye inspecting memory for unauthorized DLL injection.
+		    - Server Side: Strict authoritative prediction avoiding trusting the client on movement limits or line-of-sight.
+		  ```
+	-
 	- ## Protocols
 	  collapsed:: true
 		- ```
@@ -875,6 +911,49 @@ keywords: "game development, game loop, physics engine, rendering, game AI, audi
 		    Dungeon generation — BSP trees, cellular automata, room placement
 		  ```
 -
+- # Mobile Game Development
+  collapsed:: true
+	- ## Platform Constraints
+	  collapsed:: true
+		- ```
+		  Touch Controls       — Virtual joysticks, swipe, pinch gestures requiring responsive, clear UI.
+		  Mobile Optimization  — Heavy draw call batching, low-poly models, strict texture compression (ASTC).
+		  Battery/Thermals     — Thermal throttling mandates strict frame pacing (e.g. locking to 30fps).
+		  Platform APIs        — Deep integration with iOS Game Center, Google Play Games, ad networks.
+		  Monetization         — Banner ads, Interstitials, Rewarded Video, and compliant In-App Purchases.
+		  ```
+-
+- # VR & AR Development
+  collapsed:: true
+	- ## Immersive Realities
+	  collapsed:: true
+		- ```
+		  VR SDKs              — OpenXR (multi-vendor standard), SteamVR. Render stereo eyes at 90Hz+.
+		  Interaction Design   — 1:1 spatial hand tracking, teleportation logic preventing motion sickness.
+		  AR Frameworks        — ARKit (iOS) / ARCore (Android). Plane detection, point clouds, light estimation.
+		  ```
+-
+- # Console Development
+  collapsed:: true
+	- ## Specialized Hardware
+	  collapsed:: true
+		- ```
+		  SDK Access           — Strict NDA-protected access to proprietary Sony (PS5), MS (GDK), Nintendo SDKs.
+		  Certification        — TRC (PlayStation), TCR (Xbox), Lotcheck (Nintendo) are mandatory QA approvals.
+		  Optimization         — Targeting fixed hardware profiles allows exact precision memory mapping.
+		  ```
+-
+- # Game Testing & QA
+  collapsed:: true
+	- ## Testing Methodologies
+	  collapsed:: true
+		- ```
+		  Playtesting          — A/B testing and remote telemetry observing player friction and UI confusion.
+		  Bug Tracking         — Reporting through Jira. Includes repro steps, logs, and memory dumps.
+		  Automated Testing    — CI/CD pipelines deploying headless clients to stress-test multiplayer servers.
+		  Performance Profiling— Deep frame analysis using Unreal Insights, Unity Profiler, RenderDoc.
+		  ```
+-
 - # Game Engines Overview
   collapsed:: true
 	- ## Engine Comparison
@@ -884,6 +963,10 @@ keywords: "game development, game loop, physics engine, rendering, game AI, audi
 		  Godot 4       GDScript/C# 2D/3D indie, open source   MIT (free)
 		  Unity         C#          2D/3D, mobile, XR           Free tier + paid
 		  Unreal 5      C++/BP      AAA 3D, film, archviz       Free + 5% royalty
+		  CryEngine     C++         AAA 3D, High fidelity env   Royalty
+		  Lumberyard    C++         AWS Integrated AAA (O3DE)   Open Source
+		  GameMaker     GML         Detailed 2D logic setups    Paid
+		  RPG Maker     JS/Ruby     JRPG rapid development      Paid
 		  Bevy          Rust        ECS-based, systems games     MIT (free)
 		  Pygame        Python      2D, learning, prototypes     LGPL (free)
 		  ```

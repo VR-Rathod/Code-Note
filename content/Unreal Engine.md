@@ -1448,6 +1448,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 		- [[Cpp for Unreal]] — Unreal-specific C++ patterns: UObject system, macros, TArray/TMap, delegates, GC, networking replication
 		- [[Godot]] — Godot engine A-Z reference
 		- [[PathTracer Learning]] — GPU path tracing and rendering research
+		- [[Advanced Graphics]] — GPU architecture, low-level APIs, and modern rendering techniques
 - # Gameplay Ability System (GAS)
   collapsed:: true
 	- ## Overview
