@@ -53,10 +53,10 @@ displayTitle: Advanced Graphics Programming
 - # Introduction
   collapsed:: true
 	- > [!tip] Which API Should You Learn?
-	  > - **Vulkan** — cross-platform (Windows, Linux, Android, macOS via MoltenVK). Best for games and engines.
-	  > - **DirectX 12** — Windows + Xbox only. Best for Windows game development.
-	  > - **Metal** — Apple only (iOS, macOS). Required for Apple platform games.
-	  > - **WebGPU** — browsers + native. Best for web games and cross-platform tools.
+	  > - **[[Vulkan]]** — cross-platform (Windows, Linux, Android, macOS via MoltenVK). Best for games and engines.
+	  > - **[[DirectX]] 12** — Windows + Xbox only. Best for Windows game development.
+	  > - **[[Metal]]** — Apple only (iOS, macOS). Required for Apple platform games.
+	  > - **[[WebGPU]]** — browsers + native. Best for web games and cross-platform tools.
 	  > - **OpenGL** — legacy. Still works everywhere but avoid for new projects.
 	-
 	- ## API Comparison
@@ -178,7 +178,7 @@ displayTitle: Advanced Graphics Programming
 		  | Fence | CPU-GPU | CPU waits for GPU work to finish |
 		  | Pipeline barrier (Vulkan) | Command buffer | Transition resource states |
 		  | Event | Command buffer | Fine-grained sync within a queue |
-- # Vulkan
+- # [[Vulkan]]
   collapsed:: true
 	- > [!info] What is Vulkan?
 	  > Vulkan is a low-overhead, cross-platform graphics and compute API by the Khronos Group (2016).
@@ -389,7 +389,7 @@ displayTitle: Advanced Graphics Programming
 		      RGen --> RClose
 		      RGen --> RMiss
 		  ```
-- # DirectX 12
+- # [[DirectX]] 12
   collapsed:: true
 	- > [!info] What is DirectX 12?
 	  > DirectX 12 (D3D12) is Microsoft's low-level graphics API for Windows 10/11 and Xbox.
@@ -520,7 +520,7 @@ displayTitle: Advanced Graphics Programming
 		  device->CreateShaderResourceView(texture, &srvDesc,
 		      srvHeap->GetCPUDescriptorHandleForHeapStart());
 		  ```
-- # Metal (Apple)
+- # [[Metal]] (Apple)
   collapsed:: true
 	- > [!info] What is Metal?
 	  > Metal is Apple's low-level graphics and compute API for iOS, macOS, and tvOS (2014).
@@ -641,7 +641,7 @@ displayTitle: Advanced Graphics Programming
 		      return float4(color.rgb * ndotl, color.a);
 		  }
 		  ```
-- # WebGPU
+- # [[WebGPU]]
   collapsed:: true
 	- > [!info] What is WebGPU?
 	  > WebGPU is the modern GPU API for browsers and native apps (W3C standard, 2023).
@@ -758,7 +758,7 @@ displayTitle: Advanced Graphics Programming
 		      return textureSample(myTexture, mySampler, in.uv);
 		  }
 		  ```
-- # HLSL (High-Level Shading Language)
+- # [[Shader Programming]]: HLSL (High-Level Shading Language)
   collapsed:: true
 	- > [!info] What is HLSL?
 	  > HLSL is Microsoft's shader language for DirectX. Used in DX9 through DX12.
