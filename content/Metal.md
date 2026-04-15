@@ -1,14 +1,13 @@
----
-seoTitle: Apple Metal API Complete Guide – Zero to Ray Tracing
-description: "The definitive Metal API reference. Covers MTLDevice, MSL shaders, Argument Buffers, Apple Silicon memory, Metal Performance Shaders, and Metal Ray Tracing from beginner to advanced."
-keywords: "apple metal, metal api, msl, metal shading language, argument buffers, metal ray tracing, ios game, macos graphics, swift metal, objective-c metal, apple silicon, vr-rathod"
-displayTitle: Metal — Complete Masterclass
----
-
-tags:: index, graphics-programming, advanced-graphics, swift, macos, ios
-title:: Metal
-
-- # Apple Metal — The Complete Masterclass
+- ---
+  seoTitle: Apple Metal API Complete Guide – Zero to Ray Tracing
+  description: "The definitive Metal API reference. Covers MTLDevice, MSL shaders, Argument Buffers, Apple Silicon memory, Metal Performance Shaders, and Metal Ray Tracing from beginner to advanced."
+  keywords: "apple metal, metal api, msl, metal shading language, argument buffers, metal ray tracing, ios game, macos graphics, swift metal, objective-c metal, apple silicon, vr-rathod"
+  displayTitle: Metal
+- ---
+  
+  tags:: index, graphics-programming, advanced-graphics, swift, macos, ios
+  title:: Metal
+- # Apple Metal — The Roadmap
   collapsed:: true
 	- > [!info] What is Metal?
 	  > Metal is Apple's explicit, low-overhead graphics and compute API for all Apple platforms: macOS, iOS, iPadOS, tvOS, and visionOS. It was introduced in 2014 — before Vulkan or DX12 — making it the first truly "modern" explicit GPU API.
@@ -21,11 +20,8 @@ title:: Metal
 	  >   → MTLRenderPipelineState → MTLBuffer / MTLTexture
 	  >   → MTLCommandBuffer → Render/Compute Encoders → [Advanced Topics]
 	  > ```
-
 	- ## Metal vs Vulkan vs D3D12
-	  collapsed:: true
-		-
-		  | Concept | Vulkan | DirectX 12 | Metal |
+		- | Concept | Vulkan | DirectX 12 | Metal |
 		  |---|---|---|---|
 		  | GPU handle | `VkDevice` | `ID3D12Device` | `MTLDevice` |
 		  | Submission queue | `VkQueue` | `ID3D12CommandQueue` | `MTLCommandQueue` |
@@ -37,9 +33,8 @@ title:: Metal
 		  | Shader language | GLSL → SPIR-V | HLSL → DXIL | MSL (C++14 based) |
 		  | Cross-platform | Yes | Windows/Xbox only | Apple only |
 		  | Difficulty | Very High | Very High | High (but friendlier) |
-
+	-
 	- ## Apple Silicon Unified Memory Architecture
-	  collapsed:: true
 		- This is the biggest difference between Metal and Vulkan/DX12. On Apple Silicon (M1, M2, M3, M4):
 		- ```mermaid
 		  graph TD
@@ -50,11 +45,10 @@ title:: Metal
 		      UMA -->|"Zero copy! Same RAM"| UMA
 		  ```
 		- Unified Memory means textures and buffers created with `Shared` mode are instantly accessible by both CPU and GPU — no staging buffers needed on Apple Silicon for most use cases!
-
-- # 1 — MTLDevice (The GPU)
+-
+- # MTLDevice (The GPU)
   collapsed:: true
 	- ## Getting the Device
-	  collapsed:: true
 		- ```swift
 		  // Swift: Get the default system GPU
 		  import Metal
@@ -81,7 +75,6 @@ title:: Metal
 		  #include <Metal/Metal.hpp>
 		  MTL::Device* device = MTL::CreateSystemDefaultDevice();
 		  ```
-
 	- ## Enumerating All GPUs (macOS)
 	  collapsed:: true
 		- ```swift
@@ -96,9 +89,8 @@ title:: Metal
 		      print("  - Recommended Max Working Set: \(device.recommendedMaxWorkingSetSize / (1024*1024)) MB")
 		  }
 		  ```
-
-- # 2 — MTLCommandQueue and the Command System
-  collapsed:: true
+-
+- # MTLCommandQueue and the Command System
 	- ## The Metal Command Flow
 	  collapsed:: true
 		- ```mermaid
@@ -116,7 +108,6 @@ title:: Metal
 		      CB --> Encoders
 		      CB -->|"commit()"| GPU["🎮 GPU executes"]
 		  ```
-
 	- ## Creating and Using the Command Queue
 	  collapsed:: true
 		- ```swift
@@ -140,8 +131,8 @@ title:: Metal
 		      self?.frameFinished() // Unblock CPU for next frame
 		  }
 		  ```
-
-- # 3 — Metal Shading Language (MSL)
+-
+- # Metal Shading Language (MSL)
   collapsed:: true
 	- ## MSL is C++14
 	  collapsed:: true
@@ -153,7 +144,6 @@ title:: Metal
 		  ✔ Single header shared between CPU and GPU code
 		  ✔ No need to re-declare structs — one definition for both
 		  ```
-
 	- ## Shared CPU/GPU Header Pattern
 	  collapsed:: true
 		- ```cpp
@@ -171,7 +161,6 @@ title:: Metal
 		      float         time;
 		  };
 		  ```
-
 	- ## Vertex Shader (MSL)
 	  collapsed:: true
 		- ```metal
@@ -210,7 +199,6 @@ title:: Metal
 		      return out;
 		  }
 		  ```
-
 	- ## Fragment Shader (MSL)
 	  collapsed:: true
 		- ```metal
@@ -238,7 +226,6 @@ title:: Metal
 		      return float4(result, albedo.a);
 		  }
 		  ```
-
 	- ## Compute Shader (MSL)
 	  collapsed:: true
 		- ```metal
@@ -270,8 +257,8 @@ title:: Metal
 		      particles[threadID] = p;
 		  }
 		  ```
-
-- # 4 — MTLLibrary and Compiling Shaders
+-
+- # MTLLibrary and Compiling Shaders
   collapsed:: true
 	- ## Shader Compilation
 	  collapsed:: true
@@ -304,20 +291,18 @@ title:: Metal
 		      fatalError("Could not find shader functions")
 		  }
 		  ```
-
-- # 5 — Buffers and Memory
+-
+- # Buffers and Memory
   collapsed:: true
 	- ## Metal Storage Modes
 	  collapsed:: true
 		- Metal's memory model is simpler than Vulkan because Apple Silicon has unified memory. You choose a Storage Mode per buffer/texture.
-		-
-		  | Storage Mode | CPU | GPU | When to Use |
+		- | Storage Mode | CPU | GPU | When to Use |
 		  |---|---|---|---|
 		  | `.shared` | Read/Write | Read/Write | Per-frame uniform data, small dynamic buffers |
 		  | `.private` | No access | Read/Write (fast) | Static meshes, textures, render targets |
 		  | `.managed` | Read/Write (manual sync required) | Read/Write | macOS only with dedicated GPU |
 		  | `.memoryless` | No | Tile memory only | Depth buffer used only within one render pass |
-
 	- ## Creating Buffers
 	  collapsed:: true
 		- ```swift
@@ -349,8 +334,8 @@ title:: Metal
 		      return buf
 		  }
 		  ```
-
-- # 6 — Textures
+-
+- # Textures
   collapsed:: true
 	- ## Creating a 2D Texture
 	  collapsed:: true
@@ -388,7 +373,6 @@ title:: Metal
 		  blitEncoder.endEncoding()
 		  blitCommandBuffer.commit()
 		  ```
-
 	- ## Using MTKTextureLoader (The Easy Way)
 	  collapsed:: true
 		- ```swift
@@ -409,8 +393,8 @@ title:: Metal
 		                                              bundle: .main,
 		                                              options: textureOptions)
 		  ```
-
-- # 7 — Render Pipeline State
+-
+- # Render Pipeline State
   collapsed:: true
 	- ## Build the Immutable Pipeline
 	  collapsed:: true
@@ -459,8 +443,8 @@ title:: Metal
 		  depthDescriptor.isDepthWriteEnabled  = true
 		  let depthState = device.makeDepthStencilState(descriptor: depthDescriptor)!
 		  ```
-
-- # 8 — The Complete Render Frame
+-
+- # The Complete Render Frame
   collapsed:: true
 	- ## IntegratIng with MTKView
 	  collapsed:: true
@@ -542,18 +526,17 @@ title:: Metal
 		      }
 		  }
 		  ```
-
-- # 9 — Synchronization
+-
+- # Synchronization
   collapsed:: true
 	- ## Semaphores, Events, and Fences
-	  collapsed:: true
-		-
-		  | Primitive | Scope | Use Case |
+		- | Primitive | Scope | Use Case |
 		  |---|---|---|
 		  | **`DispatchSemaphore`** | CPU–GPU | Block CPU from getting more than N frames ahead of GPU |
 		  | **`MTLFence`** | Within command buffer | Order work within one encoder (e.g., compute before render) |
 		  | **`MTLEvent`** | Between command buffers on same queue | One command buffer signals, the next waits |
 		  | **`MTLSharedEvent`** | Cross-queue or CPU–GPU | Synchronize across different GPU streams or with CPU |
+		-
 		- ```swift
 		  // Example: MTLEvent to sync compute output → render input
 		  let syncEvent = device.makeEvent()!
@@ -578,14 +561,13 @@ title:: Metal
 		  let renderEncoder = renderBuffer.makeRenderCommandEncoder(descriptor: rpd)!
 		  // ... render particles ...
 		  ```
-
-- # 10 — Argument Buffers (Bindless Textures)
+-
+- # Argument Buffers (Bindless Textures)
   collapsed:: true
 	- ## The Problem With Per-Draw Binding
 	  collapsed:: true
 		- Normal `setFragmentTexture(_, index:)` calls have overhead. For a scene with 10,000 objects using 5,000 unique textures, calling `setFragmentTexture` for each object is a CPU bottleneck.
 		- **Argument Buffers** solve this: package many resources (textures, samplers, buffers) into a single buffer. The shader picks which resource it needs using an index.
-
 	- ## Creating an Argument Buffer
 	  collapsed:: true
 		- ```swift
@@ -621,8 +603,8 @@ title:: Metal
 		  // CRITICAL: Declare resource usage so Metal knows which textures are accessed
 		  renderEncoder.useResources(allTextures, usage: .read, stages: .fragment)
 		  ```
-
-- # 11 — Compute Pipelines
+-
+- # Compute Pipelines
   collapsed:: true
 	- ## MTLComputePipelineState
 	  collapsed:: true
@@ -649,8 +631,8 @@ title:: Metal
 		  computeEncoder.dispatchThreads(gridSize, threadsPerThreadgroup: optimalGroupSize)
 		  computeEncoder.endEncoding()
 		  ```
-
-- # 12 — Metal Performance Shaders (MPS)
+-
+- # Metal Performance Shaders (MPS)
   collapsed:: true
 	- ## What is MPS?
 	  collapsed:: true
@@ -679,20 +661,18 @@ title:: Metal
 		  // MPS provides the full neural network stack:
 		  // MPSNNGraph, MPSCNNConvolution, MPSCNNBatchNormalization, etc.
 		  ```
-
-- # 13 — Metal Ray Tracing
+-
+- # Metal Ray Tracing
   collapsed:: true
 	- ## Metal RT Overview
 	  collapsed:: true
 		- Metal Ray Tracing (Metal 2.3+, available on all Apple Silicon and AMD Navi GPUs) is uniquely flexible: you can use it from **compute shaders** without needing a dedicated "ray tracing pipeline". You just call `intersect()` from any kernel.
-		-
-		  | Feature | Vulkan RT | DXR | Metal RT |
+		- | Feature | Vulkan RT | DXR | Metal RT |
 		  |---|---|---|---|
 		  | Requires separate RT pipeline | Yes | Yes | **No** — works in compute shaders |
 		  | Acceleration Structure Build | Complex C++/GLSL | Complex C++/HLSL | Swift + kernel |
 		  | Shader binding table | Required | Required | **Not needed** |
 		  | Custom intersection shapes | Intersection shader | Intersection shader | Custom intersection function |
-
 	- ## Building an Acceleration Structure
 	  collapsed:: true
 		- ```swift
@@ -727,7 +707,6 @@ title:: Metal
 		  accelEncoder.endEncoding()
 		  accelCommandBuffer.commit()
 		  ```
-
 	- ## Ray Tracing in a Compute Shader (MSL)
 	  collapsed:: true
 		- ```metal
@@ -773,8 +752,8 @@ title:: Metal
 		      output.write(color, pixelCoord);
 		  }
 		  ```
-
-- # 14 — Metal Debugging Tools
+-
+- # Metal Debugging Tools
   collapsed:: true
 	- ## Xcode GPU Debugger
 	  collapsed:: true
@@ -796,20 +775,18 @@ title:: Metal
 		  }
 		  renderEncoder.popDebugGroup()
 		  ```
-		-
-		  | Tool | How to Access | What it Shows |
+		- | Tool | How to Access | What it Shows |
 		  |---|---|---|
 		  | **Xcode GPU Frame Capture** | Debug → Capture GPU Frame | Every command, resource, shader, dependency |
 		  | **Metal System Trace** | Instruments → Metal System Trace | CPU/GPU timeline, bottlenecks, stalls |
 		  | **Shader Profiler** | Inside GPU Frame Capture | Per-line shader cost breakdown |
 		  | **Memory Graph** | Debug → Memory Graph | All allocated GPU resources, their sizes |
-
-- # 15 — Complete Object Reference
+-
+- # Complete Object Reference
   collapsed:: true
 	- ## Every Metal Object Explained
 	  collapsed:: true
-		-
-		  | Metal Object | Category | What It Does |
+		- | Metal Object | Category | What It Does |
 		  |---|---|---|
 		  | `MTLDevice` | Core | Represents the GPU. The origin of all objects. |
 		  | `MTLCommandQueue` | Execution | Ordered submission channel for command buffers. |
@@ -831,14 +808,7 @@ title:: Metal
 		  | `MTLSharedEvent` | Sync | Cross-queue or CPU–GPU sync. |
 		  | `MTLAccelerationStructure` | Ray Tracing | BVH over geometry (BLAS) or scene (TLAS). |
 		  | `MTLArgumentEncoder` | Bindless | Encodes multiple resources into an Argument Buffer. |
-
-- # 🔗 Related Pages
-	- [[Advanced Graphics]] — GPU architecture and cross-API comparisons.
-	- [[Shader Programming]] — Concepts that apply to MSL.
-	- [[Vulkan]] — Compare Vulkan's explicit model with Metal's friendlier approach.
-	- [[Swift]] — Metal's primary language for iOS and macOS.
-	- [[C++]] — Metal-cpp is the C++ wrapper for Metal — same API, same syntax.
-
+-
 - # More Learn — Free Resources
 	- [Apple Metal Documentation](https://developer.apple.com/documentation/metal) - The official, comprehensive reference.
 	- [Metal by Example](https://metalbyexample.com/) - Classic in-depth tutorials.

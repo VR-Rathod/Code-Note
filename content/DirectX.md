@@ -7,8 +7,7 @@ keywords: "directx 12, d3d12, hlsl, descriptor heap, root signature, pso, dxr, m
 tags:: index, graphics-programming, advanced-graphics, c++, windows
 title:: DirectX
 
-- # DirectX 12 — The Complete Masterclass
-  collapsed:: true
+- # DirectX 12 — The Roadmap
 	- > [!info] How to Read This Page
 	  > DirectX 12 (D3D12) is Microsoft's explicit, low-level graphics API for Windows 10/11 and Xbox.
 	  > Like Vulkan, it strips away all driver "magic" and requires you to manage memory, synchronization, and pipeline states yourself.
@@ -19,32 +18,28 @@ title:: DirectX
 	  >   → Swapchain → Descriptor Heaps → Command Lists → Root Signature
 	  >   → Pipeline State Object (PSO) → Render Loop → [Advanced Topics]
 	  > ```
-
 	- ## DirectX 12 vs Vulkan Side-by-Side
 	  collapsed:: true
-		-
-		  | Concept | Vulkan | DirectX 12 |
-		  |---|---|---|
-		  | GPU representation | `VkDevice` | `ID3D12Device` |
-		  | Command recording | `VkCommandBuffer` | `ID3D12GraphicsCommandList` |
-		  | Command memory | `VkCommandPool` | `ID3D12CommandAllocator` |
-		  | Submission queue | `VkQueue` | `ID3D12CommandQueue` |
-		  | Render targets | `VkRenderPass` + `VkFramebuffer` | `OMSetRenderTargets()` (no formal pass) |
-		  | Shader bindings schema | `VkDescriptorSetLayout` | `ID3D12RootSignature` |
-		  | Shader bindings data | `VkDescriptorSet` | Descriptor Heap + GPU handles |
-		  | Baked pipeline object | `VkPipeline` | `ID3D12PipelineState` |
-		  | CPU–GPU sync | `VkFence` | `ID3D12Fence` |
-		  | GPU–GPU sync | `VkSemaphore` | `ID3D12Fence` (on separate queue) |
-		  | Resource state | Image Layout Transition | Resource Barrier |
-		  | Memory allocation | `vkAllocateMemory` | Heap Types (Default, Upload, Readback) |
-		  | Window system | `VkSurfaceKHR` | `IDXGISwapChain` |
-		  | Shader language | GLSL → SPIR-V | HLSL → DXBC / DXIL |
-		  | Ray Tracing | `VK_KHR_ray_tracing_pipeline` | DirectX Raytracing (DXR) |
-
+	  | Concept | Vulkan | DirectX 12 |
+	   |---|---|---|
+	   | GPU representation | `VkDevice` | `ID3D12Device` |
+	   | Command recording | `VkCommandBuffer` | `ID3D12GraphicsCommandList` |
+	   | Command memory | `VkCommandPool` | `ID3D12CommandAllocator` |
+	   | Submission queue | `VkQueue` | `ID3D12CommandQueue` |
+	   | Render targets | `VkRenderPass` + `VkFramebuffer` | `OMSetRenderTargets()` (no formal pass) |
+	   | Shader bindings schema | `VkDescriptorSetLayout` | `ID3D12RootSignature` |
+	   | Shader bindings data | `VkDescriptorSet` | Descriptor Heap + GPU handles |
+	   | Baked pipeline object | `VkPipeline` | `ID3D12PipelineState` |
+	   | CPU–GPU sync | `VkFence` | `ID3D12Fence` |
+	   | GPU–GPU sync | `VkSemaphore` | `ID3D12Fence` (on separate queue) |
+	   | Resource state | Image Layout Transition | Resource Barrier |
+	   | Memory allocation | `vkAllocateMemory` | Heap Types (Default, Upload, Readback) |
+	   | Window system | `VkSurfaceKHR` | `IDXGISwapChain` |
+	   | Shader language | GLSL → SPIR-V | HLSL → DXBC / DXIL |
+	   | Ray Tracing | `VK_KHR_ray_tracing_pipeline` | DirectX Raytracing (DXR) |
 - # 1 — Setup and COM Pointers
   collapsed:: true
 	- ## Windows COM Interface
-	  collapsed:: true
 		- DirectX uses **COM (Component Object Model)** interfaces. Every D3D12 object is a COM interface (`ID3D12Something`). You must use `Microsoft::WRL::ComPtr<T>` instead of raw pointers — it auto-releases when it goes out of scope (like `shared_ptr` for COM objects).
 		- ```cpp
 		  #include <d3d12.h>
@@ -65,9 +60,8 @@ title:: DirectX
 		  // device.GetAddressOf() → &device (for creation functions)
 		  // device.Reset()     → explicit release
 		  ```
-
+	-
 	- ## Enabling the Debug Layer
-	  collapsed:: true
 		- The D3D12 Debug Layer validates every API call and catches mistakes. Always enable it in debug builds.
 		- ```cpp
 		  #if defined(_DEBUG)
@@ -85,7 +79,8 @@ title:: DirectX
 		  #endif
 		  ```
 		- > [!warning] Enable **before** creating any other D3D12 object. The debug layer must be active at creation time to instrument objects.
-
+	-
+-
 - # 2 — DXGI Factory and Adapter (Finding a GPU)
   collapsed:: true
 	- ## DXGI — The Hardware Bridge
@@ -123,19 +118,17 @@ title:: DirectX
 		      }
 		  }
 		  ```
-
+-
 - # 3 — Creating the D3D12 Device
   collapsed:: true
 	- ## Feature Levels
 	  collapsed:: true
-		-
-		  | Feature Level | GPU Requirement | Features |
+		- | Feature Level | GPU Requirement | Features |
 		  |---|---|---|
 		  | `D3D_FEATURE_LEVEL_11_0` | Very old GPUs | SM 5.0, basic compute |
 		  | `D3D_FEATURE_LEVEL_12_0` | Modern discrete GPUs | Tier 1 resource binding, VP, DXR optional |
 		  | `D3D_FEATURE_LEVEL_12_1` | NVIDIA Maxwell+ / AMD GCN+ | Tier 2 resource binding |
 		  | `D3D_FEATURE_LEVEL_12_2` | NVIDIA Ampere+ / AMD RDNA2+ | DXR Tier 1.1, Mesh Shaders, VRS |
-
 	- ## Creating the Device
 	  collapsed:: true
 		- ```cpp
@@ -164,7 +157,7 @@ title:: DirectX
 		  D3D12_FEATURE_DATA_SHADER_MODEL shaderModel{ D3D_SHADER_MODEL_6_6 };
 		  device->CheckFeatureSupport(D3D12_FEATURE_SHADER_MODEL, &shaderModel, sizeof(shaderModel));
 		  ```
-
+-
 - # 4 — Command Queue, Allocator, and List
   collapsed:: true
 	- ## The Three-Part Command System
@@ -179,7 +172,6 @@ title:: DirectX
 		      CL -->|"commandList->Close()"| CQ
 		      CQ -->|"commandQueue->ExecuteCommandLists()"| GPU["GPU: executes async"]
 		  ```
-
 	- ## Creating Each Component
 	  collapsed:: true
 		- ```cpp
@@ -212,7 +204,7 @@ title:: DirectX
 		  commandList->Close(); // Must be closed before reset
 		  ```
 		- > [!tip] Create one `CommandAllocator` per frame-in-flight AND per thread. A command allocator cannot be reset while the GPU is still reading from it. The command list itself is cheap and can be shared across frames after resetting.
-
+-
 - # 5 — Swapchain
   collapsed:: true
 	- ## Creating the Swapchain
@@ -249,7 +241,7 @@ title:: DirectX
 		  
 		  UINT currentFrameIndex = swapChain->GetCurrentBackBufferIndex();
 		  ```
-
+-
 - # 6 — Descriptor Heaps
   collapsed:: true
 	- ## What Are Descriptor Heaps?
@@ -265,17 +257,14 @@ title:: DirectX
 		  
 		      Resource --> View --> Heap --> Shader
 		  ```
-
 	- ## The Four Heap Types
 	  collapsed:: true
-		-
-		  | Heap Type | Holds | GPU Visible? | Usage |
+		- | Heap Type | Holds | GPU Visible? | Usage |
 		  |---|---|---|---|
 		  | `CBV_SRV_UAV` | Constant Buffer Views, Shader Resource Views, Unordered Access Views | YES | All shader-readable data and textures |
 		  | `SAMPLER` | Texture sampling configurations | YES | How textures are filtered |
 		  | `RTV` | Render Target Views | NO | Back buffer / G-Buffer color targets |
 		  | `DSV` | Depth Stencil Views | NO | Depth and stencil buffers |
-
 	- ## Creating Descriptor Heaps
 	  collapsed:: true
 		- ```cpp
@@ -320,19 +309,17 @@ title:: DirectX
 		  ComPtr<ID3D12DescriptorHeap> srvHeap;
 		  device->CreateDescriptorHeap(&srvHeapDesc, IID_PPV_ARGS(&srvHeap));
 		  ```
-
+-
 - # 7 — Resources and Memory (Heaps)
   collapsed:: true
 	- ## D3D12 Memory Heap Types
 	  collapsed:: true
-		-
-		  | Heap Type | CPU Access | GPU Access | Use Case |
+		- | Heap Type | CPU Access | GPU Access | Use Case |
 		  |---|---|---|---|
 		  | `HEAP_TYPE_DEFAULT` | None | Fast read/write | Textures, vertex buffers, render targets (VRAM) |
 		  | `HEAP_TYPE_UPLOAD` | CPU write | GPU read | Staging buffer, per-frame uniform data |
 		  | `HEAP_TYPE_READBACK` | CPU read | GPU write | GPU → CPU readback (screenshots, compute results) |
 		  | `HEAP_TYPE_CUSTOM` | Configurable | Configurable | Advanced: unified memory (laptop discrete) |
-
 	- ## Creating a Buffer Resource
 	  collapsed:: true
 		- D3D12 uses `CreateCommittedResource` (simple, one allocation = one heap) or `CreatePlacedResource` (manual heap management, advanced).
@@ -380,13 +367,11 @@ title:: DirectX
 		  // Issue GPU copy command
 		  commandList->CopyResource(vertexBuffer.Get(), uploadBuffer.Get());
 		  ```
-
 	- ## Resource Barriers — The Most Important Concept
 	  collapsed:: true
 		- Resource barriers are D3D12's way of telling the GPU: **"The resource's usage is changing."**
 		- Without a barrier, the GPU doesn't know to flush its caches or wait for dependent passes to finish.
-		-
-		  | Resource State | How it's Used |
+		- | Resource State | How it's Used |
 		  |---|---|
 		  | `D3D12_RESOURCE_STATE_PRESENT` | On screen — about to be displayed |
 		  | `D3D12_RESOURCE_STATE_RENDER_TARGET` | Being drawn to (color output) |
@@ -427,7 +412,7 @@ title:: DirectX
 		                                       D3D12_RESOURCE_STATE_PRESENT);
 		  commandList->ResourceBarrier(1, &barrierBack);
 		  ```
-
+-
 - # 8 — Root Signatures
   collapsed:: true
 	- ## What Is a Root Signature?
@@ -445,7 +430,6 @@ title:: DirectX
 		      RS --> RD
 		      RS --> DT
 		  ```
-
 	- ## Creating a Root Signature
 	  collapsed:: true
 		- ```cpp
@@ -504,7 +488,7 @@ title:: DirectX
 		                              serializedRootSig->GetBufferSize(),
 		                              IID_PPV_ARGS(&rootSignature));
 		  ```
-
+-
 - # 9 — HLSL Shaders
   collapsed:: true
 	- ## Writing a Vertex Shader
@@ -553,7 +537,6 @@ title:: DirectX
 		      return output;
 		  }
 		  ```
-
 	- ## Writing a Pixel Shader
 	  collapsed:: true
 		- ```hlsl
@@ -588,7 +571,6 @@ title:: DirectX
 		      return float4(result, albedo.a);
 		  }
 		  ```
-
 	- ## Compiling HLSL at Runtime
 	  collapsed:: true
 		- ```cpp
@@ -613,7 +595,7 @@ title:: DirectX
 		  // IDxcCompiler3 from dxcompiler.dll
 		  // Supports: WaveIntrinsics, Bindless, Raytracing, Mesh Shaders, SPIR-V output
 		  ```
-
+-
 - # 10 — Pipeline State Object (PSO)
   collapsed:: true
 	- ## The Immutable Pipeline
@@ -668,7 +650,7 @@ title:: DirectX
 		  ComPtr<ID3D12PipelineState> pso;
 		  device->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&pso));
 		  ```
-
+-
 - # 11 — Drawing and the Render Loop
   collapsed:: true
 	- ## Synchronization with Fences
@@ -693,7 +675,6 @@ title:: DirectX
 		      fenceValues[frameIndex]++;
 		  }
 		  ```
-
 	- ## The Complete D3D12 Frame
 	  collapsed:: true
 		- ```cpp
@@ -771,7 +752,7 @@ title:: DirectX
 		      swapChain->Present(1, 0); // 1 = V-Sync, 0 = flags
 		  }
 		  ```
-
+-
 - # 12 — HLSL Compute Shaders
   collapsed:: true
 	- ## Compute Shader Basics
@@ -829,7 +810,7 @@ title:: DirectX
 		  commandList->SetComputeRoot32BitConstants(1, 4, &simConstants, 0);
 		  commandList->Dispatch((particleCount + 63) / 64, 1, 1); // Ceiling division
 		  ```
-
+-
 - # 13 — DirectX Raytracing (DXR)
   collapsed:: true
 	- ## DXR Overview
@@ -853,7 +834,6 @@ title:: DirectX
 		      SBT --> RMiss
 		      RGen -->|"TraceRay()"| RHit & RMiss
 		  ```
-
 	- ## HLSL Ray Generation Shader
 	  collapsed:: true
 		- ```hlsl
@@ -920,14 +900,13 @@ title:: DirectX
 		      payload.color = float4(ndotl, ndotl, ndotl, 1);
 		  }
 		  ```
-
+-
 - # 14 — Mesh Shaders
   collapsed:: true
 	- ## What Are Mesh Shaders?
 	  collapsed:: true
 		- Mesh Shaders replace the entire Vertex → Tessellation → Geometry pipeline with a compute-like two-stage process. They were designed to solve GPU vertex processing inefficiencies.
-		-
-		  | Stage | Role | Analogy |
+		- | Stage | Role | Analogy |
 		  |---|---|---|
 		  | **Amplification Shader (AS)** | Runs first. For each meshlet, decides: render or cull? If render, spawns Mesh Shader threads. | The manager who checks: "which chunks are visible?" |
 		  | **Mesh Shader (MS)** | Processes one meshlet. Outputs vertices and primitives. | The worker who actually converts a chunk to triangles. |
@@ -971,13 +950,12 @@ title:: DirectX
 		      }
 		  }
 		  ```
-
+-
 - # 15 — Performance and Debugging
   collapsed:: true
 	- ## Performance Best Practices
 	  collapsed:: true
-		-
-		  | Practice | Why it Matters |
+		- | Practice | Why it Matters |
 		  |---|---|
 		  | **Cache PSOs to disk** (`ID3D12PipelineLibrary`) | Loading a game with 10,000 PSOs? Cache to disk so compile only happens once. |
 		  | **Use Root Constants for hot data** | Zero CPU overhead — 12 DWORDs written directly into the command stream. |
@@ -985,24 +963,21 @@ title:: DirectX
 		  | **Multi-thread command recording** | Frame 1 → thread 1 records geometry. Thread 2 records shadows. Merge before submit. |
 		  | **Indirect Draw** (`ExecuteIndirect`) | GPU fills the draw arguments. Zero CPU-side draw call loop needed. |
 		  | **Use the enhanced barriers API (D3D12 Agility SDK)** | `D3D12_BARRIER` (new) has less overhead and more precision than `ResourceBarrier()` |
-
 	- ## Debugging Tools
 	  collapsed:: true
-		-
-		  | Tool | What it Does |
+		- | Tool | What it Does |
 		  |---|---|
 		  | **PIX for Windows** | Microsoft's official D3D12 frame debugger. Shows every resource, barrier, and shader in real time. |
 		  | **RenderDoc** | Cross-platform frame capture. Works on D3D12 too. |
 		  | **NVIDIA Nsight** | GPU perf counters, shader occupancy, memory bandwidth |
 		  | **D3D12 Debug Layer** | API misuse detection. Always enable in development! |
 		  | **GPU-Based Validation (GBV)** | Detects GPU-timeline errors like OOB reads — much slower but catches hard bugs |
-
+-
 - # 16 — Complete Object Reference
   collapsed:: true
 	- ## Every D3D12 Object Explained
 	  collapsed:: true
-		-
-		  | D3D12 Object | Category | What It Does |
+		- | D3D12 Object | Category | What It Does |
 		  |---|---|---|
 		  | `ID3D12Device` | Core | The logical GPU. Create all other objects from here. |
 		  | `IDXGIAdapter4` | DXGI | Physical GPU representation. Enumerated via factory. |
@@ -1018,14 +993,8 @@ title:: DirectX
 		  | `ID3D12Fence` | Sync | Signal from GPU → waited on by CPU or another queue. |
 		  | `ID3D12StateObject` | Ray Tracing | Ray tracing pipeline object (replaces PSO for RT). |
 		  | `ID3D12StateObjectProperties` | Ray Tracing | Query shader identifiers from a state object. |
-
-- # 🔗 Related Pages
-	- [[Advanced Graphics]] — GPU architecture and API comparisons.
-	- [[Vulkan]] — Vulkan equivalent for every DX12 concept.
-	- [[Shader Programming]] — Deep dive into HLSL, semantics, and advanced shader techniques.
-	- [[Unreal Engine]] — UE5 uses DX12 as its primary Windows renderer (Nanite uses Mesh Shaders).
-	- [[C++]] — COM patterns, RAII, and smart pointers needed for clean DX12 code.
-
+-
+-
 - # More Learn — Free Resources
 	- [Microsoft DX12 Programming Guide](https://learn.microsoft.com/en-us/windows/win32/direct3d12/directx-12-programming-guide) - Official reference.
 	- [Frank Luna's "3D Game Programming with DX12"](https://d3dcoder.net/) - The essential beginner book.
