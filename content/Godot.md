@@ -1293,3 +1293,5 @@ keywords: "Godot engine, Godot 4, game development, Godot nodes, Godot physics, 
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills : -
 		-
 		- [Godot Docs](https://docs.godotengine.org/en/stable/) - For Latest Docs and Features
+		- [[Game Systems]] — Implement inventory, save/load, quests & procedural generation in Godot
+		- [[Advanced Graphics]] — Vulkan-based low-level rendering via Godot's RenderingDevice

@@ -1449,6 +1449,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 		- [[Godot]] — Godot engine A-Z reference
 		- [[PathTracer Learning]] — GPU path tracing and rendering research
 		- [[Advanced Graphics]] — GPU architecture, low-level APIs, and modern rendering techniques
+		- [[Game Systems]] — Inventory, Quest, Dialogue & Save/Load patterns that complement UE5's GAS and systems
 - # Gameplay Ability System (GAS)
   collapsed:: true
 	- ## Overview
