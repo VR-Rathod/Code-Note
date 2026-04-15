@@ -3,6 +3,13 @@
   "outputDirectory": "public",
   "framework": null,
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/index",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
