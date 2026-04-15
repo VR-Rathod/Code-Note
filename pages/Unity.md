@@ -1492,3 +1492,5 @@ displayTitle: Unity
 	- [Brackeys YouTube (archived)](https://www.youtube.com/@Brackeys)
 	- [Unity GitHub](https://github.com/Unity-Technologies)
 	- [Awesome Unity](https://github.com/RyanNielson/awesome-unity)
+	- [[Game Systems]] — Engine-agnostic inventory, quest, save/load & procedural gen patterns
+	- [[Advanced Graphics]] — SRP, URP, HDRP low-level rendering connection to graphics APIs

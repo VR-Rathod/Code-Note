@@ -1017,4 +1017,5 @@ keywords: "game development, game loop, physics engine, rendering, game AI, audi
 		- [[Bevy]] — Rust ECS game engine
 		- [[Unity]] — Unity engine reference
 		- [[Unreal Engine]] — Unreal Engine reference
+		- [[Game Systems]] — Inventory, Quest, Dialogue, Save/Load, Achievements & Procedural Generation
 -
