@@ -21,11 +21,9 @@ title:: WebGPU
 	  >   → Shader Module (WGSL) → Pipeline → Bind Groups
 	  >   → Command Encoder → Render/Compute Pass → Submit
 	  > ```
-
 	- ## WebGPU vs WebGL
 	  collapsed:: true
-		-
-		  | Feature | WebGL 2 (OpenGL ES) | WebGPU (Vulkan/DX12/Metal) |
+		- | Feature | WebGL 2 (OpenGL ES) | WebGPU (Vulkan/DX12/Metal) |
 		  |---|---|---|
 		  | Mental model | Global state machine | Explicit objects, no global state |
 		  | Threading | Single-threaded | Workers + OffscreenCanvas |
@@ -37,8 +35,8 @@ title:: WebGPU
 		  | Multi-draw indirect | No | Yes |
 		  | Timestamp queries | No | Yes |
 		  | Status | Legacy (works, no new features) | Active, rapidly expanding spec |
-
-- # 1 — Initialization (Adapter → Device)
+-
+- # Initialization (Adapter → Device)
   collapsed:: true
 	- ## The Initialization Chain
 	  collapsed:: true
@@ -53,7 +51,6 @@ title:: WebGPU
 		      Adapter -->|"requestDevice()"| Device
 		      Device -->|"device.queue"| Queue
 		  ```
-
 	- ## Initialization Code
 	  collapsed:: true
 		- ```javascript
@@ -103,8 +100,8 @@ title:: WebGPU
 		      return { adapter, device };
 		  }
 		  ```
-
-- # 2 — Canvas Configuration
+-
+- # Canvas Configuration
   collapsed:: true
 	- ## Connecting WebGPU to a Canvas
 	  collapsed:: true
@@ -126,14 +123,13 @@ title:: WebGPU
 		  const currentTexture = context.getCurrentTexture();
 		  const currentView    = currentTexture.createView();
 		  ```
-
-- # 3 — WGSL Shader Language
+-
+- # WGSL Shader Language
   collapsed:: true
 	- ## WGSL — WebGPU Shading Language
 	  collapsed:: true
 		- WGSL is statically typed, Rust-like, and cross-compiles to SPIR-V (Linux), HLSL (Windows), and MSL (Mac) internally by the browser.
-		-
-		  | WGSL Type | Equivalent in GLSL | Description |
+		- | WGSL Type | Equivalent in GLSL | Description |
 		  |---|---|---|
 		  | `f32` | `float` | 32-bit float |
 		  | `i32` | `int` | 32-bit signed int |
@@ -145,7 +141,6 @@ title:: WebGPU
 		  | `array<f32, N>` | `float arr[N]` | Fixed-size array |
 		  | `array<Vertex>` | SSBO array | Dynamic-size array (in storage buffer) |
 		  | `bool` | `bool` | Boolean |
-
 	- ## The Triangle Shader (WGSL)
 	  collapsed:: true
 		- ```wgsl
@@ -200,7 +195,6 @@ title:: WebGPU
 		      return vec4<f32>(result, albedo.a);
 		  }
 		  ```
-
 	- ## Compute Shader (WGSL)
 	  collapsed:: true
 		- ```wgsl
@@ -249,13 +243,12 @@ title:: WebGPU
 		      particlesOut[index] = p;
 		  }
 		  ```
-
-- # 4 — Buffers
+-
+- # Buffers
   collapsed:: true
 	- ## Buffer Types and Usages
 	  collapsed:: true
-		-
-		  | GPUBufferUsage flag | Purpose |
+		- | GPUBufferUsage flag | Purpose |
 		  |---|---|
 		  | `VERTEX` | Vertex attribute data |
 		  | `INDEX` | Triangle index data |
@@ -266,7 +259,6 @@ title:: WebGPU
 		  | `MAP_READ` | CPU can map this after GPU writes to read results back |
 		  | `MAP_WRITE` | CPU can map this to write data in, then copy to GPU |
 		  | `INDIRECT` | Used as argument buffer for indirect draw/dispatch |
-
 	- ## Creating Buffers
 	  collapsed:: true
 		- ```javascript
@@ -319,7 +311,6 @@ title:: WebGPU
 		      usage: GPUBufferUsage.STORAGE | GPUBufferUsage.VERTEX, // Render from compute output!
 		  });
 		  ```
-
 	- ## Reading Data Back from GPU (Readback)
 	  collapsed:: true
 		- ```javascript
@@ -340,8 +331,8 @@ title:: WebGPU
 		  console.log("GPU Result:", data[0], data[1], data[2]);
 		  readbackBuffer.unmap(); // Unmap before GPU can use it again
 		  ```
-
-- # 5 — Textures
+-
+- # Textures
   collapsed:: true
 	- ## Creating and Uploading Textures
 	  collapsed:: true
@@ -390,8 +381,8 @@ title:: WebGPU
 		      maxAnisotropy: 16,         // Quality anisotropic filtering
 		  });
 		  ```
-
-- # 6 — Bind Groups
+-
+- # Bind Groups
   collapsed:: true
 	- ## What Are Bind Groups?
 	  collapsed:: true
@@ -406,7 +397,6 @@ title:: WebGPU
 		      BGL --> Pipeline
 		      BG -->|"setBindGroup(0, myBG)"| Pass["Render/Compute Pass"]
 		  ```
-
 	- ## Creating BindGroupLayoutS and BindGroups
 	  collapsed:: true
 		- ```javascript
@@ -455,8 +445,8 @@ title:: WebGPU
 		      ]
 		  });
 		  ```
-
-- # 7 — Render Pipelines
+-
+- # Render Pipelines
   collapsed:: true
 	- ## Creating the Render Pipeline
 	  collapsed:: true
@@ -513,8 +503,8 @@ title:: WebGPU
 		      },
 		  });
 		  ```
-
-- # 8 — The Complete Render Loop
+-
+- # The Complete Render Loop
   collapsed:: true
 	- ## Drawing Every Frame
 	  collapsed:: true
@@ -564,8 +554,8 @@ title:: WebGPU
 		  
 		  requestAnimationFrame(drawFrame);
 		  ```
-
-- # 9 — Compute Pipelines
+-
+- # Compute Pipelines
   collapsed:: true
 	- ## Creating and Dispatching Compute
 	  collapsed:: true
@@ -607,8 +597,8 @@ title:: WebGPU
 		  // Swap buffers for next frame (ping-pong)
 		  [computeBindGroupEven, computeBindGroupOdd] = [computeBindGroupOdd, computeBindGroupEven];
 		  ```
-
-- # 10 — Timestamps and Performance
+-
+- # Timestamps and Performance
   collapsed:: true
 	- ## Measuring GPU Time
 	  collapsed:: true
@@ -658,20 +648,18 @@ title:: WebGPU
 		  console.log(`Compute pass: ${computeTimeNs / 1_000_000} ms`);
 		  readbackBuffer.unmap();
 		  ```
-
-- # 11 — WebGPU Native (Dawn and wgpu)
+-
+- # WebGPU Native (Dawn and wgpu)
   collapsed:: true
 	- ## Beyond the Browser
 	  collapsed:: true
 		- WebGPU isn't only for browsers. You can use the exact same API in desktop native apps:
-		-
-		  | Implementation | Language | Platform | Owned By |
+		- | Implementation | Language | Platform | Owned By |
 		  |---|---|---|---|
 		  | **Dawn** | C++ | Windows, macOS, Linux, Android, iOS | Google (powers Chrome) |
 		  | **wgpu** | Rust | Windows, macOS, Linux, Android, iOS, Web | Mozilla / wgpu contributors |
 		  | **wgpu-native** | C FFI | Same as wgpu | wgpu project |
 		  | **WebGPU in Node.js** | JavaScript | Windows, macOS, Linux | Community |
-
 	- ## Using wgpu in Rust
 	  collapsed:: true
 		- ```rust
@@ -711,13 +699,12 @@ title:: WebGPU
 		  // The rest of the API matches JavaScript WebGPU 1:1!
 		  // device.create_buffer(), device.create_render_pipeline(), etc.
 		  ```
-
-- # 12 — Complete Object Reference
+-
+- # Complete Object Reference
   collapsed:: true
 	- ## Every WebGPU Object Explained
 	  collapsed:: true
-		-
-		  | WebGPU Object | Category | What It Does |
+		- | WebGPU Object | Category | What It Does |
 		  |---|---|---|
 		  | `GPUAdapter` | Bootstrap | Represents a physical GPU. Query capabilities here. |
 		  | `GPUDevice` | Core | Logical GPU connection. Create everything from here. |
@@ -737,13 +724,7 @@ title:: WebGPU
 		  | `GPUComputePassEncoder` | Commands | Records compute dispatches. |
 		  | `GPURenderBundleEncoder` | Perf | Pre-record draw calls for reuse across frames. |
 		  | `GPUQuerySet` | Profiling | Occlusion queries and timestamp queries. |
-
-- # 🔗 Related Pages
-	- [[Advanced Graphics]] — GPU Architecture and cross-API concepts.
-	- [[Shader Programming]] — General shader concepts that apply to WGSL.
-	- [[Vulkan]] — Compare WebGPU's architecture with Vulkan's explicit model.
-	- [[Web Development]] — WebGPU lives inside the web ecosystem.
-
+-
 - # More Learn — Free Resources
 	- [WebGPU Fundamentals](https://webgpufundamentals.org/) - The MOST in-depth beginner tutorial for WebGPU.
 	- [WebGPU Samples (Official)](https://webgpu.github.io/webgpu-samples/) - Dozens of working code examples.

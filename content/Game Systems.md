@@ -14,7 +14,6 @@ title:: Game Systems
 	  > This page covers the **engineering** of systems common to nearly every game — the internals that power inventory screens, quest trackers, save files, and procedurally generated worlds.
 	  > Each system is designed language-agnostically but includes real C++ and GDScript code examples.
 	  > For engine-specific implementation see [[Godot]], [[Unity]], [[Unreal Engine]].
-
 	- ## The Six Core Game Systems
 	  collapsed:: true
 		- ```mermaid
@@ -46,7 +45,6 @@ title:: Game Systems
 		        Dungeon Gen
 		        WFC
 		  ```
-
 - # 1 — Inventory System
   collapsed:: true
 	- ## Why Inventory Is Non-Trivial
@@ -60,7 +58,6 @@ title:: Game Systems
 		  ✔ Can containers exist inside containers (bags in a bag)?
 		  ✔ How is it saved, versioned, and synchronized in multiplayer?
 		  ```
-
 	- ## The Item Data Model
 	  collapsed:: true
 		- ```cpp
@@ -99,7 +96,6 @@ title:: Game Systems
 		  };
 		  ```
 		- > [!tip] Separate DEFINITION from INSTANCE. The definition is a read-only template shared across all copies of "Iron Sword". The instance holds the specific reality (its durability, enchantments, ownership).
-
 	- ## Inventory Container
 	  collapsed:: true
 		- ```cpp
@@ -169,7 +165,6 @@ title:: Game Systems
 		      }
 		  };
 		  ```
-
 	- ## Equipment System
 	  collapsed:: true
 		- ```cpp
@@ -205,7 +200,6 @@ title:: Game Systems
 		      }
 		  };
 		  ```
-
 	- ## Inventory in Godot (GDScript)
 	  collapsed:: true
 		- ```gdscript
@@ -254,7 +248,6 @@ title:: Game Systems
 		              total += slot.quantity
 		      return total >= required_qty
 		  ```
-
 - # 2 — Quest System
   collapsed:: true
 	- ## Quest Architecture
@@ -269,7 +262,6 @@ title:: Game Systems
 		      Completed --> [*]
 		      Failed --> [*]
 		  ```
-
 	- ## Quest Data Model
 	  collapsed:: true
 		- ```cpp
@@ -329,7 +321,6 @@ title:: Game Systems
 		      float timeLimitSec; // 0 = no time limit
 		  };
 		  ```
-
 	- ## Quest Manager (Runtime Engine)
 	  collapsed:: true
 		- ```cpp
@@ -382,7 +373,6 @@ title:: Game Systems
 		      }
 		  };
 		  ```
-
 	- ## Branching Quests
 	  collapsed:: true
 		- ```mermaid
@@ -408,7 +398,6 @@ title:: Game Systems
 		      questManager.startQuest("the_deal");
 		  }
 		  ```
-
 - # 3 — Dialogue System
   collapsed:: true
 	- ## Dialogue Tree Concepts
@@ -429,7 +418,6 @@ title:: Game Systems
 		      C1 -->|"Condition: quest_available == false"| B2
 		      C1 --> C
 		  ```
-
 	- ## Dialogue Node Data Model
 	  collapsed:: true
 		- ```cpp
@@ -465,7 +453,6 @@ title:: Game Systems
 		      std::unordered_map<std::string, std::vector<DialogueChoice>> choices;
 		  };
 		  ```
-
 	- ## Dialogue Runner
 	  collapsed:: true
 		- ```cpp
@@ -520,11 +507,9 @@ title:: Game Systems
 		      }
 		  };
 		  ```
-
 	- ## Using Existing Dialogue Tools
 	  collapsed:: true
-		-
-		  | Tool | Language | Engine | Notes |
+		- | Tool | Language | Engine | Notes |
 		  |---|---|---|---|
 		  | **Ink** | Inkle's scripting language | Unity, Godot | Narrative-first. Powers "80 Days", "Heaven's Vault" |
 		  | **Yarn Spinner** | Yarn Script | Unity, Godot, Unreal | Perfect for games with lots of NPC dialogue |
@@ -538,7 +523,6 @@ title:: Game Systems
 		  # Godot + Yarn Spinner
 		  # dialogueRunner.StartDialogue("BlacksmithIntro")
 		  ```
-
 - # 4 — Save & Load System
   collapsed:: true
 	- ## What Needs to Be Saved
@@ -568,18 +552,15 @@ title:: Game Systems
 		      SaveState --> Player
 		      SaveState --> Meta
 		  ```
-
 	- ## Serialization Design
 	  collapsed:: true
-		-
-		  | Format | Pros | Cons | Best For |
+		- | Format | Pros | Cons | Best For |
 		  |---|---|---|---|
 		  | **JSON** | Human-readable, easy to debug, version-friendly | Larger file size, slower parsing | Most games — the default choice |
 		  | **Binary** | Tiny files, fastest read/write | Unreadable, fragile to schema changes | Large worlds, console games |
 		  | **MessagePack** | Binary + JSON-compatible schema | External library needed | Mobile games (small file sizes) |
 		  | **SQLite** | Structured, query-able, safe | Overkill for simple games | Complex simulations, MMO state |
 		  | **XML** | Very portable | Verbose, slow | Legacy engines |
-
 	- ## Save System in C++
 	  collapsed:: true
 		- ```cpp
@@ -663,7 +644,6 @@ title:: Game Systems
 		      }
 		  };
 		  ```
-
 	- ## Save File Versioning (Critical Practice)
 	  collapsed:: true
 		- > [!warning] Version Your Save Files
@@ -687,7 +667,6 @@ title:: Game Systems
 		      return v2;
 		  }
 		  ```
-
 	- ## Save System in Godot (GDScript)
 	  collapsed:: true
 		- ```gdscript
@@ -729,7 +708,6 @@ title:: Game Systems
 		      WorldState.from_dict(data["world_flags"])
 		      return true
 		  ```
-
 - # 5 — Achievement System
   collapsed:: true
 	- ## Achievement Data Model
@@ -752,7 +730,6 @@ title:: Game Systems
 		      int64_t     unlockTime;   // Unix timestamp
 		  };
 		  ```
-
 	- ## Achievement Manager (Event-Driven)
 	  collapsed:: true
 		- ```cpp
@@ -816,11 +793,9 @@ title:: Game Systems
 		      }
 		  };
 		  ```
-
 	- ## Platform Achievement Integration
 	  collapsed:: true
-		-
-		  | Platform | API | Notes |
+		- | Platform | API | Notes |
 		  |---|---|---|
 		  | **Steam** | `ISteamUserStats::SetAchievement()` | Via Steamworks SDK |
 		  | **PlayStation** | `sceNpTrophyUnlockTrophy()` | Via PSN SDK |
@@ -829,7 +804,6 @@ title:: Game Systems
 		  | **Google Play Games** | `achievementsClient.unlock()` | Android / Kotlin |
 		  | **Godot (all platforms)** | `SteamAchievement` + GodotSteam plugin | |
 		  | **Unity** | `Social.ReportProgress()` | Unified Social API, platform specific |
-
 - # 6 — Procedural Generation
   collapsed:: true
 	- ## Key Noise Functions
@@ -850,7 +824,6 @@ title:: Game Systems
 		      Perlin --> FBM
 		      Simplex --> FBM
 		  ```
-
 	- ## Terrain Generation with FBM
 	  collapsed:: true
 		- ```cpp
@@ -903,7 +876,6 @@ title:: Game Systems
 		      return Biome::Plains;
 		  }
 		  ```
-
 	- ## Dungeon Generation: BSP Algorithm
 	  collapsed:: true
 		- ```cpp
@@ -945,12 +917,10 @@ title:: Game Systems
 		      split(*node.right, minSize, rng);
 		  }
 		  ```
-
 	- ## Wave Function Collapse (WFC)
 	  collapsed:: true
 		- WFC generates structured content (tile-based maps, 3D buildings) by observing constraints and collapsing possibilities.
-		-
-		  | Concept | Explanation |
+		- | Concept | Explanation |
 		  |---|---|
 		  | **Tiles** | The input building blocks (grass, wall, door, corner, etc.) |
 		  | **Adjacency Rules** | "Tile GRASS can be next to GRASS or PATH, never WALL" |
@@ -994,11 +964,9 @@ title:: Game Systems
 		                  raise Exception("Contradiction! Backtrack needed.")
 		  ```
 		- > [!tip] [mxgmn/WaveFunctionCollapse](https://github.com/mxgmn/WaveFunctionCollapse) — The original WFC implementation with examples. Free and open source.
-
 	- ## Procedural Tools and Libraries
 	  collapsed:: true
-		-
-		  | Tool / Library | Language | Purpose |
+		- | Tool / Library | Language | Purpose |
 		  |---|---|---|
 		  | **FastNoiseLite** | C++, C#, GLSL | Fastest noise library — Perlin, Simplex, Cellular, Value |
 		  | **libnoise** | C++ | Classic noise composition tools |
@@ -1007,15 +975,6 @@ title:: Game Systems
 		  | **WaveFunctionCollapse** | C# | Original WFC by mxgmn |
 		  | **Godot FastNoiseLite** | GDScript | Built-in! `var noise = FastNoiseLite.new()` |
 		  | **Unity Terrain Tools** | C# | Height map generation + biome blending |
-
-- # 🔗 Related Pages
-	- [[Game Development]] — Parent hub page for all game development topics.
-	- [[Godot]] — GDScript-specific implementations of each system.
-	- [[Unity]] — C# and Unity-specific implementation patterns.
-	- [[Unreal Engine]] — Blueprint and C++ implementations for Unreal.
-	- [[Advanced Graphics]] — GPU rendering, not covered here.
-	- [[Game Design]] — The design theory behind quests, dialogue, and economies.
-
 - # More Learn — Free Resources
 	- [Game Programming Patterns (Robert Nystrom)](https://gameprogrammingpatterns.com/) - Free web book. The bible of game systems patterns.
 	- [RedBlobGames](https://www.redblobgames.com/) - Interactive visualizations of pathfinding, noise, hex grids.

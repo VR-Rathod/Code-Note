@@ -1442,14 +1442,6 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 		- **Procedural Content Generation (PCG)** — built-in UE5.2+
 		- **CommonUI** — cross-platform UI framework
 	-
-	- ## Related Pages
-		- [[Game Development]] — Core game dev concepts (ECS, rendering pipeline, physics, AI)
-		- [[Cpp]] — Full C++ language reference (STL, templates, smart pointers, move semantics)
-		- [[Cpp for Unreal]] — Unreal-specific C++ patterns: UObject system, macros, TArray/TMap, delegates, GC, networking replication
-		- [[Godot]] — Godot engine A-Z reference
-		- [[PathTracer Learning]] — GPU path tracing and rendering research
-		- [[Advanced Graphics]] — GPU architecture, low-level APIs, and modern rendering techniques
-		- [[Game Systems]] — Inventory, Quest, Dialogue & Save/Load patterns that complement UE5's GAS and systems
 - # Gameplay Ability System (GAS)
   collapsed:: true
 	- ## Overview
