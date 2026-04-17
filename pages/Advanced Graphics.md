@@ -103,6 +103,7 @@ displayTitle: Advanced Graphics Programming
 		        GPU Driven Rendering
 		        Multi-threading
 		  ```
+-
 - # GPU Architecture
   collapsed:: true
 	- > [!info] Why This Matters
@@ -178,6 +179,7 @@ displayTitle: Advanced Graphics Programming
 		  | Fence | CPU-GPU | CPU waits for GPU work to finish |
 		  | Pipeline barrier (Vulkan) | Command buffer | Transition resource states |
 		  | Event | Command buffer | Fine-grained sync within a queue |
+-
 - # [[Vulkan]]
   collapsed:: true
 	- > [!info] What is Vulkan?
@@ -389,6 +391,7 @@ displayTitle: Advanced Graphics Programming
 		      RGen --> RClose
 		      RGen --> RMiss
 		  ```
+-
 - # [[DirectX]] 12
   collapsed:: true
 	- > [!info] What is DirectX 12?
@@ -520,6 +523,7 @@ displayTitle: Advanced Graphics Programming
 		  device->CreateShaderResourceView(texture, &srvDesc,
 		      srvHeap->GetCPUDescriptorHandleForHeapStart());
 		  ```
+-
 - # [[Metal]] (Apple)
   collapsed:: true
 	- > [!info] What is Metal?
@@ -641,6 +645,7 @@ displayTitle: Advanced Graphics Programming
 		      return float4(color.rgb * ndotl, color.a);
 		  }
 		  ```
+-
 - # [[WebGPU]]
   collapsed:: true
 	- > [!info] What is WebGPU?
@@ -758,6 +763,7 @@ displayTitle: Advanced Graphics Programming
 		      return textureSample(myTexture, mySampler, in.uv);
 		  }
 		  ```
+-
 - # [[Shader Programming]]: HLSL (High-Level Shading Language)
   collapsed:: true
 	- > [!info] What is HLSL?
@@ -890,6 +896,7 @@ displayTitle: Advanced Graphics Programming
 		  | `NORMAL` | VS in | Vertex normal |
 		  | `TEXCOORD0-7` | VS in/out | Texture coordinates |
 		  | `COLOR0-1` | VS in/out | Vertex color |
+-
 - # GLSL Advanced
   collapsed:: true
 	- > [!info] GLSL in Modern Pipelines
@@ -987,6 +994,7 @@ displayTitle: Advanced Graphics Programming
 		  dxc -spirv -T ps_6_6 -E PSMain shader.hlsl -Fo frag.spv
 		  dxc -spirv -T cs_6_6 -E CSMain shader.hlsl -Fo comp.spv
 		  ```
+-
 - # Advanced Rendering Techniques
   collapsed:: true
 	- ## Render Graph
@@ -1114,6 +1122,7 @@ displayTitle: Advanced Graphics Programming
 		  | Culling | CPU or geometry shader | Task shader on GPU |
 		  | LOD | CPU-side | Task shader on GPU |
 		  | Procedural geo | Geometry shader (slow) | Native, fast |
+-
 - # PBR — Physically Based Rendering
   collapsed:: true
 	- > [!info] PBR Standard
@@ -1180,6 +1189,7 @@ displayTitle: Advanced Graphics Programming
 		      return (diffuse + specular) * lightColor * NdotL;
 		  }
 		  ```
+-
 - # Performance & Optimization
   collapsed:: true
 	- ## GPU Profiling Tools
@@ -1224,19 +1234,9 @@ displayTitle: Advanced Graphics Programming
 		  | Use MAD instructions | Single cycle multiply-add | `a * b + c` compiles to MAD |
 		  | Avoid dynamic indexing | Breaks compiler optimization | Use constant indices when possible |
 		  | Pack data tightly | Better cache utilization | Use `vec4` not 4 separate `float` |
-- # Logseq Graph Connections
-  collapsed:: true
-	- tags:: graphics-programming, vulkan, directx, metal, webgpu, hlsl, glsl, gpu, rendering, shaders
-	- Related pages:
-		- [[Game Development]] — engine-level rendering concepts (rasterization, lighting, shaders overview)
-		- [[PathTracer Learning]] — full GPU path tracer implementation with Vulkan RT
-		- [[Godot]] — Godot shading language and RenderingDevice
-		- [[Unity]] — Unity URP/HDRP shader graph and HLSL
-		- [[Unreal Engine]] — Unreal material system and HLSL
-		- [[Cpp]] — C++ language reference for graphics programming
-		- [[Rust]] — Rust with wgpu for WebGPU native
-		- [[Game Design]] — design concepts that drive rendering requirements
+-
 - # More Learn
+  collapsed:: true
 	- ## Official Documentation
 		- [Vulkan Specification](https://registry.khronos.org/vulkan/specs/1.3/html/) — Official Vulkan spec. Comprehensive reference.
 		- [Vulkan Tutorial](https://vulkan-tutorial.com/) — Best free Vulkan tutorial. Covers full pipeline from scratch.

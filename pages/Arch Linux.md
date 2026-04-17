@@ -43,7 +43,7 @@ enableToc: true
 		  2022  → 20th anniversary; linux-zen added to official repos
 		  2024  → Arch continues as the gold standard rolling-release distro
 		  ```
-
+-
 - # Introduction
   collapsed:: true
 	- ## What is Arch Linux?
@@ -113,7 +113,7 @@ enableToc: true
 		  | ArcoLinux | Learning Arch | GUI | Educational focus |
 		  | CachyOS | Performance-optimized | GUI | Custom kernel, BORE scheduler |
 		  | Parabola | 100% free software | Manual | FSF-endorsed |
-
+-
 - # Installation
   collapsed:: true
 	- ## System Requirements
@@ -404,7 +404,7 @@ enableToc: true
 		  sudo pacman -S gnome gnome-extra gdm
 		  sudo systemctl enable gdm
 		  ```
-
+-
 - # Kernel & Architecture
   collapsed:: true
 	- ## Available Kernels
@@ -531,8 +531,8 @@ enableToc: true
 		  # GRUB_DISABLE_OS_PROBER=false
 		  sudo grub-mkconfig -o /boot/grub/grub.cfg
 		  ```
-
-- # pacman Package Manager
+-
+- # Pacman Package Manager
   collapsed:: true
 	- ## What is pacman?
 		- **pacman** is Arch Linux's native package manager — fast, simple, and powerful.
@@ -728,7 +728,7 @@ enableToc: true
 		  extra-testing
 		  multilib-testing
 		  ```
-
+-
 - # AUR (Arch User Repository)
   collapsed:: true
 	- ## What is the AUR?
@@ -883,7 +883,7 @@ enableToc: true
 		  | aura | Haskell | Fast | Multi-backend | Unique design |
 	- > [!info]
 	  > **paru** is generally recommended over yay for new installs — it's faster (Rust), shows PKGBUILD diffs by default, and has better security defaults.
-
+-
 - # Shell & Terminal
   collapsed:: true
 	- ## Default Shell
@@ -1093,7 +1093,7 @@ enableToc: true
 		  # source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 		  # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 		  ```
-
+-
 - # User & Group Management
   collapsed:: true
 	- ## Account Types
@@ -1209,8 +1209,8 @@ enableToc: true
 		  # Check polkit actions
 		  pkaction --verbose --action-id org.freedesktop.systemd1.manage-units
 		  ```
-
-- # Systemd & Service Management
+-
+- # System & Service Management
   collapsed:: true
 	- ## systemctl — Service Control
 		- ```bash
@@ -1360,7 +1360,7 @@ enableToc: true
 		  sudo systemctl enable --now backup.timer
 		  systemctl list-timers --all
 		  ```
-
+-
 - # Networking
   collapsed:: true
 	- ## Network Tools
@@ -1544,7 +1544,7 @@ enableToc: true
 		  ssh -R 8080:localhost:80 user@host   # remote port forward
 		  ssh -D 1080 user@host                # SOCKS proxy
 		  ```
-
+-
 - # Desktop Environments
   collapsed:: true
 	- ## Installing a Desktop Environment
@@ -1677,7 +1677,7 @@ enableToc: true
 		  sudo pacman -S xorg-xwayland
 		  # Most Wayland compositors include XWayland support automatically
 		  ```
-
+-
 - # Security
   collapsed:: true
 	- ## Security Overview
@@ -1846,7 +1846,7 @@ enableToc: true
 		  # Update regularly (most important security practice)
 		  sudo pacman -Syu
 		  ```
-
+-
 - # System Maintenance
   collapsed:: true
 	- ## The Golden Rule
@@ -2034,9 +2034,8 @@ enableToc: true
 		  # IgnorePkg = packagename
 		  # IgnorePkg = pkg1 pkg2 pkg3
 		  ```
-
+-
 - # Arch Wiki
-  collapsed:: true
 	- ## What is the Arch Wiki?
 		- The **Arch Wiki** (`wiki.archlinux.org`) is the most comprehensive Linux documentation resource on the internet.
 		- Used by users of **all** Linux distributions — not just Arch users.
@@ -2119,7 +2118,7 @@ enableToc: true
 		  yay -S arch-wiki-lite
 		  wiki-search "pacman"
 		  ```
-
+-
 - # More Learn
 	- ## Official Resources
 		- [Arch Linux Official Website](https://archlinux.org) — downloads, news, packages
@@ -2142,12 +2141,6 @@ enableToc: true
 		- [The Linux Cast](https://www.youtube.com/@TheLinuxCast) — Arch tips and workflows
 		- [typecraft](https://www.youtube.com/@typecraft_dev) — Neovim, terminal, Arch setup
 		- [Dreams of Autonomy](https://www.youtube.com/@dreamsofautonomy) — dotfiles, Hyprland, Arch ricing
-	- ## Related Notes
-		- [[Linux Advanced]] — advanced Linux concepts applicable to Arch
-		- [[Fedora]] — RPM-based alternative, great for developers
-		- [[Ubuntu]] — Debian-based, beginner-friendly alternative
-		- [[Debian]] — the stable base that Ubuntu is built on
-		- [[Garuda Linux]] — Arch-based gaming distro with guardrails
 	- ## Community & Help
 		- [r/archlinux](https://reddit.com/r/archlinux) — Reddit community
 		- [Arch Linux IRC](https://wiki.archlinux.org/title/Arch_IRC_channels) — #archlinux on Libera.Chat

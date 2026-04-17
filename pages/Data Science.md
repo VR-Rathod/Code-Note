@@ -26,12 +26,6 @@ displayTitle: Data Science
 		       ↓
 		  Deployment & Monitoring
 		  ```
-	- ## Related Pages
-		- [[Python]] — Primary language for data science
-		- [[R]] — Statistical computing language
-		- [[Statistics & Probability]] — Mathematical foundations
-		- [[Machine Learning]] — Core modeling techniques
-		- [[Deep Learning]] — Neural network methods
 - # History
   collapsed:: true
 	- **How**: Emerged from statistics and computer science in the early 2000s. The term "Data Scientist" was popularized by DJ Patil and Jeff Hammerbacher around 2008.

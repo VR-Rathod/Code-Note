@@ -578,76 +578,30 @@ keywords: "game development, game loop, physics engine, rendering, game AI, audi
 		  ```
 -
 - # Multiplayer & Networking
-  collapsed:: true
-	- ## Network Architectures
-	  collapsed:: true
-		- ```
-		  Client-Server:
-		    - Authoritative server — server owns game state
-		    - Clients send inputs, server validates and broadcasts state
-		    - Prevents cheating, but adds latency
-		    - Used in: most online games (FPS, MMO)
-		  
-		  Peer-to-Peer (P2P):
-		    - All clients communicate directly
-		    - Lower latency, no server cost
-		    - Hard to prevent cheating
-		    - Used in: fighting games, small lobbies
-		  
-		  Lockstep:
-		    - All clients simulate identically
-		    - Only inputs are sent, not state
-		    - Requires deterministic simulation
-		    - Used in: RTS games
-		  ```
+	- collapsed:: true
+	  > [!info] Dedicated Page Available
+	  > This is an overview only. For the full deep-dive see [[Multiplayer Networking]] which covers:
+	  > Client-Server, P2P, Lockstep, Rollback (GGPO), lag compensation, entity interpolation, dead reckoning, tick rate, clock sync, delta compression, NAT traversal, matchmaking (ELO/TrueSkill), anti-cheat, relay servers, and production infrastructure — with full C++/GDScript code examples.
 	-
-	- ## Lag Compensation Techniques
+	- ## Quick Reference
 	  collapsed:: true
 		- ```
-		  Client-Side Prediction:
-		    - Client applies input immediately (don't wait for server)
-		    - Server confirms or corrects
-		    - Feels responsive even with 100ms ping
+		  Architectures:
+		    Client-Server (Authoritative) — Server owns game state. Standard for FPS/MMO.
+		    Peer-to-Peer (P2P)           — Lower latency, harder to secure. Fighting games.
+		    Lockstep                      — Only inputs sent. Requires determinism. RTS.
+		    Rollback Netcode (GGPO)       — P2P with speculative simulation. Fighting games.
 		  
-		  Server Reconciliation:
-		    - Client keeps history of inputs
-		    - When server correction arrives, re-simulate from that point
+		  Transport:
+		    TCP  — Reliable, ordered. Use for: login, chat, events.
+		    UDP  — Low latency. Use for: game state, positions.
+		    RUDP — Reliable UDP (ENet, GameNetworkingSockets). Best of both.
 		  
-		  Entity Interpolation:
-		    - Render other players slightly in the past
-		    - Smooth movement despite packet jitter
-		  
-		  Dead Reckoning:
-		    - Predict entity position based on last known velocity
-		    - Correct when new data arrives
-		  ```
-	-
-	- ## Matchmaking & Anti-Cheat
-	  collapsed:: true
-		- ```
-		  Matchmaking:
-		    - Algorithms pairing players by skill (ELO, TrueSkill) and network latency.
-		    - Dedicated lobby services and backend databases tracking historical MM ratings.
-		  
-		  Anti-Cheat Systems:
-		    - Client Side: Services like Easy Anti-Cheat (EAC) or BattlEye inspecting memory for unauthorized DLL injection.
-		    - Server Side: Strict authoritative prediction avoiding trusting the client on movement limits or line-of-sight.
-		  ```
-	-
-	- ## Protocols
-	  collapsed:: true
-		- ```
-		  TCP — Reliable, ordered, connection-based. Higher latency.
-		       Used for: chat, login, non-time-critical data.
-		  
-		  UDP — Unreliable, unordered, connectionless. Low latency.
-		       Used for: game state, position updates.
-		  
-		  RUDP (Reliable UDP) — Custom reliability on top of UDP.
-		       Libraries: ENet, GameNetworkingSockets (Valve), KCP.
-		  
-		  WebSocket — TCP-based, works in browsers. Used for web games.
-		  WebRTC    — P2P in browsers. Used for browser multiplayer.
+		  Lag Compensation:
+		    Client-Side Prediction   — Apply input immediately, reconcile on server correction.
+		    Entity Interpolation     — Render others 100ms in the past (smooth + accurate).
+		    Dead Reckoning           — Predict position from last known velocity.
+		    Lag Compensation Raycast — Server rewinds time to validate hitscan shots.
 		  ```
 -
 - # Audio in Games
@@ -984,7 +938,6 @@ keywords: "game development, game loop, physics engine, rendering, game AI, audi
 		  ```
 -
 - # Libs, Tools & Resources
-  collapsed:: true
 	- ## Graphics APIs
 		- [Vulkan](https://www.vulkan.org/) — Low-level GPU API. Maximum control and performance.
 		- [OpenGL](https://www.opengl.org/) — Classic cross-platform GPU API. Good for learning.
@@ -1009,13 +962,4 @@ keywords: "game development, game loop, physics engine, rendering, game AI, audi
 		- [Vulkan Tutorial](https://vulkan-tutorial.com/) — Step-by-step Vulkan guide.
 		- [The Cherno (YouTube)](https://www.youtube.com/@TheCherno) — Game engine from scratch in C++.
 	-
-	- ## Related Pages
-		- [[Godot]] — Godot engine deep dive
-		- [[PathTracer Learning]] — GPU path tracing, Vulkan RT, rendering research
-		- [[C++]] — C++ for game/engine development
-		- [[Binary Space Partitioning]] — Spatial data structure for rendering
-		- [[Bevy]] — Rust ECS game engine
-		- [[Unity]] — Unity engine reference
-		- [[Unreal Engine]] — Unreal Engine reference
-		- [[Game Systems]] — Inventory, Quest, Dialogue, Save/Load, Achievements & Procedural Generation
 -
