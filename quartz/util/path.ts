@@ -93,8 +93,26 @@ export function simplifySlug(fp: FullSlug): SimpleSlug {
   return (res.length === 0 ? "/" : res) as SimpleSlug
 }
 
+function normalizeIncomingLink(link: string): string {
+  try {
+    const url = new URL(link)
+
+    // lowercase only the pathname
+    url.pathname = url.pathname
+      .split("/")
+      .map((seg) => seg.toLowerCase())
+      .join("/")
+
+    return url.toString()
+  } catch {
+    // not a full URL → treat as internal path
+    return link
+  }
+}
+
 export function transformInternalLink(link: string): RelativeURL {
-  let [fplike, anchor] = splitAnchor(decodeURI(link))
+  const normalizedLink = normalizeIncomingLink(link)
+  let [fplike, anchor] = splitAnchor(decodeURI(normalizedLink))
 
   const folderPath = isFolderPath(fplike)
   let segments = fplike.split("/").filter((x) => x.length > 0)
