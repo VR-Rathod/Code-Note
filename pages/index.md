@@ -350,7 +350,11 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		  | [[Unity]] | [[CSharp for Unity]] | Mobile, VR, Indie 3D | Massive asset store + community |
 		  | [[Unreal Engine]] | [[Cpp for Unreal]] | AAA 3D realism, Film | Industry standard for graphics |
 	-
-	- ### 🟠 Advanced: Tooling & 3D Artwork
+	- ### 🟠 Advanced: Specializations
+		- [[Game Audio]] :- Complete game audio engineering — audio fundamentals, FMOD, Wwise, adaptive music systems, 3D spatial audio, DSP effects, audio optimization, and engine integration. Beginner to super advanced.
+		- [[Mobile Game Development]] :- Full mobile game dev guide — touch controls, iOS and Android platform features, mobile GPU optimization, monetization (IAP, ads, battle pass), publishing to App Store and Google Play. Beginner to advanced.
+		-
+		- #### 3D Artwork
 		- [[Blender]] :- Free 3D suite. Master box modeling, sculpting, UV unwrap, rigging, and rendering (Cycles).
 		- [[Maya]] & [[ZBrush]] :- Industry-standard 3D pipelines.
 		- [[Houdini]] :- Procedural generation and advanced node-based simulations.
