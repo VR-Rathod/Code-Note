@@ -353,6 +353,7 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	- ### 🟠 Advanced: Specializations
 		- [[Game Audio]] :- Complete game audio engineering — audio fundamentals, FMOD, Wwise, adaptive music systems, 3D spatial audio, DSP effects, audio optimization, and engine integration. Beginner to super advanced.
 		- [[Mobile Game Development]] :- Full mobile game dev guide — touch controls, iOS and Android platform features, mobile GPU optimization, monetization (IAP, ads, battle pass), publishing to App Store and Google Play. Beginner to advanced.
+		- [[VR AR Development]] :- Complete VR/AR development guide — OpenXR, SteamVR, Meta Quest SDK, ARCore, ARKit, interaction design, locomotion, comfort, foveated rendering, and engine setup for Unity, Unreal, and Godot. Beginner to super advanced.
 		-
 		- #### 3D Artwork
 		- [[Blender]] :- Free 3D suite. Master box modeling, sculpting, UV unwrap, rigging, and rendering (Cycles).

@@ -45,7 +45,6 @@ displayTitle: Mobile Game Development
 		  ```
 -
 - # Introduction
-  collapsed:: true
 	- Mobile game development requires a fundamentally different mindset from PC/console development.
 	- Constraints are severe — limited CPU, GPU, RAM, battery, and storage. Touch input replaces keyboard/mouse/controller.
 	- But the audience is massive and the distribution is global and instant.
@@ -95,9 +94,8 @@ displayTitle: Mobile Game Development
 		        Certification
 		        ASO
 		  ```
-
+-
 - # Touch Controls
-  collapsed:: true
 	- > [!info] Touch-First Design
 	  > Mobile games must be designed **touch-first** — not ported from keyboard/mouse.
 	  > Every interaction must work with a finger on a small screen, often one-handed.
@@ -117,7 +115,6 @@ displayTitle: Mobile Game Development
 		  | Drag | Move finger while held | Move character, drag UI |
 	-
 	- ## Virtual Controls Design
-	  collapsed:: true
 		- ```mermaid
 		  graph TD
 		      subgraph Good["✅ Good Virtual Control Design"]
@@ -128,81 +125,82 @@ displayTitle: Mobile Game Development
 		          G5["Dead zone on joystick\nprevents drift"]
 		      end
 		      subgraph Bad["❌ Bad Virtual Control Design"]
-                  B1["Tiny buttons\nfinger misses constantly"]
-                  B2["Opaque controls\nblock important gameplay"]
-                  B3["Fixed layout\ndoesn't fit all hand sizes"]
-                  B4["No feedback\nplayer unsure if pressed"]
-      end
+		                B1["Tiny buttons\nfinger misses constantly"]
+		                B2["Opaque controls\nblock important gameplay"]
+		                B3["Fixed layout\ndoesn't fit all hand sizes"]
+		                B4["No feedback\nplayer unsure if pressed"]
+		    end 
 		  ```
+		-
 		- | Control Type | Min Size | Placement | Notes |
 		  |-------------|---------|-----------|-------|
 		  | Movement joystick | 120×120 dp | Bottom-left | Allow repositioning |
 		  | Action buttons | 60×60 dp | Bottom-right | 3–4 max visible |
 		  | Jump button | 80×80 dp | Bottom-right | Most used — make largest |
 		  | Menu/pause | 44×44 dp | Top corner | Small, out of the way |
-	-
-	- ## Touch Input in Unity
-	  collapsed:: true
-		- ```csharp
-		  using UnityEngine;
-		  using UnityEngine.InputSystem;
-
-		  public class TouchInputHandler : MonoBehaviour
-		  {
-		      void Update() {
-		          // New Input System — recommended
-		          if (Touchscreen.current == null) return;
-
-		          var touches = Touchscreen.current.touches;
-		          foreach (var touch in touches) {
-		              if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began) {
-		                  Vector2 pos = touch.position.ReadValue();
-		                  HandleTap(pos);
-		              }
-		          }
-		      }
-
-		      // Legacy Input — still widely used
-		      void UpdateLegacy() {
-		          for (int i = 0; i < Input.touchCount; i++) {
-		              Touch touch = Input.GetTouch(i);
-
-		              switch (touch.phase) {
-		                  case TouchPhase.Began:
-		                      HandleTouchStart(touch.position, touch.fingerId);
-		                      break;
-		                  case TouchPhase.Moved:
-		                      HandleTouchMove(touch.position, touch.deltaPosition, touch.fingerId);
-		                      break;
-		                  case TouchPhase.Ended:
-		                  case TouchPhase.Canceled:
-		                      HandleTouchEnd(touch.fingerId);
-		                      break;
-		              }
-		          }
-		      }
-
-		      void HandleTap(Vector2 screenPos) {
-		          // Convert screen position to world position
-		          Ray ray = Camera.main.ScreenPointToRay(screenPos);
-		          if (Physics.Raycast(ray, out RaycastHit hit)) {
-		              Debug.Log("Tapped: " + hit.collider.name);
-		          }
-		      }
-
-		      void HandleTouchStart(Vector2 pos, int id) { }
-		      void HandleTouchMove(Vector2 pos, Vector2 delta, int id) { }
-		      void HandleTouchEnd(int id) { }
-		  }
-		  ```
+		-
+		- ## Touch Input in Unity
+			- ```csharp
+			  
+			    using UnityEngine;  
+			    using UnityEngine.InputSystem;  
+			    
+			    public class TouchInputHandler : MonoBehaviour  
+			    {  
+			      void Update() {  
+			          // New Input System — recommended  
+			          if (Touchscreen.current == null) return;  
+			    
+			          var touches = Touchscreen.current.touches;  
+			          foreach (var touch in touches) {  
+			              if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began) {  
+			                  Vector2 pos = touch.position.ReadValue();  
+			                  HandleTap(pos);  
+			              }  
+			          }  
+			      }  
+			    
+			      // Legacy Input — still widely used  
+			      void UpdateLegacy() {  
+			          for (int i = 0; i < Input.touchCount; i++) {  
+			              Touch touch = Input.GetTouch(i);  
+			    
+			              switch (touch.phase) {  
+			                  case TouchPhase.Began:  
+			                      HandleTouchStart(touch.position, touch.fingerId);  
+			                      break;  
+			                  case TouchPhase.Moved:  
+			                      HandleTouchMove(touch.position, touch.deltaPosition, touch.fingerId);  
+			                      break;  
+			                  case TouchPhase.Ended:  
+			                  case TouchPhase.Canceled:  
+			                      HandleTouchEnd(touch.fingerId);  
+			                      break;  
+			              }  
+			          }  
+			      }  
+			    
+			      void HandleTap(Vector2 screenPos) {  
+			          // Convert screen position to world position  
+			          Ray ray = Camera.main.ScreenPointToRay(screenPos);  
+			          if (Physics.Raycast(ray, out RaycastHit hit)) {  
+			              Debug.Log("Tapped: " + hit.collider.name);  
+			          }  
+			      }  
+			    
+			      void HandleTouchStart(Vector2 pos, int id) { }  
+			      void HandleTouchMove(Vector2 pos, Vector2 delta, int id) { }  
+			      void HandleTouchEnd(int id) { }  
+			    }
+			  ```
 	-
 	- ## Touch Input in Godot
 	  collapsed:: true
 		- ```gdscript
 		  extends Node2D
-
+		  
 		  var touch_positions: Dictionary = {}  # finger_id → position
-
+		  
 		  func _input(event: InputEvent) -> void:
 		      if event is InputEventScreenTouch:
 		          if event.pressed:
@@ -211,20 +209,20 @@ displayTitle: Mobile Game Development
 		          else:
 		              touch_positions.erase(event.index)
 		              _on_touch_end(event.index, event.position)
-
+		  
 		      elif event is InputEventScreenDrag:
 		          touch_positions[event.index] = event.position
 		          _on_touch_drag(event.index, event.position, event.relative)
-
+		  
 		  func _on_touch_start(finger_id: int, pos: Vector2) -> void:
 		      print("Touch started: finger %d at %s" % [finger_id, pos])
-
+		  
 		  func _on_touch_drag(finger_id: int, pos: Vector2, delta: Vector2) -> void:
 		      # Virtual joystick logic
 		      if finger_id == 0:  # left thumb
 		          var joystick_input = (pos - joystick_origin).normalized()
 		          player.velocity = joystick_input * player_speed
-
+		  
 		  func _on_touch_end(finger_id: int, pos: Vector2) -> void:
 		      if finger_id == 0:
 		          player.velocity = Vector2.ZERO
@@ -235,12 +233,12 @@ displayTitle: Mobile Game Development
 		- ```gdscript
 		  # Simple swipe detection in Godot
 		  extends Node
-
+		  
 		  var touch_start: Vector2
 		  var touch_start_time: float
 		  const SWIPE_MIN_DISTANCE: float = 50.0
 		  const SWIPE_MAX_TIME: float = 0.3
-
+		  
 		  func _input(event: InputEvent) -> void:
 		      if event is InputEventScreenTouch:
 		          if event.pressed:
@@ -251,7 +249,7 @@ displayTitle: Mobile Game Development
 		              var delta = event.position - touch_start
 		              if delta.length() > SWIPE_MIN_DISTANCE and elapsed < SWIPE_MAX_TIME:
 		                  _on_swipe(delta.normalized())
-
+		  
 		  func _on_swipe(direction: Vector2) -> void:
 		      if abs(direction.x) > abs(direction.y):
 		          if direction.x > 0: print("Swipe RIGHT")
@@ -269,23 +267,23 @@ displayTitle: Mobile Game Development
 		      // Enable gyroscope
 		      Input.gyro.enabled = true;
 		  }
-
+		  
 		  void Update() {
 		      // Accelerometer — tilt controls
 		      Vector3 tilt = Input.acceleration;
 		      // tilt.x = left/right tilt (-1 to 1)
 		      // tilt.y = forward/back tilt
 		      // tilt.z = face up/down
-
+		  
 		      float steerInput = Mathf.Clamp(tilt.x * 2f, -1f, 1f);
 		      car.Steer(steerInput);
-
+		  
 		      // Gyroscope — rotation rate
 		      Vector3 rotationRate = Input.gyro.rotationRate;
 		      // Use for aiming, camera control in FPS
 		  }
 		  ```
-
+-
 - # Mobile Optimization
   collapsed:: true
 	- > [!warning] Mobile Constraints
@@ -400,7 +398,7 @@ displayTitle: Mobile Game Development
 		  | Reduce network calls | Medium | Batch server requests |
 		  | Lower resolution on low battery | Medium | Detect battery level |
 		  | Pause background processes | Medium | Stop AI when app backgrounded |
-
+-
 - # iOS Platform Features
   collapsed:: true
 	- ## iOS-Specific Capabilities
@@ -432,20 +430,20 @@ displayTitle: Mobile Game Development
 		  // iOS Haptic Feedback — Unity
 		  #if UNITY_IOS
 		  using UnityEngine.iOS;
-
+		  
 		  public class HapticManager : MonoBehaviour
 		  {
 		      // Light tap — UI interactions
 		      public void LightImpact() {
 		          Handheld.Vibrate(); // basic
 		          // For precise haptics use iOS native plugin
-      }
-
+		    }
+		  
 		      // Trigger haptic via native iOS API
 		      [System.Runtime.InteropServices.DllImport("__Internal")]
 		      private static extern void _TriggerHapticFeedback(int style);
 		      // style: 0=light, 1=medium, 2=heavy, 3=soft, 4=rigid
-
+		  
 		      public void MediumImpact() => _TriggerHapticFeedback(1);
 		      public void HeavyImpact()  => _TriggerHapticFeedback(2);
 		  }
@@ -457,7 +455,7 @@ displayTitle: Mobile Game Development
 		- ```csharp
 		  using UnityEngine.SocialPlatforms;
 		  using UnityEngine.SocialPlatforms.GameCenter;
-
+		  
 		  public class GameCenterManager : MonoBehaviour
 		  {
 		      void Start() {
@@ -467,27 +465,28 @@ displayTitle: Mobile Game Development
 		              else Debug.Log("Game Center: Failed");
 		          });
 		      }
-
+		  
 		      // Report score to leaderboard
 		      public void ReportScore(long score, string leaderboardID) {
 		          Social.ReportScore(score, leaderboardID, success => {
 		              Debug.Log("Score reported: " + success);
 		          });
 		      }
-
+		  
 		      // Unlock achievement
 		      public void UnlockAchievement(string achievementID) {
 		          Social.ReportProgress(achievementID, 100.0, success => {
 		              Debug.Log("Achievement unlocked: " + success);
 		          });
 		      }
-
+		  
 		      // Show leaderboard UI
 		      public void ShowLeaderboard() {
 		          Social.ShowLeaderboardUI();
 		      }
 		  }
 		  ```
+-
 - # Android Platform Features
   collapsed:: true
 	- ## Android-Specific Capabilities
@@ -522,11 +521,11 @@ displayTitle: Mobile Game Development
 		  // Android Game Development Kit — Frame Pacing
 		  // Eliminates jank caused by irregular frame delivery
 		  #include "swappy/swappyGL.h"
-
+		  
 		  // Initialize Swappy
 		  SwappyGL_init(env, activity);
 		  SwappyGL_setSwapIntervalNS(1000000000L / 60); // 60 FPS
-
+		  
 		  // In render loop — replace eglSwapBuffers with:
 		  SwappyGL_swap(display, surface); // handles frame pacing automatically
 		  ```
@@ -535,19 +534,19 @@ displayTitle: Mobile Game Development
 	  collapsed:: true
 		- ```csharp
 		  using UnityEngine.Android;
-
+		  
 		  public class AdaptivePerformanceManager : MonoBehaviour
 		  {
 		      IAdaptivePerformance ap;
-
+		  
 		      void Start() {
 		          ap = Holder.Instance;
 		          if (ap == null || !ap.Active) return;
-
+		  
 		          // Subscribe to thermal warnings
 		          ap.ThermalStatus.ThermalEvent += OnThermalEvent;
 		      }
-
+		  
 		      void OnThermalEvent(ThermalMetrics metrics) {
 		          switch (metrics.WarningLevel) {
 		              case WarningLevel.NoWarning:
@@ -561,7 +560,7 @@ displayTitle: Mobile Game Development
 		                  break;
 		          }
 		      }
-
+		  
 		      void SetQuality(QualityLevel level) {
 		          switch (level) {
 		              case QualityLevel.High:
@@ -580,7 +579,7 @@ displayTitle: Mobile Game Development
 		      }
 		  }
 		  ```
-
+-
 - # Mobile Monetization
   collapsed:: true
 	- > [!info] Mobile Monetization Reality
@@ -620,33 +619,33 @@ displayTitle: Mobile Game Development
 		  using UnityEngine;
 		  using UnityEngine.Purchasing;
 		  using UnityEngine.Purchasing.Extension;
-
+		  
 		  public class IAPManager : MonoBehaviour, IDetailedStoreListener
 		  {
 		      IStoreController storeController;
-
+		  
 		      // Product IDs — must match App Store / Play Store
 		      const string PRODUCT_GEMS_100    = "com.mygame.gems100";
 		      const string PRODUCT_NO_ADS      = "com.mygame.noads";
 		      const string PRODUCT_MONTHLY_SUB = "com.mygame.monthly";
-
+		  
 		      void Start() {
 		          var builder = ConfigurationBuilder.Instance(
 		              StandardPurchasingModule.Instance());
-
+		  
 		          // Add products
 		          builder.AddProduct(PRODUCT_GEMS_100,    ProductType.Consumable);
 		          builder.AddProduct(PRODUCT_NO_ADS,      ProductType.NonConsumable);
 		          builder.AddProduct(PRODUCT_MONTHLY_SUB, ProductType.Subscription);
-
+		  
 		          UnityPurchasing.Initialize(this, builder);
 		      }
-
+		  
 		      // Buy a product
 		      public void BuyGems() {
 		          storeController.InitiatePurchase(PRODUCT_GEMS_100);
 		      }
-
+		  
 		      // Called on successful purchase
 		      public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args) {
 		          if (args.purchasedProduct.definition.id == PRODUCT_GEMS_100) {
@@ -657,22 +656,22 @@ displayTitle: Mobile Game Development
 		          }
 		          return PurchaseProcessingResult.Complete;
 		      }
-
+		  
 		      public void OnInitialized(IStoreController controller,
 		                                 IExtensionProvider extensions) {
 		          storeController = controller;
 		      }
-
+		  
 		      public void OnInitializeFailed(InitializationFailureReason error,
 		                                      string message) {
 		          Debug.LogError("IAP Init failed: " + error);
 		      }
-
+		  
 		      public void OnPurchaseFailed(Product product,
 		                                    PurchaseFailureDescription failure) {
 		          Debug.LogError("Purchase failed: " + failure.reason);
 		      }
-
+		  
 		      void GivePlayerGems(int amount) { /* add gems to player */ }
 		      void DisableAds() { /* set no-ads flag */ }
 		  }
@@ -683,32 +682,32 @@ displayTitle: Mobile Game Development
 		- ```csharp
 		  using UnityEngine;
 		  using UnityEngine.Advertisements;
-
+		  
 		  public class AdsManager : MonoBehaviour, IUnityAdsLoadListener,
 		                                            IUnityAdsShowListener
 		  {
 		      [SerializeField] string androidGameID = "1234567";
 		      [SerializeField] string iosGameID     = "7654321";
 		      const string REWARDED_AD_UNIT = "Rewarded_Android"; // or iOS
-
+		  
 		      void Start() {
 		          string gameID = Application.platform == RuntimePlatform.IPhonePlayer
 		              ? iosGameID : androidGameID;
 		          Advertisement.Initialize(gameID, testMode: false);
 		          LoadRewardedAd();
 		      }
-
+		  
 		      void LoadRewardedAd() {
 		          Advertisement.Load(REWARDED_AD_UNIT, this);
 		      }
-
+		  
 		      public void ShowRewardedAd(System.Action onRewardGranted) {
 		          this.onRewardGranted = onRewardGranted;
 		          Advertisement.Show(REWARDED_AD_UNIT, this);
 		      }
-
+		  
 		      System.Action onRewardGranted;
-
+		  
 		      // IUnityAdsShowListener
 		      public void OnUnityAdsShowComplete(string adUnitId,
 		          UnityAdsShowCompletionState completionState) {
@@ -717,7 +716,7 @@ displayTitle: Mobile Game Development
 		          }
 		          LoadRewardedAd(); // preload next ad
 		      }
-
+		  
 		      public void OnUnityAdsAdLoaded(string adUnitId) { }
 		      public void OnUnityAdsFailedToLoad(string id, UnityAdsLoadError e, string msg) { }
 		      public void OnUnityAdsShowFailure(string id, UnityAdsShowError e, string msg) { }
@@ -740,7 +739,7 @@ displayTitle: Mobile Game Development
 		  > Loot boxes are **banned or regulated** in Belgium, Netherlands, South Korea, and others.
 		  > Always implement parental controls and spending limits.
 		  > COPPA (US) and GDPR-K (EU) apply to games targeting children under 13.
-
+-
 - # Publishing & App Stores
   collapsed:: true
 	- ## App Store vs Google Play
@@ -782,7 +781,7 @@ displayTitle: Mobile Game Development
 		    API Compatibility: .NET Standard 2.1
 		    Strip Engine Code: Enabled (reduces binary size)
 		    Managed Stripping Level: Medium
-
+		  
 		  Unity Android Build Settings:
 		    Target API Level: 34+ (required by Play Store 2024)
 		    Minimum API Level: 22 (Android 5.1)
@@ -807,6 +806,7 @@ displayTitle: Mobile Game Development
 		  | RenderDoc | Android (Vulkan) | GPU frame capture |
 		  | Snapdragon Profiler | Qualcomm Android | Adreno GPU deep analysis |
 		  | Mali Graphics Debugger | ARM Android | Mali GPU analysis |
+-
 - # Cross-Platform Development
   collapsed:: true
 	- ## Engine Export Comparison
@@ -831,19 +831,19 @@ displayTitle: Mobile Game Development
 		          InitGooglePlayGames();
 		          SetAndroidQuality();
 		      #endif
-
+		  
 		      // Runtime detection
 		      if (Application.isMobilePlatform) {
 		          EnableTouchControls();
 		          DisableMouseControls();
 		          Application.targetFrameRate = 60;
 		      }
-
+		  
 		      // Screen orientation
 		      Screen.orientation = ScreenOrientation.LandscapeLeft;
 		      Screen.sleepTimeout = SleepTimeout.NeverSleep; // prevent screen sleep
 		  }
-
+		  
 		  void SetIOSQuality() {
 		      // iPhone 15 Pro — high quality
 		      if (SystemInfo.graphicsMemorySize >= 4096) {
@@ -863,22 +863,22 @@ displayTitle: Mobile Game Development
 		- ```csharp
 		  // Handle iPhone notch, Dynamic Island, Android punch-hole cameras
 		  using UnityEngine;
-
+		  
 		  public class SafeAreaHandler : MonoBehaviour
 		  {
 		      RectTransform rectTransform;
 		      Rect lastSafeArea;
-
+		  
 		      void Awake() {
 		          rectTransform = GetComponent<RectTransform>();
 		          ApplySafeArea();
 		      }
-
+		  
 		      void ApplySafeArea() {
 		          Rect safeArea = Screen.safeArea;
 		          if (safeArea == lastSafeArea) return;
 		          lastSafeArea = safeArea;
-
+		  
 		          // Convert safe area to anchor min/max
 		          Vector2 anchorMin = safeArea.position;
 		          Vector2 anchorMax = safeArea.position + safeArea.size;
@@ -886,12 +886,13 @@ displayTitle: Mobile Game Development
 		          anchorMin.y /= Screen.height;
 		          anchorMax.x /= Screen.width;
 		          anchorMax.y /= Screen.height;
-
+		  
 		          rectTransform.anchorMin = anchorMin;
 		          rectTransform.anchorMax = anchorMax;
 		      }
 		  }
 		  ```
+-
 - # Logseq Graph Connections
   collapsed:: true
 	- tags:: mobile-game-development, ios, android, touch-controls, mobile-optimization, monetization, unity-mobile, godot-mobile
@@ -904,6 +905,7 @@ displayTitle: Mobile Game Development
 		- [[Unreal Engine]] — Unreal mobile rendering and optimization
 		- [[Advanced Graphics]] — mobile GPU architecture (tile-based rendering)
 		- [[Free Assets]] — free mobile game assets and UI kits
+-
 - # More Learn
 	- ## Official Documentation
 		- [Unity Mobile Optimization Guide](https://docs.unity3d.com/Manual/MobileOptimization.html) — Official Unity mobile performance guide.
