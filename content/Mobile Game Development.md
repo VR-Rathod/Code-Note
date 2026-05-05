@@ -893,19 +893,6 @@ displayTitle: Mobile Game Development
 		  }
 		  ```
 -
-- # Logseq Graph Connections
-  collapsed:: true
-	- tags:: mobile-game-development, ios, android, touch-controls, mobile-optimization, monetization, unity-mobile, godot-mobile
-	- Related pages:
-		- [[Game Development]] — core game dev concepts applicable to mobile
-		- [[Game Design]] — mobile-specific design patterns (session length, core loops, monetization)
-		- [[Game Audio]] — mobile audio optimization and FMOD/Wwise mobile integration
-		- [[Unity]] — Unity mobile export, URP mobile, Unity IAP
-		- [[Godot]] — Godot mobile export and touch input
-		- [[Unreal Engine]] — Unreal mobile rendering and optimization
-		- [[Advanced Graphics]] — mobile GPU architecture (tile-based rendering)
-		- [[Free Assets]] — free mobile game assets and UI kits
--
 - # More Learn
 	- ## Official Documentation
 		- [Unity Mobile Optimization Guide](https://docs.unity3d.com/Manual/MobileOptimization.html) — Official Unity mobile performance guide.

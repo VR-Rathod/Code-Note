@@ -979,17 +979,7 @@ displayTitle: Game Audio
 		  | Character | Breathing, grunts, voice | Emotional state-dependent |
 		  | Environment | Doors, switches, machinery | Mechanical feel, weight |
 		  | Magic/Sci-fi | Spells, lasers, portals | Designed, not realistic |
-- # Logseq Graph Connections
-  collapsed:: true
-	- tags:: game-audio, fmod, wwise, audio-middleware, spatial-audio, adaptive-music, dsp, sound-design
-	- Related pages:
-		- [[Game Development]] — audio concepts overview (spatial audio, audio middleware basics)
-		- [[Game Design]] — how audio serves game design goals (emotion, feedback, immersion)
-		- [[Godot]] — Godot AudioStreamPlayer, buses, and audio effects
-		- [[Unity]] — Unity AudioSource, AudioMixer, and FMOD/Wwise integration
-		- [[Unreal Engine]] — Unreal MetaSound, Sound Cues, and Wwise integration
-		- [[Advanced Graphics]] — rendering pipeline that audio must sync with
-		- [[Free Assets]] — free audio assets, SFX packs, and music resources
+
 - # More Learn
 	- ## Official Documentation
 		- [FMOD Documentation](https://www.fmod.com/docs/) — Complete FMOD Studio and API reference.
