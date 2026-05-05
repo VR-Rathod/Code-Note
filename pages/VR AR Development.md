@@ -966,19 +966,7 @@ displayTitle: VR/AR Development
 		     - MotionControllerComponent (left/right)
 		     - GrabComponent for interaction
 		  ```
-- # Logseq Graph Connections
-  collapsed:: true
-	- tags:: vr-development, ar-development, xr, openxr, steamvr, meta-quest, arcore, arkit, virtual-reality, augmented-reality
-	- Related pages:
-		- [[Game Development]] — rendering pipeline, performance optimization
-		- [[Game Design]] — VR-specific design patterns, locomotion, comfort
-		- [[Game Audio]] — spatial audio for VR (HRTF, 3D positioning)
-		- [[Advanced Graphics]] — GPU rendering, Vulkan for VR
-		- [[Mobile Game Development]] — AR on mobile (ARCore, ARKit)
-		- [[Unity]] — Unity XR Interaction Toolkit, AR Foundation
-		- [[Unreal Engine]] — Unreal VR template, OpenXR
-		- [[Godot]] — Godot OpenXR plugin
-		- [[Cpp]] — OpenXR C++ API
+
 - # More Learn
 	- ## Official Documentation
 		- [OpenXR Specification — Khronos](https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html) — Complete OpenXR spec.
