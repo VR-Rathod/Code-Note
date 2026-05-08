@@ -333,40 +333,36 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 -
 - ## Game Development & Graphics Roadmap
 	- > [!info] Your Journey to Game Dev
-	  > This section is organized as a **Beginner to Super Advanced** learning roadmap! Follow the steps below or jump straight to your skill level.
+	  > Follow the roadmap below — Beginner → Super Advanced. Pick your level and jump in!
 	-
 	- ### 🟢 Beginner: Fundamentals & Design
-		- [[Game Development]] :- **Start Here.** Engine-agnostic fundamentals every game dev must know — game loop, physics, lighting, shaders, AI, audio, networking, optimization, asset pipelines.
-		- [[Game Design]] :- How to design fun games — MDA framework, core loops, player psychology, level design, mechanics, balancing, monetisation, UI/UX.
-		- [[Free Assets]] :- Grab free resources (2D sprites, 3D models, audio, textures) to start prototyping immediately without buying art.
+		- [[Game Development]] :- **Start Here.** Engine-agnostic fundamentals — game loop, physics, lighting, shaders, AI, audio, networking, optimization.
+		- [[Game Design]] :- How to design fun games — core loops, player psychology, level design, balancing, monetisation.
+		- [[Free Assets]] :- Free 2D sprites, 3D models, audio, textures to start prototyping immediately.
 	-
-	- ### 🟡 Intermediate: Pick Your Engine & Scripting
-		- > [!tip] Choose Your Path
-		  > Pick **one** engine and master it. Don't learn all of them at once!
+	- ### 🟡 Intermediate: Pick Your Engine
+		- > [!tip] Famous Game Engines — Pick ONE and master it!
 		-
-		  | Engine | Language | Best For | Notes |
-		  |---|---|---|---|
-		  | [[Godot]] | [[GDScript]] | Indie, 2D/3D prototyping | Open-source, free perfectly |
-		  | [[Unity]] | [[CSharp for Unity]] | Mobile, VR, Indie 3D | Massive asset store + community |
-		  | [[Unreal Engine]] | [[Cpp for Unreal]] | AAA 3D realism, Film | Industry standard for graphics |
+		  | Engine | Language | Best For |
+		  |---|---|---|
+		  | [[Godot]] | [[GDScript]] | Indie 2D/3D — Free & Open Source |
+		  | [[Unity]] | [[CSharp for Unity]] | Mobile, VR, Indie 3D |
+		  | [[Unreal Engine]] | [[Cpp for Unreal]] | AAA 3D, Film, VFX |
+		-
+		- [[Game Engines]] :- Other engines — **CryEngine, O3DE, GameMaker Studio 2, Construct, RPG Maker** — with full notes, scripting examples, and when to use each.
 	-
 	- ### 🟠 Advanced: Specializations
-		- [[Game Audio]] :- Complete game audio engineering — audio fundamentals, FMOD, Wwise, adaptive music systems, 3D spatial audio, DSP effects, audio optimization, and engine integration. Beginner to super advanced.
-		- [[Mobile Game Development]] :- Full mobile game dev guide — touch controls, iOS and Android platform features, mobile GPU optimization, monetization (IAP, ads, battle pass), publishing to App Store and Google Play. Beginner to advanced.
-		- [[VR AR Development]] :- Complete VR/AR development guide — OpenXR, SteamVR, Meta Quest SDK, ARCore, ARKit, interaction design, locomotion, comfort, foveated rendering, and engine setup for Unity, Unreal, and Godot. Beginner to super advanced.
-		-
-		- #### 3D Artwork
-		- [[Blender]] :- Free 3D suite. Master box modeling, sculpting, UV unwrap, rigging, and rendering (Cycles).
-		- [[Maya]] & [[ZBrush]] :- Industry-standard 3D pipelines.
-		- [[Houdini]] :- Procedural generation and advanced node-based simulations.
+		- [[Game Audio]] :- FMOD, Wwise, adaptive music, 3D spatial audio, DSP effects.
+		- [[Mobile Game Development]] :- Touch controls, iOS/Android features, mobile GPU optimization, monetization, publishing.
+		- [[VR AR Development]] :- OpenXR, SteamVR, Meta Quest SDK, ARCore, ARKit, interaction design, foveated rendering.
+		- [[Blender]] :- Free 3D suite — box modeling, sculpting, UV unwrap, rigging, Cycles rendering.
 	-
-	- ### 🔴 Super Advanced: Custom Engines & Core Graphics
-		- > [!warning] Beyond The Engine
-		  > This is for developers building their own engines or writing hyper-optimized graphics pipelines.
+	- ### 🔴 Super Advanced: Custom Engines & Graphics
+		- > [!warning] For developers building engines or hyper-optimized graphics pipelines.
 		-
-		- [[Advanced Graphics]] :- Low-level GPU architecture — **Vulkan, DirectX 12, Metal, WebGPU**. Learn HLSL/GLSL/WGSL, compute shaders, bindless rendering, and render graphs.
-		- [[PathTracer Learning]] :- Build a GPU path tracer from scratch! Covers math foundations, CPU ray tracing, Vulkan RT hardware pipelines, BVH, and ReSTIR.
-		- Custom / Specialized Frameworks: [[SDL (Simple DirectMedia Layer)]], [[SFML (Simple and Fast Multimedia Library)]], [[Bevy]], [[Panda3D]].
+		- [[Advanced Graphics]] :- **Vulkan, DirectX 12, Metal, WebGPU** — HLSL/GLSL/WGSL, compute shaders, bindless rendering, render graphs.
+		- [[PathTracer Learning]] :- Build a GPU path tracer from scratch — BVH, Vulkan RT, ReSTIR.
+		- Custom Frameworks: [[SDL (Simple DirectMedia Layer)]], [[SFML (Simple and Fast Multimedia Library)]], [[Bevy]], [[Panda3D]].
 -
 - ## Useful Listing
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f
