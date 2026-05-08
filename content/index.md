@@ -1,13 +1,13 @@
 ---
 title: index
 displayTitle: Free Code Notes – Complete Programming Knowledge Base
-seoTitle: Free Code Notes – Programming, DSA, DevOps, Game Dev & Data Science
-description: "Free Code Notes is a comprehensive programming knowledge base covering languages, algorithms, data structures, data science, DevOps, game development, cybersecurity, and free developer resources."
-keywords: "free code notes, programming knowledge base, algorithms, data structures, programming languages, data science, machine learning, DevOps, game development, cybersecurity, free programming resources, free developer tools, free coding courses, open source tools, VR-Rathod, Code-Note, code note vr, vr book, programming notes, developer notes, code reference, free programming notes"
+seoTitle: Free Code Notes – Programming & DSA Reference
+description: "Free Code Notes is a comprehensive programming knowledge base covering languages, algorithms, data structures, data science, DevOps, and more."
+keywords: "free code notes, programming knowledge base, algorithms, data structures, programming languages, data science, machine learning, DevOps, game development, cybersecurity, linux, pathtracer, graphics programming, learning concepts, free programming resources, free developer tools, VR-Rathod, Code-Note, developer notes, code reference"
 ---
 
 -
-- # Welcome to Your Code Book!
+- ## Welcome to Super Code Book!
 	- Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
 -
 - ## Programming Languages

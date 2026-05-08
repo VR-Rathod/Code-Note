@@ -1,5 +1,5 @@
 import { i18n } from "../i18n"
-import { FullSlug, getFileExtension, joinSegments, pathToRoot } from "../util/path"
+import { FullSlug, getFileExtension, joinSegments, pathToRoot, simplifySlug } from "../util/path"
 import { CSSResourceToStyleElement, JSResourceToScriptElement } from "../util/resources"
 import { googleFontHref, googleFontSubsetHref } from "../util/theme"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
@@ -57,9 +57,11 @@ function buildJsonLd(
     name: AUTHOR.name,
     url: AUTHOR.url,
     sameAs: AUTHOR.sameAs,
+    jobTitle: "Fullstack and Game Developer",
+    description: "Fullstack and Game developer and technical writer specializing in DSA, Game Dev, and DevOps.",
   }
 
-  // ── Index page: WebSite schema ──────────────────────────────────────────────
+  // ── Index page: WebSite and Person schema ──────────────────────────────────
   if (fileData.slug === "index") {
     return [
       {
@@ -82,13 +84,17 @@ function buildJsonLd(
       {
         "@context": "https://schema.org",
         "@type": "Person",
+        "@id": `${baseUrl}/#person`,
         name: AUTHOR.name,
         url: AUTHOR.url,
         sameAs: AUTHOR.sameAs,
+        jobTitle: "Fullstack and Game Developer",
         knowsAbout: [
           "Programming", "Software Development", "Data Structures",
           "Algorithms", "Game Development", "Web Development", "DevOps",
+          "Cybersecurity", "Linux Internals", "Graphics Programming",
         ],
+        description: "Vaibhav Rathod is a fullstack and game developer creating comprehensive programming references and code notes for developers.",
       },
     ]
   }
@@ -101,11 +107,14 @@ function buildJsonLd(
     name: title,
     url: pageUrl,
     description,
-    author,
+    author: {
+      "@type": "Person",
+      "@id": `${baseUrl}/#person`,
+    },
     publisher: {
       "@type": "Person",
+      "@id": `${baseUrl}/#person`,
       name: AUTHOR.name,
-      url: AUTHOR.url,
     },
     image: {
       "@type": "ImageObject",
@@ -128,10 +137,10 @@ function buildJsonLd(
   }
 
   if (fileData.dates?.created) {
-    try { ld.datePublished = fileData.dates.created.toISOString() } catch (_) {}
+    try { ld.datePublished = fileData.dates.created.toISOString() } catch (_) { }
   }
   if (fileData.dates?.modified) {
-    try { ld.dateModified = fileData.dates.modified.toISOString() } catch (_) {}
+    try { ld.dateModified = fileData.dates.modified.toISOString() } catch (_) { }
   }
 
   return ld
@@ -168,7 +177,9 @@ export default (() => {
     const iconPath = joinSegments(baseDir, "static/icon.png")
 
     const socialUrl =
-      fileData.slug === "404" ? url.toString() : joinSegments(url.toString(), fileData.slug!)
+      fileData.slug === "404"
+        ? url.toString()
+        : joinSegments(url.toString(), simplifySlug(fileData.slug!))
 
     const canonicalHref =
       (fileData.frontmatter?.canonicalUrl as string | undefined) ?? socialUrl
@@ -315,9 +326,17 @@ export default (() => {
 
         {/* ── Vercel Speed Insights ──────────────────────────────────────── */}
         <script
-          defer
-          src="https://va.vercel-scripts.com/v1/speed-insights/script.js"
-          data-endpoint="/_vercel/speed-insights/vitals"
+          dangerouslySetInnerHTML={{
+            __html: `
+          if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+            const script = document.createElement('script');
+            script.src = 'https://va.vercel-scripts.com/v1/speed-insights/script.js';
+            script.defer = true;
+            script.setAttribute('data-endpoint', '/_vercel/speed-insights/vitals');
+            document.head.appendChild(script);
+          }
+        `,
+          }}
         />
 
         {css.map((resource) => CSSResourceToStyleElement(resource, true))}

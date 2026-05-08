@@ -76,7 +76,9 @@ function toggleFolder(evt: MouseEvent) {
   }
 
   const stringifiedFileTree = JSON.stringify(currentExplorerState)
-  localStorage.setItem("fileTree", stringifiedFileTree)
+  try {
+    localStorage.setItem("fileTree", stringifiedFileTree)
+  } catch (e) {}
 }
 
 function createFileNode(currentSlug: FullSlug, node: FileTrieNode): HTMLLIElement {
@@ -170,7 +172,10 @@ async function setupExplorer(currentSlug: FullSlug) {
     }
 
     // Get folder state from local storage
-    const storageTree = localStorage.getItem("fileTree")
+    let storageTree: string | null = null
+    try {
+      storageTree = localStorage.getItem("fileTree")
+    } catch (e) {}
     const serializedExplorerState = storageTree && opts.useSavedState ? JSON.parse(storageTree) : []
     const oldIndex = new Map<string, boolean>(
       serializedExplorerState.map((entry: FolderState) => [entry.path, entry.collapsed]),
@@ -221,7 +226,10 @@ async function setupExplorer(currentSlug: FullSlug) {
     explorerUl.insertBefore(fragment, explorerUl.firstChild)
 
     // restore explorer scrollTop position if it exists
-    const scrollTop = sessionStorage.getItem("explorerScrollTop")
+    let scrollTop: string | null = null
+    try {
+      scrollTop = sessionStorage.getItem("explorerScrollTop")
+    } catch (e) {}
     if (scrollTop) {
       explorerUl.scrollTop = parseInt(scrollTop)
     } else {
@@ -266,7 +274,9 @@ document.addEventListener("prenav", async () => {
   // save explorer scrollTop position
   const explorer = document.querySelector(".explorer-ul")
   if (!explorer) return
-  sessionStorage.setItem("explorerScrollTop", explorer.scrollTop.toString())
+  try {
+    sessionStorage.setItem("explorerScrollTop", explorer.scrollTop.toString())
+  } catch (e) {}
 })
 
 document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {

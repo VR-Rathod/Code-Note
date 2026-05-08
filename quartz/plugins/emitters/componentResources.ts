@@ -233,13 +233,17 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
      * script from {@link https://vercel.com/docs/analytics/quickstart?framework=html#add-the-script-tag-to-your-site|Vercel Docs}
      */
     componentResources.beforeDOMLoaded.push(`
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+      if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+      }
     `)
     componentResources.afterDOMLoaded.push(`
-      const vercelInsightsScript = document.createElement("script")
-      vercelInsightsScript.src = "/_vercel/insights/script.js"
-      vercelInsightsScript.defer = true
-      document.head.appendChild(vercelInsightsScript)
+      if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+        const vercelInsightsScript = document.createElement("script")
+        vercelInsightsScript.src = "/_vercel/insights/script.js"
+        vercelInsightsScript.defer = true
+        document.head.appendChild(vercelInsightsScript)
+      }
     `)
   } else if (cfg.analytics?.provider === "rybbit") {
     componentResources.afterDOMLoaded.push(`

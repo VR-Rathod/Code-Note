@@ -22,12 +22,13 @@ export const sharedPageComponents: SharedLayout = {
           lang: "en",
         },
       }),
-      condition: (page) => page.fileData.slug !== "index",
+      condition: (page) => page.fileData.slug !== "index" && page.fileData.slug !== "404",
     }),
   ],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/VR-Rathod/Code-Note",
+      LinkedIn: "https://www.linkedin.com/in/vaibhav-rathod9/",
       Instagram: "https://www.instagram.com/_vebhavvv_",
       Sketchfab: "https://sketchfab.com/VR-Bro",
       Artstation: "https://www.artstation.com/vbro"
@@ -77,13 +78,7 @@ export const defaultContentPageLayout: PageLayout = {
       title: "Recently Updated",
       limit: 9,
       showTags: false,
-      filter: (f) => {
-        if (f.slug === "index" || f.frontmatter?.noindex) return false
-        const modified = f.dates?.modified
-        if (!modified) return false
-        const days = (Date.now() - modified.getTime()) / (1000 * 60 * 60 * 24)
-        return days <= 7
-      },
+      filter: (f) => f.slug !== "index" && !f.frontmatter?.noindex,
     })),
   ],
 }

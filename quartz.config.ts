@@ -4,7 +4,7 @@ import * as Plugin from "./quartz/plugins"
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "Code Notes made by Vaibhav Rathod",
-    pageTitleSuffix: " | Free Coding Notes & Programming Reference",
+    pageTitleSuffix: " | Dev Reference & Programming Notes",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
