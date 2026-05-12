@@ -3,6 +3,8 @@ seoTitle: Fenwick Tree (Binary Indexed Tree) – Prefix Sum Data Structure
 description: "Fenwick trees support prefix sum queries and point updates in O(log n). Covers BIT construction, update and query operations, 2D BIT, and range update."
 keywords: "Fenwick tree, binary indexed tree, BIT, prefix sum, point update, O(log n), range query, 2D BIT, time complexity, space complexity, data structure"
 displayTitle: Binary Indexed Tree or Fenwick Tree
+aliases:
+  - binary-indexed-tree-fenwick-tree
 ---
 
 - Explanation:
