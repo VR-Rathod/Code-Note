@@ -1,13 +1,13 @@
 ---
 title: index
 displayTitle: Free Code Notes – Complete Programming Knowledge Base
-seoTitle: Free Code Notes – Programming & DSA Reference
-description: "Free Code Notes is a comprehensive programming knowledge base covering languages, algorithms, data structures, data science, DevOps, and more."
-keywords: "free code notes, programming knowledge base, algorithms, data structures, programming languages, data science, machine learning, DevOps, game development, cybersecurity, linux, pathtracer, graphics programming, learning concepts, free programming resources, free developer tools, VR-Rathod, Code-Note, developer notes, code reference"
+seoTitle: Free Code Notes – Programming, DSA, DevOps, Game Dev & Data Science
+description: "Free Code Notes is a comprehensive programming knowledge base covering languages, algorithms, data structures, data science, DevOps, game development, cybersecurity, and free developer resources."
+keywords: "free code notes, programming knowledge base, algorithms, data structures, programming languages, data science, machine learning, DevOps, game development, cybersecurity, free programming resources, free developer tools, free coding courses, open source tools, VR-Rathod, Code-Note, code note vr, vr book, programming notes, developer notes, code reference, free programming notes"
 ---
 
 -
-- ## Welcome to Super Code Book!
+- # Welcome to Your Code Book!
 	- Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
 -
 - ## Programming Languages
@@ -352,10 +352,12 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		- [[Game Engines]] :- Other engines — **CryEngine, O3DE, GameMaker Studio 2, Construct, RPG Maker** — with full notes, scripting examples, and when to use each.
 	-
 	- ### 🟠 Advanced: Specializations
+	- [[Blender]] :- Free 3D suite — box modeling, sculpting, UV unwrap, rigging, Cycles rendering.
 		- [[Game Audio]] :- FMOD, Wwise, adaptive music, 3D spatial audio, DSP effects.
 		- [[Mobile Game Development]] :- Touch controls, iOS/Android features, mobile GPU optimization, monetization, publishing.
 		- [[VR AR Development]] :- OpenXR, SteamVR, Meta Quest SDK, ARCore, ARKit, interaction design, foveated rendering.
-		- [[Blender]] :- Free 3D suite — box modeling, sculpting, UV unwrap, rigging, Cycles rendering.
+		- [[Console Development]] :- PS5, Xbox Series X/S, Nintendo Switch — SDK overview, DualSense haptics, adaptive triggers, HD Rumble, Joy-Con, cross-platform strategy, and full certification guide (TRC/TCR/LOT).
+		
 	-
 	- ### 🔴 Super Advanced: Custom Engines & Graphics
 		- > [!warning] For developers building engines or hyper-optimized graphics pipelines.
