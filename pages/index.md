@@ -352,10 +352,12 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		- [[Game Engines]] :- Other engines — **CryEngine, O3DE, GameMaker Studio 2, Construct, RPG Maker** — with full notes, scripting examples, and when to use each.
 	-
 	- ### 🟠 Advanced: Specializations
+	- [[Blender]] :- Free 3D suite — box modeling, sculpting, UV unwrap, rigging, Cycles rendering.
 		- [[Game Audio]] :- FMOD, Wwise, adaptive music, 3D spatial audio, DSP effects.
 		- [[Mobile Game Development]] :- Touch controls, iOS/Android features, mobile GPU optimization, monetization, publishing.
 		- [[VR AR Development]] :- OpenXR, SteamVR, Meta Quest SDK, ARCore, ARKit, interaction design, foveated rendering.
-		- [[Blender]] :- Free 3D suite — box modeling, sculpting, UV unwrap, rigging, Cycles rendering.
+		- [[Console Development]] :- PS5, Xbox Series X/S, Nintendo Switch — SDK overview, DualSense haptics, adaptive triggers, HD Rumble, Joy-Con, cross-platform strategy, and full certification guide (TRC/TCR/LOT).
+		
 	-
 	- ### 🔴 Super Advanced: Custom Engines & Graphics
 		- > [!warning] For developers building engines or hyper-optimized graphics pipelines.
