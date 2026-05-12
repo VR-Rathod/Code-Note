@@ -12,21 +12,6 @@ displayTitle: System Design
 
 > [!tip] Interview Approach — 7 Steps
 > **①** Clarify requirements → **②** Estimate scale (QPS, storage) → **③** Define APIs → **④** Draw HLD → **⑤** Deep dive components → **⑥** Identify bottlenecks & trade-offs → **⑦** Discuss failure & recovery
-
-- # 📂 Sub-Pages
-  collapsed:: true
-	- [[System Design - Scalability & CAP]] :- Vertical/horizontal scaling, CAP theorem, PACELC, consistency models, SLA/SLO/SLI, consistent hashing, back-of-envelope estimation templates.
-	-
-	- [[System Design - Databases]] :- SQL vs NoSQL decision guide, replication strategies, sharding (range/hash/geo), ACID + isolation levels, indexing deep dive, connection pooling, read/write splitting.
-	  collapsed:: true
-	-
-	- [[System Design - Caching]] :- Cache placement hierarchy, write strategies (cache-aside, write-through, write-back), LRU/LFU eviction, Redis eviction policies, cache stampede prevention, CDN cache headers.
-	-
-	- [[System Design - APIs & Networking]] :- REST vs gRPC vs GraphQL, WebSockets vs SSE, DNS resolution, CDN architecture, rate limiting algorithms (token bucket, sliding window), JWT, HTTP/2 vs HTTP/3.
-	-
-	- [[System Design - Microservices]] :- Monolith vs microservices trade-offs, API gateway, circuit breaker, bulkhead, retry with backoff, Saga pattern, CQRS, event sourcing, outbox pattern, distributed tracing.
-	-
-	- [[System Design - Case Studies]] :- Full architecture walkthroughs: URL Shortener, Chat (WhatsApp), YouTube, Twitter Feed, Uber, Rate Limiter — each with requirements, estimation, and component design.
 -
 - # 🗺 Learning Roadmap
   collapsed:: true
