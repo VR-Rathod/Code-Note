@@ -31,7 +31,9 @@ export const sharedPageComponents: SharedLayout = {
       LinkedIn: "https://www.linkedin.com/in/vaibhav-rathod9/",
       Instagram: "https://www.instagram.com/_vebhavvv_",
       Sketchfab: "https://sketchfab.com/VR-Bro",
-      Artstation: "https://www.artstation.com/vbro"
+      Artstation: "https://www.artstation.com/vbro",
+      medium: "https://medium.com/@Vaibhav-Rathod",
+      Linktree: "https://linktr.ee/vaibhavrathod"
     },
   }),
 }
