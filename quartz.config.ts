@@ -87,7 +87,9 @@ const config: QuartzConfig = {
       Plugin.NotFoundPage(),
       // Generates unique OG image per page — great for social sharing & SEO
       Plugin.CustomOgImages(),
+      Plugin.FundingEmitter(),
     ],
+
   },
 }
 

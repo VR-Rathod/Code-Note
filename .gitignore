@@ -23,3 +23,4 @@ docs/
 CODE_OF_CONDUCT.md
 .env
 *.json
+!funding.json

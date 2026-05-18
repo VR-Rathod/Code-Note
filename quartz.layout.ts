@@ -24,7 +24,7 @@ export const sharedPageComponents: SharedLayout = {
       }),
       condition: (page) => {
         const slug = page.fileData.slug ?? ""
-        const excluded = ["index", "404", "about", "privacy-policy", "terms-of-service", "cookie-policy"]
+        const excluded = ["index", "404", "about", "privacy-policy", "terms-of-service", "cookie-policy", "credits"]
         return !excluded.includes(slug)
       },
     }),
@@ -39,6 +39,7 @@ export const sharedPageComponents: SharedLayout = {
   ],
   footer: Component.Footer({
     links: {
+      "💖 Supporters Wall": "/credits",
       GitHub: "https://github.com/VR-Rathod/Code-Note",
       LinkedIn: "https://www.linkedin.com/in/vaibhav-rathod9/",
       Instagram: "https://www.instagram.com/_vebhavvv_",
@@ -59,7 +60,14 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ArticleTitle(),
     Component.ContentMeta(),
     Component.TagList(),
-    Component.AuthorCredit(),
+    Component.ConditionalRender({
+      component: Component.AuthorCredit(),
+      condition: (page) => {
+        const slug = page.fileData.slug ?? ""
+        const excluded = ["index", "404", "about", "privacy-policy", "terms-of-service", "cookie-policy", "credits"]
+        return !excluded.includes(slug)
+      },
+    }),
   ],
   left: [
     Component.PageTitle(),

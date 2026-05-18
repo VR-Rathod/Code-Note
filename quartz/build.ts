@@ -149,6 +149,12 @@ async function startWatching(
     ignoreInitial: true,
   })
 
+  const fundingWatcher = chokidar.watch(path.join(process.cwd(), "funding.json"), {
+    awaitWriteFinish: { stabilityThreshold: 250 },
+    persistent: true,
+    ignoreInitial: true,
+  })
+
   const changes: ChangeEvent[] = []
   watcher
     .on("add", (fp) => {
@@ -170,9 +176,16 @@ async function startWatching(
       void rebuild(changes, clientRefresh, buildData)
     })
 
+  fundingWatcher.on("change", () => {
+    changes.push({ path: "funding.json" as FilePath, type: "change" })
+    void rebuild(changes, clientRefresh, buildData)
+  })
+
   return async () => {
     await watcher.close()
+    await fundingWatcher.close()
   }
+
 }
 
 async function rebuild(changes: ChangeEvent[], clientRefresh: () => void, buildData: BuildData) {

@@ -8,7 +8,7 @@ noindex: true
 
 # Terms of Service
 
-**Last updated: May 18, 2025**
+**Last updated: May 18, 2026**
 
 These Terms of Service ("Terms") govern your use of the **Free Code Notes** website ("Site"), operated by **VR-Rathod**. By accessing or using this Site, you agree to be bound by these Terms.
 

@@ -1,0 +1,11 @@
+{
+  "currentAmount": 0,
+  "sponsors": [
+    { 
+      "name": "Demo", 
+      "amount": 0,
+      "avatar": "https://api.dicebear.com/7.x/pixel-art/svg?seed=sponsor",
+      "url": "https://github.com/VR-Rathod"
+    }
+  ]
+}

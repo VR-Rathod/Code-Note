@@ -8,44 +8,99 @@ interface Options {
 export default ((opts?: Options) => {
   const Footer: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
     const year = new Date().getFullYear()
-    const links = opts?.links ?? []
+    const links = opts?.links ?? {}
+
+    // Categorized links for premium column layout
+    const resourcesLinks = [
+      { text: "💖 Supporters Wall", href: "/credits" },
+      { text: "About Me", href: "/about" },
+    ]
+
+    const legalLinks = [
+      { text: "Privacy Policy", href: "/privacy-policy" },
+      { text: "Terms of Service", href: "/terms-of-service" },
+      { text: "Cookie Policy", href: "/cookie-policy" },
+    ]
+
+    const professionalLinks = [
+      { text: "GitHub", href: links.GitHub ?? "https://github.com/VR-Rathod" },
+      { text: "LinkedIn", href: links.LinkedIn ?? "#" },
+      { text: "Linktree", href: links.Linktree ?? "#" },
+    ]
+
+    const creativeLinks = [
+      { text: "Medium", href: links.medium ?? "#" },
+      { text: "Artstation", href: links.Artstation ?? "#" },
+      { text: "Sketchfab", href: links.Sketchfab ?? "#" },
+      { text: "Instagram", href: links.Instagram ?? "#" },
+    ]
+
     return (
       <footer class={`${displayClass ?? ""}`}>
-        <div class="footer-main">
-          <div class="footer-brand">
-            <span class="footer-logo">📘 Free Code Notes</span>
-            <p class="footer-tagline">A free programming knowledge base for every developer.</p>
-            <p class="footer-copy">
-              © {year}{" "}
-              <a href="https://github.com/VR-Rathod/" rel="noopener">Vaibhav Rathod</a>
-              {" "}· Content licensed under{" "}
-              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license noopener" target="_blank">
-                CC BY-NC-SA 4.0
-              </a>
+        <div class="footer-container">
+          <div class="footer-brand-section">
+            <div class="footer-logo-container">
+              <span class="footer-logo-icon">📘</span>
+              <span class="footer-logo-text">Free Code Notes</span>
+            </div>
+            <p class="footer-tagline">
+              A free programming knowledge base for every developer.
             </p>
+            <div class="footer-meta">
+              <p class="footer-copy">
+                © {year} <a href="https://github.com/VR-Rathod/" target="_blank" rel="noopener">Vaibhav Rathod</a>
+              </p>
+              <p class="footer-license">
+                Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>
+              </p>
+            </div>
           </div>
-          <div class="footer-social">
-            <p class="footer-social-label">Connect</p>
-            <ul>
-              {Object.entries(links).map(([text, link]) => (
-                <li>
-                  <a href={link} target="_blank" rel="noopener">{text}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
 
-        <div class="footer-legal-bar">
-          <nav class="footer-legal-links" aria-label="Legal navigation">
-            <a href="/about">About</a>
-            <span class="footer-divider">·</span>
-            <a href="/privacy-policy">Privacy Policy</a>
-            <span class="footer-divider">·</span>
-            <a href="/terms-of-service">Terms of Service</a>
-            <span class="footer-divider">·</span>
-            <a href="/cookie-policy">Cookie Policy</a>
-          </nav>
+          <div class="footer-links-grid">
+            <div class="footer-column">
+              <h4 class="footer-column-title">Explore</h4>
+              <ul class="footer-column-links">
+                {resourcesLinks.map(link => (
+                  <li>
+                    <a href={link.href}>{link.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h4 class="footer-column-title">Legal</h4>
+              <ul class="footer-column-links">
+                {legalLinks.map(link => (
+                  <li>
+                    <a href={link.href}>{link.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h4 class="footer-column-title">Connect</h4>
+              <ul class="footer-column-links">
+                {professionalLinks.map(link => (
+                  <li>
+                    <a href={link.href} target="_blank" rel="noopener">{link.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h4 class="footer-column-title">Creative</h4>
+              <ul class="footer-column-links">
+                {creativeLinks.map(link => (
+                  <li>
+                    <a href={link.href} target="_blank" rel="noopener">{link.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </footer>
     )
@@ -54,4 +109,3 @@ export default ((opts?: Options) => {
   Footer.css = style
   return Footer
 }) satisfies QuartzComponentConstructor
-

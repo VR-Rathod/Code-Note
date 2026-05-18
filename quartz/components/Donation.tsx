@@ -3,55 +3,166 @@ import style from "./styles/donation.scss"
 // @ts-ignore
 import script from "./scripts/donation.inline"
 import { classNames } from "../util/lang"
+import { pathToRoot, joinSegments } from "../util/path"
+import fs from "fs"
+import path from "path"
+
+// Helper to recursively collect all .md files in the content directory
+function getMarkdownFiles(dir: string): string[] {
+  let results: string[] = []
+  if (!fs.existsSync(dir)) return results
+  const list = fs.readdirSync(dir)
+  list.forEach((file) => {
+    const filePath = path.join(dir, file)
+    const stat = fs.statSync(filePath)
+    if (stat && stat.isDirectory()) {
+      results = results.concat(getMarkdownFiles(filePath))
+    } else if (file.endsWith(".md")) {
+      results.push(filePath)
+    }
+  })
+  return results
+}
+
+// Read the real amount from the root funding.json file at compile-time (static pre-rendering!)
+let initialAmount = 0
+let compiledDataString = "{}"
+try {
+  const fundingPath = path.join(process.cwd(), "funding.json")
+  if (fs.existsSync(fundingPath)) {
+    const rawData = fs.readFileSync(fundingPath, "utf-8")
+    const data = JSON.parse(rawData)
+    if (data && typeof data.currentAmount === "number") {
+      initialAmount = data.currentAmount
+    }
+
+    // Scan all note frontmatters to collect contributors dynamically!
+    const contributorsMap = new Map<string, { name: string; url?: string; count: number }>()
+    contributorsMap.set("vaibhav rathod", { name: "Vaibhav Rathod", url: "https://github.com/VR-Rathod", count: 350 })
+
+    try {
+      const contentDir = path.join(process.cwd(), "content")
+      if (fs.existsSync(contentDir)) {
+        const mdFiles = getMarkdownFiles(contentDir)
+        mdFiles.forEach((file) => {
+          const fileContent = fs.readFileSync(file, "utf-8")
+          if (fileContent.startsWith("---")) {
+            const endIdx = fileContent.indexOf("---", 3)
+            if (endIdx !== -1) {
+              const frontmatter = fileContent.substring(3, endIdx)
+              let authorName = ""
+              let authorUrl = ""
+              
+              frontmatter.split("\n").forEach((line) => {
+                const trimmed = line.trim()
+                if (trimmed.startsWith("author:")) {
+                  authorName = trimmed.replace("author:", "").trim()
+                } else if (trimmed.startsWith("authorUrl:")) {
+                  authorUrl = trimmed.replace("authorUrl:", "").trim()
+                }
+              })
+
+              if (authorName && authorName.toLowerCase().trim() !== "vaibhav rathod") {
+                const key = authorName.toLowerCase().trim()
+                if (contributorsMap.has(key)) {
+                  contributorsMap.get(key)!.count += 1
+                } else {
+                  contributorsMap.set(key, {
+                    name: authorName.trim(),
+                    url: authorUrl.trim() || undefined,
+                    count: 1
+                  })
+                }
+              }
+            }
+          }
+        })
+      }
+    } catch (scanErr) {
+      console.warn("Failed to scan contributors:", scanErr)
+    }
+
+    const contributorsList = Array.from(contributorsMap.values()).sort((a, b) => b.count - a.count)
+
+    // Prepare fully compiled json payload with contributors array appended
+    const compiledData = {
+      ...data,
+      contributors: contributorsList
+    }
+    compiledDataString = JSON.stringify(compiledData)
+  }
+} catch (err) {
+  // Silent fallback to 0 if file is missing or malformed
+}
 
 // --- PREMIUM DONATION CONFIGURATION ---
 // The user can easily customize these values here!
 const DONATION_CONFIG = {
-  upiId: "vaibhavrathod2282-2@okaxis", // Change this to your actual UPI ID
+  upiId: "codenotemanage@upi", // Change this to your actual UPI ID
   payeeName: "Vaibhav Rathod", // Your name associated with the UPI ID
-  currentAmount: 0, // Total donations received so far (starting at 0)
-  goalAmount: 25000, // Monthly goal target (scaled to 25k)
+  currentAmount: initialAmount, // Loaded dynamically from funding.json at compile-time!
+  goalAmount: 96369, // Expanded monthly goal target (scaled to 35k)
   currencySymbol: "₹",
   currencyCode: "INR",
+  // OPTIONAL: Paste a raw URL to a public JSON file (like a GitHub file or Gist) to load the donation amount dynamically!
+  // The JSON should look like: { "currentAmount": 3510 }
+  dynamicFundUrl: "https://raw.githubusercontent.com/VR-Rathod/Code-Note/Web-live/funding.json",
   milestones: [
     {
-      title: "Domain & Server Hosting",
-      goal: 1500,
-      desc: "Ensure the server stays online, ad-free and extremely fast for everyone.",
-    },
-    {
-      title: "The Foundation: Ad-Free & Blazing Fast",
+      title: "Custom Domain & CDN Routing",
       goal: 3000,
-      desc: "Keeping the servers running smoothly. No ads, no paywalls, just pure, uninterrupted learning with zero latency for everyone."
+      desc: "Securing our custom domain (.com/.dev) and global CDN caching to ensure the notes are instantly accessible worldwide.",
     },
     {
-      title: "The Polyglot Upgrade: Multi-Language Snippets",
-      goal: 5000,
-      desc: "Learn the logic once, read it in your favorite language. I will upgrade all notes to include toggleable code snippets (C++, Python, Java, JavaScript, etc.)."
-    }, {
-      title: "Cybersec Walkthroughs & Lab Notes",
-      goal: 8000,
-      desc: "Writing hands-on penetration testing guides, CTF writeups, and network security cheatsheets.",
+      title: "Note Assets Cloud Storage",
+      goal: 4500,
+      desc: "Funding cloud backup and secure storage for all Logseq repository notes, graph configurations, and local drawing files to prevent any data loss.",
     },
     {
-      title: "Interactive Quizzes & Flashcards",
+      title: "Learning Resources & Textbooks",
+      goal: 7000,
+      desc: "Purchasing premium reference books, advanced research papers, and technical documentations to compile and write highly accurate notes.",
+    },
+    {
+      title: "Visual Explaining Tool Licenses",
       goal: 12000,
-      desc: "Building interactive flashcards, revision quiz modules, and DSA practice challenges directly in notes.",
+      desc: "Subscribing to visual blueprinting tools (Excalidraw Plus, Figma Pro) to design clear, premium learning maps and flow charts for complex code concepts.",
     },
     {
-      title: "System Design & Scale Architecture",
-      goal: 18000,
-      desc: "Expanding roadmap to cover microservices, caching, load balancers, and high-scale architecture guides.",
+      title: "Hardware & Compile Overhead",
+      goal: 15000,
+      desc: "Covering local machine power, high-speed compiler pipelines, and testing environments to support compiling 300+ pages instantly.",
     },
     {
-      title: "Full-Time Focus & Daily Notes Updates",
+      title: "Study Motivation (Chai & Fuel)",
+      goal: 20000,
+      desc: "Fueling late-night writing and research sessions with tea/coffee, devoting hours every evening to expanding programming guides.",
+    },
+    {
+      title: "Community Custom Note Requests",
       goal: 25000,
-      desc: "Enabling daily commits, custom student requests, personalized study guides, and direct support.",
+      desc: "Devoting prioritized time to write detailed note pages, debugging walkthroughs, and technical deep-dives specifically requested by you.",
+    },
+    {
+      title: "Premium Offline PDF Exports",
+      goal: 30000,
+      desc: "Designing and formatting beautiful, offline-friendly downloadable PDF cheatsheets of entire folders (DSA, Systems, Cybersec) for student access.",
+    },
+    {
+      title: "Full-Time Dedicated Note Focus",
+      goal: 35000,
+      desc: "Unlocking absolute speed! Devoting full-time hours to researching, summarizing, and publishing daily, high-quality, ad-free programming pages.",
+    },
+    {
+      title: "Coming More Features 🚀",
+      goal: 35001,
+      goalText: "₹35,000+",
+      desc: "Interactive visual cheat sheets, community study syllabus plans, and even faster search pipelines!",
     },
   ],
 }
 
-const Donation: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
+const Donation: QuartzComponent = ({ displayClass, fileData }: QuartzComponentProps) => {
   const { upiId, payeeName, currentAmount, goalAmount, currencySymbol, currencyCode, milestones } = DONATION_CONFIG
   const progressPercent = Math.min(Math.round((currentAmount / goalAmount) * 100), 100)
 
@@ -61,8 +172,17 @@ const Donation: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
   const defaultUpiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&am=${defaultAmount}&cu=${currencyCode}&tn=${defaultNote}`
   const defaultQrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(defaultUpiLink)}`
 
+  const baseDir = pathToRoot(fileData.slug!)
+  const localFundingUrl = joinSegments(baseDir, "static/funding.json")
+
   return (
-    <div class={classNames(displayClass, "donation-wrapper")}>
+    <div 
+      class={classNames(displayClass, "donation-wrapper")}
+      data-goal-amount={goalAmount}
+      data-currency-symbol={currencySymbol}
+      data-fund-url={DONATION_CONFIG.dynamicFundUrl || ""}
+      data-local-funding-url={localFundingUrl}
+    >
       {/* 1. Floating Action Button (FAB) */}
       <button
         class="donation-fab"
@@ -124,6 +244,11 @@ const Donation: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
             </div>
             <h2 id="donation-modal-title">Server Fund & Donation Hub</h2>
             <p class="donation-modal-subtitle">Supporting Open-Source Notes by <strong>{payeeName}</strong></p>
+            <div class="donation-modal-wall-link-wrapper">
+              <a href="/credits" class="donation-modal-wall-link">
+                🏆 View Supporters Wall of Fame ➔
+              </a>
+            </div>
           </div>
 
           <div class="donation-modal-body">
@@ -162,7 +287,7 @@ const Donation: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
                     const statusClass = isCompleted ? "completed" : (isActive ? "active" : "locked")
 
                     return (
-                      <div class={`milestone-item ${statusClass}`} key={idx}>
+                      <div class={`milestone-item ${statusClass}`} data-goal={milestone.goal} key={idx}>
                         <div class="milestone-status-indicator">
                           {isCompleted ? (
                             <div class="indicator-icon completed">
@@ -187,7 +312,9 @@ const Donation: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
                         <div class="milestone-text">
                           <div class="milestone-title-row">
                             <h4>{milestone.title}</h4>
-                            <span class="milestone-goal-badge">{currencySymbol}{milestone.goal}</span>
+                            <span class="milestone-goal-badge">
+                              {milestone.goalText ? milestone.goalText : `${currencySymbol}${milestone.goal.toLocaleString("en-IN")}`}
+                            </span>
                           </div>
                           <p>{milestone.desc}</p>
                         </div>
@@ -200,107 +327,190 @@ const Donation: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
 
             {/* Right Side: Interactive Payment Area */}
             <div class="donation-modal-payment-section">
-              <h3>⚡ Donate via UPI</h3>
-              <p class="payment-desc">Scan the QR code or pay using your preferred UPI app. 100% of the funds go directly towards Server & Content maintenance.</p>
-
-              {/* Amount Preset Selector */}
-              <div class="payment-presets">
-                <label>Select Amount</label>
-                <div class="presets-grid">
-                  <button class="preset-btn" data-amount="50" aria-label="Donate ₹50">
-                    <span>{currencySymbol}50</span>
-                    <small>☕ Chai</small>
-                  </button>
-                  <button class="preset-btn active" data-amount="100" aria-label="Donate ₹100">
-                    <span>{currencySymbol}100</span>
-                    <small>☕ Coffee</small>
-                  </button>
-                  <button class="preset-btn" data-amount="200" aria-label="Donate ₹200">
-                    <span>{currencySymbol}200</span>
-                    <small>📚 Book</small>
-                  </button>
-                  <button class="preset-btn custom-preset-trigger" id="custom-preset-btn" aria-label="Enter custom amount">
-                    <span>Custom</span>
-                    <small>💬 Say Thanks</small>
-                  </button>
-                </div>
-
-                {/* Custom Amount Input Container (Hidden by default) */}
-                <div class="custom-amount-container" id="custom-amount-input-box" style={{ display: "none" }}>
-                  <div class="custom-amount-input-wrapper">
-                    <span class="input-currency">{currencySymbol}</span>
-                    <input
-                      type="number"
-                      id="custom-amount-val"
-                      min="1"
-                      max="100000"
-                      value="100"
-                      placeholder="Enter amount..."
-                      aria-label="Custom donation amount"
-                    />
-                  </div>
-                  <button class="custom-amount-apply" id="custom-amount-apply-btn">Apply</button>
-                </div>
+              {/* Sleek segment control tab switcher */}
+              <div class="donation-payment-tabs">
+                <button class="payment-tab-btn active" id="tab-btn-upi" aria-label="Pay via UPI (INR)">
+                  <span>🇮🇳 UPI (INR)</span>
+                </button>
+                <button class="payment-tab-btn" id="tab-btn-global" aria-label="Pay via GitHub Sponsors (USD)">
+                  <span>🌐 Global (USD)</span>
+                </button>
               </div>
 
-              {/* Interactive UPI Payment Display */}
-              <div class="payment-box">
-                {/* QR Code Container */}
-                <div class="qrcode-wrapper">
-                  <div class="qrcode-border">
-                    <img
-                      src={defaultQrUrl}
-                      alt="UPI Scan to Pay QR Code"
-                      id="donation-qr-code-img"
-                      class="qrcode-img"
-                    />
-                    <div class="qrcode-scanner-line"></div>
-                  </div>
-                  <span class="qrcode-hint">Scan with GPay, PhonePe, Paytm, or BHIM</span>
-                </div>
+              {/* TAB 1: UPI PAYMENT PANEL */}
+              <div class="payment-panel active" id="panel-upi">
+                <h3>⚡ Donate via UPI</h3>
+                <p class="payment-desc">Scan the QR code or pay using your preferred UPI app. 100% of the funds go directly towards Server & Content maintenance.</p>
 
-                {/* Mobile Launch UPI Apps Deep Link */}
-                <div class="mobile-pay-wrapper">
-                  <a
-                    href={defaultUpiLink}
-                    class="mobile-pay-btn"
-                    id="mobile-upi-deep-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                    </svg>
-                    Pay via UPI App
-                  </a>
-                </div>
-
-                {/* Copyable UPI ID section */}
-                <div class="upi-id-copy-box">
-                  <label for="upi-id-input">Or Copy UPI ID</label>
-                  <div class="upi-input-group">
-                    <input
-                      type="text"
-                      id="upi-id-input"
-                      value={upiId}
-                      readonly
-                      aria-label="UPI ID"
-                    />
-                    <button
-                      class="upi-copy-btn"
-                      id="upi-id-copy-btn"
-                      aria-label="Copy UPI ID to clipboard"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy-icon">
-                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
-                      <span class="copy-btn-text">Copy</span>
+                {/* Amount Preset Selector */}
+                <div class="payment-presets">
+                  <label>Select Amount</label>
+                  <div class="presets-grid">
+                    <button class="preset-btn" data-amount="50" aria-label="Donate ₹50">
+                      <span>{currencySymbol}50</span>
+                      <small>☕ Chai</small>
+                    </button>
+                    <button class="preset-btn active" data-amount="100" aria-label="Donate ₹100">
+                      <span>{currencySymbol}100</span>
+                      <small>☕ Coffee</small>
+                    </button>
+                    <button class="preset-btn" data-amount="200" aria-label="Donate ₹200">
+                      <span>{currencySymbol}200</span>
+                      <small>📚 Book</small>
+                    </button>
+                    <button class="preset-btn custom-preset-trigger" id="custom-preset-btn" aria-label="Enter custom amount">
+                      <span>Custom</span>
+                      <small>💬 Say Thanks</small>
                     </button>
                   </div>
+
+                  {/* Custom Amount Input Container (Hidden by default) */}
+                  <div class="custom-amount-container" id="custom-amount-input-box" style={{ display: "none" }}>
+                    <div class="custom-amount-input-wrapper">
+                      <span class="input-currency">{currencySymbol}</span>
+                      <input
+                        type="number"
+                        id="custom-amount-val"
+                        min="1"
+                        max="100000"
+                        value="100"
+                        placeholder="Enter amount..."
+                        aria-label="Custom donation amount"
+                      />
+                    </div>
+                    <button class="custom-amount-apply" id="custom-amount-apply-btn">Apply</button>
+                  </div>
+                </div>
+
+                {/* Interactive UPI Payment Display */}
+                <div class="payment-box">
+                  {/* QR Code Container */}
+                  <div class="qrcode-wrapper">
+                    <div class="qrcode-border">
+                      <img
+                        src={defaultQrUrl}
+                        alt="UPI Scan to Pay QR Code"
+                        id="donation-qr-code-img"
+                        class="qrcode-img"
+                      />
+                      <div class="qrcode-scanner-line"></div>
+                    </div>
+                    <span class="qrcode-hint">Scan with GPay, PhonePe, Paytm, or BHIM</span>
+                  </div>
+
+                  {/* Mobile Launch UPI Apps Deep Link */}
+                  <div class="mobile-pay-wrapper">
+                    <a
+                      href={defaultUpiLink}
+                      class="mobile-pay-btn"
+                      id="mobile-upi-deep-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                      </svg>
+                      Pay via UPI App
+                    </a>
+                  </div>
+
+                  {/* Copyable UPI ID section */}
+                  <div class="upi-id-copy-box">
+                    <label for="upi-id-input">Or Copy UPI ID</label>
+                    <div class="upi-input-group">
+                      <input
+                        type="text"
+                        id="upi-id-input"
+                        value={upiId}
+                        readonly
+                        aria-label="UPI ID"
+                      />
+                      <button
+                        class="upi-copy-btn"
+                        id="upi-id-copy-btn"
+                        aria-label="Copy UPI ID to clipboard"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy-icon">
+                          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        <span class="copy-btn-text">Copy</span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
+
+              {/* TAB 2: GLOBAL SPONSORS PANEL */}
+              <div class="payment-panel" id="panel-global" style={{ display: "none" }}>
+                <div class="github-sponsors-native-card">
+                  {/* Glowing header badge */}
+                  <div class="gh-native-header">
+                    <svg class="gh-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    <span class="gh-badge">GITHUB SPONSOR</span>
+                  </div>
+
+                  {/* Profile info with glowing avatar */}
+                  <div class="gh-profile-box">
+                    <div class="gh-avatar-wrapper">
+                      <img src="https://github.com/VR-Rathod.png" alt="Vaibhav Rathod Avatar" class="gh-avatar-img" />
+                      <div class="gh-avatar-glow"></div>
+                    </div>
+                    <div class="gh-profile-details">
+                      <h4>Vaibhav Rathod</h4>
+                      <a href="https://github.com/VR-Rathod" target="_blank" rel="noopener noreferrer" class="gh-username">@VR-Rathod</a>
+                    </div>
+                  </div>
+
+                  {/* Core description */}
+                  <p class="gh-desc">
+                    If you are outside India, you can support my open-source work directly on GitHub using Credit Card or PayPal. Every dollar goes directly towards cloud VPS hosting and note creation!
+                  </p>
+
+                  {/* Sponsor Tier Pills */}
+                  <div class="gh-tiers-section">
+                    <span class="gh-tiers-title">Popular Tiers</span>
+                    <div class="gh-tiers-grid">
+                      <div class="gh-tier-pill">
+                        <span class="tier-price">$2/mo</span>
+                        <span class="tier-name">☕ Chai</span>
+                      </div>
+                      <div class="gh-tier-pill">
+                        <span class="tier-price">$5/mo</span>
+                        <span class="tier-name">☕ Coffee</span>
+                      </div>
+                      <div class="gh-tier-pill">
+                        <span class="tier-price">$10/mo</span>
+                        <span class="tier-name">📚 Student</span>
+                      </div>
+                      <div class="gh-tier-pill">
+                        <span class="tier-price">$25/mo</span>
+                        <span class="tier-name">🚀 Supporter</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Vibrant Action Button */}
+                  <div class="github-sponsors-actions">
+                    <a 
+                      href="https://github.com/sponsors/VR-Rathod" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      class="github-sponsor-direct-btn"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                      </svg>
+                      Become a GitHub Sponsor
+                    </a>
+                  </div>
+                </div>
+              </div>
+
             </div>
+
           </div>
 
           {/* Modal Footer */}

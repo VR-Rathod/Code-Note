@@ -242,7 +242,7 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
 
   function showSearch(searchTypeNew: SearchType) {
     searchType = searchTypeNew
-    if (sidebar) sidebar.style.zIndex = "1"
+    if (sidebar) sidebar.style.zIndex = "10000"
     container.classList.add("active")
     searchBar.focus()
   }
@@ -557,7 +557,7 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
         const searchBar = element.querySelector(".search-bar") as HTMLInputElement
         const sidebar = container?.closest(".sidebar") as HTMLElement | null
         if (container && searchBar) {
-          if (sidebar) sidebar.style.zIndex = "1"
+          if (sidebar) sidebar.style.zIndex = "10000"
           container.classList.add("active")
           searchBar.focus()
         }

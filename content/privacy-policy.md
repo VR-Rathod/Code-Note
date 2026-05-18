@@ -5,7 +5,7 @@ description: "Privacy Policy for Free Code Notes (Code-Note by VR-Rathod). Learn
 
 # Privacy Policy
 
-**Last updated: May 18, 2025**
+**Last updated: May 18, 2026**
 
 Welcome to **Free Code Notes** ("we", "our", or "us"), a programming knowledge base built and maintained by **VR-Rathod**. This Privacy Policy explains what information we collect, how we use it, and your rights regarding that information.
 
@@ -71,11 +71,12 @@ Our website may be hosted on **Cloudflare Pages** or a similar CDN, which may pr
 
 ## 4. Cookies & Local Storage
 
-We use browser **`localStorage`** (not traditional cookies) to:
-- Store your Supabase authentication session token
-- Cache your bookmarks locally for offline access
+We do not use traditional tracking cookies. Instead, we utilize standard browser **`localStorage`** (local storage) to support strictly functional features:
+- Securely storing your Supabase authentication session token
+- Saving and syncing your bookmark progress
+- Persisting layout settings (e.g., dark mode theme preference, folder explorer toggle state, checklist status, language switcher preference)
 
-You can clear this data at any time by signing out or clearing your browser's site data.
+For a complete, technical breakdown of all specific storage keys and lifetimes, please refer to our full [[cookie-policy|Cookie Policy]].
 
 ---
 
