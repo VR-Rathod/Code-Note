@@ -1,29 +1,132 @@
 footer {
-  text-align: left;
-  margin-bottom: 4rem;
-  opacity: 0.7;
+  margin-top: 3rem;
+  border-top: 1px solid var(--lightgray);
+  padding-top: 2rem;
+  margin-bottom: 2rem;
 
-  & p {
-    margin-bottom: 0.5rem;
+  // ── Main row: brand + social ──────────────────────────────
+  .footer-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
   }
 
-  & .license-notice {
-    font-size: 0.78rem;
-    opacity: 0.8;
-    margin-bottom: 0.75rem;
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    max-width: 340px;
+  }
 
-    & a {
+  .footer-logo {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.01em;
+  }
+
+  .footer-tagline {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--gray);
+    line-height: 1.4;
+  }
+
+  .footer-copy {
+    margin: 0.25rem 0 0;
+    font-size: 0.78rem;
+    color: var(--gray);
+    opacity: 0.85;
+
+    a {
+      color: var(--secondary);
       text-decoration: underline;
       text-underline-offset: 2px;
+      transition: color 0.15s ease;
+
+      &:hover { color: var(--tertiary); }
     }
   }
 
-  & ul {
+  // ── Social links column ───────────────────────────────────
+  .footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+
+    @media (max-width: 600px) {
+      align-items: flex-start;
+    }
+  }
+
+  .footer-social-label {
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gray);
+    opacity: 0.7;
+  }
+
+  ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    justify-content: flex-end;
+
+    @media (max-width: 600px) {
+      justify-content: flex-start;
+    }
+
+    li a {
+      font-size: 0.85rem;
+      color: var(--secondary);
+      text-decoration: none;
+      transition: color 0.15s ease;
+
+      &:hover { color: var(--tertiary); }
+    }
+  }
+
+  // ── Legal bar ─────────────────────────────────────────────
+  .footer-legal-bar {
+    border-top: 1px solid var(--lightgray);
+    padding-top: 1rem;
+  }
+
+  .footer-legal-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 0.75rem;
+
+    a {
+      font-size: 0.78rem;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.15s ease;
+
+      &:hover {
+        color: var(--tertiary);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+    }
+  }
+
+  .footer-divider {
+    font-size: 0.78rem;
+    color: var(--lightgray);
+    user-select: none;
   }
 }

@@ -61,9 +61,19 @@ export default ((opts?: Partial<Options>) => {
         >
           {fileData.toc.map((tocEntry) => (
             <li key={tocEntry.slug} class={`depth-${tocEntry.depth}`}>
-              <a href={`#${tocEntry.slug}`} data-for={tocEntry.slug}>
-                {tocEntry.text}
-              </a>
+              <div class="toc-item-container">
+                <a href={`#${tocEntry.slug}`} data-for={tocEntry.slug}>
+                  {tocEntry.text}
+                </a>
+                <button 
+                  class="toc-bookmark-btn" 
+                  data-hash={`#${tocEntry.slug}`} 
+                  data-title={tocEntry.text} 
+                  aria-label="Bookmark section"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+                </button>
+              </div>
             </li>
           ))}
         </OverflowList>

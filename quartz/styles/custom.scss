@@ -544,3 +544,99 @@ ul.toc-content.overflow {
         }
     }
 }
+
+// ── Legal pages (About, Privacy Policy, Terms, Cookie Policy) ────────────────
+// Hide all note-specific chrome so it reads like a clean professional page.
+body.legal-page {
+
+  // Hide right sidebar entirely (graph, backlinks, recently updated)
+  .sidebar.right {
+    display: none !important;
+  }
+
+  // Hide TOC from left sidebar
+  .toc {
+    display: none !important;
+  }
+
+  // Hide breadcrumbs — not helpful on these standalone pages
+  .breadcrumb-container {
+    display: none !important;
+  }
+
+  // Hide tag list
+  .tags {
+    display: none !important;
+  }
+
+  // Hide content meta (reading time, date, word count)
+  .content-meta {
+    display: none !important;
+  }
+
+  // Give the article full-width room since right sidebar is hidden
+  .center {
+    max-width: 780px;
+  }
+
+  // Clean, readable article typography for legal text
+  article {
+    h2 {
+      border-left: none;
+      padding-left: 0;
+      border-bottom: 1px solid var(--lightgray);
+      padding-bottom: 0.4rem;
+      margin-top: 2.5rem;
+      color: var(--dark);
+    }
+
+    h3 {
+      color: var(--darkgray);
+      font-size: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    // Style the horizontal rules as subtle section dividers
+    hr {
+      border: none;
+      border-top: 1px solid var(--lightgray);
+      margin: 2rem 0;
+    }
+
+    // Make tables look clean and professional
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+
+      th {
+        background: var(--lightgray);
+        padding: 0.6rem 0.8rem;
+        text-align: left;
+        font-weight: 600;
+        font-size: 0.82rem;
+        color: var(--darkgray);
+      }
+
+      td {
+        padding: 0.6rem 0.8rem;
+        border-bottom: 1px solid var(--lightgray);
+        color: var(--darkgray);
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+    }
+
+    // Callouts / blockquotes — subtle on legal pages
+    blockquote {
+      border-left: 3px solid var(--lightgray);
+      padding: 0.5rem 1rem;
+      color: var(--gray);
+      font-style: normal;
+      background: transparent;
+    }
+  }
+}

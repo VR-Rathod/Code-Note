@@ -70,7 +70,7 @@ document.addEventListener("nav", () => {
   giscusScript.async = true
   giscusScript.crossOrigin = "anonymous"
   giscusScript.setAttribute("data-loading", "lazy")
-  giscusScript.setAttribute("data-emit-metadata", "0")
+  giscusScript.setAttribute("data-emit-metadata", "1")
   giscusScript.setAttribute("data-repo", giscusContainer.dataset.repo)
   giscusScript.setAttribute("data-repo-id", giscusContainer.dataset.repoId)
   giscusScript.setAttribute("data-category", giscusContainer.dataset.category)

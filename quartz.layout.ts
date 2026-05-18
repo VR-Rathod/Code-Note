@@ -22,7 +22,11 @@ export const sharedPageComponents: SharedLayout = {
           lang: "en",
         },
       }),
-      condition: (page) => page.fileData.slug !== "index" && page.fileData.slug !== "404",
+      condition: (page) => {
+        const slug = page.fileData.slug ?? ""
+        const excluded = ["index", "404", "about", "privacy-policy", "terms-of-service", "cookie-policy"]
+        return !excluded.includes(slug)
+      },
     }),
   ],
   footer: Component.Footer({
@@ -57,9 +61,16 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.Search(), grow: true },
         { Component: Component.Darkmode() },
         { Component: Component.ReaderMode() },
+        { Component: Component.Bookmarks() },
       ],
     }),
-    Component.Explorer(),
+    Component.DesktopOnly(Component.TableOfContents()),
+    Component.Explorer({
+      filterFn: (node) => {
+        const excluded = new Set(["about", "privacy-policy", "terms-of-service", "cookie-policy"])
+        return node.slugSegment !== "tags" && !excluded.has(node.slug)
+      },
+    }),
   ],
   right: [
     Component.DesktopOnly(Component.Graph({
@@ -74,7 +85,6 @@ export const defaultContentPageLayout: PageLayout = {
         linkDistance: 40, fontSize: 0.35, opacityScale: 0.8, showTags: false,
       },
     })),
-    Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
     Component.DesktopOnly(Component.RecentNotes({
       title: "Recently Updated",
@@ -94,9 +104,15 @@ export const defaultListPageLayout: PageLayout = {
       components: [
         { Component: Component.Search(), grow: true },
         { Component: Component.Darkmode() },
+        { Component: Component.Bookmarks() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      filterFn: (node) => {
+        const excluded = new Set(["about", "privacy-policy", "terms-of-service", "cookie-policy"])
+        return node.slugSegment !== "tags" && !excluded.has(node.slug)
+      },
+    }),
   ],
   right: [],
 }
