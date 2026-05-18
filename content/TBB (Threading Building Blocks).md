@@ -10,7 +10,6 @@ displayTitle: TBB (Threading Building Blocks)
 	- **Who**: Developed by Intel. Now open-source as oneTBB under the oneAPI umbrella.
 	- **Why**: To provide high-level parallel programming abstractions for C++ that automatically scale to available CPU cores — without manual thread management.
 	- **When**: First released in 2006. Open-sourced in 2016. Rebranded as oneTBB in 2020.
-
 - # Introduction
   collapsed:: true
 	- ## What is TBB?
@@ -31,7 +30,6 @@ displayTitle: TBB (Threading Building Blocks)
 		- Overhead for very small tasks (use only when work is substantial).
 		- Learning curve for flow graphs and advanced features.
 		- Requires linking against TBB library.
-
 - # Installation & Setup
   collapsed:: true
 	- ## apt (Ubuntu)
@@ -58,7 +56,6 @@ displayTitle: TBB (Threading Building Blocks)
 		  #include <tbb/parallel_reduce.h>
 		  #include <tbb/concurrent_queue.h>
 		  ```
-
 - # Core Concepts
   collapsed:: true
 	- ## parallel_for — Parallel Loop
@@ -139,7 +136,6 @@ displayTitle: TBB (Threading Building Blocks)
 		  tbb::parallel_sort(v.begin(), v.end(), std::greater<int>());
 		  // v = {8, 7, 6, 5, 4, 3, 2, 1}
 		  ```
-
 - # Concurrent Containers
   collapsed:: true
 	- ## concurrent_queue
@@ -199,7 +195,6 @@ displayTitle: TBB (Threading Building Blocks)
 		  
 		  std::cout << "Size: " << cv.size(); // 1000
 		  ```
-
 - # Task Groups
   collapsed:: true
 	- ```cpp
@@ -213,7 +208,6 @@ displayTitle: TBB (Threading Building Blocks)
 	  
 	  tg.wait(); // wait for all tasks to complete
 	  ```
-
 - # More Learn
 	- [oneTBB GitHub](https://github.com/oneapi-src/oneTBB)
 	- [TBB Developer Guide](https://www.intel.com/content/www/us/en/docs/onetbb/developer-guide-api-reference/2021-6/overview.html)

@@ -10,7 +10,6 @@ displayTitle: Boost C++ Libraries
 	- **How**: Started in 1998 by a group of C++ committee members to provide peer-reviewed, portable C++ libraries.
 	- **Who**: Founded by Beman Dawes, David Abrahams, and other C++ Standards Committee members.
 	- **Why**: To fill gaps in the C++ Standard Library and serve as a proving ground for future standard features. Many Boost libraries (smart pointers, regex, filesystem, threads) were later adopted into C++11/14/17.
-
 - # Introduction
   collapsed:: true
 	- ## What is Boost?
@@ -32,7 +31,6 @@ displayTitle: Boost C++ Libraries
 		- Some libraries have complex template-heavy APIs.
 		- Build system (b2/bjam) has a learning curve.
 		- Some libraries are now superseded by C++17/20 standard equivalents.
-
 - # Installation & Setup
   collapsed:: true
 	- ## Linux (apt)
@@ -62,7 +60,6 @@ displayTitle: Boost C++ Libraries
 		  find_package(Boost REQUIRED COMPONENTS filesystem regex system)
 		  target_link_libraries(MyApp Boost::filesystem Boost::regex)
 		  ```
-
 - # Core Libraries
   collapsed:: true
 	- ## boost::smart_ptr (now in std)
@@ -169,7 +166,6 @@ displayTitle: Boost C++ Libraries
 		  };
 		  boost::apply_visitor(Printer{}, v);
 		  ```
-
 - # boost::asio — Networking & Async I/O
   collapsed:: true
 	- ## TCP Client
@@ -229,7 +225,6 @@ displayTitle: Boost C++ Libraries
 		  
 		  io.run();
 		  ```
-
 - # boost::thread — Threading
   collapsed:: true
 	- ```cpp
@@ -250,7 +245,6 @@ displayTitle: Boost C++ Libraries
 	  boost::lock_guard<boost::mutex> lock(mtx);
 	  // critical section
 	  ```
-
 - # boost::program_options — CLI Argument Parsing
   collapsed:: true
 	- ```cpp
@@ -278,7 +272,6 @@ displayTitle: Boost C++ Libraries
 	  }
 	  // Run: ./app -i file.txt --verbose
 	  ```
-
 - # boost::serialization
   collapsed:: true
 	- ```cpp
@@ -314,7 +307,6 @@ displayTitle: Boost C++ Libraries
 	      std::cout << p.name << ", " << p.age; // Alice, 30
 	  }
 	  ```
-
 - # More Learn
 	- [Boost Official Docs](https://www.boost.org/doc/libs/)
 	- [Boost Getting Started](https://www.boost.org/doc/libs/release/more/getting_started/index.html)

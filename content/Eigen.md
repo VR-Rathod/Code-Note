@@ -10,7 +10,6 @@ displayTitle: Eigen
 	- **Who**: Developed by Benoît Jacob and Gaël Guennebaud, with contributions from the open-source community.
 	- **Why**: To provide a high-performance, expression-template-based linear algebra library for C++ that rivals BLAS/LAPACK in performance while being easy to use.
 	- **When**: First released in 2006. Eigen 3 (current major version) released in 2010.
-
 - # Introduction
   collapsed:: true
 	- ## What is Eigen?
@@ -31,7 +30,6 @@ displayTitle: Eigen
 		- Template-heavy — can produce long compiler error messages.
 		- Fixed-size matrices must have sizes known at compile time.
 		- Large headers can slow compilation.
-
 - # Installation & Setup
   collapsed:: true
 	- ## apt (Ubuntu)
@@ -56,7 +54,6 @@ displayTitle: Eigen
 		  #include <Eigen/Sparse>  // sparse matrices
 		  using namespace Eigen;
 		  ```
-
 - # Core Concepts
   collapsed:: true
 	- ## Matrix & Vector Types
@@ -143,7 +140,6 @@ displayTitle: Eigen
 		  // Squared norm (faster — avoids sqrt)
 		  double norm2 = u.squaredNorm();
 		  ```
-
 - # Accessing Elements
   collapsed:: true
 	- ```cpp
@@ -167,7 +163,6 @@ displayTitle: Eigen
 	  VectorXd last2  = v.tail(2);  // [5, 6]
 	  VectorXd mid    = v.segment(1, 3); // [2, 3, 4]
 	  ```
-
 - # Decompositions & Solvers
   collapsed:: true
 	- ## Solving Linear Systems (Ax = b)
@@ -214,7 +209,6 @@ displayTitle: Eigen
 		  LLT<MatrixXd> llt(A.transpose() * A);
 		  VectorXd x = llt.solve(b);
 		  ```
-
 - # Geometry (Eigen/Geometry)
   collapsed:: true
 	- ```cpp
@@ -238,7 +232,6 @@ displayTitle: Eigen
 	  Vector3d p(0, 0, 0);
 	  Vector3d transformed = T * p;
 	  ```
-
 - # More Learn
 	- [Eigen Official Docs](https://eigen.tuxfamily.org/dox/)
 	- [Eigen Quick Reference](https://eigen.tuxfamily.org/dox/group__QuickRefPage.html)

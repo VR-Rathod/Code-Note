@@ -10,7 +10,6 @@ displayTitle: Qt Framework
 	- **Who**: Created by Haavard Nord and Eirik Chambe-Eng at Trolltech (Norway) in 1991. Now maintained by The Qt Company.
 	- **Why**: To provide a cross-platform C++ framework for building GUI applications that look and behave natively on every platform.
 	- **When**: Qt 1.0 released in 1995. Qt 5 in 2012. Qt 6 (current major version) in 2020.
-
 - # Introduction
   collapsed:: true
 	- ## What is Qt?
@@ -33,7 +32,6 @@ displayTitle: Qt Framework
 		- MOC (Meta-Object Compiler) adds a build step.
 		- Commercial license required for some use cases.
 		- Qt 6 has breaking changes from Qt 5.
-
 - # Installation & Setup
   collapsed:: true
 	- ## Qt Online Installer
@@ -55,7 +53,6 @@ displayTitle: Qt Framework
 		  set(CMAKE_AUTOUIC ON)
 		  set(CMAKE_AUTORCC ON)
 		  ```
-
 - # Core Concepts
   collapsed:: true
 	- ## QObject & Signals/Slots
@@ -113,7 +110,6 @@ displayTitle: Qt Framework
 		      return app.exec(); // event loop
 		  }
 		  ```
-
 - # Qt Widgets
   collapsed:: true
 	- ## Common Widgets
@@ -161,7 +157,6 @@ displayTitle: Qt Framework
 		  grid->addWidget(widget2, 0, 1);  // row 0, col 1
 		  grid->addWidget(widget3, 1, 0, 1, 2); // row 1, col 0, span 1 row 2 cols
 		  ```
-
 - # Qt Quick / QML
   collapsed:: true
 	- ## Basic QML Window
@@ -220,7 +215,6 @@ displayTitle: Qt Framework
 		  // Backend { id: backend }
 		  // Text { text: backend.message }
 		  ```
-
 - # Networking
   collapsed:: true
 	- ```cpp
@@ -241,7 +235,6 @@ displayTitle: Qt Framework
 	  
 	  manager->get(QNetworkRequest(QUrl("https://api.example.com/data")));
 	  ```
-
 - # Database (Qt SQL)
   collapsed:: true
 	- ```cpp
@@ -271,7 +264,6 @@ displayTitle: Qt Framework
 	      qDebug() << id << name;
 	  }
 	  ```
-
 - # Threading
   collapsed:: true
 	- ```cpp
@@ -297,7 +289,6 @@ displayTitle: Qt Framework
 	  });
 	  future.waitForFinished();
 	  ```
-
 - # More Learn
 	- [Qt Official Docs](https://doc.qt.io/)
 	- [Qt Tutorials](https://doc.qt.io/qt-6/tutorials-index.html)

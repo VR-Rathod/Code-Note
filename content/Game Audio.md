@@ -107,7 +107,6 @@ displayTitle: Game Audio
 		  | UI feedback sounds | Confidence, clarity |
 		  | Adaptive music swell | Excitement, triumph |
 		  | Silence at the right moment | Shock, weight |
-
 - # Audio Fundamentals
   collapsed:: true
 	- ## Digital Audio Basics
@@ -179,7 +178,6 @@ displayTitle: Game Audio
 		- > [!tip] Mixing Rule
 		  > Leave **-6 dB headroom** on the master bus. Never clip.
 		  > Music should sit around **-12 to -18 dB** so SFX can punch through.
-
 - # FMOD Studio
   collapsed:: true
 	- > [!info] What is FMOD?
@@ -226,9 +224,9 @@ displayTitle: Game Audio
 		- ```cpp
 		  #include "fmod_studio.hpp"
 		  #include "fmod.hpp"
-
+		  
 		  FMOD::Studio::System* studioSystem = nullptr;
-
+		  
 		  // Initialize FMOD Studio
 		  void AudioManager::Init() {
 		      FMOD::Studio::System::create(&studioSystem);
@@ -238,52 +236,52 @@ displayTitle: Game Audio
 		          FMOD_INIT_NORMAL,                 // core flags
 		          nullptr                           // extra driver data
 		      );
-
+		  
 		      // Load master bank (always load this first)
 		      FMOD::Studio::Bank* masterBank = nullptr;
 		      studioSystem->loadBankFile("Master.bank",
 		          FMOD_STUDIO_LOAD_BANK_NORMAL, &masterBank);
-
+		  
 		      // Load strings bank (for event path lookup)
 		      FMOD::Studio::Bank* stringsBank = nullptr;
 		      studioSystem->loadBankFile("Master.strings.bank",
 		          FMOD_STUDIO_LOAD_BANK_NORMAL, &stringsBank);
 		  }
-
+		  
 		  // Play a one-shot sound event
 		  void AudioManager::PlayOneShot(const char* eventPath) {
 		      FMOD::Studio::EventDescription* eventDesc = nullptr;
 		      studioSystem->getEvent(eventPath, &eventDesc);
-
+		  
 		      FMOD::Studio::EventInstance* instance = nullptr;
 		      eventDesc->createInstance(&instance);
-
+		  
 		      instance->start();
 		      instance->release(); // auto-release when done
 		  }
-
+		  
 		  // Play a persistent event (music, ambient)
 		  FMOD::Studio::EventInstance* AudioManager::PlayPersistent(const char* eventPath) {
 		      FMOD::Studio::EventDescription* eventDesc = nullptr;
 		      studioSystem->getEvent(eventPath, &eventDesc);
-
+		  
 		      FMOD::Studio::EventInstance* instance = nullptr;
 		      eventDesc->createInstance(&instance);
 		      instance->start();
 		      return instance; // caller manages lifetime
 		  }
-
+		  
 		  // Set a parameter to drive adaptive audio
 		  void AudioManager::SetParameter(FMOD::Studio::EventInstance* instance,
 		                                   const char* name, float value) {
 		      instance->setParameterByName(name, value);
 		  }
-
+		  
 		  // Update — call every frame
 		  void AudioManager::Update() {
 		      studioSystem->update();
 		  }
-
+		  
 		  // Cleanup
 		  void AudioManager::Shutdown() {
 		      studioSystem->unloadAll();
@@ -296,30 +294,30 @@ displayTitle: Game Audio
 		- ```gdscript
 		  # Using FMOD GDNative plugin for Godot
 		  # https://github.com/alessandrofama/fmod-for-godot
-
+		  
 		  extends Node
-
+		  
 		  var music_instance: FMODStudioEventInstance
-
+		  
 		  func _ready() -> void:
 		      # Load banks
 		      FMODStudio.load_bank("res://audio/Master.bank",
 		          FMODStudio.LOAD_BANK_NORMAL)
 		      FMODStudio.load_bank("res://audio/Master.strings.bank",
 		          FMODStudio.LOAD_BANK_NORMAL)
-
+		  
 		      # Start persistent music event
 		      music_instance = FMODStudio.create_event_instance(
 		          "event:/Music/MainTheme")
 		      music_instance.start()
-
+		  
 		  func play_sfx(event_path: String) -> void:
 		      FMODStudio.play_one_shot(event_path)
-
+		  
 		  func set_music_intensity(value: float) -> void:
 		      # Drive adaptive music with gameplay parameter
 		      music_instance.set_parameter_by_name("Intensity", value)
-
+		  
 		  func _process(_delta: float) -> void:
 		      FMODStudio.update()
 		  ```
@@ -329,20 +327,20 @@ displayTitle: Game Audio
 		- ```csharp
 		  using FMODUnity;
 		  using FMOD.Studio;
-
+		  
 		  public class AudioManager : MonoBehaviour
 		  {
 		      [SerializeField] EventReference musicEvent;
 		      [SerializeField] EventReference footstepEvent;
-
+		  
 		      private EventInstance musicInstance;
-
+		  
 		      void Start() {
 		          // Start persistent music
 		          musicInstance = RuntimeManager.CreateInstance(musicEvent);
 		          musicInstance.start();
 		      }
-
+		  
 		      public void PlayFootstep(string surface) {
 		          // One-shot with parameter
 		          EventInstance sfx = RuntimeManager.CreateInstance(footstepEvent);
@@ -350,19 +348,18 @@ displayTitle: Game Audio
 		          sfx.start();
 		          sfx.release(); // auto-release
 		      }
-
+		  
 		      public void SetCombatIntensity(float intensity) {
 		          // Drive adaptive music (0 = calm, 1 = intense combat)
 		          musicInstance.setParameterByName("CombatIntensity", intensity);
 		      }
-
+		  
 		      void OnDestroy() {
 		          musicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 		          musicInstance.release();
 		      }
 		  }
 		  ```
-
 - # Wwise (Audiokinetic)
   collapsed:: true
 	- > [!info] What is Wwise?
@@ -409,57 +406,57 @@ displayTitle: Game Audio
 		  #include <AK/SoundEngine/Common/AkSoundEngine.h>
 		  #include <AK/SoundEngine/Common/AkMemoryMgr.h>
 		  #include <AK/MusicEngine/Common/AkMusicEngine.h>
-
+		  
 		  // Initialize Wwise
 		  void AudioManager::Init() {
 		      // Memory manager
 		      AkMemSettings memSettings;
 		      AK::MemoryMgr::GetDefaultSettings(memSettings);
 		      AK::MemoryMgr::Init(&memSettings);
-
+		  
 		      // Sound engine
 		      AkInitSettings initSettings;
 		      AkPlatformInitSettings platformSettings;
 		      AK::SoundEngine::GetDefaultInitSettings(initSettings);
 		      AK::SoundEngine::GetDefaultPlatformInitSettings(platformSettings);
 		      AK::SoundEngine::Init(&initSettings, &platformSettings);
-
+		  
 		      // Music engine
 		      AkMusicSettings musicSettings;
 		      AK::MusicEngine::GetDefaultInitSettings(musicSettings);
 		      AK::MusicEngine::Init(&musicSettings);
-
+		  
 		      // Load init bank (always required)
 		      AK::SoundEngine::LoadBank(AKTEXT("Init.bnk"), AK_DEFAULT_POOL_ID);
 		  }
-
+		  
 		  // Register a game object (every sound source needs one)
 		  void AudioManager::RegisterObject(AkGameObjectID id, const char* name) {
 		      AK::SoundEngine::RegisterGameObj(id, name);
 		  }
-
+		  
 		  // Post an event (play a sound)
 		  void AudioManager::PostEvent(const char* eventName, AkGameObjectID objectID) {
 		      AK::SoundEngine::PostEvent(eventName, objectID);
 		  }
-
+		  
 		  // Set RTPC value (drive adaptive audio)
 		  void AudioManager::SetRTPC(const char* rtpcName, float value,
 		                              AkGameObjectID objectID = AK_INVALID_GAME_OBJECT) {
 		      AK::SoundEngine::SetRTPCValue(rtpcName, value, objectID);
 		  }
-
+		  
 		  // Set Switch (e.g., surface type for footsteps)
 		  void AudioManager::SetSwitch(const char* switchGroup, const char* switchState,
 		                                AkGameObjectID objectID) {
 		      AK::SoundEngine::SetSwitch(switchGroup, switchState, objectID);
 		  }
-
+		  
 		  // Set State (global game state)
 		  void AudioManager::SetState(const char* stateGroup, const char* state) {
 		      AK::SoundEngine::SetState(stateGroup, state);
 		  }
-
+		  
 		  // Update 3D position
 		  void AudioManager::SetPosition(AkGameObjectID id, float x, float y, float z) {
 		      AkSoundPosition pos;
@@ -467,13 +464,12 @@ displayTitle: Game Audio
 		      pos.SetOrientation(0, 0, 1, 0, 1, 0); // forward, up
 		      AK::SoundEngine::SetPosition(id, pos);
 		  }
-
+		  
 		  // Update — call every frame
 		  void AudioManager::Update() {
 		      AK::SoundEngine::RenderAudio();
 		  }
 		  ```
-
 - # Adaptive Music Systems
   collapsed:: true
 	- > [!info] What is Adaptive Music?
@@ -530,12 +526,12 @@ displayTitle: Game Audio
 		                                    float playerHealth) {
 		      // Drive intensity parameter (0 = calm, 1 = full combat)
 		      musicInstance.setParameterByName("CombatIntensity", combatIntensity);
-
+		  
 		      // Switch to boss music state
 		      if (bossActive) {
 		          musicInstance.setParameterByName("BossActive", 1.0f);
 		      }
-
+		  
 		      // Low health — add tension layer
 		      float tension = 1.0f - (playerHealth / maxHealth);
 		      musicInstance.setParameterByName("PlayerTension", tension);
@@ -552,7 +548,6 @@ displayTitle: Game Audio
 		  | Phrase sync | Switch on next phrase (4/8 bars) | Seamless music changes |
 		  | Fade crossfade | Fade out old, fade in new | Gradual state changes |
 		  | Stinger bridge | Play a connecting phrase then switch | Cinematic transitions |
-
 - # 3D Spatial Audio
   collapsed:: true
 	- > [!info] What is Spatial Audio?
@@ -589,15 +584,15 @@ displayTitle: Game Audio
 		  attributes.velocity = { vx, vy, vz };     // for Doppler effect
 		  attributes.forward  = { 0, 0, 1 };        // facing direction
 		  attributes.up       = { 0, 1, 0 };        // up vector
-
+		  
 		  eventInstance->set3DAttributes(&attributes);
-
+		  
 		  // Set listener position (usually the camera/player)
 		  FMOD_3D_ATTRIBUTES listenerAttribs = {};
 		  listenerAttribs.position = { camX, camY, camZ };
 		  listenerAttribs.forward  = { camFwdX, camFwdY, camFwdZ };
 		  listenerAttribs.up       = { 0, 1, 0 };
-
+		  
 		  studioSystem->setListenerAttributes(0, &listenerAttribs);
 		  ```
 	-
@@ -641,7 +636,6 @@ displayTitle: Game Audio
 		  // Apply low-pass filter based on occlusion
 		  audioSource.SetOcclusionFactor(occlusionFactor);
 		  ```
-
 - # DSP Effects
   collapsed:: true
 	- > [!info] What is DSP?
@@ -683,15 +677,15 @@ displayTitle: Game Audio
 		  # Apply DSP effects to FMOD buses in Godot
 		  # FMOD Studio handles most DSP in the designer tool
 		  # But you can also apply effects via snapshots
-
+		  
 		  func enter_cave() -> void:
 		      # Activate cave reverb snapshot
 		      FMODStudio.set_parameter_by_name("Environment", 1.0)  # 0=outside, 1=cave
-
+		  
 		  func go_underwater() -> void:
 		      # Activate underwater snapshot (low-pass + chorus)
 		      FMODStudio.set_parameter_by_name("Underwater", 1.0)
-
+		  
 		  func take_damage() -> void:
 		      # Activate low-health snapshot (muffled, heartbeat)
 		      FMODStudio.set_parameter_by_name("PlayerHealth",
@@ -703,31 +697,30 @@ displayTitle: Game Audio
 		- ```gdscript
 		  # Godot native audio effects on buses
 		  # Project → Project Settings → Audio → Add buses
-
+		  
 		  extends Node
-
+		  
 		  func _ready() -> void:
 		      # Get the SFX bus index
 		      var sfx_bus = AudioServer.get_bus_index("SFX")
-
+		  
 		      # Add a reverb effect to the SFX bus
 		      var reverb = AudioEffectReverb.new()
 		      reverb.room_size = 0.8
 		      reverb.damping = 0.5
 		      reverb.wet = 0.3
 		      AudioServer.add_bus_effect(sfx_bus, reverb)
-
+		  
 		      # Add a low-pass filter (for occlusion)
 		      var lowpass = AudioEffectLowPassFilter.new()
 		      lowpass.cutoff_hz = 800.0  # muffled
 		      AudioServer.add_bus_effect(sfx_bus, lowpass)
-
+		  
 		  func set_underwater(active: bool) -> void:
 		      var sfx_bus = AudioServer.get_bus_index("SFX")
 		      # Enable/disable the low-pass filter effect
 		      AudioServer.set_bus_effect_enabled(sfx_bus, 1, active)
 		  ```
-
 - # Engine Native Audio
   collapsed:: true
 	- ## Godot Audio System
@@ -753,17 +746,17 @@ displayTitle: Game Audio
 		  ```
 		- ```gdscript
 		  extends Node
-
+		  
 		  @onready var music_player = $AudioStreamPlayer
 		  @onready var sfx_player   = $SFXPlayer
-
+		  
 		  func _ready() -> void:
 		      # Load and play music
 		      music_player.stream = preload("res://audio/music/main_theme.ogg")
 		      music_player.bus = "Music"
 		      music_player.volume_db = -6.0
 		      music_player.play()
-
+		  
 		  func play_sfx(stream: AudioStream, pitch_variation: float = 0.1) -> void:
 		      sfx_player.stream = stream
 		      sfx_player.bus = "SFX"
@@ -771,11 +764,11 @@ displayTitle: Game Audio
 		      sfx_player.pitch_scale = randf_range(1.0 - pitch_variation,
 		                                            1.0 + pitch_variation)
 		      sfx_player.play()
-
+		  
 		  func set_music_volume(db: float) -> void:
 		      AudioServer.set_bus_volume_db(
 		          AudioServer.get_bus_index("Music"), db)
-
+		  
 		  func mute_sfx(muted: bool) -> void:
 		      AudioServer.set_bus_mute(
 		          AudioServer.get_bus_index("SFX"), muted)
@@ -786,18 +779,18 @@ displayTitle: Game Audio
 		- ```csharp
 		  using UnityEngine;
 		  using UnityEngine.Audio;
-
+		  
 		  public class AudioManager : MonoBehaviour
 		  {
 		      [SerializeField] AudioMixer masterMixer;
 		      [SerializeField] AudioSource musicSource;
 		      [SerializeField] AudioSource sfxSource;
-
+		  
 		      // Play music with crossfade
 		      public void PlayMusic(AudioClip clip, float fadeTime = 1f) {
 		          StartCoroutine(CrossfadeMusic(clip, fadeTime));
 		      }
-
+		  
 		      IEnumerator CrossfadeMusic(AudioClip newClip, float duration) {
 		          float startVol = musicSource.volume;
 		          // Fade out
@@ -813,13 +806,13 @@ displayTitle: Game Audio
 		              yield return null;
 		          }
 		      }
-
+		  
 		      // Play SFX at position (pooled)
 		      public void PlaySFX(AudioClip clip, Vector3 position,
 		                           float volume = 1f, float pitchVariation = 0.1f) {
 		          AudioSource.PlayClipAtPoint(clip, position, volume);
 		      }
-
+		  
 		      // Control mixer groups via exposed parameters
 		      public void SetMusicVolume(float normalizedVolume) {
 		          // Convert 0-1 to dB (-80 to 0)
@@ -838,7 +831,7 @@ displayTitle: Game Audio
 		  #include "Components/AudioComponent.h"
 		  #include "Kismet/GameplayStatics.h"
 		  #include "Sound/SoundBase.h"
-
+		  
 		  // Play sound at location (fire and forget)
 		  UGameplayStatics::PlaySoundAtLocation(
 		      this, FootstepSound, GetActorLocation(),
@@ -846,19 +839,18 @@ displayTitle: Game Audio
 		      1.0f,   // volume multiplier
 		      FMath::RandRange(0.9f, 1.1f)  // pitch variation
 		  );
-
+		  
 		  // Spawn persistent audio component (music, ambient)
 		  UAudioComponent* MusicComp = UGameplayStatics::SpawnSound2D(
 		      this, MusicAsset);
 		  MusicComp->SetVolumeMultiplier(0.8f);
-
+		  
 		  // Fade out music
 		  MusicComp->FadeOut(2.0f, 0.0f); // 2 second fade to 0 volume
-
+		  
 		  // Set audio parameter (for MetaSound)
 		  MusicComp->SetFloatParameter(FName("CombatIntensity"), 0.8f);
 		  ```
-
 - # Audio Optimization
   collapsed:: true
 	- ## Performance Bottlenecks
@@ -895,10 +887,10 @@ displayTitle: Game Audio
 		  // In code: check if event is already playing
 		  FMOD::Studio::EventDescription* desc;
 		  studioSystem->getEvent("event:/SFX/Footstep", &desc);
-
+		  
 		  int instanceCount;
 		  desc->getInstanceCount(&instanceCount);
-
+		  
 		  if (instanceCount < 4) { // max 4 simultaneous footsteps
 		      // Create and play new instance
 		  }
@@ -927,7 +919,6 @@ displayTitle: Game Audio
 		  > - ✅ Pool AudioSource components — don't create/destroy per sound
 		  > - ✅ Unload audio banks when leaving a level
 		  > - ✅ Profile with FMOD Profiler or Wwise Profiler before shipping
-
 - # Sound Design Techniques
   collapsed:: true
 	- ## Layering & Variation
@@ -958,10 +949,10 @@ displayTitle: Game Audio
 		- ```gdscript
 		  # Simple procedural engine sound in Godot
 		  extends AudioStreamPlayer
-
+		  
 		  @export var min_pitch: float = 0.5
 		  @export var max_pitch: float = 2.0
-
+		  
 		  func update_engine_sound(rpm_normalized: float) -> void:
 		      # rpm_normalized: 0.0 = idle, 1.0 = redline
 		      pitch_scale = lerp(min_pitch, max_pitch, rpm_normalized)
@@ -979,7 +970,6 @@ displayTitle: Game Audio
 		  | Character | Breathing, grunts, voice | Emotional state-dependent |
 		  | Environment | Doors, switches, machinery | Mechanical feel, weight |
 		  | Magic/Sci-fi | Spells, lasers, portals | Designed, not realistic |
-
 - # More Learn
 	- ## Official Documentation
 		- [FMOD Documentation](https://www.fmod.com/docs/) — Complete FMOD Studio and API reference.

@@ -413,7 +413,7 @@ displayTitle: Console Development
 	- > [!tip] Start with Xbox Dev Mode
 	  > While waiting for console approval, activate **Xbox Developer Mode** on a retail Xbox console.
 	  > It's free, instant, and lets you deploy UWP apps and early game builds for real console testing.
--
+- collapsed:: true
 - # Useful Links & Resources
 	- ## Official Portals
 		- [PlayStation Partners](https://partners.playstation.net) — Apply for PS dev access

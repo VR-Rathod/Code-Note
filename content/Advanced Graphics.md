@@ -1234,7 +1234,7 @@ displayTitle: Advanced Graphics Programming
 		  | Use MAD instructions | Single cycle multiply-add | `a * b + c` compiles to MAD |
 		  | Avoid dynamic indexing | Breaks compiler optimization | Use constant indices when possible |
 		  | Pack data tightly | Better cache utilization | Use `vec4` not 4 separate `float` |
--
+- collapsed:: true
 - # More Learn
   collapsed:: true
 	- ## Official Documentation

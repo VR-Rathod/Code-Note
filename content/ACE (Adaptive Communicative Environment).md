@@ -10,7 +10,6 @@ displayTitle: ACE (Adaptive Communication Environment)
 	- **Who**: Created by Douglas C. Schmidt at Washington University, St. Louis.
 	- **Why**: To provide a portable, reusable C++ framework for building high-performance networked and real-time systems using well-known design patterns (Reactor, Proactor, Active Object).
 	- **When**: Development started in the early 1990s. Widely used in telecom, defense, and financial systems.
-
 - # Introduction
   collapsed:: true
 	- ## What is ACE?
@@ -31,7 +30,6 @@ displayTitle: ACE (Adaptive Communication Environment)
 		- Large codebase with many abstractions.
 		- Modern alternatives (Boost.Asio, POCO) are often simpler for new projects.
 		- Documentation can be sparse for advanced features.
-
 - # Installation & Setup
   collapsed:: true
 	- ## apt (Ubuntu)
@@ -53,7 +51,6 @@ displayTitle: ACE (Adaptive Communication Environment)
 		  find_package(ACE REQUIRED)
 		  target_link_libraries(MyApp ACE::ACE)
 		  ```
-
 - # Core Concepts
   collapsed:: true
 	- ## TCP Echo Server (Reactor Pattern)
@@ -112,7 +109,6 @@ displayTitle: ACE (Adaptive Communication Environment)
 		  ACE_Thread_Manager::instance()->spawn(worker);
 		  ACE_Thread_Manager::instance()->wait(); // wait for all threads
 		  ```
-
 - # More Learn
 	- [ACE Official Site](http://www.dre.vanderbilt.edu/~schmidt/ACE.html)
 	- [ACE GitHub](https://github.com/DOCGroup/ACE_TAO)

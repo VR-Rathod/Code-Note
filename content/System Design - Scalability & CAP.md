@@ -34,14 +34,14 @@ displayTitle: System Design - Scalability & CAP
 		- ```
 		  Before: 1 server × 4 CPU, 8 GB RAM
 		  After:  1 server × 64 CPU, 512 GB RAM
-
+		  
 		  Common for: Databases (PostgreSQL, MySQL) in early/mid stage
 		  ```
 		- **Pros:** Simple — no code changes needed. Just upgrade hardware.
 		- **Cons:**
-		  - Hardware has a ceiling (you can't infinitely upgrade)
-		  - Single Point of Failure — if that one machine crashes, everything dies
-		  - Very expensive at the top end
+			- Hardware has a ceiling (you can't infinitely upgrade)
+			- Single Point of Failure — if that one machine crashes, everything dies
+			- Very expensive at the top end
 	-
 	- ## Horizontal Scaling (Scale Out)
 	  collapsed:: true
@@ -59,17 +59,16 @@ displayTitle: System Design - Scalability & CAP
 		                              └── App Server 3
 		  ```
 		- **Pros:**
-		  - Virtually unlimited capacity — add servers on demand
-		  - No single point of failure — if one server dies, others continue
-		  - Cost-efficient (use cheap commodity hardware)
+			- Virtually unlimited capacity — add servers on demand
+			- No single point of failure — if one server dies, others continue
+			- Cost-efficient (use cheap commodity hardware)
 		- **Cons:**
-		  - Your app must be **stateless** (no local session storage)
-		  - Needs a load balancer
-		  - Distributed data management is complex
+			- Your app must be **stateless** (no local session storage)
+			- Needs a load balancer
+			- Distributed data management is complex
 		- > [!important] Key Rule
 		  > **Always design for horizontal scaling.** Vertical has a ceiling. Horizontal doesn't.
 		  > This means: never store session state on the server itself — use Redis or a database.
-
 - # Latency vs Throughput
   collapsed:: true
 	- ## Simple Explanation
@@ -103,7 +102,6 @@ displayTitle: System Design - Scalability & CAP
 		- > [!important] Rule of Thumb
 		  > Memory is **1,000×** faster than SSD. SSD is **100×** faster than HDD.
 		  > Every network hop adds latency — minimize them in your critical path.
-
 - # CAP Theorem (The Most Famous Trade-off)
   collapsed:: true
 	- ## What Problem Does CAP Solve?
@@ -156,14 +154,13 @@ displayTitle: System Design - Scalability & CAP
 		  PACELC says:
 		    If Partition happens:    choose Availability  OR  Consistency
 		    Else (normal operation): choose Low Latency   OR  Consistency
-
+		  
 		  Example:
 		    DynamoDB → During partition: prefers Availability
 		               During normal:   prefers Low Latency
 		    HBase    → During partition: prefers Consistency
 		               During normal:   prefers Consistency (accepts higher latency)
 		  ```
-
 - # Availability — The "Nines"
   collapsed:: true
 	- ## Why It Matters
@@ -192,15 +189,15 @@ displayTitle: System Design - Scalability & CAP
 		  SLI (Service Level Indicator) — What you MEASURE
 		      "Our API had 99.94% uptime this month"
 		      Other SLIs: error rate, response time p99, throughput
-
+		  
 		  SLO (Service Level Objective) — What you AIM FOR (internal)
 		      "We target < 1% error rate and < 200ms p99 latency"
 		      Internal engineering target
-
+		  
 		  SLA (Service Level Agreement) — What you PROMISE (external + legal)
 		      "We guarantee 99.9% uptime or we give you credits"
 		      Customer-facing contract with consequences
-
+		  
 		  Error Budget = 100% - SLO target
 		      99.9% SLO → 0.1% error budget = 8.76 hours per year
 		      This budget is "spent" on incidents, planned maintenance, risky deployments
@@ -210,7 +207,6 @@ displayTitle: System Design - Scalability & CAP
 		  > Error budgets make reliability a shared conversation between engineering and product.
 		  > If you're spending budget, you slow down risky feature releases.
 		  > If you have plenty of budget left, you can move fast.
-
 - # Consistent Hashing (How Distributed Caches Scale)
   collapsed:: true
 	- ## The Problem First
@@ -238,7 +234,7 @@ displayTitle: System Design - Scalability & CAP
 		- ```
 		  Ring (simplified):
 		    0 -------- Server A (pos 100) -------- Server B (pos 200) -------- Server C (pos 300) ---- 360
-
+		  
 		  Key at position 150 → nearest clockwise server → Server B
 		  Key at position 50  → nearest clockwise server → Server A
 		  Key at position 250 → nearest clockwise server → Server C
@@ -251,7 +247,6 @@ displayTitle: System Design - Scalability & CAP
 		- **Virtual Nodes:** Each physical server gets multiple positions on the ring.
 		  This ensures even distribution even with few servers.
 		  Used by: **Cassandra, DynamoDB, Amazon ElastiCache**.
-
 - # Back-of-Envelope Estimation
   collapsed:: true
 	- ## Why Engineers Do This
@@ -266,15 +261,15 @@ displayTitle: System Design - Scalability & CAP
 		  Step 1: DAU (Daily Active Users)
 		      DAU = MAU × daily_active_percentage
 		      e.g., 300M MAU × 50% = 150M DAU
-
+		  
 		  Step 2: QPS (Queries Per Second)
 		      QPS = DAU × actions_per_day ÷ 86,400  (seconds in a day)
 		      Peak QPS = QPS × 2   (traffic spikes during peak hours)
-
+		  
 		  Step 3: Storage per day
 		      Storage = writes_per_second × record_size_bytes
 		      Scale to: per day → per year → over 5 years
-
+		  
 		  Step 4: Bandwidth
 		      Bandwidth = QPS × avg_response_size_bytes
 		  ```
@@ -286,22 +281,22 @@ displayTitle: System Design - Scalability & CAP
 		    300M monthly active users
 		    50% use daily → 150M DAU
 		    Average user reads 100 tweets/day, posts 2 tweets/day
-
+		  
 		  Write QPS:
 		    150M users × 2 posts / 86,400 sec = 3,472 writes/sec
 		    Peak: ~7,000 writes/sec
-
+		  
 		  Read QPS:
 		    150M users × 100 reads / 86,400 sec = 173,611 reads/sec
 		    Peak: ~350,000 reads/sec
 		    → Read-heavy! Need caching + read replicas.
-
+		  
 		  Storage per year:
 		    3,472 writes/sec × 86,400 sec × 365 days = 109.6 billion tweets/year
 		    Each tweet: 280 chars (~280 bytes) + metadata (~500 bytes) = ~780 bytes
 		    109.6B × 780 bytes = ~85 TB of tweet text per year
 		    Plus media (photos, videos) = 10–100× more
-
+		  
 		  Conclusion:
 		    → Write service needs 7K QPS capacity
 		    → Read service needs 350K QPS → must use caching + CDN
@@ -311,7 +306,6 @@ displayTitle: System Design - Scalability & CAP
 		- > [!tip] Common Size Reference
 		  > ASCII char = 1 byte · Integer = 4 bytes · UUID = 16 bytes
 		  > Tweet text = ~280 bytes · Profile photo = ~200 KB · HD photo = ~3 MB · 1 min video = ~50 MB
-
 - # Useful Links & Resources
 	- [[System Design]] — Main hub page
 	- [[System Design - Caching]] — Next: learn how to reduce DB load by 90% with caching

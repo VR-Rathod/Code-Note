@@ -10,7 +10,6 @@ displayTitle: C# for Unity
 	- This page covers **Unity-specific C# patterns** — the engine APIs, idioms, and workflows that differ from standard C#.
 	- For the full C# language reference (LINQ, async/await, generics, OOP, etc.) see [[CSharp]].
 	- For the full Unity engine reference (editor, physics, animation, UI, etc.) see [[Unity]].
-
 - # MonoBehaviour Lifecycle
   collapsed:: true
 	- ## Full Lifecycle Order
@@ -138,7 +137,6 @@ displayTitle: C# for Unity
 		      }
 		  }
 		  ```
-
 - # Unity-Specific Types
   collapsed:: true
 	- ## Vector2 & Vector3
@@ -318,7 +316,6 @@ displayTitle: C# for Unity
 		  Random.onUnitSphere      // random Vector3 on unit sphere surface
 		  Random.rotation          // random Quaternion
 		  ```
-
 - # Coroutines In Depth
   collapsed:: true
 	- ## All Yield Instructions
@@ -380,7 +377,6 @@ displayTitle: C# for Unity
 		      cam.fieldOfView = targetFOV;
 		  }
 		  ```
-
 - # ScriptableObjects
   collapsed:: true
 	- ## Data Container Pattern
@@ -488,7 +484,6 @@ displayTitle: C# for Unity
 		      if (enemySet.Count == 0) StartNextWave();
 		  }
 		  ```
-
 - # Performance Patterns
   collapsed:: true
 	- ## Avoiding GC Allocations
@@ -587,7 +582,6 @@ displayTitle: C# for Unity
 		      }
 		  }
 		  ```
-
 - # Common Unity Patterns
   collapsed:: true
 	- ## State Machine
@@ -674,7 +668,6 @@ displayTitle: C# for Unity
 		      void UpdateHealthBar(float hp) => healthBar.value = hp / maxHp;
 		  }
 		  ```
-
 - # More Learn
 	- [[CSharp]] - Full C# language reference (LINQ, async/await, generics, OOP)
 	- [[Unity]] - Full Unity engine reference (editor, physics, animation, UI, shaders)

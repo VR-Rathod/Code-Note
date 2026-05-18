@@ -97,7 +97,6 @@ displayTitle: VR/AR Development
 		  | AR | Visible (camera) | Overlaid | Phone / glasses | Pokemon GO, IKEA Place |
 		  | MR | Visible (passthrough) | Interacts with real | Headset | HoloLens, Quest 3 |
 		  | Spatial Computing | Seamless blend | Context-aware | Vision Pro | Apple Vision Pro apps |
-
 - # VR Hardware Fundamentals
   collapsed:: true
 	- ## Headset Types
@@ -155,7 +154,6 @@ displayTitle: VR/AR Development
 		  | PSVR2 | Console VR | 2000×2040 | 120 Hz | $550 | PlayStation gamers |
 		  | Apple Vision Pro | Standalone | 3660×3142 | 100 Hz | $3499 | Spatial computing |
 		  | Pimax Crystal | PC VR | 2880×2880 | 160 Hz | $1599 | Sim enthusiasts |
-
 - # OpenXR
   collapsed:: true
 	- > [!info] What is OpenXR?
@@ -206,42 +204,42 @@ displayTitle: VR/AR Development
 	  collapsed:: true
 		- ```cpp
 		  #include <openxr/openxr.h>
-
+		  
 		  XrInstance instance = XR_NULL_HANDLE;
 		  XrSession  session  = XR_NULL_HANDLE;
 		  XrSystemId systemId = XR_NULL_SYSTEM_ID;
-
+		  
 		  // 1. Create Instance
 		  XrInstanceCreateInfo instanceInfo{XR_TYPE_INSTANCE_CREATE_INFO};
 		  instanceInfo.applicationInfo.apiVersion = XR_CURRENT_API_VERSION;
 		  strcpy(instanceInfo.applicationInfo.applicationName, "My VR Game");
 		  strcpy(instanceInfo.applicationInfo.engineName, "My Engine");
-
+		  
 		  const char* extensions[] = {
 		      XR_KHR_VULKAN_ENABLE2_EXTENSION_NAME,  // or OpenGL
 		      XR_EXT_HAND_TRACKING_EXTENSION_NAME,   // hand tracking
 		  };
 		  instanceInfo.enabledExtensionCount = 2;
 		  instanceInfo.enabledExtensionNames = extensions;
-
+		  
 		  xrCreateInstance(&instanceInfo, &instance);
-
+		  
 		  // 2. Get System (headset)
 		  XrSystemGetInfo systemInfo{XR_TYPE_SYSTEM_GET_INFO};
 		  systemInfo.formFactor = XR_FORM_FACTOR_HEAD_MOUNTED_DISPLAY;
 		  xrGetSystem(instance, &systemInfo, &systemId);
-
+		  
 		  // 3. Create Session
 		  XrSessionCreateInfo sessionInfo{XR_TYPE_SESSION_CREATE_INFO};
 		  sessionInfo.systemId = systemId;
 		  // + graphics binding (Vulkan/OpenGL specific struct)
 		  xrCreateSession(instance, &sessionInfo, &session);
-
+		  
 		  // 4. Create Reference Space (stage = room-scale)
 		  XrReferenceSpaceCreateInfo spaceInfo{XR_TYPE_REFERENCE_SPACE_CREATE_INFO};
 		  spaceInfo.referenceSpaceType = XR_REFERENCE_SPACE_TYPE_STAGE;
 		  spaceInfo.poseInReferenceSpace = {{0,0,0,1}, {0,0,0}}; // identity pose
-
+		  
 		  XrSpace stageSpace = XR_NULL_HANDLE;
 		  xrCreateReferenceSpace(session, &spaceInfo, &stageSpace);
 		  ```
@@ -251,35 +249,35 @@ displayTitle: VR/AR Development
 		- ```cpp
 		  // OpenXR uses an abstract action system
 		  // Actions are bound to physical inputs via interaction profiles
-
+		  
 		  XrActionSet actionSet = XR_NULL_HANDLE;
 		  XrAction triggerAction, gripAction, thumbstickAction;
-
+		  
 		  // Create action set
 		  XrActionSetCreateInfo setInfo{XR_TYPE_ACTION_SET_CREATE_INFO};
 		  strcpy(setInfo.actionSetName, "gameplay");
 		  strcpy(setInfo.localizedActionSetName, "Gameplay");
 		  xrCreateActionSet(instance, &setInfo, &actionSet);
-
+		  
 		  // Create trigger action (boolean)
 		  XrActionCreateInfo triggerInfo{XR_TYPE_ACTION_CREATE_INFO};
 		  triggerInfo.actionType = XR_ACTION_TYPE_BOOLEAN_INPUT;
 		  strcpy(triggerInfo.actionName, "shoot");
 		  strcpy(triggerInfo.localizedActionName, "Shoot");
 		  xrCreateAction(actionSet, &triggerInfo, &triggerAction);
-
+		  
 		  // Create thumbstick action (2D vector)
 		  XrActionCreateInfo stickInfo{XR_TYPE_ACTION_CREATE_INFO};
 		  stickInfo.actionType = XR_ACTION_TYPE_VECTOR2F_INPUT;
 		  strcpy(stickInfo.actionName, "move");
 		  xrCreateAction(actionSet, &stickInfo, &thumbstickAction);
-
+		  
 		  // Suggest bindings for Meta Touch controllers
 		  XrActionSuggestedBinding bindings[] = {
 		      {triggerAction,    xrStringToPath(instance, "/user/hand/right/input/trigger/value")},
 		      {thumbstickAction, xrStringToPath(instance, "/user/hand/left/input/thumbstick")},
 		  };
-
+		  
 		  XrInteractionProfileSuggestedBinding suggested{
 		      XR_TYPE_INTERACTION_PROFILE_SUGGESTED_BINDING};
 		  suggested.interactionProfile =
@@ -287,18 +285,17 @@ displayTitle: VR/AR Development
 		  suggested.suggestedBindings    = bindings;
 		  suggested.countSuggestedBindings = 2;
 		  xrSuggestInteractionProfileBindings(instance, &suggested);
-
+		  
 		  // Per frame — read action state
 		  XrActionStateBoolean triggerState{XR_TYPE_ACTION_STATE_BOOLEAN};
 		  XrActionStateGetInfo getInfo{XR_TYPE_ACTION_STATE_GET_INFO};
 		  getInfo.action = triggerAction;
 		  xrGetActionStateBoolean(session, &getInfo, &triggerState);
-
+		  
 		  if (triggerState.isActive && triggerState.currentState) {
 		      // Trigger is pressed — shoot!
 		  }
 		  ```
-
 - # SteamVR
   collapsed:: true
 	- > [!info] What is SteamVR?
@@ -313,14 +310,14 @@ displayTitle: VR/AR Development
 		  using UnityEngine;
 		  using UnityEngine.XR.Interaction.Toolkit;
 		  using UnityEngine.XR;
-
+		  
 		  public class VRPlayerController : MonoBehaviour
 		  {
 		      [SerializeField] XRNode leftHandNode  = XRNode.LeftHand;
 		      [SerializeField] XRNode rightHandNode = XRNode.RightHand;
 		      [SerializeField] float  moveSpeed = 3f;
 		      [SerializeField] CharacterController characterController;
-
+		  
 		      void Update() {
 		          // Get thumbstick input from left controller
 		          InputDevice leftDevice = InputDevices.GetDeviceAtXRNode(leftHandNode);
@@ -333,18 +330,18 @@ displayTitle: VR/AR Development
 		              Vector3 move    = (forward * moveInput.y + right * moveInput.x) * moveSpeed;
 		              characterController.Move(move * Time.deltaTime);
 		          }
-
+		  
 		          // Get trigger from right controller
 		          InputDevice rightDevice = InputDevices.GetDeviceAtXRNode(rightHandNode);
 		          float triggerValue;
 		          if (rightDevice.TryGetFeatureValue(CommonUsages.trigger, out triggerValue)) {
 		              if (triggerValue > 0.8f) Shoot();
 		          }
-
+		  
 		          // Haptic feedback
 		          rightDevice.SendHapticImpulse(0, 0.5f, 0.1f); // channel, amplitude, duration
 		      }
-
+		  
 		      void Shoot() { /* fire weapon */ }
 		  }
 		  ```
@@ -354,32 +351,32 @@ displayTitle: VR/AR Development
 		- ```csharp
 		  // XR Interaction Toolkit — high-level VR interaction
 		  using UnityEngine.XR.Interaction.Toolkit;
-
+		  
 		  // XRGrabInteractable — make any object grabbable
 		  // Add component to GameObject in Inspector:
 		  // XRGrabInteractable + Rigidbody + Collider
-
+		  
 		  public class VRWeapon : XRGrabInteractable
 		  {
 		      [SerializeField] GameObject bulletPrefab;
 		      [SerializeField] Transform  muzzle;
-
+		  
 		      protected override void OnSelectEntered(SelectEnterEventArgs args) {
 		          base.OnSelectEntered(args);
 		          // Called when player grabs the weapon
 		          Debug.Log("Weapon grabbed by: " + args.interactorObject.transform.name);
 		      }
-
+		  
 		      protected override void OnActivated(ActivateEventArgs args) {
 		          base.OnActivated(args);
 		          // Called when trigger is pressed while holding
 		          Fire();
 		      }
-
+		  
 		      void Fire() {
 		          var bullet = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation);
 		          bullet.GetComponent<Rigidbody>().AddForce(muzzle.forward * 1000f);
-
+		  
 		          // Haptic feedback on firing hand
 		          if (interactorsSelecting.Count > 0) {
 		              var interactor = interactorsSelecting[0] as XRBaseControllerInteractor;
@@ -388,7 +385,6 @@ displayTitle: VR/AR Development
 		      }
 		  }
 		  ```
-
 - # Meta Quest SDK
   collapsed:: true
 	- > [!info] Meta Quest Platform
@@ -413,16 +409,16 @@ displayTitle: VR/AR Development
 		- ```csharp
 		  using Oculus.Interaction;
 		  using Oculus.Interaction.Input;
-
+		  
 		  public class HandTrackingExample : MonoBehaviour
 		  {
 		      [SerializeField] Hand leftHand;
 		      [SerializeField] Hand rightHand;
-
+		  
 		      void Update() {
 		          // Check if hand tracking is active
 		          if (!leftHand.IsTrackedDataValid) return;
-
+		  
 		          // Get joint pose (e.g., index fingertip)
 		          Pose indexTip;
 		          if (leftHand.GetJointPose(HandJointId.HandIndexTip, out indexTip)) {
@@ -430,14 +426,14 @@ displayTitle: VR/AR Development
 		              // indexTip.rotation = orientation of fingertip
 		              CheckPinch(indexTip.position);
 		          }
-
+		  
 		          // Detect pinch gesture
 		          float pinchStrength = leftHand.GetFingerPinchStrength(HandFinger.Index);
 		          if (pinchStrength > 0.9f) {
 		              OnPinch();
 		          }
 		      }
-
+		  
 		      void CheckPinch(Vector3 fingertipPos) { }
 		      void OnPinch() { Debug.Log("Pinch detected!"); }
 		  }
@@ -448,26 +444,26 @@ displayTitle: VR/AR Development
 		- ```csharp
 		  using UnityEngine;
 		  using Oculus.Platform;
-
+		  
 		  public class PassthroughManager : MonoBehaviour
 		  {
 		      [SerializeField] OVRPassthroughLayer passthroughLayer;
-
+		  
 		      void Start() {
 		          // Enable passthrough (see real world)
 		          passthroughLayer.enabled = true;
-
+		  
 		          // Set camera background to transparent
 		          Camera.main.clearFlags = CameraClearFlags.SolidColor;
 		          Camera.main.backgroundColor = Color.clear;
 		      }
-
+		  
 		      public void TogglePassthrough(bool enabled) {
 		          passthroughLayer.enabled = enabled;
 		          // When disabled — fully virtual environment
 		          // When enabled — mixed reality
 		      }
-
+		  
 		      // Set passthrough opacity (0 = fully virtual, 1 = fully real)
 		      public void SetOpacity(float opacity) {
 		          passthroughLayer.textureOpacity = opacity;
@@ -480,35 +476,34 @@ displayTitle: VR/AR Development
 		- ```gdscript
 		  # Godot 4 — Meta Quest via OpenXR plugin
 		  # Install: Godot OpenXR Vendors plugin
-
+		  
 		  extends Node3D
-
+		  
 		  @onready var xr_interface = XRServer.find_interface("OpenXR")
 		  @onready var left_controller  = $XROrigin3D/LeftController
 		  @onready var right_controller = $XROrigin3D/RightController
-
+		  
 		  func _ready() -> void:
 		      if xr_interface and xr_interface.is_initialized():
 		          DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 		          get_viewport().use_xr = true
 		      else:
 		          push_error("OpenXR not initialized")
-
+		  
 		  func _process(_delta: float) -> void:
 		      # Read controller input
 		      var trigger = Input.get_action_strength("trigger_right")
 		      if trigger > 0.8:
 		          shoot()
-
+		  
 		      # Get controller position
 		      var right_pos = right_controller.global_position
 		      var right_rot = right_controller.global_rotation
-
+		  
 		  func shoot() -> void:
 		      # Trigger haptic feedback
 		      Input.start_joy_vibration(0, 0.5, 0.5, 0.1)
 		  ```
-
 - # ARCore (Android AR)
   collapsed:: true
 	- > [!info] What is ARCore?
@@ -543,33 +538,33 @@ displayTitle: VR/AR Development
 		- ```csharp
 		  // AR Foundation — Unity's cross-platform AR framework
 		  // Works with ARCore (Android) and ARKit (iOS) via same API
-
+		  
 		  using UnityEngine;
 		  using UnityEngine.XR.ARFoundation;
 		  using UnityEngine.XR.ARSubsystems;
 		  using System.Collections.Generic;
-
+		  
 		  public class ARPlacementManager : MonoBehaviour
 		  {
 		      [SerializeField] ARRaycastManager   raycastManager;
 		      [SerializeField] ARPlaneManager      planeManager;
 		      [SerializeField] GameObject          objectToPlace;
-
+		  
 		      List<ARRaycastHit> hits = new List<ARRaycastHit>();
 		      GameObject         placedObject;
-
+		  
 		  void Update() {
 		          // Tap to place object on detected plane
 		          if (Input.touchCount == 0) return;
 		          Touch touch = Input.GetTouch(0);
 		          if (touch.phase != TouchPhase.Began) return;
-
+		  
 		          // Raycast against detected AR planes
 		          if (raycastManager.Raycast(touch.position, hits,
 		              TrackableType.PlaneWithinPolygon)) {
-
+		  
 		              Pose hitPose = hits[0].pose;
-
+		  
 		              if (placedObject == null) {
 		                  // First placement
 		                  placedObject = Instantiate(objectToPlace,
@@ -581,7 +576,7 @@ displayTitle: VR/AR Development
 		              }
 		          }
 		      }
-
+		  
 		      // Toggle plane visualization
 		      public void TogglePlaneVisualization(bool visible) {
 		          foreach (var plane in planeManager.trackables) {
@@ -596,16 +591,16 @@ displayTitle: VR/AR Development
 		- ```csharp
 		  // Depth API — virtual objects occluded by real-world surfaces
 		  using UnityEngine.XR.ARFoundation;
-
+		  
 		  public class ARDepthOcclusion : MonoBehaviour
 		  {
 		      [SerializeField] AROcclusionManager occlusionManager;
-
+		  
 		      void Start() {
 		          // Enable environment depth occlusion
 		          occlusionManager.requestedEnvironmentDepthMode =
 		              EnvironmentDepthMode.Best;
-
+		  
 		          // Enable human segmentation (separate people from background)
 		          occlusionManager.requestedHumanDepthMode =
 		              HumanSegmentationDepthMode.Best;
@@ -614,7 +609,6 @@ displayTitle: VR/AR Development
 		  // With depth enabled, virtual objects automatically hide behind
 		  // real-world surfaces — a chair leg blocks a virtual ball, etc.
 		  ```
-
 - # ARKit (iOS AR)
   collapsed:: true
 	- > [!info] What is ARKit?
@@ -641,20 +635,20 @@ displayTitle: VR/AR Development
 		- ```csharp
 		  // AR Foundation works identically for ARKit and ARCore
 		  // Same code — different platform subsystem underneath
-
+		  
 		  using UnityEngine.XR.ARFoundation;
 		  using UnityEngine.XR.ARKit;
-
+		  
 		  public class ARKitFeatures : MonoBehaviour
 		  {
 		      [SerializeField] ARFaceManager faceManager;
 		      [SerializeField] ARAnchorManager anchorManager;
-
+		  
 		      void Start() {
 		          // Face tracking — AR face filters
 		          faceManager.facesChanged += OnFacesChanged;
 		      }
-
+		  
 		      void OnFacesChanged(ARFacesChangedEventArgs args) {
 		          foreach (var face in args.added) {
 		              // face.vertices — mesh of detected face
@@ -663,7 +657,7 @@ displayTitle: VR/AR Development
 		              Debug.Log("Face detected at: " + face.transform.position);
 		          }
 		      }
-
+		  
 		      // LiDAR — scene reconstruction (iPhone 12 Pro+)
 		      void EnableSceneReconstruction() {
 		          var sessionSubsystem = (ARKitSessionSubsystem)
@@ -681,40 +675,40 @@ displayTitle: VR/AR Development
 		- ```swift
 		  import ARKit
 		  import RealityKit
-
+		  
 		  class ARViewController: UIViewController, ARSessionDelegate {
-
+		  
 		      @IBOutlet var arView: ARView!
-
+		  
 		      override func viewDidLoad() {
 		          super.viewDidLoad()
-
+		  
 		          // Configure AR session
 		          let config = ARWorldTrackingConfiguration()
 		          config.planeDetection = [.horizontal, .vertical]
 		          config.environmentTexturing = .automatic
-
+		  
 		          // Enable LiDAR scene reconstruction (Pro devices)
 		          if ARWorldTrackingConfiguration.supportsSceneReconstruction(.mesh) {
 		              config.sceneReconstruction = .mesh
 		          }
-
+		  
 		          arView.session.run(config)
 		          arView.session.delegate = self
-
+		  
 		          // Add tap gesture for placement
 		          let tap = UITapGestureRecognizer(target: self,
 		              action: #selector(handleTap))
 		          arView.addGestureRecognizer(tap)
 		      }
-
+		  
 		      @objc func handleTap(_ gesture: UITapGestureRecognizer) {
 		          let location = gesture.location(in: arView)
-
+		  
 		          // Raycast against detected planes
 		          let results = arView.raycast(from: location,
 		              allowing: .estimatedPlane, alignment: .horizontal)
-
+		  
 		          if let result = results.first {
 		              // Place 3D model at tap location
 		              let anchor = AnchorEntity(world: result.worldTransform)
@@ -726,7 +720,6 @@ displayTitle: VR/AR Development
 		      }
 		  }
 		  ```
-
 - # VR Interaction Design
   collapsed:: true
 	- > [!info] VR UX is Different
@@ -792,7 +785,7 @@ displayTitle: VR/AR Development
 		    Comfortable: 1–3m  — ideal reading distance
 		    Far        > 5m    — hard to read small text
 		    Sky/world  > 10m   — environmental elements only
-
+		  
 		  Minimum button size: 5cm × 5cm in world space
 		  Minimum text size: 14pt at 1m distance
 		  ```
@@ -813,7 +806,6 @@ displayTitle: VR/AR Development
 		          TwoHand["Two-handed\nScale, rotate objects\nManipulation"]
 		      end
 		  ```
-
 - # VR Rendering & Performance
   collapsed:: true
 	- > [!warning] VR Performance is Critical
@@ -854,7 +846,7 @@ displayTitle: VR/AR Development
 		- ```csharp
 		  // Unity — Fixed Foveated Rendering (Meta Quest)
 		  using Unity.XR.Oculus;
-
+		  
 		  void Start() {
 		      // Enable fixed foveated rendering
 		      OculusSettings.fixedFoveatedRenderingLevel =
@@ -898,17 +890,17 @@ displayTitle: VR/AR Development
 		     - XR Interaction Toolkit
 		     - AR Foundation (for AR)
 		     - Meta XR SDK (for Quest features)
-
+		  
 		  2. Edit → Project Settings → XR Plug-in Management:
 		     - Android: Enable OpenXR
 		     - iOS: Enable ARKit
 		     - PC: Enable OpenXR
-
+		  
 		  3. OpenXR Feature Groups:
 		     - Enable: Meta Quest Support
 		     - Enable: Hand Tracking Subsystem
 		     - Enable: Eye Gaze Interaction
-
+		  
 		  4. Scene Setup:
 		     - Add XR Origin (Camera Rig)
 		     - Add XR Interaction Manager
@@ -922,9 +914,9 @@ displayTitle: VR/AR Development
 		  # Godot 4 XR Setup
 		  # 1. Install OpenXR plugin from Asset Library
 		  # 2. Project Settings → XR → Enable OpenXR
-
+		  
 		  extends Node3D
-
+		  
 		  func _ready() -> void:
 		      var xr_interface = XRServer.find_interface("OpenXR")
 		      if xr_interface and xr_interface.initialize():
@@ -934,7 +926,7 @@ displayTitle: VR/AR Development
 		              DisplayServer.VSYNC_DISABLED)
 		      else:
 		          push_error("OpenXR failed to initialize")
-
+		  
 		  # Scene structure for VR:
 		  # XROrigin3D (root)
 		  #   ├── XRCamera3D (head)
@@ -952,21 +944,20 @@ displayTitle: VR/AR Development
 		     - OpenXR
 		     - OpenXR Hand Tracking
 		     - Meta XR (for Quest)
-
+		  
 		  2. Project Settings → Engine → Input:
 		     - Add VR motion controller bindings
-
+		  
 		  3. Use VR Template as starting point:
 		     - File → New Project → VR Template
 		     - Includes: locomotion, grabbing, UI interaction
-
+		  
 		  4. VR Pawn setup:
 		     - VRPawn Blueprint
 		     - Camera component (head)
 		     - MotionControllerComponent (left/right)
 		     - GrabComponent for interaction
 		  ```
-
 - # More Learn
 	- ## Official Documentation
 		- [OpenXR Specification — Khronos](https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html) — Complete OpenXR spec.

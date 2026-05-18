@@ -10,7 +10,6 @@ displayTitle: Google Test (gtest)
 	- **Who**: Developed by Google's testing technology team.
 	- **Why**: To provide a robust, portable C++ testing framework that supports test discovery, rich assertions, and test fixtures.
 	- **When**: Open-sourced around 2008. Now part of the `googletest` monorepo which also includes gMock.
-
 - # Introduction
   collapsed:: true
 	- ## What is Google Test?
@@ -32,7 +31,6 @@ displayTitle: Google Test (gtest)
 		- Requires compilation (not header-only).
 		- More verbose than Catch2 for simple tests.
 		- gMock has a learning curve.
-
 - # Installation & Setup
   collapsed:: true
 	- ## CMake (FetchContent — Recommended)
@@ -59,7 +57,6 @@ displayTitle: Google Test (gtest)
 		- ```bash
 		  sudo apt install libgtest-dev
 		  ```
-
 - # Core Concepts
   collapsed:: true
 	- ## Basic Test Structure
@@ -118,7 +115,6 @@ displayTitle: Google Test (gtest)
 		  EXPECT_EQ(result, expected) << "Failed for input: " << input;
 		  ASSERT_GT(size, 0) << "Container should not be empty";
 		  ```
-
 - # Test Fixtures
   collapsed:: true
 	- ```cpp
@@ -154,7 +150,6 @@ displayTitle: Google Test (gtest)
 	      EXPECT_EQ(v.back(), 6);
 	  }
 	  ```
-
 - # Parameterized Tests
   collapsed:: true
 	- ```cpp
@@ -191,7 +186,6 @@ displayTitle: Google Test (gtest)
 	      ::testing::Values(0, 1, 4, 6, 8, 9, 10)
 	  );
 	  ```
-
 - # Exception & Death Tests
   collapsed:: true
 	- ```cpp
@@ -206,7 +200,6 @@ displayTitle: Google Test (gtest)
 	  EXPECT_DEATH(crashFunc(), ""); // expects crash (any message)
 	  EXPECT_EXIT(exit(1), ::testing::ExitedWithCode(1), "");
 	  ```
-
 - # gMock — Mocking
   collapsed:: true
 	- ```cpp
@@ -242,7 +235,6 @@ displayTitle: Google Test (gtest)
 	      EXPECT_EQ(db.query("SELECT * FROM users"), "result_data");
 	  }
 	  ```
-
 - # Running Tests
   collapsed:: true
 	- ```bash
@@ -262,7 +254,6 @@ displayTitle: Google Test (gtest)
 	  # Run with CTest
 	  cd build && ctest --output-on-failure
 	  ```
-
 - # More Learn
 	- [GoogleTest GitHub](https://github.com/google/googletest)
 	- [GoogleTest Primer](https://google.github.io/googletest/primer.html)

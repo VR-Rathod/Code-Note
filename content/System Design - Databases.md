@@ -41,17 +41,16 @@ displayTitle: System Design - Databases
 		    ✅ Strong consistency is required (financial, e-commerce)
 		    ✅ Schema is stable and well-defined
 		    ✅ Reporting / analytics queries needed
-
+		  
 		  Use NoSQL when:
 		    ✅ Need horizontal scale with massive write throughput
 		    ✅ Data is unstructured or schema evolves frequently
 		    ✅ Low-latency key-value lookups (caching, sessions)
 		    ✅ Time-series or event streams
-
+		  
 		  Don't choose NoSQL just because it's "modern".
 		  PostgreSQL handles billions of rows with proper indexing + sharding.
 		  ```
-
 - # Database Replication
   collapsed:: true
 	- ## Primary-Replica (Master-Slave)
@@ -68,7 +67,7 @@ displayTitle: System Design - Databases
 		    ✅ Read scalability — distribute reads across replicas
 		    ✅ Failover — promote replica if primary fails
 		    ✅ Backups — take snapshots from replica (no impact to primary)
-
+		  
 		  Replication lag:
 		    Async replication → replicas may be seconds behind
 		    Sync replication  → consistent but slower writes
@@ -80,13 +79,12 @@ displayTitle: System Design - Databases
 		- ```
 		  Both nodes accept reads AND writes.
 		  Sync via bidirectional replication.
-
+		  
 		  Pros: High write availability, geographic distribution
 		  Cons: Conflict resolution complexity (last-write-wins? custom?)
-
+		  
 		  Use when: Multiple datacenters, each needing local writes
 		  ```
-
 - # Database Sharding
   collapsed:: true
 	- ## Sharding Strategies
@@ -102,12 +100,12 @@ displayTitle: System Design - Databases
 	  collapsed:: true
 		- ```
 		  Problem: hash(key) % N breaks when N changes
-
+		  
 		  Solution: Consistent hashing ring
 		    → Add server: only remap 1/N keys
 		    → Remove server: only 1/N keys move to neighbours
 		    → Used in: Cassandra, DynamoDB, Redis Cluster
-
+		  
 		  See [[System Design - Scalability & CAP]] for full explanation.
 		  ```
 	-
@@ -120,7 +118,6 @@ displayTitle: System Design - Databases
 		  Hot shards:           Consistent hashing + virtual nodes
 		  ID generation:        Snowflake ID / UUID (no auto-increment)
 		  ```
-
 - # Database Indexing
   collapsed:: true
 	- ## Index Types
@@ -142,13 +139,13 @@ displayTitle: System Design - Databases
 		    ✅ Use composite index — most selective column first
 		    ✅ Use covering index for hot read paths
 		    ✅ EXPLAIN / EXPLAIN ANALYZE to verify index is used
-
+		  
 		  DON'T:
 		    ❌ Index every column — writes become slow
 		    ❌ Index low-cardinality columns (gender: M/F) — not selective
 		    ❌ Ignore index bloat — VACUUM / ANALYZE periodically
 		    ❌ Left-prefix rule violation: INDEX(a,b,c) → WHERE b=? doesn't use index
-
+		  
 		  Composite index left-prefix rule:
 		    INDEX (last_name, first_name, age)
 		    ✅ WHERE last_name = ?
@@ -156,7 +153,6 @@ displayTitle: System Design - Databases
 		    ❌ WHERE first_name = ?          -- skips left column
 		    ❌ WHERE age = ?                 -- skips left two columns
 		  ```
-
 - # ACID Transactions
   collapsed:: true
 	- ## Properties
@@ -180,22 +176,21 @@ displayTitle: System Design - Databases
 		  > PostgreSQL & Oracle default: **READ COMMITTED**.
 		  > MySQL InnoDB default: **REPEATABLE READ**.
 		  > Use SERIALIZABLE only for financial/critical consistency.
-
 - # Connection Pooling
   collapsed:: true
 	- ## Why Pooling?
 	  collapsed:: true
 		- ```
 		  Opening a DB connection = ~50–100ms overhead
-
+		  
 		  Without pool:
 		    Request → Open connection → Query → Close → ~100ms wasted
-
+		  
 		  With pool:
 		    App starts → Pre-open 10–100 connections
 		    Request → Borrow connection → Query → Return to pool
 		    → Near 0ms overhead
-
+		  
 		  Popular poolers:
 		    PgBouncer        — PostgreSQL connection pooler
 		    HikariCP (Java)  — Fastest JVM pool
@@ -212,7 +207,6 @@ displayTitle: System Design - Databases
 		  idle_timeout:      600s  (close idle connections after this)
 		  max_lifetime:     1800s  (recycle connections to prevent stale state)
 		  ```
-
 - # Read/Write Splitting
   collapsed:: true
 	- ## Pattern
@@ -224,11 +218,11 @@ displayTitle: System Design - Databases
 		          return connect(PRIMARY_DB_HOST)
 		      else:
 		          return connect(REPLICA_DB_HOST)  # round-robin if multiple replicas
-
+		  
 		  # ORM-level (SQLAlchemy)
 		  engine = create_engine(...)
 		  read_engine = create_engine(REPLICA_URL)
-
+		  
 		  with read_engine.connect() as conn:
 		      result = conn.execute(select(User))  # goes to replica
 		  ```
@@ -239,13 +233,12 @@ displayTitle: System Design - Databases
 		  Replication lag risk:
 		    Write → primary → replicate → replica (takes ms to seconds)
 		    If user reads immediately after writing → may see stale data
-
+		  
 		  Mitigation:
 		    Read-your-own-writes: route reads to primary for 1s after write
 		    Sticky sessions: same user always reads from same replica
 		    Sync replication: higher latency but no lag
 		  ```
-
 - # Useful Links & Resources
 	- [[System Design]] — Hub page
 	- [[System Design - Caching]] — Redis patterns, eviction policies

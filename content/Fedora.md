@@ -22,7 +22,6 @@ enableToc: true
 		- Red Hat Linux was split: **RHEL** (enterprise, paid) and **Fedora** (community, cutting-edge).
 		- Goal: be the upstream proving ground for RHEL — new features land in Fedora first, then stabilize into RHEL.
 		- Fedora is the distro where **tomorrow's enterprise Linux is built today**.
-
 - # Introduction
   collapsed:: true
 	- ## What is Fedora?
@@ -70,7 +69,6 @@ enableToc: true
 		- Shorter support cycle (~13 months), frequent upgrades required, less stable than RHEL/Debian, some proprietary drivers/codecs need extra repos (RPM Fusion), not ideal for long-running production servers, smaller community than Ubuntu.
 	- ## Use Cases
 		- Developer workstations, upstream testing, learning RHEL/enterprise Linux, container development (Podman), immutable desktop (Silverblue), home servers (Cockpit), security research (Security Lab spin).
-
 - # Installation & Setup
   collapsed:: true
 	- ## System Requirements
@@ -153,7 +151,6 @@ enableToc: true
 		  Benefits: snapshots, copy-on-write, transparent compression,
 		  checksums, easy rollback with Snapper or Timeshift.
 		  ```
-
 - # Kernel & Architecture
   collapsed:: true
 	- ## Fedora Kernel
@@ -227,7 +224,6 @@ enableToc: true
 		  # or on EFI systems:
 		  sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 		  ```
-
 - # DNF Package Management
   collapsed:: true
 	- ## What is DNF?
@@ -334,7 +330,6 @@ enableToc: true
 		  # System reboots and performs upgrade automatically (~20-40 min)
 		  # After reboot, check: cat /etc/fedora-release
 		  ```
-
 - # Shell & Terminal
   collapsed:: true
 	- ## Default Shell
@@ -430,7 +425,6 @@ enableToc: true
 		  command && echo "Success" || echo "Failed"
 		  echo "Exit code: $?"
 		  ```
-
 - # User & Group Management
   collapsed:: true
 	- ## User Commands
@@ -493,7 +487,6 @@ enableToc: true
 		  groups username                            # show user's groups
 		  getent group groupname                     # group info
 		  ```
-
 - # Systemd & Service Management
   collapsed:: true
 	- ## systemctl
@@ -589,7 +582,6 @@ enableToc: true
 		  sudo systemctl daemon-reload
 		  sudo systemctl enable --now myapp
 		  ```
-
 - # Networking
   collapsed:: true
 	- ## Network Info
@@ -711,7 +703,6 @@ enableToc: true
 		  ssh -R 8080:localhost:80 user@host       # remote forward
 		  ssh -D 1080 user@host                    # SOCKS proxy
 		  ```
-
 - # SELinux (Security-Enhanced Linux)
   collapsed:: true
 	- ## What is SELinux?
@@ -820,7 +811,6 @@ enableToc: true
 		  | SSH on non-standard port | `semanage port -a -t ssh_port_t -p tcp 2222` |
 		  | Nginx can't bind to port 8080 | `semanage port -a -t http_port_t -p tcp 8080` |
 		  | Container can't access host files | `chcon -Rt svirt_sandbox_file_t /path` |
-
 - # Btrfs Filesystem
   collapsed:: true
 	- ## Why Btrfs on Fedora?
@@ -904,7 +894,6 @@ enableToc: true
 		  # Check compression ratio
 		  sudo compsize /
 		  ```
-
 - # Podman & Containers
   collapsed:: true
 	- ## What is Podman?
@@ -996,7 +985,6 @@ enableToc: true
 		  buildah commit $container mynginx:latest
 		  buildah rm $container
 		  ```
-
 - # Cockpit (Web Admin UI)
   collapsed:: true
 	- ## What is Cockpit?
@@ -1033,7 +1021,6 @@ enableToc: true
 		  | Containers | cockpit-podman | Podman container management |
 		  | Virtual Machines | cockpit-machines | libvirt/KVM VM management |
 		  | SELinux | cockpit-selinux | SELinux status + troubleshoot |
-
 - # Wayland & Desktop (Workstation)
   collapsed:: true
 	- ## Wayland on Fedora
@@ -1109,7 +1096,6 @@ enableToc: true
 		  toolbox list                       # list toolboxes
 		  # Inside toolbox: install anything without affecting host
 		  ```
-
 - # Security Hardening
   collapsed:: true
 	- ## Fedora Security Defaults
@@ -1235,7 +1221,6 @@ enableToc: true
 		  # Check for unowned files
 		  find / -nouser -o -nogroup 2>/dev/null
 		  ```
-
 - # Developer Workflows
   collapsed:: true
 	- ## Programming Language Setup
@@ -1355,7 +1340,6 @@ enableToc: true
 		  # Inside toolbox: full dnf/apt access, no SELinux restrictions
 		  # Files in $HOME are shared with host
 		  ```
-
 - # Fedora Silverblue (Immutable Desktop)
   collapsed:: true
 	- ## What is Silverblue?
@@ -1413,7 +1397,6 @@ enableToc: true
 		  # Export app from distrobox to host
 		  distrobox-export --app firefox      # inside distrobox
 		  ```
-
 - # Performance & System Tuning
   collapsed:: true
 	- ## System Monitoring
@@ -1490,7 +1473,6 @@ enableToc: true
 		- ```bash
 		  sudo sysctl -p /etc/sysctl.d/99-performance.conf
 		  ```
-
 - # Fedora Security Lab & Cybersecurity Tools
   collapsed:: true
 	- ## Fedora Security Lab Spin
@@ -1591,7 +1573,6 @@ enableToc: true
 		  semanage port -l | grep http           # http ports
 		  semanage port -l | grep ssh            # ssh ports
 		  ```
-
 - # Disk & Storage Management
   collapsed:: true
 	- ## Disk Info & Partitioning
@@ -1647,7 +1628,6 @@ enableToc: true
 		  blkid /dev/sdb1
 		  sudo mount -a                       # test fstab (mount all)
 		  ```
-
 - # Virtualization (KVM/QEMU)
   collapsed:: true
 	- ## KVM Setup on Fedora
@@ -1698,7 +1678,6 @@ enableToc: true
 		    --graphics vnc \
 		    --cdrom /path/to/Fedora-41.iso
 		  ```
-
 - # Fedora CoreOS & Server
   collapsed:: true
 	- ## Fedora Server
@@ -1761,7 +1740,6 @@ enableToc: true
 		  # Convert YAML to Ignition JSON
 		  butane --pretty --strict ignition.yaml > ignition.ign
 		  ```
-
 - # Process Management
   collapsed:: true
 	- ## Viewing & Controlling Processes
@@ -1802,7 +1780,6 @@ enableToc: true
 		  dmidecode                          # hardware info from BIOS
 		  inxi -Fxz                          # full system info (dnf install inxi)
 		  ```
-
 - # Contributing to This Note
   collapsed:: true
 	- ## How to Contribute
@@ -1826,7 +1803,6 @@ enableToc: true
 		- End `keywords` frontmatter with `, VR-Rathod, Code-Note, code note vr, vr book`
 		- No broken links — only link to pages that exist in `/pages/`
 		- Depth is valued — bigger, more detailed notes are better
-
 - # More Learn
 	- ## Github & Webs
 		- [Fedora Official Documentation](https://docs.fedoraproject.org/)

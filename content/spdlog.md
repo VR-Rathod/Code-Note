@@ -10,7 +10,6 @@ displayTitle: spdlog
 	- **Who**: Created by Gabi Melman (gabime on GitHub).
 	- **Why**: To provide a very fast, zero-overhead logging library for C++ that is easy to use and supports multiple output targets (sinks).
 	- **When**: First released around 2014. Now one of the most popular C++ logging libraries.
-
 - # Introduction
   collapsed:: true
 	- ## What is spdlog?
@@ -31,7 +30,6 @@ displayTitle: spdlog
 	  collapsed:: true
 		- Depends on `{fmt}` library (bundled, but adds compile time).
 		- Compiled mode requires build system setup.
-
 - # Installation & Setup
   collapsed:: true
 	- ## vcpkg
@@ -59,7 +57,6 @@ displayTitle: spdlog
 		- ```cpp
 		  #include <spdlog/spdlog.h>
 		  ```
-
 - # Core Concepts
   collapsed:: true
 	- ## Basic Logging
@@ -104,7 +101,6 @@ displayTitle: spdlog
 		  auto same = spdlog::get("my_logger");
 		  same->warn("Retrieved logger");
 		  ```
-
 - # Sinks — Output Targets
   collapsed:: true
 	- ## Console Sink (colored)
@@ -170,7 +166,6 @@ displayTitle: spdlog
 		  spdlog::logger logger("multi", {console_sink, file_sink});
 		  logger.info("Goes to both console and file");
 		  ```
-
 - # Async Logging
   collapsed:: true
 	- ```cpp
@@ -188,7 +183,6 @@ displayTitle: spdlog
 	  // Flush before exit
 	  spdlog::shutdown();
 	  ```
-
 - # Custom Patterns
   collapsed:: true
 	- ```cpp
@@ -207,7 +201,6 @@ displayTitle: spdlog
 	  spdlog::info("Custom pattern message");
 	  // [2024-01-01 12:00:00.123] [root] [info] [thread 1234] Custom pattern message
 	  ```
-
 - # Flush Policy
   collapsed:: true
 	- ```cpp
@@ -220,7 +213,6 @@ displayTitle: spdlog
 	  // Manual flush
 	  spdlog::get("my_logger")->flush();
 	  ```
-
 - # More Learn
 	- [spdlog GitHub](https://github.com/gabime/spdlog)
 	- [spdlog Wiki](https://github.com/gabime/spdlog/wiki)

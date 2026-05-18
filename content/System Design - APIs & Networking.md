@@ -31,14 +31,14 @@ displayTitle: System Design - APIs & Networking
 		  Resources are nouns, not verbs:
 		    ✅ GET  /users/123
 		    ❌ GET  /getUser?id=123
-
+		  
 		  Use correct HTTP methods:
 		    GET     → Read (idempotent, cacheable)
 		    POST    → Create (not idempotent)
 		    PUT     → Replace entire resource (idempotent)
 		    PATCH   → Partial update (idempotent)
 		    DELETE  → Delete (idempotent)
-
+		  
 		  Use standard status codes:
 		    200 OK           → GET, PUT success
 		    201 Created      → POST success (include Location header)
@@ -51,7 +51,7 @@ displayTitle: System Design - APIs & Networking
 		    422 Unprocessable→ Validation failed
 		    429 Too Many Req → Rate limited
 		    500 Internal Err → Server bug
-
+		  
 		  Versioning:
 		    URL path:    /api/v1/users  (simplest, most visible)
 		    Header:      Accept: application/vnd.api.v1+json
@@ -63,15 +63,15 @@ displayTitle: System Design - APIs & Networking
 		- ```protobuf
 		  // user.proto — define service contract
 		  syntax = "proto3";
-
+		  
 		  service UserService {
 		    rpc GetUser    (GetUserRequest)    returns (User);
 		    rpc ListUsers  (ListUsersRequest)  returns (stream User);  // server streaming
 		    rpc CreateUser (CreateUserRequest) returns (User);
 		  }
-
+		  
 		  message GetUserRequest { string user_id = 1; }
-
+		  
 		  message User {
 		    string id    = 1;
 		    string name  = 2;
@@ -86,7 +86,6 @@ displayTitle: System Design - APIs & Networking
 		    Client streaming:   Client sends stream → Server sends 1
 		    Bidirectional:      Both stream simultaneously (chat, gaming)
 		  ```
-
 - # Real-Time Communication
   collapsed:: true
 	- ## Comparison
@@ -106,15 +105,15 @@ displayTitle: System Design - APIs & Networking
 		     Upgrade: websocket
 		     Connection: Upgrade
 		     Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
-
+		  
 		  2. Server responds:
 		     HTTP/1.1 101 Switching Protocols
 		     Upgrade: websocket
 		     Connection: Upgrade
 		     Sec-WebSocket-Accept: <hash>
-
+		  
 		  3. Persistent TCP connection — both sides can send at any time
-
+		  
 		  Scaling WebSockets:
 		    → Sticky sessions (same client → same server)
 		    → Or: all servers connect to shared pub/sub (Redis Pub/Sub)
@@ -128,18 +127,17 @@ displayTitle: System Design - APIs & Networking
 		  app.get('/events', (req, res) => {
 		    res.setHeader('Content-Type', 'text/event-stream');
 		    res.setHeader('Cache-Control', 'no-cache');
-
+		  
 		    const send = () => res.write(`data: ${JSON.stringify({ time: Date.now() })}\n\n`);
 		    const interval = setInterval(send, 1000);
 		    req.on('close', () => clearInterval(interval));
 		  });
-
+		  
 		  // Client
 		  const es = new EventSource('/events');
 		  es.onmessage = (e) => console.log(JSON.parse(e.data));
 		  // Auto-reconnects on disconnect — built into browser!
 		  ```
-
 - # DNS & CDN
   collapsed:: true
 	- ## DNS Resolution Flow
@@ -168,23 +166,22 @@ displayTitle: System Design - APIs & Networking
 		- ```
 		  Without CDN:
 		    User in Mumbai → Server in Virginia (200ms latency)
-
+		  
 		  With CDN:
 		    User in Mumbai → CDN edge in Mumbai (10ms latency)
 		    Cache miss → CDN fetches from origin, caches at edge
-
+		  
 		  CDN caches:
 		    ✅ Static: JS, CSS, images, videos, fonts
 		    ✅ Dynamic (some CDNs): edge computing, personalised content
-
+		  
 		  Providers: Cloudflare, AWS CloudFront, Akamai, Fastly, Azure CDN
-
+		  
 		  Cache invalidation:
 		    Versioned filenames: main.abc123.js (change content = new URL)
 		    CDN purge API: invalidate specific paths on deploy
 		    Short TTL + stale-while-revalidate for dynamic content
 		  ```
-
 - # Rate Limiting
   collapsed:: true
 	- ## Algorithms
@@ -203,11 +200,11 @@ displayTitle: System Design - APIs & Networking
 		  Bucket capacity: 10 tokens
 		  Refill rate:      2 tokens/second
 		  Request cost:     1 token
-
+		  
 		  t=0:  10 tokens, 5 requests → 5 tokens remain
 		  t=1:  7 tokens (refilled 2), 3 requests → 4 tokens
 		  t=2:  6 tokens, 10 requests → 6 allowed, 4 REJECTED (429)
-
+		  
 		  Allows burst up to bucket size, then throttles to refill rate.
 		  ```
 	-
@@ -219,20 +216,20 @@ displayTitle: System Design - APIs & Networking
 		  local limit     = tonumber(ARGV[1]) -- e.g. 100
 		  local window_ms = tonumber(ARGV[2]) -- e.g. 60000 (1 minute)
 		  local now       = tonumber(ARGV[3]) -- current timestamp ms
-
+		  
 		  -- Remove entries outside the window
 		  redis.call('ZREMRANGEBYSCORE', key, 0, now - window_ms)
-
+		  
 		  -- Count entries in window
 		  local count = redis.call('ZCARD', key)
-
+		  
 		  if count < limit then
 		    -- Add this request
 		    redis.call('ZADD', key, now, now)
 		    redis.call('PEXPIRE', key, window_ms)
 		    return 1   -- allowed
 		  end
-
+		  
 		  return 0      -- rejected
 		  ```
 	-
@@ -245,10 +242,9 @@ displayTitle: System Design - APIs & Networking
 		  X-RateLimit-Reset: 1715500000
 		  Retry-After: 60
 		  Content-Type: application/json
-
+		  
 		  {"error": "rate_limit_exceeded", "retry_after_seconds": 60}
 		  ```
-
 - # HTTP Versions
   collapsed:: true
 	- | Feature | HTTP/1.1 | HTTP/2 | HTTP/3 |
@@ -260,7 +256,6 @@ displayTitle: System Design - APIs & Networking
 	  | Server push | ❌ | ✅ | ✅ |
 	  | Connection setup | 1-RTT | 1-RTT | 0-RTT possible |
 	  | Best for | Legacy systems | Most modern apps | Mobile, lossy networks |
-
 - # Security in APIs
   collapsed:: true
 	- ## Auth Flow Comparison
@@ -277,24 +272,23 @@ displayTitle: System Design - APIs & Networking
 	  collapsed:: true
 		- ```
 		  JWT = header.payload.signature
-
+		  
 		  Header:    { "alg": "HS256", "typ": "JWT" }
 		  Payload:   { "sub": "user123", "role": "admin", "exp": 1715500000 }
 		  Signature: HMACSHA256(base64(header) + "." + base64(payload), secret)
-
+		  
 		  Flow:
 		    1. User logs in → server creates JWT → returns to client
 		    2. Client stores JWT (httpOnly cookie recommended)
 		    3. Every request: Authorization: Bearer <token>
 		    4. Server verifies signature → extracts claims → authorizes
-
+		  
 		  Best practices:
 		    ✅ Short expiry (15 min access token)
 		    ✅ Refresh tokens (7 days, rotated)
 		    ✅ Store in httpOnly cookie (not localStorage)
 		    ✅ Use RS256 (asymmetric) for distributed verification
 		  ```
-
 - # Useful Links & Resources
 	- [[System Design]] — Hub page
 	- [[System Design - Microservices]] — Service patterns, API gateway

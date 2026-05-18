@@ -10,7 +10,6 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
 	- **Who**: Created by Laurent Gomila.
 	- **Why**: To provide a modern, object-oriented C++ alternative to SDL — with a cleaner API, built-in networking, and native C++ design (classes, RAII, no manual cleanup).
 	- **When**: First released in 2007. SFML 2.x is the stable version. SFML 3.0 released in 2024 with C++17 and improved API.
-
 - # Introduction
   collapsed:: true
 	- ## What is SFML?
@@ -31,7 +30,6 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
 		- 2D only (no built-in 3D — use OpenGL alongside).
 		- Smaller community than SDL.
 		- SFML 3 has breaking changes from SFML 2.
-
 - # Installation & Setup
   collapsed:: true
 	- ## Linux (apt)
@@ -54,7 +52,6 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
 		  find_package(SFML 2.6 COMPONENTS graphics audio network REQUIRED)
 		  target_link_libraries(MyGame sfml-graphics sfml-audio sfml-network)
 		  ```
-
 - # Core Concepts
   collapsed:: true
 	- ## Window & Game Loop
@@ -115,7 +112,6 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
 		  window.draw(rect);
 		  window.draw(triangle);
 		  ```
-
 - # Sprites & Textures
   collapsed:: true
 	- ```cpp
@@ -135,7 +131,6 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
 	  
 	  window.draw(sprite);
 	  ```
-
 - # Input Handling
   collapsed:: true
 	- ## Keyboard
@@ -168,7 +163,6 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
 		      }
 		  }
 		  ```
-
 - # Text & Fonts
   collapsed:: true
 	- ```cpp
@@ -185,7 +179,6 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
 	  
 	  window.draw(text);
 	  ```
-
 - # Audio
   collapsed:: true
 	- ```cpp
@@ -205,7 +198,6 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
 	  music.play();
 	  music.setVolume(50.f);
 	  ```
-
 - # Networking
   collapsed:: true
 	- ```cpp
@@ -229,7 +221,6 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
 	  std::size_t received;
 	  client.receive(buffer, sizeof(buffer), received);
 	  ```
-
 - # Delta Time
   collapsed:: true
 	- ```cpp
@@ -242,7 +233,6 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
 	      player.move(200.f * dt, 0.f);
 	  }
 	  ```
-
 - # More Learn
 	- [SFML Official Docs](https://www.sfml-dev.org/documentation/)
 	- [SFML Tutorials](https://www.sfml-dev.org/tutorials/)

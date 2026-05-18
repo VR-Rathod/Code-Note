@@ -10,7 +10,6 @@ displayTitle: Catch2
 	- **Who**: Created by Phil Nash, now maintained by the Catch2 community on GitHub.
 	- **Why**: To provide a simpler, more expressive alternative to Google Test — with natural language test names, no separate fixture classes, and a single-header option.
 	- **When**: Catch (v1) released around 2010. Catch2 (v2) in 2017. Catch2 v3 (compiled, no longer single-header) in 2022.
-
 - # Introduction
   collapsed:: true
 	- ## What is Catch2?
@@ -32,7 +31,6 @@ displayTitle: Catch2
 		- v3 is no longer single-header (requires compilation).
 		- No built-in mocking (use FakeIt or trompeloeil alongside).
 		- Slightly slower compile times than gtest for large suites.
-
 - # Installation & Setup
   collapsed:: true
 	- ## CMake (FetchContent)
@@ -56,7 +54,6 @@ displayTitle: Catch2
 		- ```bash
 		  vcpkg install catch2
 		  ```
-
 - # Core Concepts
   collapsed:: true
 	- ## Basic Test Cases
@@ -124,7 +121,6 @@ displayTitle: Catch2
 		      }
 		  }
 		  ```
-
 - # BDD-Style Tests
   collapsed:: true
 	- ```cpp
@@ -153,7 +149,6 @@ displayTitle: Catch2
 	      }
 	  }
 	  ```
-
 - # Matchers
   collapsed:: true
 	- ```cpp
@@ -178,7 +173,6 @@ displayTitle: Catch2
 	      REQUIRE_THAT(s, ContainsSubstring("Hello") && ContainsSubstring("World"));
 	  }
 	  ```
-
 - # Generators (Property-Based Style)
   collapsed:: true
 	- ```cpp
@@ -205,7 +199,6 @@ displayTitle: Catch2
 	      REQUIRE(a * b > 0);  // runs 6 times (3 × 2)
 	  }
 	  ```
-
 - # Exception Testing
   collapsed:: true
 	- ```cpp
@@ -221,7 +214,6 @@ displayTitle: Catch2
 	      );
 	  }
 	  ```
-
 - # Running Tests
   collapsed:: true
 	- ```bash
@@ -243,7 +235,6 @@ displayTitle: Catch2
 	  # Run with CTest
 	  cd build && ctest --output-on-failure
 	  ```
-
 - # More Learn
 	- [Catch2 GitHub](https://github.com/catchorg/Catch2)
 	- [Catch2 Tutorial](https://github.com/catchorg/Catch2/blob/devel/docs/tutorial.md)

@@ -77,7 +77,6 @@ displayTitle: Game Testing & QA - Performance Profiling
 		  | Nintendo Switch | 4 GB LPDDR4X | ~3.2 GB | Shared (no VRAM) |
 		  | Mid-range PC | 16 GB DDR4 | ~12 GB | 6–8 GB VRAM |
 		  | Mobile (low) | 2–3 GB | ~1.5 GB | Shared |
-
 - # Profiling Tools
   collapsed:: true
 	- ## Built-In Engine Profilers
@@ -203,7 +202,6 @@ displayTitle: Game Testing & QA - Performance Profiling
 		    ARM Mobile Studio  — Mali GPU profiling (free)
 		    Snapdragon Profiler — Qualcomm Adreno profiling (free)
 		  ```
-
 - # CPU Profiling Workflow
   collapsed:: true
 	- ## Finding CPU Hotspots
@@ -263,7 +261,6 @@ displayTitle: Game Testing & QA - Performance Profiling
 		  JobHandle handle = job.Schedule(enemyCount, 64);
 		  handle.Complete(); // wait when result needed
 		  ```
-
 - # GPU Profiling Workflow
   collapsed:: true
 	- ## Finding GPU Bottlenecks
@@ -330,7 +327,6 @@ displayTitle: Game Testing & QA - Performance Profiling
 		    GPU usage < 70% → raise resolution
 		    Cap FPS first, then set resolution scaling min/max
 		  ```
-
 - # Memory Profiling
   collapsed:: true
 	- ## Memory Categories
@@ -389,7 +385,6 @@ displayTitle: Game Testing & QA - Performance Profiling
 		      }
 		  }
 		  ```
-
 - # Frame Pacing
   collapsed:: true
 	- ## What is Frame Pacing?
@@ -436,7 +431,6 @@ displayTitle: Game Testing & QA - Performance Profiling
 		    Use VSync to eliminate tearing. Triple buffer for better pacing.
 		    Consoles: always use platform VSync API.
 		  ```
-
 - # Performance Testing Checklist
   collapsed:: true
 	- ## Per-Build Checklist
@@ -455,7 +449,6 @@ displayTitle: Game Testing & QA - Performance Profiling
 		  □ Console: test both docked + handheld modes (Switch)
 		  □ Mobile: test on lowest-spec target device (not your phone)
 		  ```
-
 - # Useful Links & Resources
 	- [RenderDoc](https://renderdoc.org) — Free open-source GPU frame capture
 	- [PIX for Windows](https://devblogs.microsoft.com/pix/) — Microsoft GPU profiler (Xbox/PC)
