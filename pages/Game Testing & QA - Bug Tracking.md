@@ -61,7 +61,6 @@ displayTitle: Game Testing & QA - Bug Tracking
 		    ✗ Menu button 2px off alignment
 		    ✗ Minor inconsistency in font weight on settings screen
 		  ```
-
 - # Game-Specific Bug Types
   collapsed:: true
 	- ## Core Game Bugs
@@ -130,7 +129,6 @@ displayTitle: Game Testing & QA - Bug Tracking
 		    ✗ Game ignores parental controls
 		    ✗ Crashing during suspend/resume (console sleep mode)
 		  ```
-
 - # Bug Lifecycle
   collapsed:: true
 	- ## Standard States
@@ -161,7 +159,6 @@ displayTitle: Game Testing & QA - Bug Tracking
 		  Rejected   — Not a bug (by design, duplicate, cannot reproduce)
 		  Deferred   — Valid bug, intentionally moved to future patch
 		  ```
-
 - # Bug Report Template
   collapsed:: true
 	- ## Full Bug Report Template
@@ -229,7 +226,6 @@ displayTitle: Game Testing & QA - Bug Tracking
 		  Reproducibility: Always (5/5 attempts)
 		  Attachments: crash_log_20250512.txt, gameplay_clip.mp4
 		  ```
-
 - # Bug Triage Workflow
   collapsed:: true
 	- ## Triage Process
@@ -278,7 +274,6 @@ displayTitle: Game Testing & QA - Bug Tracking
 		    Publisher's name is misspelled on title screen
 		    → Minor bug but must fix before any public showing
 		  ```
-
 - # Bug Tracking Tools
   collapsed:: true
 	- ## Comparison
@@ -324,7 +319,6 @@ displayTitle: Game Testing & QA - Bug Tracking
 		  
 		  Free tier is sufficient for indie teams up to ~5 people.
 		  ```
-
 - # Regression Testing
   collapsed:: true
 	- ## What is Regression?
@@ -350,7 +344,6 @@ displayTitle: Game Testing & QA - Bug Tracking
 		  □ Check memory/performance didn't regress
 		  □ If UI change: test on multiple resolutions/aspect ratios
 		  ```
-
 - # Useful Links & Resources
 	- [Jira](https://www.atlassian.com/software/jira) — Industry standard bug tracker
 	- [Hansoft](https://www.perforce.com/products/hansoft) — AAA-grade project management

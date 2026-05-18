@@ -51,7 +51,6 @@ displayTitle: Game Testing & QA - Automated Testing
 		  ❌ Accessibility and usability
 		  ❌ Anything requiring creative human judgement
 		  ```
-
 - # Unity Test Framework
   collapsed:: true
 	- ## Setup
@@ -186,7 +185,6 @@ displayTitle: Game Testing & QA - Automated Testing
 		      CollectionAssert.AreEqual(original.inventory, loaded.inventory);
 		  }
 		  ```
-
 - # Unreal Engine Automation System
   collapsed:: true
 	- ## Overview
@@ -258,7 +256,6 @@ displayTitle: Game Testing & QA - Automated Testing
 		  
 		  Good for: Testing level-specific mechanics, triggers, AI behaviour.
 		  ```
-
 - # Godot Test Framework (GUT)
   collapsed:: true
 	- ## Setup
@@ -307,7 +304,6 @@ displayTitle: Game Testing & QA - Automated Testing
 		          var r = damage_calc.calculate(c[0], false, c[1])
 		          assert_almost_eq(r, c[2], 0.001, str("Failed for: ", c))
 		  ```
-
 - # Screenshot Regression Testing
   collapsed:: true
 	- ## What is Screenshot Regression?
@@ -355,7 +351,6 @@ displayTitle: Game Testing & QA - Automated Testing
 		      }
 		  }
 		  ```
-
 - # CI/CD for Games
   collapsed:: true
 	- ## CI Pipeline Architecture
@@ -457,7 +452,6 @@ displayTitle: Game Testing & QA - Automated Testing
 		    ❌ Visual regression
 		    ❌ Platform-specific rendering tests
 		  ```
-
 - # Testing Game Systems
   collapsed:: true
 	- ## Inventory System Tests
@@ -530,7 +524,6 @@ displayTitle: Game Testing & QA - Automated Testing
 		      Assert.AreEqual(0.05f, (float)epic    / rolls, 0.05f);
 		  }
 		  ```
-
 - # Automated Performance Tests
   collapsed:: true
 	- ## FPS Budget Test (Unity)
@@ -581,7 +574,6 @@ displayTitle: Game Testing & QA - Automated Testing
 		      // Trend tracked across builds automatically
 		  }
 		  ```
-
 - # Tools Summary
   collapsed:: true
 	- | Tool | Engine | Type | Cost |
@@ -596,7 +588,6 @@ displayTitle: Game Testing & QA - Automated Testing
 	  | AltTester | Unity | UI automation | Free + Paid |
 	  | Game CI (game-ci.com) | Unity/Godot/UE | GitHub Actions runner | Free |
 	  | PlasticSCM / Perforce | Any | Version control + CI | Paid |
-
 - # Useful Links & Resources
 	- [Unity Test Framework docs](https://docs.unity3d.com/Packages/com.unity.test-framework@latest) — Official UTf documentation
 	- [Unity Performance Testing](https://docs.unity3d.com/Packages/com.unity.test-framework.performance@latest) — Performance benchmarking

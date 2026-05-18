@@ -70,7 +70,6 @@ displayTitle: Game Testing & QA
 		      M --> K
 		      L -->|Yes| N[Ship!]
 		  ```
-
 - # Sub-Pages
   collapsed:: true
 	- [[Game Testing & QA - Playtesting]] — Structured playtesting sessions, feedback frameworks, focus groups, internal vs external testing, alpha/beta strategies.
@@ -80,7 +79,6 @@ displayTitle: Game Testing & QA
 	- [[Game Testing & QA - Performance Profiling]] — GPU/CPU frame analysis, memory profiling, frame pacing, platform-specific profilers (PIX, Razor, NSight), optimization loop.
 	-
 	- [[Game Testing & QA - Automated Testing]] — Unit testing game logic, simulation testing, CI/CD for games, Unity Test Framework, Unreal Automation, headless testing, screenshot regression.
-
 - # Game Bug Classification
   collapsed:: true
 	- ## Severity Tiers (Game-Specific)
@@ -139,7 +137,6 @@ displayTitle: Game Testing & QA
 		  Localization Bug — Wrong language text, overflow, missing strings.
 		  Cert Bug         — Fails TRC/TCR/LOT requirement (console releases).
 		  ```
-
 - # Testing by Game Phase
   collapsed:: true
 	- ## Pre-Alpha
@@ -202,7 +199,6 @@ displayTitle: Game Testing & QA
 		  Note: Gold means master disc/package is ready to ship.
 		  After submission to cert, no changes until cert result.
 		  ```
-
 - # Performance Targets
   collapsed:: true
 	- ## Common Targets by Platform
@@ -236,7 +232,6 @@ displayTitle: Game Testing & QA
 		  
 		  Rule of thumb: If any single pass > 5ms on target hardware → optimize it.
 		  ```
-
 - # Tools Overview
   collapsed:: true
 	- ## Profiling Tools
@@ -276,7 +271,6 @@ displayTitle: Game Testing & QA
 		  | AltTester | Unity | C# | UI Automation |
 		  | Playwright/Puppeteer | Web games | JavaScript | E2E browser |
 		  | Robot Framework | Any | Python | E2E + acceptance |
-
 - # Useful Links & Resources
 	- ## Official Documentation
 		- [Unity Test Framework](https://docs.unity3d.com/Packages/com.unity.test-framework@latest) — Unity's built-in testing suite

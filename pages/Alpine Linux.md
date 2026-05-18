@@ -46,7 +46,6 @@ enableToc: true
 		  2023 → Alpine 3.18 — improved Rust/Go toolchain support
 		  2024 → Alpine 3.20 — latest stable branch
 		  ```
-
 - # Introduction
   collapsed:: true
 	- ## What is Alpine Linux?
@@ -112,7 +111,6 @@ enableToc: true
 		- CI/CD pipeline runners
 		- Raspberry Pi and ARM boards
 		- Diskless appliances (runs from RAM)
-
 - # Installation
   collapsed:: true
 	- ## System Requirements
@@ -256,7 +254,6 @@ enableToc: true
 	  > Alpine provides many `setup-*` scripts for individual tasks:
 	  > `setup-hostname`, `setup-interfaces`, `setup-dns`, `setup-ntp`, `setup-sshd`, `setup-apkrepos`, `setup-timezone`, `setup-user`
 	  > Run them individually to reconfigure specific parts after install.
-
 - # Kernel & Architecture
   collapsed:: true
 	- ## Alpine Kernel Variants
@@ -403,7 +400,6 @@ enableToc: true
 		  apk add eudev
 		  rc-update add udev sysinit
 		  ```
-
 - # apk Package Manager
   collapsed:: true
 	- ## What is apk?
@@ -589,7 +585,6 @@ enableToc: true
 		  ```
 	- > [!info] apk vs apt vs dnf Speed
 	  > `apk` is significantly faster than `apt` or `dnf` because it's written in C with no daemon, no D-Bus, and minimal overhead. On a fresh Alpine container, `apk add nginx` typically completes in under 2 seconds.
-
 - # OpenRC Service Management
   collapsed:: true
 	- ## What is OpenRC?
@@ -747,7 +742,6 @@ enableToc: true
 	  > - `rc-update del X default` = `systemctl disable X`
 	  > - `rc-status` = `systemctl list-units`
 	  > - `logread` = `journalctl`
-
 - # Shell & BusyBox
   collapsed:: true
 	- ## ash — Alpine's Default Shell
@@ -914,7 +908,6 @@ enableToc: true
 		      tcpdump \       # Network packet capture
 		      nmap            # Network scanner
 		  ```
-
 - # Networking
   collapsed:: true
 	- ## Network Configuration Files
@@ -1132,7 +1125,6 @@ enableToc: true
 		  # Copy public key to server
 		  ssh-copy-id myuser@192.168.1.100
 		  ```
-
 - # Security Features
   collapsed:: true
 	- ## Alpine's Security Philosophy
@@ -1305,7 +1297,6 @@ enableToc: true
 		  # 8. Check for world-writable files
 		  find / -xdev -type f -perm -0002 2>/dev/null
 		  ```
-
 - # Docker & Containers
   collapsed:: true
 	- ## Why Alpine is the #1 Docker Base Image
@@ -1534,7 +1525,6 @@ enableToc: true
 		  volumes:
 		    pgdata:
 		  ```
-
 - # Alpine as a Server
   collapsed:: true
 	- ## Web Server — nginx
@@ -1745,7 +1735,6 @@ enableToc: true
 		  df -h          # Disk usage
 		  free -m        # Memory usage
 		  ```
-
 - # Alpine on Raspberry Pi & Embedded
   collapsed:: true
 	- ## Alpine on Raspberry Pi
@@ -1920,7 +1909,6 @@ enableToc: true
 		  apk add watchdog
 		  rc-update add watchdog boot
 		  ```
-
 - # More Learn
 	- ## Official Resources
 		- [Alpine Linux Official Website](https://alpinelinux.org) — downloads, news, releases

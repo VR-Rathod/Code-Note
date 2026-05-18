@@ -190,6 +190,7 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	- [[Api]] - You can find specific APIs and related documentation on the respective programming language or framework page.
 -
 - ## Data Structures , Algorithms & OOP
+  collapsed:: true
 	- [[DSA Algo & System Design]] : The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for searching, sorting, and optimization.
 	-
 	- [[Binary Space Partitioning]] :- Spatial data structure used in game engines for rendering optimization and collision detection.
@@ -370,6 +371,8 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	- [[Software]] - This page showcases all types of software, categorized by their functionality and purpose.
 	-
 	- [[Free Assets]] - The ultimate directory of free and open-source resources for developers and creators — fonts, icons, stock images, game assets, 3D models, audio, UI kits, APIs, tools, courses, and more. Everything is free forever or open-source.
+	-
+	- [[Awesome random Repos]] - A dedicated space for cool open-source projects, CLI tools, and random developer utilities that don't fit into a strict category.
 -
 - ## more learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills:-

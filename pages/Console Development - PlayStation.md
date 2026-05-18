@@ -94,6 +94,7 @@ displayTitle: Console Development - PlayStation
 - # PlayStation Graphics API
   collapsed:: true
 	- ## GNM / GNMX Overview
+	  collapsed:: true
 		- ```
 		  PlayStation uses a proprietary graphics API:
 		  

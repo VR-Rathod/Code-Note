@@ -34,7 +34,6 @@ displayTitle: Game Testing & QA - Playtesting
 		  | Tester | Trained QA tester | Real target-audience player |
 		  | Method | Systematic test cases | Natural play + feedback |
 		  | Output | Bug reports | Design insights + metrics |
-
 - # Types of Playtesting
   collapsed:: true
 	- ## Internal (Dev Team)
@@ -93,7 +92,6 @@ displayTitle: Game Testing & QA - Playtesting
 		    Scale: Tens of thousands to millions of players
 		    Note: Feedback goes public (streamers, social).
 		  ```
-
 - # Session Design
   collapsed:: true
 	- ## Session Structure (90 min)
@@ -158,7 +156,6 @@ displayTitle: Game Testing & QA - Playtesting
 		  Remote cons:  Less control, harder to read body language
 		  Always require: screen recording + webcam
 		  ```
-
 - # Feedback Collection
   collapsed:: true
 	- ## Pre-Play Survey
@@ -238,7 +235,6 @@ displayTitle: Game Testing & QA - Playtesting
 		              "level": level, "time_taken": time_taken
 		          })
 		  ```
-
 - # Analysing Playtest Data
   collapsed:: true
 	- ## Frequency Rule
@@ -279,7 +275,6 @@ displayTitle: Game Testing & QA - Playtesting
 		  Use quant to find WHERE problems are.
 		  Use qual to understand WHY they exist.
 		  ```
-
 - # Playtest Report Template
   collapsed:: true
 	- ```
@@ -309,7 +304,6 @@ displayTitle: Game Testing & QA - Playtesting
 	  Next Steps:
 	    □ [Action] — Owner: [Name] — Due: [Date]
 	  ```
-
 - # Useful Links & Resources
 	- [PlaytestCloud](https://playtestcloud.com) — Dedicated game playtesting platform
 	- [GameAnalytics](https://gameanalytics.com) — Free game telemetry

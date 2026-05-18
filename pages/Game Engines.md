@@ -22,7 +22,6 @@ displayTitle: Game Engines
 	  | GameMaker Studio 2 | 2D Indie Games | GML / Visual | $9.99/mo | ❌ No |
 	  | Construct 4 | No-code 2D, Browser | Event Sheets / JS | Free tier | ❌ No |
 	  | RPG Maker | 2D RPGs | Ruby / JavaScript | ~$80 one-time | ❌ No |
-
 - # CryEngine
   collapsed:: true
 	- > [!info] What is CryEngine?
@@ -63,7 +62,7 @@ displayTitle: Game Engines
 		    C++       — Core engine, full access, best performance
 		    Lua       — Legacy scripting, still used for game logic
 		    Schematyc — Visual node-based scripting (like Blueprints)
-
+		  
 		  C++ Entity example:
 		    class CMyEntity : public IEntityComponent {
 		        void Initialize() override { /* setup */ }
@@ -75,7 +74,7 @@ displayTitle: Game Engines
 		  function OnInit(self, table)
 		      self.health = 100
 		  end
-
+		  
 		  function OnDamage(self, damage)
 		      self.health = self.health - damage
 		      if self.health <= 0 then
@@ -91,13 +90,12 @@ displayTitle: Game Engines
 		  ✅ Games requiring top-tier outdoor environments
 		  ✅ VR experiences needing high fidelity
 		  ✅ Teams with C++ experience
-
+		  
 		  ❌ Avoid for 2D games
 		  ❌ Avoid for mobile (not optimized)
 		  ❌ Steep learning curve vs Godot/Unity
 		  ❌ Smaller community than Unreal/Unity
 		  ```
-
 - # O3DE (Open 3D Engine)
   collapsed:: true
 	- > [!info] What is O3DE?
@@ -154,15 +152,15 @@ displayTitle: Game Engines
 		  {
 		  public:
 		      AZ_COMPONENT(MyComponent, "{GUID-HERE}");
-
+		  
 		      void Activate() override {
 		          AZ::TickBus::Handler::BusConnect();
 		      }
-
+		  
 		      void Deactivate() override {
 		          AZ::TickBus::Handler::BusDisconnect();
 		      }
-
+		  
 		      void OnTick(float dt, AZ::ScriptTimePoint) override {
 		          // runs every frame
 		      }
@@ -176,12 +174,11 @@ displayTitle: Game Engines
 		  ✅ Need full source access (Apache 2.0, no royalties)
 		  ✅ Cloud/AWS integration projects
 		  ✅ Experienced C++ teams
-
+		  
 		  ❌ Not for beginners (complex C++ architecture)
 		  ❌ Small community vs Unreal/Unity
 		  ❌ Less marketplace content
 		  ```
-
 - # GameMaker Studio 2
   collapsed:: true
 	- > [!info] What is GameMaker Studio 2?
@@ -207,18 +204,18 @@ displayTitle: Game Engines
 		- ```gml
 		  // Player movement — GML example
 		  // In Step Event of Player object:
-
+		  
 		  var spd = 4;
 		  var hsp = (keyboard_check(vk_right) - keyboard_check(vk_left)) * spd;
 		  var vsp = (keyboard_check(vk_down)  - keyboard_check(vk_up))   * spd;
-
+		  
 		  // Move and stop at walls
 		  if (place_meeting(x + hsp, y, obj_wall)) hsp = 0;
 		  if (place_meeting(x, y + vsp, obj_wall)) vsp = 0;
-
+		  
 		  x += hsp;
 		  y += vsp;
-
+		  
 		  // Animation
 		  if (hsp != 0 || vsp != 0) {
 		      sprite_index = spr_player_walk;
@@ -243,7 +240,7 @@ displayTitle: Game Engines
 	  collapsed:: true
 		- ```
 		  GameMaker uses an Event-driven architecture:
-
+		  
 		  Create Event    — runs once when object is created (like Start())
 		  Step Event      — runs every frame (like Update())
 		  Draw Event      — handles all rendering
@@ -265,14 +262,14 @@ displayTitle: Game Engines
 	  collapsed:: true
 		- ```
 		  Rooms = Scenes/Levels in GameMaker
-
+		  
 		  Layer types:
 		    Background — tiling background images
 		    Tilemap    — grid-based tile placement
 		    Instance   — placed object instances
 		    Asset      — sprites without object logic
 		    Effect     — built-in particle effects
-
+		  
 		  Room transitions:
 		    room_goto(rm_level2);           // switch room
 		    room_goto_next();               // next room in list
@@ -286,7 +283,6 @@ displayTitle: Game Engines
 		  | Free | Free | GX.games only |
 		  | Indie | $9.99/mo | Desktop + Mobile + Web |
 		  | Enterprise | $79/mo | All platforms |
-
 - # Construct 4
   collapsed:: true
 	- > [!info] What is Construct 4?
@@ -312,14 +308,14 @@ displayTitle: Game Engines
 	  collapsed:: true
 		- ```
 		  Construct uses Conditions → Actions logic:
-
+		  
 		  [Condition]              → [Action]
 		  Player overlaps Enemy   → Subtract 10 from Health
 		  Keyboard A is pressed   → Player: Set X velocity to -200
 		  Health <= 0             → Go to layout "GameOver"
 		  
 		  This compiles to JavaScript under the hood.
-
+		  
 		  Example event:
 		  ┌─────────────────────────────────────────┐
 		  │ + Platform behavior: On floor            │
@@ -335,16 +331,16 @@ displayTitle: Game Engines
 		- ```javascript
 		  // Construct 4 JavaScript scripting
 		  // In a Script file or inline script event:
-
+		  
 		  runOnStartup(async runtime => {
 		      runtime.addEventListener("beforeprojectstart", () => onBeforeProjectStart(runtime));
 		  });
-
+		  
 		  async function onBeforeProjectStart(runtime) {
 		      // Runs before the first layout starts
 		      console.log("Game starting!");
 		  }
-
+		  
 		  // Access instances
 		  function onPlayerJump(runtime) {
 		      const player = runtime.objects.Player.getFirstInstance();
@@ -361,12 +357,11 @@ displayTitle: Game Engines
 		  ✅ Rapid 2D prototyping
 		  ✅ Browser-based games (HTML5)
 		  ✅ No programming experience required
-
+		  
 		  ❌ Not for 3D games
 		  ❌ Not for complex AAA projects
 		  ❌ Limited compared to GameMaker for advanced devs
 		  ```
-
 - # RPG Maker
   collapsed:: true
 	- > [!info] What is RPG Maker?
@@ -401,7 +396,7 @@ displayTitle: Game Engines
 	  collapsed:: true
 		- ```
 		  RPG Maker uses a Map Event system for all game logic:
-
+		  
 		  Event Commands include:
 		    Show Text          — dialogue boxes
 		    Show Choices       — branching dialogue
@@ -413,7 +408,7 @@ displayTitle: Game Engines
 		    Change Gold        — economy management
 		    Change Items       — add/remove from inventory
 		    Conditional Branch — if/else logic
-
+		  
 		  Trigger types:
 		    Action Button — player presses confirm key
 		    Player Touch  — fires when player walks on event
@@ -434,11 +429,11 @@ displayTitle: Game Engines
 		   * @default 4
 		   * @desc Player walk speed
 		   */
-
+		  
 		  (() => {
 		      const params = PluginManager.parameters("MyPlugin");
 		      const playerSpeed = Number(params["PlayerSpeed"]) || 4;
-
+		  
 		      // Override player movement speed
 		      const _Game_Player_realMoveSpeed = Game_Player.prototype.realMoveSpeed;
 		      Game_Player.prototype.realMoveSpeed = function() {
@@ -454,13 +449,12 @@ displayTitle: Game Engines
 		  ✅ Story-driven games with dialogue trees
 		  ✅ No-code approach to game creation
 		  ✅ Pixel art RPG aesthetic
-
+		  
 		  ❌ Limited to 2D top-down style
 		  ❌ Default look is very recognizable (generic)
 		  ❌ Performance issues with large maps/plugins
 		  ❌ Not for action, platformer, or 3D games
 		  ```
-
 - # Engine Selection Guide
   collapsed:: true
 	- > [!tip] How to Pick Your Engine
@@ -473,12 +467,12 @@ displayTitle: Game Engines
 		      Start([What kind of game?]) --> Q1{2D or 3D?}
 		      Q1 -->|2D| Q2{Skill level?}
 		      Q1 -->|3D| Q3{Scale?}
-
+		  
 		      Q2 -->|Beginner / No code| Construct[Construct 4]
 		      Q2 -->|Want to make an RPG| RPG[RPG Maker MZ]
 		      Q2 -->|Intermediate dev| GM[GameMaker Studio 2]
 		      Q2 -->|Advanced, open source| Godot2[Godot Engine]
-
+		  
 		      Q3 -->|Indie / Small team| Godot3[Godot Engine]
 		      Q3 -->|Mid-size, mobile, VR| Unity[Unity]
 		      Q3 -->|AAA, cinematic quality| Unreal[Unreal Engine]
@@ -499,9 +493,8 @@ displayTitle: Game Engines
 		  | Browser Export | ❌ | ❌ | ✅ | ✅✅ | ✅ |
 		  | Beginner Friendly | ❌ | ❌ | ✅ | ✅✅ | ✅✅ |
 		  | Community Size | Small | Small | Large | Medium | Large |
-
+		  
 		  *CryEngine: free until $5,000 revenue/quarter then 5% royalty
-
 - # Learning Resources
   collapsed:: true
 	- ## CryEngine

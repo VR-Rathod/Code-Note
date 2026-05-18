@@ -12,6 +12,7 @@ displayTitle: System Design
 
 > [!tip] Interview Approach — 7 Steps
 > **①** Clarify requirements → **②** Estimate scale (QPS, storage) → **③** Define APIs → **④** Draw HLD → **⑤** Deep dive components → **⑥** Identify bottlenecks & trade-offs → **⑦** Discuss failure & recovery
+
 -
 - # 🗺 Learning Roadmap
   collapsed:: true

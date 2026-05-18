@@ -10,7 +10,6 @@ displayTitle: SDL2 (Simple DirectMedia Layer)
 	- **Who**: Created by Sam Lantinga while working at Loki Software.
 	- **Why**: To provide a cross-platform abstraction layer for graphics, audio, and input — enabling games to run on Windows, Linux, macOS, and consoles from a single codebase.
 	- **When**: SDL 1.0 released in 1998. SDL2 (major rewrite) released in 2013. SDL3 released in 2024.
-
 - # Introduction
   collapsed:: true
 	- ## What is SDL2?
@@ -31,7 +30,6 @@ displayTitle: SDL2 (Simple DirectMedia Layer)
 		- 2D only in core SDL (need OpenGL/Vulkan for 3D).
 		- C API — not object-oriented (wrap it yourself or use SDL2pp).
 		- SDL3 is a breaking change from SDL2.
-
 - # Installation & Setup
   collapsed:: true
 	- ## Linux (apt)
@@ -54,7 +52,6 @@ displayTitle: SDL2 (Simple DirectMedia Layer)
 		  find_package(SDL2 REQUIRED)
 		  target_link_libraries(MyGame SDL2::SDL2 SDL2::SDL2main)
 		  ```
-
 - # Core Concepts
   collapsed:: true
 	- ## Initialization & Window
@@ -129,7 +126,6 @@ displayTitle: SDL2 (Simple DirectMedia Layer)
 		  
 		  SDL_DestroyRenderer(renderer);
 		  ```
-
 - # Input Handling
   collapsed:: true
 	- ## Keyboard
@@ -172,7 +168,6 @@ displayTitle: SDL2 (Simple DirectMedia Layer)
 		      }
 		  }
 		  ```
-
 - # Textures & Images (SDL_image)
   collapsed:: true
 	- ```cpp
@@ -201,7 +196,6 @@ displayTitle: SDL2 (Simple DirectMedia Layer)
 	  SDL_DestroyTexture(texture);
 	  IMG_Quit();
 	  ```
-
 - # Audio (SDL_mixer)
   collapsed:: true
 	- ```cpp
@@ -226,7 +220,6 @@ displayTitle: SDL2 (Simple DirectMedia Layer)
 	  Mix_FreeMusic(music);
 	  Mix_CloseAudio();
 	  ```
-
 - # Delta Time & Frame Rate
   collapsed:: true
 	- ```cpp
@@ -244,7 +237,6 @@ displayTitle: SDL2 (Simple DirectMedia Layer)
 	      SDL_Delay(16);
 	  }
 	  ```
-
 - # More Learn
 	- [SDL2 Official Docs](https://wiki.libsdl.org/SDL2/FrontPage)
 	- [Lazy Foo SDL2 Tutorials](https://lazyfoo.net/tutorials/SDL/)

@@ -16,7 +16,6 @@ enableToc: true
 	- **How**: Online multiplayer began with MUDs (1978) over dial-up modems. TCP dominated early games (Doom LAN 1993). Quake (1996) pioneered client-server UDP with lag compensation — still the foundation of modern FPS networking.
 	- **Who**: John Carmack (Quake), Valve (Source Engine prediction model), and Glenn Fiedler (gafferongames.com) shaped the theory. Ribbit Network and commercial relay SDKs now make it accessible to indie developers.
 	- **Why**: Network conditions are hostile — packets drop, arrive out of order, and arrive late. Good networking hides this from the player, making a 200ms-latency game feel like real-time.
-
 - # Introduction
   collapsed:: true
 	- ## The Core Problem
@@ -36,7 +35,6 @@ enableToc: true
 		  > 2. **Hide latency** — use prediction, interpolation, and dead reckoning.
 		  > 3. **Minimize bandwidth** — send only what changed, use compression.
 		  > 4. **Tolerate loss** — UDP is lossy; your protocol handles recovery, not TCP.
-
 	- ## Multiplayer Knowledge Map
 	  collapsed:: true
 		- ```mermaid
@@ -75,7 +73,6 @@ enableToc: true
 		        NAT Traversal
 		        Anti-Cheat
 		  ```
-
 - # Network Architectures
   collapsed:: true
 	- ## Client-Server (Authoritative)
@@ -98,7 +95,6 @@ enableToc: true
 		  | Uses | FPS, MMO, battle royale, any competitive game |
 		- > [!tip] Industry Standard
 		  > **95% of online games use client-server**. The server being authoritative is the only reliable way to prevent cheating.
-
 	- ## Peer-to-Peer (P2P)
 	  collapsed:: true
 		- ```mermaid
@@ -118,7 +114,6 @@ enableToc: true
 		  > - IP exposure (privacy issue, DDoS risk)
 		  > - NAT traversal failures (~8% of connections fail)
 		  > - Host migration needed when one peer leaves
-
 	- ## Relay Server (Hybrid)
 	  collapsed:: true
 		- ```mermaid
@@ -131,7 +126,6 @@ enableToc: true
 		- Solves NAT traversal (always works) while keeping P2P logic.
 		- IP addresses remain hidden. Used by Steam, PlayStation, Xbox.
 		- Cost: bandwidth only — no simulation compute.
-
 	- ## Lockstep / Deterministic Simulation
 	  collapsed:: true
 		- ```mermaid
@@ -154,7 +148,6 @@ enableToc: true
 		- > [!warning] Determinism is Hard
 		  > Float operations differ between CPU architectures and compilers.
 		  > You must use fixed-point math, or identical build targets, to guarantee determinism.
-
 	- ## Architecture Comparison
 	  collapsed:: true
 		- | Architecture | Cheat Resistance | Latency | Bandwidth | Complexity | Best For |
@@ -164,7 +157,6 @@ enableToc: true
 		  | Relay + P2P | ⭐ | Low | Medium | Medium | Console party games |
 		  | Lockstep | ⭐⭐⭐ | Low (with input delay) | Very Low | High | RTS, deterministic sims |
 		  | Rollback Netcode | ⭐⭐⭐ | Very Low (perceived) | Low | Very High | Fighting games |
-
 - # Transport Layer — Protocols
   collapsed:: true
 	- ## TCP vs UDP
@@ -198,7 +190,6 @@ enableToc: true
 		  | Voice/Video in-game | **UDP** | Latency > reliability |
 		- > [!important] Rule
 		  > **Use UDP for game state. Use TCP for everything else.**
-
 	- ## Reliable UDP (RUDP)
 	  collapsed:: true
 		- UDP + selective reliability on top. Only what needs to arrive will be retransmitted.
@@ -217,7 +208,6 @@ enableToc: true
 		  | **KCP** | C | Mobile games, low-latency apps |
 		  | **yojimbo** | C++ | gafferongames implementation |
 		  | **LiteNetLib** | C# | Unity community standard |
-
 	- ## WebSocket & WebRTC (Browser Games)
 	  collapsed:: true
 		- | Protocol | Layer | Use Case |
@@ -239,7 +229,6 @@ enableToc: true
 		  const packet = new Uint8Array([0x01, ...encodedPlayerInput]);
 		  ws.send(packet.buffer);
 		  ```
-
 	- ## MTU & Packet Size
 	  collapsed:: true
 		- ```
@@ -259,7 +248,6 @@ enableToc: true
 		    Fragment manually in your RUDP layer if needed
 		    Use delta compression to reduce packet size
 		  ```
-
 - # Tick Rate & Simulation
   collapsed:: true
 	- ## What is Tick Rate?
@@ -284,7 +272,6 @@ enableToc: true
 		  | 64 tick | CS:GO default, Valorant, most FPS | Acceptable competitive |
 		  | 128 tick | CS:GO competitive, OW2 pro servers | High precision, pro standard |
 		  | 60 Hz | Valorant client-side hit registration | Near-128 feel with client prediction |
-
 	- ## Clock Synchronization
 	  collapsed:: true
 		- Without synced clocks, timestamps are meaningless across machines.
@@ -316,7 +303,6 @@ enableToc: true
 		      return clockOffset; // Add this to local time to get server time
 		  }
 		  ```
-
 	- ## Fixed Timestep on the Server
 	  collapsed:: true
 		- ```cpp
@@ -355,7 +341,6 @@ enableToc: true
 		      std::this_thread::sleep_for(std::chrono::milliseconds(1));
 		  }
 		  ```
-
 - # Lag Compensation Techniques
   collapsed:: true
 	- ## The Latency Problem
@@ -374,7 +359,6 @@ enableToc: true
 		- > [!important] The Core Trade-off
 		  > Lag compensation makes the game feel fair for the **shooter** but can feel unfair for the **target** ("I was behind cover but I died").
 		  > This is fundamental — there's no perfect solution, only trade-offs.
-
 	- ## Client-Side Prediction
 	  collapsed:: true
 		- The client applies input **immediately** without waiting for server confirmation.
@@ -436,7 +420,6 @@ enableToc: true
 		      }
 		  };
 		  ```
-
 	- ## Entity Interpolation
 	  collapsed:: true
 		- Render **other players** slightly in the past using buffered snapshots. Produces perfectly smooth movement without misprediction.
@@ -490,7 +473,6 @@ enableToc: true
 		      }
 		  };
 		  ```
-
 	- ## Dead Reckoning
 	  collapsed:: true
 		- Predict entity positions based on **last known velocity** when no new data arrives (packet loss, sparse updates).
@@ -516,7 +498,6 @@ enableToc: true
 		  > - **Interpolation** → for other players (render their past, smooth and accurate)
 		  > - **Dead Reckoning** → fallback when packets are lost (no buffer data)
 		  > - **Prediction** → for the LOCAL player only (apply your own input instantly)
-
 	- ## Server-Side Lag Compensation (for hitscan)
 	  collapsed:: true
 		- When a player shoots, the server rewinds time to when the client saw the world.
@@ -559,7 +540,6 @@ enableToc: true
 		      }
 		  };
 		  ```
-
 - # Rollback Netcode
   collapsed:: true
 	- ## What is Rollback?
@@ -584,7 +564,6 @@ enableToc: true
 		  | Implementation | Hard — full game state save/restore required |
 		  | Game requirement | Fast simulation (< 1ms per frame) |
 		  | Used in | Street Fighter V, Guilty Gear Strive, Mortal Kombat 11, Brawlhalla |
-
 	- ## GGPO (Good Game Peace Out)
 	  collapsed:: true
 		- The reference rollback netcode library — open source, used by most fighting game rollback implementations.
@@ -629,7 +608,6 @@ enableToc: true
 		  > Your **entire game state must be saveable and restoreable** in under ~200 microseconds.
 		  > This means: no heap-allocated dynamic objects in your game state, no file I/O in your simulation.
 		  > Use value-type ECS or fixed-size arrays only.
-
 - # State Synchronization Patterns
   collapsed:: true
 	- ## Full State vs Delta Compression
@@ -673,7 +651,6 @@ enableToc: true
 		      if (mask & 0x04) writer.writeByte(current.animation);
 		  }
 		  ```
-
 	- ## Input Synchronization
 	  collapsed:: true
 		- What the client sends **UP** to the server every tick.
@@ -696,7 +673,6 @@ enableToc: true
 		  ```
 		- > [!tip] Redundant Input Sending
 		  > Include the last **N inputs** in every packet. If packet 10 arrives but packet 9 was lost, packet 10 carries input 9 as well. This eliminates input loss entirely for reasonable packet loss rates.
-
 	- ## Interest Management (Relevance)
 	  collapsed:: true
 		- Don't send updates for entities the client can't see or doesn't care about.
@@ -738,7 +714,6 @@ enableToc: true
 		      }
 		  };
 		  ```
-
 - # Matchmaking
   collapsed:: true
 	- ## Matchmaking Architecture
@@ -753,7 +728,6 @@ enableToc: true
 		      C1 --> Server["Both connect to\ngame server"]
 		      C2 --> Server
 		  ```
-
 	- ## ELO Rating System
 	  collapsed:: true
 		- ```python
@@ -773,7 +747,6 @@ enableToc: true
 		  # Player (1500 ELO) beats Opponent (1600 ELO)
 		  new_elo = update_elo(1500, 1600, score=1.0)  # → ~1520
 		  ```
-
 	- ## TrueSkill (Microsoft)
 	  collapsed:: true
 		- More accurate than ELO for team games. Used by Xbox, Halo.
@@ -792,7 +765,6 @@ enableToc: true
 		  
 		  Handles team games, multiple players per team natively.
 		  ```
-
 	- ## Matchmaking Quality Metrics
 	  collapsed:: true
 		- | Metric | Target | Description |
@@ -802,7 +774,6 @@ enableToc: true
 		  | Fair match % | > 90% | Matches where skill gap is acceptable |
 		  | Abandonment rate | < 5% | Players leaving mid-match |
 		  | Latency (avg ping) | < 80ms | Regional server selection |
-
 - # NAT Traversal
   collapsed:: true
 	- ## The NAT Problem
@@ -813,7 +784,6 @@ enableToc: true
 		      P2 -->|Blocked by NAT| P1
 		      Note["Direct UDP between P1 and P2 fails\nbecause NAT routers block\nunsolicited incoming packets"]
 		  ```
-
 	- ## NAT Traversal Techniques
 	  collapsed:: true
 		- | Technique | How | Success Rate |
@@ -822,21 +792,20 @@ enableToc: true
 		  | **UDP Hole Punching** | Both peers send to each other simultaneously | ~85% |
 		  | **TURN/Relay** | Route all traffic through a relay server | 100% (but adds latency + cost) |
 		  | **UPnP** | Auto-configure router port forwarding | ~70% (many routers disable it) |
-		  - ```mermaid
-		    sequenceDiagram
-		        participant C1 as Client 1 (behind NAT)
-		        participant S as STUN Server
-		        participant C2 as Client 2 (behind NAT)
-		        C1->>S: "What is my public IP:port?"
-		        S->>C1: "73.22.100.5:54321"
-		        C2->>S: "What is my public IP:port?"
-		        S->>C2: "98.76.54.32:61234"
-		        Note over C1,C2: Both discover each other's public addresses via matchmaker
-		        C1->>C2: Send UDP to 98.76.54.32:61234 (punch hole)
-		        C2->>C1: Send UDP to 73.22.100.5:54321 (punch hole simultaneously)
-		        Note over C1,C2: Connection established!
-		    ```
-
+			- ```mermaid
+			  sequenceDiagram
+			      participant C1 as Client 1 (behind NAT)
+			      participant S as STUN Server
+			      participant C2 as Client 2 (behind NAT)
+			      C1->>S: "What is my public IP:port?"
+			      S->>C1: "73.22.100.5:54321"
+			      C2->>S: "What is my public IP:port?"
+			      S->>C2: "98.76.54.32:61234"
+			      Note over C1,C2: Both discover each other's public addresses via matchmaker
+			      C1->>C2: Send UDP to 98.76.54.32:61234 (punch hole)
+			      C2->>C1: Send UDP to 73.22.100.5:54321 (punch hole simultaneously)
+			      Note over C1,C2: Connection established!
+			  ```
 - # Anti-Cheat
   collapsed:: true
 	- ## Cheat Types
@@ -849,7 +818,6 @@ enableToc: true
 		  | Packet manipulation | Modify sent UDP packets | Packet signing with session key |
 		  | Memory editing | Modify game memory values | Kernel-level AC (EAC, BattlEye) |
 		  | Macro / input bot | Scripted input | Behavioral analysis, input timing analysis |
-
 	- ## Server-Side Anti-Cheat (Reliable)
 	  collapsed:: true
 		- ```cpp
@@ -885,7 +853,6 @@ enableToc: true
 		      }
 		  }
 		  ```
-
 	- ## Interest Management as Anti-Wallhack
 	  collapsed:: true
 		- ```cpp
@@ -920,7 +887,6 @@ enableToc: true
 		      return snap;
 		  }
 		  ```
-
 - # Bandwidth Optimization
   collapsed:: true
 	- ## Quantization (Float Compression)
@@ -941,7 +907,6 @@ enableToc: true
 		  // Largest component is implicit (can be derived from the other 3)
 		  // This gives ~0.1 degree precision at only 6 bytes (vs 16 for full quat)
 		  ```
-
 	- ## Bandwidth Budget Example (FPS Game)
 	  collapsed:: true
 		- ```
@@ -970,7 +935,6 @@ enableToc: true
 		    Average 8 moving entities → 208 bytes/packet → ~13 KB/s
 		    Server outgoing: ~2 Mbps (50% savings)
 		  ```
-
 - # Implementation in Godot (GDScript)
   collapsed:: true
 	- ## Godot Multiplayer API
@@ -1065,7 +1029,6 @@ enableToc: true
 		      
 		      input_sequence += 1
 		  ```
-
 	- ## Godot MultiplayerSynchronizer
 	  collapsed:: true
 		- ```gdscript
@@ -1090,7 +1053,6 @@ enableToc: true
 		      var max_dist = MAX_SPEED * get_process_delta_time() * 1.15
 		      return global_position.distance_to(new_pos) <= max_dist
 		  ```
-
 - # Godot Networking: ENet vs WebSocket
   collapsed:: true
 	- ## When to Use Which
@@ -1113,7 +1075,6 @@ enableToc: true
 		  ws_peer.create_server(7777)
 		  multiplayer.multiplayer_peer = ws_peer
 		  ```
-
 - # Production Infrastructure
   collapsed:: true
 	- ## Game Server Hosting Options
@@ -1127,7 +1088,6 @@ enableToc: true
 		  | **Unity Gaming Services** | Free tier + paid | Easy | Unity games |
 		  | **Nakama** (open source) | Self-hosted | Medium | Full game backend (matchmaking + accounts + leaderboards) |
 		  | **Agones** (Kubernetes) | Infrastructure cost | Hard | Large scale, Kubernetes-native |
-
 	- ## Server Startup & Health Check
 	  collapsed:: true
 		- ```cpp
@@ -1167,7 +1127,6 @@ enableToc: true
 		      return 0;
 		  }
 		  ```
-
 - # Quick Reference Cheat Sheet
   collapsed:: true
 	- ## Topology Decision Tree
@@ -1184,7 +1143,6 @@ enableToc: true
 		      Q4 -->|Yes| Lockstep["Lockstep / Deterministic"]
 		      Q4 -->|No| CS["Authoritative\nClient-Server + UDP\n(industry standard)"]
 		  ```
-
 	- ## Key Numbers to Remember
 	  collapsed:: true
 		- | Metric | Value | Notes |
@@ -1199,7 +1157,6 @@ enableToc: true
 		  | Tick rate (competitive) | 64–128 Hz | CS2, Valorant |
 		  | Tick rate (casual) | 20–30 Hz | Many MMOs, Fortnite  |
 		  | Max bandwidth per client | 30–60 KB/s | Typical FPS downstream |
-
 	- ## Packet Type Reference
 	  collapsed:: true
 		- | Packet | Direction | Frequency | Reliability |
@@ -1210,7 +1167,6 @@ enableToc: true
 		  | Login/Auth | Client → Server | Once | Reliable (TCP/HTTPS) |
 		  | Spawn/destroy event | Server → Client | On event | Reliable |
 		  | Damage event | Server → Client | On event | Reliable (must arrive) |
-
 - # More Learn
 	- ## Github & Webs
 		- [Gaffer on Games — Networking Articles](https://gafferongames.com/) — The gold standard reference for game networking theory.

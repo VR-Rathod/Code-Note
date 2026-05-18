@@ -150,6 +150,8 @@ displayTitle: Free Assets & Resources
 		- [Bhartiya Digital Library – NDLI](https://ndl.iitkgp.ac.in/) — India's national digital library with millions of free academic resources.
 		- [Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/9780262510875/structure-and-interpretation-of-computer-programs/) — Classic MIT CS textbook. Free online.
 		- [Think Python – Free Book](https://greenteapress.com/wp/think-python-2e/) — Free Python book for beginners by Allen Downey.
+		- [Clean Code By Robert C martin](https://github.com/karygauss03/CS-Library/blob/master/%5BPROGRAMMING%5D%5BClean%20Code%20by%20Robert%20C%20Martin%5D.pdf)
+		- [Head First Java](https://github.com/karygauss03/CS-Library)
 	-
 	- ## Documentation & References
 	  collapsed:: true

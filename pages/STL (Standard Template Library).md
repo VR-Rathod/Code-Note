@@ -12,7 +12,6 @@ displayTitle: STL (Standard Template Library)
 		- **Iterators** — uniform way to traverse any container
 		- **Algorithms** — sort, search, transform, and more — work on any container via iterators
 	- All STL components live in the `std` namespace and are included via `#include <header>`.
-
 - # Sequence Containers
   collapsed:: true
 	- ## std::vector — Dynamic Array
@@ -114,7 +113,6 @@ displayTitle: STL (Standard Template Library)
 		  fl.sort();
 		  // Minimal memory overhead — no size() method
 		  ```
-
 - # Associative Containers
   collapsed:: true
 	- ## std::map — Sorted Key-Value (BST)
@@ -221,7 +219,6 @@ displayTitle: STL (Standard Template Library)
 		  std::multiset<int> ms = {1, 2, 2, 3, 3, 3};
 		  std::cout << ms.count(3); // 3
 		  ```
-
 - # Container Adaptors
   collapsed:: true
 	- ## std::stack — LIFO
@@ -282,7 +279,6 @@ displayTitle: STL (Standard Template Library)
 		  auto cmp = [](int a, int b) { return a > b; }; // min-heap
 		  std::priority_queue<int, std::vector<int>, decltype(cmp)> cpq(cmp);
 		  ```
-
 - # Iterators
   collapsed:: true
 	- ## Iterator Types
@@ -337,7 +333,6 @@ displayTitle: STL (Standard Template Library)
 		  
 		  auto dist = std::distance(lst.begin(), it); // 3
 		  ```
-
 - # Algorithms
   collapsed:: true
 	- ## Sorting
@@ -477,7 +472,6 @@ displayTitle: STL (Standard Template Library)
 		      std::back_inserter(result));
 		  // result = {1, 2}
 		  ```
-
 - # Utility Types
   collapsed:: true
 	- ## std::pair & std::tuple
@@ -554,7 +548,6 @@ displayTitle: STL (Standard Template Library)
 		  
 		  process(std::span(v).subspan(1, 3)); // {2, 3, 4}
 		  ```
-
 - # Container Complexity Summary
   collapsed:: true
 	- ```
@@ -572,7 +565,6 @@ displayTitle: STL (Standard Template Library)
 	  
 	  * list insert is O(1) given an iterator to the position
 	  ```
-
 - # More Learn
 	- [cppreference — Containers](https://en.cppreference.com/w/cpp/container)
 	- [cppreference — Algorithms](https://en.cppreference.com/w/cpp/algorithm)

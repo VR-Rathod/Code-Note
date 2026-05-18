@@ -10,7 +10,6 @@ displayTitle: C++ REST SDK (cpprestsdk)
 	- **Who**: Developed by Microsoft (originally codenamed "Casablanca").
 	- **Why**: To provide a modern, asynchronous C++ library for building cloud-based client-server communication using REST APIs.
 	- **When**: Open-sourced in 2012. GitHub: [microsoft/cpprestsdk](https://github.com/microsoft/cpprestsdk)
-
 - # Introduction
   collapsed:: true
 	- ## What is cpprestsdk?
@@ -30,7 +29,6 @@ displayTitle: C++ REST SDK (cpprestsdk)
 		- Microsoft has put the project in maintenance mode (limited new features).
 		- PPL task model has a learning curve.
 		- Heavier than alternatives like cpp-httplib for simple use cases.
-
 - # Installation & Setup
   collapsed:: true
 	- ## vcpkg
@@ -48,7 +46,6 @@ displayTitle: C++ REST SDK (cpprestsdk)
 		  find_package(cpprestsdk REQUIRED)
 		  target_link_libraries(MyApp cpprestsdk::cpprest)
 		  ```
-
 - # Core Concepts
   collapsed:: true
 	- ## HTTP GET Request
@@ -111,7 +108,6 @@ displayTitle: C++ REST SDK (cpprestsdk)
 		  std::cin.get(); // keep alive
 		  listener.close().wait();
 		  ```
-
 - # More Learn
 	- [cpprestsdk GitHub](https://github.com/microsoft/cpprestsdk)
 	- [cpprestsdk Wiki](https://github.com/microsoft/cpprestsdk/wiki)

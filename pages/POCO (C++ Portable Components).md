@@ -10,7 +10,6 @@ displayTitle: POCO (C++ Portable Components)
 	- **Who**: Created by Günter Obiltschnig at Applied Informatics Software Engineering GmbH.
 	- **Why**: To provide a comprehensive set of C++ class libraries for building networked, portable applications — similar to what Java's standard library offers but for C++.
 	- **When**: First released in 2004. Actively maintained.
-
 - # Introduction
   collapsed:: true
 	- ## What is POCO?
@@ -30,7 +29,6 @@ displayTitle: POCO (C++ Portable Components)
 		- Large dependency for simple use cases.
 		- Requires compilation (not header-only).
 		- Some APIs feel dated compared to modern C++17/20.
-
 - # Installation & Setup
   collapsed:: true
 	- ## apt (Ubuntu)
@@ -48,7 +46,6 @@ displayTitle: POCO (C++ Portable Components)
 		  find_package(Poco REQUIRED COMPONENTS Net JSON XML Data)
 		  target_link_libraries(MyApp Poco::Net Poco::JSON Poco::XML Poco::Data)
 		  ```
-
 - # Core Concepts
   collapsed:: true
 	- ## HTTP Client
@@ -114,7 +111,6 @@ displayTitle: POCO (C++ Portable Components)
 		  thread.start(task);
 		  thread.join();
 		  ```
-
 - # More Learn
 	- [POCO Official Docs](https://pocoproject.org/documentation/)
 	- [POCO GitHub](https://github.com/pocoproject/poco)

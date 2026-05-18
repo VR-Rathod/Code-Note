@@ -100,7 +100,7 @@ title:: WebGPU
 		      return { adapter, device };
 		  }
 		  ```
--
+- collapsed:: true
 - # Canvas Configuration
   collapsed:: true
 	- ## Connecting WebGPU to a Canvas
@@ -123,7 +123,7 @@ title:: WebGPU
 		  const currentTexture = context.getCurrentTexture();
 		  const currentView    = currentTexture.createView();
 		  ```
--
+- collapsed:: true
 - # WGSL Shader Language
   collapsed:: true
 	- ## WGSL — WebGPU Shading Language
@@ -243,7 +243,7 @@ title:: WebGPU
 		      particlesOut[index] = p;
 		  }
 		  ```
--
+- collapsed:: true
 - # Buffers
   collapsed:: true
 	- ## Buffer Types and Usages
@@ -331,7 +331,7 @@ title:: WebGPU
 		  console.log("GPU Result:", data[0], data[1], data[2]);
 		  readbackBuffer.unmap(); // Unmap before GPU can use it again
 		  ```
--
+- collapsed:: true
 - # Textures
   collapsed:: true
 	- ## Creating and Uploading Textures
@@ -381,7 +381,7 @@ title:: WebGPU
 		      maxAnisotropy: 16,         // Quality anisotropic filtering
 		  });
 		  ```
--
+- collapsed:: true
 - # Bind Groups
   collapsed:: true
 	- ## What Are Bind Groups?
@@ -445,7 +445,7 @@ title:: WebGPU
 		      ]
 		  });
 		  ```
--
+- collapsed:: true
 - # Render Pipelines
   collapsed:: true
 	- ## Creating the Render Pipeline
@@ -503,7 +503,7 @@ title:: WebGPU
 		      },
 		  });
 		  ```
--
+- collapsed:: true
 - # The Complete Render Loop
   collapsed:: true
 	- ## Drawing Every Frame
@@ -554,7 +554,7 @@ title:: WebGPU
 		  
 		  requestAnimationFrame(drawFrame);
 		  ```
--
+- collapsed:: true
 - # Compute Pipelines
   collapsed:: true
 	- ## Creating and Dispatching Compute
@@ -597,7 +597,7 @@ title:: WebGPU
 		  // Swap buffers for next frame (ping-pong)
 		  [computeBindGroupEven, computeBindGroupOdd] = [computeBindGroupOdd, computeBindGroupEven];
 		  ```
--
+- collapsed:: true
 - # Timestamps and Performance
   collapsed:: true
 	- ## Measuring GPU Time
@@ -648,7 +648,7 @@ title:: WebGPU
 		  console.log(`Compute pass: ${computeTimeNs / 1_000_000} ms`);
 		  readbackBuffer.unmap();
 		  ```
--
+- collapsed:: true
 - # WebGPU Native (Dawn and wgpu)
   collapsed:: true
 	- ## Beyond the Browser
@@ -699,7 +699,7 @@ title:: WebGPU
 		  // The rest of the API matches JavaScript WebGPU 1:1!
 		  // device.create_buffer(), device.create_render_pipeline(), etc.
 		  ```
--
+- collapsed:: true
 - # Complete Object Reference
   collapsed:: true
 	- ## Every WebGPU Object Explained

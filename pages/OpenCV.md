@@ -10,7 +10,6 @@ displayTitle: OpenCV
 	- **Who**: Originally developed by Intel. Now maintained by the OpenCV Foundation and community.
 	- **Why**: To provide a common infrastructure for computer vision applications and accelerate the use of machine perception in commercial products.
 	- **When**: First released in 2000. OpenCV 4.x is the current major version.
-
 - # Introduction
   collapsed:: true
 	- ## What is OpenCV?
@@ -32,7 +31,6 @@ displayTitle: OpenCV
 		- C++ API can be verbose; Python API is easier but slower.
 		- GPU support (CUDA) requires separate build from source.
 		- Some algorithms are patented and not in the main build.
-
 - # Installation & Setup
   collapsed:: true
 	- ## Python
@@ -61,7 +59,6 @@ displayTitle: OpenCV
 		  target_link_libraries(MyApp ${OpenCV_LIBS})
 		  target_include_directories(MyApp PRIVATE ${OpenCV_INCLUDE_DIRS})
 		  ```
-
 - # Core Concepts
   collapsed:: true
 	- ## Reading, Writing & Displaying Images
@@ -118,7 +115,6 @@ displayTitle: OpenCV
 		  pixel[2] = 0;   // Red
 		  img.at<cv::Vec3b>(100, 200) = pixel;
 		  ```
-
 - # Color Spaces
   collapsed:: true
 	- ```cpp
@@ -147,7 +143,6 @@ displayTitle: OpenCV
 	  b, g, r = cv2.split(img)
 	  merged = cv2.merge([b, g, r])
 	  ```
-
 - # Drawing
   collapsed:: true
 	- ```python
@@ -175,7 +170,6 @@ displayTitle: OpenCV
 	  cv2.imshow("Canvas", canvas)
 	  cv2.waitKey(0)
 	  ```
-
 - # Image Filtering
   collapsed:: true
 	- ## Blurring
@@ -238,7 +232,6 @@ displayTitle: OpenCV
 		      cv2.THRESH_BINARY, 11, 2
 		  )
 		  ```
-
 - # Contours
   collapsed:: true
 	- ```python
@@ -270,7 +263,6 @@ displayTitle: OpenCV
 	      elif len(approx) == 4:
 	          print("Rectangle/Square")
 	  ```
-
 - # Feature Detection
   collapsed:: true
 	- ## Harris Corner Detection
@@ -324,7 +316,6 @@ displayTitle: OpenCV
 		      flags=cv2.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
 		  cv2.imshow("Matches", result)
 		  ```
-
 - # Object Detection
   collapsed:: true
 	- ## Haar Cascade — Face Detection
@@ -356,7 +347,6 @@ displayTitle: OpenCV
 		  result = cv2.bitwise_and(img, img, mask=mask)
 		  cv2.imshow("Red Objects", result)
 		  ```
-
 - # Video Capture
   collapsed:: true
 	- ```python
@@ -390,7 +380,6 @@ displayTitle: OpenCV
 	  width  = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 	  height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 	  ```
-
 - # Deep Learning (dnn module)
   collapsed:: true
 	- ## Load & Run ONNX / Pre-trained Model
@@ -437,7 +426,6 @@ displayTitle: OpenCV
 		              x, y = cx - bw//2, cy - bh//2
 		              cv2.rectangle(img, (x, y), (x+bw, y+bh), (0, 255, 0), 2)
 		  ```
-
 - # Geometric Transformations
   collapsed:: true
 	- ```python
@@ -466,7 +454,6 @@ displayTitle: OpenCV
 	  M = cv2.getPerspectiveTransform(src_pts, dst_pts)
 	  warped = cv2.warpPerspective(img, M, (w, h))
 	  ```
-
 - # More Learn
 	- [OpenCV Official Docs](https://docs.opencv.org/)
 	- [OpenCV Python Tutorials](https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html)

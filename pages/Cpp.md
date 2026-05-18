@@ -3138,7 +3138,7 @@ displayTitle: C++
 	-
 	- [[Eigen]] - Template library for linear algebra, matrices, and vectors — used in ML and scientific computing.
 	-
-	- [[C++ REST SDK (cpprest)]] - Cross-platform RESTful web services and HTTP communication.
+	- [[Cpp REST SDK (cpprest)]] - Cross-platform RESTful web services and HTTP communication.
 	-
 	- [[POCO (C++ Portable Components)]] - HTTP, database, JSON/XML parsing for networked applications.
 	-

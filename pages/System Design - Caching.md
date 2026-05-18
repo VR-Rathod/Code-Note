@@ -39,14 +39,13 @@ displayTitle: System Design - Caching
 		-
 		- ```
 		  Cache Hit Rate = hits / (hits + misses) × 100%
-
+		  
 		  A 90% hit rate = only 10% of requests hit the database
 		  A 95% hit rate = 5× less DB load than 90%
-
+		  
 		  Target: 80–95% hit rate for a well-tuned cache
 		  A low hit rate means your cache keys are wrong or TTL is too short
 		  ```
-
 - # Cache Placement — Where Does the Cache Live?
   collapsed:: true
 	- ## Layers of Caching
@@ -64,7 +63,6 @@ displayTitle: System Design - Caching
 		- > [!tip] Think in Layers
 		  > The closer the cache is to the user, the faster. Serve from browser cache first,
 		  > then CDN, then Redis, then DB. Each layer only sees traffic the previous one couldn't handle.
-
 - # How to Write Data to Cache — Write Strategies
   collapsed:: true
 	- ## Cache-Aside (Lazy Loading) — Most Common
@@ -86,14 +84,14 @@ displayTitle: System Design - Caching
 		      data = redis.get(f"user:{user_id}")
 		      if data:
 		          return json.loads(data)          # Cache HIT ✅
-
+		  
 		      # 2. Cache miss — go to database
 		      user = db.query("SELECT * FROM users WHERE id=?", user_id)
-
+		  
 		      # 3. Store in cache for 1 hour
 		      redis.setex(f"user:{user_id}", 3600, json.dumps(user))
 		      return user
-
+		  
 		  def update_user(user_id, new_data):
 		      db.query("UPDATE users SET ... WHERE id=?", user_id)
 		      redis.delete(f"user:{user_id}")     # Invalidate stale cache
@@ -115,7 +113,7 @@ displayTitle: System Design - Caching
 		    1. Write to Cache   ✅
 		    2. Write to Database ✅  (both in same operation)
 		    3. Next read → cache hit ✅
-
+		  
 		  No stale data possible.
 		  Cost: Every write is as slow as a DB write (no speed benefit for writes).
 		  ```
@@ -132,7 +130,7 @@ displayTitle: System Design - Caching
 		  Write request arrives:
 		    1. Write to Cache ✅ (responds immediately — very fast)
 		    2. Background worker → writes to database later
-
+		  
 		  Risk: If cache crashes before background sync → DATA LOST! ⚠️
 		  ```
 		- **Best for:** High write throughput where occasional data loss is acceptable (analytics counters, likes).
@@ -146,7 +144,6 @@ displayTitle: System Design - Caching
 		  | Must always serve fresh data | **Write-Through** |
 		  | Very high write throughput, loss tolerable | **Write-Back** |
 		  | Write-once, rarely-read data (logs) | **Write-Around** (skip cache on write) |
-
 - # Cache Eviction — What Happens When Cache is Full?
   collapsed:: true
 	- ## The Problem
@@ -165,7 +162,7 @@ displayTitle: System Design - Caching
 		-
 		- ```
 		  Cache capacity: 3 items
-
+		  
 		  Step 1: Access A → Cache: [A]
 		  Step 2: Access B → Cache: [A, B]
 		  Step 3: Access C → Cache: [A, B, C]  ← full
@@ -189,14 +186,13 @@ displayTitle: System Design - Caching
 		- **Rule:** Every cache entry has an expiry time. After that time, it's automatically deleted.
 		- ```
 		  redis.setex("user:123", 3600, data)  # Expires in 1 hour
-
+		  
 		  No need to manually invalidate — it self-destructs.
 		  Risk: May serve stale data for up to TTL duration before expiry.
 		  ```
 		- **Good for:** Data that changes infrequently (product catalog, config, exchange rates).
 		- > [!tip] Set TTL on EVERYTHING in a cache.
 		  > Cached data without TTL grows forever until the cache fills up and starts evicting randomly.
-
 - # Cache Invalidation — The Hard Problem
   collapsed:: true
 	- ## Why It's Hard
@@ -226,17 +222,16 @@ displayTitle: System Design - Caching
 		- Good key design makes invalidation easy:
 		- ```
 		  Format:  {service}:{entity}:{id}:{variant}
-
+		  
 		  Examples:
 		    user:profile:12345
 		    product:detail:abc-789:en-US
 		    feed:timeline:user:67890:page:1
-
+		  
 		  Why this matters:
 		    You can delete ALL product cache with:  SCAN MATCH "product:*"
 		    You can delete ONE user's cache with:   DEL "user:profile:12345"
 		  ```
-
 - # Cache Stampede — When Your Cache Saves You... Until It Doesn't
   collapsed:: true
 	- ## The Danger Scenario
@@ -275,7 +270,6 @@ displayTitle: System Design - Caching
 		- **3. Stale-While-Revalidate:**
 		  Serve the stale cache immediately (fast response to user) while refreshing in background.
 		  `Cache-Control: stale-while-revalidate=60` — browser / CDN handle this automatically for HTTP.
-
 - # Redis — The Industry Standard Cache
   collapsed:: true
 	- ## Why Redis, Not Just a Dictionary in Memory?
@@ -301,28 +295,27 @@ displayTitle: System Design - Caching
 		- ```bash
 		  # Store with TTL
 		  SET user:123 '{"name":"Alice"}' EX 3600
-
+		  
 		  # Get
 		  GET user:123
-
+		  
 		  # Delete (invalidate)
 		  DEL user:123
-
+		  
 		  # Increment counter (atomic — for rate limiting, view counts)
 		  INCR page:views:home
-
+		  
 		  # Sorted set (leaderboard)
 		  ZADD leaderboard 9500 "player:alice"
 		  ZADD leaderboard 8200 "player:bob"
 		  ZREVRANGE leaderboard 0 9 WITHSCORES  # Top 10
-
+		  
 		  # Check TTL remaining
 		  TTL user:123  # returns seconds remaining
-
+		  
 		  # Set only if not exists (mutex lock)
 		  SET lock:job:456 1 NX EX 30
 		  ```
-
 - # CDN — Caching at the Edge (Global Scale)
   collapsed:: true
 	- ## What is a CDN?
@@ -337,7 +330,7 @@ displayTitle: System Design - Caching
 		- ```
 		  Without CDN:
 		    User in India → Server in US Virginia → 200ms latency → poor experience
-
+		  
 		  With CDN:
 		    User in India → CDN edge in Mumbai → 10ms latency → fast experience
 		    Edge served cached copy of your CSS/JS/images/video
@@ -349,25 +342,24 @@ displayTitle: System Design - Caching
 		  Cache-Control: public, max-age=86400
 		    → Cache in both browser AND CDN for 1 day (86400 seconds)
 		    → Use for: static files (images, JS, CSS) that don't change
-
+		  
 		  Cache-Control: private, max-age=3600
 		    → Cache in browser only (CDN skips it) for 1 hour
 		    → Use for: user-specific pages, dashboards
-
+		  
 		  Cache-Control: no-cache
 		    → Always check with server before using cached copy
 		    → Server may respond 304 Not Modified (fast) if unchanged
-
+		  
 		  Cache-Control: no-store
 		    → Never cache anywhere (sensitive data: banking, medical records)
-
+		  
 		  Cache-Control: stale-while-revalidate=60
 		    → Serve stale immediately, refresh in background
 		    → Use for: pages that change but where slight staleness is OK
 		  ```
 		- > [!tip] For versioned static files (main.abc123.js), use `max-age=31536000` (1 year).
 		  > Changing the file changes the filename → busts the cache automatically. No TTL issues.
-
 - # Useful Links & Resources
 	- [[System Design]] — Main hub page
 	- [[System Design - Scalability & CAP]] — Previous: scaling fundamentals
