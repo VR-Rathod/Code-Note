@@ -90,16 +90,22 @@ article a.external::after {
         border-bottom: 1px solid var(--lightgray);
     }
 
-    // Shrink the site title so it doesn't overflow
+    // Shrink the site title so it doesn't overflow and never wraps
     .page-title {
-        font-size: 0.78rem !important;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 35vw;
+        font-size: 0.85rem !important;
+        max-width: 28vw;
         flex-shrink: 1;
         min-width: 0;
         line-height: 1.2;
+        margin: 0 !important;
+
+        a {
+            display: block;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            max-width: 100%;
+        }
     }
 
     .search {

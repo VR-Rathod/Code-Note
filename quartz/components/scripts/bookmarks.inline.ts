@@ -9,6 +9,8 @@ let currentUser: User | null = null
 let cachedBookmarks: Bookmark[] | null = null
 let isInitialized = false
 let giscusUserLogin: string | null = null   // set when Giscus broadcasts viewer info
+let syncTimeoutId: any = null
+
 
 // ─── Utility ───────────────────────────────────────────────────────────────
 /**
@@ -38,11 +40,33 @@ function updateProfileUI() {
       el.style.display = "flex"
       const nameEl = el.querySelector<HTMLElement>(".profile-name")
       const avatarEl = el.querySelector<HTMLImageElement>(".profile-avatar")
-      if (nameEl) nameEl.textContent = currentUser!.user_metadata?.full_name
-        || currentUser!.user_metadata?.user_name
-        || "User"
-      if (avatarEl && currentUser!.user_metadata?.avatar_url)
-        avatarEl.src = currentUser!.user_metadata.avatar_url
+      const letterEl = el.querySelector<HTMLElement>(".profile-avatar-letter")
+      
+      if (nameEl) {
+        nameEl.textContent = currentUser!.user_metadata?.full_name
+          || currentUser!.user_metadata?.user_name
+          || currentUser!.email?.split("@")[0]
+          || "User"
+      }
+      
+      if (currentUser!.user_metadata?.avatar_url) {
+        if (avatarEl) {
+          avatarEl.src = currentUser!.user_metadata.avatar_url
+          avatarEl.style.display = "block"
+        }
+        if (letterEl) {
+          letterEl.style.display = "none"
+        }
+      } else {
+        if (avatarEl) {
+          avatarEl.style.display = "none"
+        }
+        if (letterEl) {
+          const char = (currentUser!.email || currentUser!.user_metadata?.full_name || "U").charAt(0).toUpperCase()
+          letterEl.textContent = char
+          letterEl.style.display = "flex"
+        }
+      }
     })
     // Show green badge dot on toggle button
     badges.forEach(b => { b.style.display = "block" })
@@ -91,14 +115,35 @@ async function loadBookmarks(): Promise<Bookmark[]> {
   return cachedBookmarks
 }
 
+async function forceSyncCloud(bms: Bookmark[]) {
+  if (!currentUser || !supabase) return
+  syncTimeoutId = null
+  const uid = currentUser.id
+  try {
+    // Single batch transaction: Delete previous entries and insert the current list
+    await supabase.from("bookmarks").delete().eq("user_id", uid)
+    if (bms.length > 0) {
+      await supabase.from("bookmarks").insert(bms.map(b => ({ user_id: uid, ...b })))
+    }
+  } catch (err) {
+    console.error("Supabase cloud sync failed:", err)
+  }
+}
+
 async function persistBookmarks(bms: Bookmark[]) {
   cachedBookmarks = bms
-  saveLocalBookmarks(bms) // Always keep a local cache
+  saveLocalBookmarks(bms) // Always keep local cache updated instantly (optimistic UI)
+  
   if (currentUser && supabase) {
-    const uid = currentUser.id
-    await supabase.from("bookmarks").delete().eq("user_id", uid)
-    if (bms.length > 0)
-      await supabase.from("bookmarks").insert(bms.map(b => ({ user_id: uid, ...b })))
+    // If another bookmark action happens within 2 seconds, cancel the previous sync request
+    if (syncTimeoutId) {
+      clearTimeout(syncTimeoutId)
+    }
+    
+    // Batch all changes and sync once user stops bookmarking for 2 seconds
+    syncTimeoutId = setTimeout(() => {
+      forceSyncCloud(bms)
+    }, 2000)
   }
 }
 
@@ -227,7 +272,36 @@ function renderGrouped(container: HTMLElement, bms: Bookmark[], filter: string) 
   })
 }
 
+function injectInlineBookmarkButtons() {
+  const headings = document.querySelectorAll("article h1[id], article h2[id], article h3[id], article h4[id], article h5[id], article h6[id]")
+  headings.forEach(heading => {
+    // Prevent double injection
+    if (heading.querySelector(".toc-bookmark-btn")) return
+    // Exclude actual article title
+    if (heading.classList.contains("article-title")) return
+
+    const hash = `#${heading.id}`
+    
+    // Deep clone heading and remove sub-elements (like anchor tags or icons) to extract pure text
+    const clone = heading.cloneNode(true) as HTMLElement
+    clone.querySelectorAll(".toc-bookmark-btn, a, .anchor").forEach(el => el.remove())
+    const title = clone.textContent?.replace(/🔖|#/g, "").trim() || "Section"
+
+    const btn = document.createElement("button")
+    btn.className = "toc-bookmark-btn inline-bookmark-btn"
+    btn.setAttribute("data-hash", hash)
+    btn.setAttribute("data-title", title)
+    btn.setAttribute("aria-label", "Bookmark section")
+    btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>`
+
+    heading.appendChild(btn)
+  })
+}
+
 async function updateTocButtons() {
+  // Dynamically inject inline heading bookmark buttons so they can be styled & processed
+  injectInlineBookmarkButtons()
+
   const bms = await loadBookmarks()
   const path = window.location.pathname
   document.querySelectorAll(".toc-bookmark-btn").forEach(btn => {
@@ -260,17 +334,27 @@ if (!isInitialized) {
       currentUser = session?.user || null
       if (prevId !== currentUser?.id) cachedBookmarks = null
 
-      if (event === "SIGNED_IN" && window.location.hash.includes("access_token=")) {
+      const hasHashToken = window.location.hash.includes("access_token=")
+      const hasQueryCode = window.location.search.includes("code=")
+
+      if (event === "SIGNED_IN" && (hasHashToken || hasQueryCode)) {
         // Session is now safely stored in localStorage. Do a clean reload so
         // the SPA starts fresh with a valid session (eliminates the ghost-login race).
-        window.history.replaceState(null, "", window.location.pathname + window.location.search)
+        const url = new URL(window.location.href)
+        url.searchParams.delete("code")
+        url.hash = ""
+        window.history.replaceState(null, "", url.pathname + url.search)
         window.location.reload()
         return
       }
 
-      // For all other events (TOKEN_REFRESHED, SIGNED_OUT, etc.) update UI in-place
-      if (window.location.hash.includes("access_token="))
-        window.history.replaceState(null, "", window.location.pathname + window.location.search)
+      // For all other events (TOKEN_REFRESHED, SIGNED_OUT, etc.) update UI in-place and keep URL clean
+      if (hasHashToken || hasQueryCode) {
+        const url = new URL(window.location.href)
+        url.searchParams.delete("code")
+        url.hash = ""
+        window.history.replaceState(null, "", url.pathname + url.search)
+      }
 
       updateProfileUI()
       if (event === "SIGNED_IN" && !prevId && currentUser) await migrateLocalToCloud()
@@ -278,13 +362,18 @@ if (!isInitialized) {
       await updateTocButtons()
     })
 
-    // Resilience for Clock Skew: If we see a token in the URL but no session yet,
+    // Resilience for Clock Skew: If we see a token or code in the URL but no session yet,
     // wait 2 seconds (for the computer clock to catch up) and try to recover it.
-    if (window.location.hash.includes("access_token=")) {
+    const hasHashToken = window.location.hash.includes("access_token=")
+    const hasQueryCode = window.location.search.includes("code=")
+    if (hasHashToken || hasQueryCode) {
       setTimeout(async () => {
         const { data: { session } } = await supabase!.auth.getSession()
         if (session && !currentUser) {
-          window.history.replaceState(null, "", window.location.pathname + window.location.search)
+          const url = new URL(window.location.href)
+          url.searchParams.delete("code")
+          url.hash = ""
+          window.history.replaceState(null, "", url.pathname + url.search)
           window.location.reload()
         } else if (!session) {
           showToast("⚠️ Login error: Your computer's clock might be out of sync. Local bookmarks couldn't be saved to the cloud.")
@@ -332,6 +421,76 @@ if (!isInitialized) {
       return
     }
 
+    // Email Passwordless Login (Magic Link)
+    const emailBtn = t.closest<HTMLElement>(".email-login-btn")
+    if (emailBtn) {
+      e.preventDefault(); e.stopPropagation()
+      if (!supabase) return void showToast("⚠️ Database not connected.")
+      
+      const emailInput = emailBtn.parentElement?.querySelector<HTMLInputElement>(".email-login-input")
+      if (!emailInput) return
+
+      const email = emailInput.value.trim().toLowerCase()
+      
+      // Basic syntax validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!email || !emailRegex.test(email)) {
+        showToast("⚠️ Please enter a valid email address.")
+        return
+      }
+
+      // Curated disposable/temporary email provider blacklist
+      const tempMailDomains = new Set([
+        "10minutemail.com", "temp-mail.org", "tempmail.com", "mailinator.com",
+        "yopmail.com", "dispostable.com", "guerrillamail.com", "sharklasers.com",
+        "guerrillamailblock.com", "guerrillamail.net", "guerrillamail.org",
+        "guerrillamail.biz", "grr.la", "pokemail.net", "trashmail.com",
+        "getairmail.com", "maildrop.cc", "mintemail.com", "mailnesia.com",
+        "mailcatch.com", "tempail.com", "disposable.com", "throwawaymail.com",
+        "temp-mail.ru", "temp-mail.io", "moakt.com", "generator.email",
+        "tmail.com", "fakeinbox.com", "incognitomail.com", "safetymail.info",
+        "disposablemail.com", "getnada.com", "dropmail.me", "tempmailaddress.com"
+      ])
+
+      const domain = email.split("@").pop() || ""
+      if (tempMailDomains.has(domain)) {
+        showToast("⚠️ Temporary/disposable emails are not allowed!")
+        return
+      }
+
+      const orig = emailBtn.innerHTML
+      emailBtn.textContent = "Sending Magic Link…"
+      emailBtn.style.pointerEvents = "none"
+      emailBtn.style.opacity = "0.7"
+
+      const redirectTo = window.location.origin + window.location.pathname + window.location.search
+      
+      try {
+        const { error } = await supabase.auth.signInWithOtp({
+          email,
+          options: {
+            emailRedirectTo: redirectTo
+          }
+        })
+
+        if (error) {
+          console.error("Magic link request failed:", error)
+          showToast("❌ error: " + error.message)
+        } else {
+          showToast("📧 Magic link sent! Check your inbox.")
+          emailInput.value = ""
+        }
+      } catch (err) {
+        console.error("OTP Sign-In Error:", err)
+        showToast("❌ Failed to request magic link.")
+      } finally {
+        emailBtn.innerHTML = orig
+        emailBtn.style.pointerEvents = "auto"
+        emailBtn.style.opacity = "1"
+      }
+      return
+    }
+
     // Logout
     const logoutBtn = t.closest<HTMLElement>(".logout-btn")
     if (logoutBtn) {
@@ -339,6 +498,11 @@ if (!isInitialized) {
       if (!supabase) return
       logoutBtn.textContent = "Signing out…"
       
+      if (syncTimeoutId) {
+        clearTimeout(syncTimeoutId)
+        syncTimeoutId = null
+      }
+
       Object.keys(localStorage).forEach(k => {
         if (k.startsWith("sb-") && k.endsWith("-auth-token")) localStorage.removeItem(k)
       })
@@ -369,6 +533,11 @@ if (!isInitialized) {
 
       deleteBtn.textContent = "Deleting…"
       const uid = currentUser.id
+
+      if (syncTimeoutId) {
+        clearTimeout(syncTimeoutId)
+        syncTimeoutId = null
+      }
 
       try {
         // Delete all bookmarks from cloud

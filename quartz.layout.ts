@@ -28,6 +28,14 @@ export const sharedPageComponents: SharedLayout = {
         return !excluded.includes(slug)
       },
     }),
+    Component.ConditionalRender({
+      component: Component.Donation(),
+      condition: (page) => {
+        const slug = page.fileData.slug ?? ""
+        const excluded = ["404", "privacy-policy", "terms-of-service", "cookie-policy"]
+        return !excluded.includes(slug)
+      },
+    }),
   ],
   footer: Component.Footer({
     links: {

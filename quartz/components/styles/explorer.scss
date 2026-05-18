@@ -17,8 +17,9 @@
       box-sizing: border-box;
       position: sticky;
       background-color: var(--light);
-      padding: 1rem 0 1rem 0;
+      padding: 0.6rem 1rem;
       margin: 0;
+      width: 100%;
     }
 
     .hide-until-loaded ~ .explorer-content {

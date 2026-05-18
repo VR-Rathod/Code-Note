@@ -26,6 +26,7 @@ import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
 import LanguageSwitcher from "./LanguageSwitcher"
 import Bookmarks from "./Bookmarks"
+import Donation from "./Donation"
 
 export {
   ArticleTitle,
@@ -56,4 +57,5 @@ export {
   ConditionalRender,
   LanguageSwitcher,
   Bookmarks,
+  Donation,
 }
