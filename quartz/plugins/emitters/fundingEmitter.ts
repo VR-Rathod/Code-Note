@@ -1,4 +1,4 @@
-import { FilePath, FullSlug, joinSegments } from "../../util/path"
+import { FullSlug, joinSegments } from "../../util/path"
 import { QuartzEmitterPlugin } from "../types"
 import { write } from "./helpers"
 import fs from "fs"
@@ -24,7 +24,7 @@ function getMarkdownFiles(dir: string): string[] {
 export const FundingEmitter: QuartzEmitterPlugin = () => {
   return {
     name: "FundingEmitter",
-    async *emit(ctx, content) {
+    async *emit(ctx, _content) {
       // 1. Read funding.json from process.cwd() (the root)
       let fundingData: any = { currentAmount: 0, sponsors: [] }
       try {

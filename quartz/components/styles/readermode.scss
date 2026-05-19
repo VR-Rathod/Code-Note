@@ -10,6 +10,10 @@
   text-align: inherit;
   flex-shrink: 0;
 
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+
   & svg {
     position: absolute;
     width: 20px;

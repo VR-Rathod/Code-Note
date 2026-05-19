@@ -14,8 +14,8 @@
 // ─── 1. FLOATING ACTION BUTTON (FAB) ──────────────────────────────────────────
 .donation-fab {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: calc(2.5rem + env(safe-area-inset-bottom));
+  right: 2.5rem;
   z-index: 99;
   display: flex;
   align-items: center;
@@ -352,7 +352,18 @@
     background: var(--highlight);
     color: var(--secondary);
     margin-bottom: 1rem;
-    animation: heartGlow 2.5s infinite alternate;
+    position: relative;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(var(--secondary), 0.4);
+      z-index: -1;
+      animation: heartGlowGPUSmooth 2.5s infinite alternate ease-in-out;
+    }
 
     svg {
       animation: heartBeat 2s infinite ease-in-out;
@@ -455,6 +466,14 @@
       }
       .goal {
         font-weight: 500;
+        
+        .goal-duration {
+          font-size: 0.72rem;
+          font-weight: 700;
+          color: var(--gray);
+          opacity: 0.8;
+          margin-left: 2px;
+        }
       }
     }
   }
@@ -589,7 +608,16 @@
     height: 8px;
     border-radius: 50%;
     background: var(--secondary);
-    animation: activeMilestonePulse 1.8s infinite ease-in-out;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: inherit;
+      animation: activeMilestonePulseGPUSmooth 2.2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+    }
   }
 
   .milestone-text {
@@ -791,20 +819,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
 
   .qrcode-border {
     position: relative;
     padding: 0.75rem;
     background: white; // QR Codes require a white background to guarantee scan reliability
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 160px;
-    height: 160px;
+    width: 165px;
+    height: 165px;
+    border: 3px solid rgba(var(--secondary), 0.08);
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: var(--secondary);
+      box-shadow: 0 12px 32px rgba(var(--secondary), 0.15);
+    }
   }
 
   .qrcode-img {
@@ -815,16 +850,19 @@
 
   .qrcode-scanner-line {
     position: absolute;
+    top: 0;
     left: 0;
     right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--secondary), transparent);
-    animation: scannerLineMove 3s infinite ease-in-out;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, var(--secondary) 30%, var(--tertiary) 70%, transparent 100%);
+    box-shadow: 0 0 10px var(--secondary);
+    animation: scannerLineMove 2.5s infinite ease-in-out;
   }
 
   .qrcode-hint {
     font-size: 0.72rem;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: 0.02em;
     color: var(--gray);
     text-align: center;
   }
@@ -832,7 +870,7 @@
 
 // Direct Mobile Pay Wrapper
 .mobile-pay-wrapper {
-  display: none; // Hidden on desktop
+  display: none; // Hidden on desktop by default
   width: 100%;
 
   @media (max-width: 768px) {
@@ -843,22 +881,31 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
     width: 100%;
-    padding: 0.75rem;
-    background: #0984e3; // Brand blue or custom green
-    color: white;
-    font-weight: 700;
+    padding: 13px 20px;
+    background: linear-gradient(135deg, #0984e3 0%, #00cec9 100%);
+    color: #ffffff !important;
+    font-weight: 800;
     font-size: 0.95rem;
     text-decoration: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(9, 132, 227, 0.35);
-    transition: all 0.2s ease;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(9, 132, 227, 0.4);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
+
+    svg {
+      transition: transform 0.25s ease;
+    }
 
     &:hover {
-      background: #0770c2;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(9, 132, 227, 0.45);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(9, 132, 227, 0.55);
+      filter: brightness(1.05);
+
+      svg {
+        transform: scale(1.15) rotate(15deg);
+      }
     }
     
     &:active {
@@ -955,12 +1002,12 @@
   70% { transform: scale(1); }
 }
 
-@keyframes heartGlow {
+@keyframes heartGlowGPUSmooth {
   from {
-    box-shadow: 0 0 10px rgba(var(--secondary), 0.1);
+    opacity: 0.25;
   }
   to {
-    box-shadow: 0 0 25px rgba(var(--secondary), 0.35);
+    opacity: 1;
   }
 }
 
@@ -975,25 +1022,21 @@
   }
 }
 
-@keyframes activeMilestonePulse {
+@keyframes activeMilestonePulseGPUSmooth {
   0% {
-    transform: scale(0.9);
-    box-shadow: 0 0 0 0 rgba(var(--secondary), 0.6);
-  }
-  70% {
-    transform: scale(1.1);
-    box-shadow: 0 0 0 6px rgba(var(--secondary), 0);
+    transform: scale(1);
+    opacity: 0.85;
   }
   100% {
-    transform: scale(0.9);
-    box-shadow: 0 0 0 0 rgba(var(--secondary), 0);
+    transform: scale(2.8);
+    opacity: 0;
   }
 }
 
 @keyframes scannerLineMove {
-  0% { top: 0%; }
-  50% { top: 100%; }
-  100% { top: 0%; }
+  0% { transform: translateY(0); }
+  50% { transform: translateY(165px); }
+  100% { transform: translateY(0); }
 }
 
 @keyframes fadeInDown {
@@ -1011,8 +1054,8 @@
 @media (max-width: 768px) {
   // Mobile adjust FAB
   .donation-fab {
-    bottom: 1.25rem;
-    right: 1.25rem;
+    bottom: calc(2rem + env(safe-area-inset-bottom));
+    right: 2rem;
     padding: 0.6rem 0.8rem;
     gap: 0.3rem;
 
@@ -1096,6 +1139,64 @@
 
   .donation-progressbar-container {
     margin-bottom: 2rem;
+  }
+}
+
+/* Donation Frequency Switcher & Recurring Note Styling */
+.donation-frequency-tabs {
+  display: flex;
+  background: var(--highlight);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--lightgray);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.frequency-tab-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--darkgray);
+  font-weight: 700;
+  font-size: 0.85rem;
+  font-family: inherit;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    color: var(--secondary);
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  &.active {
+    background: var(--light);
+    color: var(--secondary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(var(--secondary), 0.12);
+    font-weight: 800;
+  }
+}
+
+.recurring-note-box {
+  background: rgba(245, 175, 25, 0.06);
+  border: 1px dashed rgba(245, 175, 25, 0.3);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 1.25rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--darkgray);
+  animation: fadeInTab 0.3s ease;
+
+  strong {
+    color: #f5af19;
   }
 }
 
@@ -1385,10 +1486,10 @@
 
 /* Responsive tweaks for very small screen widths */
 @media (max-width: 600px) {
-  .donation-payment-tabs {
+  .donation-payment-tabs, .donation-frequency-tabs {
     margin-bottom: 1.25rem;
   }
-  .payment-tab-btn {
+  .payment-tab-btn, .frequency-tab-btn {
     padding: 8px 10px;
     font-size: 0.78rem;
     gap: 0.25rem;
@@ -1418,6 +1519,10 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.02);
     backdrop-filter: blur(8px);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+    @media (max-width: 600px) {
+      padding: 1rem;
+    }
     position: relative;
     overflow: hidden;
 
@@ -1477,6 +1582,7 @@
     align-items: center;
     gap: 0.6rem;
     margin-bottom: 0.75rem;
+    flex-wrap: wrap;
 
     .tier-icon {
       font-size: 1.5rem;
@@ -1490,13 +1596,16 @@
     }
 
     .tier-limit {
-      margin-left: auto;
       font-size: 0.75rem;
       font-weight: 800;
       padding: 3px 8px;
       border-radius: 6px;
       text-transform: uppercase;
       letter-spacing: 0.03em;
+      
+      @media (min-width: 480px) {
+        margin-left: auto;
+      }
     }
   }
 
@@ -1509,7 +1618,7 @@
 
   .tier-members {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
     gap: 1rem;
     margin-top: 1rem;
   }
@@ -1614,6 +1723,38 @@
       width: fit-content;
     }
 
+    .sponsor-badge-row {
+      display: flex;
+      gap: 0.35rem;
+      align-items: center;
+      margin-top: 2px;
+      margin-bottom: 2px;
+      flex-wrap: wrap;
+    }
+
+    .sponsor-duration-badge {
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 1px 5px;
+      border-radius: 4px;
+      width: fit-content;
+      display: inline-block;
+      
+      &.monthly {
+        background: rgba(245, 175, 25, 0.1);
+        color: #f5af19;
+        border: 1px solid rgba(245, 175, 25, 0.2);
+      }
+      
+      &.one-time {
+        background: rgba(0, 180, 219, 0.08);
+        color: #0083b0;
+        border: 1px solid rgba(0, 180, 219, 0.15);
+      }
+    }
+
     p {
       margin: 0;
       font-size: 0.75rem;
@@ -1692,7 +1833,7 @@
 
   .credits-contributors-section {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
     gap: 1.25rem;
     margin: 2rem 0;
   }
@@ -1810,6 +1951,83 @@
       @media (max-width: 600px) {
         margin: 0 auto;
       }
+    }
+  }
+}
+
+/* Inline Card layout for Credits page */
+.donation-inline-card {
+  margin: 3rem auto;
+  max-width: 860px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 24px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--secondary) 0%, var(--tertiary) 100%);
+  }
+
+  .donation-inline-header {
+    padding: 2.5rem 2rem 1.5rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid var(--lightgray);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      margin: 0;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--dark);
+      font-family: var(--headerFont), sans-serif;
+    }
+
+    .donation-inline-subtitle {
+      margin: 0.4rem 0 0 0;
+      font-size: 0.95rem;
+      color: var(--darkgray);
+      strong {
+        color: var(--secondary);
+      }
+    }
+  }
+
+  .donation-inline-body, .donation-modal-body {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      padding: 1.5rem;
+      gap: 2rem;
+    }
+  }
+
+  .donation-inline-footer {
+    padding: 1.25rem 2rem;
+    border-top: 1px solid var(--lightgray);
+    background: var(--highlight);
+    text-align: center;
+
+    p {
+      margin: 0;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gray);
     }
   }
 }

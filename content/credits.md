@@ -22,7 +22,7 @@ noindex: true
 ---
 
 ## 🏆 Hall of Fame: Financial Supporters
-Every single contribution directly funds the high-speed dedicated VPS hosting, global CDN caching, custom domain, and coffee for note creation!
+Every contribution—whether a recurring monthly sponsorship or a one-time donation—directly funds the high-speed VPS hosting, CDN, domain, and content research!
 
 <div class="credits-tiers-grid">
 
@@ -108,10 +108,21 @@ A massive thank you to the awesome creators who help write, correct, and keep th
 
 ---
 
-## 🌟 Want to See Your Name Here?
+## 🌟 Support & Donate
 
-This project grows entirely through community support. There are two ways you can join the Hall of Fame:
+This project grows entirely through community support. You can contribute via UPI or globally on GitHub, and your name will dynamically appear in the Hall of Fame above!
 
-### 1. Become a Financial Sponsor
-Support us via UPI or globally on GitHub. Every supporter gets dynamically categorized into their respective tier!
-* Click the **Heart FAB 💖** in the bottom-right corner of the screen to open the Donation Hub and contribute!
+<div class="donation-wrapper">
+  <div class="donation-inline-card">
+    <div class="donation-inline-header">
+      <h2>Server Fund & Donation Hub 💖</h2>
+      <p class="donation-inline-subtitle">Supporting Open-Source Notes by <strong>Vaibhav Rathod</strong></p>
+    </div>
+    <div class="donation-inline-placeholder">
+      <!-- Dynamically cloned from Donation.tsx at runtime to prevent code duplication -->
+    </div>
+    <div class="donation-inline-footer">
+      <p>🔒 Safe & direct transfer. Only Indian banking apps support scanning UPI QR codes.</p>
+    </div>
+  </div>
+</div>

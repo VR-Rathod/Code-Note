@@ -120,6 +120,11 @@
         padding: 0;
       }
 
+      .service-badge {
+        margin-left: auto;
+        margin-right: 0.6rem;
+      }
+
       .chevron {
         color: var(--gray);
         transition: transform 0.2s ease;
@@ -140,6 +145,47 @@
   }
 }
 
+.service-badge {
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+
+  &.status-released {
+    background: color-mix(in srgb, #10b981 12%, transparent);
+    color: #10b981;
+    border: 1.5px solid color-mix(in srgb, #10b981 20%, transparent);
+  }
+
+  &.status-indev {
+    background: color-mix(in srgb, #f59e0b 12%, transparent);
+    color: #f59e0b;
+    border: 1.5px solid color-mix(in srgb, #f59e0b 20%, transparent);
+  }
+
+  &.status-coming-soon {
+    background: color-mix(in srgb, var(--secondary) 12%, transparent);
+    color: var(--secondary);
+    border: 1.5px solid color-mix(in srgb, var(--secondary) 20%, transparent);
+  }
+
+  &.status-unfunded {
+    background: #fee2e2;
+    color: #ef4444;
+    border: 1.5px solid #fecaca;
+    animation: warningPulse 2s infinite ease-in-out;
+  }
+}
+
+@keyframes warningPulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(239, 68, 68, 0); }
+  50% { box-shadow: 0 0 6px rgba(239, 68, 68, 0.25); }
+}
+
 .profile-section {
   background: var(--light);
   border: 1px solid var(--lightgray);
@@ -156,14 +202,21 @@
     gap: 0.6rem;
 
     .profile-avatar-placeholder {
-      width: 48px;
-      height: 48px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       background: var(--lightgray);
+      border: 2px dashed var(--gray);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--gray);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      
+      svg {
+        width: 32px;
+        height: 32px;
+      }
     }
 
     h4 {
@@ -286,53 +339,104 @@
 
     .profile-header {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 1rem;
+      justify-content: center;
+      text-align: center;
+      gap: 0.75rem;
+      margin: 0.5rem 0;
 
       .profile-avatar-container {
         position: relative;
-        width: 48px;
-        height: 48px;
+        width: 72px;
+        height: 72px;
 
         .profile-avatar {
-          width: 48px;
-          height: 48px;
+          width: 72px;
+          height: 72px;
           border-radius: 50%;
           object-fit: cover;
-          border: 2px solid var(--lightgray);
+          border: 2.5px solid var(--light);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          position: relative;
+          z-index: 2;
         }
 
         .profile-avatar-letter {
-          width: 48px;
-          height: 48px;
+          width: 72px;
+          height: 72px;
           border-radius: 50%;
           background: linear-gradient(135deg, var(--tertiary), var(--secondary));
           color: var(--light);
           display: flex;
           align-items: center;
           justify-content: center;
-          font-weight: 700;
-          font-size: 1.25rem;
-          border: 2px solid var(--lightgray);
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          font-weight: 800;
+          font-size: 1.8rem;
+          border: 2.5px solid var(--light);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
           text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+          position: relative;
+          z-index: 2;
+        }
+
+        .profile-avatar-glow {
+          position: absolute;
+          inset: -3px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, var(--secondary), var(--tertiary));
+          z-index: 1;
+          opacity: 0.4;
+          filter: blur(4px);
+          animation: avatarPulse 2.5s infinite alternate ease-in-out;
         }
       }
 
+      @keyframes avatarPulse {
+        0% { transform: scale(0.98); opacity: 0.3; }
+        100% { transform: scale(1.04); opacity: 0.7; }
+      }
+
       .profile-info {
-        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
 
         h4 {
           margin: 0;
-          font-size: 1.1rem;
+          font-size: 1.25rem;
+          font-weight: 850;
           color: var(--dark);
+          letter-spacing: -0.01em;
         }
 
-        .profile-status {
-          margin: 0;
-          font-size: 0.85rem;
+        .profile-status-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background: color-mix(in srgb, #10b981 12%, transparent);
           color: #10b981;
-          font-weight: 500;
+          padding: 3px 10px;
+          border-radius: 50px;
+          font-size: 0.72rem;
+          font-weight: 700;
+          border: 1px solid color-mix(in srgb, #10b981 20%, transparent);
+          box-shadow: 0 2px 6px rgba(16, 185, 129, 0.05);
+
+          .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 6px #10b981;
+            animation: statusBlink 1.8s infinite ease-in-out;
+          }
+
+          @keyframes statusBlink {
+            0%, 100% { opacity: 0.5; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.1); }
+          }
         }
       }
     }
@@ -447,6 +551,41 @@
           outline-offset: 2px;
           opacity: 1;
         }
+      }
+    }
+  }
+
+  .features-roadmap-section {
+    border-top: 1px solid var(--lightgray);
+    padding-top: 0.85rem;
+    margin-top: 0.5rem;
+
+    .roadmap-title {
+      margin: 0 0 0.5rem 0;
+      font-size: 0.72rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 750;
+    }
+
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .feature-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--darkgray);
+      padding: 4px 0;
+      border-bottom: 1px dashed color-mix(in srgb, var(--lightgray) 40%, transparent);
+
+      &:last-child {
+        border-bottom: none;
       }
     }
   }

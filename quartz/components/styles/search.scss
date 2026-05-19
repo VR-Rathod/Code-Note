@@ -234,6 +234,73 @@
             & > p {
               margin-bottom: 0;
             }
+
+            .result-title-row {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 0.5rem;
+              width: 100%;
+            }
+
+            .library-badge {
+              font-size: 0.72rem;
+              background: color-mix(in srgb, var(--secondary) 15%, transparent);
+              color: var(--secondary);
+              padding: 0.15rem 0.45rem;
+              border-radius: 4px;
+              font-weight: 600;
+              flex-shrink: 0;
+            }
+
+            &.no-match {
+              border-bottom: none !important;
+              cursor: default !important;
+              background: transparent !important;
+              padding: 1.5rem 1rem 0.5rem 1rem !important;
+
+              h3 {
+                color: var(--dark);
+                font-size: 1.05rem;
+                margin-bottom: 0.35rem;
+              }
+
+              p {
+                color: var(--gray);
+                font-size: 0.85rem;
+                line-height: 1.4;
+              }
+            }
+
+            &.resource-card {
+              border-left: 3px solid var(--secondary);
+            }
+          }
+
+          .search-library-suggestion-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem;
+            padding: 0.7rem 1rem;
+            background: color-mix(in srgb, var(--secondary) 8%, var(--light));
+            border: 1px dashed var(--secondary);
+            border-radius: 6px;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-align: center;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+
+            &:hover {
+              background: var(--secondary);
+              color: var(--light);
+              border-style: solid;
+              transform: translateY(-1px);
+            }
           }
         }
       }

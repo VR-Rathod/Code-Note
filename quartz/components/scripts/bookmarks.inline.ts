@@ -605,6 +605,23 @@ if (!isInitialized) {
       return
     }
 
+    // Click on any feature requiring funding -> open donation modal
+    const fundingFeatureItem = t.closest<HTMLElement>("[data-requires-funding='true']")
+    if (fundingFeatureItem) {
+      e.preventDefault(); e.stopPropagation()
+      // Close the bookmarks menu
+      document.querySelectorAll(".bookmarks-menu").forEach(m => m.classList.remove("show"))
+      document.querySelectorAll(".bookmarks-toggle").forEach(b => b.setAttribute("aria-expanded", "false"))
+      
+      // Open the donation hub modal
+      const donationModal = document.querySelector<HTMLElement>("#donation-hub-modal")
+      if (donationModal) {
+        donationModal.classList.add("show")
+        document.body.classList.add("modal-open")
+      }
+      return
+    }
+
     // Toggle bookmarks menu
     const toggleBtn = t.closest<HTMLElement>(".bookmarks-toggle")
     const menus = document.querySelectorAll(".bookmarks-menu")

@@ -37,7 +37,7 @@ export const Assets: QuartzEmitterPlugin = () => {
     async *partialEmit(ctx, _content, _resources, changeEvents) {
       for (const changeEvent of changeEvents) {
         const ext = path.extname(changeEvent.path)
-        if (ext === ".md") continue
+        if (ext === ".md" || changeEvent.path === "funding.json") continue
 
         if (changeEvent.type === "add" || changeEvent.type === "change") {
           yield copyFile(ctx.argv, changeEvent.path)

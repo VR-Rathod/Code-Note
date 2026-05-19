@@ -34,13 +34,14 @@ let emojimap: EmojiMap | undefined = undefined
 export async function loadEmoji(code: string) {
   if (!emojimap) {
     const data = await import("./emojimap.json")
-    emojimap = data
+    emojimap = data.default as unknown as EmojiMap
   }
 
-  const name = emojimap.codePointToName[`${code.toUpperCase()}`]
+  const map = emojimap
+  const name = map.codePointToName[`${code.toUpperCase()}`]
   if (!name) throw new Error(`codepoint ${code} not found in map`)
 
-  const b64 = emojimap.nameToBase64[name]
+  const b64 = map.nameToBase64[name]
   if (!b64) throw new Error(`name ${name} not found in map`)
 
   return b64

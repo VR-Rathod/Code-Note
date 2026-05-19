@@ -103,11 +103,35 @@ const tokenizeTerm = (term: string) => {
 
 function highlight(searchTerm: string, text: string, trim?: boolean) {
   const tokenizedTerms = tokenizeTerm(searchTerm)
+  
+  let prefix = ""
+  let suffix = ""
+  
+  if (trim && text.length > 300) {
+    let matchIndex = -1
+    for (const term of tokenizedTerms) {
+      matchIndex = text.toLowerCase().indexOf(term.toLowerCase())
+      if (matchIndex !== -1) break
+    }
+    
+    if (matchIndex === -1) {
+      matchIndex = 0
+    }
+    
+    const start = Math.max(0, matchIndex - 150)
+    const end = Math.min(text.length, matchIndex + 150)
+    
+    prefix = start > 0 ? "..." : ""
+    suffix = end < text.length ? "..." : ""
+    
+    text = text.substring(start, end)
+  }
+
   let tokenizedText = text.split(/\s+/).filter((t) => t !== "")
 
   let startIndex = 0
   let endIndex = tokenizedText.length - 1
-  if (trim) {
+  if (trim && tokenizedText.length > contextWindowWords * 2) {
     const includesCheck = (tok: string) =>
       tokenizedTerms.some((term) => tok.toLowerCase().startsWith(term.toLowerCase()))
     const occurrencesIndices = tokenizedText.map(includesCheck)
@@ -126,6 +150,9 @@ function highlight(searchTerm: string, text: string, trim?: boolean) {
     startIndex = Math.max(bestIndex - contextWindowWords, 0)
     endIndex = Math.min(startIndex + 2 * contextWindowWords, tokenizedText.length - 1)
     tokenizedText = tokenizedText.slice(startIndex, endIndex)
+    
+    if (startIndex > 0) prefix = "..."
+    if (endIndex < tokenizedText.length - 1) suffix = "..."
   }
 
   const slice = tokenizedText
@@ -141,8 +168,7 @@ function highlight(searchTerm: string, text: string, trim?: boolean) {
     })
     .join(" ")
 
-  return `${startIndex === 0 ? "" : "..."}${slice}${endIndex === tokenizedText.length - 1 ? "" : "..."
-    }`
+  return `${prefix}${slice}${suffix}`
 }
 
 function highlightHTML(searchTerm: string, el: HTMLElement) {
@@ -346,13 +372,19 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
   }
 
   const resultToHTML = ({ slug, title, content, tags }: Item) => {
+    const isResource = slug.toLowerCase() === "free-assets"
+    const resourceBadge = isResource ? `<span class="library-badge">📚 Resource</span>` : ""
     const htmlTags = tags.length > 0 ? `<ul class="tags">${tags.join("")}</ul>` : ``
     const itemTile = document.createElement("a")
     itemTile.classList.add("result-card")
+    if (isResource) itemTile.classList.add("resource-card")
     itemTile.id = slug
     itemTile.href = resolveUrl(slug).toString()
     itemTile.innerHTML = `
-      <h3 class="card-title">${title}</h3>
+      <div class="result-title-row">
+        <h3 class="card-title">${title}</h3>
+        ${resourceBadge}
+      </div>
       ${htmlTags}
       <p class="card-description">${content}</p>
     `
@@ -383,10 +415,15 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
   async function displayResults(finalResults: Item[]) {
     removeAllChildren(results)
     if (finalResults.length === 0) {
-      results.innerHTML = `<a class="result-card no-match">
-          <h3>No results.</h3>
-          <p>Try another search term?</p>
-      </a>`
+      results.innerHTML = `
+        <div class="result-card no-match">
+          <h3>No notes found.</h3>
+          <p>Looking for reference textbooks, coding cheat-sheets, or developer tools?</p>
+        </div>
+        <a href="${resolveUrl("Free-Assets" as FullSlug).toString()}" class="search-library-suggestion-btn">
+          📚 Browse Free Assets & Books
+        </a>
+      `
     } else {
       results.append(...finalResults.map(resultToHTML))
     }

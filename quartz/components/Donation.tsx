@@ -7,26 +7,8 @@ import { pathToRoot, joinSegments } from "../util/path"
 import fs from "fs"
 import path from "path"
 
-// Helper to recursively collect all .md files in the content directory
-function getMarkdownFiles(dir: string): string[] {
-  let results: string[] = []
-  if (!fs.existsSync(dir)) return results
-  const list = fs.readdirSync(dir)
-  list.forEach((file) => {
-    const filePath = path.join(dir, file)
-    const stat = fs.statSync(filePath)
-    if (stat && stat.isDirectory()) {
-      results = results.concat(getMarkdownFiles(filePath))
-    } else if (file.endsWith(".md")) {
-      results.push(filePath)
-    }
-  })
-  return results
-}
-
 // Read the real amount from the root funding.json file at compile-time (static pre-rendering!)
 let initialAmount = 0
-let compiledDataString = "{}"
 try {
   const fundingPath = path.join(process.cwd(), "funding.json")
   if (fs.existsSync(fundingPath)) {
@@ -35,61 +17,6 @@ try {
     if (data && typeof data.currentAmount === "number") {
       initialAmount = data.currentAmount
     }
-
-    // Scan all note frontmatters to collect contributors dynamically!
-    const contributorsMap = new Map<string, { name: string; url?: string; count: number }>()
-    contributorsMap.set("vaibhav rathod", { name: "Vaibhav Rathod", url: "https://github.com/VR-Rathod", count: 350 })
-
-    try {
-      const contentDir = path.join(process.cwd(), "content")
-      if (fs.existsSync(contentDir)) {
-        const mdFiles = getMarkdownFiles(contentDir)
-        mdFiles.forEach((file) => {
-          const fileContent = fs.readFileSync(file, "utf-8")
-          if (fileContent.startsWith("---")) {
-            const endIdx = fileContent.indexOf("---", 3)
-            if (endIdx !== -1) {
-              const frontmatter = fileContent.substring(3, endIdx)
-              let authorName = ""
-              let authorUrl = ""
-              
-              frontmatter.split("\n").forEach((line) => {
-                const trimmed = line.trim()
-                if (trimmed.startsWith("author:")) {
-                  authorName = trimmed.replace("author:", "").trim()
-                } else if (trimmed.startsWith("authorUrl:")) {
-                  authorUrl = trimmed.replace("authorUrl:", "").trim()
-                }
-              })
-
-              if (authorName && authorName.toLowerCase().trim() !== "vaibhav rathod") {
-                const key = authorName.toLowerCase().trim()
-                if (contributorsMap.has(key)) {
-                  contributorsMap.get(key)!.count += 1
-                } else {
-                  contributorsMap.set(key, {
-                    name: authorName.trim(),
-                    url: authorUrl.trim() || undefined,
-                    count: 1
-                  })
-                }
-              }
-            }
-          }
-        })
-      }
-    } catch (scanErr) {
-      console.warn("Failed to scan contributors:", scanErr)
-    }
-
-    const contributorsList = Array.from(contributorsMap.values()).sort((a, b) => b.count - a.count)
-
-    // Prepare fully compiled json payload with contributors array appended
-    const compiledData = {
-      ...data,
-      contributors: contributorsList
-    }
-    compiledDataString = JSON.stringify(compiledData)
   }
 } catch (err) {
   // Silent fallback to 0 if file is missing or malformed
@@ -114,9 +41,9 @@ const DONATION_CONFIG = {
       desc: "Securing our custom domain (.com/.dev) and global CDN caching to ensure the notes are instantly accessible worldwide.",
     },
     {
-      title: "Note Assets Cloud Storage",
+      title: "Progressive Web App With Ofline Reading",
       goal: 4500,
-      desc: "Funding cloud backup and secure storage for all Logseq repository notes, graph configurations, and local drawing files to prevent any data loss.",
+      desc: "Developing a Progressive Web App (PWA) that enables offline reading, quick shortcuts, and instant access to notes without an internet connection.",
     },
     {
       title: "Learning Resources & Textbooks",
@@ -124,14 +51,14 @@ const DONATION_CONFIG = {
       desc: "Purchasing premium reference books, advanced research papers, and technical documentations to compile and write highly accurate notes.",
     },
     {
-      title: "Visual Explaining Tool Licenses",
+      title: "Interactive Visual Roadmaps",
       goal: 12000,
-      desc: "Subscribing to visual blueprinting tools (Excalidraw Plus, Figma Pro) to design clear, premium learning maps and flow charts for complex code concepts.",
+      desc: "Creating interactive, scroll-based visual roadmaps for each programming track that explain concepts step-by-step with diagrams and code examples.",
     },
     {
-      title: "Hardware & Compile Overhead",
+      title: "Cheat-Sheet",
       goal: 15000,
-      desc: "Covering local machine power, high-speed compiler pipelines, and testing environments to support compiling 300+ pages instantly.",
+      desc: "Able to make Pdf and high quality printable pdfs.",
     },
     {
       title: "Study Motivation (Chai & Fuel)",
@@ -154,9 +81,15 @@ const DONATION_CONFIG = {
       desc: "Unlocking absolute speed! Devoting full-time hours to researching, summarizing, and publishing daily, high-quality, ad-free programming pages.",
     },
     {
+      title: "AI Roadmap and Guide ",
+      goal: 45000,
+      goalText: "₹45,000",
+      desc: "AI Roadmap and Guide to develop provide special page and Tracking systeam for students",
+    },
+    {
       title: "Coming More Features 🚀",
-      goal: 35001,
-      goalText: "₹35,000+",
+      goal: 45001,
+      goalText: "₹45,000+",
       desc: "Interactive visual cheat sheets, community study syllabus plans, and even faster search pipelines!",
     },
   ],
@@ -255,11 +188,14 @@ const Donation: QuartzComponent = ({ displayClass, fileData }: QuartzComponentPr
             {/* Left Side: Milestones and Goal Progress */}
             <div class="donation-modal-progress-section">
               <div class="donation-progress-header">
-                <h3>Goal & Progress</h3>
+                <h3>Monthly Goal & Progress</h3>
                 <span class="donation-progress-numbers">
                   <strong>{currencySymbol}{currentAmount.toLocaleString("en-IN")}</strong>
                   <span class="separator">/</span>
-                  <span class="goal">{currencySymbol}{goalAmount.toLocaleString("en-IN")}</span>
+                  <span class="goal">
+                    {currencySymbol}{goalAmount.toLocaleString("en-IN")}
+                    <span class="goal-duration">/mo</span>
+                  </span>
                 </span>
               </div>
 
@@ -327,23 +263,36 @@ const Donation: QuartzComponent = ({ displayClass, fileData }: QuartzComponentPr
 
             {/* Right Side: Interactive Payment Area */}
             <div class="donation-modal-payment-section">
+              {/* Donation Frequency Switcher */}
+              <div class="donation-frequency-tabs">
+                <button class="frequency-tab-btn active one-time-tab" aria-label="One-time Donation">
+                  <span>One-time 💖</span>
+                </button>
+                <button class="frequency-tab-btn monthly-tab" aria-label="Monthly Donation">
+                  <span>Monthly 🌟</span>
+                </button>
+              </div>
+
               {/* Sleek segment control tab switcher */}
               <div class="donation-payment-tabs">
-                <button class="payment-tab-btn active" id="tab-btn-upi" aria-label="Pay via UPI (INR)">
+                <button class="payment-tab-btn active tab-btn-upi" aria-label="Pay via UPI (INR)">
                   <span>🇮🇳 UPI (INR)</span>
                 </button>
-                <button class="payment-tab-btn" id="tab-btn-global" aria-label="Pay via GitHub Sponsors (USD)">
+                <button class="payment-tab-btn tab-btn-global" aria-label="Pay via GitHub Sponsors (USD)">
                   <span>🌐 Global (USD)</span>
                 </button>
               </div>
 
               {/* TAB 1: UPI PAYMENT PANEL */}
-              <div class="payment-panel active" id="panel-upi">
-                <h3>⚡ Donate via UPI</h3>
-                <p class="payment-desc">Scan the QR code or pay using your preferred UPI app. 100% of the funds go directly towards Server & Content maintenance.</p>
+              <div class="payment-panel active panel-upi">
+                <h3 class="upi-panel-title">⚡ Donate via UPI</h3>
+                <p class="payment-desc upi-desc-text">Scan the QR code or pay using your preferred UPI app. 100% of the funds go directly towards Server & Content maintenance.</p>
+                <div class="recurring-note-box upi-recurring-note" style={{ display: "none" }}>
+                  <span>ℹ️ <strong>UPI Autopay Hint:</strong> Since UPI QR scans are one-time payments, you can enable recurring monthly transfers directly inside your UPI app (GPay, PhonePe, or BHIM) using our UPI ID, or use the <strong>Global (USD)</strong> tab to subscribe automatically!</span>
+                </div>
 
-                {/* Amount Preset Selector */}
-                <div class="payment-presets">
+                {/* Amount Preset Selector (One-time) */}
+                <div class="payment-presets presets-one-time">
                   <label>Select Amount</label>
                   <div class="presets-grid">
                     <button class="preset-btn" data-amount="50" aria-label="Donate ₹50">
@@ -358,19 +307,43 @@ const Donation: QuartzComponent = ({ displayClass, fileData }: QuartzComponentPr
                       <span>{currencySymbol}200</span>
                       <small>📚 Book</small>
                     </button>
-                    <button class="preset-btn custom-preset-trigger" id="custom-preset-btn" aria-label="Enter custom amount">
+                    <button class="preset-btn custom-preset-trigger" aria-label="Enter custom amount">
                       <span>Custom</span>
                       <small>💬 Say Thanks</small>
                     </button>
                   </div>
+                </div>
+
+                {/* Amount Preset Selector (Monthly) */}
+                <div class="payment-presets presets-monthly" style={{ display: "none" }}>
+                  <label>Select Monthly Amount</label>
+                  <div class="presets-grid">
+                    <button class="preset-btn" data-amount="100" aria-label="Donate ₹100 monthly">
+                      <span>{currencySymbol}100/mo</span>
+                      <small>☕ Coffee</small>
+                    </button>
+                    <button class="preset-btn active" data-amount="200" aria-label="Donate ₹200 monthly">
+                      <span>{currencySymbol}200/mo</span>
+                      <small>📚 Book</small>
+                    </button>
+                    <button class="preset-btn" data-amount="500" aria-label="Donate ₹500 monthly">
+                      <span>{currencySymbol}500/mo</span>
+                      <small>🚀 Super Bro</small>
+                    </button>
+                    <button class="preset-btn custom-preset-trigger" aria-label="Enter custom amount">
+                      <span>Custom</span>
+                      <small>💬 Say Thanks</small>
+                    </button>
+                  </div>
+                </div>
 
                   {/* Custom Amount Input Container (Hidden by default) */}
-                  <div class="custom-amount-container" id="custom-amount-input-box" style={{ display: "none" }}>
+                  <div class="custom-amount-container custom-amount-input-box" style={{ display: "none" }}>
                     <div class="custom-amount-input-wrapper">
                       <span class="input-currency">{currencySymbol}</span>
                       <input
                         type="number"
-                        id="custom-amount-val"
+                        class="custom-amount-val"
                         min="1"
                         max="100000"
                         value="100"
@@ -378,9 +351,8 @@ const Donation: QuartzComponent = ({ displayClass, fileData }: QuartzComponentPr
                         aria-label="Custom donation amount"
                       />
                     </div>
-                    <button class="custom-amount-apply" id="custom-amount-apply-btn">Apply</button>
+                    <button class="custom-amount-apply custom-amount-apply-btn">Apply</button>
                   </div>
-                </div>
 
                 {/* Interactive UPI Payment Display */}
                 <div class="payment-box">
@@ -390,8 +362,7 @@ const Donation: QuartzComponent = ({ displayClass, fileData }: QuartzComponentPr
                       <img
                         src={defaultQrUrl}
                         alt="UPI Scan to Pay QR Code"
-                        id="donation-qr-code-img"
-                        class="qrcode-img"
+                        class="qrcode-img donation-qr-code-img"
                       />
                       <div class="qrcode-scanner-line"></div>
                     </div>
@@ -402,8 +373,7 @@ const Donation: QuartzComponent = ({ displayClass, fileData }: QuartzComponentPr
                   <div class="mobile-pay-wrapper">
                     <a
                       href={defaultUpiLink}
-                      class="mobile-pay-btn"
-                      id="mobile-upi-deep-link"
+                      class="mobile-pay-btn mobile-upi-deep-link"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -416,18 +386,17 @@ const Donation: QuartzComponent = ({ displayClass, fileData }: QuartzComponentPr
 
                   {/* Copyable UPI ID section */}
                   <div class="upi-id-copy-box">
-                    <label for="upi-id-input">Or Copy UPI ID</label>
+                    <label>Or Copy UPI ID</label>
                     <div class="upi-input-group">
                       <input
                         type="text"
-                        id="upi-id-input"
+                        class="upi-id-input-field"
                         value={upiId}
                         readonly
                         aria-label="UPI ID"
                       />
                       <button
-                        class="upi-copy-btn"
-                        id="upi-id-copy-btn"
+                        class="upi-copy-btn upi-id-copy-btn"
                         aria-label="Copy UPI ID to clipboard"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy-icon">
@@ -442,7 +411,7 @@ const Donation: QuartzComponent = ({ displayClass, fileData }: QuartzComponentPr
               </div>
 
               {/* TAB 2: GLOBAL SPONSORS PANEL */}
-              <div class="payment-panel" id="panel-global" style={{ display: "none" }}>
+              <div class="payment-panel panel-global" style={{ display: "none" }}>
                 <div class="github-sponsors-native-card">
                   {/* Glowing header badge */}
                   <div class="gh-native-header">
@@ -465,7 +434,7 @@ const Donation: QuartzComponent = ({ displayClass, fileData }: QuartzComponentPr
                   </div>
 
                   {/* Core description */}
-                  <p class="gh-desc">
+                  <p class="gh-desc gh-desc-text">
                     If you are outside India, you can support my open-source work directly on GitHub using Credit Card or PayPal. Every dollar goes directly towards cloud VPS hosting and note creation!
                   </p>
 

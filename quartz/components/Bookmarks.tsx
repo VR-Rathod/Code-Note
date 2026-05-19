@@ -9,7 +9,7 @@ dotenv.config()
 const Bookmarks: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
   const supabaseUrl = process.env.SUPABASE_URL || ""
   const supabaseKey = process.env.SUPABASE_ANON_KEY || ""
-  
+
   return (
     <div class={classNames(displayClass, "bookmarks-container")}>
       <script dangerouslySetInnerHTML={{ __html: `window.SUPABASE_URL = "${supabaseUrl}"; window.SUPABASE_ANON_KEY = "${supabaseKey}";` }}></script>
@@ -71,10 +71,14 @@ const Bookmarks: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
               <div class="profile-avatar-container">
                 <img src="" alt="" class="profile-avatar" style={{ display: "none" }} aria-hidden="true" />
                 <div class="profile-avatar-letter" style={{ display: "none" }}>U</div>
+                <div class="profile-avatar-glow"></div>
               </div>
               <div class="profile-info">
                 <h4 class="profile-name">User</h4>
-                <p class="profile-status" aria-live="polite">🟢 Sync Active</p>
+                <div class="profile-status-pill">
+                  <span class="status-dot"></span>
+                  <span class="profile-status" aria-live="polite">Sync Active</span>
+                </div>
               </div>
             </div>
 
@@ -100,11 +104,39 @@ const Bookmarks: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
               </button>
             </div>
           </div>
+
+          {/* Roadmap & Features */}
+          <div class="features-roadmap-section">
+            <h5 class="roadmap-title">Roadmap & Features</h5>
+            <div class="features-list">
+              <div class="feature-item">
+                <span class="feature-name">Code Snippets Better Preview</span>
+                <span class="service-badge status-indev">In Dev</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Flashcards & Quiz Mode</span>
+                <span class="service-badge status-coming-soon">Coming Soon</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Multi-Theme Selector</span>
+                <span class="service-badge status-unfunded" data-requires-funding="true" style={{ cursor: "pointer" }} title="Development paused due to lack of funds. Click to support!">No Funds ⚠️</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Flashcards & Quiz Mode (Adv)</span>
+                <span class="service-badge status-unfunded" data-requires-funding="true" style={{ cursor: "pointer" }} title="Requires funding. Click to support!">No Funds ⚠️</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Code Snippets Playground</span>
+                <span class="service-badge status-unfunded" data-requires-funding="true" style={{ cursor: "pointer" }} title="Requires funding. Click to support!">No Funds ⚠️</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <details class="bookmarks-accordion" open>
           <summary>
             <h3>My Bookmarks</h3>
+            <span class="service-badge status-released">Released</span>
             <svg aria-hidden="true" class="chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </summary>
           <div class="bookmarks-list-wrapper" role="list" aria-label="Your saved bookmarks">

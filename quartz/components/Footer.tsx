@@ -13,7 +13,7 @@ export default ((opts?: Options) => {
     // Categorized links for premium column layout
     const resourcesLinks = [
       { text: "💖 Supporters Wall", href: "/credits" },
-      { text: "About Me", href: "/about" },
+      { text: "About Us", href: "/about" },
     ]
 
     const legalLinks = [

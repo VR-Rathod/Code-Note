@@ -549,10 +549,10 @@ p {
   contain-intrinsic-size: 0 200px;
 
   &>table {
-    margin: 1rem;
-    padding: 1.5rem;
+    margin: 1rem 0;
     border-collapse: collapse;
     width: 100%;
+    box-sizing: border-box;
 
     th,
     td {
