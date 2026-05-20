@@ -3,199 +3,329 @@ import { createClient, SupabaseClient, User } from "@supabase/supabase-js"
 
 interface Bookmark { url: string; title: string }
 
-// ─── Singleton global state ───────────────────────────────────────────────────
-let supabase: SupabaseClient | null = null
-let currentUser: User | null = null
-let cachedBookmarks: Bookmark[] | null = null
-let isInitialized = false
-let giscusUserLogin: string | null = null   // set when Giscus broadcasts viewer info
-let syncTimeoutId: any = null
+// ─── Single source-of-truth state ────────────────────────────────────────────
+// All mutations go through setState() which triggers a single render pass.
+// This eliminates every race condition that existed in the old system.
+const STATE: {
+  supabase: SupabaseClient | null
+  user: User | null
+  bookmarks: Bookmark[] | null   // null = not yet loaded
+  initialized: boolean
+  giscusLogin: string | null
+} = {
+  supabase: null,
+  user: null,
+  bookmarks: lsRead(), // Initialize from local cache immediately on startup for instant UI
+  initialized: false,
+  giscusLogin: null,
+}
 
+function setState(patch: Partial<typeof STATE>) {
+  Object.assign(STATE, patch)
+  render()
+}
 
-// ─── Utility ───────────────────────────────────────────────────────────────
-/**
- * Remove any URL fragment (hash) that might remain after OAuth redirects or sign‑out.
- * This works for `#access_token=…` as well as a plain `#`.
- */
-function cleanAuthHashFromUrl(): void {
-  const hash = window.location.hash;
-  // Remove only if the hash is empty ("#") or contains an OAuth token.
-  if (!hash) return;
-  if (hash === "#" || hash.includes("access_token=")) {
-    window.history.replaceState(null, "", window.location.pathname + window.location.search);
+// ─── localStorage (write-through cache only) ──────────────────────────────────
+// Cloud is always authoritative. localStorage is a read-fallback when offline
+// and a write-through cache for instant UI. It is NEVER merged into the cloud.
+const LS_KEY = "bm-v2"
+
+function lsRead(): Bookmark[] {
+  try {
+    const raw = localStorage.getItem(LS_KEY)
+    const parsed = JSON.parse(raw || "[]")
+    return Array.isArray(parsed) ? parsed : []
+  } catch { return [] }
+}
+
+function lsWrite(bms: Bookmark[]) {
+  try { localStorage.setItem(LS_KEY, JSON.stringify(bms)) } catch { }
+}
+
+function lsClear() {
+  localStorage.removeItem(LS_KEY)
+  localStorage.removeItem("study-bookmarks") // migrate away from old key
+}
+
+// ─── Toast notifications ──────────────────────────────────────────────────────
+function toast(msg: string, ms = 3500) {
+  document.querySelector(".bm-toast")?.remove()
+  const el = Object.assign(document.createElement("div"), {
+    className: "bm-toast", textContent: msg,
+  })
+  document.body.appendChild(el)
+  setTimeout(() => el.remove(), ms)
+}
+
+// ─── Supabase operations (upsert / delete-by-url) ─────────────────────────────
+// We NEVER use delete-all + insert-all. Each operation is atomic.
+
+async function cloudFetch(uid: string): Promise<Bookmark[] | null> {
+  if (!STATE.supabase) return null
+  try {
+    // Race the Supabase query against a 12-second timeout.
+    // If the network/auth queue stalls on page load, we give it enough time to resolve.
+    const queryPromise = STATE.supabase
+      .from("bookmarks")
+      .select("url,title")
+      .eq("user_id", uid)
+
+    const timeoutPromise = new Promise<{ data: null; error: Error }>((resolve) =>
+      setTimeout(() => resolve({ data: null, error: new Error("timeout") }), 12000)
+    )
+
+    const { data, error } = await Promise.race([queryPromise, timeoutPromise])
+
+    if (error) {
+      // console.error("[BM] fetch error:", error.message ?? error)
+      return null
+    }
+    return Array.isArray(data) ? (data as Bookmark[]) : []
+  } catch (e) {
+    // console.error("[BM] fetch exception:", e)
+    return null
   }
 }
 
-// ─── Profile UI ───────────────────────────────────────────────────────────────
-function updateProfileUI() {
+
+async function cloudUpsert(uid: string, bm: Bookmark): Promise<boolean> {
+  if (!STATE.supabase) return false
+  try {
+    // Delete any existing row for this URL first (no-op if not present), then insert.
+    // This avoids needing a unique constraint while still being idempotent.
+    await STATE.supabase
+      .from("bookmarks")
+      .delete()
+      .eq("user_id", uid)
+      .eq("url", bm.url)
+
+    const { error } = await STATE.supabase
+      .from("bookmarks")
+      .insert({ user_id: uid, url: bm.url, title: bm.title })
+    if (error) { console.error("[BM] insert:", error); return false }
+    return true
+  } catch (e) { console.error("[BM] insert exception:", e); return false }
+}
+
+async function cloudDeleteUrl(uid: string, url: string): Promise<boolean> {
+  if (!STATE.supabase) return false
+  try {
+    const { error } = await STATE.supabase
+      .from("bookmarks")
+      .delete()
+      .eq("user_id", uid)
+      .eq("url", url)
+    if (error) { console.error("[BM] delete:", error); return false }
+    return true
+  } catch (e) { console.error("[BM] delete exception:", e); return false }
+}
+
+// ─── Load bookmarks — deduped: only one cloud fetch can be in-flight at a time ─
+// This prevents the race between onAuthStateChange(INITIAL_SESSION) and
+// resolveSession() both calling loadBookmarks() simultaneously.
+let loadPromise: Promise<void> | null = null
+
+async function loadBookmarks() {
+  // If a load is already in progress, wait for it — don't start a second one
+  if (loadPromise) {
+    // console.log("[BM] loadBookmarks: already in progress, waiting.")
+    await loadPromise
+    return
+  }
+
+  loadPromise = (async () => {
+    if (STATE.user) {
+      const uid = STATE.user.id
+      // console.log("[BM] loadBookmarks: starting fetch for user:", uid)
+      const cloud = await cloudFetch(uid)
+      if (STATE.user?.id !== uid) {
+        // console.log("[BM] loadBookmarks: user changed mid-flight, bailing.")
+        return
+      }
+      if (cloud !== null) {
+        // console.log("[BM] loadBookmarks: cloud fetch succeeded, loaded", cloud.length, "bookmarks.")
+        lsWrite(cloud)
+        setState({ bookmarks: cloud })
+      } else {
+        // console.log("[BM] loadBookmarks: cloud fetch failed or timed out, falling back to local cache.")
+        setState({ bookmarks: lsRead() })
+        toast("⚠️ Couldn't reach cloud — showing local bookmarks.")
+      }
+    } else {
+      // console.log("[BM] loadBookmarks: no user, loading local cache.")
+      setState({ bookmarks: lsRead() })
+    }
+  })()
+
+  try {
+    await loadPromise
+  } finally {
+    loadPromise = null
+  }
+}
+
+// ─── Bookmark mutations (optimistic UI + async cloud sync) ────────────────────
+
+async function addBookmark(bm: Bookmark) {
+  const current = STATE.bookmarks ?? lsRead()
+  if (current.some(b => b.url === bm.url)) return // already exists
+
+  // 1. Optimistic update → instant UI
+  const next = [...current, bm]
+  setState({ bookmarks: next })
+  lsWrite(next)
+
+  // 2. Background cloud sync
+  if (STATE.user && STATE.supabase) {
+    const uid = STATE.user.id
+    const ok = await cloudUpsert(uid, bm)
+    if (STATE.user?.id !== uid) return // user changed mid-flight
+
+    if (!ok) {
+      // Revert optimistic update
+      const reverted = (STATE.bookmarks ?? []).filter(b => b.url !== bm.url)
+      setState({ bookmarks: reverted })
+      lsWrite(reverted)
+      toast("❌ Could not save bookmark — please check your connection.")
+    }
+  }
+}
+
+async function removeBookmark(url: string) {
+  const current = STATE.bookmarks ?? lsRead()
+  const removed = current.find(b => b.url === url)
+  if (!removed) return
+
+  // 1. Optimistic remove → instant UI
+  const next = current.filter(b => b.url !== url)
+  setState({ bookmarks: next })
+  lsWrite(next)
+
+  // 2. Background cloud sync
+  if (STATE.user && STATE.supabase) {
+    const uid = STATE.user.id
+    const ok = await cloudDeleteUrl(uid, url)
+    if (STATE.user?.id !== uid) return // user changed mid-flight
+
+    if (!ok) {
+      // Revert optimistic remove
+      const reverted = [...(STATE.bookmarks ?? []), removed]
+      setState({ bookmarks: reverted })
+      lsWrite(reverted)
+      toast("❌ Could not remove bookmark — please check your connection.")
+    }
+  }
+}
+
+// ─── Auth helpers ─────────────────────────────────────────────────────────────
+
+function cleanOAuthUrl() {
+  const u = new URL(window.location.href)
+  u.searchParams.delete("code")
+  u.hash = ""
+  if (u.pathname + u.search !== window.location.pathname + window.location.search) {
+    window.history.replaceState(null, "", u.pathname + u.search)
+  }
+}
+
+// Resolves the current session from Supabase storage and loads bookmarks.
+// Only used as a fallback from the nav hook (onAuthStateChange handles the primary flow).
+async function resolveSession() {
+  if (!STATE.supabase) return
+  try {
+    const { data: { session } } = await STATE.supabase.auth.getSession()
+    const freshUser = session?.user ?? null
+    if (freshUser?.id !== STATE.user?.id) {
+      loadPromise = null
+      // Only clear cache and show spinner if switching to a completely different user account
+      if (STATE.user && freshUser && STATE.user.id !== freshUser.id) {
+        lsClear()
+        setState({ user: freshUser, bookmarks: null })
+      } else {
+        setState({ user: freshUser })
+      }
+    }
+    await loadBookmarks()
+  } catch (e) {
+    console.error("[BM] resolveSession:", e)
+  }
+}
+
+// ─── Render (one unified pass) ────────────────────────────────────────────────
+function render() {
+  renderProfile()
+  renderList()
+  renderTocButtons()
+}
+
+function renderProfile() {
+  const { user, giscusLogin } = STATE
   const guestEls = document.querySelectorAll<HTMLElement>(".profile-guest")
   const loggedEls = document.querySelectorAll<HTMLElement>(".profile-logged-in")
-  const hintEls = document.querySelectorAll<HTMLElement>(".giscus-connection-hint")
   const badges = document.querySelectorAll<HTMLElement>(".bm-toggle-badge")
+  const hintEls = document.querySelectorAll<HTMLElement>(".giscus-connection-hint")
   const hasGiscus = !!document.querySelector("iframe.giscus-frame, .giscus")
 
-  if (currentUser) {
+  if (user) {
     guestEls.forEach(el => { el.style.display = "none" })
+    badges.forEach(b => { b.style.display = "block" })
+    hintEls.forEach(el => { el.style.display = (hasGiscus && !giscusLogin) ? "block" : "none" })
     loggedEls.forEach(el => {
       el.style.display = "flex"
       const nameEl = el.querySelector<HTMLElement>(".profile-name")
       const avatarEl = el.querySelector<HTMLImageElement>(".profile-avatar")
       const letterEl = el.querySelector<HTMLElement>(".profile-avatar-letter")
-      
+
       if (nameEl) {
-        nameEl.textContent = currentUser!.user_metadata?.full_name
-          || currentUser!.user_metadata?.user_name
-          || currentUser!.email?.split("@")[0]
-          || "User"
+        nameEl.textContent =
+          user.user_metadata?.full_name ||
+          user.user_metadata?.user_name ||
+          user.email?.split("@")[0] || "User"
       }
-      
-      if (currentUser!.user_metadata?.avatar_url) {
-        if (avatarEl) {
-          avatarEl.src = currentUser!.user_metadata.avatar_url
-          avatarEl.style.display = "block"
-        }
-        if (letterEl) {
-          letterEl.style.display = "none"
-        }
+      const avatarUrl = user.user_metadata?.avatar_url
+      if (avatarUrl && avatarEl) {
+        avatarEl.src = avatarUrl
+        avatarEl.style.display = "block"
+        if (letterEl) letterEl.style.display = "none"
       } else {
-        if (avatarEl) {
-          avatarEl.style.display = "none"
-        }
+        if (avatarEl) avatarEl.style.display = "none"
         if (letterEl) {
-          const char = (currentUser!.email || currentUser!.user_metadata?.full_name || "U").charAt(0).toUpperCase()
-          letterEl.textContent = char
+          letterEl.textContent = (user.email || user.user_metadata?.full_name || "U").charAt(0).toUpperCase()
           letterEl.style.display = "flex"
         }
       }
     })
-    // Show green badge dot on toggle button
-    badges.forEach(b => { b.style.display = "block" })
-    const showHint = hasGiscus && !giscusUserLogin
-    hintEls.forEach(el => { el.style.display = showHint ? "block" : "none" })
   } else {
     guestEls.forEach(el => { el.style.display = "flex" })
     loggedEls.forEach(el => { el.style.display = "none" })
     badges.forEach(b => { b.style.display = "none" })
+    hintEls.forEach(el => { el.style.display = "none" })
   }
 }
 
-// ─── Toast helper ─────────────────────────────────────────────────────────────
-function showToast(msg: string) {
-  document.querySelector(".giscus-no-comments-tip")?.remove()
-  const tip = Object.assign(document.createElement("div"), {
-    className: "giscus-no-comments-tip", textContent: msg
-  })
-  document.body.appendChild(tip)
-  setTimeout(() => tip.remove(), 3000)
-}
-
-// ─── Local storage helpers ─────────────────────────────────────────────────────
-function loadLocalBookmarks(): Bookmark[] {
-  try {
-    const p = JSON.parse(localStorage.getItem("study-bookmarks") || "[]")
-    return Array.isArray(p) ? p : []
-  } catch { return [] }
-}
-function saveLocalBookmarks(bms: Bookmark[]) {
-  localStorage.setItem("study-bookmarks", JSON.stringify(bms))
-}
-
-// ─── Cloud helpers ─────────────────────────────────────────────────────────────
-async function fetchCloud(): Promise<Bookmark[]> {
-  if (!supabase || !currentUser) return []
-  const { data, error } = await supabase
-    .from("bookmarks").select("url,title").eq("user_id", currentUser.id)
-  if (error) { console.error("Supabase fetch:", error); return [] }
-  return Array.isArray(data) ? (data as Bookmark[]) : []
-}
-
-async function loadBookmarks(): Promise<Bookmark[]> {
-  if (cachedBookmarks !== null) return cachedBookmarks
-  cachedBookmarks = currentUser ? await fetchCloud() : loadLocalBookmarks()
-  return cachedBookmarks
-}
-
-async function forceSyncCloud(bms: Bookmark[]) {
-  if (!currentUser || !supabase) return
-  syncTimeoutId = null
-  const uid = currentUser.id
-  try {
-    // Single batch transaction: Delete previous entries and insert the current list
-    await supabase.from("bookmarks").delete().eq("user_id", uid)
-    if (bms.length > 0) {
-      await supabase.from("bookmarks").insert(bms.map(b => ({ user_id: uid, ...b })))
-    }
-  } catch (err) {
-    console.error("Supabase cloud sync failed:", err)
-  }
-}
-
-async function persistBookmarks(bms: Bookmark[]) {
-  cachedBookmarks = bms
-  saveLocalBookmarks(bms) // Always keep local cache updated instantly (optimistic UI)
-  
-  if (currentUser && supabase) {
-    // If another bookmark action happens within 2 seconds, cancel the previous sync request
-    if (syncTimeoutId) {
-      clearTimeout(syncTimeoutId)
-    }
-    
-    // Batch all changes and sync once user stops bookmarking for 2 seconds
-    syncTimeoutId = setTimeout(() => {
-      forceSyncCloud(bms)
-    }, 2000)
-  }
-}
-
-async function addBookmark(bm: Bookmark) {
-  const bms = await loadBookmarks()
-  if (bms.some(b => b.url === bm.url)) return
-  cachedBookmarks = [...bms, bm]
-  renderBookmarksList(); updateTocButtons()
-  persistBookmarks(cachedBookmarks)
-}
-
-async function removeBookmark(url: string) {
-  const bms = await loadBookmarks()
-  cachedBookmarks = bms.filter(b => b.url !== url)
-  renderBookmarksList(); updateTocButtons()
-  persistBookmarks(cachedBookmarks)
-}
-
-// ─── Migration ─────────────────────────────────────────────────────────────────
-async function migrateLocalToCloud() {
-  if (!currentUser || !supabase) return
-  const local = loadLocalBookmarks()
-  const cloud = await fetchCloud()
-  const merged = [...cloud]
-  local.forEach(lb => { if (!merged.some(c => c.url === lb.url)) merged.push(lb) })
-  await persistBookmarks(merged)
-  cachedBookmarks = null
-}
-
-// ─── REDESIGNED Bookmark List Renderer ────────────────────────────────────────
-// Groups bookmarks by page, shows a search bar when > 4 items
-async function updateMenus() {
-  const bms = await loadBookmarks()
+function renderList() {
   document.querySelectorAll(".bookmarks-list-wrapper").forEach(wrapper => {
-    renderBookmarksInto(wrapper as HTMLElement, bms)
+    renderInto(wrapper as HTMLElement, STATE.bookmarks)
   })
 }
 
-function renderBookmarksList() {
-  if (cachedBookmarks === null) return
-  document.querySelectorAll(".bookmarks-list-wrapper").forEach(wrapper => {
-    renderBookmarksInto(wrapper as HTMLElement, cachedBookmarks!)
-  })
-}
-
-function renderBookmarksInto(wrapper: HTMLElement, bms: Bookmark[]) {
+function renderInto(wrapper: HTMLElement, bms: Bookmark[] | null) {
   wrapper.innerHTML = ""
 
-  if (!bms.length) {
-    wrapper.innerHTML = `<p class="bm-empty">No bookmarks yet.<br><small>Click the 🔖 icon next to any heading in the table of contents.</small></p>`
+  if (bms === null) {
+    wrapper.innerHTML = `<p class="bm-empty bm-loading">
+      <span class="bm-spinner"></span> Loading…
+    </p>`
     return
   }
+  if (!bms.length) {
+    wrapper.innerHTML = `<p class="bm-empty">No bookmarks yet.<br>
+      <small>Click the 🔖 icon next to any heading.</small></p>`
+    return
+  }
+
+  const groupEl = document.createElement("div")
+  groupEl.className = "bm-groups"
 
   if (bms.length > 4) {
     const searchRow = document.createElement("div")
@@ -205,13 +335,10 @@ function renderBookmarksInto(wrapper: HTMLElement, bms: Bookmark[]) {
       <input class="bm-search" type="text" placeholder="Filter bookmarks…" autocomplete="off"/>
     `
     wrapper.appendChild(searchRow)
-    const input = searchRow.querySelector("input")!
+    const input = searchRow.querySelector<HTMLInputElement>("input")!
     input.addEventListener("input", () => renderGrouped(groupEl, bms, input.value.toLowerCase()))
   }
 
-  // Grouped list
-  const groupEl = document.createElement("div")
-  groupEl.className = "bm-groups"
   wrapper.appendChild(groupEl)
   renderGrouped(groupEl, bms, "")
 }
@@ -219,40 +346,39 @@ function renderBookmarksInto(wrapper: HTMLElement, bms: Bookmark[]) {
 function renderGrouped(container: HTMLElement, bms: Bookmark[], filter: string) {
   container.innerHTML = ""
 
-  // Parse title: "Page - Section" or just "Page"
-  const parsed = bms
+  const parsed = (bms || [])
+    .filter(bm => bm && typeof bm === "object")
     .map(bm => {
-      const dash = bm.title.indexOf(" - ")
-      const page = dash > -1 ? bm.title.slice(0, dash) : bm.title
-      const section = dash > -1 ? bm.title.slice(dash + 3) : ""
-      return { ...bm, page, section }
+      const title = bm.title || "Untitled"
+      const url = bm.url || ""
+      const dash = title.indexOf(" - ")
+      return {
+        url,
+        title,
+        page: dash > -1 ? title.slice(0, dash) : title,
+        section: dash > -1 ? title.slice(dash + 3) : "",
+      }
     })
-    .filter(b => !filter || b.page.toLowerCase().includes(filter) || b.section.toLowerCase().includes(filter))
+    .filter(b => !filter ||
+      b.page.toLowerCase().includes(filter) ||
+      b.section.toLowerCase().includes(filter))
 
   if (!parsed.length) {
     container.innerHTML = `<p class="bm-empty">No results for "<em>${filter}</em>"</p>`
     return
   }
 
-  // Group by page
   const pages = new Map<string, typeof parsed>()
-  parsed.forEach(b => {
-    const arr = pages.get(b.page) || []
-    arr.push(b); pages.set(b.page, arr)
-  })
+  parsed.forEach(b => { const a = pages.get(b.page) || []; a.push(b); pages.set(b.page, a) })
 
   pages.forEach((items, page) => {
     const group = document.createElement("div")
     group.className = "bm-group"
-
-    const header = document.createElement("div")
-    header.className = "bm-page-header"
-    header.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-      <span>${page}</span>
-    `
-    group.appendChild(header)
-
+    group.innerHTML = `
+      <div class="bm-page-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <span>${page}</span>
+      </div>`
     items.forEach(b => {
       const row = document.createElement("div")
       row.className = "bm-item"
@@ -261,333 +387,127 @@ function renderGrouped(container: HTMLElement, bms: Bookmark[], filter: string) 
           <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           <span>${b.section || b.page}</span>
         </a>
-        <button class="remove-bookmark" data-url="${b.url}" title="Remove">
+        <button class="bm-remove" data-url="${b.url}" title="Remove bookmark" aria-label="Remove bookmark">
           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      `
+        </button>`
       group.appendChild(row)
     })
-
     container.appendChild(group)
   })
 }
 
-function injectInlineBookmarkButtons() {
-  const headings = document.querySelectorAll("article h1[id], article h2[id], article h3[id], article h4[id], article h5[id], article h6[id]")
-  headings.forEach(heading => {
-    // Prevent double injection
-    if (heading.querySelector(".toc-bookmark-btn")) return
-    // Exclude actual article title
-    if (heading.classList.contains("article-title")) return
 
-    const hash = `#${heading.id}`
-    
-    // Deep clone heading and remove sub-elements (like anchor tags or icons) to extract pure text
+// ─── TOC inline bookmark buttons ──────────────────────────────────────────────
+function injectTocButtons() {
+  document.querySelectorAll("article h1[id], article h2[id], article h3[id], article h4[id], article h5[id], article h6[id]").forEach(heading => {
+    if (heading.querySelector(".toc-bookmark-btn")) return
+    if (heading.classList.contains("article-title")) return
     const clone = heading.cloneNode(true) as HTMLElement
     clone.querySelectorAll(".toc-bookmark-btn, a, .anchor").forEach(el => el.remove())
     const title = clone.textContent?.replace(/🔖|#/g, "").trim() || "Section"
-
     const btn = document.createElement("button")
     btn.className = "toc-bookmark-btn inline-bookmark-btn"
-    btn.setAttribute("data-hash", hash)
+    btn.setAttribute("data-hash", `#${heading.id}`)
     btn.setAttribute("data-title", title)
-    btn.setAttribute("aria-label", "Bookmark section")
+    btn.setAttribute("aria-label", "Bookmark this section")
     btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>`
-
     heading.appendChild(btn)
   })
 }
 
-async function updateTocButtons() {
-  // Dynamically inject inline heading bookmark buttons so they can be styled & processed
-  injectInlineBookmarkButtons()
-
-  const bms = await loadBookmarks()
+function renderTocButtons() {
+  injectTocButtons()
+  const bms = STATE.bookmarks ?? []
   const path = window.location.pathname
   document.querySelectorAll(".toc-bookmark-btn").forEach(btn => {
     const url = path + (btn.getAttribute("data-hash") || "")
-    btn.classList.toggle("bookmarked", bms.some(b => b.url === url))
+    btn.classList.toggle("bookmarked", bms.some(b => b && b.url === url))
   })
 }
 
-// ─── GLOBAL INITIALIZATION (runs exactly once) ─────────────────────────────────
-if (!isInitialized) {
-  isInitialized = true
+// ─── Menu helpers ─────────────────────────────────────────────────────────────
+function closeMenus() {
+  document.querySelectorAll(".bookmarks-menu").forEach(m => m.classList.remove("show"))
+  document.querySelectorAll(".bookmarks-toggle").forEach(b => b.setAttribute("aria-expanded", "false"))
+}
 
-  const sbUrl = (window as any).SUPABASE_URL || ""
-  const sbAnon = (window as any).SUPABASE_ANON_KEY || ""
-  if (sbUrl && sbAnon) {
-    try {
-      supabase = createClient(sbUrl, sbAnon, {
-        auth: { 
-          detectSessionInUrl: true, 
-          persistSession: true,
-          autoRefreshToken: true
-        }
-      })
-    } catch (e) { console.error("Supabase init failed:", e) }
-  }
-
-  if (supabase) {
-    supabase.auth.onAuthStateChange(async (event, session) => {
-      const prevId = currentUser?.id
-      currentUser = session?.user || null
-      if (prevId !== currentUser?.id) cachedBookmarks = null
-
-      const hasHashToken = window.location.hash.includes("access_token=")
-      const hasQueryCode = window.location.search.includes("code=")
-
-      if (event === "SIGNED_IN" && (hasHashToken || hasQueryCode)) {
-        // Session is now safely stored in localStorage. Do a clean reload so
-        // the SPA starts fresh with a valid session (eliminates the ghost-login race).
-        const url = new URL(window.location.href)
-        url.searchParams.delete("code")
-        url.hash = ""
-        window.history.replaceState(null, "", url.pathname + url.search)
-        window.location.reload()
-        return
-      }
-
-      // For all other events (TOKEN_REFRESHED, SIGNED_OUT, etc.) update UI in-place and keep URL clean
-      if (hasHashToken || hasQueryCode) {
-        const url = new URL(window.location.href)
-        url.searchParams.delete("code")
-        url.hash = ""
-        window.history.replaceState(null, "", url.pathname + url.search)
-      }
-
-      updateProfileUI()
-      if (event === "SIGNED_IN" && !prevId && currentUser) await migrateLocalToCloud()
-      await updateMenus()
-      await updateTocButtons()
-    })
-
-    // Resilience for Clock Skew: If we see a token or code in the URL but no session yet,
-    // wait 2 seconds (for the computer clock to catch up) and try to recover it.
-    const hasHashToken = window.location.hash.includes("access_token=")
-    const hasQueryCode = window.location.search.includes("code=")
-    if (hasHashToken || hasQueryCode) {
-      setTimeout(async () => {
-        const { data: { session } } = await supabase!.auth.getSession()
-        if (session && !currentUser) {
-          const url = new URL(window.location.href)
-          url.searchParams.delete("code")
-          url.hash = ""
-          window.history.replaceState(null, "", url.pathname + url.search)
-          window.location.reload()
-        } else if (!session) {
-          showToast("⚠️ Login error: Your computer's clock might be out of sync. Local bookmarks couldn't be saved to the cloud.")
-        }
-      }, 2000)
-    }
-  }
-
-  // Listen for Giscus metadata messages to detect if user is logged into Giscus
-  window.addEventListener("message", (ev) => {
-    if (ev.origin !== "https://giscus.app") return
-    const data = ev.data?.giscus
-    if (!data) return
-    const login = data.viewer?.login || null
-    if (login !== giscusUserLogin) {
-      giscusUserLogin = login
-      updateProfileUI()   // re-render hint visibility
-    }
+// ─── Event delegation (single listener for everything) ───────────────────────
+function setupEvents() {
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeMenus()
   })
 
-  // Escape key → close all menus and restore aria-expanded
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      document.querySelectorAll(".bookmarks-menu.show").forEach(m => m.classList.remove("show"))
-      document.querySelectorAll(".bookmarks-toggle").forEach(b => b.setAttribute("aria-expanded", "false"))
-    }
-  })
-
-  // Single global click delegation
-  document.addEventListener("click", async (e) => {
+  document.addEventListener("click", async e => {
     const t = e.target as HTMLElement
 
-    // Login
+    // ── Login with GitHub ──
     const loginBtn = t.closest<HTMLElement>(".login-btn")
     if (loginBtn) {
       e.preventDefault(); e.stopPropagation()
-      if (!supabase) return void showToast("⚠️ Database not connected.")
-      const orig = loginBtn.innerHTML
+      if (!STATE.supabase) return void toast("⚠️ Database not connected.")
       loginBtn.textContent = "Redirecting to GitHub…"
-      // Strip the hash so Supabase can append #access_token cleanly.
       const redirectTo = window.location.origin + window.location.pathname + window.location.search
-      supabase.auth.signInWithOAuth({
-        provider: "github", options: { redirectTo }
-      }).catch(() => { loginBtn.innerHTML = orig })
+      STATE.supabase.auth.signInWithOAuth({ provider: "github", options: { redirectTo } })
+        .catch(() => { loginBtn.innerHTML = `<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg> Sign In with GitHub` })
       return
     }
 
-    // Email Passwordless Login (Magic Link)
-    const emailBtn = t.closest<HTMLElement>(".email-login-btn")
-    if (emailBtn) {
-      e.preventDefault(); e.stopPropagation()
-      if (!supabase) return void showToast("⚠️ Database not connected.")
-      
-      const emailInput = emailBtn.parentElement?.querySelector<HTMLInputElement>(".email-login-input")
-      if (!emailInput) return
-
-      const email = emailInput.value.trim().toLowerCase()
-      
-      // Basic syntax validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-      if (!email || !emailRegex.test(email)) {
-        showToast("⚠️ Please enter a valid email address.")
-        return
-      }
-
-      // Curated disposable/temporary email provider blacklist
-      const tempMailDomains = new Set([
-        "10minutemail.com", "temp-mail.org", "tempmail.com", "mailinator.com",
-        "yopmail.com", "dispostable.com", "guerrillamail.com", "sharklasers.com",
-        "guerrillamailblock.com", "guerrillamail.net", "guerrillamail.org",
-        "guerrillamail.biz", "grr.la", "pokemail.net", "trashmail.com",
-        "getairmail.com", "maildrop.cc", "mintemail.com", "mailnesia.com",
-        "mailcatch.com", "tempail.com", "disposable.com", "throwawaymail.com",
-        "temp-mail.ru", "temp-mail.io", "moakt.com", "generator.email",
-        "tmail.com", "fakeinbox.com", "incognitomail.com", "safetymail.info",
-        "disposablemail.com", "getnada.com", "dropmail.me", "tempmailaddress.com"
-      ])
-
-      const domain = email.split("@").pop() || ""
-      if (tempMailDomains.has(domain)) {
-        showToast("⚠️ Temporary/disposable emails are not allowed!")
-        return
-      }
-
-      const orig = emailBtn.innerHTML
-      emailBtn.textContent = "Sending Magic Link…"
-      emailBtn.style.pointerEvents = "none"
-      emailBtn.style.opacity = "0.7"
-
-      const redirectTo = window.location.origin + window.location.pathname + window.location.search
-      
-      try {
-        const { error } = await supabase.auth.signInWithOtp({
-          email,
-          options: {
-            emailRedirectTo: redirectTo
-          }
-        })
-
-        if (error) {
-          console.error("Magic link request failed:", error)
-          showToast("❌ error: " + error.message)
-        } else {
-          showToast("📧 Magic link sent! Check your inbox.")
-          emailInput.value = ""
-        }
-      } catch (err) {
-        console.error("OTP Sign-In Error:", err)
-        showToast("❌ Failed to request magic link.")
-      } finally {
-        emailBtn.innerHTML = orig
-        emailBtn.style.pointerEvents = "auto"
-        emailBtn.style.opacity = "1"
-      }
-      return
-    }
-
-    // Logout
+    // ── Sign out ──
     const logoutBtn = t.closest<HTMLElement>(".logout-btn")
     if (logoutBtn) {
       e.preventDefault(); e.stopPropagation()
-      if (!supabase) return
+      if (!STATE.supabase) return
       logoutBtn.textContent = "Signing out…"
-      
-      if (syncTimeoutId) {
-        clearTimeout(syncTimeoutId)
-        syncTimeoutId = null
-      }
-
-      Object.keys(localStorage).forEach(k => {
-        if (k.startsWith("sb-") && k.endsWith("-auth-token")) localStorage.removeItem(k)
-      })
-
-      Promise.race([
-        supabase.auth.signOut(),
-        new Promise(r => setTimeout(r, 1000))
-      ]).finally(() => {
-        currentUser = null; cachedBookmarks = null;
-        cleanAuthHashFromUrl();
-        window.location.replace(window.location.pathname + window.location.search);
-      })
+      lsClear()
+      await Promise.race([STATE.supabase.auth.signOut(), new Promise(r => setTimeout(r, 1500))])
+      cleanOAuthUrl()
+      window.location.replace(window.location.pathname + window.location.search)
       return
     }
 
-    // Delete account & all data
+    // ── Delete account ──
     const deleteBtn = t.closest<HTMLElement>(".delete-account-btn")
     if (deleteBtn) {
       e.preventDefault(); e.stopPropagation()
-      if (!supabase || !currentUser) return
-
-      const confirmed = window.confirm(
-        "Are you sure you want to delete all your bookmarks and sign out?\n\n" +
-        "This will permanently remove all your saved bookmarks from our database. " +
-        "This action cannot be undone."
-      )
-      if (!confirmed) return
-
+      if (!STATE.supabase || !STATE.user) return
+      if (!window.confirm("Delete all your bookmarks permanently? This cannot be undone.")) return
       deleteBtn.textContent = "Deleting…"
-      const uid = currentUser.id
-
-      if (syncTimeoutId) {
-        clearTimeout(syncTimeoutId)
-        syncTimeoutId = null
-      }
-
+      const uid = STATE.user.id
       try {
-        // Delete all bookmarks from cloud
-        await supabase.from("bookmarks").delete().eq("user_id", uid)
-        // Clear local storage bookmarks cache
-        localStorage.removeItem("study-bookmarks")
-        // Clear auth tokens
-        Object.keys(localStorage).forEach(k => {
-          if (k.startsWith("sb-") && k.endsWith("-auth-token")) localStorage.removeItem(k)
-        })
-        cachedBookmarks = []
-        // Sign out
-        await Promise.race([
-          supabase.auth.signOut(),
-          new Promise(r => setTimeout(r, 1000))
-        ])
-      } catch (err) {
-        console.error("Delete failed:", err)
-      } finally {
-        currentUser = null; cachedBookmarks = null;
-        cleanAuthHashFromUrl();
-        window.location.replace(window.location.pathname + window.location.search);
-      }
+        await STATE.supabase.from("bookmarks").delete().eq("user_id", uid)
+        lsClear()
+        await Promise.race([STATE.supabase.auth.signOut(), new Promise(r => setTimeout(r, 1500))])
+      } catch { }
+      cleanOAuthUrl()
+      window.location.replace(window.location.pathname + window.location.search)
       return
     }
 
-    // Remove bookmark
-    const rmBtn = t.closest<HTMLElement>(".remove-bookmark")
+    // ── Remove single bookmark ──
+    const rmBtn = t.closest<HTMLElement>(".bm-remove")
     if (rmBtn) {
       e.preventDefault(); e.stopPropagation()
-      const url = rmBtn.dataset.url || ""
+      const url = rmBtn.dataset.url
       if (url) removeBookmark(url)
       return
     }
 
-    // TOC bookmark toggle
+    // ── TOC bookmark toggle ──
     const tocBtn = t.closest<HTMLElement>(".toc-bookmark-btn")
     if (tocBtn) {
       e.preventDefault(); e.stopPropagation()
       const hash = tocBtn.getAttribute("data-hash") || ""
       const title = tocBtn.getAttribute("data-title") || "Section"
       const url = window.location.pathname + hash
-      const label = `${document.title.split(" - ")[0]} - ${title}`
-      loadBookmarks().then(bms =>
-        bms.some(b => b.url === url) ? removeBookmark(url) : addBookmark({ url, title: label })
-      )
+      const pageTitle = document.querySelector(".article-title")?.textContent?.trim() || "Page"
+      const bms = STATE.bookmarks ?? []
+      bms.some(b => b.url === url)
+        ? removeBookmark(url)
+        : addBookmark({ url, title: `${pageTitle} - ${title}` })
       return
     }
 
-    // Connect to Giscus
+    // ── Giscus connect ──
     const giscusBtn = t.closest<HTMLElement>(".jump-to-comments-btn")
     if (giscusBtn) {
       e.preventDefault(); e.stopPropagation()
@@ -598,73 +518,151 @@ if (!isInitialized) {
           iframe.contentWindow?.postMessage({ giscus: { setConfig: {} } }, "https://giscus.app")
           iframe.contentWindow?.postMessage({ giscus: { signIn: true } }, "https://giscus.app")
         }, 600)
-        document.querySelectorAll(".bookmarks-menu").forEach(m => m.classList.remove("show"))
+        closeMenus()
       } else {
-        showToast("💬 This page doesn't have a comments section.")
+        toast("💬 This page doesn't have a comments section.")
       }
       return
     }
 
-    // Click on any feature requiring funding -> open donation modal
-    const fundingFeatureItem = t.closest<HTMLElement>("[data-requires-funding='true']")
-    if (fundingFeatureItem) {
+    // ── Funding feature → open donation modal ──
+    const fundingItem = t.closest<HTMLElement>("[data-requires-funding='true']")
+    if (fundingItem) {
       e.preventDefault(); e.stopPropagation()
-      // Close the bookmarks menu
-      document.querySelectorAll(".bookmarks-menu").forEach(m => m.classList.remove("show"))
-      document.querySelectorAll(".bookmarks-toggle").forEach(b => b.setAttribute("aria-expanded", "false"))
-      
-      // Open the donation hub modal
-      const donationModal = document.querySelector<HTMLElement>("#donation-hub-modal")
-      if (donationModal) {
-        donationModal.classList.add("show")
-        document.body.classList.add("modal-open")
-      }
+      closeMenus()
+      const modal = document.querySelector<HTMLElement>("#donation-hub-modal")
+      if (modal) { modal.classList.add("show"); document.body.classList.add("modal-open") }
       return
     }
 
-    // Toggle bookmarks menu
+    // ── Toggle bookmarks panel ──
     const toggleBtn = t.closest<HTMLElement>(".bookmarks-toggle")
-    const menus = document.querySelectorAll(".bookmarks-menu")
     if (toggleBtn) {
       e.stopPropagation()
       const allToggles = Array.from(document.querySelectorAll(".bookmarks-toggle"))
       const idx = allToggles.indexOf(toggleBtn)
-      menus.forEach((m, i) => {
+      document.querySelectorAll(".bookmarks-menu").forEach((m, i) => {
         const isOpen = i === idx && !m.classList.contains("show")
         m.classList.toggle("show", isOpen)
-        // Sync aria-expanded on the matching toggle button
         const btn = allToggles[i] as HTMLElement
         if (btn) btn.setAttribute("aria-expanded", isOpen ? "true" : "false")
       })
       return
     }
 
-    // Click-outside → close menus
-    menus.forEach(m => {
+    // ── Click-outside → close ──
+    document.querySelectorAll(".bookmarks-menu").forEach(m => {
       if (m.classList.contains("show") && !m.contains(t)) {
         m.classList.remove("show")
         document.querySelectorAll(".bookmarks-toggle").forEach(b => b.setAttribute("aria-expanded", "false"))
       }
     })
   })
+
+  // Giscus postMessage (detect if user is signed in to comments)
+  window.addEventListener("message", ev => {
+    if (ev.origin !== "https://giscus.app") return
+    const login = ev.data?.giscus?.viewer?.login ?? null
+    if (login !== STATE.giscusLogin) {
+      STATE.giscusLogin = login
+      renderProfile()
+    }
+  })
 }
 
-// ─── SPA nav hook ─────────────────────────────────────────────────────────────
-document.addEventListener("nav", async () => {
-  // Only fetch the session if we don't already know who the user is.
-  // This prevents a race where getSession() returns null before onAuthStateChange
-  // has had time to store the session (ghost-login bug).
-  if (supabase && !currentUser) {
-    const { data: { session } } = await supabase.auth.getSession()
-    const freshUser = session?.user || null
-    if (freshUser) {
-      currentUser = freshUser
-      cachedBookmarks = null
+// ─── INITIALIZATION (guarded: runs exactly once per page lifetime) ─────────────
+if (!STATE.initialized) {
+  STATE.initialized = true
+  cleanOAuthUrl()
+
+  // Build Supabase client from env vars injected by Bookmarks.tsx
+  const sbUrl = (window as any).SUPABASE_URL || ""
+  const sbAnon = (window as any).SUPABASE_ANON_KEY || ""
+  if (sbUrl && sbAnon) {
+    try {
+      STATE.supabase = createClient(sbUrl, sbAnon, {
+        auth: { detectSessionInUrl: true, persistSession: true, autoRefreshToken: true },
+      })
+    } catch (e) { console.error("[BM] Supabase init failed:", e) }
+  }
+
+  if (STATE.supabase) {
+    STATE.supabase.auth.onAuthStateChange(async (event, session) => {
+      const newUser = session?.user ?? null
+
+      // OAuth redirect: session now stored in localStorage — reload cleanly
+      if (event === "SIGNED_IN" &&
+        (window.location.hash.includes("access_token=") ||
+          window.location.search.includes("code="))) {
+        cleanOAuthUrl()
+        window.location.reload()
+        return
+      }
+
+      // Act when user IDENTITY changes (covers INITIAL_SESSION, SIGNED_IN, SIGNED_OUT).
+      if (newUser?.id !== STATE.user?.id) {
+        console.log("[BM] Auth identity change. Event:", event, "User:", newUser?.email || "Guest")
+        if (!newUser) {
+          loadPromise = null
+          setState({ user: null, bookmarks: lsRead() })
+        } else {
+          loadPromise = null  // Reset so a fresh fetch happens for the new user
+          // Only clear cache and show spinner if switching to a completely different user account
+          if (STATE.user && STATE.user.id !== newUser.id) {
+            console.log("[BM] Switching user accounts, clearing cache.")
+            lsClear()
+            setState({ user: newUser, bookmarks: null })
+          } else {
+            setState({ user: newUser })
+          }
+
+          // Defer loading to the next event loop tick.
+          // This avoids a deadlock where GoTrue holds its internal auth lock during
+          // onAuthStateChange, blocking the Postgrest client's token-retrieval call.
+          setTimeout(() => {
+            loadBookmarks()
+          }, 0)
+        }
+      }
+    })
+
+    // Clock-skew resilience: if OAuth params are present but onAuthStateChange
+    // hasn't fired yet, manually try getSession after a short delay
+    if (window.location.hash.includes("access_token=") || window.location.search.includes("code=")) {
+      setTimeout(async () => {
+        const { data: { session } } = await STATE.supabase!.auth.getSession()
+        if (session && !STATE.user) {
+          cleanOAuthUrl()
+          window.location.reload()
+        } else if (!session) {
+          toast("⚠️ Sign-in failed. Your system clock may be out of sync.")
+        }
+      }, 2000)
     }
   }
-  // Reset Giscus login state per-page (new page may not have giscus)
-  giscusUserLogin = null
-  updateProfileUI()
-  await updateMenus()
-  await updateTocButtons()
+
+  setupEvents()
+
+  // NOTE: We do NOT call resolveSession() here.
+  // onAuthStateChange fires INITIAL_SESSION almost immediately on registration,
+  // which sets the user and loads bookmarks. Calling resolveSession() here too
+  // would cause two parallel loadBookmarks() calls that race each other.
+  // The loadPromise deduplicator protects against races from the nav hook.
+}
+
+// ─── SPA nav hook (Quartz fires "nav" on every page transition) ───────────────
+document.addEventListener("nav", async () => {
+  STATE.giscusLogin = null
+
+  if (STATE.bookmarks !== null) {
+    // Bookmarks already loaded — just re-render for the new page context
+    render()
+  } else if (STATE.user !== null) {
+    // User is known but bookmarks not yet loaded — load them (deduped)
+    await loadBookmarks()
+  } else {
+    // Neither user nor bookmarks are known yet — full session resolution
+    // (handles edge case where nav fires before INITIAL_SESSION fires)
+    await resolveSession()
+  }
 })

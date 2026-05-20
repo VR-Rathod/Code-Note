@@ -31,14 +31,15 @@ export const GitHubFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options>> =
               behavior: "append",
               properties: {
                 role: "anchor",
-                ariaHidden: true,
                 tabIndex: -1,
                 "data-no-popover": true,
+                ariaLabel: "Link to section",
               },
               content: {
                 type: "element",
                 tagName: "svg",
                 properties: {
+                  ariaHidden: "true",
                   width: 18,
                   height: 18,
                   viewBox: "0 0 24 24",
