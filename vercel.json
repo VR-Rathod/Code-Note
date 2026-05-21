@@ -9,6 +9,11 @@
       "source": "/index",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/c\\+\\+",
+      "destination": "/cpp",
+      "permanent": true
     }
   ],
   "rewrites": [

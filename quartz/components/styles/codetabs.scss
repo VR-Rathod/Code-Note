@@ -1,0 +1,150 @@
+.code-tabs {
+  --tab-surface: color-mix(in srgb, var(--light) 90%, var(--dark) 10%);
+  --tab-border: color-mix(in srgb, var(--lightgray) 70%, var(--darkgray) 30%);
+  --tab-nav: color-mix(in srgb, var(--light) 95%, var(--dark) 5%);
+  --tab-hover: color-mix(in srgb, var(--secondary) 12%, var(--light) 88%);
+  --tab-panel: color-mix(in srgb, var(--light) 97%, var(--dark) 3%);
+  --tab-text: var(--darkgray);
+  --tab-text-strong: var(--dark);
+  --tab-active: linear-gradient(135deg, var(--secondary) 0%, color-mix(in srgb, var(--secondary) 85%, var(--tertiary) 15%) 100%);
+  --tab-active-shadow: color-mix(in srgb, var(--secondary) 30%, transparent 70%);
+  --tab-active-text: var(--light);
+
+  // Outer wrapper: just a column flex gap — no border, no background
+  margin: 1.8rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+
+  // ── Tab Nav Bar ───────────────────────────────────────────────────────────
+  .code-tabs-nav {
+    display: flex;
+    align-items: center;
+    background-color: var(--tab-nav);
+    border: 1px solid var(--tab-border);
+    border-radius: 12px;
+    padding: 0.55rem 0.8rem;
+    gap: 1.8rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.09);
+      border-color: color-mix(in srgb, var(--secondary) 35%, var(--tab-border) 65%);
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    // Mac-style window buttons
+    &::before {
+      content: "";
+      position: absolute;
+      left: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #ff5f56; // red
+      box-shadow: 15px 0 0 #ffbd2e, 30px 0 0 #27c93f; // yellow, green
+    }
+
+    @media (max-width: 600px) {
+      padding-left: 0.8rem;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  // ── Tab Buttons ───────────────────────────────────────────────────────────
+  .code-tab-button {
+    background: transparent;
+    border: none;
+    font-family: var(--codeFont);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--tab-text);
+    padding: 0.4rem 0.9rem;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+      color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 8px;
+    outline: none;
+    user-select: none;
+    white-space: nowrap;
+
+    &:hover {
+      color: var(--tab-text-strong);
+      background-color: var(--tab-hover);
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &.active {
+      color: var(--tab-active-text);
+      font-weight: 700;
+      background: var(--tab-active);
+      box-shadow: 0 4px 12px var(--tab-active-shadow);
+      transform: translateY(0);
+    }
+  }
+
+  // ── Code Panel Box ────────────────────────────────────────────────────────
+  .code-tabs-panel {
+    border: 1px solid var(--tab-border);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--tab-surface);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+      border-color: color-mix(in srgb, var(--secondary) 25%, var(--tab-border) 75%);
+    }
+
+    figure[data-rehype-pretty-code-figure],
+    >pre {
+      margin: 0 !important;
+      animation: fadeInTab 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      background-color: var(--tab-panel);
+
+      pre {
+        margin: 0 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        background-color: transparent !important;
+        padding: 1.2rem !important;
+      }
+    }
+  }
+}
+
+// Smooth fade-in animation for switching tabs
+@keyframes fadeInTab {
+  from {
+    opacity: 0.4;
+    transform: translateY(3px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

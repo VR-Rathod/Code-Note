@@ -109,10 +109,10 @@ const Bookmarks: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
           <div class="features-roadmap-section">
             <h5 class="roadmap-title">Roadmap & Features</h5>
             <div class="features-list">
-              <div class="feature-item">
+              <a href="/binary-search" class="feature-item feature-item-link" aria-label="View Code Snippets Better Preview">
                 <span class="feature-name">Code Snippets Better Preview</span>
-                <span class="service-badge status-indev">In Dev</span>
-              </div>
+                <span class="service-badge status-released">Released</span>
+              </a>
               <div class="feature-item">
                 <span class="feature-name">Flashcards & Quiz Mode</span>
                 <span class="service-badge status-coming-soon">Coming Soon</span>

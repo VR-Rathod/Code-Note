@@ -48,6 +48,16 @@ export const LogseqFlavoredMarkdown: QuartzTransformerPlugin = () => {
           // ── Step 3: Unwrap list items containing headings or code blocks ────
           // Logseq wraps headings (## Foo) and code blocks inside list items.
           // We need to hoist them out so they render as proper HTML elements.
+          const isCodeTabsMarker = (child: BlockContent): boolean => {
+            if (child.type !== "paragraph") return false
+            const para = child as Paragraph
+            return para.children.some((c) => {
+              if (c.type !== "html") return false
+              const htmlVal = (c as any).value || ""
+              return htmlVal.includes("data-code-tabs-start") || htmlVal.includes("data-code-tabs-end")
+            })
+          }
+
           const unwrapListItems = (nodes: Root["children"]): Root["children"] => {
             const result: Root["children"] = []
 
@@ -76,6 +86,8 @@ export const LogseqFlavoredMarkdown: QuartzTransformerPlugin = () => {
                     hoistable.push(child as Table)
                   } else if (child.type === "list") {
                     nestedLists.push(child as List)
+                  } else if (isCodeTabsMarker(child)) {
+                    hoistable.push(child)
                   } else {
                     keepInList.push(child as BlockContent)
                   }
@@ -136,20 +148,23 @@ export const LogseqFlavoredMarkdown: QuartzTransformerPlugin = () => {
           // ── Step 4: Remove empty list items (bare `-` lines from Logseq) ───
           visit(tree, "list", ((node: List, index: number, parent: Root | List | null) => {
             node.children = node.children.filter((item: ListItem) => {
-              const hasNestedList = item.children.some((child) => child.type === "list")
-              if (hasNestedList) return true
+              if (item.children.length === 0) return false
 
-              const para = item.children.find((c) => c.type === "paragraph") as
-                | Paragraph
-                | undefined
-              if (!para) return false
+              // Keep list items containing non-paragraph nodes (like nested lists, code blocks, html comments)
+              const hasContentNode = item.children.some((child) => child.type !== "paragraph")
+              if (hasContentNode) return true
 
-              const text = para.children
-                .map((c) => (c.type === "text" ? (c as Text).value : "x"))
-                .join("")
-                .trim()
+              // If only paragraphs are present, verify that at least one is non-empty
+              const paragraphs = item.children.filter((c) => c.type === "paragraph") as Paragraph[]
+              const hasText = paragraphs.some((para) => {
+                const text = para.children
+                  .map((c) => (c.type === "text" ? (c as Text).value : ""))
+                  .join("")
+                  .trim()
+                return text.length > 0
+              })
 
-              return text.length > 0
+              return hasText
             })
 
             if (node.children.length === 0 && parent && index !== undefined) {

@@ -50,6 +50,7 @@ const config: QuartzConfig = {
   },
   plugins: {
     transformers: [
+      Plugin.CodeTabs(),
       Plugin.LogseqFlavoredMarkdown(),
       Plugin.FrontMatter(),
       Plugin.CreatedModifiedDate({

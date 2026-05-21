@@ -601,7 +601,7 @@ if (!STATE.initialized) {
 
       // Act when user IDENTITY changes (covers INITIAL_SESSION, SIGNED_IN, SIGNED_OUT).
       if (newUser?.id !== STATE.user?.id) {
-        console.log("[BM] Auth identity change. Event:", event, "User:", newUser?.email || "Guest")
+        // console.log("[BM] Auth identity change. Event:", event, "User:", newUser?.email || "Guest")
         if (!newUser) {
           loadPromise = null
           setState({ user: null, bookmarks: lsRead() })

@@ -12,3 +12,5 @@ export { TableOfContents } from "./toc"
 export { HardLineBreaks } from "./linebreaks"
 export { RoamFlavoredMarkdown } from "./roam"
 export { LogseqFlavoredMarkdown } from "./logseq"
+export { CodeTabs } from "./codetabs"
+
