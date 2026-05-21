@@ -34,7 +34,7 @@ keywords: "Lua programming, Lua language, tables, metatables, coroutines, closur
 - # Libs & Framework
 	- [[LuaSocket]]: A Lua library for networking. It provides support for TCP and UDP sockets.
 	- [[LuaRocks]]: A package manager for Lua, which helps you install and manage Lua modules.
-	- [[LÖVE]]: A framework for making 2D games in Lua.
+	- [[Love]] : A framework for making 2D games in Lua.
 -
 - # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills : -

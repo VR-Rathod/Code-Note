@@ -45,6 +45,9 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 		- [[Observer Pattern]] - Notifying multiple objects about state changes in another object.
 		- [[Singleton Pattern]] - Ensuring a class has only one instance and providing a global point of access.
 -
+- # Complexity Analysis
+	- [[Complexity Analysis]] - Complete guide to time and space complexity, Big O notation, and algorithm mathematics.
+-
 - # Algorithms
 	- ## Searching:
 		- 1) [[Binary Search]] - efficient algorithm to find an element in a **sorted** array.
@@ -140,7 +143,7 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 	- [[fibonacci]] - Short trick
 	- [[palindrome]] - short method
 -
-- # Binary systemm
+- # Binary system
 	- [[binary]] - every type of binary calculations
 -
 - # System Design

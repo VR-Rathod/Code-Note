@@ -41,7 +41,6 @@ displayTitle: Game Design
 		  ```
 -
 - # Introduction
-  collapsed:: true
 	- Game design is the art and science of creating rules, systems, and experiences that make games fun, engaging, and meaningful. It sits at the intersection of psychology, systems thinking, storytelling, and UX design.
 	-
 	- ## Game Design Knowledge Map
@@ -94,16 +93,15 @@ displayTitle: Game Design
 		  | Technical Designer | Scripting, tools, bridges design + code |
 	-
 	- ## Common Beginner Mistakes
-	  collapsed:: true
 		- > [!warning] Avoid These
-		  > - Building before designing (no GDD, no prototype)
-		  > - Copying mechanics without understanding WHY they work
-		  > - Designing for yourself, not your target player
-		  > - Ignoring playtesting until it's too late
-		  > - Feature creep — adding more instead of polishing what exists
-		  > - Skipping the "why is this fun?" question
-		  > - No feedback loops — player actions have no visible consequence
-		  > - Flat difficulty — no curve, no escalation
+		  > Building before designing (no GDD, no prototype)
+		  > Copying mechanics without understanding WHY they work
+		  > Designing for yourself, not your target player
+		  > Ignoring playtesting until it's too late
+		  > Feature creep — adding more instead of polishing what exists
+		  > Skipping the "why is this fun?" question
+		  > No feedback loops — player actions have no visible consequence
+		  > Flat difficulty — no curve, no escalation
 -
 - # MDA Framework
 	- > [!tip] Core Principle

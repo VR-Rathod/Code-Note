@@ -471,6 +471,7 @@ displayTitle: Game Engines
 		      Q2 -->|Beginner / No code| Construct[Construct 4]
 		      Q2 -->|Want to make an RPG| RPG[RPG Maker MZ]
 		      Q2 -->|Intermediate dev| GM[GameMaker Studio 2]
+		      Q2 -->|Code-only 2D / Lua code-focused| LOVE[LÖVE Framework]
 		      Q2 -->|Advanced, open source| Godot2[Godot Engine]
 		  
 		      Q3 -->|Indie / Small team| Godot3[Godot Engine]

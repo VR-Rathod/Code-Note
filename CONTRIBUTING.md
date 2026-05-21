@@ -240,30 +240,45 @@ See `Kali Linux.md` as the reference implementation.
 
 ## Algorithm/Data Structure Format
 
+See `Binary Search.md` or `` as reference implementations.
+
 ```
-# What is <Algorithm/DS>?
-  - Definition, purpose, real-world use cases
+# Explanation
+  - Clear definition, purpose, real-world use cases
+  - ## Real-World Analogy  (optional but recommended)
+  - ## Why <Algorithm>?   (optional — key insight or motivation)
 
 # How It Works
   collapsed:: true
-  - Step-by-step explanation with diagram (ASCII art if needed)
+  - ## Step-by-Step Process  (ASCII art / pseudocode block)
+  - ## Visual Walkthrough    (traced example with sample data)
 
-# Complexity
+# Time & Space Complexity
   collapsed:: true
-  - Time: O(?) — best / average / worst
-  - Space: O(?)
+  - Plain text table: Best / Average / Worst / Space
+  - Comparison to alternatives if relevant
 
 # Implementation
   collapsed:: true
-  - ## Python
-  - ## Java
-  - ## C++
-  - (at least 2 languages)
+  - Use :::code-tabs for multi-language tab view (Python, C++, JS, Java, C)
+  - Use logseq default code block for single-language focused snippet
+  - At minimum: Python + one systems language (C++ or C)
 
-# Variations / Related
+# Recursive Variant   (optional)
   collapsed:: true
+  - Use logseq default code block for the recursive version
 
-# More Learn
+# When to Use
+  collapsed:: true
+  - ## Use <Algorithm> When:   (bullet list of ✅ good cases)
+  - ## Avoid When:             (bullet list of ❌ bad cases)
+
+# Variations / Related  (optional)
+  collapsed:: true
+  - Use logseq default code block for each variant snippet
+
+# Key Takeaways
+  - 4–7 concise bullets summarizing the most important points
 ```
 
 ---
@@ -319,18 +334,70 @@ See `Kali Linux.md` as the reference implementation.
 
 ---
 
+## Code Block Formats
+
+This project uses three code block styles. Use the right one for the right context:
+
+### 1. Plain Fenced Block — ```` ```language ````
+Use for a **single standalone snippet** inside a regular bullet.
+```python
+def example():
+    pass
+```
+
+### 2. `:::code-note` — Single-Language Focus Block
+Use for a **featured snippet** that deserves visual emphasis — a clean, dedicated display for one language.
+Perfect for: recursive variants, utility helpers, built-in usage examples.
+```
+:::code-note
+
+```python
+def binary_search(arr, target):
+    ...
+```
+
+:::
+```
+
+### 3. `:::code-tabs` — Multi-Language Tab View
+Use when showing the **same algorithm in multiple languages** side by side as switchable tabs.
+Perfect for: main implementation sections where you want Python, C++, JS, Java, C all available.
+```
+:::code-tabs
+
+```python
+# Python implementation
+```
+
+```cpp
+// C++ implementation
+```
+
+```javascript
+// JavaScript implementation
+```
+
+:::
+```
+
+> **Rule:** Always use `:::code-tabs` for multi-language implementations, `:::code-note` for single highlighted snippets, and plain fenced blocks for inline examples within bullet text.
+
+---
+
 ## General Rules (Apply to ALL Pages)
 
-1. **collapsed:: true** — Add to every top-level section except the last `# More Learn` section. This keeps Logseq clean.
+1. **collapsed:: true** — Add to every top-level section except the first (`# Explanation`) and last (`# Key Takeaways`). This keeps Logseq clean.
 2. **Logseq bullet syntax** — All content must use `- ` (dash + space, by default will apply if you are using Logseq) bullet format. Headings inside bullets use `## ` or `### `.
 3. **Internal links** — Use `[[Page Name]]` to link to other pages in the knowledge base. Never use relative file paths.
 4. **No broken links** — Only link to pages that actually exist in `/pages/`. If the page doesn't exist yet, create it or leave plain text.
-5. **Code blocks** — Always specify the language. Use ```` ```bash ```` for terminal commands, ```` ```python ```` for Python, etc.
+5. **Code blocks** — Always specify the language tag. Use ```` ```bash ```` for terminal commands, ```` ```python ```` for Python, etc. See [Code Block Formats](#code-block-formats) for `:::code-note` and `:::code-tabs`.
 6. **No promotion** — The `# More Learn` section only accepts links to trusted public resources: GitHub repos, official docs, free YouTube playlists. No personal social media promotion.
 7. **Spelling & grammar** — Write in clear English. Use spell-check before submitting.
 8. **No duplicate content** — If a topic is already covered in another page, link to it with `[[Page Name]]` instead of repeating it.
 9. **SEO keywords** — Always end the `keywords` frontmatter field with `, VR-Rathod, Code-Note, code note vr, vr book`.
 10. **File size** — There is no maximum size. Bigger, more detailed pages are better. Depth is valued over brevity.
+11. **Code comments** — All code snippets must have inline comments explaining key lines. Show output where relevant.
+12. **Overflow prevention** — In C/C++/Java, always use `mid = low + (high - low) / 2` instead of `(low + high) / 2` when doing binary search to prevent integer overflow. Document this in your code.
 
 ---
 

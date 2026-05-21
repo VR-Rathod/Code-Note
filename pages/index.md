@@ -193,6 +193,8 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
   collapsed:: true
 	- [[DSA Algo & System Design]] : The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for searching, sorting, and optimization.
 	-
+	- [[Complexity Analysis]] :- Guide to analyzing algorithms, Big O notation, space-time trade-offs, and mathematical foundations.
+	-
 	- [[Binary Space Partitioning]] :- Spatial data structure used in game engines for rendering optimization and collision detection.
 	-
 	- [[System Design]]: In-depth guide to designing scalable, reliable, and high-performance systems — covering load balancing, caching, databases, microservices, CAP theorem, message queues, API design, and real-world case studies.
