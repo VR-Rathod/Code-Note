@@ -1,5 +1,14 @@
 function switchTab(container: Element, activeIdx: number) {
   const buttons = container.querySelectorAll(".code-tab-button")
+  const activeBtn = buttons[activeIdx] as HTMLElement | undefined
+
+  const indicator = container.querySelector(".code-tabs-nav-indicator") as HTMLElement | null
+  const isAlreadyActive = activeBtn && activeBtn.classList.contains("active")
+
+  if (isAlreadyActive && indicator && indicator.style.width) {
+    return
+  }
+
   // Panels live inside the .code-tabs-panel wrapper box
   const panelWrapper = container.querySelector(".code-tabs-panel")
   const panels = panelWrapper
@@ -19,6 +28,19 @@ function switchTab(container: Element, activeIdx: number) {
       btn.setAttribute("aria-selected", "false")
     }
   })
+
+  if (indicator && activeBtn) {
+    const isFirstTime = !indicator.style.width
+    if (isFirstTime) {
+      indicator.style.transition = "none"
+    }
+    indicator.style.width = `${activeBtn.offsetWidth}px`
+    indicator.style.transform = `translateX(${activeBtn.offsetLeft}px)`
+    if (isFirstTime) {
+      indicator.offsetHeight // force repaint/reflow
+      indicator.style.transition = ""
+    }
+  }
 
   panels.forEach((panel, idx) => {
     if (idx === activeIdx) {
@@ -152,6 +174,11 @@ function setupCodeTabs() {
     const nav = document.createElement("div")
     nav.className = "code-tabs-nav"
     nav.setAttribute("role", "tablist")
+    
+    const indicator = document.createElement("div")
+    indicator.className = "code-tabs-nav-indicator"
+    nav.appendChild(indicator)
+
     container.appendChild(nav)
 
     // Separate panel wrapper box (the code area card)
@@ -277,6 +304,11 @@ function setupCodeTabs() {
     const nav = document.createElement("div")
     nav.className = "code-tabs-nav"
     nav.setAttribute("role", "tablist")
+    
+    const indicator = document.createElement("div")
+    indicator.className = "code-tabs-nav-indicator"
+    nav.appendChild(indicator)
+
     container.appendChild(nav)
 
     // Separate panel wrapper box (the code area card)
@@ -387,6 +419,11 @@ function setupCodeTabs() {
     const nav = document.createElement("div")
     nav.className = "code-tabs-nav"
     nav.setAttribute("role", "tablist")
+    
+    const indicator = document.createElement("div")
+    indicator.className = "code-tabs-nav-indicator"
+    nav.appendChild(indicator)
+
     container.appendChild(nav)
 
     // Separate panel wrapper box (the code area card)
@@ -469,6 +506,31 @@ function setupCodeTabs() {
 
     switchTab(container, activeIndex)
   })
+
+  // Reposition all indicators after layout has computed
+  requestAnimationFrame(() => {
+    repositionIndicators()
+  })
+}
+
+function repositionIndicators() {
+  const allContainers = document.querySelectorAll(".code-tabs")
+  allContainers.forEach((container) => {
+    const activeBtn = container.querySelector(".code-tab-button.active") as HTMLElement | null
+    const indicator = container.querySelector(".code-tabs-nav-indicator") as HTMLElement | null
+    if (indicator && activeBtn) {
+      indicator.style.transition = "none"
+      indicator.style.width = `${activeBtn.offsetWidth}px`
+      indicator.style.transform = `translateX(${activeBtn.offsetLeft}px)`
+      indicator.offsetHeight // force repaint
+      indicator.style.transition = ""
+    }
+  })
+}
+
+window.addEventListener("resize", repositionIndicators)
+if (document.fonts) {
+  document.fonts.ready.then(repositionIndicators)
 }
 
 document.addEventListener("DOMContentLoaded", setupCodeTabs)

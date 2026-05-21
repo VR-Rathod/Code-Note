@@ -48,7 +48,7 @@ export const LogseqFlavoredMarkdown: QuartzTransformerPlugin = () => {
           // ── Step 3: Unwrap list items containing headings or code blocks ────
           // Logseq wraps headings (## Foo) and code blocks inside list items.
           // We need to hoist them out so they render as proper HTML elements.
-          const isCodeTabsMarker = (child: BlockContent): boolean => {
+          const isCodeTabsMarker = (child: ListItem["children"][number]): child is Paragraph => {
             if (child.type !== "paragraph") return false
             const para = child as Paragraph
             return para.children.some((c) => {
@@ -74,7 +74,7 @@ export const LogseqFlavoredMarkdown: QuartzTransformerPlugin = () => {
                 // Collect hoistable block-level children (headings, code blocks)
                 // and keep the rest as list item content
                 const hoistable: BlockContent[] = []
-                const keepInList: BlockContent[] = []
+                const keepInList: ListItem["children"][number][] = []
                 const nestedLists: List[] = []
 
                 for (const child of item.children) {
@@ -89,7 +89,7 @@ export const LogseqFlavoredMarkdown: QuartzTransformerPlugin = () => {
                   } else if (isCodeTabsMarker(child)) {
                     hoistable.push(child)
                   } else {
-                    keepInList.push(child as BlockContent)
+                    keepInList.push(child)
                   }
                 }
 
@@ -100,8 +100,8 @@ export const LogseqFlavoredMarkdown: QuartzTransformerPlugin = () => {
                   // Nothing to hoist — keep item as-is (with nested lists processed)
                   item.children = [
                     ...keepInList,
-                    ...unwrapListItems(nestedLists as Root["children"]) as BlockContent[],
-                  ] as BlockContent[]
+                    ...unwrapListItems(nestedLists as Root["children"]) as ListItem["children"],
+                  ]
                   if (item.children.length > 0) remainingItems.push(item)
                   continue
                 }

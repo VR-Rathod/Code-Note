@@ -28,6 +28,7 @@
     overflow-x: auto;
     scrollbar-width: none;
     position: relative;
+    z-index: 1;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
@@ -64,6 +65,20 @@
         display: none;
       }
     }
+
+    .code-tabs-nav-indicator {
+      position: absolute;
+      top: 0.55rem;
+      height: calc(100% - 1.1rem);
+      left: 0;
+      border-radius: 8px;
+      background: var(--tab-active);
+      box-shadow: 0 4px 12px var(--tab-active-shadow);
+      transition: transform 0.22s cubic-bezier(0.25, 1, 0.5, 1),
+                  width 0.22s cubic-bezier(0.25, 1, 0.5, 1);
+      pointer-events: none;
+      z-index: 0;
+    }
   }
 
   // ── Tab Buttons ───────────────────────────────────────────────────────────
@@ -84,8 +99,10 @@
     outline: none;
     user-select: none;
     white-space: nowrap;
+    position: relative;
+    z-index: 1;
 
-    &:hover {
+    &:hover:not(.active) {
       color: var(--tab-text-strong);
       background-color: var(--tab-hover);
       transform: translateY(-1px);
@@ -98,8 +115,8 @@
     &.active {
       color: var(--tab-active-text);
       font-weight: 700;
-      background: var(--tab-active);
-      box-shadow: 0 4px 12px var(--tab-active-shadow);
+      background: transparent;
+      box-shadow: none;
       transform: translateY(0);
     }
   }
@@ -109,7 +126,7 @@
     border: 1px solid var(--tab-border);
     border-radius: 12px;
     overflow: hidden;
-    background-color: var(--tab-surface);
+    background-color: var(--tab-panel);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
     transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
       border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -122,8 +139,8 @@
     figure[data-rehype-pretty-code-figure],
     >pre {
       margin: 0 !important;
-      animation: fadeInTab 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      background-color: var(--tab-panel);
+      animation: fadeInTab 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+      background-color: transparent !important;
 
       pre {
         margin: 0 !important;
@@ -139,8 +156,8 @@
 // Smooth fade-in animation for switching tabs
 @keyframes fadeInTab {
   from {
-    opacity: 0.4;
-    transform: translateY(3px);
+    opacity: 0;
+    transform: translateY(2px);
   }
 
   to {
