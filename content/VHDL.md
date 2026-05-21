@@ -1,0 +1,35 @@
+---
+seoTitle: VHDL Reference – Hardware Description Language Syntax Guide
+description: "VHDL reference covering entities, architectures, signals, processes, concurrent statements, testbenches, and FPGA synthesis for digital circuit design."
+keywords: "VHDL, hardware description language, entity, architecture, signals, processes, testbench, FPGA, digital design, synthesis, concurrent statements, syntax reference"
+---
+
+- # History
+	- **History**:
+		- VHDL (VHSIC Hardware Description Language) is a hardware description language that was developed in the 1980s as part of the **VHSIC** (Very High-Speed Integrated Circuit) program initiated by the **U.S. Department of Defense**. The goal was to standardize the design process of digital systems and to provide a way to describe the structure and behavior of digital systems at a high level of abstraction.
+			-
+			- **Name**: VHDL (VHSIC Hardware Description Language)
+			- **Created**: 1983
+			- **Creators**: U.S. Department of Defense, later developed by private industry
+			- **Purpose**: To model digital systems and provide a standard for electronic design automation (EDA).
+		-
+	- ### Why :
+		- VHDL was created to meet the needs of the **VHSIC** program, where there was a need to describe complex digital systems. The goal was to provide a way to:
+		- Model and simulate hardware designs.
+		- Verify the functionality of hardware designs before actual implementation.
+		- Ensure consistency in the hardware design process.
+-
+- # Intro
+- VHDL is primarily used for describing and simulating the behavior of digital circuits, such as those found in FPGAs (Field-Programmable Gate Arrays) and ASICs (Application-Specific Integrated Circuits). It supports both **structural** and **behavioral** descriptions of digital systems. VHDL is often used in conjunction with other electronic design automation (EDA) tools to simulate, synthesize, and verify designs.
+-
+	- ## Advanced Topics:
+		- **Generics and Configurations**: These allow the creation of flexible components in VHDL that can be easily re-used with different parameters or configurations.
+		- **Processes and Sensitivity Lists**: Used for describing sequential behavior in VHDL. The sensitivity list controls which signals trigger the execution of the process.
+		- **FSM Design**: VHDL is commonly used to model finite state machines (FSMs), which are used in various digital circuits.
+-
+	- ## Disadvantages:
+		- **Complex Syntax**: VHDL has a more verbose and complex syntax compared to other hardware description languages like Verilog, making it harder to learn and work with.
+		- **Limited High-Level Abstractions**: VHDL’s level of abstraction can sometimes make it difficult to express certain high-level constructs concisely.
+		- **Slower Simulation Times**: Compared to some other HDLs, VHDL simulations can be slower, particularly for large designs.
+-
+- # Notes
