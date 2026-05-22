@@ -20,7 +20,7 @@ Thank you for contributing! This guide defines the **exact format and structure*
 ## File Naming Convention
 
 - Use the **exact display name** as the filename: `Kali Linux.md`, `Cpp.md`, `React js.md`
-- Use kebab-case only for multi-word algorithmic pages: `binary-search.md`, `dijkstras-algorithm.md`
+- Use kebab-case only for multi-word algorithmic pages: `Binary Search.md`, `Dijkstras Algorithm.md`
 - Place all pages inside the `/pages/` directory
 - Link pages in `index.md` under the correct section using Logseq `[[Page Name]]` syntax
 
