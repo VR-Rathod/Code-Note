@@ -49,47 +49,16 @@ jobs:
           echo "files_before=$before" >> $GITHUB_OUTPUT
           echo "files_after=$after" >> $GITHUB_OUTPUT
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Cache Node Modules
-        uses: actions/cache@v4
-        with:
-          path: quartz-site/node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('quartz-site/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-
-
-      - name: Install Dependencies
-        run: |
-          cd quartz-site
-          npm install
-
-      - name: Cache Quartz Build Cache
-        uses: actions/cache@v4
-        with:
-          path: quartz-site/.quartz-cache
-          key: ${{ runner.os }}-quartz-cache-${{ github.run_id }}
-          restore-keys: |
-            ${{ runner.os }}-quartz-cache-
-
-      - name: Build Quartz static site
-        run: |
-          cd quartz-site
-          npx quartz build
-
-      - name: Check for changes in the generated static output
+      - name: Check for changes in content/
         id: changes
         run: |
           cd quartz-site
           git add content/
-          if git diff --staged --quiet && [ -z "$(git status --porcelain public/)" ]; then
+          if git diff --staged --quiet; then
             echo "has_changes=false" >> $GITHUB_OUTPUT
             echo "No changes detected — skipping deploy."
           else
-            changed=$(git status --porcelain public/ | wc -l)
+            changed=$(git status --porcelain content/ | wc -l)
             echo "has_changes=true" >> $GITHUB_OUTPUT
             echo "changed_count=$changed" >> $GITHUB_OUTPUT
           fi
@@ -106,27 +75,14 @@ jobs:
           git commit -m "sync: content updated from Logseq (Admin@$COMMIT_SHA)"
           git push origin Web-live
 
-      - name: Deploy Pre-built site to Web-deploy branch
-        if: steps.changes.outputs.has_changes == 'true'
-        run: |
-          cd quartz-site/public
-          git init
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b Web-deploy
-          git add .
-          git commit -m "deploy: pre-built from GitHub Actions"
-          git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
-          git push -f origin Web-deploy
-
       - name: Summary
         run: |
           if [ "${{ steps.changes.outputs.has_changes }}" == "true" ]; then
-            echo "### ✅ Build & Sync complete" >> $GITHUB_STEP_SUMMARY
+            echo "### ✅ Sync complete" >> $GITHUB_STEP_SUMMARY
             echo "- **Files before:** ${{ steps.sync.outputs.files_before }}" >> $GITHUB_STEP_SUMMARY
             echo "- **Files after:** ${{ steps.sync.outputs.files_after }}" >> $GITHUB_STEP_SUMMARY
-            echo "- Vercel will deploy instantly from **Web-deploy** branch." >> $GITHUB_STEP_SUMMARY
+            echo "- Changes pushed to **Web-live**. Vercel will build and deploy automatically." >> $GITHUB_STEP_SUMMARY
           else
             echo "### ⏭️ No changes" >> $GITHUB_STEP_SUMMARY
-            echo "Content was already up to date — no commit or deploy made." >> $GITHUB_STEP_SUMMARY
+            echo "Content was already up to date — no commit made." >> $GITHUB_STEP_SUMMARY
           fi
