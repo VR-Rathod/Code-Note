@@ -36,7 +36,7 @@ title:: PathTracer Learning - Chat Analysis
 		- Use `ALLOW_UPDATE` flag for incremental BLAS update
 		- Separate "dynamic" and "static" BLAS pools
 	- Async compute for BLAS builds
-		- [[PathTracer Learning - Concept - Async Compute]]
+		- [[PathTracer Learning Concept Async Compute]]
 		- BLAS builds can run on compute queue while previous frame renders
 		- Reduces per-frame RT budget impact of BLAS builds
 - ---

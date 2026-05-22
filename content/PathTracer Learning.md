@@ -68,7 +68,7 @@ title:: PathTracer Learning
 	- [[PathTracer Learning - Concept - Anti-Aliasing]]
 - ---
 - ## Vulkan Concepts
-	- [[PathTracer Learning - Concept - Async Compute]]
+	- [[PathTracer Learning Concept Async Compute]]
 	- [[PathTracer Learning - Concept - Device Address Bit]]
 - ---
 - ## Reference

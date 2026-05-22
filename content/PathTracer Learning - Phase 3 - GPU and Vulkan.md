@@ -122,7 +122,7 @@ title:: PathTracer Learning - Phase 3 - GPU and Vulkan
 	- Payload carries all data needed between bounces
 - ---
 - ## 3.7 Async Compute
-	- [[PathTracer Learning - Concept - Async Compute]]
+	- [[PathTracer Learning Concept Async Compute]]
 		- Run compute work in parallel with graphics on separate queue
 		- BLAS builds can overlap with rendering
 		- Denoising passes can overlap with next frame's ray tracing
