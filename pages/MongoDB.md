@@ -388,29 +388,16 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 	-
 	- ## Create (Insert)
 		- ```javascript
-		  // Insert one document
-		  db.users.insertOne({
-		    name: "Alice",
-		    age: 25,
-		    email: "alice@example.com",
-		    createdAt: new Date()
-		  })
+		  // insertOne — insert a single document
 		  // Returns: { acknowledged: true, insertedId: ObjectId("...") }
-		  
-		  // Real-world example: User registration
 		  db.users.insertOne({
 		    username: "alice_dev",
 		    email: "alice@example.com",
-		    passwordHash: "$2b$10$...",  // Hashed password
+		    passwordHash: "$2b$10$...",  // Always store hashed passwords
 		    profile: {
 		      firstName: "Alice",
 		      lastName: "Johnson",
 		      avatar: "https://cdn.example.com/avatars/alice.jpg"
-		    },
-		    preferences: {
-		      theme: "dark",
-		      notifications: true,
-		      language: "en"
 		    },
 		    roles: ["user"],
 		    status: "active",
@@ -419,15 +406,8 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		    lastLogin: null
 		  })
 		  
-		  // Insert multiple documents
-		  db.users.insertMany([
-		    { name: "Bob", age: 30, email: "bob@example.com" },
-		    { name: "Charlie", age: 35, email: "charlie@example.com" },
-		    { name: "Diana", age: 28, email: "diana@example.com" }
-		  ])
-		  // Returns: { acknowledged: true, insertedIds: { '0': ObjectId("..."), '1': ObjectId("..."), ... } }
-		  
-		  // Real-world example: Bulk import products
+		  // insertMany — insert multiple documents in one round trip
+		  // Returns: { acknowledged: true, insertedIds: { '0': ObjectId("..."), ... } }
 		  db.products.insertMany([
 		    {
 		      sku: "LAPTOP-001",
@@ -447,125 +427,71 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		    }
 		  ])
 		  
-		  // Insert with custom _id
-		  db.products.insertOne({
-		    _id: "PROD-001",
-		    title: "Laptop",
-		    price: 999,
-		    stock: 50
-		  })
-		  
-		  // Insert with ordered option (default: true)
-		  db.users.insertMany([
-		    { name: "User1" },
-		    { _id: 1, name: "User2" },  // Duplicate key error
-		    { name: "User3" }
-		  ], { ordered: false })  // Continue inserting after error
-		  
-		  // Production tip: Always handle errors
+		  // Always handle duplicate key errors (code 11000) in production
 		  try {
-		    const result = await db.users.insertOne({
-		      email: "alice@example.com",
-		      name: "Alice"
-		    })
+		    const result = await db.users.insertOne({ email: "alice@example.com", name: "Alice" })
 		    console.log("User created:", result.insertedId)
 		  } catch (error) {
 		    if (error.code === 11000) {
 		      console.error("Duplicate email address")
 		    } else {
-		      console.error("Insert failed:", error)
+		      throw error
 		    }
 		  }
 		  ```
 	-
 	- ## Read (Query)
 		- ```javascript
-		  // Find all documents
-		  db.users.find()
+		  // find() — returns a cursor over all matching documents
+		  db.users.find()  // All documents
 		  
-		  // Find with filter
-		  db.users.find({ age: 25 })
-		  db.users.find({ age: { $gte: 25 } })  // age >= 25
-		  
-		  // Real-world example: Find active users
+		  // Filter with query operators — find active verified users since 2024
 		  db.users.find({
 		    status: "active",
 		    emailVerified: true,
 		    createdAt: { $gte: new Date("2024-01-01") }
 		  })
 		  
-		  // Find one document
-		  db.users.findOne({ name: "Alice" })
-		  
-		  // Real-world example: User login
-		  const user = db.users.findOne({
-		    email: "alice@example.com",
-		    status: "active"
-		  })
+		  // findOne() — returns the first matching document or null
+		  // Real-world: user login lookup
+		  const user = db.users.findOne({ email: "alice@example.com", status: "active" })
 		  if (user) {
 		    // Verify password, create session, etc.
 		  }
 		  
-		  // Projection (select specific fields)
-		  db.users.find(
-		    { age: { $gte: 25 } },
-		    { name: 1, email: 1, _id: 0 }  // Include name, email; exclude _id
-		  )
-		  
-		  // Real-world example: API response with limited fields
+		  // Projection — include only needed fields (1=include, 0=exclude)
+		  // Reduces data transferred over the network
 		  db.users.find(
 		    { status: "active" },
-		    {
-		      username: 1,
-		      "profile.firstName": 1,
-		      "profile.lastName": 1,
-		      "profile.avatar": 1,
-		      _id: 0
-		    }
+		    { username: 1, "profile.firstName": 1, "profile.avatar": 1, _id: 0 }
 		  )
 		  
-		  // Limit and skip (pagination)
-		  db.users.find().limit(10)
-		  db.users.find().skip(20).limit(10)  // Page 3 (skip 20, show 10)
-		  
-		  // Real-world example: Paginated user list
+		  // Pagination — sort + skip + limit
 		  const page = 2
 		  const pageSize = 20
-		  const users = db.users.find({ status: "active" })
+		  db.users.find({ status: "active" })
 		    .sort({ createdAt: -1 })
 		    .skip((page - 1) * pageSize)
 		    .limit(pageSize)
 		  
-		  // Sort
-		  db.users.find().sort({ age: 1 })   // Ascending
-		  db.users.find().sort({ age: -1 })  // Descending
-		  db.users.find().sort({ age: -1, name: 1 })  // Multiple fields
-		  
-		  // Real-world example: Product listing
+		  // Product listing — sort by price desc, rating desc
 		  db.products.find({ category: "Electronics" })
-		    .sort({ price: -1, rating: -1 })  // Highest price and rating first
+		    .sort({ price: -1, rating: -1 })
 		    .limit(20)
 		  
-		  // Count documents
-		  db.users.countDocuments({ age: { $gte: 25 } })
-		  db.users.estimatedDocumentCount()  // Fast but approximate
-		  
-		  // Real-world example: Dashboard statistics
+		  // countDocuments — exact count with filter
+		  // estimatedDocumentCount — fast approximate total (no filter)
 		  const stats = {
-		    totalUsers: await db.users.countDocuments(),
+		    totalUsers: await db.users.estimatedDocumentCount(),
 		    activeUsers: await db.users.countDocuments({ status: "active" }),
 		    newUsersToday: await db.users.countDocuments({
 		      createdAt: { $gte: new Date(new Date().setHours(0, 0, 0, 0)) }
 		    })
 		  }
 		  
-		  // Distinct values
-		  db.users.distinct("age")
-		  db.users.distinct("city", { age: { $gte: 25 } })
-		  
-		  // Real-world example: Filter options
+		  // distinct — unique values for a field, optionally filtered
 		  const availableCategories = db.products.distinct("category")
-		  const availableBrands = db.products.distinct("brand", { category: "Electronics" })
+		  const electronicBrands = db.products.distinct("brand", { category: "Electronics" })
 		  ```
 	-
 	- ## Query Operators
@@ -625,16 +551,11 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		  })
 		  
 		  // String operators
-		  db.users.find({ name: { $regex: /^A/i } })         // Starts with A (case-insensitive)
-		  db.users.find({ name: { $regex: "alice", $options: "i" } })
+		  db.users.find({ name: { $regex: /^A/i } })  // Starts with A (case-insensitive)
 		  
 		  // Evaluation operators
 		  db.products.find({
-		    $expr: { $gt: ["$price", "$cost"] }  // price > cost
-		  })
-		  
-		  db.users.find({
-		    $where: "this.age > 25"  // JavaScript expression (slow, avoid if possible)
+		    $expr: { $gt: ["$price", "$cost"] }  // Compare two fields: price > cost
 		  })
 		  ```
 	-
@@ -1866,6 +1787,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 - # Performance Optimization
   collapsed:: true
 	- ## Query Optimization
+		- Every query should return only what the client actually needs. Projection cuts down the data transferred over the network. Indexes let MongoDB jump directly to matching documents instead of scanning the whole collection. Covered queries are the fastest possible — MongoDB answers them entirely from the index without touching any documents. Prefer `$in` over multiple `$or` clauses; MongoDB optimizes `$in` into a single index scan.
 		- ```javascript
 		  // Use projection to limit returned fields
 		  db.users.find(
@@ -1896,6 +1818,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		  ```
 	-
 	- ## Aggregation Optimization
+		- The aggregation pipeline processes documents stage by stage. Placing `$match` first means fewer documents flow through the rest of the pipeline — this is the single biggest win. `$project` early reduces document size so subsequent stages work on less data. When `$match` and `$sort` fields are indexed, MongoDB can use the index instead of loading documents into memory. For pipelines that process more data than fits in RAM (100MB limit by default), `allowDiskUse: true` spills to disk instead of failing.
 		- ```javascript
 		  // Put $match early in pipeline
 		  db.orders.aggregate([
@@ -1926,6 +1849,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		  ```
 	-
 	- ## Connection Pooling
+		- Opening a new TCP connection to MongoDB for every request is expensive — it adds 10–50ms of overhead and can exhaust server resources under load. A connection pool keeps a set of connections open and reuses them across requests. `maxPoolSize` caps total connections (default 100); `minPoolSize` keeps warm connections ready so the first requests after idle periods don't pay the connection cost. `waitQueueTimeoutMS` prevents requests from hanging forever if all connections are busy.
 		- ```javascript
 		  // Node.js driver connection pooling
 		  const { MongoClient } = require('mongodb')
@@ -1939,6 +1863,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		  ```
 	-
 	- ## Monitoring & Profiling
+		- The database profiler captures slow queries to the `system.profile` collection so you can find and fix them. Level 1 logs only queries slower than `slowms` (recommended for production). Level 2 logs everything (use only in development — it's very noisy). `currentOp()` shows what's running right now, useful for finding stuck operations. `db.stats()` and `db.users.stats()` give storage and index size breakdowns per database and collection.
 		- ```javascript
 		  // Enable profiling (level 0=off, 1=slow, 2=all)
 		  db.setProfilingLevel(1, { slowms: 100 })  // Log queries > 100ms
@@ -1966,6 +1891,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		  ```
 	-
 	- ## Memory Management
+		- MongoDB's WiredTiger storage engine uses an in-memory cache to serve reads without hitting disk. By default it takes 50% of available RAM minus 1GB. If your working set (hot data + indexes) fits in cache, reads are fast. If it doesn't, MongoDB reads from disk on every cache miss — performance degrades sharply. Monitor `wiredTiger.cache` to see how full the cache is and whether pages are being evicted. Set `cacheSizeGB` explicitly in production so MongoDB doesn't compete with the OS page cache.
 		- ```javascript
 		  // Check memory usage
 		  db.serverStatus().mem
@@ -1982,6 +1908,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		  ```
 	-
 	- ## Bulk Operations
+		- Sending 10,000 individual `insertOne` calls means 10,000 round trips to the server. Bulk operations batch multiple writes into a single network request, dramatically reducing overhead. Unordered bulk ops run in parallel and continue on error — best for independent inserts. Ordered bulk ops stop at the first error — use when operation order matters (e.g., insert then update the same document).
 		- ```javascript
 		  // Use bulk operations for multiple writes
 		  const bulk = db.users.initializeUnorderedBulkOp()
@@ -2000,6 +1927,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 - # Security
   collapsed:: true
 	- ## Authentication
+		- By default MongoDB runs without authentication — anyone who can reach the port has full access. Always enable authentication in production by setting `security.authorization: enabled` in `mongod.conf`. The admin database is the root — create your admin user there first, then create per-database users with the minimum roles they need (principle of least privilege). Never use the `root` role for application users.
 		- ```javascript
 		  // Create admin user
 		  use admin
@@ -2043,6 +1971,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		  ```
 	-
 	- ## Built-in Roles
+		- MongoDB ships with a hierarchy of built-in roles covering every access level. Database-scoped roles (`read`, `readWrite`, `dbAdmin`) apply to a single database. All-database roles (`readAnyDatabase`, `readWriteAnyDatabase`) span every database on the server. Cluster roles manage replica sets and sharding. For most applications, `readWrite` on the specific database is all you need — never grant `root` or `dbAdminAnyDatabase` to an app user.
 		- ```javascript
 		  // Database roles
 		  read              // Read data from all non-system collections
@@ -2072,6 +2001,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		  ```
 	-
 	- ## Custom Roles
+		- Built-in roles are often too broad for production. A custom role lets you grant exactly the actions needed on exactly the collections needed — nothing more. For example, an analytics service might need `find` on `orders` and `products` but should never be able to insert or delete. Custom roles are defined in the `admin` database and can be granted to any user across any database.
 		- ```javascript
 		  // Create custom role
 		  use admin
@@ -2095,6 +2025,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		  ```
 	-
 	- ## Network Security
+		- `bindIp` controls which network interfaces MongoDB listens on. The default `127.0.0.1` means only local connections — safe for development. In production, bind to the server's private IP only, never `0.0.0.0` without a firewall. TLS encrypts all traffic between clients and the server, preventing eavesdropping on the network. `clusterAuthMode: x509` uses certificates for inter-node authentication in replica sets instead of a shared keyfile.
 		- ```yaml
 		  # mongod.conf
 		  net:
@@ -2111,6 +2042,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		  ```
 	-
 	- ## Encryption
+		- Encryption at rest protects data files on disk — if someone steals the physical drive or a cloud snapshot, they can't read the data without the encryption key. This is an Enterprise-only feature using the WiredTiger encrypted storage engine. Encryption in transit (TLS) protects data moving over the network between your app and MongoDB. Both should be enabled in any production environment handling sensitive data.
 		- ```yaml
 		  # Encryption at rest (Enterprise only)
 		  security:
@@ -2125,6 +2057,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		  ```
 	-
 	- ## Auditing (Enterprise)
+		- Auditing records who did what and when — essential for compliance (HIPAA, SOC 2, PCI-DSS) and forensic investigation after a security incident. The `filter` field lets you log only specific operation types (authentication, user management, data access) to keep log volume manageable. Logs are written as JSON to a file, making them easy to ship to a SIEM like Splunk or Datadog.
 		- ```yaml
 		  # mongod.conf
 		  auditLog:
@@ -2135,6 +2068,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		  ```
 	-
 	- ## Field-Level Encryption
+		- Client-Side Field Level Encryption (CSFLE) encrypts specific sensitive fields (SSN, credit card, medical data) on the client before they ever reach the server. Even MongoDB itself — and anyone with database access — sees only ciphertext for those fields. The encryption keys are managed separately (AWS KMS, Azure Key Vault, GCP KMS, or local). This is the strongest data protection MongoDB offers, as the server never sees plaintext for encrypted fields.
 		- ```javascript
 		  // Client-side field level encryption (CSFLE)
 		  const { MongoClient, ClientEncryption } = require('mongodb')
@@ -2161,6 +2095,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 - # Backup & Restore
   collapsed:: true
 	- ## mongodump & mongorestore
+		- `mongodump` is MongoDB's built-in logical backup tool. It reads documents from the database and writes them as BSON files to disk. It works on any MongoDB deployment (local, Atlas, replica set) and supports filtering by database, collection, or query. The `--gzip --archive` flags produce a single compressed file instead of a directory tree — easier to store and transfer. `mongorestore` reverses the process. Use `--drop` when restoring to a non-empty database to avoid merging old and new data.
 		- ```bash
 		  # Backup entire database
 		  mongodump --uri="mongodb://localhost:27017" --out=/backup/
@@ -2191,6 +2126,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		  ```
 	-
 	- ## mongoexport & mongoimport
+		- `mongoexport` exports a single collection to JSON or CSV — useful for sharing data with other systems, loading into spreadsheets, or migrating to a different database. Unlike `mongodump`, the output is human-readable. `mongoimport` is the reverse. The `--mode=upsert` flag is powerful for incremental imports — it updates existing documents by `_id` instead of failing on duplicates, making it safe to re-run the same import multiple times.
 		- ```bash
 		  # Export collection to JSON
 		  mongoexport --db=myDatabase --collection=users --out=users.json
@@ -2212,6 +2148,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		  ```
 	-
 	- ## Filesystem Snapshots
+		- Filesystem snapshots (LVM, AWS EBS, Azure Disk) are the fastest backup method for large databases — they capture the entire disk state in seconds regardless of database size. The critical step is `db.fsyncLock()` before snapshotting: this flushes all pending writes to disk and blocks new writes, ensuring the snapshot is consistent. Without locking, you risk capturing a partially-written state that can't be restored cleanly. Always unlock immediately after the snapshot completes.
 		- ```bash
 		  # Stop writes (lock database)
 		  db.fsyncLock()
@@ -2224,14 +2161,12 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		  ```
 	-
 	- ## Cloud Backup (Atlas)
-		- MongoDB Atlas provides automated backups.
-		- Continuous backups with point-in-time recovery.
-		- Snapshot backups at scheduled intervals.
-		- Cross-region backup storage.
+		- MongoDB Atlas handles backups automatically with no manual intervention. Continuous backups stream the oplog in real time, enabling point-in-time recovery to any second within the retention window — useful for recovering from accidental deletes or data corruption. Snapshot backups capture the full cluster state at scheduled intervals (hourly, daily, weekly). Backups are stored in a separate cloud region from your cluster, so a regional outage doesn't take out both your data and your backup.
 -
 - # MongoDB with Programming Languages
   collapsed:: true
 	- ## Basic CRUD Operations
+		- Each language has an official MongoDB driver that maps the shell's JavaScript API to idiomatic language constructs. The pattern is always the same: create a `MongoClient` with the connection URI, get a database handle, get a collection handle, then call CRUD methods. All drivers support async/await (Node.js), coroutines (Python with Motor), futures (Java), and goroutines (Go). Always close the client when the application shuts down to release connections back to the pool.
 		- :::code-tabs
 		  ```javascript
 		  // Node.js - Install: npm install mongodb
@@ -2467,6 +2402,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		  :::
 	-
 	- ## Aggregation Pipeline
+		- The aggregation pipeline API is consistent across all drivers — you build the same stage objects (`$match`, `$group`, `$sort`, `$limit`) just using each language's native data structures instead of JavaScript objects. Node.js and Python use dictionaries/objects directly. Java uses the `Aggregates` builder class for type safety. Go uses `bson.D` (ordered key-value pairs) to preserve stage order. The pipeline is passed as an array/list to the `aggregate()` method and returns a cursor you iterate over.
 		- :::code-tabs
 		  ```javascript
 		  // Node.js - Complex aggregation example
@@ -2583,6 +2519,7 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		  :::
 	-
 	- ## Connection Pooling & Error Handling
+		- In production, wrap your `MongoClient` in a singleton class so the connection pool is created once at startup and shared across all requests. Configure `maxPoolSize` based on your expected concurrency and MongoDB's `maxIncomingConnections` limit. `serverSelectionTimeoutMS` controls how long the driver waits to find an available server before throwing — set it low (5s) so failures surface quickly rather than hanging. Listen to `serverHeartbeatFailed` events to detect connectivity issues proactively. Always register a shutdown hook to close the client gracefully.
 		- :::code-tabs
 		  ```javascript
 		  // Node.js - Production connection with error handling
@@ -2749,7 +2686,6 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 		      database.close();
 		  }));
 		  ```
-		  :::
 		  :::
 -
 - # Mongoose (Node.js ODM)
@@ -3195,151 +3131,392 @@ authorUrl: https://portfolio-eight-theta-7g6hpaehqn.vercel.app/
 - # Common Use Cases
   collapsed:: true
 	- ## Content Management System
-		- Flexible schema for different content types.
-		- Embedded comments and metadata.
-		- Text search for content discovery.
-		- GridFS for media files.
+		- MongoDB's flexible schema is ideal for CMS because different content types (articles, videos, podcasts, landing pages) all have different fields. Instead of creating a separate SQL table for each content type, you store them all in one collection with varying shapes.
+		- Text indexes enable full-text search across titles and body content without a separate search engine.
+		- GridFS handles media files (images, videos) larger than the 16MB document limit, storing them in chunks alongside their metadata.
+		- ```javascript
+		  // CMS article document — flexible schema handles any content type
+		  {
+		    _id: ObjectId(),
+		    type: "article",           // or "video", "podcast", "page"
+		    title: "Getting Started with MongoDB",
+		    slug: "getting-started-mongodb",
+		    status: "published",       // draft | published | archived
+		    author: { name: "Alice", id: ObjectId("...") },
+		    tags: ["mongodb", "nosql", "database"],
+		    content: "Full article body...",
+		    metadata: {
+		      readTime: 8,             // minutes
+		      seoTitle: "...",
+		      seoDescription: "..."
+		    },
+		    comments: [               // Embedded for fast reads
+		      { user: "Bob", text: "Great post!", date: ISODate() }
+		    ],
+		    publishedAt: ISODate("2024-01-15"),
+		    updatedAt: ISODate("2024-01-20")
+		  }
+		  
+		  // Text index for search
+		  db.content.createIndex({ title: "text", content: "text", tags: "text" })
+		  db.content.find({ $text: { $search: "mongodb tutorial" } })
+		  ```
 	-
 	- ## E-commerce Platform
-		- Product catalog with varying attributes.
-		- Shopping cart (embedded in user document).
-		- Order history (referenced collection).
-		- Inventory management with transactions.
+		- Products have wildly different attributes (a shirt has size/color, a laptop has RAM/CPU). MongoDB's flexible schema handles this naturally without EAV (Entity-Attribute-Value) hacks.
+		- Shopping carts are embedded in the user document for atomic updates and fast reads. Orders are referenced (separate collection) because they're immutable records you query independently.
+		- Transactions ensure inventory decrements and order creation happen atomically — no overselling.
+		- ```javascript
+		  // Product with variant-specific attributes
+		  {
+		    _id: ObjectId(),
+		    sku: "LAPTOP-PRO-001",
+		    name: "Pro Laptop 15",
+		    price: 1299.99,
+		    category: "Electronics",
+		    attributes: {           // Flexible — different per product type
+		      cpu: "Intel i7-13th",
+		      ram: "16GB",
+		      storage: "512GB SSD",
+		      display: "15.6 inch FHD"
+		    },
+		    variants: [
+		      { sku: "LAPTOP-PRO-001-SLV", color: "Silver", stock: 25 },
+		      { sku: "LAPTOP-PRO-001-BLK", color: "Black", stock: 10 }
+		    ],
+		    images: ["https://cdn.example.com/laptop-1.jpg"],
+		    tags: ["laptop", "intel", "gaming"]
+		  }
+		  
+		  // Atomic order placement with inventory check
+		  const session = client.startSession()
+		  session.withTransaction(async () => {
+		    // Decrement stock
+		    await db.products.updateOne(
+		      { "variants.sku": "LAPTOP-PRO-001-SLV", "variants.stock": { $gte: 1 } },
+		      { $inc: { "variants.$.stock": -1 } },
+		      { session }
+		    )
+		    // Create order
+		    await db.orders.insertOne({ userId, items, total, status: "pending" }, { session })
+		  })
+		  ```
 	-
 	- ## Real-time Analytics
-		- Time series collections for metrics.
-		- Aggregation framework for reporting.
-		- Change streams for real-time updates.
-		- Capped collections for logs.
+		- Time series collections (MongoDB 5.0+) are optimized for append-heavy workloads like metrics, events, and sensor data. They compress data automatically and support efficient range queries by time.
+		- The aggregation framework replaces the need for a separate analytics database for most reporting needs — group by time buckets, calculate percentiles, build funnels.
+		- Change streams push updates to dashboards in real time without polling.
+		- ```javascript
+		  // Time series collection for application metrics
+		  db.createCollection("metrics", {
+		    timeseries: {
+		      timeField: "timestamp",
+		      metaField: "service",
+		      granularity: "minutes"
+		    }
+		  })
+		  
+		  // Insert metric event
+		  db.metrics.insertOne({
+		    service: "api-gateway",
+		    timestamp: new Date(),
+		    responseTime: 142,    // ms
+		    statusCode: 200,
+		    endpoint: "/users"
+		  })
+		  
+		  // Hourly average response time per service
+		  db.metrics.aggregate([
+		    { $match: { timestamp: { $gte: new Date(Date.now() - 86400000) } } },
+		    {
+		      $group: {
+		        _id: {
+		          service: "$service",
+		          hour: { $hour: "$timestamp" }
+		        },
+		        avgResponseTime: { $avg: "$responseTime" },
+		        p95: { $percentile: { input: "$responseTime", p: [0.95], method: "approximate" } },
+		        errorRate: {
+		          $avg: { $cond: [{ $gte: ["$statusCode", 500] }, 1, 0] }
+		        }
+		      }
+		    },
+		    { $sort: { "_id.hour": 1 } }
+		  ])
+		  ```
 	-
 	- ## Social Network
-		- User profiles with embedded preferences.
-		- Posts with embedded comments (subset pattern).
-		- Followers/following (array of references).
-		- Activity feeds (time series).
+		- User profiles use embedded documents for preferences and settings (always accessed together). Posts embed the first few comments (subset pattern) for fast feed rendering, with full comments in a separate collection.
+		- Followers/following use arrays of ObjectId references. For users with millions of followers (celebrities), use a separate `follows` collection to avoid the 16MB document limit.
+		- Activity feeds use time series or capped collections — you only need the last N events, not the full history.
+		- ```javascript
+		  // User profile with embedded preferences
+		  {
+		    _id: ObjectId(),
+		    username: "alice_dev",
+		    email: "alice@example.com",
+		    profile: { bio: "Engineer", avatar: "...", location: "NYC" },
+		    preferences: { theme: "dark", notifications: true },
+		    followingIds: [ObjectId("..."), ObjectId("...")],  // Who they follow
+		    followerCount: 1240,   // Computed field — avoid counting every time
+		    createdAt: ISODate()
+		  }
+		  
+		  // Post with subset pattern (first 3 comments embedded)
+		  {
+		    _id: ObjectId(),
+		    authorId: ObjectId("..."),
+		    content: "Just shipped a new feature!",
+		    likes: { count: 42, userIds: [ObjectId("...")] },
+		    recentComments: [          // Subset — only last 3
+		      { author: "Bob", text: "Congrats!", date: ISODate() }
+		    ],
+		    commentCount: 17,          // Total count for "View all 17 comments"
+		    createdAt: ISODate()
+		  }
+		  
+		  // Feed query — posts from followed users, sorted by recency
+		  db.posts.find({
+		    authorId: { $in: currentUser.followingIds }
+		  }).sort({ createdAt: -1 }).limit(20)
+		  ```
 	-
 	- ## IoT & Sensor Data
-		- Time series collections for sensor readings.
-		- Bucket pattern for efficient storage.
-		- Geospatial queries for location data.
-		- Aggregation for analytics.
+		- IoT devices generate millions of small readings per day. Storing each reading as a separate document is wasteful. The bucket pattern groups readings by device and time window into a single document, dramatically reducing document count and improving compression.
+		- Geospatial indexes enable location-based queries like "find all sensors within 10km" or "which devices are inside this zone."
+		- ```javascript
+		  // Bucket pattern — group 60 readings per document (1 per minute)
+		  {
+		    _id: ObjectId(),
+		    deviceId: "sensor-42",
+		    date: ISODate("2024-01-15"),
+		    hour: 14,                  // Hour bucket
+		    location: {
+		      type: "Point",
+		      coordinates: [-73.9667, 40.78]
+		    },
+		    readings: [               // 60 readings per document
+		      { minute: 0, temp: 22.1, humidity: 65, pressure: 1013 },
+		      { minute: 1, temp: 22.3, humidity: 64, pressure: 1013 },
+		      // ... up to minute 59
+		    ],
+		    summary: {               // Pre-computed for fast queries
+		      minTemp: 21.8,
+		      maxTemp: 23.1,
+		      avgTemp: 22.4
+		    }
+		  }
+		  
+		  // Find all sensors near a location reporting high temperature
+		  db.sensorBuckets.find({
+		    location: {
+		      $near: {
+		        $geometry: { type: "Point", coordinates: [-73.9667, 40.78] },
+		        $maxDistance: 10000   // 10km
+		      }
+		    },
+		    "summary.maxTemp": { $gt: 35 }
+		  })
+		  ```
 	-
 	- ## Mobile Applications
-		- Offline-first with MongoDB Realm.
-		- Flexible schema for rapid iteration.
-		- Geospatial queries for location features.
-		- Change streams for real-time sync.
+		- Mobile apps need offline support and real-time sync. MongoDB Atlas Device Sync (formerly Realm) handles conflict resolution when devices reconnect after being offline.
+		- Flexible schema means you can ship new app versions with new fields without a migration — old documents simply won't have the new field, and you handle that in app logic.
+		- Geospatial queries power location features like "restaurants near me" or "find friends nearby."
+		- ```javascript
+		  // User location update (mobile app sends GPS coordinates)
+		  db.users.updateOne(
+		    { _id: currentUserId },
+		    {
+		      $set: {
+		        location: {
+		          type: "Point",
+		          coordinates: [longitude, latitude]
+		        },
+		        lastSeen: new Date()
+		      }
+		    }
+		  )
+		  
+		  // Find nearby users (within 5km)
+		  db.users.find({
+		    location: {
+		      $near: {
+		        $geometry: { type: "Point", coordinates: [userLng, userLat] },
+		        $maxDistance: 5000
+		      }
+		    },
+		    _id: { $ne: currentUserId },
+		    status: "online"
+		  }).limit(20)
+		  ```
 -
 - # Troubleshooting
   collapsed:: true
 	- ## Slow Queries
-		- Check if indexes are used (explain()).
-		- Create appropriate indexes.
-		- Optimize aggregation pipeline.
-		- Use projection to limit fields.
-		- Check for collection scans.
+		- The most common cause of slow queries is a missing index — MongoDB falls back to a full collection scan (COLLSCAN), reading every document. Use `explain("executionStats")` to diagnose. Look for `"stage": "COLLSCAN"` in the output — that's your red flag.
+		- A query can have an index but still be slow if the index has low selectivity (e.g., a boolean field with 50/50 distribution). Compound indexes with high-cardinality fields first perform much better.
+		- ```javascript
+		  // Step 1: Identify slow queries via profiler
+		  db.setProfilingLevel(1, { slowms: 100 })  // Log queries > 100ms
+		  db.system.profile.find().sort({ millis: -1 }).limit(5)
+		  
+		  // Step 2: Explain the slow query
+		  db.orders.find({ status: "pending", customerId: ObjectId("...") })
+		    .explain("executionStats")
+		  // Look for:
+		  // "stage": "COLLSCAN"  → no index used (bad)
+		  // "stage": "IXSCAN"   → index used (good)
+		  // "totalDocsExamined" >> "nReturned"  → poor selectivity
+		  
+		  // Step 3: Create the right index
+		  // ESR rule: Equality → Sort → Range
+		  db.orders.createIndex({ customerId: 1, status: 1, createdAt: -1 })
+		  
+		  // Step 4: Verify index is used
+		  db.orders.find({ customerId: ObjectId("..."), status: "pending" })
+		    .sort({ createdAt: -1 })
+		    .explain("executionStats")
+		  // Now should show "stage": "IXSCAN"
+		  ```
 	-
 	- ## High Memory Usage
-		- Check working set size.
-		- Reduce index size.
-		- Limit document size.
-		- Adjust WiredTiger cache size.
-		- Use projection in queries.
+		- MongoDB's WiredTiger engine caches frequently accessed data in RAM (default: 50% of available RAM minus 1GB). If your working set (actively used data + indexes) exceeds the cache, MongoDB starts reading from disk — performance drops sharply.
+		- Indexes live in RAM. Too many indexes on a large collection can exhaust memory. Use `$indexStats` to find unused indexes and drop them.
+		- ```javascript
+		  // Check current memory usage
+		  db.serverStatus().mem
+		  // { bits: 64, resident: 512, virtual: 1024, ... }
+		  // resident = actual RAM used (MB)
+		  
+		  // Check WiredTiger cache hit ratio
+		  const wt = db.serverStatus().wiredTiger.cache
+		  const hitRatio = wt["pages read into cache"] / wt["pages requested from the cache"]
+		  // hitRatio close to 1.0 = good (data in cache)
+		  // hitRatio close to 0.0 = bad (reading from disk constantly)
+		  
+		  // Find unused indexes (candidates for removal)
+		  db.orders.aggregate([{ $indexStats: {} }])
+		    .forEach(idx => {
+		      if (idx.accesses.ops === 0) {
+		        print(`Unused index: ${idx.name}`)
+		      }
+		    })
+		  
+		  // Adjust WiredTiger cache in mongod.conf
+		  // storage:
+		  //   wiredTiger:
+		  //     engineConfig:
+		  //       cacheSizeGB: 4   # Set explicitly instead of relying on default
+		  ```
 	-
 	- ## Connection Issues
-		- Check network connectivity.
-		- Verify authentication credentials.
-		- Check connection pool settings.
-		- Verify firewall rules.
-		- Check MongoDB server status.
+		- "Connection refused" usually means MongoDB isn't running or is bound to a different IP. Check `bindIp` in `mongod.conf` — by default it's `127.0.0.1` (localhost only). For remote connections, add the server's IP or use `0.0.0.0` (with firewall rules).
+		- "Too many connections" means your app is creating new connections instead of reusing a pool. Always use a singleton MongoClient and configure `maxPoolSize` appropriately.
+		- ```javascript
+		  // Bad: Creating a new connection per request (exhausts connections fast)
+		  app.get('/users', async (req, res) => {
+		    const client = new MongoClient(uri)  // ❌ New connection every request
+		    await client.connect()
+		    const users = await client.db('mydb').collection('users').find().toArray()
+		    await client.close()
+		    res.json(users)
+		  })
+		  
+		  // Good: Singleton client with connection pool
+		  const client = new MongoClient(uri, {
+		    maxPoolSize: 50,          // Max concurrent connections
+		    minPoolSize: 5,           // Keep 5 connections warm
+		    maxIdleTimeMS: 30000      // Close idle connections after 30s
+		  })
+		  await client.connect()     // Connect once at startup
+		  
+		  app.get('/users', async (req, res) => {
+		    const users = await client.db('mydb').collection('users').find().toArray()
+		    res.json(users)           // ✅ Reuses pooled connection
+		  })
+		  
+		  // Check active connections
+		  db.serverStatus().connections
+		  // { current: 45, available: 955, totalCreated: 1200 }
+		  // If current is near maxIncomingConnections, you have a connection leak
+		  ```
 	-
 	- ## Replication Lag
-		- Check network latency between nodes.
-		- Verify write concern settings.
-		- Check oplog size.
-		- Monitor secondary node performance.
-		- Consider adding more secondaries.
+		- Replication lag is the delay between a write on the primary and when it appears on secondaries. High lag means secondaries are falling behind — if the primary fails, you could lose recent writes.
+		- Common causes: network latency between nodes, secondary under heavy read load, oplog too small (secondary can't keep up and falls off the oplog).
+		- ```javascript
+		  // Check replication lag
+		  rs.printReplicationInfo()
+		  // Shows oplog window (how far back the oplog goes)
+		  
+		  rs.printSecondaryReplicationInfo()
+		  // Shows lag per secondary member
+		  // "0 secs (0 hrs) behind the primary" = healthy
+		  // "120 secs (0.03 hrs) behind the primary" = lagging
+		  
+		  // Check oplog size
+		  use local
+		  db.oplog.rs.stats().maxSize  // Current max oplog size in bytes
+		  
+		  // Increase oplog size (requires restart or rolling restart)
+		  // In mongod.conf:
+		  // replication:
+		  //   oplogSizeMB: 10240   # 10GB oplog
+		  
+		  // If secondary is too far behind, it may need to resync
+		  // On the lagging secondary:
+		  db.adminCommand({ resync: 1 })
+		  ```
 	-
 	- ## Disk Space Issues
-		- Check database size (db.stats()).
-		- Remove old data or archive.
-		- Compact collections (offline operation).
-		- Increase disk space.
-		- Enable compression.
+		- MongoDB doesn't automatically reclaim disk space after deletes. Deleted documents leave holes in data files. Use `compact` to reclaim space (requires taking the node offline or doing a rolling compact on replica set members).
+		- WiredTiger compresses data by default, but if you're storing large uncompressed blobs or have many small documents, storage can grow fast.
+		- ```javascript
+		  // Check database and collection sizes
+		  db.stats()
+		  // { dataSize: 1024000, storageSize: 2048000, indexSize: 512000, ... }
+		  // dataSize = actual data
+		  // storageSize = allocated on disk (includes fragmentation)
+		  // If storageSize >> dataSize, you have fragmentation
+		  
+		  db.orders.stats()
+		  // Per-collection breakdown
+		  
+		  // Compact a collection (reclaims fragmented space)
+		  // WARNING: Blocks the collection during compaction
+		  db.runCommand({ compact: "orders" })
+		  
+		  // For replica sets: compact one secondary at a time
+		  // 1. Stop reads on secondary
+		  // 2. Run compact
+		  // 3. Bring back online
+		  // 4. Repeat for other secondaries, then step down primary
+		  
+		  // Archive old data before deleting
+		  db.orders.aggregate([
+		    { $match: { createdAt: { $lt: new Date("2023-01-01") } } },
+		    { $out: "orders_archive_2022" }   // Move to archive collection
+		  ])
+		  db.orders.deleteMany({ createdAt: { $lt: new Date("2023-01-01") } })
+		  ```
 -
 - # More Learn
-	- ## Official Documentation & Resources
-		- [MongoDB Official Documentation](https://docs.mongodb.com/) — Comprehensive official docs
-		- [MongoDB Manual](https://docs.mongodb.com/manual/) — Complete reference guide
-		- [MongoDB University](https://university.mongodb.com/) — Free official courses and certifications
-		- [MongoDB Community Forums](https://www.mongodb.com/community/forums/) — Ask questions and get help
-		- [MongoDB Blog](https://www.mongodb.com/blog) — Latest updates and best practices
-		- [MongoDB Developer Center](https://www.mongodb.com/developer/) — Tutorials and guides
-	-
-	- ## GitHub Repositories & Code Examples
-		- [MongoDB Official GitHub](https://github.com/mongodb/mongo) — MongoDB server source code
-		- [MongoDB Node.js Driver](https://github.com/mongodb/node-mongodb-native) — Official Node.js driver
-		- [Mongoose ODM](https://github.com/Automattic/mongoose) — Popular Node.js ODM
-		- [MongoDB Python Driver (PyMongo)](https://github.com/mongodb/mongo-python-driver) — Official Python driver
-		- [MongoDB Java Driver](https://github.com/mongodb/mongo-java-driver) — Official Java driver
-		- [MongoDB C# Driver](https://github.com/mongodb/mongo-csharp-driver) — Official .NET driver
-		- [MongoDB Go Driver](https://github.com/mongodb/mongo-go-driver) — Official Go driver
-		- [Awesome MongoDB](https://github.com/ramnes/awesome-mongodb) — Curated list of MongoDB resources
-		- [MongoDB Schema Design Examples](https://github.com/mongodb-developer/mongodb-schema-design-patterns) — Real-world schema patterns
+	- ## Github & Webs
+		- [mongodb/mongo](https://github.com/mongodb/mongo) — MongoDB server source code
+		- [mongodb/node-mongodb-native](https://github.com/mongodb/node-mongodb-native) — Official Node.js driver
+		- [Automattic/mongoose](https://github.com/Automattic/mongoose) — Mongoose ODM for Node.js
+		- [mongodb/mongo-python-driver](https://github.com/mongodb/mongo-python-driver) — Official Python (PyMongo) driver
+		- [mongodb/mongo-go-driver](https://github.com/mongodb/mongo-go-driver) — Official Go driver
+		- [ramnes/awesome-mongodb](https://github.com/ramnes/awesome-mongodb) — Curated list of MongoDB tools and resources
+		- [docs.mongodb.com](https://docs.mongodb.com/) — Official MongoDB documentation
+		- [university.mongodb.com](https://university.mongodb.com/) — Free official courses and certifications
+		- [mongoplayground.net](https://mongoplayground.net/) — Online MongoDB query sandbox
+		- [mongodb.com/developer](https://www.mongodb.com/developer/) — Tutorials, guides, and code examples
 	-
 	- ## Master Playlists YouTube
-		- [MongoDB Crash Course - Traversy Media](https://www.youtube.com/watch?v=-56x56UppqQ) — Beginner-friendly introduction
-		- [MongoDB Complete Tutorial - freeCodeCamp](https://www.youtube.com/watch?v=c2M-rlkkT5o) — 4+ hour comprehensive course
-		- [MongoDB University Official Channel](https://www.youtube.com/@MongoDBofficial) — Official tutorials and webinars
-		- [MongoDB Aggregation Framework - MongoDB](https://www.youtube.com/playlist?list=PL4RCxklHWZ9v2lcat4oEVGQhZg6r4IQGV) — Deep dive into aggregation
-		- [MongoDB Performance Tuning - MongoDB](https://www.youtube.com/playlist?list=PL4RCxklHWZ9smTpR3hUdq53Su601yCPLj) — Performance optimization
-		- [MongoDB Schema Design - MongoDB](https://www.youtube.com/playlist?list=PL4RCxklHWZ9tKJ8KkJ8J5J5J5J5J5J5J5) — Schema design patterns
-		- [Node.js & MongoDB - The Net Ninja](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) — Node.js with MongoDB
-		- [MERN Stack Tutorial - freeCodeCamp](https://www.youtube.com/watch?v=7CqJlxBYj-M) — Full stack with MongoDB
-	-
-	- ## Interactive Learning & Practice
-		- [MongoDB Atlas Free Tier](https://www.mongodb.com/cloud/atlas/register) — Free cloud database for practice
-		- [MongoDB Playground](https://mongoplayground.net/) — Online MongoDB query tester
-		- [MongoDB Compass](https://www.mongodb.com/products/compass) — Free GUI for MongoDB
-		- [Studio 3T](https://studio3t.com/) — Advanced MongoDB GUI with free tier
-	-
-	- ## Books & In-Depth Guides
-		- [MongoDB: The Definitive Guide](https://www.oreilly.com/library/view/mongodb-the-definitive/9781491954454/) — O'Reilly comprehensive guide
-		- [MongoDB Applied Design Patterns](https://www.oreilly.com/library/view/mongodb-applied-design/9781449340056/) — Real-world patterns
-		- [MongoDB Data Modeling](https://www.mongodb.com/docs/manual/data-modeling/) — Official modeling guide
-		- [MongoDB Performance Best Practices](https://www.mongodb.com/basics/best-practices) — Official best practices
-	-
-	- ## Community & Support
-		- [MongoDB Community Forums](https://www.mongodb.com/community/forums/) — Official community
-		- [Stack Overflow - MongoDB Tag](https://stackoverflow.com/questions/tagged/mongodb) — Q&A community
-		- [Reddit - r/mongodb](https://www.reddit.com/r/mongodb/) — MongoDB subreddit
-		- [MongoDB Discord](https://discord.com/invite/mongodb) — Real-time chat community
-		- [MongoDB Slack Community](https://www.mongodb.com/community/slack) — Developer community
-	-
-	- ## Tools & Extensions
-		- **MongoDB Compass** — Official GUI for MongoDB
-		- **MongoDB Atlas** — Fully managed cloud database
-		- **mongosh** — Modern MongoDB shell
-		- **Studio 3T** — Professional MongoDB IDE
-		- **Robo 3T** — Lightweight MongoDB GUI
-		- **NoSQLBooster** — Query builder and GUI
-		- **MongoDB VS Code Extension** — MongoDB integration for VS Code
-		- **MongoDB for Jupyter** — Use MongoDB in Jupyter notebooks
-	-
-	- ## Monitoring & DevOps
-		- **MongoDB Atlas Monitoring** — Built-in cloud monitoring
-		- **MongoDB Ops Manager** — On-premise monitoring and automation
-		- **Prometheus MongoDB Exporter** — Prometheus integration
-		- **Grafana MongoDB Dashboard** — Visualization dashboards
-		- **Datadog MongoDB Integration** — Third-party monitoring
-		- **New Relic MongoDB Plugin** — Application performance monitoring
-	-
-	- ## Related Technologies
-		- [[Node.js]] — Popular runtime for MongoDB applications
-		- [[Express.js]] — Web framework often used with MongoDB
-		- [[React]] — Frontend framework for MERN stack
-		- [[Python]] — Popular language for MongoDB development
-		- [[Docker]] — Containerization for MongoDB deployment
-		- [[Kubernetes]] — Container orchestration for MongoDB clusters
-		- [[Redis]] — Caching layer often used with MongoDB
-		- [[Elasticsearch]] — Search engine complementing MongoDB
+		- [MongoDB Crash Course](https://www.youtube.com/watch?v=-56x56UppqQ) — Traversy Media — Beginner-friendly introduction to MongoDB
+		- [MongoDB Full Tutorial](https://www.youtube.com/watch?v=c2M-rlkkT5o) — freeCodeCamp.org — 4+ hour comprehensive course covering all core concepts
+		- [MongoDB Aggregation Framework](https://www.youtube.com/playlist?list=PL4RCxklHWZ9v2lcat4oEVGQhZg6r4IQGV) — MongoDB Official — Deep dive into the aggregation pipeline
+		- [Node.js & MongoDB Tutorial](https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA) — The Net Ninja — Building apps with Node.js and MongoDB
+		- [MERN Stack Full Course](https://www.youtube.com/watch?v=7CqJlxBYj-M) — freeCodeCamp.org — Full stack MongoDB, Express, React, Node.js project
