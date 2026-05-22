@@ -5,7 +5,7 @@ keywords: "async compute, GPU rendering, compute queue, synchronization, barrier
 ---
 
 tags:: concept, vulkan, gpu, async-compute, performance
-title:: PathTracer Learning - Concept - Async Compute
+title:: PathTracer Learning Concept Async Compute
 
 - # Concept: Async Compute
 	- Parent: [[PathTracer Learning - Phase 3 - GPU and Vulkan]]

@@ -1,16 +1,16 @@
-name: Sync Logseq → Quartz Content
+name: Sync Logseq → Quartz Content & Build
 
 on:
   push:
     branches:
       - Admin
     paths:
-      - "pages/**"  # only runs when .md files in pages/ actually change
+      - "pages/**"  # runs when notes in pages/ change
 
   workflow_dispatch:  # allows manual trigger from GitHub Actions UI
 
 jobs:
-  sync:
+  sync-and-build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -35,56 +35,98 @@ jobs:
           SOURCE="logseq-source/pages"
           DEST="quartz-site/content"
 
-          # Count files before
+          # Count files before sync
           before=$(find "$DEST" -name "*.md" ! -name "index.md" | wc -l)
 
-          # Remove stale .md files (deleted from Logseq) but keep index.md
+          # Delete stale notes (keeps index.md intact)
           find "$DEST" -name "*.md" ! -name "index.md" -delete
 
-          # Copy all .md files from Logseq pages/
+          # Copy notes from Admin branch to Web-live branch
           cp -r "$SOURCE"/. "$DEST"/
 
-          # Count files after
-          after=$(find "../$DEST" -name "*.md" ! -name "index.md" | wc -l)
+          # Count files after sync
+          after=$(find "$DEST" -name "*.md" ! -name "index.md" | wc -l)
           echo "files_before=$before" >> $GITHUB_OUTPUT
           echo "files_after=$after" >> $GITHUB_OUTPUT
 
-      - name: Check for changes
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Cache Node Modules
+        uses: actions/cache@v4
+        with:
+          path: quartz-site/node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('quartz-site/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: Install Dependencies
+        run: |
+          cd quartz-site
+          npm install
+
+      - name: Cache Quartz Build Cache
+        uses: actions/cache@v4
+        with:
+          path: quartz-site/.quartz-cache
+          key: ${{ runner.os }}-quartz-cache-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.os }}-quartz-cache-
+
+      - name: Build Quartz static site
+        run: |
+          cd quartz-site
+          npx quartz build
+
+      - name: Check for changes in the generated static output
         id: changes
         run: |
           cd quartz-site
           git add content/
-          if git diff --staged --quiet; then
+          if git diff --staged --quiet && [ -z "$(git status --porcelain public/)" ]; then
             echo "has_changes=false" >> $GITHUB_OUTPUT
-            echo "No content changes detected — skipping commit."
+            echo "No changes detected — skipping deploy."
           else
-            changed=$(git diff --staged --name-only | wc -l)
+            changed=$(git status --porcelain public/ | wc -l)
             echo "has_changes=true" >> $GITHUB_OUTPUT
             echo "changed_count=$changed" >> $GITHUB_OUTPUT
           fi
 
-      - name: Commit and push to Web-live
+      - name: Commit and push source files to Web-live
         if: steps.changes.outputs.has_changes == 'true'
         run: |
           cd quartz-site
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          CHANGED=${{ steps.changes.outputs.changed_count }}
           COMMIT_SHA=$(cd ../logseq-source && git rev-parse --short HEAD)
 
-          git commit -m "sync: $CHANGED file(s) updated from Logseq (Admin@$COMMIT_SHA)"
+          git add content/
+          git commit -m "sync: content updated from Logseq (Admin@$COMMIT_SHA)"
           git push origin Web-live
+
+      - name: Deploy Pre-built site to Web-deploy branch
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          cd quartz-site/public
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b Web-deploy
+          git add .
+          git commit -m "deploy: pre-built from GitHub Actions"
+          git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          git push -f origin Web-deploy
 
       - name: Summary
         run: |
           if [ "${{ steps.changes.outputs.has_changes }}" == "true" ]; then
-            echo "### ✅ Sync complete" >> $GITHUB_STEP_SUMMARY
+            echo "### ✅ Build & Sync complete" >> $GITHUB_STEP_SUMMARY
             echo "- **Files before:** ${{ steps.sync.outputs.files_before }}" >> $GITHUB_STEP_SUMMARY
             echo "- **Files after:** ${{ steps.sync.outputs.files_after }}" >> $GITHUB_STEP_SUMMARY
-            echo "- **Changed:** ${{ steps.changes.outputs.changed_count }} file(s)" >> $GITHUB_STEP_SUMMARY
-            echo "- Vercel will now redeploy automatically." >> $GITHUB_STEP_SUMMARY
+            echo "- Vercel will deploy instantly from **Web-deploy** branch." >> $GITHUB_STEP_SUMMARY
           else
             echo "### ⏭️ No changes" >> $GITHUB_STEP_SUMMARY
-            echo "Content was already up to date — no commit made." >> $GITHUB_STEP_SUMMARY
+            echo "Content was already up to date — no commit or deploy made." >> $GITHUB_STEP_SUMMARY
           fi
