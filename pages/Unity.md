@@ -237,6 +237,28 @@ displayTitle: Unity
 	-
 	- ## Lifecycle Order
 	  collapsed:: true
+		- ```mermaid
+		  graph TD
+		      Start([Scene Load]) --> Awake[Awake]
+		      Awake --> OnEnable[OnEnable]
+		      OnEnable --> StartCall[Start]
+		      StartCall --> PhysicsLoop{Physics Loop}
+		      PhysicsLoop -->|Fixed Timestep| FixedUpdate[FixedUpdate]
+		      FixedUpdate --> InternalPhysics[Internal Physics Update]
+		      InternalPhysics --> TriggerCollision[OnTrigger / OnCollision]
+		      TriggerCollision --> PhysicsLoop
+		      PhysicsLoop -->|Next Frame| InputEvents[Input Events]
+		      InputEvents --> UpdateCall[Update]
+		      UpdateCall --> CoYield{Yield Instructions}
+		      CoYield -->|null / frame| Coroutine[Coroutines Run]
+		      Coroutine --> LateUpdate[LateUpdate]
+		      LateUpdate --> Render[Rendering]
+		      Render --> FrameEnd{Frame End}
+		      FrameEnd -->|Loop| PhysicsLoop
+		      FrameEnd -->|Disable| OnDisable[OnDisable]
+		      OnDisable --> OnDestroy[OnDestroy]
+		      OnDestroy --> End([Deallocation])
+		  ```
 		- ```
 		  Scene Load:
 		    Awake()          → all objects, any order
@@ -1431,6 +1453,38 @@ displayTitle: Unity
 		  }
 		  ```
 	-
+	- ## ScriptableObject-based Variables & Events
+	  collapsed:: true
+		- This architecture pattern decouples code by storing runtime variables and events inside assets. Highly recommended for implementing the modular relationships in [[Game Design#Advanced Design Systems]].
+		- ```mermaid
+		  graph TD
+		      Player[Player Health script] -->|1. Event.Raise| Asset[GameEvent SO Asset: OnPlayerDamaged]
+		      Asset -->|2. Notifies listeners| L1[GameEventListener 1]
+		      Asset -->|2. Notifies listeners| L2[GameEventListener 2]
+		      L1 -->|3. UnityEvent Response| UI[Player Health UI]
+		      L2 -->|3. UnityEvent Response| Audio[Audio System]
+		  ```
+		- ```csharp
+		  // Shared Float Variable asset
+		  [CreateAssetMenu(menuName = "Variables/FloatVariable")]
+		  public class FloatVariable : ScriptableObject
+		  {
+		      public float Value;
+		  }
+		  
+		  // Listener Component
+		  public class GameEventListener : MonoBehaviour
+		  {
+		      [SerializeField] GameEvent Event;
+		      [SerializeField] UnityEngine.Events.UnityEvent Response;
+		  
+		      void OnEnable()  => Event.Register(this);
+		      void OnDisable() => Event.Unregister(this);
+		  
+		      public void OnEventRaised() => Response.Invoke();
+		  }
+		  ```
+	-
 	- ## Interfaces for Decoupling
 	  collapsed:: true
 		- ```csharp
@@ -1460,28 +1514,642 @@ displayTitle: Unity
 		          damageable.TakeDamage(25);
 		  }
 		  ```
+	-
+	- ## UniTask (Zero-Allocation Async/Await)
+	  collapsed:: true
+		- Standard C# Tasks allocate GC memory on every await. UniTask is a struct-based implementation optimized for Unity.
+		- ```csharp
+		  using Cysharp.Threading.Tasks;
+		  using System;
+		  using UnityEngine;
+		  
+		  public class AsyncLoadExample : MonoBehaviour
+		  {
+		      // Zero allocation async wait
+		      public async UniTaskVoid StartGameSequenceAsync()
+		      {
+		          try
+		          {
+		              Debug.Log("Starting loading sequence...");
+		              await UniTask.Delay(TimeSpan.FromSeconds(2f), delayType: DelayType.Realtime);
+		              
+		              // Awaiting scene load directly
+		              await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("GameScene").ToUniTask();
+		              Debug.Log("Scene loaded successfully");
+		          }
+		          catch (Exception ex)
+		          {
+		              Debug.LogException(ex);
+		          }
+		      }
+		  }
+		  ```
+	-
+	- ## Non-Allocating Physics Queries
+	  collapsed:: true
+		- Standard queries (e.g. `OverlapSphere`) allocate garbage arrays. Always use the `NonAlloc` methods with a pre-allocated cache.
+		- ```csharp
+		  public class PhysicsScanner : MonoBehaviour
+		  {
+		      // Static cache to prevent garbage allocation on invocation
+		      readonly Collider[] scanResults = new Collider[20];
+		      [SerializeField] LayerMask targetLayers;
+		  
+		      void Update()
+		      {
+		          // Returns the count of colliders found, up to the size of the array
+		          int foundCount = Physics.OverlapSphereNonAlloc(transform.position, 5f, scanResults, targetLayers);
+		          
+		          for (int i = 0; i < foundCount; i++)
+		          {
+		              Debug.Log($"Found: {scanResults[i].name}");
+		          }
+		      }
+		  }
+		  ```
+- # Editor Scripting
+  collapsed:: true
+	- Extending the Unity Editor to create custom tools, inspectors, and windows. Crucial for streamlining level layout and building prototyping tools during the production pipeline (see [[Game Design#Prototyping & Production]]).
+	-
+	- ## Custom Inspectors (IMGUI)
+	  collapsed:: true
+		- Customize how a script appears inside the Inspector tab.
+		- ```csharp
+		  using UnityEngine;
+		  #if UNITY_EDITOR
+		  using UnityEditor;
+		  
+		  [CustomEditor(typeof(Weapon))]
+		  public class WeaponEditor : Editor
+		  {
+		      public override void OnInspectorGUI()
+		      {
+		          // Get reference to actual target script
+		          Weapon weapon = (Weapon)target;
+		  
+		          // Draw standard inspector variables
+		          DrawDefaultInspector();
+		  
+		          EditorGUILayout.Space();
+		          EditorGUILayout.LabelField("Custom Editor Tools", EditorStyles.boldLabel);
+		  
+		          if (GUILayout.Button("Refill Ammo"))
+		          {
+		              weapon.Refill();
+		          }
+		      }
+		  }
+		  #endif
+		  
+		  // Target Component script
+		  public class Weapon : MonoBehaviour
+		  {
+		      public int ammo = 10;
+		      public void Refill() => ammo = 100;
+		  }
+		  ```
+	-
+	- ## Custom Editor Windows
+	  collapsed:: true
+		- Create persistent, docking windows within the Unity interface.
+		- ```csharp
+		  #if UNITY_EDITOR
+		  using UnityEditor;
+		  using UnityEngine;
+		  
+		  public class LevelBuilderWindow : EditorWindow
+		  {
+		      GameObject objectToSpawn;
+		  
+		      [MenuItem("Tools/Level Builder")]
+		      public static void ShowWindow()
+		      {
+		          GetWindow<LevelBuilderWindow>("Level Builder");
+		      }
+		  
+		      void OnGUI()
+		      {
+		          GUILayout.Label("Spawning Configuration", EditorStyles.boldLabel);
+		          objectToSpawn = (GameObject)EditorGUILayout.ObjectField("Prefab", objectToSpawn, typeof(GameObject), false);
+		  
+		          if (GUILayout.Button("Spawn at Origin"))
+		          {
+		              if (objectToSpawn != null)
+		              {
+		                  Instantiate(objectToSpawn, Vector3.zero, Quaternion.identity);
+		              }
+		          }
+		      }
+		  }
+		  #endif
+		  ```
+	-
+	- ## Property Drawers
+	  collapsed:: true
+		- Overriding how custom structures or serialized classes display in the editor.
+		- ```csharp
+		  using UnityEngine;
+		  #if UNITY_EDITOR
+		  using UnityEditor;
+		  
+		  [System.Serializable]
+		  public struct ScaledFloat
+		  {
+		      public float value;
+		      public float multiplier;
+		  }
+		  
+		  [CustomPropertyDrawer(typeof(ScaledFloat))]
+		  public class ScaledFloatDrawer : PropertyDrawer
+		  {
+		      public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+		      {
+		          EditorGUI.BeginProperty(position, label, property);
+		          position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
+		  
+		          // Divide drawing space into two columns
+		          float width = position.width / 2;
+		          Rect valueRect = new Rect(position.x, position.y, width - 5, position.height);
+		          Rect multRect = new Rect(position.x + width, position.y, width, position.height);
+		  
+		          EditorGUI.PropertyField(valueRect, property.FindPropertyRelative("value"), GUIContent.none);
+		          EditorGUI.PropertyField(multRect, property.FindPropertyRelative("multiplier"), GUIContent.none);
+		  
+		          EditorGUI.EndProperty();
+		      }
+		  }
+		  #endif
+		  ```
+	-
+	- ## UI Toolkit in the Editor
+	  collapsed:: true
+		- The modern layout engine replacing standard IMGUI using XML-like layout (UXML) and style sheets (USS).
+		- ```csharp
+		  #if UNITY_EDITOR
+		  using UnityEditor;
+		  using UnityEngine;
+		  using UnityEngine.UIElements;
+		  
+		  public class UIToolkitWindow : EditorWindow
+		  {
+		      [MenuItem("Tools/UI Toolkit Window")]
+		      public static void ShowWindow() => GetWindow<UIToolkitWindow>("UI Toolkit");
+		  
+		      void CreateGUI()
+		      {
+		          VisualElement root = rootVisualElement;
+		  
+		          // Create a label
+		          Label label = new Label("Modern UI Toolkit Label");
+		          label.style.fontSize = 20;
+		          label.style.color = Color.cyan;
+		          root.Add(label);
+		  
+		          // Create a button
+		          Button btn = new Button(() => Debug.Log("Clicked UI Toolkit Button!"));
+		          btn.text = "Click Me";
+		          root.Add(btn);
+		      }
+		  }
+		  #endif
+		  ```
+- # Unity 6 Graphics & Core Features
+  collapsed:: true
+	- Unity 6 is focused on GPU-driven workflows, visual fidelity, and high performance.
+	-
+	- ## GPU Resident Drawer
+	  collapsed:: true
+		- **What**: Move the rendering submission queue from the CPU to the GPU.
+		- ```mermaid
+		  graph TD
+		      subgraph Standard Pipeline (CPU Bound)
+		          CPU_B[CPU: Groups Meshes & Calculates Material Properties] -->|Submit Draw Call per batch| GPU_B[GPU Renders meshes]
+		      end
+		      subgraph GPU Resident Drawer (GPU Driven)
+		          CPU_R[CPU: Uploads mesh/material instance buffers once] -->|Draw commands executed on-device| GPU_R[GPU: Culls, groups, and renders directly]
+		      end
+		  ```
+		- **How**: Instantiated mesh draws are grouped, batched, and rendered directly via GPU-driven instancing.
+		- **Advantage**: Reduces CPU batching overhead and draw calls by up to 90% in dense scenes.
+		- **Setup**: In Universal Render Pipeline (URP) or HDRP assets, toggle `GPU Resident Drawer` in the Rendering configuration settings. Requires devices supporting Shader Model 4.5+.
+	-
+	- ## Render Graph API
+	  collapsed:: true
+		- **What**: Scriptable Render Pipeline (SRP) backend replacing old command buffer logic.
+		- **Concept**: Rendering is defined as a directed acyclic graph (DAG) of passes. Resource allocation, dependency checking, and execution are optimized automatically.
+		- ```mermaid
+		  graph LR
+		      Depth[Depth Prepass] --> GBuffer[G-Buffer Pass]
+		      GBuffer --> Shadow[Shadow Pass]
+		      GBuffer --> Lighting[Lighting Pass]
+		      Shadow --> Lighting
+		      Lighting --> Post[Post-Processing Pass]
+		      Post --> STP[Spatial Temporal Post-Processing]
+		      STP --> Present[Present to Screen]
+		  ```
+		- **Code Example**:
+		  ```csharp
+		  using UnityEngine.Rendering;
+		  using UnityEngine.Rendering.RenderGraphModule;
+		  
+		  public class CustomGraphPass : ScriptableRenderPass
+		  {
+		      // Unity 6 Render Graph Execution entry point
+		      public override void RecordRenderGraph(RenderGraph renderGraph, ContextContainer frameData)
+		      {
+		          // Get textures and context
+		          UniversalResourceData resourceData = frameData.Get<UniversalResourceData>();
+		          TextureHandle colorBuffer = resourceData.activeColorBuffer;
+		  
+		          using (var builder = renderGraph.AddRasterRenderPass<PassData>("Custom Blur Pass", out var passData))
+		          {
+		              passData.target = colorBuffer;
+		              builder.UseTexture(colorBuffer, AccessFlags.Write);
+		              
+		              builder.SetRenderFunc<PassData>((data, context) =>
+		              {
+		                  // Draw render commands using GPU context here
+		              });
+		          }
+		      }
+		  
+		      class PassData
+		      {
+		          public TextureHandle target;
+		      }
+		  }
+		  ```
+	-
+	- ## Spatial Temporal Post-Processing (STP)
+	  collapsed:: true
+		- **What**: Unity's native hardware-agnostic temporal upscaler.
+		- **How**: Resolves a high-fidelity image from lower rendering resolutions (e.g. upscaling 1080p to 4K) using motion vectors and historical frame buffers.
+		- **Usage**: Set up on the Camera component or pipeline settings. Ideal for high-end graphic pipelines where DLSS/FSR is unavailable.
+	-
+	- ## Adaptive Probe Volumes (APV)
+	  collapsed:: true
+		- **What**: Automated global illumination placement replacing manual Light Probes.
+		- **How**: Dynamically samples bounce light and ambient occlusion grids based on geometry density.
+		- **Advantage**: Smooth lighting transitions, dynamic streaming of light probes, and prevents light leaks in interior walls.
+- # Performance & Memory Optimization
+  collapsed:: true
+	- Essential practices to maintain stable framerates (60/120 FPS) and avoid garbage collection hitching.
+	-
+	- ## Garbage Collection (GC) Optimization
+	  collapsed:: true
+		- **Avoid Boxing**: Passing value types as objects allocates memory on the heap. Avoid using string concat inside `Update()`.
+		- **Cache Component Reference**: Never call `GetComponent` or `.tag` in loops. Use tags with `CompareTag()`.
+		- **Shader Property Caching**: Do not use string names for shaders in update loops. Cache the hash code.
+		- ```csharp
+		  public class OptimizedLoops : MonoBehaviour
+		  {
+		      static readonly int BaseColorID = Shader.PropertyToID("_BaseColor");
+		      Material propertyMaterial;
+		  
+		      void Start()
+		      {
+		          propertyMaterial = GetComponent<Renderer>().material;
+		      }
+		  
+		      void Update()
+		      {
+		          // Good: using cached integer property IDs rather than string name "_BaseColor"
+		          propertyMaterial.SetColor(BaseColorID, Color.red);
+		          
+		          // Good: CompareTag performs no GC allocation
+		          if (gameObject.CompareTag("Player")) { } 
+		      }
+		  }
+		  ```
+		- **Dynamic GC Control**: Use Incremental GC (distributes sweeps over multiple frames) or disable garbage collector manually during intensive gameplay sequences:
+		  ```csharp
+		  // Disable garbage collections during a race
+		  UnityEngine.Scripting.GarbageCollector.GCMode = UnityEngine.Scripting.GarbageCollector.Mode.Disabled;
+		  
+		  // Re-enable when opening game menu
+		  UnityEngine.Scripting.GarbageCollector.GCMode = UnityEngine.Scripting.GarbageCollector.Mode.Enabled;
+		  ```
+	-
+	- ## Draw Call & Batching Optimization
+	  collapsed:: true
+		- ```mermaid
+		  graph TD
+		      Meshes[GameObjects to Render] --> Method{Optimization Method?}
+		      Method -->|Static Meshes, Shared Material| SB[Static Batching\nCombines meshes at start into single buffer]
+		      Method -->|Small Dynamic Meshes, Shared Material| DB[Dynamic Batching\nCPU groups meshes on-fly <300 vertices]
+		      Method -->|Same Mesh, Different Material Data| GI[GPU Instancing\nDraws many instances using MaterialPropertyBlock]
+		      Method -->|Different Meshes, Different Materials| SRP[SRP Batcher\nCaches materials in GPU, uploads only transforms]
+		      SB --> Output[Reduced Draw Calls / GPU State Changes]
+		      DB --> Output
+		      GI --> Output
+		      SRP --> Output
+		  ```
+		- **Static Batching**: Combines static meshes sharing the same material into a single batch at startup.
+		- **Dynamic Batching**: CPU groups small dynamic meshes on the fly (requires <300 vertices).
+		- **GPU Instancing**: The GPU draws many instances of the same mesh using different parameters (using MaterialPropertyBlocks).
+		- **SRP Batcher**: Keeps materials cached in GPU memory and uploads only transform properties. Works out of the box in URP/HDRP when using compatible shaders.
+		- **Sprite Atlasing**: Combines multiple sprite textures into a single texture asset, preventing multiple draw calls in 2D UI.
+	-
+	- ## Texture Compression
+	  collapsed:: true
+		- Choose the correct compression format depending on the target platform:
+		- | Format | Target Platform | Description |
+		  | :--- | :--- | :--- |
+		  | **ASTC** | Mobile (iOS/Android) | Modern block-based compression. Variable block sizing. High quality. |
+		  | **ETC2** | Older Android | Fallback format. Requires square dimensions. |
+		  | **BC7 / DXT5** | PC / Console | High-fidelity compression for modern desktop hardware. |
+	-
+	- ## Memory Management & Addressables
+	  collapsed:: true
+		- **Resources Folder (Avoid)**: Assets inside the `Resources` folder are loaded into memory on startup and increase build sizes.
+		- **Addressable Asset System**: Loads assets asynchronously and manages their reference counts.
+		- ```csharp
+		  using UnityEngine;
+		  using UnityEngine.AddressableAssets;
+		  using UnityEngine.ResourceManagement.AsyncOperations;
+		  
+		  public class AddressablesLoader : MonoBehaviour
+		  {
+		      [SerializeField] AssetReference prefabRef;
+		      GameObject spawnedObject;
+		  
+		      void Start()
+		      {
+		          // Load async
+		          prefabRef.InstantiateAsync().Completed += OnSpawnCompleted;
+		      }
+		  
+		      void OnSpawnCompleted(AsyncOperationHandle<GameObject> handle)
+		      {
+		          if (handle.Status == AsyncOperationStatus.Succeeded)
+		          {
+		              spawnedObject = handle.Result;
+		          }
+		      }
+		  
+		      void OnDestroy()
+		      {
+		          // Release memory
+		          if (spawnedObject != null)
+		          {
+		              prefabRef.ReleaseInstance(spawnedObject);
+		          }
+		      }
+		  }
+		  ```
+- # Data-Oriented Technology Stack (DOTS)
+  collapsed:: true
+	- Unity's high-performance stack combining the C# Job System, the Burst Compiler, and ECS.
+	-
+	- ## C# Job System
+	  collapsed:: true
+		- **Purpose**: Safely write multithreaded code. Prevents race conditions by using native memory containers and dependency handles.
+		- ```mermaid
+		  graph TD
+		      Main[Main Thread] -->|1. Allocates NativeArray| NativeMemory[Native Heap Memory]
+		      Main -->|2. Schedules Job| JobQueue[C# Job System Queue]
+		      JobQueue -->|3. Distributes tasks| W1[Worker Thread 1: Burst Compiled]
+		      JobQueue -->|3. Distributes tasks| W2[Worker Thread 2: Burst Compiled]
+		      JobQueue -->|3. Distributes tasks| W3[Worker Thread 3: Burst Compiled]
+		      W1 -->|4. Read/Write| NativeMemory
+		      W2 -->|4. Read/Write| NativeMemory
+		      W3 -->|4. Read/Write| NativeMemory
+		      Main -->|5. Wait for Complete| JobQueue
+		      Main -->|6. Safely reads output & disposes| NativeMemory
+		  ```
+		- **Job Example**:
+		  ```csharp
+		  using Unity.Collections;
+		  using Unity.Jobs;
+		  using UnityEngine;
+		  
+		  public struct CalculateDistanceJob : IJobParallelFor
+		  {
+		      // NativeArray represents unmanaged memory
+		      [ReadOnly] public NativeArray<Vector3> startPositions;
+		      [ReadOnly] public NativeArray<Vector3> endPositions;
+		      public NativeArray<float> outputDistances;
+		  
+		      public void Execute(int index)
+		      {
+		          outputDistances[index] = Vector3.Distance(startPositions[index], endPositions[index]);
+		      }
+		  }
+		  ```
+	-
+	- ## Burst Compiler
+	  collapsed:: true
+		- **What**: An LLVM-based compiler that converts C# IL code into highly optimized machine code.
+		- **Usage**: Requires math calculations using unmanaged structures. Place `[BurstCompile]` above the Job structure.
+		- **Job Scheduling**:
+		  ```csharp
+		  using Unity.Collections;
+		  using Unity.Jobs;
+		  using Unity.Burst;
+		  using UnityEngine;
+		  
+		  public class JobRunner : MonoBehaviour
+		  {
+		      void Update()
+		      {
+		          int dataSize = 1000;
+		          // Allocate unmanaged arrays
+		          NativeArray<Vector3> starts = new NativeArray<Vector3>(dataSize, Allocator.TempJob);
+		          NativeArray<Vector3> ends = new NativeArray<Vector3>(dataSize, Allocator.TempJob);
+		          NativeArray<float> distances = new NativeArray<float>(dataSize, Allocator.TempJob);
+		  
+		          var job = new CalculateDistanceJob
+		          {
+		              startPositions = starts,
+		              endPositions = ends,
+		              outputDistances = distances
+		          };
+		  
+		          // Schedule job across worker threads (inner loop batch count: 64)
+		          JobHandle handle = job.Schedule(dataSize, 64);
+		          
+		          // Block main thread until calculations are done
+		          handle.Complete();
+		  
+		          // Dispose native memory to prevent memory leaks
+		          starts.Dispose();
+		          ends.Dispose();
+		          distances.Dispose();
+		      }
+		  }
+		  ```
+	-
+	- ## Entity Component System (ECS) Overview
+	  collapsed:: true
+		- **Entities**: Identifiers (indices) replacing standard GameObjects.
+		- **Components**: Structs holding pure data (`IComponentData`) without any behavior.
+		- **Systems**: Classes managing the data transform logic (`ISystem` or `SystemBase`). Executes over groups of entities matching component queries.
+		- ```mermaid
+		  graph TD
+		      subgraph Entity Manager
+		          E1[Entity 1]
+		          E2[Entity 2]
+		          E3[Entity 3]
+		      end
+		      subgraph Component Data Arrays
+		          C_Pos[Position Component Data Array]
+		          C_Vel[Velocity Component Data Array]
+		          C_Health[Health Component Data Array]
+		      end
+		      subgraph Systems
+		          MovementSystem[Movement System]
+		          DamageSystem[Damage System]
+		      end
+		      E1 --> C_Pos
+		      E1 --> C_Vel
+		      E2 --> C_Pos
+		      E2 --> C_Health
+		      E3 --> C_Pos
+		      E3 --> C_Vel
+		      E3 --> C_Health
+		      
+		      MovementSystem -->|Iterates over Position + Velocity| C_Pos
+		      MovementSystem -->|Iterates over Position + Velocity| C_Vel
+		      DamageSystem -->|Iterates over Health| C_Health
+		  ```
+- # Netcode for GameObjects (NGO)
+  collapsed:: true
+	- Unity's official high-level networking framework for multiplayer games. Used to implement the social/multiplayer mechanics defined in [[Game Design#Game Mechanics Design]].
+	- ```mermaid
+	  graph TD
+	      subgraph Client 1 (Owner)
+	          C1_Input[Input / Movement]
+	      end
+	      subgraph Server (Authority)
+	          S_State[Validate & Calculate State]
+	          NetVar[Synced NetworkVariable]
+	      end
+	      subgraph Client 2 (Proxy)
+	          C2_Visual[Visual Position / State]
+	      end
+	      
+	      C1_Input -->|1. ServerRpc Request| S_State
+	      S_State -->|2. Updates| NetVar
+	      NetVar -->|3. Auto-Replicated Sync| C2_Visual
+	      S_State -->|4. ClientRpc Broadcast| C2_Visual
+	  ```
+	-
+	- ## NetworkManager Setup
+	  collapsed:: true
+		- The root controller in the scene. Holds references to the transport layer (e.g. Unity Transport) and registered Network Prefabs.
+		- ```csharp
+		  // Quick Host/Server startup script
+		  public class ConnectUI : MonoBehaviour
+		  {
+		      void OnGUI()
+		      {
+		          GUILayout.BeginArea(new Rect(10, 10, 300, 300));
+		          if (!Unity.Netcode.NetworkManager.Singleton.IsClient && !Unity.Netcode.NetworkManager.Singleton.IsServer)
+		          {
+		              if (GUILayout.Button("Host (Server + Client)")) NetworkManager.Singleton.StartHost();
+		              if (GUILayout.Button("Server Only")) NetworkManager.Singleton.StartServer();
+		              if (GUILayout.Button("Client Join")) NetworkManager.Singleton.StartClient();
+		          }
+		          GUILayout.EndArea();
+		      }
+		  }
+		  ```
+	-
+	- ## NetworkVariable & Syncing
+	  collapsed:: true
+		- Syncs state dynamically across connected clients.
+		- ```csharp
+		  using Unity.Netcode;
+		  using UnityEngine;
+		  
+		  public class PlayerSync : NetworkBehaviour
+		  {
+		      // Sync variable with Owner write rights
+		      public NetworkVariable<Vector3> NetPosition = new NetworkVariable<Vector3>(
+		          writePerm: NetworkVariableWritePermission.Owner
+		      );
+		  
+		      void Update()
+		      {
+		          if (IsOwner)
+		          {
+		              NetPosition.Value = transform.position;
+		          }
+		          else
+		          {
+		              transform.position = NetPosition.Value;
+		          }
+		      }
+		  }
+		  ```
+	-
+	- ## Remote Procedure Calls (RPCs)
+	  collapsed:: true
+		- Execute methods across client-server boundaries.
+		- **ServerRpc**: Sent by clients, executed on the server.
+		- **ClientRpc**: Sent by the server, executed on all clients.
+		- ```csharp
+		  using Unity.Netcode;
+		  using UnityEngine;
+		  
+		  public class CombatNetwork : NetworkBehaviour
+		  {
+		      // Client requests damage calculation on the server
+		      [ServerRpc]
+		      public void TakeDamageServerRpc(int amount)
+		      {
+		          int remainingHealth = 100 - amount;
+		          UpdateHealthUIClientRpc(remainingHealth);
+		      }
+		  
+		      // Server notifies all clients to update health interface
+		      [ClientRpc]
+		      public void UpdateHealthUIClientRpc(int currentHealth)
+		      {
+		          Debug.Log($"Update client UI. Health: {currentHealth}");
+		      }
+		  }
+		  ```
+	-
+	- ## Spawning Prefabs
+	  collapsed:: true
+		- Spawning objects on the server instantiates them on all clients.
+		- ```csharp
+		  public class Spawner : NetworkBehaviour
+		  {
+		      [SerializeField] GameObject prefabToNetworkSpawn;
+		  
+		      [ServerRpc]
+		      public void SpawnObjectServerRpc(Vector3 pos)
+		      {
+		          GameObject instance = Instantiate(prefabToNetworkSpawn, pos, Quaternion.identity);
+		          // Register spawned entity across the network
+		          instance.GetComponent<NetworkObject>().Spawn();
+		      }
+		  }
+		  ```
 - # Library & Frameworks
   collapsed:: true
 	- ## Core Unity Packages
 	  collapsed:: true
-		- [[Universal Render Pipeline (URP)]] - Scalable rendering for mobile to high-end PC.
-		- [[High Definition Render Pipeline (HDRP)]] - AAA-quality rendering for high-end platforms.
-		- [[Input System]] - Modern, rebindable input handling.
-		- [[Cinemachine]] - Procedural camera system.
-		- [[TextMeshPro]] - High-quality text rendering.
-		- [[Unity UI (uGUI)]] - Canvas-based UI system.
-		- [[Addressables]] - Async asset loading and memory management.
-		- [[Unity Netcode for GameObjects]] - High-level multiplayer networking.
+		- [[Universal Render Pipeline (URP)]] — Scalable, high-performance rendering from mobile devices to high-end PCs.
+		- [[High Definition Render Pipeline (HDRP)]] — AAA-grade rendering, volumetric lighting, and physical cameras for PC and console.
+		- [[Input System]] — Modern, event-based system supporting customized binding mappings and hot-swappable hardware.
+		- [[Cinemachine]] — Procedural camera system supporting tracking, camera blending, smart damping, and screen composition.
+		- [[TextMeshPro]] — High-fidelity text mesh layout system based on Signed Distance Field (SDF) textures.
+		- [[Unity UI (uGUI)]] — Standard Canvas-based user interface components.
+		- [[Addressables]] — Dynamic async asset grouping, loading, memory releasing, and content deployment workflows.
+		- [[Unity Netcode for GameObjects]] — Official high-level engine networking system for multiplayer synchronization.
 	-
 	- ## Popular Third-Party Assets
 	  collapsed:: true
-		- [[DOTween]] - Fast, easy tweening and animation library.
-		- [[Odin Inspector]] - Powerful editor tooling and serialization.
-		- [[Photon PUN 2]] - Multiplayer networking solution.
-		- [[Mirror Networking]] - Open-source multiplayer framework.
-		- [[Newtonsoft.Json for Unity]] - Full-featured JSON serialization.
-		- [[UniTask]] - Zero-allocation async/await for Unity.
-		- [[NaughtyAttributes]] - Extra Inspector attributes.
+		- [[DOTween]] — Fast, allocation-free tweening engine for smooth UI and object animations.
+		- [[Odin Inspector]] — Advanced scripting library to create rich layouts and custom inspector grids.
+		- [[Photon PUN 2]] — Cloud-hosted real-time multiplayer networking framework.
+		- [[Mirror Networking]] — High-performance open-source TCP/UDP server/client architecture.
+		- [[Newtonsoft.Json for Unity]] — Full-featured JSON serialization library configured for platform compliance.
+		- [[UniTask]] — Struct-based zero-allocation task integrations for C# async/await workflows.
+		- [[NaughtyAttributes]] — Inspector decoration helpers without creating custom editors.
 - # More Learn
 	- [Unity Manual](https://docs.unity3d.com/Manual/index.html)
 	- [Unity Scripting API](https://docs.unity3d.com/ScriptReference/)
@@ -1492,5 +2160,8 @@ displayTitle: Unity
 	- [Brackeys YouTube (archived)](https://www.youtube.com/@Brackeys)
 	- [Unity GitHub](https://github.com/Unity-Technologies)
 	- [Awesome Unity](https://github.com/RyanNielson/awesome-unity)
+	- [[Game Design]] — Theoretical frameworks, player psychology, MDA, core loops, game feel and balance
 	- [[Game Systems]] — Engine-agnostic inventory, quest, save/load & procedural gen patterns
 	- [[Advanced Graphics]] — SRP, URP, HDRP low-level rendering connection to graphics APIs
+	- [[CSharp for Unity]] — Unity-specific scripting patterns and practices in depth
+	- [[CSharp]] — Complete C# programming language fundamentals, generics, and structures

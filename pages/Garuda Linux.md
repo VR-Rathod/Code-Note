@@ -141,35 +141,95 @@ enableToc: true
 		  ```
 - # Package Management
   collapsed:: true
+	- ## Package Resolution Pipeline
+		- ```mermaid
+		  graph TD
+		      UserQuery[User runs pacman/yay Command] --> CacheCheck{Is package in local package database cache?}
+		      CacheCheck -->|Yes| LocalInstall[Install instantly from local cache /var/cache/pacman/pkg]
+		      CacheCheck -->|No| RepoSearch[Search configured repositories in /etc/pacman.conf]
+		      RepoSearch --> CoreExtra[1. Search official core & extra repositories]
+		      RepoSearch --> ChaoticAUR[2. Search pre-built Chaotic-AUR mirrorlist]
+		      RepoSearch --> UserSelect{Is package found in binary repositories?}
+		      UserSelect -->|Yes| DownloadBinary[Download pre-compiled ZSTD package]
+		      UserSelect -->|No| AURSearch[Search Arch User Repository AUR via yay/paru]
+		      AURSearch --> BuildAUR{Found in AUR?}
+		      BuildAUR -->|Yes| CloneBuild[Clone PKGBUILD, check dependencies, and build from source code]
+		      BuildAUR -->|No| Error([Package not found in any repository])
+		      DownloadBinary --> InstallSync[Install package & register in local pacman DB]
+		      CloneBuild --> InstallSync
+		  ```
 	- ## pacman (Core Package Manager)
 		- ```bash
 		  # Update system
 		  sudo pacman -Syu                   # sync + upgrade all packages
-		  sudo pacman -Syuu                  # force downgrade if needed
+		  sudo pacman -Syuu                  # force downgrade if needed (dangerous, use with care)
 		  
 		  # Install & remove
 		  sudo pacman -S package             # install
-		  sudo pacman -S package1 package2   # install multiple
-		  sudo pacman -R package             # remove (keep deps)
-		  sudo pacman -Rs package            # remove + unused deps
-		  sudo pacman -Rns package           # remove + deps + config files
+		  sudo pacman -S package1 package2   # install multiple packages
+		  sudo pacman -R package             # remove (leaves dependencies behind)
+		  sudo pacman -Rs package            # remove package + its unneeded dependencies
+		  sudo pacman -Rns package           # remove package + unneeded deps + configuration files
 		  
-		  # Search & info
-		  pacman -Ss keyword                 # search repos
-		  pacman -Si package                 # package info (remote)
-		  pacman -Qi package                 # package info (installed)
-		  pacman -Ql package                 # list files in package
-		  pacman -Qo /usr/bin/python         # which package owns file
-		  pacman -Qs keyword                 # search installed packages
-		  pacman -Q                          # list all installed
-		  pacman -Qe                         # explicitly installed
-		  pacman -Qdt                        # orphaned packages
+		  # Search & query
+		  pacman -Ss keyword                 # search remote database for keyword
+		  pacman -Si package                 # display remote package detailed information
+		  pacman -Qi package                 # display locally installed package info
+		  pacman -Ql package                 # list all files owned by package
+		  pacman -Qo /usr/bin/python         # query package that owns a specific file path
+		  pacman -Qs keyword                 # search locally installed packages for keyword
+		  pacman -Q                          # list all installed packages
+		  pacman -Qe                         # list explicitly installed packages
+		  pacman -Qdt                        # list orphaned packages (installed as dependency but no longer needed)
 		  
-		  # Cache management
-		  sudo pacman -Sc                    # remove old cached packages
-		  sudo pacman -Scc                   # remove all cached packages
-		  paccache -r                        # keep last 3 versions (pacman-contrib)
+		  # Cache management (Crucial for Btrfs space)
+		  sudo pacman -Sc                    # remove uninstalled package archives from cache
+		  sudo pacman -Scc                   # remove all cached package archives
+		  sudo paccache -r                   # keep only the last 3 versions of active packages
+		  sudo paccache -rk 1                # keep only the last 1 version (extreme cleanup)
 		  ```
+		- ### Advanced Pacman Configuration & Troubleshooting
+			- **Optimize Mirror Speeds**:
+				- ```bash
+				  # Install rate-mirrors (much faster and more accurate than reflector)
+				  sudo pacman -S rate-mirrors
+				  
+				  # Test and update Arch mirrors
+				  rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist
+				  
+				  # Test and update Chaotic-AUR mirrors
+				  rate-mirrors chaotic | sudo tee /etc/pacman.d/chaotic-mirrorlist
+				  ```
+			- **Creating Custom Pacman Hooks**:
+				- Custom hooks let you run scripts automatically before or after package installations. Created in `/etc/pacman.d/hooks/`.
+				- *Example Hook*: Auto-clean old package caches after every upgrade transaction (`/etc/pacman.d/hooks/clean_cache.hook`):
+				- ```ini
+				  [Trigger]
+				  Operation = Upgrade
+				  Operation = Install
+				  Type = Package
+				  Target = *
+				  
+				  [Action]
+				  Description = Cleaning old pacman cache...
+				  When = PostTransaction
+				  Exec = /usr/bin/paccache -r
+				  ```
+			- **Signature verification errors (Keyring Repair)**:
+				- If you receive `invalid or corrupted package (PGP signature)` errors:
+				- ```bash
+				  # 1. Reset Pacman key database
+				  sudo rm -rf /etc/pacman.d/gnupg
+				  sudo pacman-key --init
+				  sudo pacman-key --populate archlinux garuda
+				  
+				  # 2. Update keyring packages specifically
+				  sudo pacman -Sy archlinux-keyring garuda-keyring
+				  
+				  # 3. Force sync and update key database
+				  sudo pacman-key --refresh-keys
+				  sudo pacman -Syu
+				  ```
 	- ## Chaotic-AUR (Pre-built AUR Packages)
 		- ```bash
 		  # Chaotic-AUR is pre-configured on Garuda
@@ -318,27 +378,156 @@ enableToc: true
 		  sudo pacman -S goverlay
 		  ```
 	- ## Wine & DXVK (Windows Games without Steam)
-		- ```bash
-		  # Wine — run Windows .exe files
-		  sudo pacman -S wine-staging winetricks
-		  
-		  # Create a Wine prefix (isolated Windows environment)
-		  WINEPREFIX=~/.wine32 WINEARCH=win32 wine wineboot
-		  WINEPREFIX=~/.wine64 wine wineboot
-		  
-		  # Install DirectX, Visual C++ runtimes via winetricks
-		  winetricks d3dx9 d3dx11 vcrun2019 dotnet48
-		  
-		  # DXVK — DirectX 9/10/11 → Vulkan (much better performance)
-		  sudo pacman -S dxvk-bin
-		  WINEPREFIX=~/.wine64 setup_dxvk install
-		  
-		  # VKD3D-Proton — DirectX 12 → Vulkan
-		  sudo pacman -S vkd3d-proton-bin   # from Chaotic-AUR
-		  
-		  # Bottles — GUI Wine manager (easier than raw Wine)
-		  sudo pacman -S bottles
-		  ```
+		- ### Translation Stack Architecture
+			- ```mermaid
+			  graph TD
+			      WinApp["Windows Game/Executable (.exe)"] -->|Calls Win32/DirectX APIs| WineTranslation["Wine translation layer / Proton"]
+			      
+			      subgraph Wine Translation Stack
+			          WineTranslation -->|Win32/POSIX API Translation| SystemCalls["Linux System Calls (kernel)"]
+			          WineTranslation -->|DirectX 9/10/11 Calls| DXVK["DXVK (Translates DX9/10/11 to Vulkan)"]
+			          WineTranslation -->|DirectX 12 Calls| VKD3D["VKD3D-Proton (Translates DX12 to Vulkan)"]
+			      end
+			      
+			      SystemCalls --> Kernel["linux-zen kernel"]
+			      DXVK --> VulkanDrivers["Vulkan Driver (Mesa / NVIDIA)"]
+			      VKD3D --> VulkanDrivers
+			      
+			      VulkanDrivers --> GPU["GPU Hardware (AMD / NVIDIA / Intel)"]
+			      Kernel --> GraphicServer["Display Server (Wayland via Xwayland / X11)"]
+			  ```
+			- **Translation Phases**:
+				- **1. Win32 API Mapping**: Wine translates Windows API calls (like memory allocation, threading, and window creation) directly into POSIX standards and Linux system calls in real-time, eliminating emulator overhead.
+				- **2. DirectX Translation**:
+					- **DXVK** intercepts Direct3D 9, 10, and 11 calls and translates them to Vulkan command buffers. This bypasses the old, slower OpenGL translation path.
+					- **VKD3D-Proton** maps Direct3D 12 calls to Vulkan. Because D3D12 is structurally similar to Vulkan, this provides low-overhead, high-performance execution.
+				- **3. Vulkan Execution**: High-efficiency Vulkan graphics drivers execute the translated rendering pipeline directly on the GPU hardware.
+		- ### Core Installation & Configuration
+			- ```bash
+			  # Wine — run Windows .exe files (Staging has latest experimental fixes)
+			  sudo pacman -S wine-staging winetricks
+			  
+			  # Create a Wine prefix (isolated Windows environment)
+			  WINEPREFIX=~/.wine32 WINEARCH=win32 wine wineboot
+			  WINEPREFIX=~/.wine64 wine wineboot
+			  
+			  # Install DirectX, Visual C++ runtimes via winetricks
+			  winetricks d3dx9 d3dx11 vcrun2019 dotnet48
+			  
+			  # DXVK — DirectX 9/10/11 → Vulkan (much better performance)
+			  sudo pacman -S dxvk-bin
+			  WINEPREFIX=~/.wine64 setup_dxvk install
+			  
+			  # VKD3D-Proton — DirectX 12 → Vulkan
+			  sudo pacman -S vkd3d-proton-bin   # from Chaotic-AUR
+			  
+			  # Bottles — GUI Wine manager (easier than raw Wine)
+			  sudo pacman -S bottles
+			  ```
+		- ### Advanced Custom Wine Prefix Script
+			- Setup a wrapper script to run games under an optimized, isolated Wine prefix with performance environment variables (`run-wine-game.sh`):
+			- ```bash
+			  #!/usr/bin/env bash
+			  # Custom Wine gaming runtime wrapper script
+			  
+			  # Config directories
+			  export WINEPREFIX="${HOME}/.local/share/wineprefixes/gaming_prefix"
+			  export WINEARCH="win64"
+			  export WINEDEBUG="-all" # Disable debugging for minor performance boost
+			  
+			  # Performance optimizations
+			  export DXVK_HUD="fps,compiler" # Display DXVK FPS and pipeline compile indicators
+			  export DXVK_ASYNC=1            # Enable asynchronous pipeline compilation (minimizes stutter)
+			  export PROTON_NO_ESYNC=0        # Ensure Eventfd synchronization is allowed
+			  export PROTON_NO_FSYNC=0        # Ensure Futex synchronization is allowed (Zen kernel supports fsync)
+			  
+			  # CPU & GPU Driver optimizations
+			  export __GL_THREADED_OPTIMIZATIONS=1 # For NVIDIA cards
+			  export mesa_glthread=true            # For AMD/Intel Mesa drivers
+			  
+			  # Create prefix directory if missing
+			  if [ ! -d "$WINEPREFIX" ]; then
+			      echo "[*] Initializing gaming Wine prefix at: $WINEPREFIX"
+			      mkdir -p "$(dirname "$WINEPREFIX")"
+			      wine wineboot --init
+			      
+			      # Setup DXVK within the new prefix
+			      setup_dxvk install
+			  fi
+			  
+			  # Run the targeted game executable
+			  if [ -z "$1" ]; then
+			      echo "Usage: $0 path/to/game.exe"
+			      exit 1
+			  fi
+			  
+			  echo "[*] Executing game under gamemoderun + wine..."
+			  gamemoderun wine "$@"
+			  ```
+		- ### Custom DXVK Configuration File
+			- Optimize game behavior by configuring variables in `dxvk.conf` inside the WINEPREFIX or custom path exported via `export DXVK_CONFIG_FILE=/path/to/dxvk.conf`:
+			- ```ini
+			  # Custom performance overrides for DXVK
+			  
+			  # Frame Rate & Sync Limits
+			  dxgi.tearFree = True
+			  dxgi.numBackBuffers = 3
+			  d3d9.maxFrameLatency = 1
+			  d3d11.maxFrameLatency = 1
+			  
+			  # VRAM memory management tweaks
+			  dxvk.maxChunkSize = 128
+			  dxvk.hud = compiler,fps
+			  
+			  # AMD Smart Access Memory / Resizable BAR cache settings
+			  dxgi.deviceMemoryLimit = 0
+			  
+			  # Game specific optimizations (e.g. override reported GPU)
+			  # dxgi.customDeviceId = 0x10de
+			  # dxgi.customVendorId = 0x10de
+			  ```
+		- ### Advanced MangoHud Configurations
+			- Create custom tweaks inside `~/.config/MangoHud/MangoHud.conf` to monitor resource bounds in real-time:
+			- ```ini
+			  # MangoHud configuration
+			  
+			  # Overlay settings
+			  legacy_layout=false
+			  horizontal=false
+			  position=top-left
+			  round_corners=8
+			  background_alpha=0.65
+			  font_size=20
+			  
+			  # Metrics
+			  fps
+			  fps_limit=144
+			  toggle_fps_limit=F3
+			  
+			  # GPU details
+			  gpu_stats
+			  gpu_temp
+			  gpu_core_clock
+			  gpu_mem_clock
+			  gpu_power
+			  
+			  # CPU details
+			  cpu_stats
+			  cpu_temp
+			  cpu_mhz
+			  cpu_power
+			  
+			  # Memory details
+			  ram
+			  vram
+			  
+			  # Frame details
+			  frame_timing
+			  frametime
+			  
+			  # Keybindings
+			  toggle_hud=F12
+			  ```
 	- ## Emulation
 		- ```bash
 		  # RetroArch (multi-system emulator frontend)
@@ -360,27 +549,94 @@ enableToc: true
 - # Performance Tuning
   collapsed:: true
 	- ## linux-zen Kernel
-		- ```bash
-		  # Garuda ships linux-zen by default — optimized for desktop/gaming
-		  uname -r                           # check current kernel
-		  # Should show: x.x.x-zen1-x-zen
-		  
-		  # Available kernels (install via pacman):
-		  # linux-zen      → low-latency, desktop/gaming (Garuda default)
-		  # linux-tkg-pds  → TKG patchset, best for gaming (from Chaotic-AUR)
-		  # linux-tkg-bmq  → BMQ scheduler variant
-		  # linux-cachyos  → CachyOS optimized kernel (from Chaotic-AUR)
-		  # linux-xanmod   → XanMod kernel with extra patches
-		  # linux           → vanilla Arch kernel
-		  # linux-lts       → long-term support kernel (most stable)
-		  
-		  # Install alternative kernel:
-		  sudo pacman -S linux-tkg-pds linux-tkg-pds-headers
-		  # Select at GRUB boot menu
-		  
-		  # Check kernel scheduler:
-		  cat /sys/kernel/debug/sched/features
-		  ```
+		- ### Resource Management & Scheduling Flow
+			- ```mermaid
+			  graph TD
+			      SystemLoad["User Session / Active Gaming"] -->|Triggers performance profile| GameModeDaemon["GameMode Daemon (gamemoded)"]
+			      
+			      subgraph Resource Allocation Stack
+			          GameModeDaemon -->|Configures governor| CPUPower["cpupower (Sets Governor to 'performance')"]
+			          GameModeDaemon -->|Applies nice/ioprio| ZenScheduler["Zen Scheduler (BORE / PDS - Prioritizes game execution thread)"]
+			          GameModeDaemon -->|Disables temporarily| KernelMitigations["CPU Security Mitigations (via sysctl or reboot)"]
+			          GameModeDaemon -->|Optimizes virtual memory| VMManagement["VM / Swap Optimization (ZRAM, Swappiness=10)"]
+			      end
+			      
+			      CPUPower --> CPUCores["High Frequency CPU Cores"]
+			      ZenScheduler --> ExecutionPriority["Low Latency Thread Execution"]
+			      KernelMitigations --> PerformanceGain["Reduced Kernel-Space CPU Overhead"]
+			      VMManagement --> RAMAlloc["Compressed Swap in RAM (No Disk Bottlenecks)"]
+			  ```
+			- **Resource Allocation Architecture**:
+				- **1. CPU Scheduling**: The `linux-zen` kernel utilizes the **BORE (Burst-Oriented Response Enhancer)** scheduler (or similar low-latency schedulers like **PDS** or **BMQ** in custom kernels). It prioritizes interactive tasks (games, audio, user interface) over background services, ensuring zero frame drops even under high background load.
+				- **2. Dynamic Power Management**: The kernel works with `cpupower` and `gamemoded` to ramp up CPU core frequencies instantly when a process requests performance execution, overriding standard conservative scaling limits.
+				- **3. Compressed Swap (ZRAM)**: Swap requests are handled directly in RAM using compressed ZSTD algorithms, preventing any swap-to-disk disk-access latency.
+		- ### Kernel Selection & Installation
+			- ```bash
+			  # Garuda ships linux-zen by default — optimized for desktop/gaming
+			  uname -r                           # check current kernel
+			  # Should show: x.x.x-zen1-x-zen
+			  
+			  # Available kernels (install via pacman):
+			  # linux-zen      → low-latency, desktop/gaming (Garuda default)
+			  # linux-tkg-pds  → TKG patchset, best for gaming (from Chaotic-AUR)
+			  # linux-tkg-bmq  → BMQ scheduler variant
+			  # linux-cachyos  → CachyOS optimized kernel (from Chaotic-AUR)
+			  # linux-xanmod   → XanMod kernel with extra patches
+			  # linux           → vanilla Arch kernel
+			  # linux-lts       → long-term support kernel (most stable)
+			  
+			  # Install alternative kernel:
+			  sudo pacman -S linux-tkg-pds linux-tkg-pds-headers
+			  # Select at GRUB boot menu
+			  
+			  # Check kernel scheduler details:
+			  cat /sys/kernel/debug/sched/features
+			  ```
+		- ### Custom Gaming Sysctl Tuning
+			- Configure custom system control parameters in `/etc/sysctl.d/99-gaming.conf` (linked here: [99-gaming.conf](file:///etc/sysctl.d/99-gaming.conf)) to optimize virtual memory, network backlogs, and hardware watchdogs:
+			- ```ini
+			  # /etc/sysctl.d/99-gaming.conf
+			  
+			  # Virtual Memory Management
+			  vm.swappiness = 10                  # Minimize swapping to disk (use ZRAM)
+			  vm.vfs_cache_pressure = 50          # Keep directory and inode caches longer
+			  vm.dirty_bytes = 268435456          # Prevent massive disk write operations from freezing UI (256MB)
+			  vm.dirty_background_bytes = 67108864 # Flush dirty data earlier (64MB)
+			  
+			  # Process Scheduling
+			  kernel.sched_autogroup_enabled = 0  # Disable autogroup to allow direct thread renicing
+			  kernel.nmi_watchdog = 0             # Disable hardware watchdog (frees up CPU execution cycles)
+			  
+			  # Networking Buffer Limits
+			  net.core.netdev_max_backlog = 16384 # Allow larger packet backlog (prevents network drops)
+			  net.ipv4.tcp_fastopen = 3           # Enable TCP Fast Open for faster server handshake
+			  
+			  # File Descriptors
+			  fs.file-max = 2097152               # Increase file descriptor limit for heavy modded games
+			  ```
+			- Apply changes immediately:
+				- `sudo sysctl -p /etc/sysctl.d/99-gaming.conf`
+		- ### Laptop Power Limits & Energy Profiles
+			- Tune thermal and power management on laptops running Garuda to prevent thermal throttling while gaming:
+			- ```bash
+			  # 1. Install power-profiles-daemon (default for KDE/GNOME interfaces)
+			  sudo pacman -S power-profiles-daemon
+			  sudo systemctl enable --now power-profiles-daemon
+			  
+			  # Set execution profile to performance
+			  powerprofilesctl set performance
+			  powerprofilesctl list
+			  
+			  # 2. Advanced TLP battery management (alternative to power-profiles-daemon)
+			  sudo pacman -S tlp tlp-rdw
+			  sudo systemctl enable --now tlp
+			  
+			  # Configure /etc/tlp.conf settings when plugged in:
+			  # CPU_SCALING_GOVERNOR_ON_AC="performance"
+			  # CPU_ENERGY_PERF_POLICY_ON_AC="performance"
+			  # INTEL_GPU_MIN_FREQ_ON_AC=350
+			  # INTEL_GPU_MAX_FREQ_ON_AC=1100
+			  ```
 	- ## ZRAM (Compressed RAM Swap)
 		- ```bash
 		  # ZRAM is enabled by default on Garuda — no swap partition needed
@@ -446,36 +702,98 @@ enableToc: true
 		  vulkaninfo | grep "GPU id"
 		  ```
 	- ## Btrfs Snapshots & System Safety
-		- ```bash
-		  # Garuda auto-creates Btrfs snapshots before every pacman transaction
-		  # If an update breaks your system → boot from snapshot in GRUB
-		  
-		  # List snapshots:
-		  sudo snapper -c root list
-		  sudo btrfs subvolume list /
-		  
-		  # Create manual snapshot (before risky changes):
-		  sudo snapper -c root create --description "before nvidia driver install"
-		  
-		  # Rollback to snapshot:
-		  sudo snapper -c root undochange 1..0   # undo changes from snapshot 1 to now
-		  # Or: boot from snapshot in GRUB → Garuda Linux snapshots menu
-		  
-		  # Delete old snapshots (free disk space):
-		  sudo snapper -c root delete 3
-		  sudo snapper -c root delete 1-5        # delete range
-		  
-		  # Snapper config: /etc/snapper/configs/root
-		  # TIMELINE_LIMIT_HOURLY="5"
-		  # TIMELINE_LIMIT_DAILY="7"
-		  # TIMELINE_LIMIT_WEEKLY="0"
-		  # TIMELINE_LIMIT_MONTHLY="0"
-		  # TIMELINE_LIMIT_YEARLY="0"
-		  
-		  # Check Btrfs filesystem usage:
-		  sudo btrfs filesystem usage /
-		  sudo btrfs filesystem df /
+		- ```mermaid
+		  graph TD
+		      PacmanCmd[User executes pacman -Syu / upgrade] --> LibalpmHook[libalpm triggers pre-transaction hook]
+		      LibalpmHook --> SnapPre[Snapper creates Read-Only pre-snapshot]
+		      SnapPre --> PacmanUpgrade[Pacman performs upgrade modifications on target files]
+		      PacmanUpgrade --> LibalpmPost[libalpm triggers post-transaction hook]
+		      LibalpmPost --> SnapPost[Snapper creates Read-Only post-snapshot]
+		      SnapPost --> GRUBUpdate[systemd unit updates grub-btrfs menu entries]
+		      
+		      subgraph Recovery Options
+		          BootSnap[1. Boot directly from Read-Only pre-snapshot via GRUB]
+		          BootSnap --> VerifySystem[2. System starts in volatile overlay filesystem]
+		          VerifySystem --> CliRollback[3. Run: snapper rollback <snapshot-id>]
+		          CliRollback --> DefaultSubvol[4. Recreates root subvolume pointing to snapshot state]
+		          CliRollback --> Reboot[5. Reboot into recovered system]
+		      end
 		  ```
+		- ### Snapper & Snapshot Management Commands
+			- **List Snapshots**:
+				- ```bash
+				  # List all snapper-managed snapshots
+				  sudo snapper -c root list
+				  
+				  # List low-level Btrfs subvolumes on /
+				  sudo btrfs subvolume list /
+				  ```
+			- **Create Manual Snapshots**:
+				- ```bash
+				  # Create manual snapshot with a custom comment
+				  sudo snapper -c root create --description "Before testing custom graphic drivers" --userdata "type=manual"
+				  ```
+			- **Delete Snapshots**:
+				- ```bash
+				  # Delete single snapshot by ID
+				  sudo snapper -c root delete 102
+				  
+				  # Delete a range of snapshots to free up space
+				  sudo snapper -c root delete 105-120
+				  ```
+			- **System Rollback Workflows**:
+				- **Scenario A: Soft Rollback (Undo file modifications from run-time)**:
+					- ```bash
+					  # Compares files between snapshot 50 and current active filesystem, then replaces modified files
+					  sudo snapper -c root undochange 50..0
+					  ```
+				- **Scenario B: Hard Rollback (System doesn't boot correctly)**:
+					- 1. Reboot PC and enter **GRUB Bootloader Menu**.
+					- 2. Select **Garuda Linux snapshots** sub-menu and choose the desired pre-update snapshot.
+					- 3. The system boots into a read-only overlay layout. Log in, open a terminal, and run:
+						- `sudo snapper rollback` (This updates the Btrfs default subvolume symlinks to point to this snapshot as the new active root subvolume).
+					- 4. Reboot your system normally.
+			- **Customize Retained Snapshot Limits**:
+				- Configure snapshots retention limits inside `/etc/snapper/configs/root`:
+				- ```ini
+				  # Hourly, daily, weekly, monthly, and yearly limits
+				  TIMELINE_LIMIT_HOURLY="5"
+				  TIMELINE_LIMIT_DAILY="7"
+				  TIMELINE_LIMIT_WEEKLY="0"
+				  TIMELINE_LIMIT_MONTHLY="0"
+				  TIMELINE_LIMIT_YEARLY="0"
+				  ```
+		- ### Btrfs Filesystem Maintenance
+			- **Check Space Allocation**:
+				- ```bash
+				  # Show detailed space allocation (Metadata, Data, System chunks)
+				  sudo btrfs filesystem df /
+				  
+				  # Show human-readable device space usage
+				  sudo btrfs filesystem usage /
+				  ```
+			- **Filesystem Defragmentation**:
+				- ```bash
+				  # Recursively defragment files and directories on Btrfs filesystem
+				  sudo btrfs filesystem defragment -r -v -czstd /
+				  ```
+			- **Filesystem Scrub (Data Corruption Check)**:
+				- ```bash
+				  # Start scrubbing in the background to verify checksums and repair corrupted blocks
+				  sudo btrfs scrub start /
+				  
+				  # Check scrubbing status
+				  sudo btrfs scrub status /
+				  ```
+			- **Filesystem Balance (Chunk Re-allocation)**:
+				- ```bash
+				  # Rebalance chunks to optimize disk space allocation (reclaims empty chunks)
+				  # Only balance chunks that are less than 50% utilized to prevent heavy SSD load
+				  sudo btrfs balance start -dusage=50 -musage=50 /
+				  
+				  # Check balancing status
+				  sudo btrfs balance status /
+				  ```
 	- ## Kernel Parameters for Gaming
 		- ```bash
 		  # /etc/default/grub — add to GRUB_CMDLINE_LINUX_DEFAULT:
@@ -502,16 +820,29 @@ enableToc: true
 - # Kernel & Architecture
   collapsed:: true
 	- ## Boot Process
-		- ```
-		  Power On
-		    → UEFI/BIOS POST
-		    → GRUB2 bootloader (with Btrfs snapshot entries)
-		    → linux-zen kernel decompresses
-		    → initramfs (mkinitcpio-generated)
-		    → systemd (PID 1)
-		    → Targets: sysinit → basic → graphical
-		    → SDDM display manager → Dr460nized KDE Plasma
+		- ```mermaid
+		  graph TD
+		      PowerOn([Power On]) --> UEFI[UEFI / BIOS POST]
+		      UEFI --> GRUB[GRUB 2 Bootloader]
+		      GRUB -->|Optional| SnapBoot[Boot into Btrfs Snapshot - Read-Only]
+		      GRUB -->|Default| ZenKernel[linux-zen Kernel Loaded]
+		      ZenKernel --> Initramfs[initramfs / mkinitcpio]
+		      Initramfs --> Systemd[systemd PID 1]
+		      Systemd --> Subvolumes[Mount Btrfs Subvolumes: @, @home, @cache, @log]
+		      Subvolumes --> Services[Start Services: zram-generator, snapper, NetworkManager]
+		      Services --> DisplayManager[SDDM Display Manager]
+		      DisplayManager --> KDE[KDE Plasma Dr460nized Desktop]
 		  ```
+		- ### Step-by-Step Boot Phases
+			- **1. UEFI POST**: System hardware verification. UEFI reads NVRAM to locate the bootloader binary (usually `/boot/EFI/BOOT/BOOTX64.EFI` or `/boot/EFI/Garuda/grubx64.efi`).
+			- **2. GRUB 2**: The GRUB configuration file `/boot/grub/grub.cfg` is executed. Garuda uses `grub-btrfs` to parse the snapper snapshot subvolumes and generate bootable read-only kernel entries dynamically.
+			- **3. Zen Kernel & initramfs**: The system loads `vmlinuz-linux-zen` and the RAM disk image `initramfs-linux-zen.img`. The kernel decompresses, runs hooks defined in `/etc/mkinitcpio.conf` (e.g., keyboard, udev, btrfs), and boots.
+			- **4. systemd & Btrfs Mounts**: Control shifts to systemd (PID 1). It mounts Btrfs subvolumes from `/etc/fstab` using specific mount options:
+				- `compress=zstd:3` (enables transparent ZSTD compression to save disk space and SSD wear).
+				- `noatime` (prevents updating file access times to eliminate constant disk writes).
+				- `ssd` (activates SSD-specific performance block allocations).
+				- `discard=async` (asynchronously releases unused blocks to keep the SSD fast).
+			- **5. SDDM & Desktop**: The display manager SDDM launches the graphical environment, executing the fish shell environment wrappers and starting KDE Plasma Dr460nized.
 	- ## Linux File System Hierarchy (FHS)
 		- ```
 		  /           Root filesystem (Btrfs @ subvolume)
@@ -910,6 +1241,101 @@ enableToc: true
 		  sudo pacman -S podman podman-compose
 		  podman run -it fedora:latest bash
 		  ```
+	- ## Dev Environment Bootstrapping Scripts
+		- Setup an automated, reproducible script to configure compilers, runtimes, docker access permissions, and workspaces (`bootstrap_dev.sh`):
+		- ```bash
+		  #!/usr/bin/env bash
+		  # Automated Developer Environment Bootstrap Script for Arch/Garuda
+		  
+		  set -euo pipefail
+		  
+		  echo "=========================================="
+		  echo "   Garuda Dev Environment Bootstrapper    "
+		  echo "=========================================="
+		  
+		  # 1. System Update
+		  echo "[*] Syncing repositories and upgrading packages..."
+		  sudo pacman -Syu --noconfirm
+		  
+		  # 2. Base Development Tools
+		  echo "[*] Installing build-essential toolchain (gcc, make, patch)..."
+		  sudo pacman -S --needed --noconfirm base-devel git curl wget rsync cmake
+		  
+		  # 3. Docker Installation and Permissions Setup
+		  echo "[*] Installing Docker engine and compose utilities..."
+		  sudo pacman -S --needed --noconfirm docker docker-compose
+		  sudo systemctl enable --now docker.service
+		  sudo usermod -aG docker "$USER"
+		  echo "[+] Docker setup completed. (Please log out and log back in to apply group privileges)"
+		  
+		  # 4. Programming Runtimes (Python, Node.js, Rust, Go)
+		  echo "[*] Configuring runtime libraries and environments..."
+		  sudo pacman -S --needed --noconfirm python python-pip python-virtualenv nodejs npm go
+		  
+		  # Setup Rust using rustup
+		  if ! command -v rustup &> /dev/null; then
+		      sudo pacman -S --needed --noconfirm rustup
+		      rustup default stable
+		  fi
+		  
+		  # 5. Dev Directory Creation
+		  echo "[*] Creating workspace folders..."
+		  mkdir -p "${HOME}/Projects" "${HOME}/.local/bin"
+		  
+		  echo "=========================================="
+		  echo "  Bootstrap Completed successfully!       "
+		  echo "  Note: Run 'newgrp docker' or reboot to  "
+		  echo "  use Docker without sudo.                "
+		  echo "=========================================="
+		  ```
+	- ## Custom Fish Shell Functions
+		- Add modular, automated shell routines inside `~/.config/fish/functions/` to boost terminal efficiency:
+		- **Python Virtualenv Activator** (`venv.fish`):
+			- ```fish
+			  # ~/.config/fish/functions/venv.fish
+			  function venv --description "Create or activate a Python virtual environment"
+			      if test -d .venv
+			          source .venv/bin/activate.fish
+			          echo "Active Python Virtualenv: "(python -V)
+			      else if test -d venv
+			          source venv/bin/activate.fish
+			          echo "Active Python Virtualenv: "(python -V)
+			      else
+			          echo "No virtualenv found (.venv/ or venv/). Creating one..."
+			          python3 -m venv .venv
+			          source .venv/bin/activate.fish
+			          pip install --upgrade pip
+			      end
+			  end
+			  ```
+		- **Network Port Monitor** (`ports.fish`):
+			- ```fish
+			  # ~/.config/fish/functions/ports.fish
+			  function ports --description "List open and listening ports with process info"
+			      sudo ss -tulnp
+			  end
+			  ```
+		- **System Cleaner Hook** (`sysclean.fish`):
+			- ```fish
+			  # ~/.config/fish/functions/sysclean.fish
+			  function sysclean --description "Clean pacman cache, orphaned packages, and snapper history"
+			      echo "=========================================="
+			      echo "       Running System Cleanup             "
+			      echo "=========================================="
+			      echo "[*] Removing orphaned packages..."
+			      sudo pacman -Rns (pacman -Qdtq) 2>/dev/null; or echo "No orphan packages to remove."
+			      
+			      echo "[*] Pruning old pacman cached archives..."
+			      sudo paccache -r
+			      
+			      echo "[*] Cleaning user cache..."
+			      rm -rf ~/.cache/*
+			      
+			      echo "=========================================="
+			      echo "            Cleanup Complete              "
+			      echo "=========================================="
+			  end
+			  ```
 - # Troubleshooting
   collapsed:: true
 	- ## System Won't Boot After Update
