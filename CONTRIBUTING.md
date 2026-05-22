@@ -348,16 +348,7 @@ def example():
 ### 2. `:::code-note` — Single-Language Focus Block
 Use for a **featured snippet** that deserves visual emphasis — a clean, dedicated display for one language.
 Perfect for: recursive variants, utility helpers, built-in usage examples.
-```
-:::code-note
 
-```python
-def binary_search(arr, target):
-    ...
-```
-
-:::
-```
 
 ### 3. `:::code-tabs` — Multi-Language Tab View
 Use when showing the **same algorithm in multiple languages** side by side as switchable tabs.
