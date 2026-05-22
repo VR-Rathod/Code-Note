@@ -6,6 +6,56 @@ let isToastShownThisSession = false
 let scrollListener: (() => void) | null = null
 let scrollTimeoutId: any = null
 
+interface FundingCache {
+  timestamp: number
+  currentAmount?: number
+  sponsors?: any[]
+  contributors?: any[]
+}
+
+const CACHE_KEY = "donation_funding_cache"
+const CACHE_TTL = 5 * 60 * 1000 // 5 minutes in milliseconds
+
+function getCachedFunding(): FundingCache | null {
+  try {
+    const cached = localStorage.getItem(CACHE_KEY)
+    if (cached) {
+      const parsed = JSON.parse(cached) as FundingCache
+      if (parsed && typeof parsed.timestamp === "number") {
+        return parsed
+      }
+    }
+  } catch (e) {
+    console.warn("Failed to read donation cache:", e)
+  }
+  return null
+}
+
+function setCachedFunding(data: Partial<FundingCache>) {
+  try {
+    const cached = getCachedFunding() || { timestamp: 0 }
+    const updated = {
+      ...cached,
+      ...data,
+      timestamp: Date.now()
+    }
+    localStorage.setItem(CACHE_KEY, JSON.stringify(updated))
+  } catch (e) {
+    console.warn("Failed to set donation cache:", e)
+  }
+}
+
+function throttle<T extends (...args: any[]) => any>(func: T, limit: number): (...args: Parameters<T>) => void {
+  let inThrottle = false
+  return function(this: any, ...args: Parameters<T>) {
+    if (!inThrottle) {
+      func.apply(this, args)
+      inThrottle = true
+      setTimeout(() => inThrottle = false, limit)
+    }
+  }
+}
+
 // Read values dynamically from DOM so that editing Donation.tsx automatically syncs here!
 function getUpiConfig(wrapper: HTMLElement) {
   const upiInput = wrapper.querySelector(".upi-id-input-field") as HTMLInputElement | null
@@ -157,7 +207,27 @@ async function fetchDynamicFund() {
   const wrappers = document.querySelectorAll(".donation-wrapper")
   if (wrappers.length === 0) return
 
-  // 1. Fetch dynamic local funding data first (guarantees instant, network-free render!)
+  // 1. Stale-While-Revalidate: Instant render from cache first
+  const cache = getCachedFunding()
+  if (cache) {
+    if (typeof cache.currentAmount === "number") {
+      updateProgressAndMilestones(cache.currentAmount)
+    }
+    if (Array.isArray(cache.sponsors)) {
+      updateCreditsPageSponsors(cache.sponsors)
+    }
+    if (Array.isArray(cache.contributors)) {
+      updateCreditsPageContributors(cache.contributors)
+    }
+
+    // If cache is fresh, skip network requests completely!
+    const isFresh = (Date.now() - cache.timestamp) < CACHE_TTL
+    if (isFresh) {
+      return
+    }
+  }
+
+  // 2. Fetch dynamic local funding data (without cache-busting parameter)
   let localFundingUrl = ""
   for (const wrapper of wrappers) {
     const url = wrapper.getAttribute("data-local-funding-url")?.trim()
@@ -169,22 +239,25 @@ async function fetchDynamicFund() {
 
   if (localFundingUrl) {
     try {
-      const res = await fetch(`${localFundingUrl}?t=${Date.now()}`)
+      const res = await fetch(localFundingUrl)
       if (res.ok) {
         const data = await res.json()
         if (data) {
-          // Update progress bar
           if (typeof data.currentAmount === "number") {
             updateProgressAndMilestones(data.currentAmount)
           }
-          // Update Sponsors List
           if (Array.isArray(data.sponsors)) {
             updateCreditsPageSponsors(data.sponsors)
           }
-          // Update Note Contributors
           if (Array.isArray(data.contributors)) {
             updateCreditsPageContributors(data.contributors)
           }
+          // Save to cache
+          setCachedFunding({
+            currentAmount: data.currentAmount,
+            sponsors: data.sponsors,
+            contributors: data.contributors
+          })
         }
       }
     } catch (err) {
@@ -192,7 +265,7 @@ async function fetchDynamicFund() {
     }
   }
 
-  // 2. Fetch remote live updates (when deployed on production)
+  // 3. Fetch remote live updates (when deployed on production)
   let fundUrl = ""
   for (const wrapper of wrappers) {
     const url = wrapper.getAttribute("data-fund-url")?.trim()
@@ -205,23 +278,26 @@ async function fetchDynamicFund() {
   if (!fundUrl || fundUrl.includes("localhost") || fundUrl.includes("127.0.0.1")) return
   
   try {
-    const res = await fetch(`${fundUrl}?t=${Date.now()}`)
+    const res = await fetch(fundUrl)
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
     const data = await res.json()
     
-    // Update Donation modal progress bar & milestones
-    if (data && typeof data.currentAmount === "number") {
-      updateProgressAndMilestones(data.currentAmount)
-    }
-
-    // Update Credits page Hall of Fame dynamically
-    if (data && Array.isArray(data.sponsors)) {
-      updateCreditsPageSponsors(data.sponsors)
-    }
-
-    // Update Credits page Note Contributors dynamically
-    if (data && Array.isArray(data.contributors)) {
-      updateCreditsPageContributors(data.contributors)
+    if (data) {
+      if (typeof data.currentAmount === "number") {
+        updateProgressAndMilestones(data.currentAmount)
+      }
+      if (Array.isArray(data.sponsors)) {
+        updateCreditsPageSponsors(data.sponsors)
+      }
+      if (Array.isArray(data.contributors)) {
+        updateCreditsPageContributors(data.contributors)
+      }
+      // Save to cache
+      setCachedFunding({
+        currentAmount: data.currentAmount,
+        sponsors: data.sponsors,
+        contributors: data.contributors
+      })
     }
   } catch (err) {
     console.warn("Failed to fetch dynamic remote donation updates from:", fundUrl, err)
@@ -704,14 +780,14 @@ function initScrollDetection() {
   
   if (!checkShouldShowToast()) return
 
-  // Trigger A: Show on scroll past 30% of content
-  scrollListener = () => {
+  // Trigger A: Show on scroll past 30% of content (throttled to once every 200ms)
+  scrollListener = throttle(() => {
     const scrolled = window.scrollY
     const totalHeight = document.documentElement.scrollHeight - window.innerHeight
     if (totalHeight > 0 && scrolled / totalHeight > 0.3) {
       showScrollToast()
     }
-  }
+  }, 200)
   window.addEventListener("scroll", scrollListener)
 
   // Trigger B: Show after reading for 20 seconds

@@ -1,24 +1,273 @@
-.recent-notes {
-  & > h3 {
-    margin: 0.5rem 0 0 0;
-    font-size: 1rem;
+.recent-notes-tabs {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--lightgray);
+  flex: 0 0 auto !important;
+
+  h3 {
+    font-size: 0.85rem !important;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #d4922a;
+    margin: 0 0 0.75rem 0;
   }
 
-  & > ul.recent-ul {
-    list-style: none;
-    margin-top: 1rem;
-    padding-left: 0;
+  // CSS-only Tab Switching
+  .tab-radio-input {
+    display: none;
+  }
 
-    & > li {
-      margin: 1rem 0;
-      .section > .desc > h3 > a {
-        background-color: transparent;
-      }
+  // Tab switcher header styling
+  .tab-headers {
+    display: flex;
+    gap: 0.25rem;
+    background: color-mix(in srgb, var(--lightgray) 40%, transparent);
+    padding: 2px;
+    border-radius: 6px;
+    margin-bottom: 0.8rem;
+    border: 1px solid color-mix(in srgb, var(--lightgray) 50%, transparent);
+  }
 
-      .section > .meta {
-        margin: 0 0 0.5rem 0;
-        opacity: 0.6;
+  .tab-label {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--darkgray);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    opacity: 0.65;
+    user-select: none;
+
+    .tab-icon {
+      flex-shrink: 0;
+      opacity: 0.8;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      opacity: 0.95;
+      background: color-mix(in srgb, var(--lightgray) 30%, transparent);
+      
+      .tab-icon {
+        transform: translateY(-1px);
       }
     }
+  }
+
+  // Active tab styling controlled by radio buttons
+  #tab-recent-updates:checked ~ .tab-headers .label-updates,
+  #tab-recent-new:checked ~ .tab-headers .label-new {
+    background: var(--light);
+    color: var(--secondary);
+    opacity: 1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 0.5px solid color-mix(in srgb, var(--lightgray) 60%, transparent);
+    
+    // Set icon colors for active state
+    .tab-icon {
+      stroke: var(--secondary);
+    }
+  }
+
+  // Hide/Show Panels based on active tab
+  .tab-panel {
+    display: none;
+    animation: tab-fade-in 0.25s ease-out forwards;
+  }
+
+  #tab-recent-updates:checked ~ .tab-panels .panel-updates,
+  #tab-recent-new:checked ~ .tab-panels .panel-new {
+    display: block;
+  }
+
+  @keyframes tab-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  // Lists inside panels
+  ul.recent-ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  // Individual list item card layout
+  li.recent-li {
+    margin: 0;
+    padding: 0;
+
+    &.empty-state {
+      font-size: 0.88rem;
+      opacity: 0.55;
+      text-align: center;
+      padding: 1.5rem 0;
+      font-style: italic;
+    }
+
+    .section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 0.5rem 0.6rem;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+      &:hover {
+        background: color-mix(in srgb, var(--secondary) 5%, transparent);
+        border-color: color-mix(in srgb, var(--secondary) 10%, transparent);
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      }
+
+      .desc {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 0.5rem;
+
+        h3 {
+          font-size: 0.95rem !important;
+          font-weight: 600;
+          color: var(--dark) !important;
+          margin: 0;
+          line-height: 1.3;
+          text-transform: none;
+          letter-spacing: normal;
+          flex-grow: 1;
+
+          a {
+            color: var(--dark) !important;
+            border-bottom: none !important;
+            background: transparent !important;
+            transition: color 0.15s ease;
+
+            &:hover {
+              color: var(--secondary) !important;
+            }
+          }
+        }
+
+        // Category Badge
+        .category-badge {
+          font-size: 0.72rem;
+          font-weight: 600;
+          padding: 0.05rem 0.35rem;
+          border-radius: 999px;
+          background: color-mix(in srgb, var(--tertiary) 12%, transparent);
+          color: var(--tertiary);
+          border: 0.5px solid color-mix(in srgb, var(--tertiary) 15%, transparent);
+          white-space: nowrap;
+          flex-shrink: 0;
+          letter-spacing: 0.02em;
+        }
+      }
+
+      // Meta and Excerpt
+      .meta-row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+      }
+
+      .meta-author {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--secondary);
+        opacity: 0.85;
+      }
+
+      .meta-dot {
+        font-size: 0.8rem;
+        color: var(--gray);
+        opacity: 0.5;
+      }
+
+      .meta-time {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--gray);
+        opacity: 0.85;
+
+        // Glowing Pulsing Dot
+        .pulse-dot {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background-color: var(--tertiary);
+          box-shadow: 0 0 0 0 rgba(132, 165, 157, 0.7);
+          animation: pulse-indicator 2s infinite;
+          display: inline-block;
+        }
+      }
+
+      // Excerpt preview text
+      .excerpt {
+        font-size: 0.88rem;
+        line-height: 1.35;
+        color: var(--darkgray);
+        opacity: 0.75;
+        margin: 0 0 0.1rem 0;
+      }
+    }
+  }
+
+  // See More links
+  .see-more {
+    margin: 0.75rem 0 0 0;
+    text-align: center;
+
+    a {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--secondary);
+      border-bottom: none !important;
+      opacity: 0.8;
+      transition: opacity 0.15s ease;
+
+      &:hover {
+        opacity: 1;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Glowing Pulse Animation
+@keyframes pulse-indicator {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(132, 165, 157, 0.7);
+  }
+  
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px rgba(132, 165, 157, 0);
+  }
+  
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(132, 165, 157, 0);
   }
 }

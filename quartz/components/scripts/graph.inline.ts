@@ -602,17 +602,50 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   let stopAnimation = false
   let frameSkip = 0
   let paused = false
-  const onVisibilityChange = () => { paused = document.hidden }
+  let isIntersecting = false
+  let animationFrameId: number | null = null
+
+  const onVisibilityChange = () => {
+    paused = document.hidden
+    handleAnimationState()
+  }
   document.addEventListener("visibilitychange", onVisibilityChange)
+
+  function handleAnimationState() {
+    if (paused || !isIntersecting) {
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId)
+        animationFrameId = null
+      }
+    } else {
+      if (animationFrameId === null && !stopAnimation) {
+        animationFrameId = requestAnimationFrame(animate)
+      }
+    }
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      isIntersecting = entry.isIntersecting
+      handleAnimationState()
+    }
+  }, { threshold: 0.01 })
+  observer.observe(graph)
 
   function animate(time: number) {
     if (stopAnimation) return
-    if (paused) { requestAnimationFrame(animate); return }
+    if (paused || !isIntersecting) {
+      animationFrameId = null
+      return
+    }
 
     const isIdle = hoveredNodeId === null && simulation.alpha() < 0.05
     if (isIdle) {
       frameSkip++
-      if (frameSkip % 2 !== 0) { requestAnimationFrame(animate); return }
+      if (frameSkip % 2 !== 0) {
+        animationFrameId = requestAnimationFrame(animate)
+        return
+      }
     } else {
       frameSkip = 0
     }
@@ -656,12 +689,15 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
 
     tweens.forEach((t) => t.update(time))
     app.renderer.render(stage)
-    requestAnimationFrame(animate)
+    animationFrameId = requestAnimationFrame(animate)
   }
 
-  requestAnimationFrame(animate)
   return () => {
     stopAnimation = true
+    observer.disconnect()
+    if (animationFrameId !== null) {
+      cancelAnimationFrame(animationFrameId)
+    }
     document.removeEventListener("visibilitychange", onVisibilityChange)
     app.destroy()
   }
@@ -696,9 +732,35 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
     }
   }
 
-  await renderLocalGraph()
+  // Defer rendering of the local graph to let the main thread render the page first!
+  const deferRender = () => {
+    if (document.readyState === "complete") {
+      // SPA navigation: use a shorter timeout to feel responsive, but still yield to immediate rendering
+      setTimeout(() => {
+        void renderLocalGraph()
+      }, 200)
+    } else {
+      // Initial page load: defer using idle callback or longer timeout to maximize FCP/LCP
+      const initLoadDefer = () => {
+        if ("requestIdleCallback" in window) {
+          requestIdleCallback(() => {
+            void renderLocalGraph()
+          }, { timeout: 2000 })
+        } else {
+          setTimeout(() => {
+            void renderLocalGraph()
+          }, 1000)
+        }
+      }
+      window.addEventListener("load", initLoadDefer, { once: true })
+    }
+  }
+
+  deferRender()
   const handleThemeChange = () => {
-    void renderLocalGraph()
+    setTimeout(() => {
+      void renderLocalGraph()
+    }, 150)
   }
 
   document.addEventListener("themechange", handleThemeChange)
