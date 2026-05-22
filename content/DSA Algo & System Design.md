@@ -5,7 +5,9 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 ---
 
 - # OOP consepts
+  collapsed:: true
 	- ## The  **core concepts**  of OOP are indeed  **14** :-
+	  collapsed:: true
 		- [[Class]] - Blueprint for creating objects, defining properties and methods.
 		  logseq.order-list-type:: number
 		- [[Constructor]] - Special method for initializing objects when created.
@@ -48,96 +50,139 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 - # Complexity Analysis
 	- [[Complexity Analysis]] - Complete guide to time and space complexity, Big O notation, and algorithm mathematics.
 -
+- # Data Structures
+	- ## Linear Data Structures:
+		- 1) [[Arrays]] - Contiguous memory structures covering static and dynamic arrays, multi-dimensional indexing, and amortized time analysis.
+		- 2) [[Linked Lists]] - Sequential data nodes covering singly, doubly, and circular configurations with insertion/deletion algorithms.
+		- 3) [[Stacks]] - LIFO (Last-In, First-Out) operations, execution call stacks, and monotonic stack patterns for range queries.
+		- 4) [[Queues]] - FIFO (First-In, First-Out) structures including circular queues, double-ended queues (Deques), and priority queue scheduling.
+		- 5) [[Hash Tables]] - Key-value mapping mechanisms, hashing functions, and collision resolution techniques like chaining and open addressing.
+		- 6) [[Circular buffer]] - Fixed-size ring buffer implementation supporting circular queues, overwritten streaming data, and concurrency-safe queue bounds.
+	- ## Trees:
+		- ### Basic Trees:
+			- 1) [[Binary Tree]] - Hierarchical structure where each node has at most two children.
+			- 2) [[Binary Search Tree (BST)]] - Node-based binary tree with ordered left and right subtrees.
+			- 3) [[Heap (Data Structure)]] - Complete binary tree that satisfies the heap property for priority sorting.
+			- 4) [[Trie (Prefix Tree)]] - Search tree used for efficient prefix retrieval of keys over a character alphabet.
+			- 5) [[Segment Tree]] - Tree structure used for storing interval information and answering range queries.
+		- ### Advanced Trees:
+			- 1) [[AA Tree]] - self-balancing binary search tree
+			- 2) [[Binary Indexed Tree or Fenwick Tree]] - Efficiently supports dynamic prefix sums and point updates.
+			- 3) [[Cartesian Tree]] - the inorder traversal of the tree gives a sorted sequence
+			- 4) [[Counted B-Trees]] - efficient range queries
+			- 5) [[Crit-bit Trees]] - storing strings, especially strings of arbitrary length
+			- 6) [[Fibonacci heap]] - optimize priority queues and supports very efficient
+			- 7) [[Finger Tree]] - supports efficient access and updates
+			- 8) [[Interval Tree]] - binary search tree used to store intervals.
+			- 9) [[Quadtree]] - used to partition a two-dimensional space
+			- 10) [[Scapegoat Tree]] - self-balancing binary search tree
+			- 11) [[Splay Tree]] - the accessed element to the root via **splaying**
+			- 12) [[Suffix Tree]] - efficient string matching, substring search, and various other
+			- 13) [[Van Emde Boas Tree]] - supports **efficient priority queue** operations.
+	- ## Graphs:
+		- 1) [[Graph Representations]] - Complete guide to representing graphs using Adjacency Lists, Adjacency Matrices, and Edge Lists with complexity tradeoffs.
+		- 2) [[Directed & Undirected Graphs]] - Overview of graph directionality, vertex degrees, and fundamental pathing terminology.
+		- 3) [[Weighted & Unweighted Graphs]] - Storing edge weights in matrices/lists and their application in shortest-path and MST algorithms.
+		- 4) [[Bipartite Graphs]] - Understanding bipartite structure, odd-length cycle checks, and the 2-coloring detection algorithm.
+	- ## Advanced & Specialized Data Structures:
+		- 1) [[Disjoint-set Data Structure]] (Union-Find) - Near-constant time dynamic connectivity tracking utilizing path compression and union by rank.
+		- 2) [[Bloom Filter]] - Space-efficient probabilistic data structure used for set membership queries with zero false negatives.
+		- 3) [[Rope (Data Structure)]] - Binary tree-based string representation optimized for efficient concatenation and substring manipulation of large texts.
+		- 4) [[Zipper]] - Functional cursor pattern enabling efficient, purely functional traversal and localized edits of tree structures.
+		- 5) [[Binary Decision Diagram]] - Compact canonical representation of boolean functions supporting efficient boolean operations.
+		- 6) [[Cuckoo Hashing]] - Hash table resolution scheme utilizing multiple tables and element displacement to guarantee O(1) worst-case lookup.
+		- 7) [[Zobrist Hashing]] - Incremental XOR hashing method used to cache and identify game states in transposition tables.
+		- 8) [[FM-index]] - Compressed full-text substring search index utilizing the Burrows-Wheeler Transform and Suffix Array.
+		- 9) [[Winged Edge]] - Boundary representation topology for 3D polygon meshes supporting constant-time adjacency traversal.
+		- 10) [[Five Balltree Construction Algorithms]] - Hierarchical spatial indexing that partitions metric spaces into nested hyperspheres for fast nearest neighbor search.
+		- 11) [[Binary Space Partitioning]] - Pre-computed spatial subdivision tree that partitions geometry using hyperplanes for rendering order.
+-
 - # Algorithms
-	- ## Searching:
-		- 1) [[Binary Search]] - efficient algorithm to find an element in a **sorted** array.
-		- 2) [[Linear Search]] - check each element in list one by one until we find the target element.
+	- ## Searching & Graph Traversal:
+		- 1) [[Linear Search]] - check each element in list one by one until we find the target element.
+		- 2) [[Binary Search]] - efficient algorithm to find an element in a **sorted** array.
 		- 3) [[Depth First Search]] - explores as far as possible along each branch before backtracking.
 		- 4) [[Breadth First Search]] - explores all the neighboring nodes at the present level
-		- 5) [[Rabin-Karp Algorithm]] - string searching used to find a pattern within a larger text.
-		- 6) [[Z Algorithm]] - string matching algorithm that provides efficient matching
-		-
+		- 5) [[A* Search Algorithm]] - Heuristic-based pathfinding algorithm that finds the shortest path using distance and estimated cost.
+	-
 	- ## Sorting:
-		- 1) [[Insertion Sort]] - sorting algorithm that builds the final sorted array one item at a time.
-		- 2) [[Heap Sort]] - comparison-based sorting algorithm that uses a binary heap data structure
-		- 3) [[Selection Sort]] - simple comparison-based sorting algorithm.
-		- 4) [[Merge Sort]] - divide-and-conquer sorting algorithm.
-		- 5) [[Quick Sort]] - another divide-and-conquer sorting algorithm.
-		- 6) [[Counting Sort]] - non-comparison-based sorting algorithm
-		- 7) [[Bucket Sort]] - distribution-based sorting algorithm
-		- 8) [[Bubble Sort]] - imple comparison-based sorting algorithm
-		- 9) [[Radix Sort]] - non-comparative sorting algorithm
-		- 10) [[Shell Sort]] - in-place comparison-based sorting algorithm
-		- 11) [[Comb Sort]] - variation of **Bubble Sort** that improves on it by using a gap sequence.
-		- 12) [[Pigeonhole Sort]] - comparison-based sorting algorithm
-		- 13) [[Cycle Sort]] - non-comparative sorting algorithm
-		-
-	- ## Graphs:
-		- 1) [[Kruskal's Algorithm]] - algorithm used to find the (MST) of a graph.
-		- 2) [[Dijkstra's Algorithm]] - find the shortest paths from a source vertex-other vertices
-		- 3) [[Bellman Ford Algorithm]] - dynamic algorithm used for finding the shortest path
-		- 4) [[Floyd Warshall Algorithm]] - finding the shortest paths between all pairs
-		- 5) [[Topological Sort Algorithm]] - used to order the vertices of a **directed acyclic graph**
-		- 6) [[Flood Fill Algorithm]] - used to determine the area connected to a given node
-		- 7) [[Lee Algorithm]] - BFS based algorithm used to find the shortest path
-		- 8) [[Prim's Algorithm]] - algorithm used to find the MST of a graph
-		- 9) [[Boruvka's Algorithm]] - algorithm used to find theMST of a graph.
-		- 10) [[Johnson's Algorithm]] - find **all pairs shortest paths** in a weighted directed graph.
-		- 11) [[Kosaraju's Algorithm]] - find the SCC of a directed graph.
-		- 12) [[Tarjan's Algorithm]] - algorithm used to find SCCs in a directed graph.
-		-
-	- ## Arrays:
+		- 1) [[Bubble Sort]] - In-place comparison sort that repeatedly swaps adjacent elements if they are out of order, optimized with an early-termination flag.
+		- 2) [[Selection Sort]] - In-place comparison sort that divides the list into sorted and unsorted parts, iteratively selecting and swapping the minimum element to minimize swaps.
+		- 3) [[Insertion Sort]] - In-place comparison sort that builds the sorted array one element at a time, highly efficient for small or nearly sorted datasets.
+		- 4) [[Merge Sort]] - Stable divide-and-conquer sorting algorithm that recursively splits the array and merges sorted sub-arrays, guaranteeing O(n log n) time.
+		- 5) [[Quick Sort]] - In-place divide-and-conquer algorithm utilizing randomized pivoting (Hoare/Lomuto) to achieve highly optimized O(n log n) average performance.
+		- 6) [[Heap Sort]] - In-place comparison sort that utilizes a binary max-heap structure to iteratively extract the maximum element in O(n log n) time.
+		- 7) [[Counting Sort]] - Non-comparison integer sorting algorithm that uses cumulative frequency counts of key occurrences to achieve O(n + k) linear time.
+		- 8) [[Radix Sort]] - Non-comparison integer sort that processes elements digit-by-digit from Least Significant Digit (LSD) to Most Significant Digit (MSD) in O(d * (n + k)) time.
+		- 9) [[Bucket Sort]] - Distribution-based sort that normalizes elements into uniform interval buckets, sorting each bucket with Insertion Sort to achieve stable O(n + k) average time.
+		- 10) [[Shell Sort]] - In-place comparison sort generalizing Insertion Sort by comparing elements across a diminishing gap sequence to eliminate far-apart inversions.
+		- 11) [[Comb Sort]] - In-place comparison sort improving on Bubble Sort by using a shrink factor gap sequence to eliminate slow-moving 'turtle' elements.
+		- 12) [[Pigeonhole Sort]] - Stable non-comparison integer sort that maps elements to individual key pigeonholes, optimal when the range of keys matches the array size.
+		- 13) [[Cycle Sort]] - In-place comparison sort that minimizes the total number of memory writes to at most O(n), optimal for write-sensitive hardware (Flash/EEPROM).
+	-
+	- ## String Algorithms:
+		- 1) [[Knuth Morris Pratt Algorithm (KMP)]] - string searching algorithm that bypasses redundant comparisons using a failure function.
+		- 2) [[Rabin-Karp Algorithm]] - string searching used to find a pattern within a larger text.
+		- 3) [[Z Algorithm]] - Linear-time pattern matching using the prefix-based Z-array, detailing string compression and periodicity check variants.
+		- 4) [[Manachers Algorithm]] - Finding the longest palindromic substring in O(N) time with string transformation, symmetry mirroring, and palindromic count variants.
+		- 5) [[burrows-wheeler-transform]] - Reversible string transformation for text compression, featuring cyclic rotations, suffix sorting, and stable inverse BWT decoding.
+		- 6) [[Aho Corasick Algorithm]] - Multi-pattern dictionary matching using a trie with suffix/dictionary link optimization and automated transition variants.
+	-
+	- ## Graph Algorithms:
+		- 1) [[Dijkstras Algorithm]] - find the shortest paths from a source vertex-other vertices
+		- 2) [[Bellman Ford Algorithm]] - dynamic algorithm used for finding the shortest path
+		- 3) [[Floyd Warshall Algorithm]] - finding the shortest paths between all pairs
+		- 4) [[Johnson Algorithm]] - find **all pairs shortest paths** in a weighted directed graph.
+		- 5) [[Kruskal Algorithm]] - algorithm used to find the (MST) of a graph.
+		- 6) [[Prims Algorithm]] - algorithm used to find the MST of a graph
+		- 7) [[Boruvkas Algorithm]] - algorithm used to find theMST of a graph.
+		- 8) [[Kosarajus Algorithm]] - find the SCC of a directed graph.
+		- 9) [[Tarjans Algorithm]] - algorithm used to find SCCs in a directed graph.
+		- 10) [[Topological Sort Algorithm]] - used to order the vertices of a **directed acyclic graph**
+		- 11) [[Flood Fill Algorithm]] - used to determine the area connected to a given node
+		- 12) [[Lee Algorithm]] - BFS based algorithm used to find the shortest path
+		- 13) [[Eukerian Path (Hierholzer's Algorithm)]] - path that visits every edge exactly once.
+	-
+	- ## Arrays & Two Pointers:
 		- 1) [[Kadane's Algorithm]] - used to find the **maximum sum subarray**
-		- 2) [[Floyd's Cycle Detection Algorithm]] - also known as **Tortoise and Hare**
-		- 3) [[Knuth-Morris-Pratt Algorithm (KMP)]] - used for **pattern matching**
-		- 4) [[Quick Select Algorithm]] - find the **k-th smallest element**
-		- 5) [[Boyer-More Majority Vote]] - used to find the **majority element**
-		-
-	- ## Tree:
-		- 1) [[AA Tree]] - self-balancing binary search tree
-		- 2) [[Binary Indexed Tree or Fenwick Tree]] - efficiently supports dynamic cumulative
-		- 3) [[Quadtree]] - used to partition a two-dimensional space
-		- 4) [[Cartesian Tree]] - the inorder traversal of the tree gives a sorted sequence
-		- 5) [[Fibonacci heap]] - optimize priority queues and supports very efficient
-		- 6) [[Interval Tree]] - binary search tree used to store intervals.
-		- 7) [[Finger Tree]] - supports efficient access and updates
-		- 8) [[Crit-bit Trees]] - storing strings, especially strings of arbitrary length
-		- 9) [[Scapegoat Tree]] - self-balancing binary search tree
-		- 10) [[Splay Tree]] - the accessed element to the root via **splaying**
-		- 11) [[Suffix Tree]] - efficient string matching, substring search, and various other
-		- 12) [[Counted B-Trees]] - efficient range queries
-		- 13) [[Binary Space Partitioning]] - recursively dividing a space into two half-spaces
-		- 14) [[Van Emde Boas Tree]] - supports **efficient priority queue** operations.
-		-
-	- ## Others:
-		- 1) [[Huffman Coding Compression]] - **lossless data compression** algorithm
-		- 2) [[Euclid's Algorithm]] - efficient way to compute the **Greatest Common Divisor**
-		- 3) [[Union Find Algorithm]] - keep track of a collection of disjoint sets
-		- 4) [[Manacher's Algorithm]] - find the **longest palindromic substring**
-		- 5) [[Eukerian Path (Hierholzer's Algorithm)]] - path that visits every edge exactly once.
-		- 6) [[Convex Hull | Set 1 (Jarvis’s Algorithm or Wrapping)]] - finding the convex hull
-		- 7) [[Convex Hull | Set 2 (Graham Scan)]] - finding the convex hull.
-		- 8) [[Convex Hull using Divide and Conquer Algorithm]] - enclose a set of points in a plane.
-		- 9) [[Quickhull Algorithm for Convex Hull]] - divide and conquer approach for finding convex hull
-		- 10) [[Distinct elements in subarray using Mo’s Algorithm]] - square root decomposition
-		- 11) [[Line Sweep Algorithm]] - solve geometric problems
-		- 12) [[MO’s Algorithm (Query square root decomposition)]] - square root decomposition technique
-		- 13) [[Disjoint-set Data Structure]] - used to efficiently manage a collection of disjoint sets.
-		- 14) [[Ackermann Function]] - well-known recursive function that grows very quickly.
-		- 15) [[Zobrist Hashing]] - hashing technique used in computer games
-		- 16) [[FM-index]] - data structure used for efficient full-text searching
-		- 17) [[Circular buffer]] - works like a fixed-size queue
-		- 18) [[Hungarian - Kuhn–Munkres - Munkres Assignment-Algorithm]] - combinatorial optimization algorithm
-		- 19) [[Dekker's Algorithm]] - first algorithms to solve the mutual exclusion
-		- 20) [[Winged Edge]] - used to represent **polygonal meshes**
-		- 21) [[Burrows–Wheeler Transform]] - string transformation algorithm
-		- 22) [[Zipper]] - efficiently navigate and manipulate sequences.
-		- 23) [[Five Balltree Construction Algorithms]] - efficient nearest neighbor search.
-		- 24) [[Cuckoo Hashing]] - hash table algorithm that resolves collisions
-		- 25) [[Rope (Data Structure)]] - tree-based data structure used for efficiently concatenating
-		- 26) [[Binary Decision Diagram]] - used to represent boolean functions.
-		- 27) [[Disjoint-set Data Structure]] - efficiently perform union and find operations
-		- 28)[[Bloom Filter]]  - space-efficient probabilistic data structure used to test whether
+		- 2) [[Floyd Cycle Detection Algorithm]] - also known as **Tortoise and Hare**
+		- 3) [[Quick Select Algorithm]] - find the **k-th smallest element**
+		- 4) [[Boyer-More Majority Vote]] - used to find the **majority element**
+		- 5) [[MO’s Algorithm (Query square root decomposition)]] - square root decomposition technique
+		- 6) [[Distinct elements in subarray using Mo’s Algorithm]] - square root decomposition
+		- 7) [[Two Pointers Technique]] - Efficient linear search method using two pointers in opposite or same directions to solve pair matching and subarray problems.
+		- 8) [[Sliding Window Technique]] - Subarray/substring analysis method maintaining a range window to reduce O(N^2) search spaces to linear O(N) time.
+		- 9) [[Prefix Sum Array]] - Pre-computation strategy enabling O(1) range sum queries on static arrays across 1D and 2D bounds.
+	-
+	- ## Dynamic Programming (DP):
+		- 1) [[Dynamic Programming Concepts]] - Core paradigms of overlapping subproblems and optimal substructure using Memoization (Top-down) or Tabulation (Bottom-up).
+		- 2) [[0/1 Knapsack Problem]] - Classic optimization problem of selecting items with weights and values, including space-optimized dynamic programming techniques.
+		- 3) [[Longest Common Subsequence (LCS)]] - Subsequence similarity matching utilizing a dynamic programming matrix for DNA alignment and diff tools.
+		- 4) [[Longest Increasing Subsequence (LIS)]] - Finding the longest ordered subsequence using dynamic programming or O(N log N) patience sorting with binary search.
+		- 5) [[Matrix Chain Multiplication]] - Classic interval dynamic programming problem optimizing parenthesization for matrix multiplication chain products.
+	-
+	- ## Greedy Algorithms & Backtracking:
+		- 1) [[Greedy Algorithm Concepts]] - Decision-making paradigm that makes the locally optimal choice at each step to find a global optimum.
+		- 2) [[Huffman Coding Compression]] - **lossless data compression** algorithm
+		- 3) [[Activity Selection Problem]] - Classic interval scheduling optimization problem selecting maximum non-overlapping tasks sorted by finish times.
+		- 4) [[Backtracking Concepts]] - Systematic state space tree search exploring all potential configurations with optimization pruning to solve constraints.
+		- 5) [[N-Queens Problem]] - Backtracking puzzle of placing N non-attacking chess queens on an N×N board, utilizing row/column/diagonal bitmask guards.
+		- 6) [[Sudoku Solver]] - Constraint satisfaction problem utilizing backtracking search and constraint propagation to fill empty cells.
+	-
+	- ## Geometric Algorithms:
+		- 1) [[Line Sweep Algorithm]] - solve geometric problems
+		- 2) [[Convex Hull | Set 1 (Jarvis’s Algorithm or Wrapping)]] - finding the convex hull
+		- 3) [[Convex Hull | Set 2 (Graham Scan)]] - finding the convex hull.
+		- 4) [[Convex Hull using Divide and Conquer Algorithm]] - enclose a set of points in a plane.
+		- 5) [[Quickhull Algorithm for Convex Hull]] - divide and conquer approach for finding convex hull
+	-
+	- ## Mathematical & Miscellaneous Algorithms:
+		- 1) [[Euclid's Algorithm]] - efficient way to compute the **Greatest Common Divisor**
+		- 2) [[Ackermann Function]] - well-known recursive function that grows very quickly.
+		- 3) [[Hungarian - Kuhn–Munkres - Munkres Assignment-Algorithm]] - combinatorial optimization algorithm
+		- 4) [[Dekker's Algorithm]] - first algorithms to solve the mutual exclusion
+		- 5) [[Sieve of Eratosthenes]] - Classic number theory algorithm for generating all prime numbers up to a given limit in O(N log log N) time.
+		- 6) [[Fast Exponentiation]] - Logarithmic time modular power computation (binary exponentiation) used extensively in cryptography.
 -
 - # Short fourmulas
 	- [[fibonacci]] - Short trick
@@ -147,7 +192,7 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 	- [[binary]] - every type of binary calculations
 -
 - # System Design
-	- For in-depth system design notes covering scalability, load balancing, caching, databases, microservices, CAP theorem, message queues, API design, and real-world case studies, see [[System Design]].
+	- [[System Design]] - For in-depth system design notes covering scalability, load balancing, caching, databases, microservices, CAP theorem, message queues, API design, and real-world case studies.
 -
 - # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills:
@@ -170,4 +215,3 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 		- [System Design E-book](https://github.com/karanpratapsingh/system-design)
 		- [Coding Interview Preparation](https://github.com/jwasham/coding-interview-university)
 		- [SDE Interview Question](https://github.com/twowaits/SDE-Interview-Questions)
--
