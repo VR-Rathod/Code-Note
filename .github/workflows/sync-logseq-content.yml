@@ -49,21 +49,53 @@ jobs:
           echo "files_before=$before" >> $GITHUB_OUTPUT
           echo "files_after=$after" >> $GITHUB_OUTPUT
 
-      - name: Check for changes in content/
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v4
+        with:
+          path: quartz-site/node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('quartz-site/package-lock.json') }}
+
+      - name: Install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: |
+          cd quartz-site
+          npm ci
+
+      - name: Cache Quartz build cache
+        uses: actions/cache@v4
+        with:
+          path: quartz-site/.quartz-cache
+          key: ${{ runner.os }}-quartz-cache-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ${{ runner.os }}-quartz-cache-
+
+      - name: Build Quartz site
+        run: |
+          cd quartz-site
+          npx quartz build
+
+      - name: Check for changes in content/ and public/
         id: changes
         run: |
           cd quartz-site
           git add content/
+          git add -f public/
           if git diff --staged --quiet; then
             echo "has_changes=false" >> $GITHUB_OUTPUT
             echo "No changes detected — skipping deploy."
           else
-            changed=$(git status --porcelain content/ | wc -l)
+            changed=$(git diff --staged --name-only | wc -l)
             echo "has_changes=true" >> $GITHUB_OUTPUT
             echo "changed_count=$changed" >> $GITHUB_OUTPUT
           fi
 
-      - name: Commit and push source files to Web-live
+      - name: Commit and push changes to Web-live
         if: steps.changes.outputs.has_changes == 'true'
         run: |
           cd quartz-site
@@ -72,17 +104,19 @@ jobs:
           COMMIT_SHA=$(cd ../logseq-source && git rev-parse --short HEAD)
 
           git add content/
-          git commit -m "sync: content updated from Logseq (Admin@$COMMIT_SHA)"
+          git add -f public/
+          git commit -m "sync: ${{ steps.changes.outputs.changed_count }} file(s) updated from Logseq (Admin@$COMMIT_SHA)"
           git push origin Web-live
 
       - name: Summary
         run: |
           if [ "${{ steps.changes.outputs.has_changes }}" == "true" ]; then
-            echo "### ✅ Sync complete" >> $GITHUB_STEP_SUMMARY
+            echo "### ✅ Sync & Build complete" >> $GITHUB_STEP_SUMMARY
             echo "- **Files before:** ${{ steps.sync.outputs.files_before }}" >> $GITHUB_STEP_SUMMARY
             echo "- **Files after:** ${{ steps.sync.outputs.files_after }}" >> $GITHUB_STEP_SUMMARY
-            echo "- Changes pushed to **Web-live**. Vercel will build and deploy automatically." >> $GITHUB_STEP_SUMMARY
+            echo "- **Changed files (source & build):** ${{ steps.changes.outputs.changed_count }}" >> $GITHUB_STEP_SUMMARY
+            echo "- Pre-built \`public/\` files pushed to **Web-live**. Vercel will deploy instantly." >> $GITHUB_STEP_SUMMARY
           else
             echo "### ⏭️ No changes" >> $GITHUB_STEP_SUMMARY
-            echo "Content was already up to date — no commit made." >> $GITHUB_STEP_SUMMARY
+            echo "Content and build output were already up to date — no commit made." >> $GITHUB_STEP_SUMMARY
           fi
