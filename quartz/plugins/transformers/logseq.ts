@@ -3,6 +3,7 @@ import { PluggableList } from "unified"
 import { visit, SKIP } from "unist-util-visit"
 import { Root, List, ListItem, Paragraph, Text, Heading, Code, Table, BlockContent } from "mdast"
 import { BuildVisitor } from "unist-util-visit"
+import { toString } from "mdast-util-to-string"
 
 /**
  * Cleans up Logseq-flavored markdown for Quartz rendering:
@@ -157,10 +158,7 @@ export const LogseqFlavoredMarkdown: QuartzTransformerPlugin = () => {
               // If only paragraphs are present, verify that at least one is non-empty
               const paragraphs = item.children.filter((c) => c.type === "paragraph") as Paragraph[]
               const hasText = paragraphs.some((para) => {
-                const text = para.children
-                  .map((c) => (c.type === "text" ? (c as Text).value : ""))
-                  .join("")
-                  .trim()
+                const text = toString(para).trim()
                 return text.length > 0
               })
 
