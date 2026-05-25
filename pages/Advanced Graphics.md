@@ -222,7 +222,7 @@ displayTitle: Advanced Graphics Programming
 	-
 	- ## Vulkan Initialization
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // 1. Create Instance
 		  VkApplicationInfo appInfo{};
 		  appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
@@ -272,7 +272,7 @@ displayTitle: Advanced Graphics Programming
 	-
 	- ## Vulkan Memory Management
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Allocate GPU memory manually (unlike OpenGL which does it for you)
 		  VkMemoryAllocateInfo allocInfo{};
 		  allocInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
@@ -310,7 +310,7 @@ displayTitle: Advanced Graphics Programming
 		      FS --> Blend["Color Blending\nAlpha compositing"]
 		      Blend --> FB["Framebuffer\nFinal image"]
 		  ```
-		- ```cpp
+		- ```c++
 		  // Create graphics pipeline (simplified)
 		  VkGraphicsPipelineCreateInfo pipelineInfo{};
 		  pipelineInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
@@ -344,7 +344,7 @@ displayTitle: Advanced Graphics Programming
 	-
 	- ## Vulkan Render Pass & Synchronization
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Pipeline barrier — transition image layout
 		  VkImageMemoryBarrier barrier{};
 		  barrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
@@ -418,7 +418,7 @@ displayTitle: Advanced Graphics Programming
 	-
 	- ## DX12 Initialization
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <d3d12.h>
 		  #include <dxgi1_6.h>
 		  
@@ -463,7 +463,7 @@ displayTitle: Advanced Graphics Programming
 	-
 	- ## DX12 Resource Barriers
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Transition render target from present → render target state
 		  D3D12_RESOURCE_BARRIER barrier{};
 		  barrier.Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;
@@ -503,7 +503,7 @@ displayTitle: Advanced Graphics Programming
 		  | `SAMPLER` | Texture samplers | Yes |
 		  | `RTV` | Render target views | No |
 		  | `DSV` | Depth stencil views | No |
-		- ```cpp
+		- ```c++
 		  // Create CBV/SRV/UAV descriptor heap
 		  D3D12_DESCRIPTOR_HEAP_DESC heapDesc{};
 		  heapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;

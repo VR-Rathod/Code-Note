@@ -159,7 +159,7 @@ keywords: "Binary Tree, Tree Traversal, Inorder, Preorder, Postorder, Level Orde
 	  print("Level-order:", level_order(root)) # Output: [1, 2, 3]
 	  ```
 	  
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <queue>

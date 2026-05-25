@@ -100,7 +100,7 @@ keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrow
 	      print(burrows_wheeler_transform("banana"))  # Output: "annb$aa"
 	  ```
 
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <string>
 	  #include <vector>
@@ -289,7 +289,7 @@ keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrow
 	      print(inverse_burrows_wheeler_transform("annb$aa"))  # Output: "banana"
 	  ```
 
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <string>
 	  #include <vector>

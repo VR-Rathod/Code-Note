@@ -127,7 +127,7 @@ keywords: "bipartite graph, 2-coloring, odd-length cycle, graph coloring, graph 
         print(f"Graph 2 Bipartite? {is_bipartite(V2, adj2)}") # Output: False
     ```
 
-    ```cpp
+    ```c++
     #include <iostream>
     #include <vector>
     #include <queue>
@@ -218,7 +218,15 @@ keywords: "bipartite graph, 2-coloring, odd-length cycle, graph coloring, graph 
   - **Odd Cycle Detection**: Finding if a graph has a cycle of odd length. A graph has an odd cycle if and only if it is NOT bipartite.
 -
 - # Key Takeaways
+  collapsed:: true
   - A graph is bipartite if its vertices can be split into two independent sets with no intra-set edges.
   - A graph is bipartite if and only if it does not contain any odd-length cycles.
   - You can check bipartiteness in $O(V + E)$ time using BFS or DFS 2-coloring.
   - Remember to loop over all vertices to handle disconnected graphs correctly.
+-
+- # More Learn
+  collapsed:: true
+  - ## GitHub & Webs
+    - [Wikipedia -> Bipartite graph](https://en.wikipedia.org/wiki/Bipartite_graph)
+    - [GeeksforGeeks -> Bipartite Graph](https://www.geeksforgeeks.org/bipartite-graph/)
+    - [CP-Algorithms -> Bipartite Graph Check](https://cp-algorithms.com/graph/bipartite-check.html)

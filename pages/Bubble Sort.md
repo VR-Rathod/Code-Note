@@ -128,7 +128,7 @@ keywords: "bubble sort, optimized bubble sort, sorting algorithm, adjacent swap,
 	      print("Sorted:  ", data)
 	  ```
 	  
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  
@@ -270,7 +270,7 @@ keywords: "bubble sort, optimized bubble sort, sorting algorithm, adjacent swap,
 	      print("Recursive Sorted:", recursive_bubble_sort(data))
 	  ```
 	  
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <algorithm>
@@ -413,3 +413,10 @@ keywords: "bubble sort, optimized bubble sort, sorting algorithm, adjacent swap,
 	- **Adaptive** — optimized with a swapped flag, running in $O(n)$ time for already sorted inputs.
 	- **High Constant Factor** — generally performs poorly on random arrays because swap operations are more expensive than shifting elements.
 	- **Recursive Cost** — recursive variants introduce $O(n)$ call stack depth without improving the sorting execution profile.
+-
+- # More Learn
+  collapsed:: true
+	- ## GitHub & Webs
+		- [GeeksforGeeks -> Bubble Sort](https://www.geeksforgeeks.org/bubble-sort/)
+		- [Wikipedia -> Bubble sort](https://en.wikipedia.org/wiki/Bubble_sort)
+		- [Visual Algo -> Sorting](https://visualgo.net/en/sorting)

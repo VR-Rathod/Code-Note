@@ -174,7 +174,7 @@ keywords: "binary search, search algorithm, sorted array, O(log n), divide and c
 	  print(binary_search(arr, 6))          # Output: -1
 	  ```
 	  
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  
@@ -919,6 +919,7 @@ keywords: "binary search, search algorithm, sorted array, O(log n), divide and c
 		:::
 -
 - # Key Takeaways
+  collapsed:: true
 	- **Core idea** — halve the search space each step → **O(log n)** time, **O(1)** space (iterative).
 	- **Hard requirement** — array must be **sorted** before using Binary Search; no exceptions.
 	- **Overflow safe** — always write `mid = low + (high - low) / 2` in C/C++/Java, not `(low + high) / 2`.
@@ -926,3 +927,10 @@ keywords: "binary search, search algorithm, sorted array, O(log n), divide and c
 	- **Duplicates** — for first/last occurrence, use `lower_bound` / `upper_bound` variants, not plain binary search.
 	- **Python shortcut** — the built-in `bisect` module gives you battle-tested binary search in one import.
 	- **Diminishing returns** — binary search on < 20 elements is overkill; the overhead isn't worth the gain.
+-
+- # More Learn
+  collapsed:: true
+	- ## GitHub & Webs
+		- [GeeksforGeeks -> Binary Search](https://www.geeksforgeeks.org/binary-search/)
+		- [Wikipedia -> Binary search algorithm](https://en.wikipedia.org/wiki/Binary_search_algorithm)
+		- [CP-Algorithms -> Binary Search](https://cp-algorithms.com/num_methods/binary_search.html)

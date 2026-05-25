@@ -136,7 +136,7 @@ keywords: "binary decision diagram, BDD, ROBDD, shannon expansion, variable orde
         print("x0=False, x1=True:", manager.evaluate(root, {0: False, 1: True}))    # False
     ```
 
-    ```cpp
+    ```c++
     #include <iostream>
     #include <unordered_map>
     #include <tuple>
@@ -256,7 +256,15 @@ keywords: "binary decision diagram, BDD, ROBDD, shannon expansion, variable orde
   - **Multi-Valued Decision Diagram (MDD)**: Extends BDDs by allowing decision variables to have more than two possible values (multi-way branching).
 -
 - # Key Takeaways
+  collapsed:: true
   - BDDs model Boolean logic functions as directed acyclic graphs.
   - Applying ordering (OBDD) and reduction rules (ROBDD) ensures canonical representations for constant-time equivalence checks.
   - The Unique Table enforces global node-sharing, preventing duplicates.
   - Variable ordering choice is critical, dictating whether memory footprint is polynomial or exponential.
+-
+- # More Learn
+  collapsed:: true
+  - ## GitHub & Webs
+    - [Wikipedia -> Binary decision diagram](https://en.wikipedia.org/wiki/Binary_decision_diagram)
+    - [GeeksforGeeks -> Binary Decision Diagram (BDD)](https://www.geeksforgeeks.org/binary-decision-diagram-bdd/)
+    - [Berkeley -> Binary Decision Diagrams (Lecture Notes)](https://ptolemy.berkeley.edu/projects/embedded/eecs244/fall02/lectures/10-BDDs.pdf)

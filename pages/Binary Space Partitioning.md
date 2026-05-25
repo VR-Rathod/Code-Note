@@ -200,7 +200,7 @@ keywords: "binary space partitioning, BSP tree, spatial subdivision, collision d
             print(seg)
     ```
     
-    ```cpp
+    ```c++
     #include <iostream>
     #include <vector>
     #include <string>
@@ -356,6 +356,13 @@ keywords: "binary space partitioning, BSP tree, spatial subdivision, collision d
   - **Octree**: A specialized 3-dimensional partitioning scheme where space is divided evenly into 8 octants, rather than arbitrary hyperplanes.
 
 - # Key Takeaways
+  collapsed:: true
   - BSP Trees recursively partition multi-dimensional space into half-spaces using arbitrary hyperplanes defined by geometric primitives.
   - Primitives that cross a partitioning plane are split into front/back segments to preserve strict spatial ordering.
   - They allow view-dependent traversal (Painter's Algorithm) in $O(N)$ linear time, rendering polygons in perfect back-to-front depth order.
+-
+- # More Learn
+  collapsed:: true
+  - ## GitHub & Webs
+    - [Wikipedia -> Binary space partitioning](https://en.wikipedia.org/wiki/Binary_space_partitioning)
+    - [GeeksforGeeks -> Binary Space Partitioning (BSP) Tree](https://www.geeksforgeeks.org/binary-space-partitioning-bsp-tree/)
