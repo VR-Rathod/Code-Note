@@ -64,7 +64,7 @@ displayTitle: Boost C++ Libraries
   collapsed:: true
 	- ## boost::smart_ptr (now in std)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <boost/shared_ptr.hpp>
 		  #include <boost/make_shared.hpp>
 		  
@@ -75,7 +75,7 @@ displayTitle: Boost C++ Libraries
 	-
 	- ## boost::filesystem (now std::filesystem in C++17)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <boost/filesystem.hpp>
 		  namespace fs = boost::filesystem;
 		  
@@ -99,7 +99,7 @@ displayTitle: Boost C++ Libraries
 	-
 	- ## boost::regex (now std::regex in C++11)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <boost/regex.hpp>
 		  
 		  std::string text = "Hello, my email is user@example.com";
@@ -116,7 +116,7 @@ displayTitle: Boost C++ Libraries
 	-
 	- ## boost::lexical_cast
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <boost/lexical_cast.hpp>
 		  
 		  int n = boost::lexical_cast<int>("42");       // string → int
@@ -132,7 +132,7 @@ displayTitle: Boost C++ Libraries
 	-
 	- ## boost::optional (now std::optional in C++17)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <boost/optional.hpp>
 		  
 		  boost::optional<int> findValue(bool found) {
@@ -148,7 +148,7 @@ displayTitle: Boost C++ Libraries
 	-
 	- ## boost::variant (now std::variant in C++17)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <boost/variant.hpp>
 		  
 		  boost::variant<int, double, std::string> v;
@@ -170,7 +170,7 @@ displayTitle: Boost C++ Libraries
   collapsed:: true
 	- ## TCP Client
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <boost/asio.hpp>
 		  using boost::asio::ip::tcp;
 		  
@@ -193,7 +193,7 @@ displayTitle: Boost C++ Libraries
 	-
 	- ## Async TCP Server
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <boost/asio.hpp>
 		  using boost::asio::ip::tcp;
 		  
@@ -213,7 +213,7 @@ displayTitle: Boost C++ Libraries
 	-
 	- ## Timers
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <boost/asio.hpp>
 		  
 		  boost::asio::io_context io;
@@ -227,7 +227,7 @@ displayTitle: Boost C++ Libraries
 		  ```
 - # boost::thread — Threading
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <boost/thread.hpp>
 	  
 	  void worker(int id) {
@@ -247,7 +247,7 @@ displayTitle: Boost C++ Libraries
 	  ```
 - # boost::program_options — CLI Argument Parsing
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <boost/program_options.hpp>
 	  namespace po = boost::program_options;
 	  
@@ -274,7 +274,7 @@ displayTitle: Boost C++ Libraries
 	  ```
 - # boost::serialization
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <boost/archive/text_oarchive.hpp>
 	  #include <boost/archive/text_iarchive.hpp>
 	  #include <boost/serialization/string.hpp>

@@ -14,24 +14,27 @@ keywords: "abstract classes, OOP, pure virtual, C++, abstract base class, inheri
 	  collapsed:: true
 		- ```mermaid
 		  classDiagram
-		      class Shape {
-		          <<abstract>>
-		          +area()* double
-		          +draw()* void
-		      }
-		      class Circle {
-		          -radius: double
-		          +area() double
-		          +draw() void
-		      }
-		      class Rectangle {
-		          -width: double
-		          -height: double
-		          +area() double
-		          +draw() void
-		      }
-		      Shape <|-- Circle
-		      Shape <|-- Rectangle
+		    class Shape {
+		        <<abstract>>
+		        +area() double
+		        +draw() void
+		    }
+		
+		    class Circle {
+		        -radius: double
+		        +area() double
+		        +draw() void
+		    }
+		
+		    class Rectangle {
+		        -width: double
+		        -height: double
+		        +area() double
+		        +draw() void
+		    }
+		
+		    Shape <|-- Circle
+		    Shape <|-- Rectangle
 		  ```
 	-
 	- ## Advantages

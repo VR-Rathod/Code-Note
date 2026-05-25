@@ -115,7 +115,7 @@ displayTitle: Console Development - PlayStation
 		  Gnm::RenderTarget  — Framebuffer output
 		  Gnm::DrawCommandBuffer — GPU command list
 		  ```
-		- ```cpp
+		- ```c++
 		  // Conceptual GNMX pipeline setup (structure, not actual SDK)
 		  
 		  // 1. Create command buffer
@@ -271,7 +271,7 @@ displayTitle: Console Development - PlayStation
 		    No loading screens between areas if designed for streaming
 		    Texture streaming at full 4K quality without pre-baked workarounds
 		  ```
-		- ```cpp
+		- ```c++
 		  // PS5 File I/O — conceptual async file read pattern
 		  
 		  // 1. Open file
@@ -347,7 +347,7 @@ displayTitle: Console Development - PlayStation
 		    Heartbeat: rhythmic thump at actual heart rate BPM
 		    UI hover: single sharp tap (like clicking a physical button)
 		  ```
-		- ```cpp
+		- ```c++
 		  // DualSense haptics — conceptual C++ usage
 		  
 		  // Simple haptic impulse
@@ -393,7 +393,7 @@ displayTitle: Console Development - PlayStation
 		    Set resistance at multiple points along trigger travel
 		    Complex feedback for simulating textured surfaces
 		  ```
-		- ```cpp
+		- ```c++
 		  // Adaptive trigger — bow draw example (conceptual)
 		  
 		  ScePadTriggerEffectParam triggerParam;
@@ -446,7 +446,7 @@ displayTitle: Console Development - PlayStation
 	-
 	- ## Trophy Implementation
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Trophy unlock — conceptual flow
 		  
 		  // 1. Initialize trophy system at game start

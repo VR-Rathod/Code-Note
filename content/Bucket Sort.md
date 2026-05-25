@@ -149,7 +149,7 @@ keywords: "bucket sort, bucketsort, distribution sort, sorting algorithm, unifor
 	      print("Sorted:  ", data)
 	  ```
 	  
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <algorithm>
@@ -468,7 +468,7 @@ keywords: "bucket sort, bucketsort, distribution sort, sorting algorithm, unifor
 	      print("Recursive Sorted:", recursive_bucket_sort(data))
 	  ```
 	  
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <algorithm>
@@ -696,3 +696,9 @@ keywords: "bucket sort, bucketsort, distribution sort, sorting algorithm, unifor
 	- **Stability** — stable when using a stable sorting subroutine like Insertion Sort inside each bucket.
 	- **Uniform distribution requirement** — critical for maintaining $O(n + k)$ average case efficiency.
 	- **Recursive scaling** — can be recursively applied on bucket segments if element density is skewed.
+-
+- # More Learn
+  collapsed:: true
+	- ## GitHub & Webs
+		- [Wikipedia -> Bucket sort](https://en.wikipedia.org/wiki/Bucket_sort)
+		- [GeeksforGeeks -> Bucket Sort](https://www.geeksforgeeks.org/bucket-sort-2/)

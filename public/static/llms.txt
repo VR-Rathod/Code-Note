@@ -1,0 +1,19 @@
+# Code Notes made by Vaibhav Rathod
+
+> A comprehensive programming knowledge base covering languages, algorithms, data structures, data science, DevOps, Game Development, Free resources, software engineering, software lists and more.
+
+## High-level Summary
+Free Code Notes is a structured repository of programming knowledge, designed for developers of all levels. It covers core computer science concepts, modern web and game development, and infrastructure management.
+
+## Key Sections
+- Programming Languages: Python, Java, C++, Go, Rust, C , C# , JavaScript, TypeScript, PHP, Ruby, Ada, Crystal, SQL, HTML, CSS, GDScript, Bash, etc.
+- Data Structures & Algorithms (DSA)
+- System Design
+- DevOps & CI/CD
+- Game Development (Godot, Unity, Unreal)
+- Cybersecurity & Linux Internals
+- Data Science & Machine Learning
+
+## Primary URLs
+- Home: https://code-note-vr.vercel.app/
+- Sitemap: https://code-note-vr.vercel.app/sitemap.xml

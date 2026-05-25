@@ -50,7 +50,7 @@ displayTitle: C++ REST SDK (cpprestsdk)
   collapsed:: true
 	- ## HTTP GET Request
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <cpprest/http_client.h>
 		  #include <cpprest/json.h>
 		  using namespace web;
@@ -72,7 +72,7 @@ displayTitle: C++ REST SDK (cpprestsdk)
 	-
 	- ## HTTP POST with JSON
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  http_client client(U("https://api.example.com"));
 		  
 		  json::value body;
@@ -91,7 +91,7 @@ displayTitle: C++ REST SDK (cpprestsdk)
 	-
 	- ## HTTP Server
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <cpprest/http_listener.h>
 		  using namespace web::http::experimental::listener;
 		  

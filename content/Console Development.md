@@ -139,7 +139,7 @@ displayTitle: Console Development
 		    /platform/nx/  — Switch-specific implementations
 		    /platform/pc/  — PC-specific implementations
 		  ```
-		- ```cpp
+		- ```c++
 		  // Platform abstraction example
 		  // Common interface:
 		  class IRenderer {

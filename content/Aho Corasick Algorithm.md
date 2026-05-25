@@ -181,7 +181,7 @@ keywords: "Aho-Corasick, multi-pattern search, trie, failure link, dictionary li
 	      print(matches) # Output: {0: [2], 1: [1], 2: [], 3: [2]}
 	  ```
 	  
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <string>
@@ -675,7 +675,7 @@ keywords: "Aho-Corasick, multi-pattern search, trie, failure link, dictionary li
 	      print(ac.search("ushers")) # Output: {0: [2], 1: [1], 2: [], 3: [2]}
 	  ```
 	  
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <string>
