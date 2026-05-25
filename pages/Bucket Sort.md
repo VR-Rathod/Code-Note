@@ -700,5 +700,5 @@ keywords: "bucket sort, bucketsort, distribution sort, sorting algorithm, unifor
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs
-		- [GeeksforGeeks -> Bucket Sort](https://www.geeksforgeeks.org/bucket-sort-2/)
 		- [Wikipedia -> Bucket sort](https://en.wikipedia.org/wiki/Bucket_sort)
+		- [GeeksforGeeks -> Bucket Sort](https://www.geeksforgeeks.org/bucket-sort-2/)

@@ -511,13 +511,13 @@ keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrow
 	  flowchart TD
 	      Q{"What is the target requirement?"}
 	      Q -- "Clustering symbols for compression" --> R1["✅ Use BWT\nCreates long run lengths suitable for RLE/MTF/Huffman"]
-	      Q -- "Exact matching of substrings" --> R2["✅ Use BWT + FM-Index\nExtremely memory efficient substring search"]
+	      Q -- "Exact matching of substrings" --> R2["✅ Use BWT + FM-Index Extremely memory efficient substring search"]
 	      Q -- "General hashing / encryption" --> R3["❌ Avoid BWT\nIt is entirely reversible and not a hashing algorithm"]
 	  ```
 	-
 	- ## ✅ Use BWT When
 		- Preparing text for high-performance block-sorting compression pipelines (like **bzip2**).
-		- Implementing text indexing structures like the **FM-Index** (used widely in bioinformatics DNA alignment for storing huge genomes in memory).
+		- Implementing text indexing structures like the **[[FM Index]]** (used widely in bioinformatics DNA alignment for storing huge genomes in memory).
 	-
 	- ## ❌ Avoid BWT When
 		- You need instant, random-access modifications to a string (recomputing BWT on small insertions is extremely expensive).

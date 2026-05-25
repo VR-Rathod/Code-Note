@@ -238,7 +238,7 @@ keywords: "bloom filter, probabilistic data structure, set membership, false pos
 - # Variations & Related Concepts
   collapsed:: true
   - **Counting Bloom Filter**: Replaces each bit in the array with a small counter. Insertion increments the counter, and deletion decrements it, allowing dynamic item removal.
-  - **Cuckoo Filter**: A newer alternative using cuckoo hashing tables to store fingerprints. It supports deletions and achieves better space efficiency for low false positive rates.
+  - **Cuckoo Filter**: A newer alternative using [[cuckoo hashing]] tables to store fingerprints. It supports deletions and achieves better space efficiency for low false positive rates.
   - **Quotient Filter**: A cache-friendly alternative that stores fingerprints in a hash table using quotienting, supporting resizing.
 -
 - # Key Takeaways

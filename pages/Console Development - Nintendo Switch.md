@@ -117,7 +117,7 @@ displayTitle: Console Development - Nintendo Switch
 		    NvnProgram       — compiled shader program
 		    NvnSync          — GPU/CPU synchronization primitive
 		  ```
-		- ```cpp
+		- ```c++
 		  // NVN conceptual setup (structure, not actual SDK — NDA)
 		  
 		  // 1. Initialize device
@@ -273,7 +273,7 @@ displayTitle: Console Development - Nintendo Switch
 	-
 	- ## Memory Allocation Strategy
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Switch memory management — use custom allocators
 		  // Nintendo SDK provides heap management tools
 		  
@@ -369,7 +369,7 @@ displayTitle: Console Development - Nintendo Switch
 		      Pulse: Low amp: 0.9 → 0 over 100ms, Low hz: 80 Hz
 		      Repeat every 800ms (75 BPM)
 		  ```
-		- ```cpp
+		- ```c++
 		  // HD Rumble conceptual API (Switch NX SDK structure)
 		  
 		  HidVibrationValue vibration;
@@ -396,7 +396,7 @@ displayTitle: Console Development - Nintendo Switch
 	-
 	- ## Motion Controls (Gyroscope)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Switch gyroscope input — conceptual
 		  
 		  HidSixAxisSensorHandle sensorHandle;
@@ -483,7 +483,7 @@ displayTitle: Console Development - Nintendo Switch
 		    - Avoid branching inside hot loops
 		    - NEON SIMD for math-heavy code (vector ops, physics)
 		  ```
-		- ```cpp
+		- ```c++
 		  // NEON SIMD — vector math on Switch ARM
 		  #include <arm_neon.h>
 		  

@@ -386,3 +386,10 @@ keywords: "Cartesian Tree, Treap, Heap Property, BST Property, Monotonic Stack, 
 	- **Linear Time Construction** — can be built in $O(N)$ time using a monotonic stack.
 	- **RMQ to LCA** — efficiently maps Range Minimum Queries to LCA queries in $O(1)$ time after preprocessing.
 	- **Unique Trees** — given an array of distinct elements, the Cartesian Tree is always unique.
+-
+- # More Learn
+  collapsed:: true
+	- ## GitHub & Webs
+		- [GeeksforGeeks -> Cartesian Tree](https://www.geeksforgeeks.org/cartesian-tree/)
+		- [Wikipedia -> Cartesian tree](https://en.wikipedia.org/wiki/Cartesian_tree)
+		- [CP-Algorithms -> Cartesian Tree](https://cp-algorithms.com/graph/treap.html)
