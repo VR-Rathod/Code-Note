@@ -293,11 +293,14 @@ async function fetchDynamicFund() {
         updateCreditsPageContributors(data.contributors)
       }
       // Save to cache
-      setCachedFunding({
+      const cacheUpdate: Partial<FundingCache> = {
         currentAmount: data.currentAmount,
-        sponsors: data.sponsors,
-        contributors: data.contributors
-      })
+        sponsors: data.sponsors
+      }
+      if (data.contributors) {
+        cacheUpdate.contributors = data.contributors
+      }
+      setCachedFunding(cacheUpdate)
     }
   } catch (err) {
     console.warn("Failed to fetch dynamic remote donation updates from:", fundUrl, err)
