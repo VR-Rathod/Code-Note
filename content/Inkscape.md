@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Inkscape Reference – Open Source Vector Graphics Editor Guide
 description: "Inkscape reference covering SVG editing, nodes, paths, text, filters, extensions, and professional vector illustration as a free Illustrator alternative."
 keywords: "Inkscape, vector graphics, SVG editor, nodes, paths, text, filters, extensions, open source, free Illustrator alternative, graphic design, vector illustration"

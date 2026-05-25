@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Sublime Text Reference – Code Editor Tips and Shortcuts Guide
 description: "Sublime Text reference covering multi-cursor editing, command palette, packages, snippets, build systems, key bindings, and productivity tips for developers."
 keywords: "Sublime Text, code editor, multi-cursor, command palette, packages, snippets, build systems, key bindings, productivity, text editor, developer tools, Sublime Text 4"

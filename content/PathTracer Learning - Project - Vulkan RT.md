@@ -1,4 +1,7 @@
 ---
+date: 2026-04-03T15:14:37+05:30
+lastmod: 2026-04-03T15:14:37+05:30
+
 seoTitle: Vulkan Ray Tracing Project – GPU Path Tracer Implementation Notes
 description: "Vulkan ray tracing project notes covering pipeline setup, acceleration structures, shader binding table, descriptor sets, and full GPU path tracer."
 keywords: "Vulkan ray tracing, GPU path tracer, pipeline setup, acceleration structures, shader binding table, descriptor sets, path tracing, ray tracing, GPU rendering, RTX"

@@ -1,4 +1,7 @@
 ---
+date: 2026-04-03T15:14:37+05:30
+lastmod: 2026-04-03T15:14:37+05:30
+
 seoTitle: Multiple Importance Sampling (MIS) – Path Tracing Technique Guide
 description: "MIS combines multiple sampling strategies to reduce variance in path tracing. Covers balance heuristic, power heuristic, direct light sampling, and BRDF."
 keywords: "MIS, multiple importance sampling, path tracing, ray tracing, balance heuristic, power heuristic, direct light sampling, BRDF sampling, GPU rendering, Vulkan, variance"

@@ -1,4 +1,7 @@
 ---
+date: 2025-05-15T11:00:41+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Abstraction in OOP – C++ Guide with Examples
 description: "Abstraction hides implementation details and exposes only essential features. Covers data abstraction, procedural abstraction, abstract classes, and C++ examples."
 keywords: "abstraction, OOP, C++, abstract class, encapsulation, interface, data hiding, design principles, software design"

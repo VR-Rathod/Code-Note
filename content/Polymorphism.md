@@ -1,4 +1,7 @@
 ---
+date: 2025-05-15T11:00:41+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Polymorphism in OOP – Types, Examples, and Implementation Guide
 description: "Polymorphism allows objects of different types to be treated uniformly. Covers compile-time and runtime polymorphism, method overloading, overriding, and duck."
 keywords: "polymorphism, OOP, object-oriented programming, compile-time polymorphism, runtime polymorphism, method overloading, method overriding, duck typing, software design"

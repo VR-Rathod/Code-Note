@@ -1,4 +1,7 @@
 ---
+date: 2025-01-30T18:07:18+05:30
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: Free Assets & Resources for Developers – Complete Free Resource Directory
 description: "The ultimate collection of 100% free, open-source, and lifetime-free resources for developers and designers — tools, courses, books, APIs, assets, fonts, icons, music, and more."
 keywords: "free assets, free developer tools, free programming resources, free courses, free books, free APIs, free fonts, free icons, free stock images, free game assets, free music, open source tools, free hosting, free databases, free AI tools, VR-Rathod, Code-Note, code note vr, vr book"

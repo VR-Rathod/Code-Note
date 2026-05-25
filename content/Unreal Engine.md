@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-04-17T17:08:18+05:30
+
 seoTitle: Unreal Engine Reference – Beginner to Advanced C++ & Blueprint Guide
 description: "Complete Unreal Engine 5 reference from beginner to super advanced — Blueprints, C++ gameplay, GAS, Nanite, Lumen, Chaos Physics, Mass Entity ECS, Niagara VFX, materials, networking, PCG, profiling, and engine module development."
 keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability System, Nanite, Lumen, Chaos Physics, Mass Entity, ECS, Niagara VFX, materials, HLSL, networking, replication, PCG, procedural generation, World Partition, MetaHuman, Control Rig, Motion Matching, Sequencer, profiling, optimization, engine modules, plugin development, unreal engine notes, unreal engine guide, ue5 cheatsheet, unreal reference, VR-Rathod, Code-Note, code note vr, vr book"

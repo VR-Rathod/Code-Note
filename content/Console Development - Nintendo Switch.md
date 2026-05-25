@@ -1,4 +1,7 @@
 ---
+date: 2026-05-12T11:21:31+05:30
+lastmod: 2026-05-12T11:21:31+05:30
+
 seoTitle: Nintendo Switch SDK Development – Complete Switch Developer Guide
 description: "Complete Nintendo Switch development guide covering Switch hardware, docked/handheld modes, NVN API, Joy-Con input, memory budget, performance optimization, and battery management."
 keywords: "Nintendo Switch SDK, Switch development, NVN API, Joy-Con, handheld mode, docked mode, Switch optimization, Switch memory, NintendoSDK, console development, VR-Rathod"

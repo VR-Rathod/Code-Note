@@ -1,4 +1,7 @@
 ---
+date: 2024-12-04T11:51:44+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: MongoDB Python Reference – PyMongo and Motor Driver Guide
 description: "MongoDB with Python covers CRUD operations, aggregation pipeline, indexing, PyMongo, Motor async driver, and schema design for document-oriented databases."
 keywords: "MongoDB, PyMongo, Motor, Python MongoDB, CRUD operations, aggregation pipeline, indexing, document database, NoSQL, Python library, async MongoDB"

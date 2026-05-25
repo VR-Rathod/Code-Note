@@ -1,4 +1,7 @@
 ---
+date: 2025-05-15T11:00:41+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Factory Pattern – Creational Design Pattern Reference Guide
 description: "Factory pattern creates objects without specifying exact classes. Covers factory method, abstract factory, simple factory, and when to use factory vs."
 keywords: "factory pattern, design pattern, creational pattern, factory method, abstract factory, object creation, OOP, software design, dependency injection, SOLID principles"

@@ -1,4 +1,7 @@
 ---
+date: 2024-12-02T09:47:59+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Elixir Programming Language – Functional Syntax Reference Guide
 description: "Elixir reference covering pattern matching, processes, OTP, GenServer, Phoenix framework, pipelines, and functional programming for concurrent distributed."
 keywords: "Elixir programming, Elixir language, OTP, GenServer, Phoenix, pattern matching, processes, functional programming, concurrent, distributed systems, syntax reference"

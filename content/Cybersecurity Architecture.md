@@ -1,4 +1,7 @@
 ---
+date: 2026-04-03T11:02:05+05:30
+lastmod: 2026-04-03T11:02:05+05:30
+
 seoTitle: Cybersecurity Architecture – Enterprise Security Design & Frameworks
 description: "Comprehensive cybersecurity architecture reference covering enterprise security design, zero trust, cloud security, DevSecOps, threat modeling, SIEM/SOC, and security frameworks for professionals."
 keywords: "cybersecurity architecture, enterprise security, zero trust architecture, cloud security architecture, DevSecOps, SIEM, SOC, threat modeling, security frameworks, NIST, ISO 27001, security design, VR-Rathod, Code-Note, code note vr, vr book"

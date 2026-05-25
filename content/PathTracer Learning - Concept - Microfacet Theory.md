@@ -1,4 +1,7 @@
 ---
+date: 2026-04-03T15:14:37+05:30
+lastmod: 2026-04-03T15:14:37+05:30
+
 seoTitle: Microfacet Theory in PBR – Surface Roughness and BRDF Guide
 description: "Microfacet theory models rough surfaces as collections of tiny perfect mirrors. Covers NDF, geometric attenuation, Fresnel, GGX, and physically-based material."
 keywords: "microfacet theory, PBR, physically-based rendering, NDF, GGX, geometric attenuation, Fresnel, BRDF, path tracing, ray tracing, GPU rendering, Vulkan"

@@ -1,4 +1,7 @@
 ---
+date: 2025-05-15T11:00:41+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Method Overriding in OOP – Runtime Polymorphism and Override Guide
 description: "Method overriding redefines a parent class method in a subclass. Covers runtime polymorphism, @Override annotation, virtual methods, covariant return types."
 keywords: "method overriding, OOP, runtime polymorphism, @Override, virtual methods, covariant return, Java overriding, Python overriding, C++ override, object-oriented programming"

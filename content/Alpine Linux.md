@@ -1,4 +1,7 @@
 ---
+date: 2026-04-06T11:04:22+05:30
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: Alpine Linux Complete Guide – apk, OpenRC, Docker & Security
 description: "Comprehensive Alpine Linux reference covering installation, apk package management, OpenRC, musl libc, BusyBox, Docker containers, security hardening, and embedded/server use cases."
 keywords: "Alpine Linux, alpine linux guide, alpine linux commands, alpine apk, alpine docker, alpine tutorial, alpine linux administration, alpine linux server, alpine linux security, musl libc, BusyBox, OpenRC, alpine container, alpine embedded, alpine raspberry pi, VR-Rathod, Code-Note, code note vr, vr book"

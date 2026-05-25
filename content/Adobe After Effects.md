@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Adobe After Effects Reference – Motion Graphics and VFX Guide
 description: "After Effects reference covering compositions, keyframes, expressions, effects, masks, 3D layers, rendering, and motion graphics for video production."
 keywords: "Adobe After Effects, motion graphics, VFX, compositions, keyframes, expressions, effects, masks, 3D layers, rendering, video production, animation"

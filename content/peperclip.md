@@ -1,4 +1,7 @@
 ---
+date: 2026-05-18T10:12:55+05:30
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: Paperclip AI – Human Control Plane for AI Agent Teams
 description: "Comprehensive notes on Paperclip — the open-source, self-hosted platform for managing AI agent teams with org charts, budgets, governance, heartbeats, and full auditability."
 keywords: "paperclip ai, ai agent orchestration, human control plane, ai labor, autonomous company, ai org chart, ai governance, ai budget control, paperclipai, open source ai agents, self-hosted ai, ai team management, VR-Rathod, Code-Note, code note vr, vr book"

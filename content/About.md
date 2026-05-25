@@ -1,4 +1,7 @@
 ---
+date: 2026-05-21T13:09:49+05:30
+lastmod: 2026-05-21T13:09:49+05:30
+
 title: About
 description: "About Free Code Notes — a free, comprehensive programming knowledge base built by VR-Rathod for developers, students, and tech enthusiasts."
 cssclasses:

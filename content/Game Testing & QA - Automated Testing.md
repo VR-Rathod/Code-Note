@@ -1,4 +1,7 @@
 ---
+date: 2026-05-12T12:23:01+05:30
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: Automated Testing for Games – Game Testing & QA Guide
 description: "Complete automated game testing reference: Unity Test Framework, Unreal Automation, headless testing, CI/CD pipelines for games, screenshot regression, simulation testing, and game-specific automation patterns."
 keywords: "automated game testing, Unity Test Framework, Unreal Automation, game CI/CD, headless testing, screenshot regression, game unit testing, simulation testing, VR-Rathod, Code-Note"

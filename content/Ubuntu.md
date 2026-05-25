@@ -1,4 +1,7 @@
 ---
+date: 2026-04-03T11:02:05+05:30
+lastmod: 2026-04-03T11:02:05+05:30
+
 seoTitle: Ubuntu Complete Guide – Commands, Admin & Development
 description: "Comprehensive Ubuntu reference covering installation, kernel, shell, APT, networking, user management, security, desktop, server setup, and system administration."
 keywords: "Ubuntu, ubuntu guide, ubuntu commands, ubuntu tutorial, ubuntu administration, ubuntu server, ubuntu desktop, apt, bash, linux, ubuntu notes, ubuntu 22.04, ubuntu 24.04, VR-Rathod, Code-Note, code note vr, vr book"

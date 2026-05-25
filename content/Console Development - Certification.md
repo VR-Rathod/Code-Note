@@ -1,4 +1,7 @@
 ---
+date: 2026-05-12T11:21:31+05:30
+lastmod: 2026-05-12T11:21:31+05:30
+
 seoTitle: Console Certification Guide – TRC, TCR, LOT Checks for PlayStation, Xbox & Nintendo
 description: "Complete console certification reference covering PlayStation TRC, Xbox TCR, Nintendo LOT checks, submission process, common failure points, automated checklist, and patch cert workflow."
 keywords: "console certification, TRC PlayStation, TCR Xbox, LOT checks Nintendo, game certification, cert submission, certification checklist, console QA, VR-Rathod, Code-Note"

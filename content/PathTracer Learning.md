@@ -1,4 +1,7 @@
 ---
+date: 2026-03-31T18:59:53+05:30
+lastmod: 2026-05-22T18:32:55+05:30
+
 seoTitle: Path Tracing Learning Roadmap – From Basics to GPU Implementation
 description: "Structured learning path for path tracing from ray-sphere intersection to full GPU Vulkan implementation."
 keywords: "pathtracer learning, path tracing, ray tracing, learning roadmap, GPU rendering, Vulkan, BVH, Monte Carlo, physically-based rendering, graphics programming, learning path, tutorial"

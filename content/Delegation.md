@@ -1,4 +1,7 @@
 ---
+date: 2025-05-15T11:00:41+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Delegation Pattern in OOP – Design Pattern Reference Guide
 description: "Delegation forwards method calls to a helper object. Covers delegation vs inheritance, delegate pattern, event delegation, and language-specific."
 keywords: "delegation, OOP, design pattern, delegate pattern, method forwarding, composition, event delegation, software design, object-oriented programming, helper object"

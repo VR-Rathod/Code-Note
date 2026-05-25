@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: DaVinci Resolve Reference – Video Editing and Color Grading Guide
 description: "DaVinci Resolve reference covering Cut, Edit, Fusion, Color, Fairlight pages, color grading, VFX, audio mixing, and professional video post-production."
 keywords: "DaVinci Resolve, video editing, color grading, Fusion, Fairlight, Cut page, Edit page, VFX, audio mixing, post-production, free video editor, Blackmagic"

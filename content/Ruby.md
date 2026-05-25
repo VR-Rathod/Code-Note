@@ -1,4 +1,7 @@
 ---
+date: 2024-11-27T09:48:44+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Ruby Programming Language – Syntax Reference and Rails Overview
 description: "Ruby reference covering blocks, procs, lambdas, modules, mixins, metaprogramming, Ruby on Rails basics, and idiomatic Ruby patterns."
 keywords: "Ruby programming, Ruby language, blocks, procs, lambdas, modules, mixins, metaprogramming, Ruby on Rails, Rails, syntax reference, cheat sheet"

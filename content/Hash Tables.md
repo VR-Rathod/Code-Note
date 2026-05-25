@@ -1,4 +1,7 @@
 ---
+date: 2026-05-22T17:59:04+05:30
+lastmod: 2026-05-22T17:59:04+05:30
+
 seoTitle: Hash Tables Data Structure - Premium DSA Guide
 description: "Master Hash Tables (Hash Maps, Dictionaries). Understand hash functions, O(1) lookups, collision resolution techniques like Chaining and Linear Probing, and multi-language implementations."
 keywords: "Hash Table, Hash Map, Dictionary, DSA, Data Structures, Hashing, Collision Handling, Chaining, Linear Probing"

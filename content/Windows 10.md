@@ -1,4 +1,7 @@
 ---
+date: 2026-04-03T11:02:05+05:30
+lastmod: 2026-04-03T11:02:05+05:30
+
 seoTitle: Windows 10 Complete Guide – Architecture, Commands & Administration
 description: "Comprehensive Windows 10 reference covering architecture, installation, PowerShell, CMD, registry, networking, user management, security, and system administration."
 keywords: "Windows 10, windows commands, powershell, cmd, windows administration, windows registry, windows networking, windows security, windows 10 guide, windows 10 notes, windows 10 tutorial, VR-Rathod, Code-Note, code note vr, vr book"

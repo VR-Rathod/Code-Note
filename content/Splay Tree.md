@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Splay Tree Explained – Self-Adjusting BST with Amortized O(log n)
 description: "Splay trees move recently accessed nodes to the root via splaying rotations. Covers zig, zig-zig, zig-zag cases, amortized O(log n), and cache-friendly access."
 keywords: "splay tree, self-adjusting BST, splaying, zig rotation, zig-zig, zig-zag, amortized O(log n), time complexity, space complexity, cache-friendly, data structure"

@@ -1,4 +1,7 @@
 ---
+date: 2026-05-12T12:15:39+05:30
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: Caching Explained – Redis, LRU, Cache Patterns & Stampede Prevention | System Design
 description: "Learn caching from scratch with plain English explanations and real-world analogies: cache-aside pattern, write-through, LRU eviction, Redis vs Memcached, cache stampede, and CDN caching. Perfect for system design interviews."
 keywords: "caching tutorial, Redis explained, LRU eviction explained, cache stampede, write-through cache, cache-aside pattern, TTL explained, system design caching, distributed cache, VR-Rathod, Code-Note"

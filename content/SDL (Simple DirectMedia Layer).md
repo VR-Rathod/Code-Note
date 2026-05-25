@@ -1,4 +1,7 @@
 ---
+date: 2026-04-08T11:19:07+05:30
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: SDL2 – Simple DirectMedia Layer C++ Game Dev Reference
 description: "SDL2 (Simple DirectMedia Layer) reference for C++ game development. Covers window creation, rendering, input, audio, textures, events, and SDL_image/SDL_mixer."
 keywords: "SDL2, Simple DirectMedia Layer, C++ game development, SDL rendering, SDL input, SDL audio, SDL textures, SDL events, game loop, cross-platform, VR-Rathod, Code-Note, code note vr, vr book"

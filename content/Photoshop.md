@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Adobe Photoshop Reference – Photo Editing and Design Guide
 description: "Photoshop reference covering layers, masks, selections, adjustments, filters, smart objects, Camera Raw, neural filters, and professional photo editing."
 keywords: "Adobe Photoshop, photo editing, layers, masks, selections, adjustments, filters, smart objects, Camera Raw, neural filters, graphic design, Adobe CC"

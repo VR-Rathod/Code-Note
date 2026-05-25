@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Topological Sort Algorithm – DAG Ordering with DFS and Kahn's
 description: "Topological sort orders vertices of a DAG so all edges go forward. Covers DFS-based sort, Kahn's BFS algorithm, cycle detection, and scheduling applications."
 keywords: "topological sort, DAG, directed acyclic graph, DFS, Kahn algorithm, BFS, cycle detection, O(V+E), time complexity, space complexity, dependency resolution"

@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Krita Reference – Digital Painting and Illustration Guide
 description: "Krita reference covering brushes, layers, color management, animation, vector tools, and digital painting workflows for concept artists and illustrators."
 keywords: "Krita, digital painting, illustration, brushes, layers, color management, animation, vector tools, concept art, open source, free painting software, digital art"

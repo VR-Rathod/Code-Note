@@ -1,4 +1,7 @@
 ---
+date: 2026-05-12T12:23:01+05:30
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: Bug Tracking for Games – Game Testing & QA Guide
 description: "Complete game bug tracking reference: severity tiers, game-specific bug types, bug lifecycle, triage workflows, Jira/Hansoft/Hacknplan setup, bug report templates, and softlock/exploit reporting."
 keywords: "game bug tracking, bug report, game QA, softlock, bug severity, bug lifecycle, Jira game dev, Hansoft, Hacknplan, game testing workflow, VR-Rathod, Code-Note"

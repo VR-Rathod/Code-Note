@@ -1,4 +1,7 @@
 ---
+date: 2026-03-24T17:12:17+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Tarjan's Algorithm – Strongly Connected Components with DFS
 description: "Tarjan's algorithm finds SCCs in a single DFS pass using a stack and low-link values. Covers discovery time, low-link, O(V+E) complexity, and articulation."
 keywords: "Tarjan algorithm, strongly connected components, SCC, DFS, low-link value, discovery time, O(V+E), time complexity, space complexity, directed graph, articulation point"

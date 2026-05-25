@@ -1,4 +1,7 @@
 ---
+date: 2026-05-12T12:15:39+05:30
+lastmod: 2026-05-12T12:15:39+05:30
+
 seoTitle: System Design Case Studies – URL Shortener, Chat, YouTube, Twitter Feed, Uber
 description: "Real-world system design case studies for interviews: URL shortener, chat system, YouTube, Twitter news feed, Uber ride-sharing, and rate limiter. Full architecture walkthroughs with estimations and component design."
 keywords: "system design case studies, URL shortener design, chat system design, YouTube design, Twitter feed design, Uber system design, rate limiter design, system design interview, FAANG, VR-Rathod, Code-Note"

@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-05-21T13:09:49+05:30
+
 seoTitle: Linear Search Algorithm – O(n) Sequential Search Guide
 description: "Linear Search scans each element one by one to find a target. Covers O(n) complexity, iterative and sentinel variants, comparison with Binary Search, and implementations in Python, C++, JavaScript, Java, and C."
 keywords: "linear search, sequential search, O(n), unsorted array, brute force search, sentinel search, search algorithm, time complexity, linear search Python, linear search C++, linear search Java, linear search JavaScript, VR-Rathod, Code-Note, code note vr, vr book"

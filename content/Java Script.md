@@ -1,4 +1,7 @@
 ---
+date: 2026-03-31T12:26:35+05:30
+lastmod: 2026-03-31T12:26:35+05:30
+
 seoTitle: JavaScript Reference – ES6+ Syntax, DOM, and Async Patterns
 description: "JavaScript reference covering ES6+ features, promises, async/await, closures, prototypes, DOM manipulation, event handling, and modern JS patterns."
 keywords: "JavaScript, JavaScript reference, ES6, promises, async await, closures, prototypes, DOM, event handling, modern JavaScript, Node.js, syntax cheat sheet"

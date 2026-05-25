@@ -1,4 +1,7 @@
 ---
+date: 2024-12-02T09:47:59+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Perl Programming Language – Syntax Reference and Scripting Guide
 description: "Perl reference covering regular expressions, file handling, references, modules, CPAN, and text processing for system administration and bioinformatics."
 keywords: "Perl programming, Perl language, regular expressions, file handling, references, CPAN, modules, text processing, system administration, bioinformatics, syntax reference"

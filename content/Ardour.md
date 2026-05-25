@@ -1,4 +1,7 @@
 ---
+date: 2025-06-23T11:23:04+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Ardour DAW Reference – Open Source Audio Recording Guide
 description: "Ardour is an open-source DAW for recording, editing, and mixing. Covers tracks, regions, MIDI, plugins, routing, export, and professional audio workflows."
 keywords: "Ardour, DAW, open source, audio recording, MIDI, plugins, audio mixing, tracks, regions, routing, export, music production"

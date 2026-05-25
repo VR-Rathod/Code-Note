@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: CorelDRAW Reference – Vector Illustration and Design Guide
 description: "CorelDRAW reference covering vector drawing, node editing, typography, color management, layouts, export options, and professional graphic design workflows."
 keywords: "CorelDRAW, vector illustration, graphic design, node editing, typography, color management, export, CorelDRAW 2024, design software, vector graphics, layout"

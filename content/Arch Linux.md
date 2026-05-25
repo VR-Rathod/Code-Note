@@ -1,4 +1,7 @@
 ---
+date: 2026-04-06T11:04:22+05:30
+lastmod: 2026-04-17T17:08:18+05:30
+
 seoTitle: Arch Linux Complete Guide – pacman, AUR, Installation & Administration
 description: "Comprehensive Arch Linux reference covering installation, pacman, AUR, systemd, kernel management, desktop environments, security hardening, and system maintenance."
 keywords: "Arch Linux, arch linux guide, arch linux tutorial, pacman, AUR, arch linux installation, arch linux commands, arch linux notes, arch linux administration, arch linux security, yay, paru, PKGBUILD, arch linux kernel, arch linux desktop, VR-Rathod, Code-Note, code note vr, vr book"

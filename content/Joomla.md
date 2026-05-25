@@ -1,4 +1,7 @@
 ---
+date: 2024-12-04T11:51:44+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Joomla CMS Reference – Extensions, Templates, and Admin Guide
 description: "Joomla is a flexible open-source CMS. Covers articles, categories, extensions, templates, user management, Joomla 4/5 features, and multilingual sites."
 keywords: "Joomla, CMS, content management, Joomla extensions, templates, articles, categories, user management, Joomla 4, multilingual, PHP CMS, web development"

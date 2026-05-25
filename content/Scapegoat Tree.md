@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Scapegoat Tree Explained – Amortized Balanced BST Without Rotations
 description: "Scapegoat trees maintain balance by rebuilding subtrees when imbalance is detected. Covers alpha-weight balance, rebuild trigger, O(log n) amortized operations."
 keywords: "scapegoat tree, balanced BST, amortized complexity, alpha-weight balance, tree rebuild, O(log n), time complexity, space complexity, self-balancing tree, data structure"

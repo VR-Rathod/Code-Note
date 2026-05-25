@@ -1,4 +1,7 @@
 ---
+date: 2024-12-04T11:51:44+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Oracle Database Reference – PL/SQL and Administration Guide
 description: "Oracle Database reference covering PL/SQL, stored procedures, indexes, partitioning, RAC, Data Guard, Oracle 19c/21c features, and performance tuning."
 keywords: "Oracle Database, PL/SQL, stored procedures, indexes, partitioning, RAC, Data Guard, Oracle 19c, Oracle 21c, database administration, RDBMS, performance tuning"

@@ -1,4 +1,7 @@
 ---
+date: 2024-11-27T09:48:44+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Kotlin Programming Language – Syntax Reference and Android Guide
 description: "Kotlin reference covering null safety, coroutines, extension functions, data classes, sealed classes, and Android development patterns with Jetpack Compose."
 keywords: "Kotlin programming, Kotlin reference, null safety, coroutines, extension functions, data classes, sealed classes, Android, Jetpack Compose, syntax cheat sheet"

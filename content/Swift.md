@@ -1,4 +1,7 @@
 ---
+date: 2024-11-27T09:48:44+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Swift Programming Language – Syntax Reference and iOS Dev Guide
 description: "Swift reference covering optionals, protocols, generics, closures, concurrency with async/await, SwiftUI basics, and iOS/macOS development patterns."
 keywords: "Swift programming, Swift language, optionals, protocols, generics, closures, async await, SwiftUI, iOS development, macOS, Swift 5, syntax reference"

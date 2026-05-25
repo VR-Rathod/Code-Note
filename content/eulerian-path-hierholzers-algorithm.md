@@ -1,4 +1,7 @@
 ---
+date: 2026-03-24T17:12:17+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Eulerian Path – Hierholzer's Algorithm Implementation Guide
 description: "Hierholzer's algorithm finds Eulerian circuits and paths in O(E) time. Covers Eulerian circuit conditions, directed and undirected graphs, and stack-based."
 keywords: "Eulerian path, Eulerian circuit, Hierholzer algorithm, graph theory, O(E) time, directed graph, undirected graph, time complexity, space complexity, edge traversal"

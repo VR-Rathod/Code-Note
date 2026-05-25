@@ -1,4 +1,7 @@
 ---
+date: 2026-04-13T17:36:08+05:30
+lastmod: 2026-04-17T17:08:18+05:30
+
 seoTitle: Shader Programming Guide – HLSL, GLSL, WGSL, MSL
 description: "A complete learning roadmap for Shader Programming. Covers Vertex/Fragment shaders, Compute Shaders, math, lighting models, and the differences between HLSL, GLSL, and MSL."
 keywords: "shader programming, hlsl, glsl, wgsl, msl, graphics programming, compute shaders, fragment shader, game development, rendering, vr-rathod"

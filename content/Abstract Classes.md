@@ -1,4 +1,7 @@
 ---
+date: 2025-05-15T11:00:41+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Abstract Classes in OOP – C++ Guide with Examples
 description: "Abstract classes define interfaces with partial implementation. Covers pure virtual functions, abstract base classes, inheritance, and C++ examples."
 keywords: "abstract classes, OOP, pure virtual, C++, abstract base class, inheritance, polymorphism, interface, virtual functions"

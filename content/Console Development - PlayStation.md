@@ -1,4 +1,7 @@
 ---
+date: 2026-05-12T11:21:31+05:30
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: PlayStation SDK Development – PS4/PS5 Developer Guide
 description: "Complete PlayStation development guide covering PS5/PS4 architecture, GNM/GNMX graphics API, memory pools, DualSense haptics, Razor profiling, Trophy system, and PS5 SSD streaming."
 keywords: "PlayStation SDK, PS5 development, PS4 development, GNM, GNMX, Razor profiler, DualSense haptics, adaptive triggers, Trophy system, console development, VR-Rathod"

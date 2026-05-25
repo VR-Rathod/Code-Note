@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Counted B-Trees Explained – Order Statistics in B-Tree Nodes
 description: "Counted B-trees augment B-trees with subtree size counts for order statistics. Covers rank and select operations, augmented tree, O(log n) queries, and."
 keywords: "counted B-tree, augmented B-tree, order statistics, rank query, select query, O(log n), database index, time complexity, space complexity, balanced tree, data structure"

@@ -1,4 +1,7 @@
 ---
+date: 2026-03-24T17:12:17+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Hungarian Algorithm – Optimal Assignment Problem Solution
 description: "The Hungarian algorithm solves the assignment problem in O(n^3) time. Covers cost matrix, augmenting paths, zero covering, and applications in scheduling and."
 keywords: "Hungarian algorithm, Munkres algorithm, assignment problem, bipartite matching, O(n^3), cost matrix, augmenting path, time complexity, space complexity, optimization"

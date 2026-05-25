@@ -1,4 +1,7 @@
 ---
+date: 2024-12-04T11:51:44+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Drupal CMS Reference – Modules, Themes, and Configuration Guide
 description: "Drupal is an open-source CMS for building complex websites. Covers content types, views, modules, themes, hooks, Drupal 9/10 features, and headless Drupal."
 keywords: "Drupal, CMS, content management, Drupal modules, Drupal themes, views, hooks, Drupal 10, headless Drupal, web development, PHP CMS, content types"

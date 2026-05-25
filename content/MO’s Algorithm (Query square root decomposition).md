@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Mo's Algorithm – Square Root Decomposition for Range Queries
 description: "Mo's algorithm answers offline range queries in O((n+q) sqrt(n)) by sorting queries. Covers block size selection, add/remove operations, and offline query."
 keywords: "Mo's algorithm, square root decomposition, range query, offline algorithm, block decomposition, O((n+q) sqrt(n)), time complexity, space complexity, query optimization"

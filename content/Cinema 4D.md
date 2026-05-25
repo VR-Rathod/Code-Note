@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Cinema 4D Reference – 3D Modeling and Motion Graphics Guide
 description: "Cinema 4D reference covering modeling, MoGraph, dynamics, rendering with Redshift, character animation, and motion graphics for broadcast and film."
 keywords: "Cinema 4D, 3D modeling, MoGraph, dynamics, Redshift, character animation, motion graphics, broadcast design, 3D software, rendering, C4D, visual effects"

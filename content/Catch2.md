@@ -1,4 +1,7 @@
 ---
+date: 2026-04-08T11:19:07+05:30
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: Catch2 – Modern C++ Testing Framework Reference
 description: "Catch2 is a modern, header-friendly C++ testing framework. Covers test cases, sections, BDD-style tests, matchers, generators, and CMake integration."
 keywords: "Catch2, C++ testing, unit testing, BDD, test sections, matchers, generators, header-only, modern C++, TDD, VR-Rathod, Code-Note, code note vr, vr book"

@@ -1,4 +1,7 @@
 ---
+date: 2024-12-03T09:44:23+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: WordPress Reference – Themes, Plugins, and Development Guide
 description: "WordPress reference covering themes, plugins, Gutenberg blocks, REST API, WooCommerce, custom post types, hooks, and WordPress 6 full site editing."
 keywords: "WordPress, CMS, themes, plugins, Gutenberg, REST API, WooCommerce, custom post types, hooks, WordPress 6, full site editing, PHP"

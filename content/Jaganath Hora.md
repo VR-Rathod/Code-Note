@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Jaganath Hora – Vedic Astrology Planetary Hour Reference Guide
 description: "Jaganath Hora is a Vedic astrology software for planetary hour calculations. Covers hora charts, planetary periods, Jyotish concepts, and astrological timing."
 keywords: "Jaganath Hora, Vedic astrology, planetary hours, hora chart, Jyotish, planetary periods, astrological timing, astrology software, Hindu astrology, Vedic chart"

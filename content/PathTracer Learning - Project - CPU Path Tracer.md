@@ -1,4 +1,7 @@
 ---
+date: 2026-04-03T15:14:37+05:30
+lastmod: 2026-04-03T15:14:37+05:30
+
 seoTitle: CPU Path Tracer Project – Implementation Notes and Architecture
 description: "CPU path tracer project covering scene representation, BVH, materials, camera, Monte Carlo sampling, and progressive rendering implementation details."
 keywords: "CPU path tracer, path tracing, ray tracing, BVH, materials, camera, Monte Carlo, progressive rendering, C++ path tracer, project notes, GPU rendering"

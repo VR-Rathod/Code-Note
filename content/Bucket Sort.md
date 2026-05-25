@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-05-25T11:36:10+05:30
+
 seoTitle: Bucket Sort Algorithm – Complete Guide, Complexity, and Multi-Language Code
 description: "In-depth guide to Bucket Sort. Explains uniform distribution assumption, normalization techniques, insertion sub-sort, time and space complexity, and complete code implementations in Python, C++, JavaScript, Java, and C."
 keywords: "bucket sort, bucketsort, distribution sort, sorting algorithm, uniform distribution, time complexity, space complexity, insertion sort, VR-Rathod, Code-Note, Vaibhav Rathod"

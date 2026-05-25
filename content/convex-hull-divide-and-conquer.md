@@ -1,4 +1,7 @@
 ---
+date: 2026-03-24T17:12:17+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Convex Hull – Divide and Conquer Algorithm Explained
 description: "Divide and conquer convex hull splits the point set recursively and merges hulls. Covers upper and lower tangent computation, O(n log n) complexity, and."
 keywords: "convex hull, divide and conquer, computational geometry, upper tangent, lower tangent, O(n log n), time complexity, space complexity, merge hull, point set"

@@ -1,4 +1,7 @@
 ---
+date: 2024-12-04T11:51:44+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: TYPO3 CMS Reference – Extensions, TypoScript, and Admin Guide
 description: "TYPO3 is an enterprise open-source CMS. Covers TypoScript, Fluid templates, extensions, backend configuration, TYPO3 12 features, and multilingual content."
 keywords: "TYPO3, CMS, TypoScript, Fluid templates, extensions, backend configuration, TYPO3 12, multilingual, enterprise CMS, PHP CMS, content management, web development"

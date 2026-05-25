@@ -1,4 +1,7 @@
 ---
+date: 2025-05-15T11:00:41+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Method Overloading in OOP – Compile-Time Polymorphism Guide
 description: "Method overloading defines multiple methods with the same name but different parameters. Covers compile-time polymorphism, parameter types, return types, and."
 keywords: "method overloading, OOP, compile-time polymorphism, static polymorphism, parameter types, Java overloading, C++ overloading, Python overloading, software design"

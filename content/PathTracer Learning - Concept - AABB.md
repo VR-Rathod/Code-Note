@@ -1,4 +1,7 @@
 ---
+date: 2026-04-03T15:14:37+05:30
+lastmod: 2026-04-03T15:14:37+05:30
+
 seoTitle: AABB in Ray Tracing – Axis-Aligned Bounding Box Explained
 description: "Axis-aligned bounding boxes (AABB) are fundamental for BVH construction in ray tracing. Covers slab method intersection, surface area heuristic, and GPU."
 keywords: "AABB, axis-aligned bounding box, ray tracing, BVH, slab method, ray-AABB intersection, surface area heuristic, path tracing, GPU rendering, Vulkan, acceleration structure"

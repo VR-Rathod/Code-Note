@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Merge Sort Algorithm – Divide and Conquer Sorting Explained
 description: "Merge sort divides the array in half, sorts each half, then merges. Covers O(n log n) guaranteed time, stable sort, external sort applications, and top-down vs."
 keywords: "merge sort, divide and conquer, O(n log n), stable sort, external sort, recursive sort, time complexity, space complexity, comparison sort, algorithm implementation"

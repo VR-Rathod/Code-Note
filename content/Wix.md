@@ -1,4 +1,7 @@
 ---
+date: 2024-12-04T11:51:44+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Wix Reference – Website Builder, Velo, and E-commerce Guide
 description: "Wix reference covering drag-and-drop editor, Wix Velo (JavaScript API), e-commerce, SEO, Wix Studio, and building dynamic websites with Wix CMS."
 keywords: "Wix, website builder, Wix Velo, JavaScript API, e-commerce, SEO, Wix Studio, drag-and-drop, dynamic website, Wix CMS, no-code, web design"

@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Houdini Reference – Procedural 3D and VFX Production Guide
 description: "Houdini reference covering procedural modeling, VEX, SOPs, DOPs, simulations, Karma rendering, and VFX pipeline integration for film and games."
 keywords: "Houdini, procedural 3D, VFX, VEX, SOPs, DOPs, simulations, Karma renderer, SideFX, film VFX, game development, procedural generation"

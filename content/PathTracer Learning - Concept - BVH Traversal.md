@@ -1,4 +1,7 @@
 ---
+date: 2026-04-03T15:14:37+05:30
+lastmod: 2026-04-03T15:14:37+05:30
+
 seoTitle: BVH Traversal – Ray-BVH Intersection and Traversal Algorithms
 description: "BVH traversal finds ray-scene intersections efficiently. Covers stackless traversal, MBVH, persistent threads, wavefront path tracing, and GPU traversal."
 keywords: "BVH traversal, bounding volume hierarchy, ray tracing, path tracing, stackless traversal, MBVH, GPU traversal, Vulkan, ray-BVH intersection, GPU rendering, acceleration"

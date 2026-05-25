@@ -1,4 +1,7 @@
 ---
+date: 2024-10-31T19:09:35-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Go Programming Language – Syntax Reference and Concurrency Guide
 description: "Go language reference covering goroutines, channels, interfaces, error handling, modules, standard library, and idiomatic Go patterns for backend and CLI."
 keywords: "Go programming, Golang, goroutines, channels, interfaces, error handling, Go modules, standard library, concurrency, backend development, Go syntax, cheat sheet"

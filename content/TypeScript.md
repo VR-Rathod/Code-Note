@@ -1,4 +1,7 @@
 ---
+date: 2024-10-31T19:09:35-07:00
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: TypeScript Programming Reference – In-Depth Guide to Types, Generics, and Architecture
 description: "Comprehensive, highly detailed TypeScript reference covering basic to advanced concepts including type checking, mapped types, conditional types, generic programming, decorators, React integration, and design patterns."
 keywords: "typescript, ts, typescript in-depth, typescript programming, ts reference, interfaces, generics, utility types, decorators, strict mode, conditional types, mapped types, modern javascript, ts cheatsheet, VR-Rathod, Code-Note"

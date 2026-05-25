@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Winged-Edge Data Structure – Polygon Mesh Representation Guide
 description: "Winged-edge represents polygon meshes with efficient adjacency traversal. Covers edge, face, vertex records, traversal operations, and comparison with."
 keywords: "winged-edge, polygon mesh, half-edge, mesh representation, adjacency traversal, 3D geometry, face traversal, time complexity, space complexity, computational geometry"

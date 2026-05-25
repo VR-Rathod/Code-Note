@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Canva Reference – Graphic Design and Template Creation Guide
 description: "Canva reference covering templates, design elements, brand kit, photo editing, presentations, social media graphics, and Canva Pro features for designers."
 keywords: "Canva, graphic design, templates, brand kit, photo editing, presentations, social media graphics, Canva Pro, design tool, no-code design, visual content"

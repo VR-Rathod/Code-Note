@@ -1,4 +1,7 @@
 ---
+date: 2026-04-03T11:02:05+05:30
+lastmod: 2026-04-03T11:02:05+05:30
+
 seoTitle: Linux Advanced Guide – Kernel, Internals, Networking & Hardening
 description: "Advanced Linux reference covering kernel internals, system calls, memory management, process scheduling, networking stack, filesystem internals, performance tuning, and security hardening."
 keywords: "linux advanced, linux kernel, linux internals, linux system calls, linux memory management, linux networking, linux hardening, linux performance, linux security, linux administration advanced, VR-Rathod, Code-Note, code note vr, vr book"

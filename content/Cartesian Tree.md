@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Cartesian Tree Explained – Heap and BST Hybrid Structure
 description: "A Cartesian tree satisfies both BST and heap properties simultaneously. Learn construction from arrays, range minimum queries, treap relationship, and."
 keywords: "Cartesian tree, treap, heap property, BST property, range minimum query, RMQ, binary tree, time complexity, space complexity, data structure, array to tree"

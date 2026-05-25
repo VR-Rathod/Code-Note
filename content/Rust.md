@@ -1,4 +1,7 @@
 ---
+date: 2024-11-27T09:48:44+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Rust Programming Language – Ownership, Borrowing, and Syntax Guide
 description: "Rust reference covering ownership, borrowing, lifetimes, traits, enums, pattern matching, async/await, and systems programming with memory safety guarantees."
 keywords: "Rust programming, Rust language, ownership, borrowing, lifetimes, traits, enums, pattern matching, async await, systems programming, memory safety, syntax reference"

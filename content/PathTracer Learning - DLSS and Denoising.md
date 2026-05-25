@@ -1,4 +1,7 @@
 ---
+date: 2026-04-03T15:14:37+05:30
+lastmod: 2026-04-03T15:14:37+05:30
+
 seoTitle: DLSS and Denoising in Path Tracing – AI Upscaling and Noise Guide
 description: "DLSS and denoising reduce noise and improve performance in path tracers. Covers DLSS 3, OIDN, NRD, temporal denoising, and integration with Vulkan ray tracing."
 keywords: "DLSS, denoising, path tracing, ray tracing, OIDN, NRD, AI upscaling, temporal denoising, GPU rendering, Vulkan, noise reduction, NVIDIA"

@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Audacity Reference – Audio Editing and Recording Guide
 description: "Audacity is a free audio editor. Covers recording, editing, effects, noise reduction, multi-track mixing, export formats, and podcast production workflows."
 keywords: "Audacity, audio editing, audio recording, effects, noise reduction, multi-track, export, podcast production, free audio editor, waveform, audio software"

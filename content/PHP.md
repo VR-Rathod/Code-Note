@@ -1,4 +1,7 @@
 ---
+date: 2024-10-30T16:21:44-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: PHP Programming Language – Syntax Reference and Web Dev Guide
 description: "PHP reference covering arrays, OOP, PDO, Composer, namespaces, PHP 8 features, Laravel basics, and server-side web development patterns."
 keywords: "PHP programming, PHP reference, arrays, OOP, PDO, Composer, namespaces, PHP 8, Laravel, server-side, web development, syntax cheat sheet"

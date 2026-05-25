@@ -1,4 +1,7 @@
 ---
+date: 2024-10-30T16:21:44-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Web Scraping Reference – Python Tools and Techniques Guide
 description: "Web scraping reference covering requests, BeautifulSoup, Scrapy, Selenium, handling JavaScript, rate limiting, robots.txt, and ethical scraping practices."
 keywords: "web scraping, Python scraping, BeautifulSoup, Scrapy, Selenium, requests, JavaScript rendering, rate limiting, robots.txt, data extraction, ethical scraping"

@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Depth First Search (DFS) – Graph Traversal Algorithm Guide
 description: "DFS explores graphs by going as deep as possible before backtracking. Covers recursive and iterative DFS, cycle detection, topological sort, and connected."
 keywords: "depth first search, DFS, graph traversal, recursion, backtracking, cycle detection, topological sort, connected components, time complexity, space complexity"

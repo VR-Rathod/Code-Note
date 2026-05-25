@@ -1,4 +1,7 @@
 ---
+date: 2024-12-02T09:47:59+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Haskell Programming Language – Functional Programming Reference
 description: "Haskell reference covering type classes, monads, functors, lazy evaluation, pattern matching, do-notation, and GHC extensions for pure functional programming."
 keywords: "Haskell programming, Haskell language, type classes, monads, functors, lazy evaluation, pattern matching, GHC, functional programming, do-notation, syntax reference"

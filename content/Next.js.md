@@ -1,4 +1,7 @@
 ---
+date: 2026-03-26T15:35:09+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Next.js Complete Reference – React Framework Guide
 description: "Comprehensive Next.js reference covering App Router, Pages Router, SSR, SSG, ISR, Server Components, API routes, data fetching, middleware, and deployment."
 keywords: "nextjs, next.js, react framework, app router, pages router, SSR, SSG, ISR, server components, api routes, data fetching, middleware, vercel, typescript, nextjs notes, nextjs cheatsheet, nextjs guide, react fullstack, VR-Rathod, Code-Note, code note vr, vr book"

@@ -1,4 +1,7 @@
 ---
+date: 2026-03-24T17:12:17+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Burrows-Wheeler Transform – Data Compression Algorithm Guide
 description: "The Burrows-Wheeler Transform rearranges characters to improve compression. Learn BWT construction, inverse transform, suffix arrays, and use in bzip2."
 keywords: "Burrows-Wheeler transform, BWT, data compression, suffix array, bzip2, string transformation, inverse BWT, time complexity, space complexity, text compression"

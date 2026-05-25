@@ -1,4 +1,7 @@
 ---
+date: 2025-05-15T11:00:41+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Observer Pattern – Behavioral Design Pattern Reference Guide
 description: "Observer pattern defines a one-to-many dependency for event notification. Covers subject, observer, publish-subscribe, event systems, and reactive programming."
 keywords: "observer pattern, design pattern, behavioral pattern, subject, observer, publish-subscribe, event system, reactive programming, OOP, software design, event-driven"

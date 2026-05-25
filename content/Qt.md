@@ -1,4 +1,7 @@
 ---
+date: 2026-04-08T11:19:07+05:30
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: Qt Framework – C++ GUI and Cross-Platform Development Reference
 description: "Qt framework reference for C++ development. Covers widgets, signals/slots, Qt Quick/QML, networking, database, threading, and cross-platform deployment."
 keywords: "Qt, Qt framework, C++ GUI, Qt Widgets, Qt Quick, QML, signals slots, Qt Creator, cross-platform, Qt networking, Qt database, VR-Rathod, Code-Note, code note vr, vr book"

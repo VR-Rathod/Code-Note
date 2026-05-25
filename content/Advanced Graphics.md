@@ -1,4 +1,7 @@
 ---
+date: 2026-04-10T09:50:41+05:30
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: Advanced Graphics Programming – Vulkan, DirectX 12, Metal, WebGPU, HLSL Guide
 description: "Comprehensive advanced graphics programming reference covering Vulkan, DirectX 12, Metal, WebGPU, HLSL, GLSL, compute shaders, render graphs, GPU architecture, and modern rendering techniques."
 keywords: "advanced graphics programming, Vulkan, DirectX 12, Metal, WebGPU, HLSL, GLSL, compute shaders, render graph, GPU architecture, rasterization, ray tracing, graphics pipeline, shader programming, VR-Rathod, Code-Note, code note vr, vr book"

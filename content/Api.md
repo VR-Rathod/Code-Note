@@ -1,4 +1,7 @@
 ---
+date: 2024-12-14T10:34:45+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: API Development Reference – REST, GraphQL, and Web API Guide
 description: "Comprehensive API reference covering REST principles, HTTP methods, status codes, authentication, versioning, GraphQL, OpenAPI specification, and API design."
 keywords: "API, REST API, GraphQL, HTTP methods, status codes, authentication, API versioning, OpenAPI, Swagger, API design, web API, JSON"

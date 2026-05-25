@@ -1,4 +1,7 @@
 ---
+date: 2026-03-24T10:39:55+05:30
+lastmod: 2026-04-17T17:08:18+05:30
+
 seoTitle: Game Development Reference – Concepts, Engines, and Design Guide
 description: "Game development overview covering game loops, physics, rendering, AI, audio, input handling, popular engines (Unity, Unreal, Godot), and career paths."
 keywords: "game development, game loop, physics engine, rendering, game AI, audio, input handling, Unity, Unreal Engine, Godot, game design, indie game, game dev notes, game dev guide, game programming, game development reference, VR-Rathod, Code-Note, code note vr, vr book"

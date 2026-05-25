@@ -1,4 +1,7 @@
 ---
+date: 2026-05-22T09:58:29+05:30
+lastmod: 2026-05-22T09:58:29+05:30
+
 seoTitle: NestJS Complete Reference – Node.js Framework Guide
 description: "Comprehensive NestJS reference covering modules, controllers, services, providers, guards, interceptors, pipes, decorators, TypeORM, and best practices."
 keywords: "nestjs, nest.js, nodejs framework, typescript, modules, controllers, services, dependency injection, guards, interceptors, pipes, decorators, typeorm, rest api, nestjs notes, nestjs cheatsheet, nestjs guide, backend typescript, VR-Rathod, Code-Note, code note vr, vr book"

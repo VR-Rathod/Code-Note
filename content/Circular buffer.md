@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-05-22T17:59:04+05:30
+
 seoTitle: Circular Buffer (Ring Buffer) – Fixed-Size O(1) FIFO Queue
 description: "Master Circular Buffers (Ring Buffers). Learn about head/tail pointers, empty/full states, overwriting vs non-overwriting behavior, and implementations in 5 languages."
 keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) complexity, hardware buffer, tail pointer, head pointer, C++, Python, JavaScript, Java, C"

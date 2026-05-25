@@ -1,4 +1,7 @@
 ---
+date: 2024-10-31T19:09:35-07:00
+lastmod: 2026-04-06T17:35:35+05:30
+
 seoTitle: Java Programming Reference – Modern Java Syntax and Features
 description: "Comprehensive Java reference covering Collections, Streams, Generics, Lambdas, Concurrency, JVM internals, Java 11/17/21 features, and object-oriented design patterns."
 keywords: "java, Java programming, Java reference, collections, streams, generics, lambdas, concurrency, JVM, Java 17, Java 21, object-oriented, design patterns, java notes, java cheatsheet, java guide, VR-Rathod, Code-Note"

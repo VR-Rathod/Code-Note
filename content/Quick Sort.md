@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Quick Sort Algorithm – Partitioning and Complexity Analysis
 description: "Quick sort partitions around a pivot and recursively sorts subarrays. Covers Lomuto and Hoare schemes, randomized pivot, O(n log n) average, and O(n^2) worst."
 keywords: "quick sort, sorting algorithm, partitioning, pivot selection, O(n log n), randomized quicksort, time complexity, space complexity, in-place sort, comparison sort"

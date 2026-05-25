@@ -1,4 +1,7 @@
 ---
+date: 2024-10-31T19:09:35-07:00
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: CSS3 Complete Guide – Selectors, Flexbox, Grid, Animations, and Responsive Design
 description: "Comprehensive CSS3 reference covering selectors, box model, flexbox, CSS grid, animations, transitions, custom properties, media queries, and modern CSS techniques."
 keywords: "CSS, CSS3, flexbox, CSS grid, selectors, animations, transitions, custom properties, responsive design, media queries, CSS variables, preprocessors, VR-Rathod, Code-Note, code note vr, vr book"

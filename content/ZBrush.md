@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: ZBrush Reference – Digital Sculpting and 3D Modeling Guide
 description: "ZBrush reference covering sculpting brushes, ZSpheres, DynaMesh, SubDiv levels, polypainting, ZRemesher, and character sculpting for games and film."
 keywords: "ZBrush, digital sculpting, 3D modeling, sculpting brushes, ZSpheres, DynaMesh, SubDiv, polypainting, ZRemesher, character sculpting, game art, film VFX"

@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Bellman-Ford Algorithm – Shortest Path with Negative Edges
 description: "Bellman-Ford finds shortest paths in weighted graphs including negative edge weights. Covers edge relaxation, negative cycle detection, time and space."
 keywords: "Bellman-Ford algorithm, shortest path, negative edges, graph algorithm, edge relaxation, negative cycle detection, dynamic programming, time complexity, space complexity, directed graph"

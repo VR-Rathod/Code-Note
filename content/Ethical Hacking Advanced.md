@@ -1,4 +1,7 @@
 ---
+date: 2026-04-03T11:02:05+05:30
+lastmod: 2026-04-03T11:02:05+05:30
+
 seoTitle: Ethical Hacking Advanced – Exploitation, AD Attacks & Red Team
 description: "Advanced ethical hacking reference covering exploitation techniques, Active Directory attacks, post-exploitation, evasion, red team operations, and CTF methodology. For authorized security professionals only."
 keywords: "ethical hacking advanced, penetration testing advanced, active directory attacks, red team, post exploitation, privilege escalation, lateral movement, evasion techniques, CTF methodology, security research, VR-Rathod, Code-Note, code note vr, vr book"

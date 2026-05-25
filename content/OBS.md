@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: OBS Studio Reference – Streaming and Screen Recording Guide
 description: "OBS Studio reference covering scenes, sources, audio mixer, stream settings, recording, filters, plugins, and live streaming to Twitch, YouTube, and more."
 keywords: "OBS Studio, screen recording, live streaming, scenes, sources, audio mixer, stream settings, filters, plugins, Twitch, YouTube, open source"

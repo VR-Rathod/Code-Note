@@ -1,4 +1,7 @@
 ---
+date: 2026-04-06T11:04:22+05:30
+lastmod: 2026-04-06T11:04:22+05:30
+
 seoTitle: Rocky Linux Complete Guide – RHEL-Compatible Enterprise Linux
 description: "Comprehensive Rocky Linux reference covering installation, DNF package management, SELinux, firewalld, systemd, server setup, security hardening, and RHEL compatibility."
 keywords: "Rocky Linux, rocky linux guide, rocky linux commands, rocky linux dnf, rocky linux tutorial, rocky linux server, rocky linux rhel, rocky linux selinux, rocky linux firewalld, rocky linux administration, enterprise linux, RHEL compatible, VR-Rathod, Code-Note, code note vr, vr book"

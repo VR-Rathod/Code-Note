@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Lee Algorithm – Shortest Path in Grid Using BFS Explained
 description: "Lee algorithm finds the shortest path in a grid maze using BFS. Covers wave propagation, obstacle handling, O(mn) complexity, and PCB routing applications."
 keywords: "Lee algorithm, BFS, grid shortest path, maze solving, wave propagation, O(mn), time complexity, space complexity, PCB routing, grid algorithm"

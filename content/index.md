@@ -1,4 +1,7 @@
 ---
+date: 2026-03-25T17:01:06+05:30
+lastmod: 2026-05-22T09:58:29+05:30
+
 title: index
 displayTitle: Free Code Notes – Complete Programming Knowledge Base
 seoTitle: Free Code Notes – Programming, DSA, DevOps, Game Dev & Data Science

@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Crit-bit Trees Explained – Fast Binary Trie Implementation
 description: "Crit-bit trees are compact binary tries for fast string and integer lookups. Learn critical bit identification, insertion, deletion, and performance vs hash."
 keywords: "crit-bit tree, binary trie, prefix tree, string lookup, critical bit, radix tree, time complexity, space complexity, data structure, key-value store"

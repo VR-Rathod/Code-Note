@@ -1,4 +1,7 @@
 ---
+date: 2026-05-12T12:23:01+05:30
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: Playtesting Methodologies – Game Testing & QA Guide
 description: "Complete playtesting reference: structured sessions, think-aloud protocol, focus groups, alpha/beta strategies, telemetry, and feedback analysis for game developers."
 keywords: "playtesting, game testing methodologies, playtest sessions, game feedback, focus group, alpha testing, beta testing, think-aloud protocol, game QA, VR-Rathod, Code-Note"

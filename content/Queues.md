@@ -1,4 +1,7 @@
 ---
+date: 2026-05-22T17:59:04+05:30
+lastmod: 2026-05-22T17:59:04+05:30
+
 seoTitle: Queues Data Structure - Premium DSA Guide
 description: "Master the Queue data structure. Learn the FIFO principle, Enqueue/Dequeue operations, Circular Queues, Deques, and multi-language implementations."
 keywords: "Queue, FIFO, Data Structures, DSA, Enqueue, Dequeue, Circular Queue, Deque, Breadth First Search"

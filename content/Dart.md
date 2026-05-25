@@ -1,4 +1,7 @@
 ---
+date: 2024-11-30T12:32:35+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Dart Programming Language – Syntax Reference and Flutter Guide
 description: "Dart language reference covering null safety, async/await, streams, generics, mixins, and Flutter-specific patterns for cross-platform mobile development."
 keywords: "Dart programming, Dart language, Flutter, null safety, async await, streams, generics, mixins, cross-platform, mobile development, Dart syntax, cheat sheet"

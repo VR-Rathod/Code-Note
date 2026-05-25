@@ -1,4 +1,7 @@
 ---
+date: 2024-11-19T18:00:57+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: C Programming Language – Syntax Reference and Cheat Sheet
 description: "Complete C language reference covering pointers, memory management, structs, file I/O, preprocessor directives, and standard library functions for C99 and C11."
 keywords: "C programming, C language, pointers, memory management, C99, C11, structs, file I/O, preprocessor, standard library, malloc, free"

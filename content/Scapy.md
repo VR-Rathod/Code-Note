@@ -1,4 +1,7 @@
 ---
+date: 2024-12-11T09:49:49+05:30
+lastmod: 2026-03-25T17:01:06+05:30
+
 seoTitle: Scapy Python Library – Network Packet Manipulation Reference
 description: "Scapy is a Python library for crafting and analyzing network packets. Covers packet creation, sniffing, sending, ARP, TCP/IP layers, and network security."
 keywords: "Scapy, Python networking, packet manipulation, network sniffing, ARP, TCP/IP, packet crafting, network security, Python library, penetration testing, protocol analysis"

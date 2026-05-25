@@ -1,4 +1,7 @@
 ---
+date: 2026-04-03T15:14:37+05:30
+lastmod: 2026-04-03T15:14:37+05:30
+
 seoTitle: Ray Definition in Path Tracing – Parametric Form Guide
 description: "Rays are the fundamental primitive in ray tracing. Covers ray parametric form, origin, direction normalization, ray-object intersection, and ray generation in."
 keywords: "ray definition, ray tracing, path tracing, ray origin, ray direction, parametric form, ray-object intersection, ray generation, GPU rendering, Vulkan, GLSL"

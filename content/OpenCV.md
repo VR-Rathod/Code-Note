@@ -1,4 +1,7 @@
 ---
+date: 2024-12-11T09:49:49+05:30
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: OpenCV – Computer Vision Library Complete Reference
 description: "Comprehensive OpenCV reference covering image I/O, color spaces, filtering, morphology, contours, feature detection, object detection, video capture, and deep learning integration."
 keywords: "OpenCV, computer vision, image processing, cv2, object detection, feature detection, contours, video capture, deep learning, YOLO, face detection, C++ OpenCV, Python OpenCV, VR-Rathod, Code-Note, code note vr, vr book"

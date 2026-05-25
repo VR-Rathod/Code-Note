@@ -1,4 +1,7 @@
 ---
+date: 2026-04-06T11:04:22+05:30
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: Fedora Linux Complete Guide – DNF, Security, Dev & Administration
 description: "Comprehensive Fedora Linux reference covering installation, DNF package management, SELinux, Wayland, Flatpak, Podman, Cockpit, Btrfs, networking, hardening, and developer workflows."
 keywords: "Fedora Linux, fedora guide, fedora commands, fedora dnf, fedora tutorial, fedora administration, fedora server, fedora workstation, fedora security, SELinux, Wayland, Flatpak, Podman, Cockpit, Btrfs, fedora notes, VR-Rathod, Code-Note, code note vr, vr book"

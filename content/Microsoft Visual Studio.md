@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Microsoft Visual Studio Reference – IDE Tips and Features Guide
 description: "Visual Studio reference covering debugging, IntelliSense, extensions, refactoring, Git integration, testing tools, and productivity features for ."
 keywords: "Microsoft Visual Studio, IDE, debugging, IntelliSense, extensions, refactoring, Git integration, .NET development, C++ development, Visual Studio 2022, productivity"

@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Suffix Tree Explained – Fast String Matching Data Structure
 description: "Suffix trees enable O(m) pattern matching and many string operations. Covers Ukkonen's algorithm, suffix links, applications in bioinformatics, and compressed."
 keywords: "suffix tree, string matching, Ukkonen algorithm, suffix links, pattern matching, O(m), time complexity, space complexity, bioinformatics, compressed trie"

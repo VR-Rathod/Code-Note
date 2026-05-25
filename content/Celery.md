@@ -1,4 +1,7 @@
 ---
+date: 2024-12-11T09:49:49+05:30
+lastmod: 2026-05-22T09:58:29+05:30
+
 seoTitle: Celery Python Library – Distributed Task Queue Reference Guide
 description: "Comprehensive guide to Celery: distributed task queue for Python. Covers architecture, RabbitMQ/Redis configuration, worker pools, custom tasks, canvas workflows, signals, beat scheduler, framework integrations, and monitoring."
 keywords: "Celery, distributed task queue, Python tasks, Redis broker, RabbitMQ, Celery workers, beat scheduler, task chaining, Flower monitoring, Python library, async tasks, Celery signals, gevent, prefork, Django Celery, FastAPI Celery"

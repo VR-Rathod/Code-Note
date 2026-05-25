@@ -1,4 +1,7 @@
 ---
+date: 2026-05-21T13:09:49+05:30
+lastmod: 2026-05-21T13:09:49+05:30
+
 title: Privacy Policy
 description: "Privacy Policy for Free Code Notes (Code-Note by VR-Rathod). Learn how we collect, use, and protect your data when you use our website and sign in with GitHub."
 ---

@@ -1,4 +1,7 @@
 ---
+date: 2024-12-04T11:51:44+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Microsoft SQL Server Reference – T-SQL and Database Admin Guide
 description: "SQL Server reference covering T-SQL, stored procedures, indexes, query optimization, replication, Always On, SSMS, and SQL Server 2019/2022 features."
 keywords: "Microsoft SQL Server, T-SQL, stored procedures, indexes, query optimization, replication, Always On, SSMS, SQL Server 2022, database administration, RDBMS"

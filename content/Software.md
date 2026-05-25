@@ -1,4 +1,7 @@
 ---
+date: 2024-10-30T16:21:44-07:00
+lastmod: 2026-04-03T11:02:05+05:30
+
 seoTitle: Software Development Reference – Concepts, Practices, and Tools
 description: "Software development reference covering SDLC, agile, version control, testing, code review, documentation, design patterns, and software engineering best."
 keywords: "software development, SDLC, agile, version control, testing, code review, documentation, design patterns, software engineering, best practices, Git, CI/CD"

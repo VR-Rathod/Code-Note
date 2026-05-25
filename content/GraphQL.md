@@ -1,4 +1,7 @@
 ---
+date: 2025-10-09T14:23:07+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: GraphQL Reference – Queries, Mutations, Schemas, and Resolvers
 description: "GraphQL is a query language for APIs. Covers schema definition, queries, mutations, subscriptions, resolvers, fragments, variables, and Python/JavaScript."
 keywords: "GraphQL, GraphQL queries, mutations, schema, resolvers, subscriptions, fragments, variables, GraphQL Python, graphene, Apollo, API development"

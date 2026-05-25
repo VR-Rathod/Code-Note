@@ -1,4 +1,7 @@
 ---
+date: 2026-03-24T17:12:17+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Convex Hull – Graham Scan Algorithm Implementation Guide
 description: "Graham scan computes the convex hull by sorting points by polar angle and using a stack. Covers pivot selection, cross product orientation, O(n log n)."
 keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algorithm, computational geometry, O(n log n), time complexity, space complexity, point set"

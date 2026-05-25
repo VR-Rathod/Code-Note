@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Line Sweep Algorithm – Computational Geometry Technique Guide
 description: "Line sweep processes geometric events in sorted order to solve intersection and area problems. Covers event queue, sweep line, interval tree, and O(n log n)."
 keywords: "line sweep, sweep line, computational geometry, event queue, interval intersection, O(n log n), time complexity, space complexity, geometric algorithm, segment intersection"

@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Zipper Data Structure – Functional Navigation in Tree Structures
 description: "Zippers provide a cursor into a data structure for efficient local updates. Covers list zipper, tree zipper, context representation, and functional programming."
 keywords: "zipper data structure, functional programming, tree navigation, list zipper, tree zipper, cursor, context, O(1) local update, time complexity, space complexity, Haskell"

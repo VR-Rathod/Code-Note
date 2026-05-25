@@ -1,4 +1,7 @@
 ---
+date: 2026-05-22T17:59:04+05:30
+lastmod: 2026-05-22T17:59:04+05:30
+
 seoTitle: Manacher's Algorithm – Longest Palindromic Substring in O(N)
 description: "Master Manacher's algorithm for linear-time palindrome detection. Covers transformed strings, boundary guards, LPS search, palindrome count variant, and code in 5 languages."
 keywords: "Manacher's algorithm, longest palindromic substring, linear time palindrome, palindromic substrings count, string algorithm, O(N) palindrome, C++, Python, Java, JavaScript, C"

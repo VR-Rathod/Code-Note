@@ -1,4 +1,7 @@
 ---
+date: 2026-04-15T11:14:23+05:30
+lastmod: 2026-04-17T17:08:18+05:30
+
 seoTitle: Game Systems Programming Guide – Inventory, Quest, Dialogue, Save & Procedural Generation
 description: "A comprehensive reference for building core game systems from scratch. Covers inventory management, quest engines, dialogue trees, save/load pipelines, achievement tracking, and procedural generation with real code examples."
 keywords: "game systems, inventory system, quest system, dialogue system, save load system, achievement system, procedural generation, game programming, c++ game dev, game design patterns, vr-rathod, code-note"

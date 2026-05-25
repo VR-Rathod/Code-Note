@@ -1,4 +1,7 @@
 ---
+date: 2024-12-04T11:51:44+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Weebly Reference – Website Builder and E-commerce Setup Guide
 description: "Weebly is a drag-and-drop website builder. Covers themes, e-commerce setup, SEO tools, app center, custom HTML/CSS, and Square integration for online stores."
 keywords: "Weebly, website builder, drag-and-drop, themes, e-commerce, SEO tools, app center, custom CSS, Square integration, online store, no-code, web design"

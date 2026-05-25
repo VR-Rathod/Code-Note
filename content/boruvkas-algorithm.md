@@ -1,4 +1,7 @@
 ---
+date: 2026-03-24T17:12:17+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Boruvka's Algorithm – Minimum Spanning Tree Implementation
 description: "Boruvka's algorithm finds the minimum spanning tree by repeatedly adding the cheapest edge from each component."
 keywords: "Boruvka algorithm, minimum spanning tree, MST, graph algorithm, greedy algorithm, time complexity, space complexity, connected components, edge weight, spanning tree"

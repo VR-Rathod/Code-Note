@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Adobe Illustrator Reference – Vector Design and Illustration Guide
 description: "Illustrator reference covering pen tool, shapes, typography, color swatches, artboards, effects, symbols, and professional vector illustration workflows."
 keywords: "Adobe Illustrator, vector design, illustration, pen tool, typography, color swatches, artboards, effects, symbols, graphic design, vector graphics, Adobe CC"

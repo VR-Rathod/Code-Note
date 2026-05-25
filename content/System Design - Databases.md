@@ -1,4 +1,7 @@
 ---
+date: 2026-05-12T12:15:39+05:30
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: Database Design at Scale – System Design Guide
 description: "Complete database system design reference: SQL vs NoSQL, replication, sharding strategies, indexing, ACID transactions, connection pooling, read/write splitting, and choosing the right database."
 keywords: "database design, SQL vs NoSQL, database replication, sharding, indexing, ACID, connection pooling, PostgreSQL, Cassandra, DynamoDB, read replica, system design, VR-Rathod, Code-Note"

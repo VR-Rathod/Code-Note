@@ -1,4 +1,7 @@
 ---
+date: 2025-06-23T11:23:04+05:30
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: LMMS Reference – Open Source DAW for Music Production Guide
 description: "LMMS (Linux MultiMedia Studio) reference covering Beat+Bassline editor, Song editor, instruments, effects, MIDI, and music production on Linux and Windows."
 keywords: "LMMS, DAW, open source, music production, Beat+Bassline editor, Song editor, instruments, effects, MIDI, Linux audio, free DAW, electronic music"

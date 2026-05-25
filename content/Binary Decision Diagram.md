@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-05-25T11:36:10+05:30
+
 seoTitle: Binary Decision Diagram (BDD) Complete Guide – Shannon Expansion and ROBDD Algorithms
 description: "A comprehensive guide on Binary Decision Diagrams. Learn Shannon expansion, Variable Ordering, BDD reduction rules, and Python/C++ implementations."
 keywords: "binary decision diagram, BDD, ROBDD, shannon expansion, variable ordering, Boolean logic, logic synthesis, formal verification, C++, Python, VR-Rathod, Code-Note, code note vr, vr book"

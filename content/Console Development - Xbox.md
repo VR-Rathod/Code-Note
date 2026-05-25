@@ -1,4 +1,7 @@
 ---
+date: 2026-05-12T11:21:31+05:30
+lastmod: 2026-05-12T11:21:31+05:30
+
 seoTitle: Xbox SDK Development – Xbox Series X/S & GDK Developer Guide
 description: "Complete Xbox development guide covering Xbox GDK, DirectX 12 on Xbox, Xbox extensions, GameCore, Xbox Live services, achievements, PIX profiler, and Xbox Developer Mode."
 keywords: "Xbox SDK, Xbox GDK, Xbox Series X development, Xbox Series S, DirectX 12 Xbox, GameCore, Xbox Live, achievements, PIX profiler, Xbox Developer Mode, console development, VR-Rathod"

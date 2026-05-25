@@ -1,4 +1,7 @@
 ---
+date: 2024-12-11T09:49:49+05:30
+lastmod: 2026-03-25T17:01:06+05:30
+
 seoTitle: jQuery Reference – DOM Manipulation, AJAX, and Events Guide
 description: "jQuery simplifies DOM manipulation, event handling, and AJAX in JavaScript. Covers selectors, traversal, effects, $.ajax, plugins, and jQuery vs vanilla JS."
 keywords: "jQuery, JavaScript library, DOM manipulation, AJAX, event handling, selectors, traversal, effects, jQuery plugins, jQuery UI, vanilla JS, web development"

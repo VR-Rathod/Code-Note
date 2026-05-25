@@ -1,4 +1,7 @@
 ---
+date: 2026-04-03T11:02:05+05:30
+lastmod: 2026-04-03T11:02:05+05:30
+
 seoTitle: Windows 11 Complete Guide – Architecture, Commands & Administration
 description: "Comprehensive Windows 11 reference covering installation, TPM, architecture, PowerShell, CMD, registry, networking, security, WSL2, Hyper-V, and system administration."
 keywords: "Windows 11, windows 11 guide, windows 11 commands, powershell, cmd, windows 11 administration, windows 11 registry, windows 11 networking, windows 11 security, TPM 2.0, windows 11 tutorial, windows 11 notes, VR-Rathod, Code-Note, code note vr, vr book"

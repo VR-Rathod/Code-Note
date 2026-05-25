@@ -1,4 +1,7 @@
 ---
+date: 2026-05-12T12:15:39+05:30
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: Scalability & CAP Theorem – System Design Learning Guide
 description: "Learn scalability and CAP theorem with plain English explanations, real-world analogies, and practical examples. Covers vertical vs horizontal scaling, CAP theorem, PACELC, SLA, consistent hashing, and back-of-envelope estimation."
 keywords: "scalability tutorial, CAP theorem explained, horizontal scaling, vertical scaling, SLA SLO SLI, consistent hashing explained, system design beginner, distributed systems basics, VR-Rathod, Code-Note"

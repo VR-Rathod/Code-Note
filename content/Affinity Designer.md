@@ -1,4 +1,7 @@
 ---
+date: 2024-11-01T16:21:17-07:00
+lastmod: 2026-03-30T10:55:09+05:30
+
 seoTitle: Affinity Designer Reference – Vector Graphics Design Guide
 description: "Affinity Designer reference covering vector and pixel personas, nodes, curves, symbols, grids, export options, and professional illustration workflows."
 keywords: "Affinity Designer, vector graphics, illustration, vector persona, pixel persona, nodes, curves, symbols, export, graphic design, Illustrator alternative, design tool"

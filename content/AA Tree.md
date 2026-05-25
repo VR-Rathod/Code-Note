@@ -1,4 +1,7 @@
 ---
+date: 2025-03-26T12:40:55+05:30
+lastmod: 2026-05-25T11:36:10+05:30
+
 seoTitle: AA Tree Explained – Self-Balancing BST with C++ and Python
 description: "Learn AA Trees, a simplified Red-Black Tree variant using levels instead of colors. Detailed skew, split, insert, delete operations in C++ and Python."
 keywords: "AA tree, balanced BST, self-balancing tree, skew, split, C++, Python, data structures, algorithms, binary search tree, tree rotation, VR-Rathod, Code-Note, code note vr, vr book"

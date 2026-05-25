@@ -1,4 +1,7 @@
 ---
+date: 2026-05-25T11:36:10+05:30
+lastmod: 2026-05-25T11:36:10+05:30
+
 seoTitle: Bipartite Graphs Complete Guide – Definition, Detection, and Algorithms
 description: "A comprehensive guide to Bipartite Graphs. Learn how to detect bipartite graphs using BFS/DFS 2-coloring, characterization by odd-length cycles, and applications."
 keywords: "bipartite graph, 2-coloring, odd-length cycle, graph coloring, graph bipartite check, BFS 2-coloring, DFS bipartite, VR-Rathod, Code-Note, code note vr, vr book"

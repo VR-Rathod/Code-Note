@@ -1,4 +1,7 @@
 ---
+date: 2026-05-08T12:56:39+05:30
+lastmod: 2026-05-21T13:09:49+05:30
+
 seoTitle: Game Engines – Complete Guide to CryEngine, GameMaker, Construct, RPG Maker & O3DE
 description: "Comprehensive guide to game engines including CryEngine, O3DE (Lumberyard), GameMaker Studio 2, Construct 4, and RPG Maker — with features, scripting, and when to use each."
 keywords: "game engines, CryEngine, O3DE, Lumberyard, GameMaker Studio, Construct, RPG Maker, game engine comparison, indie game engines, VR-Rathod, Code-Note"

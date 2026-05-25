@@ -1,4 +1,7 @@
 ---
+date: 2026-05-12T12:23:01+05:30
+lastmod: 2026-05-18T10:12:55+05:30
+
 seoTitle: Game Testing & QA – Playtesting, Bug Tracking, Performance Profiling & Automated Testing Guide
 description: "Complete game testing and QA reference covering playtesting methodologies, bug tracking workflows, performance profiling tools, and automated testing frameworks for game developers across all platforms."
 keywords: "game testing, game QA, playtesting, bug tracking, performance profiling, automated testing for games, game quality assurance, game development testing, Unity testing, Unreal Engine testing, VR-Rathod, Code-Note"

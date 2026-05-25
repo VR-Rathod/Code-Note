@@ -1,4 +1,7 @@
 ---
+date: 2026-04-13T17:36:08+05:30
+lastmod: 2026-04-15T18:03:15+05:30
+
 seoTitle: DirectX 12 (D3D12) Complete Guide – Zero to Ray Tracing
 description: "The most complete DirectX 12 reference note. Covers every concept from Device creation to DXR Ray Tracing — with full C++ code, HLSL shaders, and explanations for everything."
 keywords: "directx 12, d3d12, hlsl, descriptor heap, root signature, pso, dxr, mesh shaders, d3d12 tutorial, windows graphics, vr-rathod, c++ directx"
