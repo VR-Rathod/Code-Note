@@ -154,7 +154,7 @@ displayTitle: Console Development - Xbox
 		    Async compute extensions          — fine-grained queue control
 		    Memory type hints                 — fast/slow pool allocation
 		  ```
-		- ```cpp
+		- ```c++
 		  // DirectX 12 Xbox — command list example
 		  #include <d3d12_x.h>  // Xbox DX12 header (extends d3d12.h)
 		  
@@ -186,7 +186,7 @@ displayTitle: Console Development - Xbox
 	-
 	- ## Xbox Memory Management
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Xbox memory pools
 		  // Series X: 10 GB fast (GPU) + 6 GB standard
 		  
@@ -253,7 +253,7 @@ displayTitle: Console Development - Xbox
 	-
 	- ## DirectStorage on Xbox
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // DirectStorage — load assets directly from NVMe to GPU
 		  // Bypasses CPU entirely for texture/mesh loading
 		  
@@ -318,7 +318,7 @@ displayTitle: Console Development - Xbox
 		    Mastery     — max out character
 		    Humor       — find Easter egg, fail spectacularly
 		  ```
-		- ```cpp
+		- ```c++
 		  // Xbox Achievements via Xbox Live GDK
 		  #include <XGameSave.h>
 		  #include <XAchievements.h>
@@ -350,7 +350,7 @@ displayTitle: Console Development - Xbox
 	-
 	- ## Cloud Saves (Xbox Game Save)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Xbox Game Save — cloud-synced save system
 		  #include <XGameSave.h>
 		  
@@ -435,7 +435,7 @@ displayTitle: Console Development - Xbox
 		     Anti-cheat — verify integrity after resume
 		     Daily rewards — check server for any missed rewards
 		  ```
-		- ```cpp
+		- ```c++
 		  // PLM event handling — GameCore
 		  #include <XGameRuntimeFeature.h>
 		  #include <XSuspend.h>
@@ -486,7 +486,7 @@ displayTitle: Console Development - Xbox
 		  
 		  PIX markers (add to your code for organized captures):
 		  ```
-		- ```cpp
+		- ```c++
 		  // PIX markers — group draw calls in PIX timeline
 		  #include <pix3.h>
 		  

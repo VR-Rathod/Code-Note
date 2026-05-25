@@ -742,6 +742,7 @@ displayTitle: A* Search Algorithm
 		- IDA* is a memory-saving variant that combines depth-first search backtracking with heuristic evaluation, replacing the priority queue with a capped threshold limits.
 -
 - # Key Takeaways
+  collapsed:: true
 	- **Evaluation function** — $f(n) = g(n) + h(n)$ guides exploration toward the target.
 	- **Optimal & Complete** — guarantees finding the shortest path if $h(n)$ is admissible (never overestimates) and consistent.
 	- **Min-Heap driven** — open set selection is powered by priority queues for $O(\log V)$ node retrieval.
@@ -749,6 +750,7 @@ displayTitle: A* Search Algorithm
 	- **Memory bound** — A* stores both open and closed sets in memory, which scales to $O(V)$ size.
 -
 - # More Learn
+  collapsed:: true
 	- ## GitHub & Webs
 		- [Amit's Introduction to A* Pathfinding (Red Blob Games)](https://www.redblobgames.com/pathfinding/a-star/introduction.html)
 		- [TheAlgorithms – A* Search (Python)](https://github.com/TheAlgorithms/Python/blob/master/searches/a_star.py)

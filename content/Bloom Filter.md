@@ -145,7 +145,7 @@ keywords: "bloom filter, probabilistic data structure, set membership, false pos
         print("Query cherry:", bf.query("cherry"))  # False (most likely)
     ```
 
-    ```cpp
+    ```c++
     #include <iostream>
     #include <vector>
     #include <string>
@@ -238,11 +238,18 @@ keywords: "bloom filter, probabilistic data structure, set membership, false pos
 - # Variations & Related Concepts
   collapsed:: true
   - **Counting Bloom Filter**: Replaces each bit in the array with a small counter. Insertion increments the counter, and deletion decrements it, allowing dynamic item removal.
-  - **Cuckoo Filter**: A newer alternative using cuckoo hashing tables to store fingerprints. It supports deletions and achieves better space efficiency for low false positive rates.
+  - **Cuckoo Filter**: A newer alternative using [[cuckoo hashing]] tables to store fingerprints. It supports deletions and achieves better space efficiency for low false positive rates.
   - **Quotient Filter**: A cache-friendly alternative that stores fingerprints in a hash table using quotienting, supporting resizing.
 -
 - # Key Takeaways
+  collapsed:: true
   - Bloom Filters provide space-efficient membership testing with zero false negatives but possible false positives.
   - Optimal sizing ($m$) and hashing count ($k$) depend on the expected element count ($n$) and desired error rate ($p$).
   - Built using simple, fast non-cryptographic hashing (like FNV-1a or MurmurHash).
   - Crucial component in databases, CDNs, network routers, and caching layers.
+-
+- # More Learn
+  collapsed:: true
+  - ## GitHub & Webs
+    - [Wikipedia -> Bloom filter](https://en.wikipedia.org/wiki/Bloom_filter)
+    - [GeeksforGeeks -> Bloom Filters - Introduction and Implementation](https://www.geeksforgeeks.org/bloom-filters-introduction-and-python-implementation/)

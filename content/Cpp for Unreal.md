@@ -51,7 +51,7 @@ displayTitle: C++ for Unreal Engine
 	-
 	- ## UCLASS Macro
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // UCLASS — registers class with Unreal's reflection system
 		  // Must be placed immediately before the class declaration
 		  // GENERATED_BODY() must be first line inside the class
@@ -78,7 +78,7 @@ displayTitle: C++ for Unreal Engine
 	-
 	- ## UPROPERTY Specifiers — Complete Reference
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // ── Editor Visibility ──────────────────────────────────────────
 		  UPROPERTY(EditAnywhere)          // editable in editor (instance + CDO)
 		  UPROPERTY(EditDefaultsOnly)      // editable only in Blueprint/CDO defaults
@@ -132,7 +132,7 @@ displayTitle: C++ for Unreal Engine
 	-
 	- ## UFUNCTION Specifiers — Complete Reference
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // ── Blueprint ──────────────────────────────────────────────────
 		  UFUNCTION(BlueprintCallable, Category = "Combat")
 		  void Attack();                   // callable from Blueprint (has exec pin)
@@ -179,7 +179,7 @@ displayTitle: C++ for Unreal Engine
 	-
 	- ## USTRUCT
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // USTRUCT — plain data struct with reflection
 		  // No GC, no inheritance from UObject, no virtual functions
 		  // Great for: inventory items, stats, config data, network messages
@@ -219,7 +219,7 @@ displayTitle: C++ for Unreal Engine
 	-
 	- ## UENUM
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // UENUM — enum with reflection, usable in Blueprint
 		  
 		  UENUM(BlueprintType)
@@ -253,7 +253,7 @@ displayTitle: C++ for Unreal Engine
   collapsed:: true
 	- ## TArray — Dynamic Array
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // TArray<T> — Unreal's equivalent of std::vector
 		  // Supports UPROPERTY, replication, Blueprint exposure
 		  
@@ -313,7 +313,7 @@ displayTitle: C++ for Unreal Engine
 	-
 	- ## TMap — Hash Map
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // TMap<K,V> — Unreal's equivalent of std::unordered_map
 		  
 		  TMap<FString, int32> Scores;
@@ -359,7 +359,7 @@ displayTitle: C++ for Unreal Engine
 	-
 	- ## TSet — Hash Set
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  TSet<FString> Tags;
 		  
 		  Tags.Add(TEXT("Enemy"));
@@ -382,7 +382,7 @@ displayTitle: C++ for Unreal Engine
 	-
 	- ## TOptional, TVariant, TSharedPtr
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // TOptional<T> — may or may not have a value (like std::optional)
 		  TOptional<float> MaybeHealth;
 		  MaybeHealth = 75.f;
@@ -413,7 +413,7 @@ displayTitle: C++ for Unreal Engine
   collapsed:: true
 	- ## FString, FName, FText
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // FString — mutable, heap-allocated, general purpose
 		  FString Name = TEXT("Alice");
 		  FString Greeting = FString::Printf(TEXT("Hello, %s! HP: %.1f"), *Name, 100.f);
@@ -469,7 +469,7 @@ displayTitle: C++ for Unreal Engine
   collapsed:: true
 	- ## GC Rules
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Unreal uses a mark-and-sweep GC for UObjects
 		  // GC runs periodically — objects with no references are destroyed
 		  
@@ -503,7 +503,7 @@ displayTitle: C++ for Unreal Engine
 	-
 	- ## Object Creation
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // NewObject — create UObject (not Actor)
 		  UMyObject* Obj = NewObject<UMyObject>(this);                    // outer = this
 		  UMyObject* Obj2 = NewObject<UMyObject>(this, UMyObject::StaticClass());
@@ -537,7 +537,7 @@ displayTitle: C++ for Unreal Engine
   collapsed:: true
 	- ## Full Lifecycle
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  class AMyActor : public AActor
 		  {
 		      GENERATED_BODY()
@@ -595,7 +595,7 @@ displayTitle: C++ for Unreal Engine
 	-
 	- ## Tick Configuration
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  AMyActor::AMyActor()
 		  {
 		      // Enable tick (disabled by default for performance)
@@ -623,7 +623,7 @@ displayTitle: C++ for Unreal Engine
   collapsed:: true
 	- ## Delegate Types
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Single-cast delegates (one binding at a time)
 		  DECLARE_DELEGATE(FOnSimpleEvent);
 		  DECLARE_DELEGATE_OneParam(FOnDamage, float);
@@ -646,7 +646,7 @@ displayTitle: C++ for Unreal Engine
 	-
 	- ## Binding & Broadcasting
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Single-cast binding
 		  FOnDamage OnDamage;
 		  OnDamage.BindUObject(this, &AMyActor::HandleDamage);
@@ -682,7 +682,7 @@ displayTitle: C++ for Unreal Engine
   collapsed:: true
 	- ## FTimerManager
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  FTimerHandle SpawnTimer;
 		  FTimerHandle RegenTimer;
 		  
@@ -743,7 +743,7 @@ displayTitle: C++ for Unreal Engine
   collapsed:: true
 	- ## Async Tasks
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include "Async/Async.h"
 		  
 		  // Run on background thread
@@ -787,7 +787,7 @@ displayTitle: C++ for Unreal Engine
 	-
 	- ## Latent Actions (Blueprint-compatible async)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Latent action — async operation that shows as a node with exec pins in Blueprint
 		  
 		  UFUNCTION(BlueprintCallable, meta = (Latent, LatentInfo = "LatentInfo",
@@ -823,7 +823,7 @@ displayTitle: C++ for Unreal Engine
   collapsed:: true
 	- ## UInterface
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Declare interface — two classes needed
 		  UINTERFACE(MinimalAPI, Blueprintable)
 		  class UDamageable : public UInterface
@@ -879,7 +879,7 @@ displayTitle: C++ for Unreal Engine
   collapsed:: true
 	- ## USubsystem Types
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Subsystems — auto-created singletons scoped to their owner
 		  // No manual registration needed — engine creates/destroys automatically
 		  
@@ -928,7 +928,7 @@ displayTitle: C++ for Unreal Engine
   collapsed:: true
 	- ## Replication Setup
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  AMyCharacter::AMyCharacter()
 		  {
 		      bReplicates = true;              // replicate actor existence
@@ -955,7 +955,7 @@ displayTitle: C++ for Unreal Engine
 	-
 	- ## Network Roles & Authority
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Check network role
 		  bool bIsServer  = HasAuthority();                          // true on server
 		  bool bIsClient  = !HasAuthority();
@@ -1005,7 +1005,7 @@ displayTitle: C++ for Unreal Engine
   collapsed:: true
 	- ## Soft References & Async Loading
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Hard reference — always loaded in memory
 		  UPROPERTY(EditDefaultsOnly)
 		  UStaticMesh* HardMesh;  // loads when this object loads
@@ -1063,7 +1063,7 @@ displayTitle: C++ for Unreal Engine
   collapsed:: true
 	- ## Component Pattern
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Prefer composition over inheritance — add components for features
 		  
 		  UCLASS()
@@ -1110,7 +1110,7 @@ displayTitle: C++ for Unreal Engine
 	-
 	- ## Data Asset Pattern
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // UDataAsset — ScriptableObject equivalent for Unreal
 		  // Create in editor, reference in actors, no world dependency
 		  
@@ -1158,7 +1158,7 @@ displayTitle: C++ for Unreal Engine
 	-
 	- ## Object Pool Pattern
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  UCLASS()
 		  class UActorPool : public UObject
 		  {
@@ -1209,7 +1209,7 @@ displayTitle: C++ for Unreal Engine
 	-
 	- ## State Machine Pattern
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Clean state machine using UObject states
 		  UCLASS(Abstract)
 		  class UEnemyState : public UObject
@@ -1260,7 +1260,7 @@ displayTitle: C++ for Unreal Engine
   collapsed:: true
 	- ## UE_LOG & Debug Helpers
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // UE_LOG(Category, Verbosity, Format, ...)
 		  UE_LOG(LogTemp, Log,     TEXT("Info: %s"), *Name);
 		  UE_LOG(LogTemp, Warning, TEXT("Health low: %f"), Health);

@@ -70,7 +70,7 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 			- 2) [[Binary Indexed Tree or Fenwick Tree]] - Efficiently supports dynamic prefix sums and point updates.
 			- 3) [[Cartesian Tree]] - the inorder traversal of the tree gives a sorted sequence
 			- 4) [[Counted B-Trees]] - efficient range queries
-			- 5) [[Crit-bit Trees]] - storing strings, especially strings of arbitrary length
+			- 5) [[Crit bit Trees]] - storing strings, especially strings of arbitrary length
 			- 6) [[Fibonacci heap]] - optimize priority queues and supports very efficient
 			- 7) [[Finger Tree]] - supports efficient access and updates
 			- 8) [[Interval Tree]] - binary search tree used to store intervals.
@@ -103,7 +103,11 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 		- 2) [[Binary Search]] - efficient algorithm to find an element in a **sorted** array.
 		- 3) [[Depth First Search]] - explores as far as possible along each branch before backtracking.
 		- 4) [[Breadth First Search]] - explores all the neighboring nodes at the present level
-		- 5) [[A* Search Algorithm]] - Heuristic-based pathfinding algorithm that finds the shortest path using distance and estimated cost.
+		- 5) [[A Search Algorithm]] - Heuristic-based pathfinding algorithm that finds the shortest path using distance and estimated cost.
+		- 6) [[Dijkstras Algorithm]] - Greedy algorithm for finding the absolute shortest path in graphs with non-negative edge weights.
+		- 7) [[Bellman Ford Algorithm]] - Dynamic programming shortest path algorithm capable of handling negative edges and cycle detection.
+		- 8) [[Floyd Warshall Algorithm]] - O(V³) dynamic programming algorithm for finding shortest paths between all pairs of vertices.
+		- 9) [[Topological Sort Algorithm]] - Linear ordering of vertices in a Directed Acyclic Graph (DAG) for resolving dependencies.
 	-
 	- ## Sorting:
 		- 1) [[Bubble Sort]] - In-place comparison sort that repeatedly swaps adjacent elements if they are out of order, optimized with an early-termination flag.
@@ -177,19 +181,24 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 		- 5) [[Quickhull Algorithm for Convex Hull]] - divide and conquer approach for finding convex hull
 	-
 	- ## Mathematical & Miscellaneous Algorithms:
-		- 1) [[Euclid's Algorithm]] - efficient way to compute the **Greatest Common Divisor**
+		- 1) [[Euclid Algorithm]] - efficient way to compute the **Greatest Common Divisor**
 		- 2) [[Ackermann Function]] - well-known recursive function that grows very quickly.
 		- 3) [[Hungarian - Kuhn–Munkres - Munkres Assignment-Algorithm]] - combinatorial optimization algorithm
 		- 4) [[Dekker's Algorithm]] - first algorithms to solve the mutual exclusion
 		- 5) [[Sieve of Eratosthenes]] - Classic number theory algorithm for generating all prime numbers up to a given limit in O(N log log N) time.
 		- 6) [[Fast Exponentiation]] - Logarithmic time modular power computation (binary exponentiation) used extensively in cryptography.
 -
-- # Short fourmulas
-	- [[fibonacci]] - Short trick
-	- [[palindrome]] - short method
+- # Advanced Tips & Fast Formulas
+	- 1) [[fibonacci]] - Fast Doubling O(log N) and Binet's Formula O(1) approximation.
+	- 2) [[palindrome]] - One-line slice notations and short iteration tricks.
+	- 3) [[Miscellaneous Snippets]] - Basic Python utility scripts (Factorial, Subarray sum, AP sum, Leap year).
+	- 4) [[Bitwise Hacks]] - Brian Kernighan's bit-counting, XOR swaps, and O(1) Power of 2 checks.
+	- 5) [[Fast Inverse Square Root]] - The legendary 0x5f3759df Quake III algorithm for fast floating-point math.
+	- 6) [[Gospers Hack]] - Bitwise combinatorics iteration to find the next subset bitmask in O(1).
+	- 7) [[XOR Sum 1 to N]] - Competitive programming pattern to compute range XOR sums without looping.
 -
 - # Binary system
-	- [[binary]] - every type of binary calculations
+	- [[Binary]] - every type of binary calculations
 -
 - # System Design
 	- [[System Design]] - For in-depth system design notes covering scalability, load balancing, caching, databases, microservices, CAP theorem, message queues, API design, and real-world case studies.

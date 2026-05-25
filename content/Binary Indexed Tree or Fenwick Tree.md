@@ -145,7 +145,7 @@ displayTitle: Binary Indexed Tree or Fenwick Tree
 	  print("Sum of range [2, 4]:", bit.range_query(2, 4)) # Output: 17 (3 + 7 + 7)
 	  ```
 	  
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  
@@ -275,3 +275,37 @@ displayTitle: Binary Indexed Tree or Fenwick Tree
 	  ```
 	  
 	  :::
+-
+- # When to Use a Fenwick Tree
+  collapsed:: true
+	- ```mermaid
+	  flowchart TD
+	      Q{"What is the target requirement?"}
+	      Q -- "Point Updates & Prefix/Range Sums" --> R1["✅ Use Fenwick Tree\nO(log N) operations with minimal memory"]
+	      Q -- "Range Updates & Range Queries" --> R2["❌ Use Segment Tree with Lazy Propagation\nFenwick tree is too complex for general range updates"]
+	      Q -- "Range Minimum/Maximum Queries" --> R3["❌ Use Segment Tree or Sparse Table\nFenwick tree is designed for invertible operations (like sum/xor)"]
+	  ```
+	-
+	- ## ✅ Use Fenwick Tree When
+		- You need to dynamically update values at a specific index and query the sum of a range of indices.
+		- Memory is constrained (you only have $O(N)$ space available).
+		- You need faster practical execution times with lower constant factors compared to a Segment Tree.
+		- Computing the number of inversions in an array.
+	-
+	- ## ❌ Avoid Fenwick Tree When
+		- You need to perform operations that are not invertible (like min or max) over dynamic ranges.
+		- You need to update all elements within a range $[L, R]$ frequently (though there are advanced BIT variants, Segment Trees with Lazy Propagation are generally better).
+-
+- # Key Takeaways
+  collapsed:: true
+	- **Memory Efficient** — Uses the exact same amount of memory as the original array.
+	- **Logarithmic Time** — Both point updates and prefix sum queries take $O(\log N)$ time.
+	- **LSB Operations** — The core logic relies on bitwise operations (`i & -i`) to navigate the tree structure efficiently.
+	- **1-Based Indexing** — Easier to implement and understand when using 1-based indexing for the internal array.
+-
+- # More Learn
+  collapsed:: true
+	- ## GitHub & Webs
+		- [GeeksforGeeks -> Binary Indexed Tree or Fenwick Tree](https://www.geeksforgeeks.org/binary-indexed-tree-or-fenwick-tree-2/)
+		- [Wikipedia -> Fenwick Tree](https://en.wikipedia.org/wiki/Fenwick_tree)
+		- [CP-Algorithms -> Fenwick Tree](https://cp-algorithms.com/data_structures/fenwick.html)

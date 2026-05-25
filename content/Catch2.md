@@ -58,7 +58,7 @@ displayTitle: Catch2
   collapsed:: true
 	- ## Basic Test Cases
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <catch2/catch_test_macros.hpp>
 		  
 		  int factorial(int n) {
@@ -79,7 +79,7 @@ displayTitle: Catch2
 	-
 	- ## CHECK vs REQUIRE
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  TEST_CASE("Assertion types") {
 		      // REQUIRE — fatal: stops test on failure (like ASSERT_*)
 		      REQUIRE(1 + 1 == 2);
@@ -96,7 +96,7 @@ displayTitle: Catch2
 	-
 	- ## Sections — Shared Setup Without Fixtures
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  TEST_CASE("Vector operations", "[vector]") {
 		      std::vector<int> v;  // setup runs for each SECTION
 		  
@@ -123,7 +123,7 @@ displayTitle: Catch2
 		  ```
 - # BDD-Style Tests
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <catch2/catch_test_macros.hpp>
 	  
 	  SCENARIO("User logs in", "[auth]") {
@@ -151,7 +151,7 @@ displayTitle: Catch2
 	  ```
 - # Matchers
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <catch2/matchers/catch_matchers_all.hpp>
 	  using namespace Catch::Matchers;
 	  
@@ -175,7 +175,7 @@ displayTitle: Catch2
 	  ```
 - # Generators (Property-Based Style)
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <catch2/generators/catch_generators_all.hpp>
 	  
 	  TEST_CASE("Square is always non-negative", "[generators]") {
@@ -201,7 +201,7 @@ displayTitle: Catch2
 	  ```
 - # Exception Testing
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  TEST_CASE("Exception handling") {
 	      REQUIRE_THROWS(throw std::runtime_error("oops"));
 	      REQUIRE_THROWS_AS(throw std::invalid_argument("bad"), std::invalid_argument);

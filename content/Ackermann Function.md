@@ -52,7 +52,7 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
   collapsed:: true
 	- ## Basic Recursive
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <iostream>
 		  
 		  long long ackermann(long long m, long long n) {
@@ -72,7 +72,7 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
 	-
 	- ## Memoized Version (handles slightly larger inputs)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <iostream>
 		  #include <map>
 		  
@@ -103,7 +103,7 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
 	-
 	- ## Iterative with Explicit Stack (avoids call stack overflow)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <iostream>
 		  #include <stack>
 		  
@@ -175,8 +175,16 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
 	- Ackermann proves the **primitive recursive functions** are a strict subset of all computable functions.
 -
 - # Key Takeaways
+  collapsed:: true
 	- A(m, n) always terminates but grows **hyper-exponentially**.
 	- Not primitive recursive — cannot be expressed with bounded loops.
 	- Practical use: **inverse Ackermann α(n)** in Union-Find complexity.
 	- For m ≥ 4, values are astronomically large — only small inputs are computable in practice.
 	- Use an **explicit stack** to avoid call stack overflow for larger inputs.
+-
+- # More Learn
+  collapsed:: true
+	- ## GitHub & Webs
+		- [Wikipedia -> Ackermann function](https://en.wikipedia.org/wiki/Ackermann_function)
+		- [Computerphile -> The Most Difficult Program to Compute?](https://www.youtube.com/watch?v=i7sm9dzFtEI)
+		- [GeeksforGeeks -> Ackermann Function](https://www.geeksforgeeks.org/ackermann-function/)

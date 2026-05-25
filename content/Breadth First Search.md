@@ -167,7 +167,7 @@ keywords: "breadth first search, BFS, graph traversal, queue, shortest path, bip
 	  # Output: ['A', 'B', 'C', 'D', 'E', 'F']
 	  ```
 	  
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <queue>
@@ -423,7 +423,7 @@ keywords: "breadth first search, BFS, graph traversal, queue, shortest path, bip
 		  # Output: ['A', 'B', 'D'] (or ['A', 'C', 'D'])
 		  ```
 		  
-		  ```cpp
+		  ```c++
 		  #include <iostream>
 		  #include <vector>
 		  #include <queue>
@@ -510,7 +510,7 @@ keywords: "breadth first search, BFS, graph traversal, queue, shortest path, bip
 		  print("Is Bipartite:", is_bipartite(graph, 4)) # Output: True
 		  ```
 		  
-		  ```cpp
+		  ```c++
 		  #include <iostream>
 		  #include <vector>
 		  #include <queue>
@@ -588,7 +588,7 @@ keywords: "breadth first search, BFS, graph traversal, queue, shortest path, bip
 		  print("Steps on Grid:", min_path_grid(grid, (0, 0), (2, 2))) # Output: 4
 		  ```
 		  
-		  ```cpp
+		  ```c++
 		  #include <iostream>
 		  #include <vector>
 		  #include <queue>
