@@ -136,7 +136,7 @@ This is the **primary format**. See `Cpp.md` or `Java.md` as reference implement
 ```
 
 **Rules for code blocks:**
-- Always use fenced code blocks with the language tag: ` ```cpp `, ` ```python `, ` ```java `
+- Always use fenced code blocks with the language tag: ` ```c++ `, ` ```python `, ` ```java `
 - Include comments inside code explaining what each line does
 - Show both the code AND its output where relevant
 - Keep examples minimal but complete — they must run as-is
@@ -309,6 +309,7 @@ See `Binary Search.md` or `` as reference implementations.
 ---
 
 ## Concept/Theory Format
+[[internal link must be inthere pera or bullte points name menastion]]
 
 ```
 # What is <Concept>?
@@ -323,11 +324,6 @@ See `Binary Search.md` or `` as reference implementations.
 
 # Real-World Applications
   collapsed:: true
-
-# Related Concepts
-  collapsed:: true
-  - [[Related Page 1]]
-  - [[Related Page 2]]
 
 # More Learn
 ```
@@ -360,7 +356,7 @@ Perfect for: main implementation sections where you want Python, C++, JS, Java, 
 # Python implementation
 ```
 
-```cpp
+```c++
 // C++ implementation
 ```
 
