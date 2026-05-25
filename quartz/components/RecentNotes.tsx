@@ -112,16 +112,10 @@ export default ((userOpts?: Partial<Options>) => {
       <div class={classNames(displayClass, "recent-notes-tabs")}>
         <h3>{opts.title ?? "Activity Feed"}</h3>
         
-        <input type="radio" id="tab-recent-updates" name="recent-notes-tabs" checked={true} class="tab-radio-input" />
-        <input type="radio" id="tab-recent-new" name="recent-notes-tabs" class="tab-radio-input" />
+        <input type="radio" id="tab-recent-new" name="recent-notes-tabs" checked={true} class="tab-radio-input" />
+        <input type="radio" id="tab-recent-updates" name="recent-notes-tabs" class="tab-radio-input" />
         
         <div class="tab-headers">
-          <label for="tab-recent-updates" class="tab-label label-updates">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="tab-icon">
-              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
-            </svg>
-            <span>Updates</span>
-          </label>
           <label for="tab-recent-new" class="tab-label label-new">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="tab-icon">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -129,17 +123,23 @@ export default ((userOpts?: Partial<Options>) => {
             </svg>
             <span>New Notes</span>
           </label>
+          <label for="tab-recent-updates" class="tab-label label-updates">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="tab-icon">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+            </svg>
+            <span>Updates</span>
+          </label>
         </div>
         
         <div class="tab-panels">
-          <div class="tab-panel panel-updates">
+          <div class="tab-panel panel-new">
             <ul class="recent-ul">
-              {recentUpdates.length === 0 ? (
-                <li class="recent-li empty-state">No recent updates</li>
+              {recentNew.length === 0 ? (
+                <li class="recent-li empty-state">No new notes</li>
               ) : (
-                recentUpdates.map((page) => {
+                recentNew.map((page) => {
                   const title = page.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title
-                  const date = page.dates?.modified ?? new Date()
+                  const date = page.dates?.created ?? new Date()
                   const relTime = getRelativeTime(date, cfg.locale)
                   const isPageRecent = isRecent(date)
                   const category = getCategory(page.slug!)
@@ -177,14 +177,14 @@ export default ((userOpts?: Partial<Options>) => {
             </ul>
           </div>
           
-          <div class="tab-panel panel-new">
+          <div class="tab-panel panel-updates">
             <ul class="recent-ul">
-              {recentNew.length === 0 ? (
-                <li class="recent-li empty-state">No new notes</li>
+              {recentUpdates.length === 0 ? (
+                <li class="recent-li empty-state">No recent updates</li>
               ) : (
-                recentNew.map((page) => {
+                recentUpdates.map((page) => {
                   const title = page.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title
-                  const date = page.dates?.created ?? new Date()
+                  const date = page.dates?.modified ?? new Date()
                   const relTime = getRelativeTime(date, cfg.locale)
                   const isPageRecent = isRecent(date)
                   const category = getCategory(page.slug!)

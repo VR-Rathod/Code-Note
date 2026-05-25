@@ -212,13 +212,21 @@
 
         // Glowing Pulsing Dot
         .pulse-dot {
+          position: relative;
           width: 5px;
           height: 5px;
           border-radius: 50%;
           background-color: var(--tertiary);
-          box-shadow: 0 0 0 0 rgba(132, 165, 157, 0.7);
-          animation: pulse-indicator 2s infinite;
           display: inline-block;
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 50%;
+            background-color: var(--tertiary);
+            animation: pulse-indicator 2s infinite;
+          }
         }
       }
 
@@ -257,17 +265,17 @@
 // Glowing Pulse Animation
 @keyframes pulse-indicator {
   0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(132, 165, 157, 0.7);
+    transform: scale(1);
+    opacity: 0.7;
   }
   
   70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 4px rgba(132, 165, 157, 0);
+    transform: scale(2.5);
+    opacity: 0;
   }
   
   100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(132, 165, 157, 0);
+    transform: scale(1);
+    opacity: 0;
   }
 }

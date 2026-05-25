@@ -81,79 +81,70 @@ function toggleFolder(evt: MouseEvent) {
   } catch (e) {}
 }
 
-function createFileNode(currentSlug: FullSlug, node: FileTrieNode): HTMLLIElement {
-  const template = document.getElementById("template-file") as HTMLTemplateElement
-  const clone = template.content.cloneNode(true) as DocumentFragment
-  const li = clone.querySelector("li") as HTMLLIElement
-  const a = li.querySelector("a") as HTMLAnchorElement
-  a.href = resolveRelative(currentSlug, node.slug)
-  a.dataset.for = node.slug
-  a.textContent = node.displayName
-
-  if (currentSlug === node.slug) {
-    a.classList.add("active")
-  }
-
-  return li
+function escapeHTML(str: string): string {
+  return str.replace(/[&<>'"]/g, 
+    tag => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;'
+    }[tag as '&' | '<' | '>' | "'" | '"'] || tag)
+  );
 }
 
-function createFolderNode(
+function createFileNodeStr(currentSlug: FullSlug, node: FileTrieNode): string {
+  const href = resolveRelative(currentSlug, node.slug)
+  const activeClass = currentSlug === node.slug ? ' class="active"' : ""
+  const displayName = escapeHTML(node.displayName)
+  return `<li><a href="${href}" data-for="${node.slug}"${activeClass}>${displayName}</a></li>`
+}
+
+function createFolderNodeStr(
   currentSlug: FullSlug,
   node: FileTrieNode,
   opts: ParsedOptions,
-): HTMLLIElement {
-  const template = document.getElementById("template-folder") as HTMLTemplateElement
-  const clone = template.content.cloneNode(true) as DocumentFragment
-  const li = clone.querySelector("li") as HTMLLIElement
-  const folderContainer = li.querySelector(".folder-container") as HTMLElement
-  const titleContainer = folderContainer.querySelector("div") as HTMLElement
-  const folderOuter = li.querySelector(".folder-outer") as HTMLElement
-  const ul = folderOuter.querySelector("ul") as HTMLUListElement
-
+): string {
   const folderPath = node.slug
-  folderContainer.dataset.folderpath = folderPath
-
-  if (currentSlug === folderPath) {
-    folderContainer.classList.add("active")
-  }
-
+  const activeClass = currentSlug === folderPath ? ' active' : ""
+  const displayName = escapeHTML(node.displayName)
+  
+  let titleHtml = ""
   if (opts.folderClickBehavior === "link") {
-    // Replace button with link for link behavior
-    const button = titleContainer.querySelector(".folder-button") as HTMLElement
-    const a = document.createElement("a")
-    a.href = resolveRelative(currentSlug, folderPath)
-    a.dataset.for = folderPath
-    a.className = "folder-title"
-    a.textContent = node.displayName
-    button.replaceWith(a)
+    const href = resolveRelative(currentSlug, folderPath)
+    titleHtml = `<a href="${href}" data-for="${folderPath}" class="folder-title">${displayName}</a>`
   } else {
-    const span = titleContainer.querySelector(".folder-title") as HTMLElement
-    span.textContent = node.displayName
+    titleHtml = `<button class="folder-button"><span class="folder-title">${displayName}</span></button>`
   }
 
-  // if the saved state is collapsed or the default state is collapsed
   const isCollapsed =
     currentExplorerState.find((item) => item.path === folderPath)?.collapsed ??
     opts.folderDefaultState === "collapsed"
 
-  // if this folder is a prefix of the current path we
-  // want to open it anyways
   const simpleFolderPath = simplifySlug(folderPath)
   const folderIsPrefixOfCurrentSlug =
     simpleFolderPath === currentSlug.slice(0, simpleFolderPath.length)
 
-  if (!isCollapsed || folderIsPrefixOfCurrentSlug) {
-    folderOuter.classList.add("open")
-  }
+  const openClass = !isCollapsed || folderIsPrefixOfCurrentSlug ? ' open' : ""
 
+  let childrenHtml = ""
   for (const child of node.children) {
-    const childNode = child.isFolder
-      ? createFolderNode(currentSlug, child, opts)
-      : createFileNode(currentSlug, child)
-    ul.appendChild(childNode)
+    childrenHtml += child.isFolder
+      ? createFolderNodeStr(currentSlug, child, opts)
+      : createFileNodeStr(currentSlug, child)
   }
 
-  return li
+  return `<li>
+    <div class="folder-container${activeClass}" data-folderpath="${folderPath}">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+      <div>${titleHtml}</div>
+    </div>
+    <div class="folder-outer${openClass}">
+      <ul class="content">${childrenHtml}</ul>
+    </div>
+  </li>`
 }
 
 async function setupExplorer(currentSlug: FullSlug) {
@@ -215,15 +206,13 @@ async function setupExplorer(currentSlug: FullSlug) {
     if (!explorerUl) continue
 
     // Create and insert new content
-    const fragment = document.createDocumentFragment()
+    let htmlStr = ""
     for (const child of trie.children) {
-      const node = child.isFolder
-        ? createFolderNode(currentSlug, child, opts)
-        : createFileNode(currentSlug, child)
-
-      fragment.appendChild(node)
+      htmlStr += child.isFolder
+        ? createFolderNodeStr(currentSlug, child, opts)
+        : createFileNodeStr(currentSlug, child)
     }
-    explorerUl.insertBefore(fragment, explorerUl.firstChild)
+    explorerUl.innerHTML = htmlStr
 
     // restore explorer scrollTop position if it exists
     let scrollTop: string | null = null

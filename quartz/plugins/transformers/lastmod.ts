@@ -1,5 +1,5 @@
 import fs from "fs"
-import { Repository } from "@napi-rs/simple-git"
+import { execSync } from "child_process"
 import { QuartzTransformerPlugin } from "../types"
 import path from "path"
 import { styleText } from "util"
@@ -45,17 +45,33 @@ export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options>> = (u
     markdownPlugins(ctx) {
       return [
         () => {
-          let repo: Repository | undefined = undefined
-          let repositoryWorkdir: string
+          let repositoryWorkdir = ctx.argv.directory
+          let oldestCommitDate: number | undefined = undefined
+
           if (opts.priority.includes("git")) {
             try {
-              repo = Repository.discover(ctx.argv.directory)
-              repositoryWorkdir = repo.workdir() ?? ctx.argv.directory
+              const stdout = execSync("git rev-parse --show-toplevel", { encoding: "utf8" }).trim()
+              if (stdout) {
+                repositoryWorkdir = stdout
+
+                // Get the oldest known commit date in the shallow clone to use as a fallback
+                // This ensures files without history (due to shallow clone) don't jump to the top of recent notes
+                try {
+                  const logOut = execSync("git log --format=%aI", { cwd: repositoryWorkdir, encoding: "utf8" }).trim()
+                  if (logOut) {
+                    const lines = logOut.split('\n')
+                    // Subtract 1 minute to ensure fake dates are strictly older than the oldest commit
+                    oldestCommitDate = new Date(lines[lines.length - 1]).getTime() - 60000 
+                  }
+                } catch (e) {
+                  // ignore
+                }
+              }
             } catch (e) {
               console.log(
                 styleText(
                   "yellow",
-                  `\nWarning: couldn't find git repository for ${ctx.argv.directory}`,
+                  `\nWarning: couldn't find git repository`,
                 ),
               )
             }
@@ -68,6 +84,7 @@ export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options>> = (u
 
             const fp = file.data.relativePath!
             const fullFp = file.data.filePath!
+            const relativePath = path.relative(repositoryWorkdir, fullFp)
             for (const source of opts.priority) {
               if (source === "filesystem") {
                 const st = await fs.promises.stat(fullFp)
@@ -77,10 +94,33 @@ export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options>> = (u
                 created ||= file.data.frontmatter.created as MaybeDate
                 modified ||= file.data.frontmatter.modified as MaybeDate
                 published ||= file.data.frontmatter.published as MaybeDate
-              } else if (source === "git" && repo) {
+              } else if (source === "git") {
                 try {
-                  const relativePath = path.relative(repositoryWorkdir, fullFp)
-                  modified ||= await repo.getFileLatestModifiedDateAsync(relativePath)
+                  // Get modified date
+                  if (!modified) {
+                    const modifiedOut = execSync(`git log -1 --format=%aI -- "${relativePath}"`, { 
+                      cwd: repositoryWorkdir, 
+                      encoding: "utf8" 
+                    }).trim()
+                    if (modifiedOut) {
+                      modified = new Date(modifiedOut).getTime()
+                    } else if (oldestCommitDate) {
+                      modified = oldestCommitDate
+                    }
+                  }
+                  
+                  // Get creation date
+                  if (!created) {
+                    const createdOut = execSync(`git log --diff-filter=A --format=%aI -1 -- "${relativePath}"`, { 
+                      cwd: repositoryWorkdir, 
+                      encoding: "utf8" 
+                    }).trim()
+                    if (createdOut) {
+                      created = new Date(createdOut).getTime()
+                    } else if (oldestCommitDate) {
+                      created = oldestCommitDate
+                    }
+                  }
                 } catch {
                   console.log(
                     styleText(

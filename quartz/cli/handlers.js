@@ -343,7 +343,7 @@ export async function handleBuild(argv) {
     clientRefresh()
   }
 
-  let clientRefresh = () => {}
+  let clientRefresh = () => { }
   if (argv.serve) {
     const connections = []
     clientRefresh = () => connections.forEach((conn) => conn.send("rebuild"))
@@ -406,7 +406,7 @@ export async function handleBuild(argv) {
         })
         console.log(
           styleText("yellow", "[302]") +
-            styleText("gray", ` ${argv.baseDir}${req.url} -> ${newFp}`),
+          styleText("gray", ` ${argv.baseDir}${req.url} -> ${newFp}`),
         )
         res.end()
       }
@@ -475,7 +475,10 @@ export async function handleBuild(argv) {
       "**/*.tsx",
       "**/*.scss",
       "package.json",
-    ])
+    ], {
+      gitignore: true,
+      ignore: ["node_modules", "public"]
+    })
     chokidar
       .watch(paths, { ignoreInitial: true })
       .on("add", () => build(clientRefresh))
