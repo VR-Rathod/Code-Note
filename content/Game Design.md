@@ -717,7 +717,7 @@ displayTitle: Game Design
 		  > These two techniques alone make a platformer feel **dramatically better**.
 		  > Without them, players constantly say "I pressed jump!" — with them, controls feel responsive and fair.
 		- > [!note] Technical Implementation
-		  > In Unity, implementing juice like squash-and-stretch, screen shake, and visual feedback is commonly achieved via tweening libraries like [[DOTween]] and particle setups like [[Unity#Core Concepts — GameObjects & Components]] (under the `ParticleSystem` component) without allocating garbage memory (see [[Unity#Garbage Collection (GC) Optimization]]).
+		  > In Unity, implementing juice like squash-and-stretch, screen shake, and visual feedback is commonly achieved via tweening libraries like [[DOTween]] and particle setups like [[Unity]]'s Core Concepts — GameObjects & Components (under the `ParticleSystem` component) without allocating garbage memory (see [[Unity]]'s Garbage Collection (GC) Optimization).
 	-
 	- ## Camera Design
 	  collapsed:: true
@@ -736,7 +736,7 @@ displayTitle: Game Design
 		  | Zoom on action | Zoom in for precision, zoom out for overview |
 		  | Rule of thirds | Player at 1/3 of screen, not center |
 		- > [!note] Technical Tooling
-		  > In Unity, advanced camera techniques like lead space, camera shake, and smart dampening are implemented out of the box using [[Cinemachine]] (see [[Unity#Library & Frameworks]]).
+		  > In Unity, advanced camera techniques like lead space, camera shake, and smart dampening are implemented out of the box using [[Cinemachine]] (see [[Unity]]'s Library & Frameworks).
 -
 - # UI/UX Design for Games
   collapsed:: true
@@ -996,7 +996,7 @@ displayTitle: Game Design
 		  > 3. Guarantee fun — ensure minimum quality floor
 		  > 4. Curated + procedural — hand-craft key moments, proc-gen the rest
 		- > [!tip] Technical Implementation (Performance)
-		  > For high-performance voxel, terrain, or dungeon generation (e.g. generating millions of tiles/entities), you can offload calculations to multithreaded systems like the C# Job System and Burst Compiler. See [[Unity#Data-Oriented Technology Stack (DOTS)]].
+		  > For high-performance voxel, terrain, or dungeon generation (e.g. generating millions of tiles/entities), you can offload calculations to multithreaded systems like the C# Job System and Burst Compiler. See [[Unity]]'s Data-Oriented Technology Stack (DOTS).
 	-
 	- ## Live Service Design (GaaS)
 	  collapsed:: true
