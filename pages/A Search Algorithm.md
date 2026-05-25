@@ -241,7 +241,7 @@ displayTitle: A* Search Algorithm
 	  # Output: [(0, 0), (1, 0), (2, 0), (2, 1), (2, 2), (3, 2)]
 	  ```
 	  
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <queue>

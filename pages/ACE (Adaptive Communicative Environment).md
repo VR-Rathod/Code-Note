@@ -55,7 +55,7 @@ displayTitle: ACE (Adaptive Communication Environment)
   collapsed:: true
 	- ## TCP Echo Server (Reactor Pattern)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <ace/SOCK_Acceptor.h>
 		  #include <ace/SOCK_Stream.h>
 		  #include <ace/INET_Addr.h>
@@ -74,7 +74,7 @@ displayTitle: ACE (Adaptive Communication Environment)
 	-
 	- ## TCP Client
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <ace/SOCK_Connector.h>
 		  #include <ace/SOCK_Stream.h>
 		  #include <ace/INET_Addr.h>
@@ -98,7 +98,7 @@ displayTitle: ACE (Adaptive Communication Environment)
 	-
 	- ## Threading (ACE_Thread_Manager)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <ace/Thread_Manager.h>
 		  
 		  void* worker(void*) {
