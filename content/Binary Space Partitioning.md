@@ -1,7 +1,4 @@
 ---
-date: 2025-03-26T12:40:55+05:30
-lastmod: 2026-05-25T11:36:10+05:30
-
 seoTitle: Binary Space Partitioning (BSP) – 3D Rendering & Spatial Partitioning
 description: "A comprehensive guide to Binary Space Partitioning (BSP) trees. Covers hyperplane partitioning, segment/polygon splitting, Painter's algorithm, and Python/C++ implementations."
 keywords: "binary space partitioning, BSP tree, spatial subdivision, collision detection, painter's algorithm, segment splitting, game engine graphics, computational geometry, VR-Rathod, Code-Note, code note vr, vr book"

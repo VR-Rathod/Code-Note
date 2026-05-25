@@ -1,7 +1,4 @@
 ---
-date: 2025-05-15T11:00:41+05:30
-lastmod: 2026-03-25T17:01:06+05:30
-
 seoTitle: Palindrome Algorithms – Detection, Counting, and Longest Substring
 description: "Explore palindrome detection, counting palindromic substrings, and finding the longest palindrome. Covers dynamic programming, Manacher's algorithm, and."
 keywords: "palindrome, palindrome detection, longest palindromic substring, dynamic programming, two pointers, Manacher algorithm, time complexity, space complexity, string algorithm"

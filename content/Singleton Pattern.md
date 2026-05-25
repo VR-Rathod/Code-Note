@@ -1,7 +1,4 @@
 ---
-date: 2025-05-15T11:00:41+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Singleton Pattern – Creational Design Pattern Reference Guide
 description: "Singleton ensures only one instance of a class exists. Covers thread-safe singleton, lazy initialization, double-checked locking, and when to avoid singleton."
 keywords: "singleton pattern, design pattern, creational pattern, thread-safe singleton, lazy initialization, double-checked locking, OOP, software design, anti-pattern, instance control"

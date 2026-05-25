@@ -1,7 +1,4 @@
 ---
-date: 2025-03-26T12:40:55+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Fibonacci Heap Explained – Amortized Efficient Priority Queue
 description: "Fibonacci heaps support decrease-key in O(1) amortized time, enabling faster Dijkstra. Learn lazy merging, cascading cut, mark bits, and amortized complexity."
 keywords: "Fibonacci heap, priority queue, amortized complexity, decrease key, lazy merge, cascading cut, O(1) amortized, time complexity, space complexity, graph algorithms"

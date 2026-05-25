@@ -1,7 +1,4 @@
 ---
-date: 2024-12-04T11:51:44+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Ghost CMS Reference – Publishing Platform Setup and API Guide
 description: "Ghost is a modern publishing platform for blogs and newsletters. Covers themes, Ghost Content API, members, subscriptions, integrations, and self-hosting setup."
 keywords: "Ghost CMS, publishing platform, blog, newsletter, Ghost themes, Content API, members, subscriptions, self-hosting, headless CMS, Ghost Pro, web publishing"

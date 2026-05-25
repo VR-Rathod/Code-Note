@@ -1,7 +1,4 @@
 ---
-date: 2026-05-21T13:09:49+05:30
-lastmod: 2026-05-21T13:09:49+05:30
-
 title: Credits & Supporters
 description: "A Hall of Fame dedicated to the wonderful sponsors, financial supporters, note contributors, and open-source creators of Free Code Notes."
 cssclasses:

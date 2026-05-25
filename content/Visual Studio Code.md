@@ -1,7 +1,4 @@
 ---
-date: 2024-11-01T16:21:17-07:00
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Visual Studio Code Reference – Extensions, Shortcuts, and Tips
 description: "VS Code reference covering extensions, keyboard shortcuts, debugging, integrated terminal, Git integration, settings sync, and productivity tips for developers."
 keywords: "Visual Studio Code, VS Code, extensions, keyboard shortcuts, debugging, integrated terminal, Git, settings sync, code editor, developer tools, IntelliSense"

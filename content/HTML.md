@@ -1,7 +1,4 @@
 ---
-date: 2024-10-31T19:09:35-07:00
-lastmod: 2026-05-18T10:12:55+05:30
-
 seoTitle: HTML5 Complete Guide – Semantic Elements, Forms, and Modern Web Development
 description: "Comprehensive HTML5 reference covering document structure, semantic elements, forms, tables, media, accessibility, SEO meta tags, and best practices."
 keywords: "HTML, HTML5, semantic HTML, web development, forms, tables, accessibility, SEO, meta tags, HTML elements, HTML attributes, VR-Rathod, Code-Note, code note vr, vr book"

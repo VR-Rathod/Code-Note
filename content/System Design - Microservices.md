@@ -1,7 +1,4 @@
 ---
-date: 2026-05-12T12:15:39+05:30
-lastmod: 2026-05-18T10:12:55+05:30
-
 seoTitle: Microservices & Distributed Patterns – System Design Guide
 description: "Complete microservices reference: API gateway, service discovery, circuit breaker, saga pattern, CQRS, event sourcing, outbox pattern, distributed tracing, and service mesh for system design interviews."
 keywords: "microservices, API gateway, circuit breaker, saga pattern, CQRS, event sourcing, outbox pattern, service discovery, distributed tracing, Kafka, message queue, system design, VR-Rathod, Code-Note"

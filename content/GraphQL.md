@@ -1,7 +1,4 @@
 ---
-date: 2025-10-09T14:23:07+05:30
-lastmod: 2026-05-22T16:45:19+05:30
-
 seoTitle: GraphQL Complete Guide – Schema, Queries, Mutations, Subscriptions & Best Practices
 description: "Comprehensive GraphQL reference covering type system, schema design, queries, mutations, subscriptions, resolvers, directives, performance optimization, and real-world patterns."
 keywords: "GraphQL, GraphQL queries, mutations, schema, resolvers, subscriptions, fragments, variables, GraphQL Python, graphene, Apollo, API development, GraphQL best practices, type system, directives, VR-Rathod, Code-Note, code note vr, vr book"

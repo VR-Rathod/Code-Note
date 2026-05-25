@@ -1,7 +1,4 @@
 ---
-date: 2025-05-15T11:00:41+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Abstract Classes in OOP – C++ Guide with Examples
 description: "Abstract classes define interfaces with partial implementation. Covers pure virtual functions, abstract base classes, inheritance, and C++ examples."
 keywords: "abstract classes, OOP, pure virtual, C++, abstract base class, inheritance, polymorphism, interface, virtual functions"
@@ -12,6 +9,30 @@ keywords: "abstract classes, OOP, pure virtual, C++, abstract base class, inheri
 	- It defines a **contract** — a set of methods that all derived classes must implement.
 	- In C++, a class becomes abstract when it has at least one **pure virtual function** (`= 0`).
 	- Used to enforce a common interface across a family of related classes.
+	-
+	- ## Class Hierarchy Diagram
+	  collapsed:: true
+		- ```mermaid
+		  classDiagram
+		      class Shape {
+		          <<abstract>>
+		          +area()* double
+		          +draw()* void
+		      }
+		      class Circle {
+		          -radius: double
+		          +area() double
+		          +draw() void
+		      }
+		      class Rectangle {
+		          -width: double
+		          -height: double
+		          +area() double
+		          +draw() void
+		      }
+		      Shape <|-- Circle
+		      Shape <|-- Rectangle
+		  ```
 	-
 	- ## Advantages
 		- Enforces a consistent interface across subclasses.
@@ -29,7 +50,7 @@ keywords: "abstract classes, OOP, pure virtual, C++, abstract base class, inheri
 	  collapsed:: true
 		- Declared with `= 0` — no body in the base class.
 		- Forces every concrete subclass to provide an implementation.
-		- ```cpp
+		- ```c++
 		  class Shape {
 		  public:
 		      virtual double area() = 0;   // pure virtual
@@ -43,7 +64,7 @@ keywords: "abstract classes, OOP, pure virtual, C++, abstract base class, inheri
 	- ## Concrete Subclass
 	  collapsed:: true
 		- A class that inherits from an abstract class and implements **all** pure virtual methods.
-		- ```cpp
+		- ```c++
 		  class Circle : public Shape {
 		      double radius;
 		  public:
@@ -63,7 +84,7 @@ keywords: "abstract classes, OOP, pure virtual, C++, abstract base class, inheri
 	  collapsed:: true
 		- Abstract classes can also have **non-pure virtual** methods (with a default body).
 		- Subclasses may override them or use the default.
-		- ```cpp
+		- ```c++
 		  class Animal {
 		  public:
 		      virtual void sound() = 0;          // must override
@@ -88,7 +109,7 @@ keywords: "abstract classes, OOP, pure virtual, C++, abstract base class, inheri
   collapsed:: true
 	- ## Basic Abstract Class
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <iostream>
 		  
 		  class Shape {
@@ -128,7 +149,7 @@ keywords: "abstract classes, OOP, pure virtual, C++, abstract base class, inheri
 	-
 	- ## Polymorphism via Abstract Base
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <vector>
 		  #include <memory>
 		  
@@ -147,7 +168,7 @@ keywords: "abstract classes, OOP, pure virtual, C++, abstract base class, inheri
 	-
 	- ## Abstract Class as Interface (all pure virtual)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Pure interface — no data, no implementation
 		  class ISerializable {
 		  public:
@@ -175,13 +196,35 @@ keywords: "abstract classes, OOP, pure virtual, C++, abstract base class, inheri
 	  Multiple inheritance     Possible (careful)     Common pattern
 	  ```
 -
+- # When to Use Abstract Classes
+  collapsed:: true
+	- ```mermaid
+	  flowchart TD
+	      Q{"Do you have a family of\nrelated classes?"}
+	      Q -- No --> S1{"Stand-alone functionality?"}
+	      S1 -- Yes --> R1["✅ Use standard Concrete Class"]
+	      Q -- Yes --> S2{"Do they share a\ncommon interface?"}
+	      S2 -- Yes --> S3{"Do they share some\ncommon implementation?"}
+	      S3 -- Yes --> R2["✅ Use Abstract Class\nwith partial implementation"]
+	      S3 -- No --> R3["✅ Use Interface\n(All pure virtual abstract class)"]
+	  ```
+	-
+	- ## ✅ Use Abstract Classes When:
+		- You want to share code among several closely related classes.
+		- You expect classes that extend your abstract class to have many common methods or fields, or require access modifiers other than public (such as protected and private).
+		- You want to declare non-static or non-final fields to define the state of an object.
+	-
+	- ## ❌ Avoid When:
+		- You just want to define a contract for unrelated classes (use an interface).
+		- You are simply storing data without behavior (use a `struct` or plain class).
+-
 - # Rules & Best Practices
   collapsed:: true
 	- Always declare a **virtual destructor** in abstract base classes.
 	- Use `override` keyword in derived classes — catches typos at compile time.
 	- Prefer **smart pointers** (`unique_ptr`, `shared_ptr`) when storing polymorphic objects.
 	- Keep abstract classes focused — don't mix unrelated responsibilities.
-	- ```cpp
+	- ```c++
 	  // Good practice
 	  class Base {
 	  public:
@@ -200,3 +243,8 @@ keywords: "abstract classes, OOP, pure virtual, C++, abstract base class, inheri
 	- Cannot be instantiated — only used as a base type.
 	- Enables **runtime polymorphism** via base class pointers/references.
 	- Always add a **virtual destructor** to avoid undefined behavior on delete.
+-
+- # More Learn
+	- ## GitHub & Webs
+		- [GeeksforGeeks - Pure Virtual Functions and Abstract Classes in C++](https://www.geeksforgeeks.org/pure-virtual-functions-and-abstract-classes/)
+		- [cppreference - Abstract class](https://en.cppreference.com/w/cpp/language/abstract_class)

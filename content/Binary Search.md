@@ -1,7 +1,4 @@
 ---
-date: 2025-03-26T12:40:55+05:30
-lastmod: 2026-05-21T13:09:49+05:30
-
 seoTitle: Binary Search Algorithm – O(log n) Divide and Conquer Search
 description: "Binary search efficiently finds elements in sorted arrays by halving the search space each step. Covers iterative and recursive implementations in Python, C++, JavaScript, Java, and C with O(log n) complexity."
 keywords: "binary search, search algorithm, sorted array, O(log n), divide and conquer, iterative binary search, recursive binary search, time complexity, space complexity, algorithm implementation, binary search C++, binary search Python, binary search Java, VR-Rathod, Code-Note, code note vr, vr book , Vaibhav Rathod, vaibhav, Rathod , book of rathod"

@@ -1,7 +1,4 @@
 ---
-date: 2026-04-03T15:14:37+05:30
-lastmod: 2026-04-03T15:14:37+05:30
-
 seoTitle: Cross Product in 3D Graphics – Vector Math for Ray Tracing Guide
 description: "The cross product computes perpendicular vectors essential for 3D graphics. Covers geometric interpretation, normal computation, tangent space, and GLSL/HLSL."
 keywords: "cross product, vector math, 3D graphics, ray tracing, path tracing, normal computation, tangent space, GLSL, HLSL, GPU rendering, Vulkan, linear algebra"

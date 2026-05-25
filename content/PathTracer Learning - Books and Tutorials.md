@@ -1,7 +1,4 @@
 ---
-date: 2026-04-03T15:14:37+05:30
-lastmod: 2026-04-03T15:14:37+05:30
-
 seoTitle: Path Tracing Books and Tutorials – Learning Resources Reference
 description: "Curated path tracing and ray tracing learning resources including books, tutorials, papers, and online courses for GPU rendering and physically-based rendering."
 keywords: "pathtracer books, path tracing, ray tracing, learning resources, books, tutorials, physically-based rendering, PBR, GPU rendering, Vulkan, BVH, PBRT"

@@ -1,7 +1,4 @@
 ---
-date: 2025-05-15T11:00:41+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Classes in OOP – Definition, Attributes, Methods, and Examples
 description: "Classes are blueprints for objects in OOP. Covers class definition, attributes, methods, constructors, access modifiers, static members, and class vs object."
 keywords: "class, OOP, object-oriented programming, attributes, methods, constructor, access modifiers, static members, class definition, Python class, Java class, C++ class"

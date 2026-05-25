@@ -1,7 +1,4 @@
 ---
-date: 2024-12-04T11:51:44+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: PostgreSQL Reference – SQL, Extensions, and Administration Guide
 description: "PostgreSQL reference covering advanced SQL, JSONB, full-text search, extensions, replication, partitioning, PostgreSQL 15/16 features, and performance tuning."
 keywords: "PostgreSQL, SQL, JSONB, full-text search, extensions, replication, partitioning, PostgreSQL 16, database administration, RDBMS, query optimization, psql"

@@ -1,7 +1,4 @@
 ---
-date: 2025-01-01T11:35:35+05:30
-lastmod: 2026-05-21T13:09:49+05:30
-
 seoTitle: Lua Programming Language – Syntax Reference and Scripting Guide
 description: "Lua reference covering tables, metatables, coroutines, closures, modules, and embedding Lua in C/C++ applications for game scripting and configuration."
 keywords: "Lua programming, Lua language, tables, metatables, coroutines, closures, modules, game scripting, C embedding, Lua 5.4, syntax reference, cheat sheet"

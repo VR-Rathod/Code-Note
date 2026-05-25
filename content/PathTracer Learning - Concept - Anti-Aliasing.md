@@ -1,7 +1,4 @@
 ---
-date: 2026-04-03T15:14:37+05:30
-lastmod: 2026-04-03T15:14:37+05:30
-
 seoTitle: Anti-Aliasing in Path Tracing – MSAA, TAA, and DLSS Guide
 description: "Anti-aliasing reduces jagged edges in rendered images. Covers MSAA, SSAA, TAA, DLSS, FXAA, jitter sampling, and temporal accumulation in path tracers."
 keywords: "anti-aliasing, MSAA, TAA, DLSS, FXAA, path tracing, ray tracing, temporal accumulation, jitter sampling, GPU rendering, image quality, Vulkan"

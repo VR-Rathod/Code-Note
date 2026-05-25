@@ -1,7 +1,4 @@
 ---
-date: 2024-11-01T16:21:17-07:00
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Autodesk SketchBook Reference – Digital Drawing and Painting Guide
 description: "Autodesk SketchBook reference covering brushes, layers, symmetry tools, perspective guides, and digital illustration workflows for artists and designers."
 keywords: "Autodesk SketchBook, digital drawing, digital painting, brushes, layers, symmetry, perspective guides, illustration, concept art, digital art, drawing software"

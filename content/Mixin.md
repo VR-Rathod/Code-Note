@@ -1,7 +1,4 @@
 ---
-date: 2025-05-15T11:00:41+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Mixins in OOP – Reusable Behavior Without Inheritance Guide
 description: "Mixins add reusable behavior to classes without traditional inheritance. Covers mixin pattern, multiple inheritance, Python mixins, Ruby modules, and."
 keywords: "mixin, OOP, reusable behavior, multiple inheritance, Python mixin, Ruby module, TypeScript mixin, composition, software design, object-oriented programming, trait"

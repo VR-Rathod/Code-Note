@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Code Notes made by Vaibhav Rathod</title>
+      <link>https://code-note-vr.vercel.app</link>
+      <description>Last 20 notes on Code Notes made by Vaibhav Rathod</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>Binary Search Tree (BST)</title>
+    <link>https://code-note-vr.vercel.app/binary-search-tree-(bst)</link>
+    <guid>https://code-note-vr.vercel.app/binary-search-tree-(bst)</guid>
+    <description><![CDATA[ Master Binary Search Trees (BST) in Data Structures & Algorithms. Learn about insertion, searching, deletion algorithms (Hibbard deletion), and average vs worst case complexities. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:41:16 GMT</pubDate>
+  </item><item>
+    <title>Binary Tree</title>
+    <link>https://code-note-vr.vercel.app/binary-tree</link>
+    <guid>https://code-note-vr.vercel.app/binary-tree</guid>
+    <description><![CDATA[ Master Binary Trees in Data Structures & Algorithms. Learn about Full, Complete, Perfect, and Balanced Binary Trees, traversals (pre-order, in-order, post-order, level-order), and multi-language implementations. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:41:16 GMT</pubDate>
+  </item><item>
+    <title>A Search Algorithm</title>
+    <link>https://code-note-vr.vercel.app/a-search-algorithm</link>
+    <guid>https://code-note-vr.vercel.app/a-search-algorithm</guid>
+    <description><![CDATA[ Comprehensive guide to the A* Search algorithm. Explains the f(n) = g(n) + h(n) evaluation, admissibility, consistency, distance metrics, and complete grid-based pathfinding in Python, C++, JavaScript, Java, and C. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item><item>
+    <title>AA Tree</title>
+    <link>https://code-note-vr.vercel.app/aa-tree</link>
+    <guid>https://code-note-vr.vercel.app/aa-tree</guid>
+    <description><![CDATA[ Learn AA Trees, a simplified Red-Black Tree variant using levels instead of colors. Detailed skew, split, insert, delete operations in C++ and Python. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item><item>
+    <title>ACE (Adaptive Communicative Environment)</title>
+    <link>https://code-note-vr.vercel.app/ace-(adaptive-communicative-environment)</link>
+    <guid>https://code-note-vr.vercel.app/ace-(adaptive-communicative-environment)</guid>
+    <description><![CDATA[ ACE (Adaptive Communication Environment) reference for C++ networked and real-time systems. Covers reactor pattern, proactor, sockets, threading, and service configuration. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item><item>
+    <title>Ableton Live</title>
+    <link>https://code-note-vr.vercel.app/ableton-live</link>
+    <guid>https://code-note-vr.vercel.app/ableton-live</guid>
+    <description><![CDATA[ Ableton Live reference covering Session and Arrangement views, clips, MIDI, audio effects, instruments, Max for Live, and music production workflows. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item><item>
+    <title>About</title>
+    <link>https://code-note-vr.vercel.app/about</link>
+    <guid>https://code-note-vr.vercel.app/about</guid>
+    <description><![CDATA[ About Free Code Notes — a free, comprehensive programming knowledge base built by VR-Rathod for developers, students, and tech enthusiasts. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item><item>
+    <title>Abstract Classes</title>
+    <link>https://code-note-vr.vercel.app/abstract-classes</link>
+    <guid>https://code-note-vr.vercel.app/abstract-classes</guid>
+    <description><![CDATA[ Abstract classes define interfaces with partial implementation. Covers pure virtual functions, abstract base classes, inheritance, and C++ examples. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item><item>
+    <title>Abstraction</title>
+    <link>https://code-note-vr.vercel.app/abstraction</link>
+    <guid>https://code-note-vr.vercel.app/abstraction</guid>
+    <description><![CDATA[ Abstraction hides implementation details and exposes only essential features. Covers data abstraction, procedural abstraction, abstract classes, and C++ examples. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item><item>
+    <title>Ackermann Function</title>
+    <link>https://code-note-vr.vercel.app/ackermann-function</link>
+    <guid>https://code-note-vr.vercel.app/ackermann-function</guid>
+    <description><![CDATA[ The Ackermann function is a total computable function that is not primitive recursive. Explore its definition, recursion depth, growth rate, and C++ implementation. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item><item>
+    <title>Adobe After Effects</title>
+    <link>https://code-note-vr.vercel.app/adobe-after-effects</link>
+    <guid>https://code-note-vr.vercel.app/adobe-after-effects</guid>
+    <description><![CDATA[ After Effects reference covering compositions, keyframes, expressions, effects, masks, 3D layers, rendering, and motion graphics for video production. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item><item>
+    <title>Adobe XD</title>
+    <link>https://code-note-vr.vercel.app/adobe-xd</link>
+    <guid>https://code-note-vr.vercel.app/adobe-xd</guid>
+    <description><![CDATA[ Adobe XD complete reference covering artboards, components, auto-animate, prototyping, design systems, plugins, developer handoff, and UI/UX workflows. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item><item>
+    <title>Advanced Graphics</title>
+    <link>https://code-note-vr.vercel.app/advanced-graphics</link>
+    <guid>https://code-note-vr.vercel.app/advanced-graphics</guid>
+    <description><![CDATA[ Comprehensive advanced graphics programming reference covering Vulkan, DirectX 12, Metal, WebGPU, HLSL, GLSL, compute shaders, render graphs, GPU architecture, and modern rendering techniques. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item><item>
+    <title>Affinity Designer</title>
+    <link>https://code-note-vr.vercel.app/affinity-designer</link>
+    <guid>https://code-note-vr.vercel.app/affinity-designer</guid>
+    <description><![CDATA[ Affinity Designer reference covering vector and pixel personas, nodes, curves, symbols, grids, export options, and professional illustration workflows. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item><item>
+    <title>Aho Corasick Algorithm</title>
+    <link>https://code-note-vr.vercel.app/aho-corasick-algorithm</link>
+    <guid>https://code-note-vr.vercel.app/aho-corasick-algorithm</guid>
+    <description><![CDATA[ Comprehensive guide to the Aho Corasick Algorithm. Explains trie-based multi-pattern matching, failure links, dictionary links, and full implementations in 5 languages. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item><item>
+    <title>Alpine Linux</title>
+    <link>https://code-note-vr.vercel.app/alpine-linux</link>
+    <guid>https://code-note-vr.vercel.app/alpine-linux</guid>
+    <description><![CDATA[ Comprehensive Alpine Linux reference covering installation, apk package management, OpenRC, musl libc, BusyBox, Docker containers, security hardening, and embedded/server use cases. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item><item>
+    <title>Altair</title>
+    <link>https://code-note-vr.vercel.app/altair</link>
+    <guid>https://code-note-vr.vercel.app/altair</guid>
+    <description><![CDATA[ Altair is a declarative statistical visualization library for Python based on Vega-Lite. Covers charts, encodings, transformations, interactive plots, and data. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item><item>
+    <title>Ansible</title>
+    <link>https://code-note-vr.vercel.app/ansible</link>
+    <guid>https://code-note-vr.vercel.app/ansible</guid>
+    <description><![CDATA[ Ansible automates IT infrastructure with YAML playbooks. Covers inventory, playbooks, roles, modules, Ansible Vault, AWX, and idempotent configuration. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item><item>
+    <title>Api</title>
+    <link>https://code-note-vr.vercel.app/api</link>
+    <guid>https://code-note-vr.vercel.app/api</guid>
+    <description><![CDATA[ Comprehensive API reference covering REST principles, HTTP methods, status codes, authentication, versioning, GraphQL, OpenAPI specification, and API design. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item><item>
+    <title>Arch Linux</title>
+    <link>https://code-note-vr.vercel.app/arch-linux</link>
+    <guid>https://code-note-vr.vercel.app/arch-linux</guid>
+    <description><![CDATA[ Comprehensive Arch Linux reference covering installation, pacman, AUR, systemd, kernel management, desktop environments, security hardening, and system maintenance. ]]></description>
+    <pubDate>Mon, 25 May 2026 07:39:33 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>

@@ -1,7 +1,4 @@
 ---
-date: 2026-04-17T17:08:18+05:30
-lastmod: 2026-05-18T10:12:55+05:30
-
 seoTitle: Multiplayer Networking – Complete Game Dev Guide Beginner to Advanced
 description: "Deep-dive multiplayer game networking reference covering architectures, protocols, transport layers, lag compensation, prediction, synchronization, relay servers, matchmaking, anti-cheat, and real C++ / GDScript examples."
 keywords: "multiplayer networking, game networking, client server, peer to peer, lag compensation, client side prediction, server reconciliation, entity interpolation, dead reckoning, tick rate, UDP game networking, RUDP, ENet, GameNetworkingSockets, WebRTC, WebSocket, relay server, matchmaking, ELO, anti-cheat, NAT traversal, game sync, lockstep, rollback netcode, GGPO, authoritative server, deterministic simulation, VR-Rathod, Code-Note, code note vr, vr book"

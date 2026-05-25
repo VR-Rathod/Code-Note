@@ -1,7 +1,4 @@
 ---
-date: 2026-04-08T11:19:07+05:30
-lastmod: 2026-05-18T10:12:55+05:30
-
 seoTitle: spdlog – Fast C++ Logging Library Complete Reference
 description: "spdlog is a fast, header-only C++ logging library. Covers loggers, sinks, formatters, async logging, rotating files, and custom patterns."
 keywords: "spdlog, C++ logging, fast logging, header-only, sinks, async logging, rotating file, C++ logger, log levels, fmt, VR-Rathod, Code-Note, code note vr, vr book"

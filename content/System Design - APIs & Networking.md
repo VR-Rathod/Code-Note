@@ -1,7 +1,4 @@
 ---
-date: 2026-05-12T12:15:39+05:30
-lastmod: 2026-05-18T10:12:55+05:30
-
 seoTitle: APIs & Networking in System Design – REST, gRPC, WebSockets, CDN, Rate Limiting
 description: "Complete API and networking reference for system design: REST vs gRPC vs GraphQL, WebSockets vs SSE, DNS resolution, CDN, load balancing, rate limiting algorithms, and HTTP/2 vs HTTP/3."
 keywords: "REST API, gRPC, GraphQL, WebSockets, SSE, CDN, DNS, rate limiting, token bucket, load balancing, HTTP2, HTTP3, API design, system design, VR-Rathod, Code-Note"

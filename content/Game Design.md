@@ -1,7 +1,4 @@
 ---
-date: 2026-04-10T09:50:41+05:30
-lastmod: 2026-05-25T11:36:10+05:30
-
 seoTitle: Game Design – Complete Theory & Practice Guide Beginner to Super Advanced
 description: "Comprehensive game design reference covering MDA framework, game loops, player psychology, level design, mechanics, balancing, economy, narrative, UI/UX, monetization, genre patterns, and advanced systemic design."
 keywords: "game design, game design theory, MDA framework, game mechanics, level design, player psychology, game economy, narrative design, game balancing, game loops, game UI UX, monetization, indie game design, AAA game design, game design patterns, systemic design, emergent gameplay, VR-Rathod, Code-Note, code note vr, vr book"

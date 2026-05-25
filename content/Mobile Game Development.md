@@ -1,7 +1,4 @@
 ---
-date: 2026-05-04T15:11:16+05:30
-lastmod: 2026-05-05T18:35:11+05:30
-
 seoTitle: Mobile Game Development – Complete iOS & Android Guide
 description: "Comprehensive mobile game development reference covering touch controls, mobile optimization, iOS and Android platform features, monetization, publishing, and performance profiling."
 keywords: "mobile game development, iOS game development, Android game development, touch controls, mobile optimization, mobile monetization, Unity mobile, Godot mobile, game publishing, app store, google play, VR-Rathod, Code-Note, code note vr, vr book"

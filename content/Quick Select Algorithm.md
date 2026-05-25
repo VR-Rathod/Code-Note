@@ -1,7 +1,4 @@
 ---
-date: 2025-03-26T12:40:55+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Quick Select Algorithm – Kth Smallest Element in O(n) Average
 description: "Quick select finds the kth smallest element in O(n) average time using partitioning. Covers Lomuto and Hoare partition, median-of-medians, and worst-case."
 keywords: "quick select, kth smallest, order statistics, partitioning, O(n) average, median of medians, time complexity, space complexity, selection algorithm, array"

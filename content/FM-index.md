@@ -1,7 +1,4 @@
 ---
-date: 2025-03-26T12:40:55+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: FM-Index Explained – Compressed Full-Text Search Index
 description: "FM-index enables compressed full-text search using Burrows-Wheeler Transform and suffix arrays. Covers backward search, LF-mapping, count and locate operations."
 keywords: "FM-index, full-text search, Burrows-Wheeler transform, suffix array, backward search, LF-mapping, compressed index, time complexity, space complexity, bioinformatics"

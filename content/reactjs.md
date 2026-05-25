@@ -1,7 +1,4 @@
 ---
-date: 2026-03-24T17:12:17+05:30
-lastmod: 2026-04-03T17:55:18+05:30
-
 seoTitle: React.js Reference – Components, Hooks, and State Management Guide
 description: "React reference covering functional components, hooks, context, Redux, React Router, performance optimization, React 18 features, and testing with React."
 keywords: "reactjs, React, React.js, components, hooks, useState, useEffect, context, Redux, React Router, React 18, React Testing Library"

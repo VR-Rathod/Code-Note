@@ -1,7 +1,4 @@
 ---
-date: 2024-12-04T11:51:44+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Squarespace Reference – Website Builder and Design Guide
 description: "Squarespace reference covering templates, blocks, CSS customization, e-commerce setup, SEO settings, domains, and Squarespace 7.1 features for website building."
 keywords: "Squarespace, website builder, templates, CSS customization, e-commerce, SEO, domains, Squarespace 7.1, web design, no-code, online store, blog platform"

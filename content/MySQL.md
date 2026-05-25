@@ -1,7 +1,4 @@
 ---
-date: 2024-12-04T11:51:44+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: MySQL Reference – SQL Queries, Indexes, and Administration Guide
 description: "MySQL reference covering SQL syntax, joins, indexes, stored procedures, triggers, replication, InnoDB, MySQL 8 features, and performance optimization."
 keywords: "MySQL, SQL, joins, indexes, stored procedures, triggers, replication, InnoDB, MySQL 8, database administration, RDBMS, query optimization"

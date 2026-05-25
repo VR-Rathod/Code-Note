@@ -1,7 +1,4 @@
 ---
-date: 2025-03-26T12:40:55+05:30
-lastmod: 2026-05-25T12:05:10+05:30
-
 seoTitle: Bloom Filter Complete Guide – Probabilistic Data Structure for Set Membership
 description: "A comprehensive guide on Bloom Filters. Learn the mathematics behind false positive rates, hash function selection, and Python/C++ implementations."
 keywords: "bloom filter, probabilistic data structure, set membership, false positive, hash function, FNV-1a, space efficiency, database filtering, VR-Rathod, Code-Note, code note vr, vr book"

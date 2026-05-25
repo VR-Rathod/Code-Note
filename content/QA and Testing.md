@@ -1,7 +1,4 @@
 ---
-date: 2026-04-04T13:53:48+05:30
-lastmod: 2026-05-18T10:12:55+05:30
-
 seoTitle: QA & Software Testing Reference – Beginner to Advanced Guide
 description: "Complete QA and software testing reference covering testing types, methodologies (TDD, BDD, Agile QA), tools (Selenium, Cypress, Playwright, Postman, JMeter), bug lifecycle, test planning, and automation frameworks."
 keywords: "QA testing, software testing, test automation, Selenium, Cypress, Playwright, Postman, JMeter, TDD, BDD, unit testing, integration testing, E2E testing, performance testing, bug lifecycle, test plan, STLC, SDLC, QA engineer, quality assurance, VR-Rathod, Code-Note"

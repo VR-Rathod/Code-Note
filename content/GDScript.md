@@ -1,7 +1,4 @@
 ---
-date: 2026-03-31T18:59:53+05:30
-lastmod: 2026-03-31T18:59:53+05:30
-
 seoTitle: GDScript Reference – Complete In-Depth GDScript Language Guide
 description: "Complete GDScript language reference for Godot 4 — variables, types, functions, OOP, signals, coroutines, lambdas, annotations, pattern matching, and advanced scripting patterns."
 keywords: "GDScript, GDScript tutorial, GDScript reference, Godot scripting, GDScript OOP, GDScript signals, GDScript coroutines, GDScript lambdas, GDScript annotations, Godot 4 scripting, gdscript guide, gdscript cheatsheet, VR-Rathod, Code-Note, code note vr, vr book"

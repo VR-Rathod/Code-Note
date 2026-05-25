@@ -1,7 +1,4 @@
 ---
-date: 2024-11-01T16:21:17-07:00
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Sumatra PDF Reference – Lightweight PDF Viewer Guide and Tips
 description: "Sumatra PDF is a fast, lightweight PDF viewer for Windows. Covers keyboard shortcuts, settings, supported formats (PDF, EPUB, MOBI, CBZ), and customization."
 keywords: "Sumatra PDF, PDF viewer, lightweight, keyboard shortcuts, EPUB, MOBI, CBZ, Windows PDF reader, fast PDF viewer, free PDF reader, document viewer"

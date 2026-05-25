@@ -1,7 +1,4 @@
 ---
-date: 2025-05-15T11:00:41+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Composition in OOP – Favor Composition Over Inheritance Guide
 description: "Composition builds complex objects by combining simpler ones. Covers has-a relationship, composition vs inheritance, dependency injection, and design."
 keywords: "composition, OOP, object-oriented programming, has-a relationship, composition over inheritance, dependency injection, design patterns, software design, flexibility"

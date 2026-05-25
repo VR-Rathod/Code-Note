@@ -1,7 +1,4 @@
 ---
-date: 2025-03-26T12:40:55+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Selection Sort Algorithm – Implementation and Complexity Guide
 description: "Selection sort finds the minimum element and places it at the front repeatedly. Covers O(n^2) time, O(1) space, unstable sort behavior, and comparison with."
 keywords: "selection sort, sorting algorithm, O(n^2), in-place sort, unstable sort, minimum selection, time complexity, space complexity, comparison sort, algorithm implementation"

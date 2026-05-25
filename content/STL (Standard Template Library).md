@@ -1,7 +1,4 @@
 ---
-date: 2026-04-08T11:19:07+05:30
-lastmod: 2026-05-18T10:12:55+05:30
-
 seoTitle: STL – C++ Standard Template Library Complete Reference
 description: "Comprehensive STL reference covering containers (vector, map, set, deque, list), iterators, algorithms, function objects, and C++11/17/20 additions."
 keywords: "STL, Standard Template Library, C++ containers, vector, map, set, unordered_map, deque, list, iterators, algorithms, C++ STL reference, modern C++, VR-Rathod, Code-Note, code note vr, vr book"

@@ -1,7 +1,4 @@
 ---
-date: 2026-05-18T10:12:55+05:30
-lastmod: 2026-05-18T10:12:55+05:30
-
 seoTitle: Kestra – Open Source Declarative Workflow Orchestration Platform
 description: "Comprehensive notes on Kestra — the open-source, event-driven, language-agnostic workflow orchestration platform for data pipelines, infrastructure automation, and AI workflows."
 keywords: "kestra, workflow orchestration, declarative orchestration, YAML workflows, data pipeline, event-driven workflow, open source orchestration, kestra.io, ETL orchestration, infrastructure automation, AI workflow, kestra vs airflow, VR-Rathod, Code-Note, code note vr, vr book"

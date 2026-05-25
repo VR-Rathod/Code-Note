@@ -1,7 +1,4 @@
 ---
-date: 2026-04-13T17:36:08+05:30
-lastmod: 2026-05-18T10:12:55+05:30
-
 seoTitle: WebGPU Complete Guide – Modern GPU APIs for the Web
 description: "The definitive WebGPU reference. Covers GPUDevice, pipelines, WGSL shaders, compute, storage buffers, and native desktop usage via Dawn and wgpu from beginner to expert."
 keywords: "webgpu, wgsl, webgpu tutorial, gpudevice, compute shader web, webgpu vs webgl, dawn, wgpu, vr-rathod"

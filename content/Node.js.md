@@ -1,7 +1,4 @@
 ---
-date: 2026-03-26T15:35:09+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Node.js Complete Reference – JavaScript Runtime Guide
 description: "Comprehensive Node.js reference covering modules, async/await, streams, HTTP, Express, file system, events, buffers, clusters, and best practices."
 keywords: "nodejs, node.js, javascript runtime, npm, async, event loop, streams, http, express, fs, buffers, cluster, CommonJS, ESM, backend, server, nodejs notes, nodejs cheatsheet, nodejs guide, backend javascript, VR-Rathod, Code-Note, code note vr, vr book"

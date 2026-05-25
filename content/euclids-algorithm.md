@@ -1,7 +1,4 @@
 ---
-date: 2026-03-24T17:12:17+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Euclid's Algorithm – GCD Computation and Extended Version
 description: "Euclid's algorithm computes the greatest common divisor efficiently using modular arithmetic. Covers extended Euclidean algorithm, Bezout's identity, and LCM."
 keywords: "Euclid algorithm, GCD, greatest common divisor, extended Euclidean, Bezout identity, LCM, modular arithmetic, time complexity, space complexity, number theory"

@@ -1,7 +1,3 @@
----
-date: 2026-04-13T17:36:08+05:30
-lastmod: 2026-04-15T18:03:15+05:30
----
 - ---
   seoTitle: Apple Metal API Complete Guide – Zero to Ray Tracing
   description: "The definitive Metal API reference. Covers MTLDevice, MSL shaders, Argument Buffers, Apple Silicon memory, Metal Performance Shaders, and Metal Ray Tracing from beginner to advanced."

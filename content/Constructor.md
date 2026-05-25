@@ -1,7 +1,4 @@
 ---
-date: 2025-05-15T11:00:41+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Constructors in OOP – Initialization, Overloading, and Patterns
 description: "Constructors initialize objects when they are created. Covers default constructors, parameterized constructors, copy constructors, constructor overloading, and."
 keywords: "constructor, OOP, object-oriented programming, default constructor, parameterized constructor, copy constructor, constructor overloading, constructor chaining, initialization"

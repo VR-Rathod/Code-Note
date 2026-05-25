@@ -1,7 +1,4 @@
 ---
-date: 2026-04-08T11:19:07+05:30
-lastmod: 2026-05-18T10:12:55+05:30
-
 seoTitle: Boost C++ Libraries – Complete Reference Guide
 description: "Comprehensive Boost C++ reference covering smart pointers, filesystem, regex, threading, Asio networking, serialization, and commonly used Boost components."
 keywords: "Boost, Boost C++, Boost libraries, boost::asio, boost::filesystem, boost::regex, boost::thread, boost::serialization, C++ libraries, modern C++, VR-Rathod, Code-Note, code note vr, vr book"

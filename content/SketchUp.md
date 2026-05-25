@@ -1,7 +1,4 @@
 ---
-date: 2024-11-01T16:21:17-07:00
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: SketchUp Reference – 3D Modeling for Architecture and Design Guide
 description: "SketchUp reference covering push/pull modeling, components, groups, materials, scenes, LayOut, extensions, and architectural visualization workflows."
 keywords: "SketchUp, 3D modeling, architecture, push/pull, components, groups, materials, scenes, LayOut, extensions, architectural visualization, interior design"

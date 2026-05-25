@@ -1,7 +1,4 @@
 ---
-date: 2026-05-22T17:59:04+05:30
-lastmod: 2026-05-22T17:59:04+05:30
-
 seoTitle: Stacks Data Structure - Premium DSA Guide
 description: "Master the Stack data structure. Learn the LIFO principle, push/pop operations, and how to implement stacks using Arrays and Linked Lists in multiple languages."
 keywords: "Stack, LIFO, Data Structures, DSA, Push, Pop, Monotonic Stack, Array Stack, Linked List Stack, Depth First Search"

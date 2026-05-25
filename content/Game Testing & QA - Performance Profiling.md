@@ -1,7 +1,4 @@
 ---
-date: 2026-05-12T12:23:01+05:30
-lastmod: 2026-05-18T10:12:55+05:30
-
 seoTitle: Performance Profiling for Games – Game Testing & QA Guide
 description: "Complete game performance profiling reference: GPU/CPU frame analysis, memory profiling, frame pacing, PIX, RenderDoc, Unity Profiler, Unreal Insights, platform-specific tools, and optimization workflow."
 keywords: "game performance profiling, GPU profiling, CPU profiling, memory profiling, frame pacing, PIX, RenderDoc, Unity Profiler, Unreal Insights, game optimization, VR-Rathod, Code-Note"

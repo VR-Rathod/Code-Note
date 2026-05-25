@@ -1,7 +1,4 @@
 ---
-date: 2026-03-31T12:26:35+05:30
-lastmod: 2026-05-25T11:36:10+05:30
-
 seoTitle: Fenwick Tree (Binary Indexed Tree) – Prefix Sum Data Structure
 description: "Master Fenwick Trees (Binary Indexed Trees) in DSA. Learn dynamic prefix sums, point updates using bitwise LSB operations, and O(N) tree building."
 keywords: "Fenwick Tree, Binary Indexed Tree, BIT, Prefix Sum, LSB, Point Update, Range Query, Data Structures, DSA, BIT C++, BIT Python"

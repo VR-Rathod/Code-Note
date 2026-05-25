@@ -1,7 +1,4 @@
 ---
-date: 2026-03-24T17:12:17+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Machine Learning Reference – Algorithms, Models, and Concepts
 description: "Machine learning reference covering supervised, unsupervised, and reinforcement learning, neural networks, model evaluation, feature engineering, and popular."
 keywords: "machine learning, supervised learning, unsupervised learning, reinforcement learning, neural networks, model evaluation, feature engineering, Scikit-learn, PyTorch, TensorFlow"

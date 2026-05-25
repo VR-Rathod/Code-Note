@@ -1,7 +1,4 @@
 ---
-date: 2024-10-31T19:09:35-07:00
-lastmod: 2026-04-03T11:02:05+05:30
-
 seoTitle: Cybersecurity Complete Guide – Concepts, Architecture & Defense
 description: "Comprehensive cybersecurity reference covering networking, cryptography, threat models, attack types, defense strategies, ethical hacking concepts, tools, and security architecture."
 keywords: "cybersecurity, ethical hacking, network security, cryptography, penetration testing concepts, OWASP, threat modeling, security architecture, information security, cyber defense, security tools, VR-Rathod, Code-Note, code note vr, vr book"

@@ -1,7 +1,4 @@
 ---
-date: 2026-03-27T14:33:01+05:30
-lastmod: 2026-05-18T10:12:55+05:30
-
 seoTitle: System Design – Complete Guide to Scalable Architecture, Distributed Systems & Interview Prep
 description: "Master system design with this comprehensive guide: scalability, load balancing, caching, database sharding, microservices, CAP theorem, message queues, rate limiting, API design, real-world case studies, and back-of-envelope estimation for software engineers and FAANG interview preparation."
 keywords: "system design, scalability, load balancing, caching, microservices, CAP theorem, distributed systems, database sharding, API design, high availability, fault tolerance, system design interview, Kafka, Redis, CDN, consistent hashing, rate limiting, URL shortener, chat system, VR-Rathod, Code-Note, code note vr"

@@ -1,7 +1,4 @@
 ---
-date: 2026-04-03T15:14:37+05:30
-lastmod: 2026-04-03T15:14:37+05:30
-
 seoTitle: CPU Ray Tracing – Building a Software Ray Tracer from Scratch
 description: "CPU ray tracing implementation covering ray-sphere intersection, shading, reflections, BVH, and building a complete software ray tracer in C++ or Python."
 keywords: "CPU ray tracing, software ray tracer, ray-sphere intersection, shading, reflections, BVH, C++ ray tracer, path tracing, ray tracing, Monte Carlo, rendering"

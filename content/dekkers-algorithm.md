@@ -1,7 +1,4 @@
 ---
-date: 2026-03-24T17:12:17+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Dekker's Algorithm – Mutual Exclusion in Concurrent Systems
 description: "Dekker's algorithm is the first known correct solution to the mutual exclusion problem. Learn turn variable, flag arrays, busy waiting, and concurrency."
 keywords: "Dekker algorithm, mutual exclusion, concurrency, critical section, busy waiting, flag variable, turn variable, time complexity, concurrent programming, synchronization"

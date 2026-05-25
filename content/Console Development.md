@@ -1,7 +1,4 @@
 ---
-date: 2026-05-12T11:21:31+05:30
-lastmod: 2026-05-18T10:12:55+05:30
-
 seoTitle: Console Development – PlayStation, Xbox, Nintendo Switch SDK & Certification Guide
 description: "Complete console game development reference covering PlayStation 5 SDK, Xbox GDK, Nintendo Switch SDK, console certification (TRC/TCR/LOT), performance optimization, and cross-platform strategies."
 keywords: "console development, PlayStation SDK, PS5 development, Xbox GDK, Nintendo Switch SDK, console certification, TRC, TCR, LOT checks, game development, VR-Rathod, Code-Note"

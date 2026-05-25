@@ -1,7 +1,4 @@
 ---
-date: 2026-03-24T17:12:17+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Ball Tree Construction – Five Algorithms Compared and Explained
 description: "Ball trees partition metric spaces for fast nearest neighbor search. Covers five construction algorithms including KD-tree comparison, split strategies, and."
 keywords: "five ball tree, nearest neighbor search, metric space, KD-tree, tree construction, split strategy, time complexity, space complexity, machine learning, spatial indexing"

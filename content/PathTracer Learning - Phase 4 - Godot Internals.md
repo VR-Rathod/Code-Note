@@ -1,7 +1,4 @@
 ---
-date: 2026-04-03T15:14:37+05:30
-lastmod: 2026-04-03T15:14:37+05:30
-
 seoTitle: Godot Rendering Internals – Path Tracing and Vulkan Integration
 description: "Godot engine rendering internals for path tracing integration. Covers Godot's Vulkan renderer, RenderingDevice, GI, and custom render pipeline implementation."
 keywords: "Godot rendering, Vulkan, path tracing, ray tracing, RenderingDevice, GI, custom render pipeline, Godot 4, GPU rendering, Godot internals, graphics programming"

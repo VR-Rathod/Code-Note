@@ -1,7 +1,4 @@
 ---
-date: 2024-11-01T16:21:17-07:00
-lastmod: 2026-05-22T09:58:29+05:30
-
 seoTitle: Unity Engine Reference – Complete C# Scripting and Game Dev Guide
 description: "Complete Unity reference covering GameObjects, MonoBehaviour, C# scripting, physics, animation, UI, audio, shaders, networking, and Unity 6 features for 2D/3D game development."
 keywords: "Unity, Unity engine, Unity C#, MonoBehaviour, GameObjects, components, physics, animation, UI, shaders, Unity 6, 2D game, 3D game, unity notes, unity guide, unity cheatsheet, unity reference, unity tutorial, VR-Rathod, Code-Note, code note vr, vr book"

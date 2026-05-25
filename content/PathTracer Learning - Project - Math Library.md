@@ -1,7 +1,4 @@
 ---
-date: 2026-04-03T15:14:37+05:30
-lastmod: 2026-04-03T15:14:37+05:30
-
 seoTitle: Path Tracer Math Library – Vector, Matrix, and Ray Math Reference
 description: "Math library for path tracing covering Vec3, Mat4, Ray, Transform, quaternion operations, and SIMD optimization for high-performance rendering."
 keywords: "path tracer math library, Vec3, Mat4, Ray, Transform, quaternion, SIMD, path tracing, ray tracing, GPU rendering, Vulkan, linear algebra"

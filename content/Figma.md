@@ -1,7 +1,4 @@
 ---
-date: 2024-11-01T16:21:17-07:00
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Figma Reference – UI Design, Prototyping, and Collaboration Guide
 description: "Figma reference covering frames, components, auto layout, variables, prototyping, design systems, plugins, and collaborative UI/UX design workflows."
 keywords: "Figma, UI design, UX design, prototyping, components, auto layout, variables, design systems, plugins, collaboration, wireframing, Figma 2024"

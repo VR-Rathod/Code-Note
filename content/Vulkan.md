@@ -1,7 +1,4 @@
 ---
-date: 2026-04-13T17:36:08+05:30
-lastmod: 2026-04-17T17:08:18+05:30
-
 seoTitle: Vulkan API Complete Guide – Zero to Ray Tracing
 description: "The most complete Vulkan reference note. Covers every concept from Instance creation to Ray Tracing — with full C++ code, diagrams, and explanations for every stage."
 keywords: "vulkan api, vulkan tutorial, vulkan c++, vkbuffer, vkimage, vkpipeline, descriptor sets, push constants, synchronization, compute shaders, bindless, ray tracing, vma, vr-rathod"

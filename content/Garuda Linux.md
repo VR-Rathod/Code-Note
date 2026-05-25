@@ -1,7 +1,4 @@
 ---
-date: 2026-04-06T11:04:22+05:30
-lastmod: 2026-05-22T09:58:29+05:30
-
 seoTitle: Garuda Linux Complete Guide – Gaming, Performance & Arch-Based
 description: "Comprehensive Garuda Linux reference covering installation, Garuda Gamer tools, Btrfs snapshots, ZRAM, gaming optimizations, GameMode, MangoHud, Proton, Chaotic-AUR, KDE Dr460nized, and system tuning."
 keywords: "Garuda Linux, garuda linux guide, garuda gaming, garuda linux tutorial, arch linux gaming, garuda gamer, btrfs snapshots, chaotic aur, gamemode, mangohud, proton, wine, garuda dr460nized, garuda linux notes, VR-Rathod, Code-Note, code note vr, vr book"

@@ -1,7 +1,4 @@
 ---
-date: 2025-05-15T11:00:41+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Destructors in OOP – Memory Cleanup and Resource Management
 description: "Destructors clean up resources when objects are destroyed. Covers destructor syntax, RAII, finalizers, garbage collection, and language differences in C++,."
 keywords: "destructors, OOP, memory management, RAII, finalizers, garbage collection, C++ destructor, Python __del__, resource cleanup, object lifecycle, object-oriented programming"

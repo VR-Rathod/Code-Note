@@ -1,7 +1,4 @@
 ---
-date: 2024-11-01T16:21:17-07:00
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: GIMP Reference – Open Source Image Editing and Retouching Guide
 description: "GIMP reference covering layers, selections, filters, color correction, paths, scripts, and photo retouching workflows as a free Photoshop alternative."
 keywords: "GIMP, image editing, photo retouching, layers, selections, filters, color correction, paths, scripts, free Photoshop alternative, open source, image manipulation"

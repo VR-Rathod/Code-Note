@@ -1,7 +1,4 @@
 ---
-date: 2026-04-06T11:04:22+05:30
-lastmod: 2026-04-17T17:08:18+05:30
-
 seoTitle: Debian Linux Complete Guide – APT, Security, Server & Administration
 description: "Comprehensive Debian Linux reference covering installation, APT package management, systemd, networking, security hardening, server setup, and release branches."
 keywords: "Debian Linux, debian guide, debian commands, debian apt, debian tutorial, debian administration, debian server, debian stable, debian testing, debian sid, debian security, AppArmor, debian notes, VR-Rathod, Code-Note, code note vr, vr book"

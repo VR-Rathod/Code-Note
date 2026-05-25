@@ -1,7 +1,4 @@
 ---
-date: 2024-11-01T16:21:17-07:00
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: PyCharm Reference – Python IDE Tips, Shortcuts, and Features
 description: "PyCharm reference covering debugging, refactoring, virtual environments, database tools, Django support, testing integration, and productivity shortcuts."
 keywords: "PyCharm, Python IDE, debugging, refactoring, virtual environments, database tools, Django support, testing, JetBrains, productivity, Python development, shortcuts"

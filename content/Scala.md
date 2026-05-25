@@ -1,7 +1,4 @@
 ---
-date: 2024-12-02T09:47:59+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Scala Programming Language – Functional and OOP Syntax Reference
 description: "Scala reference covering case classes, pattern matching, implicits, futures, Akka, Spark integration, and functional programming on the JVM."
 keywords: "Scala programming, Scala language, case classes, pattern matching, implicits, futures, Akka, Apache Spark, functional programming, JVM, syntax reference, cheat sheet"

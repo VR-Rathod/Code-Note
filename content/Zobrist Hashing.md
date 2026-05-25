@@ -1,7 +1,4 @@
 ---
-date: 2025-03-26T12:40:55+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Zobrist Hashing – Incremental Hash for Board Game States
 description: "Zobrist hashing efficiently hashes board game states using XOR of random bitstrings. Covers incremental update, collision probability, transposition tables,."
 keywords: "Zobrist hashing, board game hashing, XOR hash, transposition table, incremental hash, chess engine, collision probability, time complexity, space complexity, game AI"

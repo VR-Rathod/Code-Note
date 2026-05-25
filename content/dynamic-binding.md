@@ -1,7 +1,4 @@
 ---
-date: 2026-03-24T17:12:17+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Dynamic Binding in OOP – Runtime Polymorphism Explained Guide
 description: "Dynamic binding resolves method calls at runtime enabling polymorphism. Covers virtual functions, vtable, late binding, override, and runtime dispatch."
 keywords: "dynamic binding, OOP, runtime polymorphism, virtual functions, vtable, late binding, override, method dispatch, object-oriented programming, C++ virtual, Java polymorphism"

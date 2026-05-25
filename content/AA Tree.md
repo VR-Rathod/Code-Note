@@ -1,7 +1,4 @@
 ---
-date: 2025-03-26T12:40:55+05:30
-lastmod: 2026-05-25T11:36:10+05:30
-
 seoTitle: AA Tree Explained – Self-Balancing BST with C++ and Python
 description: "Learn AA Trees, a simplified Red-Black Tree variant using levels instead of colors. Detailed skew, split, insert, delete operations in C++ and Python."
 keywords: "AA tree, balanced BST, self-balancing tree, skew, split, C++, Python, data structures, algorithms, binary search tree, tree rotation, VR-Rathod, Code-Note, code note vr, vr book"
@@ -81,7 +78,8 @@ keywords: "AA tree, balanced BST, self-balancing tree, skew, split, C++, Python,
 - # Implementation
   collapsed:: true
 	- > [!note] AA Tree Implementation
-	  > Below are complete, production-ready implementations in Python and C++ for AA Trees, including search, skew, split, insert, and delete rebalancing operations.
+	  > Below are complete implementations for AA Trees, including search, skew, split, and insert operations.
+	  > Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
 	-
 	- :::code-tabs
 	  
@@ -218,7 +216,7 @@ keywords: "AA tree, balanced BST, self-balancing tree, skew, split, C++, Python,
 	      print("Search 15 after removal:", tree.search(15))  # Output: False
 	  ```
 	  
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <algorithm>
@@ -368,10 +366,216 @@ keywords: "AA tree, balanced BST, self-balancing tree, skew, split, C++, Python,
 	  }
 	  ```
 	  
+	  ```javascript
+	  class AANode {
+	      constructor(key) {
+	          this.key = key;
+	          this.level = 1;
+	          this.left = null;
+	          this.right = null;
+	      }
+	  }
+	  
+	  class AATree {
+	      constructor() {
+	          this.root = null;
+	      }
+	  
+	      skew(node) {
+	          if (!node || !node.left) return node;
+	          if (node.left.level === node.level) {
+	              let leftChild = node.left;
+	              node.left = leftChild.right;
+	              leftChild.right = node;
+	              return leftChild;
+	          }
+	          return node;
+	      }
+	  
+	      split(node) {
+	          if (!node || !node.right || !node.right.right) return node;
+	          if (node.right.right.level === node.level) {
+	              let rightChild = node.right;
+	              node.right = rightChild.left;
+	              rightChild.left = node;
+	              rightChild.level++;
+	              return rightChild;
+	          }
+	          return node;
+	      }
+	  
+	      insert(key) {
+	          this.root = this._insert(this.root, key);
+	      }
+	  
+	      _insert(node, key) {
+	          if (!node) return new AANode(key);
+	          if (key < node.key) {
+	              node.left = this._insert(node.left, key);
+	          } else if (key > node.key) {
+	              node.right = this._insert(node.right, key);
+	          } else {
+	              return node;
+	          }
+	          node = this.skew(node);
+	          node = this.split(node);
+	          return node;
+	      }
+	  
+	      search(key) {
+	          let curr = this.root;
+	          while (curr) {
+	              if (key === curr.key) return true;
+	              else if (key < curr.key) curr = curr.left;
+	              else curr = curr.right;
+	          }
+	          return false;
+	      }
+	  }
+	  ```
+	  
+	  ```java
+	  class AANode {
+	      int key, level;
+	      AANode left, right;
+	      public AANode(int key) {
+	          this.key = key;
+	          this.level = 1;
+	      }
+	  }
+	  
+	  public class AATree {
+	      private AANode root;
+	  
+	      private AANode skew(AANode node) {
+	          if (node == null || node.left == null) return node;
+	          if (node.left.level == node.level) {
+	              AANode leftChild = node.left;
+	              node.left = leftChild.right;
+	              leftChild.right = node;
+	              return leftChild;
+	          }
+	          return node;
+	      }
+	  
+	      private AANode split(AANode node) {
+	          if (node == null || node.right == null || node.right.right == null) return node;
+	          if (node.right.right.level == node.level) {
+	              AANode rightChild = node.right;
+	              node.right = rightChild.left;
+	              rightChild.left = node;
+	              rightChild.level++;
+	              return rightChild;
+	          }
+	          return node;
+	      }
+	  
+	      public void insert(int key) {
+	          root = insertRec(root, key);
+	      }
+	  
+	      private AANode insertRec(AANode node, int key) {
+	          if (node == null) return new AANode(key);
+	          if (key < node.key) node.left = insertRec(node.left, key);
+	          else if (key > node.key) node.right = insertRec(node.right, key);
+	          else return node;
+	          
+	          node = skew(node);
+	          node = split(node);
+	          return node;
+	      }
+	  
+	      public boolean search(int key) {
+	          AANode curr = root;
+	          while (curr != null) {
+	              if (key == curr.key) return true;
+	              else if (key < curr.key) curr = curr.left;
+	              else curr = curr.right;
+	          }
+	          return false;
+	      }
+	  }
+	  ```
+	  
+	  ```c
+	  #include <stdio.h>
+	  #include <stdlib.h>
+	  
+	  typedef struct AANode {
+	      int key;
+	      int level;
+	      struct AANode *left, *right;
+	  } AANode;
+	  
+	  AANode* createNode(int key) {
+	      AANode* node = (AANode*)malloc(sizeof(AANode));
+	      node->key = key;
+	      node->level = 1;
+	      node->left = node->right = NULL;
+	      return node;
+	  }
+	  
+	  AANode* skew(AANode* node) {
+	      if (node == NULL || node->left == NULL) return node;
+	      if (node->left->level == node->level) {
+	          AANode* leftChild = node->left;
+	          node->left = leftChild->right;
+	          leftChild->right = node;
+	          return leftChild;
+	      }
+	      return node;
+	  }
+	  
+	  AANode* split(AANode* node) {
+	      if (node == NULL || node->right == NULL || node->right->right == NULL) return node;
+	      if (node->right->right->level == node->level) {
+	          AANode* rightChild = node->right;
+	          node->right = rightChild->left;
+	          rightChild->left = node;
+	          rightChild->level++;
+	          return rightChild;
+	      }
+	      return node;
+	  }
+	  
+	  AANode* insert(AANode* node, int key) {
+	      if (node == NULL) return createNode(key);
+	      if (key < node->key) node->left = insert(node->left, key);
+	      else if (key > node->key) node->right = insert(node->right, key);
+	      else return node;
+	      
+	      node = skew(node);
+	      node = split(node);
+	      return node;
+	  }
+	  
+	  int search(AANode* root, int key) {
+	      AANode* curr = root;
+	      while (curr != NULL) {
+	          if (key == curr->key) return 1;
+	          else if (key < curr->key) curr = curr->left;
+	          else curr = curr->right;
+	      }
+	      return 0;
+	  }
+	  ```
+	  
 	  :::
 -
 - # When to Use
   collapsed:: true
+	- ```mermaid
+	  flowchart TD
+	      Q{"Need a self-balancing\nbinary search tree?"}
+	      Q -- No --> S1{"Static data?"}
+	      S1 -- Yes --> R1["✅ Use standard BST\nor sorted array"]
+	      Q -- Yes --> S2{"Are you implementing\nit from scratch?"}
+	      S2 -- No --> R2["✅ Use standard library\nRed-Black Tree (std::map, TreeMap)"]
+	      S2 -- Yes --> S3{"Need simpler code\nthan Red-Black Tree?"}
+	      S3 -- Yes --> R3["✅ Use AA Tree"]
+	      S3 -- No --> R4["✅ Use AVL or Red-Black"]
+	  ```
+	-
 	- ## ✅ Use AA Tree When:
 		- You want to implement a self-balancing BST from scratch and want to avoid the complex edge-cases of Red-Black Trees.
 		- Standard libraries aren't available, and coding simplicity is paramount.
@@ -392,3 +596,8 @@ keywords: "AA tree, balanced BST, self-balancing tree, skew, split, C++, Python,
 	- They eliminate left-leaning horizontal links by only allowing red links to lean right.
 	- Two operations, **skew** (right rotate) and **split** (left rotate and level up), handle all insertion balance needs.
 	- The worst-case height is $O(\log n)$, guaranteeing lookup, insert, and delete in $O(\log n)$ time.
+-
+- # More Learn
+	- ## GitHub & Webs
+		- [TheAlgorithms – Binary Tree](https://github.com/TheAlgorithms/Python/tree/master/data_structures/binary_tree)
+		- [Wikipedia - AA tree](https://en.wikipedia.org/wiki/AA_tree)

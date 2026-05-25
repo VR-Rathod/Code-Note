@@ -1,7 +1,4 @@
 ---
-date: 2024-12-04T11:51:44+05:30
-lastmod: 2026-05-22T17:07:52+05:30
-
 seoTitle: MongoDB Complete Guide – NoSQL Database, CRUD Operations, Aggregation & Indexing
 description: "Comprehensive MongoDB reference covering document model, CRUD operations, aggregation framework, indexing, replication, sharding, transactions, and performance optimization."
 keywords: "MongoDB, NoSQL, document database, CRUD operations, aggregation, indexing, replication, sharding, MongoDB Atlas, Mongoose, database design, VR-Rathod, Code-Note, code note vr, vr book"

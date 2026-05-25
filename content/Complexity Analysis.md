@@ -1,7 +1,4 @@
 ---
-date: 2026-05-21T13:09:49+05:30
-lastmod: 2026-05-21T13:09:49+05:30
-
 seoTitle: Complexity Analysis & Big O Guide – DSA Mathematics
 description: "Complete reference for time and space complexity, Big O notation, and algorithm mathematics. Learn Master Theorem, logarithmic growth, and amortized complexity."
 keywords: "complexity analysis, time complexity, space complexity, big o notation, master theorem, log n math, recurrence relations, asymptotic analysis, algorithm math, VR-Rathod, Code-Note, code note vr, vr book"

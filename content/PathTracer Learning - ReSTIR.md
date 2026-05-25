@@ -1,7 +1,4 @@
 ---
-date: 2026-04-03T15:14:37+05:30
-lastmod: 2026-04-03T15:14:37+05:30
-
 seoTitle: ReSTIR – Reservoir-Based Spatiotemporal Importance Resampling Guide
 description: "ReSTIR improves direct lighting in path tracers via reservoir-based resampling. Covers WRS, temporal reuse, spatial reuse, ReSTIR GI, and Vulkan implementation."
 keywords: "ReSTIR, reservoir sampling, spatiotemporal resampling, path tracing, ray tracing, direct lighting, WRS, temporal reuse, spatial reuse, GPU rendering, Vulkan, BVH"

@@ -1,7 +1,4 @@
 ---
-date: 2024-11-01T16:21:17-07:00
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Notepad++ Reference – Text Editor Tips, Plugins, and Shortcuts
 description: "Notepad++ reference covering syntax highlighting, plugins, macros, regex search, column editing, compare plugin, and productivity tips for developers."
 keywords: "Notepad++, text editor, syntax highlighting, plugins, macros, regex search, column editing, compare plugin, developer tools, Windows text editor, code editor"

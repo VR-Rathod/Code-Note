@@ -1,7 +1,4 @@
 ---
-date: 2026-03-24T17:12:17+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Static Methods and Class Methods – OOP Reference and Examples
 description: "Static and class methods belong to the class rather than instances. Covers @staticmethod, @classmethod, factory methods, utility functions, and language."
 keywords: "static methods, class methods, OOP, @staticmethod, @classmethod, factory methods, utility functions, Python static, Java static, C++ static, object-oriented programming"

@@ -1,7 +1,4 @@
 ---
-date: 2025-03-26T12:40:55+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Ackermann Function Explained – Recursion, Complexity, and C++ Code
 description: "The Ackermann function is a total computable function that is not primitive recursive. Explore its definition, recursion depth, growth rate, and C++ implementation."
 keywords: "Ackermann function, recursion, primitive recursive, computability theory, C++, recursive function, time complexity, theoretical computer science, call stack"

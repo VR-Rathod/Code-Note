@@ -1,7 +1,4 @@
 ---
-date: 2024-10-30T16:21:44-07:00
-lastmod: 2026-04-06T17:35:35+05:30
-
 seoTitle: Python Programming Reference – Modern Python Syntax and Features
 description: "Comprehensive Python reference covering syntax, OOP, functional programming, decorators, generators, async/await, type hints, comprehensions, and Python 3.10+ features."
 keywords: "python, Python programming, Python reference, OOP, decorators, generators, async await, type hints, list comprehensions, Python 3, python cheatsheet, python guide, python tutorial, VR-Rathod, Code-Note, code note vr, vr book"

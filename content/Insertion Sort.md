@@ -1,7 +1,4 @@
 ---
-date: 2025-03-26T12:40:55+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Insertion Sort Algorithm – Implementation and Complexity Guide
 description: "Insertion sort builds a sorted array one element at a time by inserting each into its correct position."
 keywords: "insertion sort, sorting algorithm, adaptive sort, O(n^2), stable sort, in-place sort, time complexity, space complexity, comparison sort, small arrays"

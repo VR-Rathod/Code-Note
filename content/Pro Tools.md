@@ -1,7 +1,4 @@
 ---
-date: 2024-11-01T16:21:17-07:00
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Pro Tools Reference – Professional Audio Recording and Mixing Guide
 description: "Pro Tools reference covering sessions, tracks, editing, mixing, plugins, MIDI, Avid hardware integration, and professional audio post-production workflows."
 keywords: "Pro Tools, professional audio, recording, mixing, sessions, tracks, editing, plugins, MIDI, Avid, audio post-production, music production"

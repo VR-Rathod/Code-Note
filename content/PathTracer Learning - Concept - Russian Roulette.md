@@ -1,7 +1,4 @@
 ---
-date: 2026-04-03T15:14:37+05:30
-lastmod: 2026-04-03T15:14:37+05:30
-
 seoTitle: Russian Roulette in Path Tracing – Path Termination Technique
 description: "Russian roulette terminates low-contribution paths probabilistically without bias. Covers survival probability, throughput compensation, and."
 keywords: "Russian roulette, path tracing, ray tracing, path termination, survival probability, throughput, unbiased rendering, GPU rendering, Vulkan, Monte Carlo, variance"

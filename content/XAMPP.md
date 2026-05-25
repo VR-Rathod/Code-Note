@@ -1,7 +1,4 @@
 ---
-date: 2024-11-01T16:21:17-07:00
-lastmod: 2026-05-22T09:58:29+05:30
-
 seoTitle: XAMPP Complete Reference – Local Web Server Setup and Configuration Guide
 description: "Comprehensive guide to installing, configuring, securing, and troubleshooting XAMPP for local Apache, MariaDB, PHP, and Perl web development environments."
 keywords: "XAMPP, local web server, Apache configuration, MariaDB, MySQL, PHP config, php.ini, phpMyAdmin, virtual hosts, SSL on localhost, local domains, sendmail local, port conflicts, web development server, WAMP, MAMP, LAMP, Docker vs XAMPP, VR-Rathod, Code-Note, code note vr"

@@ -1,7 +1,4 @@
 ---
-date: 2026-04-06T11:04:22+05:30
-lastmod: 2026-04-17T17:08:18+05:30
-
 seoTitle: Parrot OS Complete Guide – Privacy, Security & Forensics Linux
 description: "Comprehensive Parrot OS reference covering installation, AnonSurf, privacy tools, pentesting tools, digital forensics, reverse engineering, and daily use with Parrot Home edition."
 keywords: "Parrot OS, Parrot Security, parrot linux, parrot os guide, parrot os tutorial, anonsurf, parrot privacy, parrot pentesting, parrot forensics, parrot vs kali, debian security linux, ethical hacking linux, VR-Rathod, Code-Note, code note vr, vr book"

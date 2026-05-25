@@ -1,7 +1,4 @@
 ---
-date: 2026-04-03T15:14:37+05:30
-lastmod: 2026-04-03T15:14:37+05:30
-
 seoTitle: Temporal Accumulation in Path Tracing – Denoising and TAA Guide
 description: "Temporal accumulation blends frames over time to reduce noise in path tracing. Covers history buffer, blend factor, ghosting artifacts, and TAA implementation."
 keywords: "temporal accumulation, path tracing, ray tracing, TAA, temporal anti-aliasing, denoising, history buffer, blend factor, ghosting, GPU rendering, Vulkan, noise reduction"

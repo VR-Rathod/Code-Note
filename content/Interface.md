@@ -1,7 +1,4 @@
 ---
-date: 2025-05-15T11:00:41+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Interfaces in OOP – Definition, Implementation, and Usage Guide
 description: "Interfaces define contracts that classes must implement. Covers interface vs abstract class, multiple interface implementation, default methods, and design."
 keywords: "interface, OOP, object-oriented programming, contract, abstract class, multiple implementation, default methods, Java interface, C# interface, TypeScript interface, design"

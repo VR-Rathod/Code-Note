@@ -1,7 +1,4 @@
 ---
-date: 2026-04-03T15:14:37+05:30
-lastmod: 2026-04-03T15:14:37+05:30
-
 seoTitle: Normal Mapping in Path Tracing – Tangent Space and TBN Guide
 description: "Normal mapping adds surface detail without extra geometry. Covers tangent space, TBN matrix, normal map sampling, and implementation in path tracing shaders."
 keywords: "normal mapping, tangent space, TBN matrix, path tracing, ray tracing, surface detail, normal map, GPU rendering, Vulkan, GLSL, physically-based rendering, shading"

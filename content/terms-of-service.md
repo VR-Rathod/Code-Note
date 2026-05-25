@@ -1,7 +1,4 @@
 ---
-date: 2026-05-21T13:09:49+05:30
-lastmod: 2026-05-21T13:09:49+05:30
-
 title: Terms of Service
 description: "Terms of Service for Free Code Notes — a free, comprehensive programming knowledge base built by VR-Rathod."
 cssclasses:

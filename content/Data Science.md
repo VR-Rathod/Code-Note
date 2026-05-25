@@ -1,7 +1,4 @@
 ---
-date: 2026-04-02T10:45:03+05:30
-lastmod: 2026-04-17T17:08:18+05:30
-
 seoTitle: Data Science Complete Guide – Beginner to Advanced Reference
 description: "Comprehensive data science reference covering statistics, Python, data wrangling, visualization, machine learning, deep learning, MLOps, and real-world projects."
 keywords: "data science, machine learning, deep learning, pandas, numpy, scikit-learn, tensorflow, pytorch, data visualization, statistics, MLOps, data science guide, data science notes, data science tutorial, VR-Rathod, Code-Note, code note vr, vr book"

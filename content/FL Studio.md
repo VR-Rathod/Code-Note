@@ -1,7 +1,4 @@
 ---
-date: 2024-11-01T16:21:17-07:00
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: FL Studio Reference – DAW Guide for Beat Making and Production
 description: "FL Studio reference covering Pattern and Song mode, mixer, piano roll, plugins, automation, sampling, and music production workflows for producers."
 keywords: "FL Studio, DAW, beat making, music production, Pattern mode, Song mode, mixer, piano roll, plugins, automation, sampling, electronic music"

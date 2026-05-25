@@ -1,7 +1,4 @@
 ---
-date: 2025-03-26T12:40:55+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Heap Sort Algorithm – In-Place O(n log n) Sorting Explained
 description: "Heap sort builds a max-heap then repeatedly extracts the maximum. Covers heapify, build-heap, O(n log n) worst case, in-place sorting, and comparison with."
 keywords: "heap sort, sorting algorithm, max-heap, heapify, O(n log n), in-place sort, comparison sort, time complexity, space complexity, binary heap, algorithm"

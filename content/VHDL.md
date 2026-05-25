@@ -1,7 +1,4 @@
 ---
-date: 2025-01-01T11:35:35+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: VHDL Reference – Hardware Description Language Syntax Guide
 description: "VHDL reference covering entities, architectures, signals, processes, concurrent statements, testbenches, and FPGA synthesis for digital circuit design."
 keywords: "VHDL, hardware description language, entity, architecture, signals, processes, testbench, FPGA, digital design, synthesis, concurrent statements, syntax reference"

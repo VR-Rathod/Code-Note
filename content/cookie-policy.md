@@ -1,7 +1,4 @@
 ---
-date: 2026-05-21T13:09:49+05:30
-lastmod: 2026-05-21T13:09:49+05:30
-
 title: Cookie Policy
 description: "Cookie Policy for Free Code Notes — how we use browser storage to save your session and bookmarks."
 cssclasses:

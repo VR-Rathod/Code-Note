@@ -1,7 +1,4 @@
 ---
-date: 2025-03-26T12:40:55+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Cycle Sort Algorithm – Minimum Write Sorting Explained
 description: "Cycle sort minimizes the number of writes to memory by placing each element in its correct cycle position. Covers cycle detection, O(n^2) time, and use cases."
 keywords: "cycle sort, sorting algorithm, minimum writes, in-place sort, cycle detection, O(n^2), time complexity, space complexity, comparison sort, memory writes"

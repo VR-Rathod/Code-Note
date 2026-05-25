@@ -1,7 +1,4 @@
 ---
-date: 2024-11-01T16:21:17-07:00
-lastmod: 2026-04-02T10:45:03+05:30
-
 seoTitle: Blender Complete Guide – 3D Modeling, Animation, Rendering & VFX
 description: "Comprehensive Blender reference covering interface, modeling, sculpting, rigging, animation, shading, Cycles/EEVEE rendering, geometry nodes, compositing, and Python scripting."
 keywords: "Blender, 3D modeling, animation, sculpting, rigging, shading, Cycles, EEVEE, geometry nodes, rendering, compositing, Python scripting, Blender 4, open source 3D, VFX, VR-Rathod, Code-Note, code note vr, vr book"

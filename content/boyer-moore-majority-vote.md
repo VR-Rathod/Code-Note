@@ -1,7 +1,4 @@
 ---
-date: 2026-03-24T17:12:17+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Boyer-Moore Majority Vote Algorithm – Linear Time Solution
 description: "Boyer-Moore majority vote finds the majority element in O(n) time and O(1) space. Learn the candidate selection phase, verification phase, and practical."
 keywords: "Boyer-Moore majority vote, majority element, linear time, O(n), O(1) space, voting algorithm, array algorithm, time complexity, space complexity, streaming algorithm"

@@ -1,7 +1,4 @@
 ---
-date: 2025-03-26T12:40:55+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Shell Sort Algorithm – Gap Sequence Sorting Explained
 description: "Shell sort generalizes insertion sort by sorting elements far apart first. Covers gap sequences (Shell, Knuth, Ciura), O(n log^2 n) complexity, and adaptive."
 keywords: "shell sort, sorting algorithm, gap sequence, insertion sort, Knuth gap, Ciura gap, O(n log^2 n), time complexity, space complexity, comparison sort, in-place sort"

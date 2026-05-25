@@ -1,7 +1,4 @@
 ---
-date: 2024-10-31T19:09:35-07:00
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Web Development Reference – Frontend, Backend, and Full Stack Guide
 description: "Web development reference covering HTML, CSS, JavaScript, frontend frameworks, backend APIs, databases, deployment, performance, and modern web development."
 keywords: "web development, frontend, backend, full stack, HTML, CSS, JavaScript, React, Node.js, databases, deployment, REST API"

@@ -1,7 +1,4 @@
 ---
-date: 2024-12-04T11:51:44+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: SQLite Python Reference – sqlite3 Module Usage and SQL Guide
 description: "Python's sqlite3 module provides a lightweight embedded database. Covers connection, cursor, CRUD operations, transactions, parameterized queries, and row."
 keywords: "SQLite, Python sqlite3, embedded database, CRUD operations, transactions, parameterized queries, row factory, Python standard library, database, SQL, lightweight DB"

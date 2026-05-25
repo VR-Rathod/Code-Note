@@ -1,7 +1,4 @@
 ---
-date: 2026-04-08T11:19:07+05:30
-lastmod: 2026-05-18T10:12:55+05:30
-
 seoTitle: Eigen – C++ Linear Algebra Library Complete Reference
 description: "Eigen is a C++ template library for linear algebra. Covers matrices, vectors, decompositions, solvers, geometry transforms, and use in ML and scientific computing."
 keywords: "Eigen, C++ linear algebra, matrix library, vector math, LU decomposition, SVD, Eigen3, scientific computing, machine learning, template library, VR-Rathod, Code-Note, code note vr, vr book"

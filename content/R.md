@@ -1,7 +1,4 @@
 ---
-date: 2024-11-30T12:32:35+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: R Programming Language – Syntax Reference and Data Science Guide
 description: "R language reference covering vectors, data frames, ggplot2, dplyr, tidyverse, statistical functions, and data visualization for data science and analysis."
 keywords: "R programming, R language, data frames, ggplot2, dplyr, tidyverse, statistical analysis, data visualization, data science, R syntax, cheat sheet"

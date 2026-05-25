@@ -1,7 +1,4 @@
 ---
-date: 2026-04-08T11:19:07+05:30
-lastmod: 2026-04-08T11:19:07+05:30
-
 seoTitle: nlohmann/json – C++ JSON Library Complete Reference
 description: "nlohmann/json is the most popular single-header C++ JSON library. Covers parsing, serialization, custom types, JSON Pointer, JSON Schema, and STL integration."
 keywords: "nlohmann json, C++ JSON, json.hpp, JSON parsing, JSON serialization, C++ JSON library, single header, modern C++, json pointer, VR-Rathod, Code-Note, code note vr, vr book"

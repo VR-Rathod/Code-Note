@@ -1,7 +1,4 @@
 ---
-date: 2026-04-03T15:14:37+05:30
-lastmod: 2026-05-22T18:32:55+05:30
-
 seoTitle: Path Tracer Development Chat Analysis – Design Decisions Log
 description: "Analysis of path tracer development discussions covering architecture decisions, rendering techniques, BVH strategies, and GPU optimization approaches."
 keywords: "pathtracer chat, path tracing, ray tracing, GPU rendering, BVH, architecture decisions, rendering techniques, Vulkan, path tracer development, GPU optimization, graphics programming"

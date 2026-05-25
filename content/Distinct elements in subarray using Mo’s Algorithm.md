@@ -1,7 +1,4 @@
 ---
-date: 2025-03-26T12:40:55+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Distinct Elements in Subarray Using Mo's Algorithm Explained
 description: "Mo's algorithm answers range queries offline in O((n+q) sqrt(n)) time. Learn block decomposition, add/remove operations, and counting distinct elements in."
 keywords: "Mo's algorithm, distinct elements, range query, offline algorithm, block decomposition, sqrt decomposition, time complexity, space complexity, subarray query, algorithm"

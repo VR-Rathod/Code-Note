@@ -1,7 +1,4 @@
 ---
-date: 2025-05-15T11:00:41+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Encapsulation in OOP – Data Hiding and Access Control Guide
 description: "Encapsulation bundles data and methods while restricting direct access. Covers access modifiers, getters/setters, data hiding, and benefits for maintainability."
 keywords: "encapsulation, OOP, data hiding, access modifiers, getters, setters, private, public, protected, object-oriented programming, software design, maintainability"

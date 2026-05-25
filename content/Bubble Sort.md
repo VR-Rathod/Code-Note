@@ -1,7 +1,4 @@
 ---
-date: 2025-03-26T12:40:55+05:30
-lastmod: 2026-05-25T12:05:10+05:30
-
 seoTitle: Bubble Sort Algorithm – Implementation, Optimization, and Complexity Analysis
 description: "In-depth guide to Bubble Sort with early termination. Covers stability, adaptability, visual step-by-step traces, and complete implementations in Python, C++, JavaScript, Java, and C."
 keywords: "bubble sort, optimized bubble sort, sorting algorithm, adjacent swap, O(n^2), stable sort, in-place sort, time complexity, space complexity, comparison sort, VR-Rathod, Code-Note, Vaibhav Rathod"

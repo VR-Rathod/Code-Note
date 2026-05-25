@@ -1,7 +1,4 @@
 ---
-date: 2025-05-15T11:00:41+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Objects in OOP – Instances, State, Behavior, and Identity Guide
 description: "Objects are instances of classes with state, behavior, and identity. Covers object creation, instance variables, methods, object lifecycle, and object-oriented."
 keywords: "object, OOP, object-oriented programming, instance, state, behavior, identity, instance variables, methods, object lifecycle, class instantiation, software design"

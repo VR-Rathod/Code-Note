@@ -1,7 +1,4 @@
 ---
-date: 2026-04-08T11:19:07+05:30
-lastmod: 2026-05-18T10:12:55+05:30
-
 seoTitle: ACE – Adaptive Communication Environment C++ Reference
 description: "ACE (Adaptive Communication Environment) reference for C++ networked and real-time systems. Covers reactor pattern, proactor, sockets, threading, and service configuration."
 keywords: "ACE, Adaptive Communication Environment, C++ networking, reactor pattern, proactor, C++ sockets, real-time systems, TAO CORBA, C++ middleware, VR-Rathod, Code-Note, code note vr, vr book"
@@ -58,7 +55,7 @@ displayTitle: ACE (Adaptive Communication Environment)
   collapsed:: true
 	- ## TCP Echo Server (Reactor Pattern)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <ace/SOCK_Acceptor.h>
 		  #include <ace/SOCK_Stream.h>
 		  #include <ace/INET_Addr.h>
@@ -77,7 +74,7 @@ displayTitle: ACE (Adaptive Communication Environment)
 	-
 	- ## TCP Client
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <ace/SOCK_Connector.h>
 		  #include <ace/SOCK_Stream.h>
 		  #include <ace/INET_Addr.h>
@@ -101,7 +98,7 @@ displayTitle: ACE (Adaptive Communication Environment)
 	-
 	- ## Threading (ACE_Thread_Manager)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <ace/Thread_Manager.h>
 		  
 		  void* worker(void*) {

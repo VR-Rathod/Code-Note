@@ -1,7 +1,4 @@
 ---
-date: 2024-12-04T11:51:44+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Shopify Reference – Store Setup, Liquid Themes, and API Guide
 description: "Shopify reference covering store setup, Liquid templating, Shopify CLI, theme development, Storefront API, Admin API, and app development with Polaris."
 keywords: "Shopify, e-commerce, Liquid template, Shopify CLI, theme development, Storefront API, Admin API, Polaris, Shopify app, online store, headless commerce"

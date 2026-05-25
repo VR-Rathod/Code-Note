@@ -1,7 +1,4 @@
 ---
-date: 2026-05-18T10:12:55+05:30
-lastmod: 2026-05-18T10:12:55+05:30
-
 seoTitle: C++ REST SDK (cpprestsdk) – RESTful Web Services Reference
 description: "C++ REST SDK (cpprestsdk/Casablanca) reference for building RESTful web services. Covers HTTP client/server, JSON, async tasks, WebSockets, and OAuth."
 keywords: "cpprestsdk, C++ REST SDK, Casablanca, C++ HTTP client, C++ REST API, async HTTP, C++ JSON, WebSocket C++, Microsoft REST SDK, VR-Rathod, Code-Note, code note vr, vr book"

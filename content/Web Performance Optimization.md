@@ -1,7 +1,4 @@
 ---
-date: 2026-05-22T16:45:19+05:30
-lastmod: 2026-05-22T16:45:19+05:30
-
 seoTitle: Web Performance Optimization – Fast Data Loading & Page Navigation Guide
 description: "Complete guide to web performance optimization covering fast backend-to-frontend data loading, page navigation, caching strategies, lazy loading, code splitting, and modern performance techniques."
 keywords: "web performance, optimization, fast loading, data fetching, page navigation, caching, lazy loading, code splitting, CDN, compression, prefetching, VR-Rathod, Code-Note, code note vr, vr book"

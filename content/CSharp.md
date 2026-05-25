@@ -1,7 +1,4 @@
 ---
-date: 2026-03-24T17:12:17+05:30
-lastmod: 2026-04-06T17:35:35+05:30
-
 seoTitle: C# Programming Reference – Modern .NET Syntax and Features
 description: "Comprehensive C# reference covering .NET 8, LINQ, async/await, generics, delegates, records, pattern matching, and frameworks for web, desktop, and game development."
 keywords: "csharp, C# programming, C# reference, LINQ, async await, generics, delegates, records, pattern matching, .NET 8, Unity, ASP.NET Core, C# syntax, object-oriented, VR-Rathod, Code-Note, code note vr, vr book"

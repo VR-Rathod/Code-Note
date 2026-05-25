@@ -1,7 +1,4 @@
 ---
-date: 2026-04-06T15:23:03+05:30
-lastmod: 2026-05-18T10:12:55+05:30
-
 seoTitle: C# for Unity – Complete Unity Scripting Reference Guide
 description: "Complete C# scripting reference for Unity covering MonoBehaviour lifecycle, Unity-specific APIs, coroutines, ScriptableObjects, events, physics, UI, and performance patterns."
 keywords: "C# Unity, Unity scripting, MonoBehaviour, Unity C# reference, Unity coroutines, ScriptableObjects, Unity events, Unity physics, Unity UI, Unity performance, unity csharp guide, VR-Rathod, Code-Note, code note vr, vr book"

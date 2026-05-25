@@ -1,7 +1,4 @@
 ---
-date: 2025-05-15T11:00:41+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Inheritance in OOP – Single, Multiple, and Multilevel Guide
 description: "Inheritance allows classes to derive properties from parent classes. Covers single, multiple, multilevel inheritance, method overriding, super(), and diamond."
 keywords: "inheritance, OOP, object-oriented programming, single inheritance, multiple inheritance, multilevel inheritance, method overriding, super, diamond problem, is-a relationship"

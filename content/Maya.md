@@ -1,7 +1,4 @@
 ---
-date: 2024-11-01T16:21:17-07:00
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Autodesk Maya Reference – 3D Animation and Modeling Guide
 description: "Maya reference covering polygon modeling, rigging, skinning, animation, dynamics, Arnold rendering, MEL/Python scripting, and film/game production pipelines."
 keywords: "Autodesk Maya, 3D animation, polygon modeling, rigging, skinning, dynamics, Arnold renderer, MEL scripting, Python, film production, game development, 3D software"

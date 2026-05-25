@@ -1,7 +1,3 @@
----
-date: 2026-04-06T15:23:03+05:30
-lastmod: 2026-04-06T15:23:03+05:30
----
 
 ---
 seoTitle: C++ for Unreal Engine – Complete UE5 C++ Scripting Reference

@@ -1,7 +1,4 @@
 ---
-date: 2025-03-26T12:40:55+05:30
-lastmod: 2026-03-30T10:55:09+05:30
-
 seoTitle: Union-Find Algorithm – Disjoint Set with Path Compression
 description: "Union-Find tracks disjoint sets with near O(1) amortized operations. Covers union by rank, path compression, inverse Ackermann complexity, and MST applications."
 keywords: "Union-Find, disjoint set, path compression, union by rank, inverse Ackermann, O(alpha n), time complexity, space complexity, connected components, MST"
