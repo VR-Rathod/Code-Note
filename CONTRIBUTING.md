@@ -20,7 +20,7 @@ Thank you for contributing! This guide defines the **exact format and structure*
 ## File Naming Convention
 
 - Use the **exact display name** as the filename: `Kali Linux.md`, `Cpp.md`, `React js.md`
-- Use kebab-case only for multi-word algorithmic pages: `binary-search.md`, `dijkstras-algorithm.md`
+- Use kebab-case only for multi-word algorithmic pages: `Binary Search.md`, `Dijkstras Algorithm.md`
 - Place all pages inside the `/pages/` directory
 - Link pages in `index.md` under the correct section using Logseq `[[Page Name]]` syntax
 
@@ -348,16 +348,7 @@ def example():
 ### 2. `:::code-note` — Single-Language Focus Block
 Use for a **featured snippet** that deserves visual emphasis — a clean, dedicated display for one language.
 Perfect for: recursive variants, utility helpers, built-in usage examples.
-```
-:::code-note
 
-```python
-def binary_search(arr, target):
-    ...
-```
-
-:::
-```
 
 ### 3. `:::code-tabs` — Multi-Language Tab View
 Use when showing the **same algorithm in multiple languages** side by side as switchable tabs.

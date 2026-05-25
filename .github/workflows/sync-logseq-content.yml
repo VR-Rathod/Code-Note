@@ -1,16 +1,16 @@
-name: Sync Logseq → Quartz Content
+name: Sync Logseq → Quartz Content & Build
 
 on:
   push:
     branches:
       - Admin
     paths:
-      - "pages/**"  # only runs when .md files in pages/ actually change
+      - "pages/**"  # runs when notes in pages/ change
 
   workflow_dispatch:  # allows manual trigger from GitHub Actions UI
 
 jobs:
-  sync:
+  sync-and-build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -21,6 +21,7 @@ jobs:
         with:
           ref: Admin
           path: logseq-source
+          fetch-depth: 0
 
       - name: Checkout Web-live branch (Quartz site)
         uses: actions/checkout@v4
@@ -35,45 +36,97 @@ jobs:
           SOURCE="logseq-source/pages"
           DEST="quartz-site/content"
 
-          # Count files before
+          # Count files before sync
           before=$(find "$DEST" -name "*.md" ! -name "index.md" | wc -l)
 
-          # Remove stale .md files (deleted from Logseq) but keep index.md
+          # Delete stale notes (keeps index.md intact)
           find "$DEST" -name "*.md" ! -name "index.md" -delete
 
-          # Copy all .md files from Logseq pages/
+          # Copy notes from Admin branch to Web-live branch
           cp -r "$SOURCE"/. "$DEST"/
 
-          # Count files after
-          after=$(find "../$DEST" -name "*.md" ! -name "index.md" | wc -l)
+          # Count files after sync
+          after=$(find "$DEST" -name "*.md" ! -name "index.md" | wc -l)
           echo "files_before=$before" >> $GITHUB_OUTPUT
           echo "files_after=$after" >> $GITHUB_OUTPUT
 
-      - name: Check for changes
+      - name: Inject Git Timestamps into Frontmatter
+        run: |
+          cat << 'EOF' > inject_dates.py
+          import os
+          import subprocess
+          import re
+
+          source_dir = 'logseq-source/pages'
+          dest_dir = 'quartz-site/content'
+
+          if not os.path.exists(source_dir):
+              exit(0)
+
+          for filename in os.listdir(source_dir):
+              if not filename.endswith('.md'):
+                  continue
+              
+              dest_path = os.path.join(dest_dir, filename)
+              if not os.path.exists(dest_path):
+                  continue
+                  
+              created_cmd = ['git', 'log', '--diff-filter=A', '--format=%aI', '-1', '--', f"pages/{filename}"]
+              updated_cmd = ['git', 'log', '-1', '--format=%aI', '--', f"pages/{filename}"]
+              
+              try:
+                  created = subprocess.run(created_cmd, cwd='logseq-source', capture_output=True, text=True, check=True).stdout.strip()
+                  updated = subprocess.run(updated_cmd, cwd='logseq-source', capture_output=True, text=True, check=True).stdout.strip()
+              except subprocess.CalledProcessError:
+                  continue
+              
+              if not created or not updated:
+                  continue
+                  
+              with open(dest_path, 'r', encoding='utf-8') as f:
+                  content = f.read()
+                  
+              inject = ""
+              if not re.search(r'^date:\s+', content, flags=re.MULTILINE):
+                  inject += f"date: {created}\n"
+              if not re.search(r'^lastmod:\s+', content, flags=re.MULTILINE):
+                  inject += f"lastmod: {updated}\n"
+                  
+              if inject:
+                  if content.startswith('---'):
+                      content = content.replace('---', f'---\n{inject}', 1)
+                  else:
+                      content = f'---\n{inject}---\n' + content
+                      
+                  with open(dest_path, 'w', encoding='utf-8') as f:
+                      f.write(content)
+          EOF
+          python3 inject_dates.py
+
+      - name: Check for changes in content/
         id: changes
         run: |
           cd quartz-site
           git add content/
           if git diff --staged --quiet; then
             echo "has_changes=false" >> $GITHUB_OUTPUT
-            echo "No content changes detected — skipping commit."
+            echo "No changes detected — skipping deploy."
           else
             changed=$(git diff --staged --name-only | wc -l)
             echo "has_changes=true" >> $GITHUB_OUTPUT
             echo "changed_count=$changed" >> $GITHUB_OUTPUT
           fi
 
-      - name: Commit and push to Web-live
+      - name: Commit and push changes to Web-live
         if: steps.changes.outputs.has_changes == 'true'
         run: |
           cd quartz-site
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          CHANGED=${{ steps.changes.outputs.changed_count }}
           COMMIT_SHA=$(cd ../logseq-source && git rev-parse --short HEAD)
 
-          git commit -m "sync: $CHANGED file(s) updated from Logseq (Admin@$COMMIT_SHA)"
+          git add content/
+          git commit -m "sync: ${{ steps.changes.outputs.changed_count }} file(s) updated from Logseq (Admin@$COMMIT_SHA)"
           git push origin Web-live
 
       - name: Summary
@@ -82,8 +135,8 @@ jobs:
             echo "### ✅ Sync complete" >> $GITHUB_STEP_SUMMARY
             echo "- **Files before:** ${{ steps.sync.outputs.files_before }}" >> $GITHUB_STEP_SUMMARY
             echo "- **Files after:** ${{ steps.sync.outputs.files_after }}" >> $GITHUB_STEP_SUMMARY
-            echo "- **Changed:** ${{ steps.changes.outputs.changed_count }} file(s)" >> $GITHUB_STEP_SUMMARY
-            echo "- Vercel will now redeploy automatically." >> $GITHUB_STEP_SUMMARY
+            echo "- **Changed files:** ${{ steps.changes.outputs.changed_count }}" >> $GITHUB_STEP_SUMMARY
+            echo "- Content files pushed to **Web-live**. Vercel will build and deploy." >> $GITHUB_STEP_SUMMARY
           else
             echo "### ⏭️ No changes" >> $GITHUB_STEP_SUMMARY
             echo "Content was already up to date — no commit made." >> $GITHUB_STEP_SUMMARY
