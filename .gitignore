@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 public
+/public
 prof
 tsconfig.tsbuildinfo
 .obsidian
@@ -24,3 +25,4 @@ CODE_OF_CONDUCT.md
 .env
 *.json
 !funding.json
+node_modules
