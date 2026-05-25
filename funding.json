@@ -15,5 +15,27 @@
       "avatar": "https://api.dicebear.com/7.x/pixel-art/svg?seed=elena",
       "url": "https://github.com/VR-Rathod"
     }
+  ],
+  "contributors": [
+    {
+      "name": "Vaibhav Rathod",
+      "url": "https://github.com/VR-Rathod",
+      "count": 57
+    },
+    {
+      "name": "Makvana Smitrajsinh",
+      "url": "https://github.com/Smitraj24",
+      "count": 3
+    },
+    {
+      "name": "VKing9",
+      "url": "https://github.com/VKing9",
+      "count": 5
+    },
+    {
+      "name": "Nirmit Kotadiya",
+      "url": "https://github.com/NirmitKotadiya",
+      "count": 1
+    }
   ]
 }
