@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://code-note-vr.vercel.app/sitemap.xml
