@@ -1,7 +1,7 @@
 ---
 seoTitle: Burrows-Wheeler Transform (BWT) – Data Compression & Reversible Transformation
 description: "Comprehensive guide to the Burrows-Wheeler Transform (BWT). Covers cyclic rotations, suffix sorting, stable inverse BWT decoding, and implementation in 5 languages."
-keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrows Wheeler, bzip2, LF-mapping, suffix array, string transformation, C++, Python, Java, JavaScript, C"
+keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrows Wheeler, bzip2, LF-mapping, suffix array, string transformation, C++, Python, Java, JavaScript, C , burrows-wheeler-transform"
 ---
 
 > [!info] What is the Burrows-Wheeler Transform?
