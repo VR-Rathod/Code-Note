@@ -61,7 +61,7 @@ displayTitle: Google Test (gtest)
   collapsed:: true
 	- ## Basic Test Structure
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <gtest/gtest.h>
 		  
 		  // TEST(TestSuiteName, TestName)
@@ -83,7 +83,7 @@ displayTitle: Google Test (gtest)
 	-
 	- ## Assertion Macros
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // EXPECT_* — non-fatal: test continues on failure
 		  // ASSERT_* — fatal: test stops on failure
 		  
@@ -111,13 +111,13 @@ displayTitle: Google Test (gtest)
 	-
 	- ## Custom Failure Messages
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  EXPECT_EQ(result, expected) << "Failed for input: " << input;
 		  ASSERT_GT(size, 0) << "Container should not be empty";
 		  ```
 - # Test Fixtures
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <gtest/gtest.h>
 	  #include <vector>
 	  
@@ -152,7 +152,7 @@ displayTitle: Google Test (gtest)
 	  ```
 - # Parameterized Tests
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <gtest/gtest.h>
 	  
 	  // Function to test
@@ -188,7 +188,7 @@ displayTitle: Google Test (gtest)
 	  ```
 - # Exception & Death Tests
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  // Exception tests
 	  EXPECT_THROW(throw std::runtime_error("err"), std::runtime_error);
 	  EXPECT_NO_THROW(safeFunction());
@@ -202,7 +202,7 @@ displayTitle: Google Test (gtest)
 	  ```
 - # gMock — Mocking
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <gmock/gmock.h>
 	  
 	  // Interface to mock

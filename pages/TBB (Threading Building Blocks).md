@@ -49,7 +49,7 @@ displayTitle: TBB (Threading Building Blocks)
 		  ```
 	-
 	- ## Include
-		- ```cpp
+		- ```c++
 		  #include <tbb/tbb.h>
 		  // or specific headers:
 		  #include <tbb/parallel_for.h>
@@ -60,7 +60,7 @@ displayTitle: TBB (Threading Building Blocks)
   collapsed:: true
 	- ## parallel_for — Parallel Loop
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <tbb/parallel_for.h>
 		  #include <tbb/blocked_range.h>
 		  #include <vector>
@@ -85,7 +85,7 @@ displayTitle: TBB (Threading Building Blocks)
 	-
 	- ## parallel_reduce — Parallel Reduction
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <tbb/parallel_reduce.h>
 		  #include <tbb/blocked_range.h>
 		  
@@ -109,7 +109,7 @@ displayTitle: TBB (Threading Building Blocks)
 	-
 	- ## parallel_invoke — Run Tasks Concurrently
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <tbb/parallel_invoke.h>
 		  
 		  void taskA() { /* heavy work */ }
@@ -123,7 +123,7 @@ displayTitle: TBB (Threading Building Blocks)
 	-
 	- ## parallel_sort
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <tbb/parallel_sort.h>
 		  #include <vector>
 		  
@@ -140,7 +140,7 @@ displayTitle: TBB (Threading Building Blocks)
   collapsed:: true
 	- ## concurrent_queue
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <tbb/concurrent_queue.h>
 		  
 		  tbb::concurrent_queue<int> queue;
@@ -160,7 +160,7 @@ displayTitle: TBB (Threading Building Blocks)
 	-
 	- ## concurrent_hash_map
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <tbb/concurrent_hash_map.h>
 		  
 		  tbb::concurrent_hash_map<std::string, int> map;
@@ -183,7 +183,7 @@ displayTitle: TBB (Threading Building Blocks)
 	-
 	- ## concurrent_vector
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <tbb/concurrent_vector.h>
 		  
 		  tbb::concurrent_vector<int> cv;
@@ -197,7 +197,7 @@ displayTitle: TBB (Threading Building Blocks)
 		  ```
 - # Task Groups
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <tbb/task_group.h>
 	  
 	  tbb::task_group tg;

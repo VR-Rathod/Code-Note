@@ -202,7 +202,7 @@ displayTitle: VR/AR Development
 	-
 	- ## OpenXR C++ Initialization
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <openxr/openxr.h>
 		  
 		  XrInstance instance = XR_NULL_HANDLE;
@@ -246,7 +246,7 @@ displayTitle: VR/AR Development
 	-
 	- ## OpenXR Input System
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // OpenXR uses an abstract action system
 		  // Actions are bound to physical inputs via interaction profiles
 		  
