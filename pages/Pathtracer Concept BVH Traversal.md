@@ -5,7 +5,7 @@ keywords: "BVH traversal, bounding volume hierarchy, ray tracing, path tracing, 
 ---
 
 tags:: concept, bvh, traversal, algorithm
-title:: PathTracer Learning - Concept - BVH Traversal
+title:: Pathtracer Concept BVH Traversal
 
 - # Concept: BVH Traversal
 	- Parent: [[PathTracer Learning - Phase 2 - CPU Ray Tracing]]
