@@ -4,6 +4,7 @@ import { QuartzPluginData } from "../plugins/vfile"
 import style from "./styles/recentNotes.scss"
 import { i18n } from "../i18n"
 import { classNames } from "../util/lang"
+import { formatDate } from "./Date"
 
 interface Options {
   title?: string
@@ -20,37 +21,7 @@ const defaultOptions = (): Options => ({
   filter: () => true,
 })
 
-function getRelativeTime(date: Date, locale: string = "en-US"): string {
-  const now = new Date()
-  const diffMs = now.getTime() - date.getTime()
-  const diffSec = Math.max(0, Math.floor(diffMs / 1000))
-  const diffMin = Math.floor(diffSec / 60)
-  const diffHr = Math.floor(diffMin / 60)
-  const diffDays = Math.floor(diffHr / 24)
 
-  if (diffSec < 60) {
-    return "Just now"
-  } else if (diffMin < 60) {
-    return `${diffMin}m ago`
-  } else if (diffHr < 24) {
-    return `${diffHr}h ago`
-  } else if (diffDays === 1) {
-    return "Yesterday"
-  } else if (diffDays < 7) {
-    return `${diffDays}d ago`
-  } else {
-    return date.toLocaleDateString(locale, {
-      month: "short",
-      day: "numeric",
-    })
-  }
-}
-
-function isRecent(date: Date): boolean {
-  const now = new Date()
-  const diffMs = now.getTime() - date.getTime()
-  return diffMs > 0 && diffMs < 24 * 60 * 60 * 1000
-}
 
 function getCategory(slug: string): string | null {
   if (!slug || slug === "index") return null
@@ -140,8 +111,7 @@ export default ((userOpts?: Partial<Options>) => {
                 recentNew.map((page) => {
                   const title = page.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title
                   const date = page.dates?.created ?? new Date()
-                  const relTime = getRelativeTime(date, cfg.locale)
-                  const isPageRecent = isRecent(date)
+                  const formattedDate = formatDate(date, cfg.locale)
                   const category = getCategory(page.slug!)
                   const authorName = getAuthorName(page.frontmatter)
                   const description = page.description ?? ""
@@ -163,8 +133,7 @@ export default ((userOpts?: Partial<Options>) => {
                           <span class="meta-author">{authorName}</span>
                           <span class="meta-dot">•</span>
                           <span class="meta-time" title={date.toLocaleString()}>
-                            {isPageRecent && <span class="pulse-dot" />}
-                            {relTime}
+                            {formattedDate}
                           </span>
                         </div>
                         
@@ -185,8 +154,7 @@ export default ((userOpts?: Partial<Options>) => {
                 recentUpdates.map((page) => {
                   const title = page.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title
                   const date = page.dates?.modified ?? new Date()
-                  const relTime = getRelativeTime(date, cfg.locale)
-                  const isPageRecent = isRecent(date)
+                  const formattedDate = formatDate(date, cfg.locale)
                   const category = getCategory(page.slug!)
                   const authorName = getAuthorName(page.frontmatter)
                   const description = page.description ?? ""
@@ -208,8 +176,7 @@ export default ((userOpts?: Partial<Options>) => {
                           <span class="meta-author">{authorName}</span>
                           <span class="meta-dot">•</span>
                           <span class="meta-time" title={date.toLocaleString()}>
-                            {isPageRecent && <span class="pulse-dot" />}
-                            {relTime}
+                            {formattedDate}
                           </span>
                         </div>
                         

@@ -2,6 +2,7 @@
 node_modules
 public
 /public
+public/
 prof
 tsconfig.tsbuildinfo
 .obsidian
