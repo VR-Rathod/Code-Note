@@ -1138,7 +1138,7 @@ keywords: "Godot engine, Godot 4, game development, Godot nodes, Godot physics, 
 	-
 	- ## Minimal C++ GDExtension
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // my_node.h
 		  #include <godot_cpp/classes/node.hpp>
 		  using namespace godot;

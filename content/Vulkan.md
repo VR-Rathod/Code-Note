@@ -117,7 +117,7 @@ title:: Vulkan
 		- > [!tip] ALWAYS enable validation layers during development. Disable them ONLY in release builds.
 	- ## Creating the Instance
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #define GLFW_INCLUDE_VULKAN
 		  #include <GLFW/glfw3.h>
 		  #include <vector>
@@ -173,7 +173,7 @@ title:: Vulkan
 		- > [!note] You can have multiple physical devices and run work on all of them simultaneously. Most games only use one.
 	- ## Querying GPU Properties
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  uint32_t deviceCount = 0;
 		  vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
 		  
@@ -199,7 +199,7 @@ title:: Vulkan
 		  ```
 	- ## Rating GPUs (Best Practice)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Instead of just picking ANY GPU, score them and pick the best
 		  int rateDevice(VkPhysicalDevice device) {
 		      VkPhysicalDeviceProperties props;
@@ -239,7 +239,7 @@ title:: Vulkan
 		- > [!tip] In most cases you find ONE queue family index that supports `Graphics + Compute + Transfer + Present` and use it for everything. Async Compute requires deliberately using a *separate* Compute queue family index.
 	- ## Finding Queue Family Indices
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  struct QueueFamilyIndices {
 		      std::optional<uint32_t> graphicsFamily;
 		      std::optional<uint32_t> presentFamily;
@@ -284,7 +284,7 @@ title:: Vulkan
 		- Logical Device = *Your application's view* of that hardware. You can create multiple logical devices from one physical device (e.g., for different "tenants" in a cloud GPU server).
 	- ## Creating the Logical Device
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  void createLogicalDevice(VkPhysicalDevice physicalDevice, QueueFamilyIndices indices,
 		                           VkDevice& device, VkQueue& graphicsQueue) {
 		  
@@ -328,7 +328,7 @@ title:: Vulkan
 	  collapsed:: true
 		- Vulkan is platform-agnostic. It knows nothing about Windows, Linux, or macOS windows. A `VkSurfaceKHR` is the **bridge** between Vulkan and your windowing system (Win32, X11, Wayland, Cocoa).
 		- GLFW abstracts this for us in one call:
-		- ```cpp
+		- ```c++
 		  VkSurfaceKHR surface;
 		  
 		  // GLFW handles the platform-specific surface creation for you
@@ -337,7 +337,7 @@ title:: Vulkan
 		  }
 		  ```
 		- If you were NOT using GLFW on Windows, you'd use:
-		- ```cpp
+		- ```c++
 		  VkWin32SurfaceCreateInfoKHR createInfo{};
 		  createInfo.sType     = VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
 		  createInfo.hwnd      = GetActiveWindow();
@@ -370,7 +370,7 @@ title:: Vulkan
 	- ## Swapchain Configuration
 	  collapsed:: true
 		- When creating the swapchain, you must choose a surface **format** (color depth) and **extent** (resolution).
-		- ```cpp
+		- ```c++
 		  // Query what the surface/GPU supports
 		  VkSurfaceCapabilitiesKHR caps;
 		  vkGetPhysicalDeviceSurfaceCapabilitiesKHR(physicalDevice, surface, &caps);
@@ -406,7 +406,7 @@ title:: Vulkan
 		- A `VkImage` is raw GPU memory — a block of VRAM. An `VkImageView` is a **lens** that tells Vulkan how to interpret that memory:
 		- *"Is this 2D texture? A cube map? Use only mip-levels 2-5? Look at the red channel only?"*
 		- You cannot use a `VkImage` directly. You always go through a `VkImageView`.
-		- ```cpp
+		- ```c++
 		  // Create one VkImageView for each VkImage in the swapchain
 		  std::vector<VkImageView> swapChainImageViews(swapChainImages.size());
 		  
@@ -448,7 +448,7 @@ title:: Vulkan
 		  ```
 	- ## Creating a Render Pass
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // ------ Color Attachment (the final rendered image) ------
 		  VkAttachmentDescription colorAttachment{};
 		  colorAttachment.format         = VK_FORMAT_B8G8R8A8_SRGB; // Must match swapchain format
@@ -577,7 +577,7 @@ title:: Vulkan
 		  ```
 	- ## Loading SPIR-V and Creating Shader Modules
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Helper: read binary SPIR-V file
 		  std::vector<char> readFile(const std::string& filename) {
 		      std::ifstream file(filename, std::ios::ate | std::ios::binary);
@@ -631,7 +631,7 @@ title:: Vulkan
 		- > [!important] Stages marked BOLD are **programmable via shaders**. Everything else is **fixed-function** but configurable.
 	- ## Building the Graphics Pipeline Step by Step
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  void createGraphicsPipeline() {
 		  
 		      // === 1: SHADER STAGES ===
@@ -776,7 +776,7 @@ title:: Vulkan
 	  collapsed:: true
 		- A `VkFramebuffer` is the **collection of ImageViews** used as render targets for a specific Render Pass. It connects the Render Pass (which describes attachment formats) to actual `VkImageView` objects (which hold actual pixel data).
 		- You need one framebuffer per swapchain image:
-		- ```cpp
+		- ```c++
 		  swapChainFramebuffers.resize(swapChainImageViews.size());
 		  
 		  for (size_t i = 0; i < swapChainImageViews.size(); i++) {
@@ -815,7 +815,7 @@ title:: Vulkan
 		- Why not write to DEVICE_LOCAL directly? — The CPU **cannot** write to pure VRAM. It must go through a CPU-accessible Staging Buffer first.
 	- ## Creating a Vertex Buffer (Without VMA)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Helper function to find correct memory type on the GPU
 		  uint32_t findMemoryType(VkPhysicalDevice physDev, uint32_t typeFilter, VkMemoryPropertyFlags properties) {
 		      VkPhysicalDeviceMemoryProperties memProperties;
@@ -892,7 +892,7 @@ title:: Vulkan
 		- > [!tip] Use VMA in Every Real Project
 		  > Raw `vkAllocateMemory` is limited — GPUs have a hard cap of 4096 total allocations (spec minimum).
 		  > VMA allocates large blocks internally and sub-allocates from them. It's the standard in every real engine.
-		- ```cpp
+		- ```c++
 		  // Setup VMA once during initialization
 		  VmaAllocatorCreateInfo allocatorInfo{};
 		  allocatorInfo.instance       = instance;
@@ -940,7 +940,7 @@ title:: Vulkan
 		  ```
 	- ## Creating a Texture Image
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Load image from disk with stb_image
 		  int texWidth, texHeight, texChannels;
 		  unsigned char* pixels = stbi_load("texture.png", &texWidth, &texHeight, &texChannels, STBI_rgb_alpha);
@@ -982,7 +982,7 @@ title:: Vulkan
 	- ## Image Samplers (VkSampler)
 	  collapsed:: true
 		- A `VkSampler` defines HOW the GPU reads pixels from a texture — what happens at the edges, how to filter between pixels.
-		- ```cpp
+		- ```c++
 		  VkSamplerCreateInfo samplerInfo{};
 		  samplerInfo.sType            = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
 		  
@@ -1028,7 +1028,7 @@ title:: Vulkan
 		  ```
 	- ## Creating a Descriptor Set Layout
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Step 1: Define THE SCHEMA — what types of data exist at which bindings
 		  std::array<VkDescriptorSetLayoutBinding, 2> bindings{};
 		  
@@ -1056,7 +1056,7 @@ title:: Vulkan
 		  ```
 	- ## Creating a Descriptor Pool and Sets
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Step 2: Create the Pool (budget: N UBOs + N Samplers)
 		  std::array<VkDescriptorPoolSize, 2> poolSizes{};
 		  poolSizes[0] = { VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,         MAX_FRAMES_IN_FLIGHT };
@@ -1101,7 +1101,7 @@ title:: Vulkan
 	  collapsed:: true
 		- `VkCommandPool` manages the memory that command buffers allocate from.
 		- `VkCommandBuffer` is the actual object you record draw calls into.
-		- ```cpp
+		- ```c++
 		  // Create command pool for the graphics queue family
 		  VkCommandPoolCreateInfo poolInfo{};
 		  poolInfo.sType            = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
@@ -1124,7 +1124,7 @@ title:: Vulkan
 		  ```
 	- ## Recording a Complete Frame
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  void recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex) {
 		      // ---- BEGIN RECORDING ----
 		      VkCommandBufferBeginInfo beginInfo{};
@@ -1196,7 +1196,7 @@ title:: Vulkan
 		  | **Pipeline Barrier** (`vkCmdPipelineBarrier`) | GPU internal | Memory and execution ordering within command buffer |
 	- ## Fences, Semaphores in the Main Loop
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Per-frame synchronization objects
 		  const int MAX_FRAMES_IN_FLIGHT = 2; // CPU can be 1 frame ahead of GPU max
 		  
@@ -1226,7 +1226,7 @@ title:: Vulkan
 		  | `VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL` | Destination for a GPU copy operation |
 		  | `VK_IMAGE_LAYOUT_PRESENT_SRC_KHR` | Ready to be shown on the display |
 		  | `VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL` | Depth buffer being used for Z-testing |
-		- ```cpp
+		- ```c++
 		  // Transition an image from one layout to another using a pipeline barrier
 		  void transitionImageLayout(VkImage image,
 		                             VkImageLayout oldLayout, VkImageLayout newLayout) {
@@ -1269,7 +1269,7 @@ title:: Vulkan
   collapsed:: true
 	- ## The Complete Frame Loop
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  uint32_t currentFrame = 0;
 		  
 		  void drawFrame() {
@@ -1335,7 +1335,7 @@ title:: Vulkan
 	  collapsed:: true
 		- Push constants let you inject a small block of data (up to 128 bytes; usually two `mat4`) directly into the GPU command stream — **no buffer, no descriptor, zero overhead**.
 		- Perfect for: model matrix per-object, material ID, time value, a few flags.
-		- ```cpp
+		- ```c++
 		  // In the pipeline layout, declare push constant range
 		  VkPushConstantRange pushConstantRange{};
 		  pushConstantRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT;
@@ -1421,7 +1421,7 @@ title:: Vulkan
 		  ```
 	- ## Dispatching Compute from C++
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Bind compute pipeline
 		  vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_COMPUTE, computePipeline);
 		  
@@ -1458,7 +1458,7 @@ title:: Vulkan
 	  collapsed:: true
 		- Creating `VkRenderPass` objects and `VkFramebuffer` objects is verbose and rigid. In Vulkan 1.3, **Dynamic Rendering** was promoted to core, allowing you to begin rendering directly from a command buffer — no pre-built render pass objects needed.
 		- > [!tip] All modern Vulkan engines (vkguide.dev style) use Dynamic Rendering. Prefer this for new projects.
-		- ```cpp
+		- ```c++
 		  // Enable during device creation
 		  VkPhysicalDeviceDynamicRenderingFeatures dynamicRenderingFeature{};
 		  dynamicRenderingFeature.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES;
@@ -1499,7 +1499,7 @@ title:: Vulkan
 		- **Bindless** eliminates this by uploading ALL textures into one gigantic descriptor array. The shader picks which texture to use via a Push Constant `material_index`.
 	- ## Setting Up Bindless
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Requires VK_EXT_descriptor_indexing (promoted to Vulkan 1.2 core)
 		  VkPhysicalDeviceDescriptorIndexingFeatures indexingFeatures{};
 		  indexingFeatures.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES;
@@ -1544,7 +1544,7 @@ title:: Vulkan
 		- The GPU hardware traverses the TLAS to find ray intersections in O(log N) using BVH (Bounding Volume Hierarchy).
 	- ## Enabling Ray Tracing Extensions
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  const std::vector<const char*> rtExtensions = {
 		      VK_KHR_ACCELERATION_STRUCTURE_EXTENSION_NAME, // BVH building
 		      VK_KHR_RAY_TRACING_PIPELINE_EXTENSION_NAME,   // .rgen/.rchit/.rmiss shaders
@@ -1650,7 +1650,7 @@ title:: Vulkan
 		  | **AMD Radeon GPU Profiler (RGP)** | Timeline view of GPU work, cache hit rates |
 		  | **Validation Layers** | Real-time API misuse detection |
 		  | **VK_EXT_debug_utils** | Tag your resources (buffers, queues) with human-readable names visible in RenderDoc |
-		- ```cpp
+		- ```c++
 		  // Name your resources for debugging in RenderDoc
 		  VkDebugUtilsObjectNameInfoEXT nameInfo{};
 		  nameInfo.sType        = VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT;

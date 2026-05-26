@@ -1,7 +1,7 @@
 ---
 seoTitle: Knuth-Morris-Pratt (KMP) Algorithm – O(n + m) String Matching
 description: "Detailed guide to the Knuth-Morris-Pratt (KMP) string search algorithm. Explains the Prefix Function (LPS array), iterative implementations in Python, C++, JavaScript, Java, and C, and complexity analysis."
-keywords: "KMP algorithm, Knuth-Morris-Pratt, string search, pattern matching, LPS array, prefix function, time complexity, space complexity, iterative KMP, O(n + m), competitive programming, DSA notes"
+keywords: "KMP algorithm, Knuth-Morris-Pratt, string search, pattern matching, LPS array, prefix function, time complexity, space complexity, iterative KMP, O(n + m), competitive programming, DSA notes , Knuth Morris Pratt Algorithm (KMP)"
 ---
 
 > [!info] What is the Knuth-Morris-Pratt (KMP) Algorithm?
@@ -203,7 +203,7 @@ keywords: "KMP algorithm, Knuth-Morris-Pratt, string search, pattern matching, L
 	      print("Pattern indices:", kmp_search(text, pattern))  # Output: [0, 5]
 	  ```
 	  
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <string>
