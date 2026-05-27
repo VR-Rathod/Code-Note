@@ -37,7 +37,7 @@ displayTitle: nlohmann/json
 		  # Download json.hpp from GitHub releases
 		  wget https://github.com/nlohmann/json/releases/latest/download/json.hpp
 		  ```
-		- ```cpp
+		- ```c++
 		  #include "json.hpp"
 		  using json = nlohmann::json;
 		  ```
@@ -60,7 +60,7 @@ displayTitle: nlohmann/json
   collapsed:: true
 	- ## Creating JSON
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <nlohmann/json.hpp>
 		  using json = nlohmann::json;
 		  
@@ -81,7 +81,7 @@ displayTitle: nlohmann/json
 	-
 	- ## Accessing Values
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  json j = {{"name", "Bob"}, {"age", 25}, {"scores", {10, 20, 30}}};
 		  
 		  std::string name = j["name"];       // "Bob"
@@ -98,7 +98,7 @@ displayTitle: nlohmann/json
 	-
 	- ## Parsing JSON Strings
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  std::string raw = R"({"id": 1, "title": "Hello", "tags": ["cpp", "json"]})";
 		  
 		  json j = json::parse(raw);
@@ -116,7 +116,7 @@ displayTitle: nlohmann/json
 	-
 	- ## Serialization (to string)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  json j = {{"x", 1}, {"y", 2}};
 		  
 		  std::string compact = j.dump();      // {"x":1,"y":2}
@@ -130,7 +130,7 @@ displayTitle: nlohmann/json
 	-
 	- ## Reading from File
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <fstream>
 		  
 		  std::ifstream file("config.json");
@@ -142,7 +142,7 @@ displayTitle: nlohmann/json
 		  ```
 - # Custom Type Serialization
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  struct Point {
 	      double x, y;
 	  };
@@ -167,7 +167,7 @@ displayTitle: nlohmann/json
 	  ```
 - # STL Container Integration
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  // vector
 	  std::vector<int> v = {1, 2, 3};
 	  json j = v;                          // [1,2,3]
@@ -189,7 +189,7 @@ displayTitle: nlohmann/json
 	  ```
 - # JSON Pointer & Patch
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  json j = {{"a", {{"b", {{"c", 42}}}}}};
 	  
 	  // JSON Pointer (RFC 6901)

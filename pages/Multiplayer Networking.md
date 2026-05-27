@@ -287,7 +287,7 @@ enableToc: true
 		      Note over C: Server time now = t2 + (t3 - t2) / 2
 		      Note over C: Clock offset = ServerNow - t3
 		  ```
-		- ```cpp
+		- ```c++
 		  // NTP-style clock sync (simplified)
 		  int64_t syncClock(NetworkSocket& socket) {
 		      auto t0 = Clock::now();
@@ -305,7 +305,7 @@ enableToc: true
 		  ```
 	- ## Fixed Timestep on the Server
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Server game loop — fixed tick rate
 		  const double TICK_RATE = 64.0;
 		  const double TICK_DURATION = 1.0 / TICK_RATE; // 15.625ms
@@ -371,7 +371,7 @@ enableToc: true
 		      Server --> Correct["If server disagrees:\ncorrection sent"]
 		      Correct --> Reconcile["Client corrects\ntransparently"]
 		  ```
-		- ```cpp
+		- ```c++
 		  // Client prediction loop
 		  struct PlayerInput {
 		      uint32_t sequence; // Monotonically increasing input ID
@@ -430,7 +430,7 @@ enableToc: true
 		      T2["Snapshot\nT=100ms\nEnemy at X=20"] --> Buffer
 		      Buffer --> Render["Render enemy\nbetween T=0 and T=50\nsmoothly at X=12"]
 		  ```
-		- ```cpp
+		- ```c++
 		  // Entity interpolation
 		  struct Snapshot {
 		      uint64_t tick;
@@ -476,7 +476,7 @@ enableToc: true
 	- ## Dead Reckoning
 	  collapsed:: true
 		- Predict entity positions based on **last known velocity** when no new data arrives (packet loss, sparse updates).
-		- ```cpp
+		- ```c++
 		  struct DeadReckoning {
 		      glm::vec3 lastKnownPosition;
 		      glm::vec3 lastKnownVelocity;
@@ -501,7 +501,7 @@ enableToc: true
 	- ## Server-Side Lag Compensation (for hitscan)
 	  collapsed:: true
 		- When a player shoots, the server rewinds time to when the client saw the world.
-		- ```cpp
+		- ```c++
 		  class LagCompensationManager {
 		      // Ring buffer of world state snapshots (keep last 1 second = 64 ticks @ 64Hz)
 		      struct HistoricalState {
@@ -567,7 +567,7 @@ enableToc: true
 	- ## GGPO (Good Game Peace Out)
 	  collapsed:: true
 		- The reference rollback netcode library — open source, used by most fighting game rollback implementations.
-		- ```cpp
+		- ```c++
 		  // GGPO integration pseudocode
 		  GGPOSession* ggpo;
 		  GGPOCallbacks callbacks;
@@ -625,7 +625,7 @@ enableToc: true
 		          D3["Bandwidth: O(changed entities)"]
 		      end
 		  ```
-		- ```cpp
+		- ```c++
 		  // Delta compression example
 		  struct PlayerStateDelta {
 		      uint8_t  changedFields; // Bitmask: bit 0=position, bit 1=health, bit 2=animation, ...
@@ -654,7 +654,7 @@ enableToc: true
 	- ## Input Synchronization
 	  collapsed:: true
 		- What the client sends **UP** to the server every tick.
-		- ```cpp
+		- ```c++
 		  // Compact input packet (fits in ~4 bytes)
 		  struct InputPacket {
 		      uint16_t sequence;     // Input sequence number (wrap around OK)
@@ -683,7 +683,7 @@ enableToc: true
 		      IM --> C2Updates["Client 2 update:\n~40 nearby entities\n→ 1.5KB/tick"]
 		      Note["Without IM:\nEach client would get\n10,000 entity updates\n→ 500KB/tick ❌"]
 		  ```
-		- ```cpp
+		- ```c++
 		  // Interest management — spatial grid approach
 		  class InterestManager {
 		      static const float VIEW_DISTANCE = 150.0f;
@@ -820,7 +820,7 @@ enableToc: true
 		  | Macro / input bot | Scripted input | Behavioral analysis, input timing analysis |
 	- ## Server-Side Anti-Cheat (Reliable)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Authoritative movement validation
 		  void ServerPlayerController::validateMovement(
 		          EntityId playerId, 
@@ -855,7 +855,7 @@ enableToc: true
 		  ```
 	- ## Interest Management as Anti-Wallhack
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Don't send position data for invisible enemies
 		  bool isEnemyVisible(EntityId viewer, EntityId target) {
 		      auto& viewerPos = world.getPosition(viewer);
@@ -891,7 +891,7 @@ enableToc: true
   collapsed:: true
 	- ## Quantization (Float Compression)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Quantize a position float to 16 bits
 		  // Range: [-4096, 4096] meters → precision: ~0.125m = 12.5cm
 		  uint16_t quantizePosition(float value, float min, float max) {
@@ -1090,7 +1090,7 @@ enableToc: true
 		  | **Agones** (Kubernetes) | Infrastructure cost | Hard | Large scale, Kubernetes-native |
 	- ## Server Startup & Health Check
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Typical game server lifecycle
 		  int main() {
 		      // 1. Read config from environment (injected by orchestrator)

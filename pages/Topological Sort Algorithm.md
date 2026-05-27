@@ -1,7 +1,8 @@
 ---
 seoTitle: Topological Sort Algorithm – DAG Ordering with DFS and Kahn's
 description: "Comprehensive guide to Topological Sorting. Covers Directed Acyclic Graphs (DAG), Kahn's BFS Algorithm, DFS-based post-order stack, and O(V+E) time complexity."
-keywords: "topological sort, DAG, directed acyclic graph, DFS, Kahn algorithm, BFS, cycle detection, O(V+E), time complexity, space complexity, dependency resolution, VR-Rathod, Code-Note"
+keywords: "topological sort, DAG, directed acyclic graph, DFS, Kahn algorithm, BFS, cycle detection, O(V+E), time complexity, space complexity, dependency resolution, VR-Rathod, Code-Note, Topological Sort Algorithm"
+displayTitle: Topological Sort Algorithm
 ---
 
 > [!info] What is Topological Sort?

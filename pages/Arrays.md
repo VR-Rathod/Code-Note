@@ -71,6 +71,7 @@ keywords: "Arrays, DSA, Data Structures, Dynamic Array, Static Array, Amortized 
 		- Since we do $N$ total copies for $N$ appends, the average (amortized) cost per append is $\frac{N}{N} = 1$, which is $O(1)$.
 -
 - # Implementation
+  collapsed:: true
 	- > [!note] Building a Dynamic Array from Scratch
 	  > Below is how you would implement a dynamic array (like `std::vector` or `ArrayList`) under the hood using native arrays and memory management.
 	-
@@ -310,9 +311,10 @@ keywords: "Arrays, DSA, Data Structures, Dynamic Array, Static Array, Amortized 
 	  :::
 -
 - # Common Array Algorithms
+  collapsed:: true
 	- Mastering arrays unlocks numerous algorithmic techniques detailed heavily in the algorithms sections:
 	- [[Kadanes Algorithm]] - Maximum Subarray Sum
-	- [[Boyer-More Majority Vote]] - Finding majority elements
+	- [[Boyer More Majority Vote]] - Finding majority elements
 	- [[Sliding Window Technique]] - Analyzing sub-arrays of fixed length
 	- [[Two Pointers Technique]] - Used on sorted arrays for finding pairs
 	- [[Prefix Sum Array]] - Extremely fast range sum queries

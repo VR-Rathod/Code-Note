@@ -70,7 +70,7 @@
 		  // Objective-C:
 		  id<MTLDevice> device = MTLCreateSystemDefaultDevice();
 		  ```
-		- ```cpp
+		- ```c++
 		  // C++: Using Metal-cpp (Apple's official C++ wrapper)
 		  #include <Metal/Metal.hpp>
 		  MTL::Device* device = MTL::CreateSystemDefaultDevice();
@@ -146,7 +146,7 @@
 		  ```
 	- ## Shared CPU/GPU Header Pattern
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // SharedTypes.h — included in both C++ and .metal files!
 		  struct VertexData {
 		      simd_float3 position;

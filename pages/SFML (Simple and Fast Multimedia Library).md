@@ -56,7 +56,7 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
   collapsed:: true
 	- ## Window & Game Loop
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <SFML/Graphics.hpp>
 		  
 		  int main() {
@@ -87,7 +87,7 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
 	-
 	- ## Shapes
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Circle
 		  sf::CircleShape circle(50.f);  // radius 50
 		  circle.setFillColor(sf::Color::Green);
@@ -114,7 +114,7 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
 		  ```
 - # Sprites & Textures
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  sf::Texture texture;
 	  if (!texture.loadFromFile("player.png")) {
 	      return -1; // file not found
@@ -135,7 +135,7 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
   collapsed:: true
 	- ## Keyboard
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Event-based (one-shot)
 		  if (event.type == sf::Event::KeyPressed) {
 		      if (event.key.code == sf::Keyboard::Space)
@@ -151,7 +151,7 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
 	-
 	- ## Mouse
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Mouse position
 		  sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 		  
@@ -165,7 +165,7 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
 		  ```
 - # Text & Fonts
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  sf::Font font;
 	  font.loadFromFile("arial.ttf");
 	  
@@ -181,7 +181,7 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
 	  ```
 - # Audio
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <SFML/Audio.hpp>
 	  
 	  // Sound effect (short, loaded into memory)
@@ -200,7 +200,7 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
 	  ```
 - # Networking
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <SFML/Network.hpp>
 	  
 	  // TCP Client
@@ -223,7 +223,7 @@ displayTitle: SFML (Simple and Fast Multimedia Library)
 	  ```
 - # Delta Time
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  sf::Clock clock;
 	  
 	  while (window.isOpen()) {

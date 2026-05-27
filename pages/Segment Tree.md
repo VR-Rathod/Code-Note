@@ -1,7 +1,8 @@
 ---
 seoTitle: Segment Tree – Range Queries & Lazy Propagation Guide
 description: "Master Segment Trees in DSA. Learn to build segment trees for range sum/minimum queries, implement point updates, and optimize with Lazy Propagation."
-keywords: "Segment Tree, Range Query, Lazy Propagation, Range Sum Query, Point Update, Segment Tree C++, Segment Tree Java, Segment Tree Python, DSA"
+keywords: "Segment Tree, Range Query, Lazy Propagation, Range Sum Query, Point Update, Segment Tree C++, Segment Tree Java, Segment Tree Python, DSA, Segment Tree"
+displayTitle: Segment Tree
 ---
 
 > [!info] What is a Segment Tree?
@@ -304,3 +305,221 @@ keywords: "Segment Tree, Range Query, Lazy Propagation, Range Sum Query, Point U
 	  ```
 	  
 	  :::
+
+- # How It Works
+  collapsed:: true
+	- ## The Core Idea
+	  collapsed:: true
+		- Build from the bottom up: leaf nodes hold single array values; each internal node holds the **aggregate** (sum, min, or max) of its children's range.
+		- For queries, decompose the query range into at most $O(\log N)$ non-overlapping segments already stored in the tree.
+		-
+		- ```mermaid
+		  flowchart TD
+		      A["Build from arr=[1,3,5,7]"] --> B["Root [0,3] sum=16"]
+		      B --> C["Left [0,1] sum=4"]
+		      B --> D["Right [2,3] sum=12"]
+		      C --> E["Leaf [0,0] val=1"]
+		      C --> F["Leaf [1,1] val=3"]
+		      D --> G["Leaf [2,2] val=5"]
+		      D --> H["Leaf [3,3] val=7"]
+		      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
+		  ```
+	-
+	- ## Step-by-Step Trace (Query [1,3] on arr=[1,3,5,7])
+	  collapsed:: true
+		- ```
+		  Segment Tree (array form, 0-indexed):
+		    tree[0] = 16  (range [0,3])
+		    tree[1] = 4   (range [0,1])
+		    tree[2] = 12  (range [2,3])
+		    tree[3] = 1   (range [0,0], leaf)
+		    tree[4] = 3   (range [1,1], leaf)
+		    tree[5] = 5   (range [2,2], leaf)
+		    tree[6] = 7   (range [3,3], leaf)
+
+		  Query(QL=1, QR=3):
+		    tree[0] range [0,3]: Partial Overlap → recurse both children
+		    ├── tree[1] range [0,1]: Partial Overlap → recurse both children
+		    │   ├── tree[3] range [0,0]: No Overlap (0 < QL=1)  → return 0
+		    │   └── tree[4] range [1,1]: Complete Overlap        → return 3 ✅
+		    │   └── subtotal = 0 + 3 = 3
+		    └── tree[2] range [2,3]: Complete Overlap (⊆ [1,3]) → return 12 ✅
+		    Total = 3 + 12 = 15 ✅  (arr[1]+arr[2]+arr[3] = 3+5+7)
+
+		  Update(idx=1, val=10):
+		    Path: tree[0] → tree[1] → tree[4]
+		    tree[4] = 10
+		    Backtrack: tree[1] = tree[3] + tree[4] = 1 + 10 = 11
+		    Backtrack: tree[0] = tree[1] + tree[2] = 11 + 12 = 23
+		  ```
+
+- # Alternative Variant (Lazy Propagation — Range Update)
+  collapsed:: true
+	- > [!tip] Lazy Propagation for Efficient Range Updates
+	  > Standard point updates are $O(\log N)$. But **range updates** (e.g., add 5 to all elements from index L to R) would take $O(N \log N)$ without optimization. Lazy propagation defers updates by storing pending values in a `lazy[]` array and only pushing them down to children when those children are actually visited.
+	-
+	- :::code-tabs
+	  
+	  ```python
+	  class LazySegTree:
+	      def __init__(self, arr):
+	          self.n = len(arr)
+	          self.tree = [0] * (4 * self.n)
+	          self.lazy = [0] * (4 * self.n)
+	          if self.n > 0:
+	              self._build(arr, 0, 0, self.n - 1)
+
+	      def _build(self, arr, idx, L, R):
+	          if L == R:
+	              self.tree[idx] = arr[L]; return
+	          mid = (L + R) // 2
+	          self._build(arr, 2*idx+1, L, mid)
+	          self._build(arr, 2*idx+2, mid+1, R)
+	          self.tree[idx] = self.tree[2*idx+1] + self.tree[2*idx+2]
+
+	      def _push_down(self, idx, L, R):
+	          if self.lazy[idx] != 0:
+	              mid = (L + R) // 2
+	              l, r = 2*idx+1, 2*idx+2
+	              self.tree[l] += self.lazy[idx] * (mid - L + 1)
+	              self.tree[r] += self.lazy[idx] * (R - mid)
+	              self.lazy[l] += self.lazy[idx]
+	              self.lazy[r] += self.lazy[idx]
+	              self.lazy[idx] = 0
+
+	      def range_update(self, QL, QR, val):
+	          self._update(0, 0, self.n - 1, QL, QR, val)
+
+	      def _update(self, idx, L, R, QL, QR, val):
+	          if QR < L or R < QL: return
+	          if QL <= L and R <= QR:
+	              self.tree[idx] += val * (R - L + 1)
+	              self.lazy[idx] += val; return
+	          self._push_down(idx, L, R)
+	          mid = (L + R) // 2
+	          self._update(2*idx+1, L, mid, QL, QR, val)
+	          self._update(2*idx+2, mid+1, R, QL, QR, val)
+	          self.tree[idx] = self.tree[2*idx+1] + self.tree[2*idx+2]
+
+	      def query(self, QL, QR):
+	          return self._query(0, 0, self.n - 1, QL, QR)
+
+	      def _query(self, idx, L, R, QL, QR):
+	          if QR < L or R < QL: return 0
+	          if QL <= L and R <= QR: return self.tree[idx]
+	          self._push_down(idx, L, R)
+	          mid = (L + R) // 2
+	          return (self._query(2*idx+1, L, mid, QL, QR) +
+	                  self._query(2*idx+2, mid+1, R, QL, QR))
+
+	  # Example
+	  arr = [1, 3, 5, 7]
+	  seg = LazySegTree(arr)
+	  print("Sum [0,3]:", seg.query(0, 3))   # 16
+	  seg.range_update(1, 3, 2)              # Add 2 to arr[1..3]
+	  print("Sum [0,3]:", seg.query(0, 3))   # 22 (1+5+7+9)
+	  print("Sum [1,2]:", seg.query(1, 2))   # 12 (5+7)
+	  ```
+	  
+	  ```c++
+	  #include <iostream>
+	  #include <vector>
+
+	  class LazySegTree {
+	      int n;
+	      std::vector<long long> tree, lazy;
+
+	      void build(const std::vector<int>& arr, int idx, int L, int R) {
+	          if (L == R) { tree[idx] = arr[L]; return; }
+	          int mid = L + (R - L) / 2;
+	          build(arr, 2*idx+1, L, mid);
+	          build(arr, 2*idx+2, mid+1, R);
+	          tree[idx] = tree[2*idx+1] + tree[2*idx+2];
+	      }
+	      void pushDown(int idx, int L, int R) {
+	          if (!lazy[idx]) return;
+	          int mid = L + (R - L) / 2;
+	          tree[2*idx+1] += lazy[idx] * (mid - L + 1);
+	          tree[2*idx+2] += lazy[idx] * (R - mid);
+	          lazy[2*idx+1] += lazy[idx];
+	          lazy[2*idx+2] += lazy[idx];
+	          lazy[idx] = 0;
+	      }
+	      void update(int idx, int L, int R, int QL, int QR, long long val) {
+	          if (QR < L || R < QL) return;
+	          if (QL <= L && R <= QR) { tree[idx] += val*(R-L+1); lazy[idx] += val; return; }
+	          pushDown(idx, L, R);
+	          int mid = L + (R - L) / 2;
+	          update(2*idx+1, L, mid, QL, QR, val);
+	          update(2*idx+2, mid+1, R, QL, QR, val);
+	          tree[idx] = tree[2*idx+1] + tree[2*idx+2];
+	      }
+	      long long query(int idx, int L, int R, int QL, int QR) {
+	          if (QR < L || R < QL) return 0;
+	          if (QL <= L && R <= QR) return tree[idx];
+	          pushDown(idx, L, R);
+	          int mid = L + (R - L) / 2;
+	          return query(2*idx+1, L, mid, QL, QR) + query(2*idx+2, mid+1, R, QL, QR);
+	      }
+	  public:
+	      LazySegTree(const std::vector<int>& arr) {
+	          n = arr.size();
+	          tree.assign(4*n, 0); lazy.assign(4*n, 0);
+	          if (n > 0) build(arr, 0, 0, n-1);
+	      }
+	      void rangeUpdate(int L, int R, long long val) { update(0, 0, n-1, L, R, val); }
+	      long long query(int L, int R) { return query(0, 0, n-1, L, R); }
+	  };
+
+	  int main() {
+	      std::vector<int> arr = {1, 3, 5, 7};
+	      LazySegTree seg(arr);
+	      std::cout << seg.query(0, 3) << "\n"; // 16
+	      seg.rangeUpdate(1, 3, 2);
+	      std::cout << seg.query(0, 3) << "\n"; // 22
+	      return 0;
+	  }
+	  ```
+	  
+	  :::
+
+- # When to Use a Segment Tree
+  collapsed:: true
+	- ```mermaid
+	  flowchart TD
+	      Q{"Do you need range\nqueries on an array?"}
+	      Q -- No --> R1["Use a plain Array"]
+	      Q -- Yes --> S1{"Are updates frequent?"}
+	      S1 -- No --> R2["Use Prefix Sum Array\n(O(1) query, O(N) build)"]
+	      S1 -- Yes --> S2{"Are updates range-based\n(update a whole subarray)?"}
+	      S2 -- Yes --> R3["✅ Segment Tree + Lazy Propagation\n(O(log N) range update + query)"]
+	      S2 -- No --> R4["✅ Segment Tree\n(O(log N) point update + query)"]
+	      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
+	  ```
+	-
+	- ## ✅ Use a Segment Tree When
+		- You need both **frequent updates AND range queries** (sum, min, max, GCD) — neither a plain array nor a prefix sum achieves both in $O(\log N)$.
+		- You need **range updates** (add a value to every element in `[L, R]`) alongside queries — use Lazy Propagation.
+		- Problems involve **dynamic data** that changes between queries.
+	-
+	- ## ❌ Avoid a Segment Tree When
+		- The array is **static** (no updates) — a Prefix Sum Array gives $O(1)$ queries with $O(N)$ build.
+		- You only need **point updates with no range queries** — a plain array with $O(1)$ update is sufficient.
+		- The query type is **non-decomposable** (e.g., median) — segment trees require associative merge operations.
+
+- # Key Takeaways
+  collapsed:: true
+	- **Range-Query Specialist** — Segment Trees solve frequent range queries + updates in $O(\log N)$ per operation.
+	- **4N Array Size** — Allocate a tree array of size $4N$ to safely store all internal nodes and leaves.
+	- **Three Overlap Cases** — Every recursive call is: No Overlap (return neutral), Complete Overlap (return stored value), or Partial Overlap (recurse both children).
+	- **Lazy Propagation** — Defers range updates by storing them in a `lazy[]` array; pushes them down only when children are visited, reducing range-update cost from $O(N \log N)$ to $O(\log N)$.
+	- **Associative Operations** — Works for any associative merge: sum, min, max, GCD, XOR, product. Non-associative operations (median, mode) are not directly supported.
+	- **Merge Flexibility** — By changing only the merge function (`+` → `min` → `max`), the same segment tree skeleton handles different query types.
+
+- # More Learn
+  collapsed:: true
+	- ## GitHub & Webs
+		- [CP Algorithms → Segment Tree](https://cp-algorithms.com/data_structures/segment_tree.html)
+		- [GeeksforGeeks → Segment Tree](https://www.geeksforgeeks.org/segment-tree-data-structure/)
+		- [Codeforces EDU → Segment Tree Part 1](https://codeforces.com/edu/course/2/lesson/4)
+		- [LeetCode → Range Sum Query – Mutable (Problem 307)](https://leetcode.com/problems/range-sum-query-mutable/)

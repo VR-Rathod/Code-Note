@@ -3154,7 +3154,7 @@ displayTitle: C++
 	-
 	- [[nlohmann json]] - Single-header JSON library, the most popular C++ JSON parser.
 	-
-	- [[spdlog]] - Fast, header-only logging library for C++.
+	- [[Spdlog]] - Fast, header-only logging library for C++.
 -
 - # More Learn
 	- Explore the following links for valuable resources, communities, and tools to enhance your skills : -

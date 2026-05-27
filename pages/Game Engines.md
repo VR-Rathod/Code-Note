@@ -144,7 +144,7 @@ displayTitle: Game Engines
 		  Custom Gems:
 		    Create your own gem with C++ and register it in project.json
 		  ```
-		- ```cpp
+		- ```c++
 		  // O3DE Component example (C++)
 		  class MyComponent
 		      : public AZ::Component

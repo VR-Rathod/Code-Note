@@ -4,54 +4,95 @@ description: "Data structures, algorithms, and system design reference for techn
 keywords: "DSA, data structures, algorithms, system design, technical interview, arrays, trees, graphs, sorting, design patterns, scalability, coding interview, dsa notes, dsa cheatsheet, dsa guide, algorithm reference, competitive programming, VR-Rathod, Code-Note, code note vr, vr book"
 ---
 
-- # OOP consepts
-  collapsed:: true
-	- ## The  **core concepts**  of OOP are indeed  **14** :-
+- # OOP Concepts
+	- ## The **core concepts** of OOP are **14** :-
 	  collapsed:: true
-		- [[Class]] - Blueprint for creating objects, defining properties and methods.
+		- [[Class]] - Blueprint for creating objects, defining properties and methods. Allocates no memory itself — only its instances do.
 		  logseq.order-list-type:: number
-		- [[Constructor]] - Special method for initializing objects when created.
+		- [[Constructor]] - Special method that automatically runs when an object is created, used to initialize attributes with starting values.
 		  logseq.order-list-type:: number
-		- [[Destructors]] - Method for cleaning up when an object is destroyed or goes out of scope.
+		- [[Destructors]] - Cleanup method called when an object is destroyed or goes out of scope; releases resources (memory, file handles, connections).
 		  logseq.order-list-type:: number
-		- [[Object]] - An instance of a class containing data and behavior.
+		- [[Object]] - A concrete instance of a class. Holds its own copy of attributes and accesses shared class methods via reference.
 		  logseq.order-list-type:: number
-		- [[Encapsulation]] - Bundling data and methods, restricting direct access to an object's internal state.
+		- [[Encapsulation]] - Bundling data and methods into a class and restricting direct access to internal state using access modifiers (public / protected / private).
 		  logseq.order-list-type:: number
-		- [[Abstraction]] - Hiding complex implementation details and exposing only essential features.
+		- [[Abstraction]] - Hiding complex implementation details and exposing only essential, relevant features to the user of the class.
 		  logseq.order-list-type:: number
-		- [[Inheritance]] - Mechanism by which one class derives properties and behaviors from another.
+		- [[Inheritance]] - A child class derives (inherits) attributes and methods from a parent class, enabling code reuse and specialization. Represents an **is-a** relationship.
 		  logseq.order-list-type:: number
-		- [[Polymorphism]] - Ability for objects of different types to be treated as instances of a common superclass.
+		- [[Polymorphism]] - One interface, many behaviors. Objects of different types can be treated as a common base type, and the correct method is called at runtime.
 		  logseq.order-list-type:: number
-		- [[Composition]] - Creating complex objects by combining simpler objects, a "has-a" relationship.
+		- [[Composition]] - Building complex objects by embedding simpler objects inside them (**has-a** relationship, strong dependency — child cannot exist without parent).
 		  id:: 67e63024-2a0a-4a19-aff1-05ad33f056cf
 		  logseq.order-list-type:: number
-		- [[Interface]] - Defines a contract that classes must follow, without providing implementation.
+		- [[Interface]] - A contract (pure abstract definition) that a class must fulfill, listing method signatures without any implementation body.
 		  logseq.order-list-type:: number
-		- [[Method Overloading]] - Defining multiple methods with the same name but different parameters.
+		- [[Method Overloading]] - Defining multiple methods with the **same name** but **different parameter lists** within the same class (compile-time polymorphism).
 		  logseq.order-list-type:: number
-		- [[Method Overriding]] - Redefining a method in a subclass to change its behavior.
+		- [[Method Overriding]] - A subclass redefines a method inherited from the parent class to change or extend its behavior (runtime polymorphism).
 		  logseq.order-list-type:: number
-		- [[Static Methods and Class Methods]] - Methods that belong to the class rather than instances.
+		- [[Static Methods and Class Methods]] - Methods that belong to the **class itself**, not to individual instances. Static methods have no `self`/`cls`; class methods receive the class as their first argument.
 		  logseq.order-list-type:: number
-		- [[Dynamic Binding (Late Binding)]] - Resolving method calls at runtime based on the object type.
+		- [[Dynamic Binding]] (Late Binding) - The process of resolving which method implementation to invoke at **runtime** based on the actual object type, not the declared type.
 		  logseq.order-list-type:: number
 	-
-	- ## **additional related concepts** or **design patterns** that can supplement or extend OOP are:-
-		- [[Delegation]] - One object handing over responsibilities to another.
-		- [[Mixin]] - A class that provides functionality to other classes without being a parent class.
-		- [[Abstract Classes]] - Classes that cannot be instantiated and may contain abstract methods.
-		- [[Loose Coupling and High Cohesion]] - Reducing dependencies between components and ensuring focused class responsibilities
-		- [[Factory Pattern]] - Creating objects without specifying the exact class of object to be created.
-		- [[Observer Pattern]] - Notifying multiple objects about state changes in another object.
-		- [[Singleton Pattern]] - Ensuring a class has only one instance and providing a global point of access.
+	- ## **Additional related concepts** or **design patterns** that extend OOP :-
+	  collapsed:: true
+		- ### 🔗 Object Relationships
+		  collapsed:: true
+			- [[Delegation]] - One object forwards a responsibility to another helper object rather than inheriting from it.
+			- [[Association]] - A general **uses-a** relationship between two classes (looser than Composition/Aggregation — no ownership implied).
+			- [[Aggregation]] - A **has-a** relationship where the child object can exist **independently** of the parent (weak ownership). e.g., a `Team` has `Players`, but players exist without the team.
+			- [[Mixin]] - A class that provides reusable functionality to other classes without being a true parent class (no strict is-a relationship).
+			- [[Abstract Classes]] - Classes that **cannot be instantiated** directly; may contain both abstract (unimplemented) and concrete (implemented) methods.
+			- [[Message Passing]] - The fundamental OOP communication mechanism — objects interact by sending messages (calling each other's methods) rather than sharing memory directly.
+		- ### 🏗️ Design Quality Principles
+		  collapsed:: true
+			- [[Loose Coupling and High Cohesion]] - Reducing hard dependencies between components (loose coupling) while keeping each class focused on a single purpose (high cohesion).
+			- [[DRY Principle]] - **Don't Repeat Yourself** — every piece of knowledge/logic should have a single, authoritative representation in the codebase.
+			- [[YAGNI Principle]] - **You Aren't Gonna Need It** — only build what is immediately required; avoid speculative features.
+			- [[Law of Demeter]] - A module should only call methods of its **immediate friends**, not of objects returned by those friends (principle of least knowledge). `obj.getA().getB().doSomething()` violates this.
+		- ### 🎨 Creational Design Patterns
+		  collapsed:: true
+			- [[Factory Pattern]] - Creating objects without specifying the exact concrete class — delegates instantiation to a factory method.
+			- [[Abstract Factory Pattern]] - Creates families of related or dependent objects without specifying their concrete classes.
+			- [[Builder Pattern]] - Constructs complex objects step by step, cleanly separating the construction logic from the final representation.
+			- [[Prototype Pattern]] - Creates new objects by **cloning** (copying) an existing prototype object instead of building from scratch.
+			- [[Singleton Pattern]] - Ensures a class has **only one instance** globally and provides a controlled access point to it.
+		- ### 🔁 Behavioral Design Patterns
+		  collapsed:: true
+			- [[Observer Pattern]] - Defines a one-to-many dependency — when one object (subject) changes state, all its observers are notified automatically.
+			- [[Strategy Pattern]] - Defines a family of algorithms, encapsulates each one, and makes them interchangeable at runtime.
+			- [[Command Pattern]] - Encapsulates a request as an object, enabling parameterization, queuing, logging, and undo/redo operations.
+			- [[Template Method Pattern]] - Defines the skeleton of an algorithm in a base class and lets subclasses fill in specific steps without changing the structure.
+			- [[Iterator Pattern]] - Provides a standard way to sequentially access elements of a collection without exposing its underlying structure.
+		- ### 🏛️ Structural Design Patterns
+		  collapsed:: true
+			- [[Decorator Pattern]] - Dynamically wraps an object to add new behavior **without** altering its original class.
+			- [[Adapter Pattern]] - Converts the interface of one class into another that the client expects — a "translator" between incompatible interfaces.
+			- [[Facade Pattern]] - Provides a simplified, unified interface to a complex subsystem of classes.
+			- [[Proxy Pattern]] - A surrogate object that controls access to another object (for lazy loading, access control, caching, etc.).
+	-
+	- ## **SOLID Principles** — 5 rules for clean OOP design :-
+	  collapsed:: true
+		- [[Single Responsibility Principle (SRP)]] - A class should have **one and only one reason to change** — it should do exactly one thing.
+		  logseq.order-list-type:: number
+		- [[Open Closed Principle (OCP)]] - Software entities should be **open for extension** but **closed for modification** — add new behavior without touching existing code.
+		  logseq.order-list-type:: number
+		- [[Liskov Substitution Principle (LSP)]] - Objects of a subclass must be substitutable for objects of the parent class **without breaking** program correctness.
+		  logseq.order-list-type:: number
+		- [[Interface Segregation Principle (ISP)]] - Prefer **many small, specific interfaces** over one large general-purpose interface — clients should not be forced to implement methods they don't need.
+		  logseq.order-list-type:: number
+		- [[Dependency Inversion Principle (DIP)]] - High-level modules should not depend on low-level modules; **both should depend on abstractions** (interfaces/abstract classes), not concrete implementations.
+		  logseq.order-list-type:: number
 -
 - # Complexity Analysis
 	- [[Complexity Analysis]] - Complete guide to time and space complexity, Big O notation, and algorithm mathematics.
 -
 - # Data Structures
 	- ## Linear Data Structures:
+	  collapsed:: true
 		- 1) [[Arrays]] - Contiguous memory structures covering static and dynamic arrays, multi-dimensional indexing, and amortized time analysis.
 		- 2) [[Linked Lists]] - Sequential data nodes covering singly, doubly, and circular configurations with insertion/deletion algorithms.
 		- 3) [[Stacks]] - LIFO (Last-In, First-Out) operations, execution call stacks, and monotonic stack patterns for range queries.
@@ -59,6 +100,7 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 		- 5) [[Hash Tables]] - Key-value mapping mechanisms, hashing functions, and collision resolution techniques like chaining and open addressing.
 		- 6) [[Circular buffer]] - Fixed-size ring buffer implementation supporting circular queues, overwritten streaming data, and concurrency-safe queue bounds.
 	- ## Trees:
+	  collapsed:: true
 		- ### Basic Trees:
 			- 1) [[Binary Tree]] - Hierarchical structure where each node has at most two children.
 			- 2) [[Binary Search Tree (BST)]] - Node-based binary tree with ordered left and right subtrees.
@@ -80,36 +122,37 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 			- 12) [[Suffix Tree]] - efficient string matching, substring search, and various other
 			- 13) [[Van Emde Boas Tree]] - supports **efficient priority queue** operations.
 	- ## Graphs:
+	  collapsed:: true
 		- 1) [[Graph Representations]] - Complete guide to representing graphs using Adjacency Lists, Adjacency Matrices, and Edge Lists with complexity tradeoffs.
 		- 2) [[Directed & Undirected Graphs]] - Overview of graph directionality, vertex degrees, and fundamental pathing terminology.
 		- 3) [[Weighted & Unweighted Graphs]] - Storing edge weights in matrices/lists and their application in shortest-path and MST algorithms.
 		- 4) [[Bipartite Graphs]] - Understanding bipartite structure, odd-length cycle checks, and the 2-coloring detection algorithm.
 	- ## Advanced & Specialized Data Structures:
-		- 1) [[Disjoint-set Data Structure]] (Union-Find) - Near-constant time dynamic connectivity tracking utilizing path compression and union by rank.
+	  collapsed:: true
+		- 1) [[Disjoint Set Data Structure]] (Union-Find) - Near-constant time dynamic connectivity tracking utilizing path compression and union by rank.
+			- Disjoint-set Data Structure
 		- 2) [[Bloom Filter]] - Space-efficient probabilistic data structure used for set membership queries with zero false negatives.
 		- 3) [[Rope (Data Structure)]] - Binary tree-based string representation optimized for efficient concatenation and substring manipulation of large texts.
 		- 4) [[Zipper]] - Functional cursor pattern enabling efficient, purely functional traversal and localized edits of tree structures.
 		- 5) [[Binary Decision Diagram]] - Compact canonical representation of boolean functions supporting efficient boolean operations.
 		- 6) [[Cuckoo Hashing]] - Hash table resolution scheme utilizing multiple tables and element displacement to guarantee O(1) worst-case lookup.
 		- 7) [[Zobrist Hashing]] - Incremental XOR hashing method used to cache and identify game states in transposition tables.
-		- 8) [[FM-index]] - Compressed full-text substring search index utilizing the Burrows-Wheeler Transform and Suffix Array.
+		- 8) [[FM index]] - Compressed full-text substring search index utilizing the Burrows-Wheeler Transform and Suffix Array.
 		- 9) [[Winged Edge]] - Boundary representation topology for 3D polygon meshes supporting constant-time adjacency traversal.
 		- 10) [[Five Balltree Construction Algorithms]] - Hierarchical spatial indexing that partitions metric spaces into nested hyperspheres for fast nearest neighbor search.
 		- 11) [[Binary Space Partitioning]] - Pre-computed spatial subdivision tree that partitions geometry using hyperplanes for rendering order.
 -
 - # Algorithms
 	- ## Searching & Graph Traversal:
+	  collapsed:: true
 		- 1) [[Linear Search]] - check each element in list one by one until we find the target element.
 		- 2) [[Binary Search]] - efficient algorithm to find an element in a **sorted** array.
 		- 3) [[Depth First Search]] - explores as far as possible along each branch before backtracking.
 		- 4) [[Breadth First Search]] - explores all the neighboring nodes at the present level
 		- 5) [[A Search Algorithm]] - Heuristic-based pathfinding algorithm that finds the shortest path using distance and estimated cost.
-		- 6) [[Dijkstras Algorithm]] - Greedy algorithm for finding the absolute shortest path in graphs with non-negative edge weights.
-		- 7) [[Bellman Ford Algorithm]] - Dynamic programming shortest path algorithm capable of handling negative edges and cycle detection.
-		- 8) [[Floyd Warshall Algorithm]] - O(V³) dynamic programming algorithm for finding shortest paths between all pairs of vertices.
-		- 9) [[Topological Sort Algorithm]] - Linear ordering of vertices in a Directed Acyclic Graph (DAG) for resolving dependencies.
 	-
 	- ## Sorting:
+	  collapsed:: true
 		- 1) [[Bubble Sort]] - In-place comparison sort that repeatedly swaps adjacent elements if they are out of order, optimized with an early-termination flag.
 		- 2) [[Selection Sort]] - In-place comparison sort that divides the list into sorted and unsorted parts, iteratively selecting and swapping the minimum element to minimize swaps.
 		- 3) [[Insertion Sort]] - In-place comparison sort that builds the sorted array one element at a time, highly efficient for small or nearly sorted datasets.
@@ -125,19 +168,21 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 		- 13) [[Cycle Sort]] - In-place comparison sort that minimizes the total number of memory writes to at most O(n), optimal for write-sensitive hardware (Flash/EEPROM).
 	-
 	- ## String Algorithms:
+	  collapsed:: true
 		- 1) [[Knuth Morris Pratt Algorithm (KMP)]] - string searching algorithm that bypasses redundant comparisons using a failure function.
 		- 2) [[Rabin-Karp Algorithm]] - string searching used to find a pattern within a larger text.
 		- 3) [[Z Algorithm]] - Linear-time pattern matching using the prefix-based Z-array, detailing string compression and periodicity check variants.
 		- 4) [[Manachers Algorithm]] - Finding the longest palindromic substring in O(N) time with string transformation, symmetry mirroring, and palindromic count variants.
-		- 5) [[burrows-wheeler-transform]] - Reversible string transformation for text compression, featuring cyclic rotations, suffix sorting, and stable inverse BWT decoding.
+		- 5) [[Burrows Wheeler Transform]] - Reversible string transformation for text compression, featuring cyclic rotations, suffix sorting, and stable inverse BWT decoding.
 		- 6) [[Aho Corasick Algorithm]] - Multi-pattern dictionary matching using a trie with suffix/dictionary link optimization and automated transition variants.
 	-
 	- ## Graph Algorithms:
+	  collapsed:: true
 		- 1) [[Dijkstras Algorithm]] - find the shortest paths from a source vertex-other vertices
 		- 2) [[Bellman Ford Algorithm]] - dynamic algorithm used for finding the shortest path
 		- 3) [[Floyd Warshall Algorithm]] - finding the shortest paths between all pairs
 		- 4) [[Johnson Algorithm]] - find **all pairs shortest paths** in a weighted directed graph.
-		- 5) [[Kruskal Algorithm]] - algorithm used to find the (MST) of a graph.
+		- 5) [[Kruskals Algorithm]] - algorithm used to find the (MST) of a graph.
 		- 6) [[Prims Algorithm]] - algorithm used to find the MST of a graph
 		- 7) [[Boruvkas Algorithm]] - algorithm used to find theMST of a graph.
 		- 8) [[Kosarajus Algorithm]] - find the SCC of a directed graph.
@@ -148,24 +193,65 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 		- 13) [[Eukerian Path (Hierholzer's Algorithm)]] - path that visits every edge exactly once.
 	-
 	- ## Arrays & Two Pointers:
-		- 1) [[Kadane's Algorithm]] - used to find the **maximum sum subarray**
-		- 2) [[Floyd Cycle Detection Algorithm]] - also known as **Tortoise and Hare**
-		- 3) [[Quick Select Algorithm]] - find the **k-th smallest element**
-		- 4) [[Boyer-More Majority Vote]] - used to find the **majority element**
-		- 5) [[MO’s Algorithm (Query square root decomposition)]] - square root decomposition technique
-		- 6) [[Distinct elements in subarray using Mo’s Algorithm]] - square root decomposition
-		- 7) [[Two Pointers Technique]] - Efficient linear search method using two pointers in opposite or same directions to solve pair matching and subarray problems.
-		- 8) [[Sliding Window Technique]] - Subarray/substring analysis method maintaining a range window to reduce O(N^2) search spaces to linear O(N) time.
-		- 9) [[Prefix Sum Array]] - Pre-computation strategy enabling O(1) range sum queries on static arrays across 1D and 2D bounds.
+	  collapsed:: true
+		- > [!tip] These techniques reduce brute-force O(N²) or O(N³) solutions down to O(N) or O(N log N) by exploiting array structure, sorted order, or range relationships.
+		- 1) [[Kadanes Algorithm]]
+			- **Purpose:** Find the contiguous subarray with the **maximum sum** in a 1D array.
+			- **Time:** O(N) · **Space:** O(1) — single pass, no extra memory
+			- **Key Insight:** At each index, decide: extend the running subarray or start fresh. `current = max(num, current + num)`
+			- **Use cases:** Maximum profit from stock prices, largest gain in a time series, max subarray in interview problems.
+		- 2) [[Floyd Cycle Detection Algorithm]]
+			- **Purpose:** Detect a **cycle** in a linked list or sequence — and find the **cycle start** — using two pointers.
+			- **Time:** O(N) · **Space:** O(1) — no extra hash set needed
+			- **Key Insight:** A slow pointer moves 1 step at a time; a fast pointer moves 2. If they meet, a cycle exists. The distance math pins the cycle entry exactly.
+			- **Use cases:** Linked list cycle detection, finding duplicate numbers in arrays (treat values as pointers), detecting loops in functional sequences.
+		- 3) [[Quick Select Algorithm]]
+			- **Purpose:** Find the **k-th smallest (or largest)** element without fully sorting the array.
+			- **Time:** O(N) average, O(N²) worst · **Space:** O(1) in-place (or O(log N) recursion stack)
+			- **Key Insight:** Uses the [[Quick Sort]] partition step but only recurses into **one side** — the half that contains the k-th index. Eliminates the other half entirely.
+			- **Use cases:** Top-K elements, median finding, order statistics, streaming data percentiles.
+		- 4) [[Boyer More Majority Vote]]
+			- **Purpose:** Find the **majority element** (appearing > N/2 times) in O(N) time and O(1) space.
+			- **Time:** O(N) · **Space:** O(1) — two variables only
+			- **Key Insight:** Maintain a `candidate` and a `count`. Each mismatch cancels one occurrence of the candidate. After one pass the surviving candidate is the majority (requires a second pass to confirm).
+			- **Use cases:** Majority vote in elections, finding dominant color in an image, consensus in distributed systems.
+		- 5) [[MOs Algorithm (Query square root decomposition)]]
+			- **Purpose:** Answer **multiple offline range queries** on a static array faster than processing each query independently.
+			- **Time:** O((N + Q) × √N) · **Space:** O(√N) for block bookkeeping
+			- **Key Insight:** Sort queries by (block of L, then R for even blocks / R descending for odd blocks). This minimizes total pointer movement across all queries to O((N + Q)√N).
+			- **Use cases:** Range sum/product queries, count distinct elements in range, offline interval problems.
+		- 6) [[Distinct elements in subarray using Mo's Algorithm]]
+			- **Purpose:** Count **distinct elements** across many arbitrary subarrays efficiently using MO's ordering.
+			- **Time:** O((N + Q) × √N) · **Space:** O(N) for frequency map
+			- **Key Insight:** Extend/shrink the window by one element at a time, updating a frequency table. Increment the distinct count only when a new frequency goes from 0 → 1, decrement when it goes 1 → 0.
+			- **Use cases:** Distinct color queries, unique word counts in document ranges, variant of MO applied to any "add/remove one element, query aggregate" problem.
+		- 7) [[Two Pointers Technique]]
+			- **Purpose:** Solve **pair-sum**, **triplet**, **palindrome**, and **partition** problems on sorted or structured arrays in O(N) instead of O(N²).
+			- **Time:** O(N) to O(N log N) · **Space:** O(1)
+			- **Key Insight:** Start pointers at opposite ends (or same direction). Based on the current sum/condition, advance the left or right pointer to converge on the answer. Works because the array is sorted (or can be).
+			- **Use cases:** Two Sum (sorted), Three Sum, remove duplicates in-place, container with most water, trapping rain water, palindrome check.
+		- 8) [[Sliding Window Technique]]
+			- **Purpose:** Analyze all **subarrays or substrings of a given size** (fixed or variable) in O(N) by maintaining a moving window instead of recomputing from scratch.
+			- **Time:** O(N) · **Space:** O(1) fixed window, O(K) variable (for character/element frequency maps)
+			- **Key Insight:** Instead of recomputing the window aggregate from scratch on each shift, subtract the element leaving and add the element entering. Shrink the window when a constraint is violated.
+			- **Variants:** Fixed-size window (max sum of K elements), Variable-size window (longest substring without repeating characters, minimum window substring).
+			- **Use cases:** Maximum average subarray, longest substring with K distinct chars, minimum window substring, DNA sequence pattern matching.
+		- 9) [[Prefix Sum Array]]
+			- **Purpose:** Precompute running totals so any **range sum query** `sum(L, R)` answers in **O(1)** instead of O(N).
+			- **Time:** O(N) build · O(1) query · **Space:** O(N) for the prefix array
+			- **Key Insight:** `prefix[i] = prefix[i-1] + arr[i]`. Then `sum(L, R) = prefix[R] - prefix[L-1]`. Extends to **2D prefix sums** for rectangle sub-matrix queries.
+			- **Use cases:** Range sum queries, subarray sum equals K (with hashmap), image integral (2D), number of subarrays with given XOR, equilibrium index.
 	-
 	- ## Dynamic Programming (DP):
+	  collapsed:: true
 		- 1) [[Dynamic Programming Concepts]] - Core paradigms of overlapping subproblems and optimal substructure using Memoization (Top-down) or Tabulation (Bottom-up).
-		- 2) [[0/1 Knapsack Problem]] - Classic optimization problem of selecting items with weights and values, including space-optimized dynamic programming techniques.
+		- 2) [[Knapsack Problem]] - Classic optimization problem of selecting items with weights and values, including space-optimized dynamic programming techniques.
 		- 3) [[Longest Common Subsequence (LCS)]] - Subsequence similarity matching utilizing a dynamic programming matrix for DNA alignment and diff tools.
 		- 4) [[Longest Increasing Subsequence (LIS)]] - Finding the longest ordered subsequence using dynamic programming or O(N log N) patience sorting with binary search.
 		- 5) [[Matrix Chain Multiplication]] - Classic interval dynamic programming problem optimizing parenthesization for matrix multiplication chain products.
 	-
 	- ## Greedy Algorithms & Backtracking:
+	  collapsed:: true
 		- 1) [[Greedy Algorithm Concepts]] - Decision-making paradigm that makes the locally optimal choice at each step to find a global optimum.
 		- 2) [[Huffman Coding Compression]] - **lossless data compression** algorithm
 		- 3) [[Activity Selection Problem]] - Classic interval scheduling optimization problem selecting maximum non-overlapping tasks sorted by finish times.
@@ -174,28 +260,34 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 		- 6) [[Sudoku Solver]] - Constraint satisfaction problem utilizing backtracking search and constraint propagation to fill empty cells.
 	-
 	- ## Geometric Algorithms:
+	  collapsed:: true
 		- 1) [[Line Sweep Algorithm]] - solve geometric problems
-		- 2) [[Convex Hull | Set 1 (Jarvis’s Algorithm or Wrapping)]] - finding the convex hull
-		- 3) [[Convex Hull | Set 2 (Graham Scan)]] - finding the convex hull.
-		- 4) [[Convex Hull using Divide and Conquer Algorithm]] - enclose a set of points in a plane.
-		- 5) [[Quickhull Algorithm for Convex Hull]] - divide and conquer approach for finding convex hull
+		- 2) [[Convex Hull Jarvis March]] - finding the convex hull
+		- 3) [[Convex Hull Graham Scan]] - finding the convex hull.
+		- 4) [[Convex Hull Divide and Conquer]] - enclose a set of points in a plane.
+		- 5) [[Convex Hull Quickhull]] - divide and conquer approach for finding convex hull
 	-
 	- ## Mathematical & Miscellaneous Algorithms:
-		- 1) [[Euclid Algorithm]] - efficient way to compute the **Greatest Common Divisor**
+	  collapsed:: true
+		- 1) [[Euclidean Algorithm for GCD]] - efficient way to compute the **Greatest Common Divisor**
 		- 2) [[Ackermann Function]] - well-known recursive function that grows very quickly.
-		- 3) [[Hungarian - Kuhn–Munkres - Munkres Assignment-Algorithm]] - combinatorial optimization algorithm
-		- 4) [[Dekker's Algorithm]] - first algorithms to solve the mutual exclusion
+		- 3) [[Hungarian Matching Algorithm]] - combinatorial optimization algorithm
+		- 4) [[Dekkers Algorithm]] - first algorithms to solve the mutual exclusion
 		- 5) [[Sieve of Eratosthenes]] - Classic number theory algorithm for generating all prime numbers up to a given limit in O(N log log N) time.
-		- 6) [[Fast Exponentiation]] - Logarithmic time modular power computation (binary exponentiation) used extensively in cryptography.
+		- 6) [[Binary Exponentiation Algorithm]] - Logarithmic time modular power computation (binary exponentiation) used extensively in cryptography.
 -
 - # Advanced Tips & Fast Formulas
-	- 1) [[fibonacci]] - Fast Doubling O(log N) and Binet's Formula O(1) approximation.
-	- 2) [[palindrome]] - One-line slice notations and short iteration tricks.
+	- 1) [[Fibonacci]] - Fast Doubling O(log N) and Binet's Formula O(1) approximation.
+	- 2) [[Palindrome]] - One-line slice notations and short iteration tricks.
 	- 3) [[Miscellaneous Snippets]] - Basic Python utility scripts (Factorial, Subarray sum, AP sum, Leap year).
 	- 4) [[Bitwise Hacks]] - Brian Kernighan's bit-counting, XOR swaps, and O(1) Power of 2 checks.
 	- 5) [[Fast Inverse Square Root]] - The legendary 0x5f3759df Quake III algorithm for fast floating-point math.
 	- 6) [[Gospers Hack]] - Bitwise combinatorics iteration to find the next subset bitmask in O(1).
 	- 7) [[XOR Sum 1 to N]] - Competitive programming pattern to compute range XOR sums without looping.
+	- 8) [[Submask Bitwise Iteration]] - Iterate through all submasks of a bitmask in O(3^N) instead of O(4^N) to optimize DP over subsets.
+	- 9) [[Linear Basis Algorithm]] - Construct a basis of subset XOR sums to find the maximum XOR subset in O(log(max A)) using linear algebra over F_2.
+	- 10) [[Mos Algorithm with Hilbert Curve]] - Sort queries along a Hilbert space-filling curve to optimize Mo's algorithm pointer distance by 2x-3x.
+	- 11) [[Fenwick Tree Binary Lifting]] - Find the k-th prefix sum element in a Binary Indexed Tree in O(log N) using binary lifting instead of O(log^2 N) binary search.
 -
 - # Binary system
 	- [[Binary]] - every type of binary calculations

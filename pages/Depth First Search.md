@@ -190,7 +190,7 @@ keywords: "depth first search, DFS, graph traversal, recursion, backtracking, cy
 	  # Output: ['A', 'B', 'D', 'E', 'C', 'F']
 	  ```
 	  
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <stack>
@@ -432,7 +432,7 @@ keywords: "depth first search, DFS, graph traversal, recursion, backtracking, cy
 	  # Output: ['A', 'B', 'D', 'E', 'C', 'F']
 	  ```
 	  
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <unordered_set>
@@ -651,7 +651,7 @@ keywords: "depth first search, DFS, graph traversal, recursion, backtracking, cy
 		  print("Has Directed Cycle:", has_cycle_directed(graph, 3)) # Output: True
 		  ```
 		  
-		  ```cpp
+		  ```c++
 		  #include <iostream>
 		  #include <vector>
 		  #include <unordered_map>
@@ -722,7 +722,7 @@ keywords: "depth first search, DFS, graph traversal, recursion, backtracking, cy
 		  print("Has Undirected Cycle:", has_cycle_undirected(graph, 3)) # Output: True
 		  ```
 		  
-		  ```cpp
+		  ```c++
 		  #include <iostream>
 		  #include <vector>
 		  #include <unordered_set>
@@ -791,7 +791,7 @@ keywords: "depth first search, DFS, graph traversal, recursion, backtracking, cy
 		  # Output: [5, 4, 2, 3, 1, 0] (one of valid topological orders)
 		  ```
 		  
-		  ```cpp
+		  ```c++
 		  #include <iostream>
 		  #include <vector>
 		  #include <unordered_set>
@@ -838,6 +838,7 @@ keywords: "depth first search, DFS, graph traversal, recursion, backtracking, cy
 		  :::
 -
 - # Key Takeaways
+  collapsed:: true
 	- **Core idea** — explore as deep as possible along each branch before backtracking.
 	- **Stack-based** — implemented either recursively (relying on the system call stack) or iteratively (using an explicit stack).
 	- **Complexity** — $O(V + E)$ time and $O(V)$ space for Adjacency List layout.
@@ -846,6 +847,7 @@ keywords: "depth first search, DFS, graph traversal, recursion, backtracking, cy
 	- **Stack Overflow Risk** — recursion can fail on deep paths; use explicit iterative loops for production scale.
 -
 - # More Learn
+  collapsed:: true
 	- ## GitHub & Webs
 		- [TheAlgorithms – DFS (Python)](https://github.com/TheAlgorithms/Python/blob/master/graphs/depth_first_search.py)
 		- [Visualgo — Graph Traversal Visualizations](https://visualgo.net/en/dfsbfs)

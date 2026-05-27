@@ -517,7 +517,7 @@ displayTitle: Mobile Game Development
 	-
 	- ## Android Frame Pacing (AGDK)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Android Game Development Kit — Frame Pacing
 		  // Eliminates jank caused by irregular frame delivery
 		  #include "swappy/swappyGL.h"

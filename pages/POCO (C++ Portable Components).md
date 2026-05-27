@@ -50,7 +50,7 @@ displayTitle: POCO (C++ Portable Components)
   collapsed:: true
 	- ## HTTP Client
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <Poco/Net/HTTPClientSession.h>
 		  #include <Poco/Net/HTTPRequest.h>
 		  #include <Poco/Net/HTTPResponse.h>
@@ -76,7 +76,7 @@ displayTitle: POCO (C++ Portable Components)
 	-
 	- ## JSON Parsing
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <Poco/JSON/Parser.h>
 		  #include <Poco/JSON/Object.h>
 		  
@@ -95,7 +95,7 @@ displayTitle: POCO (C++ Portable Components)
 	-
 	- ## Threading
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <Poco/Thread.h>
 		  #include <Poco/Runnable.h>
 		  
