@@ -17,6 +17,26 @@ export const LogseqFlavoredMarkdown: QuartzTransformerPlugin = () => {
     markdownPlugins(): PluggableList {
       return [
         () => (tree: Root) => {
+          // ── Step 0: Convert paragraph-wrapped block math into true math nodes ──
+          visit(tree, "paragraph", ((
+            node: Paragraph,
+            index: number,
+            parent: any,
+          ) => {
+            if (!parent || index === undefined) return
+            const text = toString(node).trim()
+            if (text.startsWith("$$") && text.endsWith("$$")) {
+              const mathContent = text.slice(2, -2).trim()
+              const mathNode = {
+                type: "math",
+                value: mathContent,
+                position: node.position
+              }
+              parent.children[index] = mathNode
+              return [SKIP, index]
+            }
+          }) as any)
+
           // ── Step 1: Strip Logseq block properties from list items ──────────
           // collapsed:: true, id:: abc123, etc. appear as paragraphs inside list items
           visit(tree, "listItem", ((node: ListItem) => {
@@ -85,6 +105,8 @@ export const LogseqFlavoredMarkdown: QuartzTransformerPlugin = () => {
                     hoistable.push(child as Code)
                   } else if (child.type === "table") {
                     hoistable.push(child as Table)
+                  } else if (child.type === "math") {
+                    hoistable.push(child as any)
                   } else if (child.type === "list") {
                     nestedLists.push(child as List)
                   } else if (isCodeTabsMarker(child)) {

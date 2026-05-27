@@ -1,18 +1,17 @@
 @use "../../styles/variables.scss" as *;
 
+// ── Mobile layout overrides ──────────────────────────────────────────────────
 @media all and ($mobile) {
-  .page > #quartz-body {
-    // Shift page position when toggling Explorer on mobile.
-    & > :not(.sidebar.left:has(.explorer)) {
+  .page>#quartz-body {
+    &> :not(.sidebar.left:has(.explorer)) {
       transition: transform 300ms ease-in-out;
     }
 
-    &.lock-scroll > :not(.sidebar.left:has(.explorer)) {
+    &.lock-scroll> :not(.sidebar.left:has(.explorer)) {
       transform: translateX(100dvw);
       transition: transform 300ms ease-in-out;
     }
 
-    // Sticky top bar (stays in place when scrolling down on mobile).
     .sidebar.left:has(.explorer) {
       box-sizing: border-box;
       position: sticky;
@@ -22,22 +21,22 @@
       width: 100%;
     }
 
-    .hide-until-loaded ~ .explorer-content {
+    .hide-until-loaded~.explorer-content {
       display: none;
     }
   }
 }
 
+// ── General Explorer Container ────────────────────────────────────────────────
 .explorer {
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
-
   min-height: 1.2rem;
   flex: 0 1 auto;
 
   &.collapsed {
-    flex: 0 1 1.2rem;
+    flex: 0 1 auto;
 
     & .fold {
       transform: rotateZ(-90deg);
@@ -83,17 +82,9 @@
       display: flex;
     }
   }
-
-  svg {
-    pointer-events: all;
-    transition: transform 0.35s ease;
-
-    & > polyline {
-      pointer-events: none;
-    }
-  }
 }
 
+// ── Buttons & Header Toggles ──────────────────────────────────────────────────
 button.mobile-explorer,
 button.desktop-explorer {
   background-color: transparent;
@@ -109,124 +100,366 @@ button.desktop-explorer {
     font-size: 1rem;
     display: inline-block;
     margin: 0;
+    font-weight: $semiBoldWeight;
+    letter-spacing: -0.01em;
   }
 }
 
+// ── Explorer Content Sidebar Panel ───────────────────────────────────────────
 .explorer-content {
   list-style: none;
   overflow: hidden;
   overflow-y: auto;
   margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 
-  & ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  // Actions & Title Subtitle
+  .explorer-actions-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 0.25rem 0 0.25rem;
 
-    &.explorer-ul {
-      overscroll-behavior: contain;
+    .explorer-subtitle {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--gray);
+      user-select: none;
     }
 
-    & li > a {
-      color: var(--dark);
-      opacity: 0.75;
-      pointer-events: all;
+    .explorer-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
 
-      &.active {
-        opacity: 1;
-        color: var(--tertiary);
+      .explorer-action-btn {
+        background: transparent;
+        border: none;
+        padding: 4px;
+        border-radius: 4px;
+        color: var(--gray);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s, color 0.2s;
+
+        &:hover {
+          background: color-mix(in srgb, var(--lightgray) 60%, transparent);
+          color: var(--secondary);
+        }
       }
     }
   }
 
-  .folder-outer {
-    visibility: collapse;
-    display: grid;
-    grid-template-rows: 0fr;
-    transition-property: grid-template-rows, visibility;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
-  }
-
-  .folder-outer.open {
-    visibility: visible;
-    grid-template-rows: 1fr;
-  }
-
-  .folder-outer > ul {
-    overflow: hidden;
-    margin-left: 6px;
-    padding-left: 0.8rem;
-    border-left: 1px solid var(--lightgray);
-  }
-}
-
-.folder-container {
-  flex-direction: row;
-  display: flex;
-  align-items: center;
-  user-select: none;
-
-  & div > a {
-    color: var(--secondary);
-    font-family: var(--headerFont);
-    font-size: 0.95rem;
-    font-weight: $semiBoldWeight;
-    line-height: 1.5rem;
-    display: inline-block;
-  }
-
-  & div > a:hover {
-    color: var(--tertiary);
-  }
-
-  & div > button {
-    color: var(--dark);
-    background-color: transparent;
-    border: none;
-    text-align: left;
-    cursor: pointer;
-    padding-left: 0;
-    padding-right: 0;
+  // Live filter box - Mobile only
+  .explorer-filter-container {
+    position: relative;
     display: flex;
     align-items: center;
-    font-family: var(--headerFont);
+    background: color-mix(in srgb, var(--lightgray) 25%, transparent);
+    border: 1px solid color-mix(in srgb, var(--lightgray) 60%, transparent);
+    border-radius: 6px;
+    padding: 0.25rem 0.5rem;
+    margin: 0 0.25rem;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
 
-    & span {
-      font-size: 0.95rem;
-      display: inline-block;
-      color: var(--secondary);
-      font-weight: $semiBoldWeight;
-      margin: 0;
-      line-height: 1.5rem;
-      pointer-events: none;
+    @media all and not ($mobile) {
+      display: none !important;
+    }
+
+    &:focus-within {
+      border-color: var(--secondary);
+      background: var(--light);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--secondary) 15%, transparent);
+    }
+
+    .filter-search-icon {
+      color: var(--gray);
+      margin-right: 6px;
+      flex-shrink: 0;
+    }
+
+    .explorer-filter {
+      background: transparent;
+      border: none;
+      font-family: var(--bodyFont);
+      font-size: 0.85rem;
+      width: 100%;
+      padding: 0;
+      color: var(--dark);
+      outline: none;
+
+      &::placeholder {
+        color: var(--gray);
+        opacity: 0.8;
+      }
+    }
+
+    .explorer-filter-clear {
+      background: transparent;
+      border: none;
+      color: var(--gray);
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0;
+      margin-left: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+
+      &:hover {
+        color: var(--dark);
+      }
     }
   }
 }
 
-.folder-icon {
-  margin-right: 5px;
-  color: var(--secondary);
+// ── Tree List Navigation ──────────────────────────────────────────────────────
+ul.explorer-ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 0.25rem !important;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  // Active state highlighting inside list
+  &.search-active {
+
+    .explorer-folder-item.search-hidden,
+    .explorer-file-item.search-hidden {
+      display: none !important;
+    }
+  }
+}
+
+// Generic node styles
+.explorer-file-item,
+.explorer-folder-item {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// ── Folders Styling ───────────────────────────────────────────────────────────
+.folder-container {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.4rem;
+  border-radius: 6px;
   cursor: pointer;
-  transition: transform 0.3s ease;
-  backface-visibility: visible;
-  flex-shrink: 0;
+  user-select: none;
+  transition: background 0.2s;
+
+  &:hover {
+    background: color-mix(in srgb, var(--lightgray) 35%, transparent);
+
+    .folder-icon,
+    .folder-glyph-icon {
+      color: var(--secondary);
+    }
+  }
+
+  &.active {
+    background: color-mix(in srgb, var(--secondary) 8%, transparent);
+
+    .folder-title,
+    .folder-button span {
+      color: var(--secondary) !important;
+      font-weight: 600;
+    }
+  }
+
+  // Folder chevrons & icons
+  .folder-chevron-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+
+    .folder-icon {
+      color: var(--gray);
+      transition: transform 0.2s ease;
+    }
+  }
+
+  .folder-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-grow: 1;
+    min-width: 0;
+
+    .folder-glyph-icon {
+      color: var(--gray);
+      flex-shrink: 0;
+      transition: color 0.2s;
+    }
+
+    a.folder-title,
+    button.folder-button {
+      color: var(--darkgray);
+      font-family: var(--headerFont);
+      font-size: 0.88rem;
+      font-weight: 500;
+      text-decoration: none !important;
+      border: none;
+      background: transparent;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      text-align: left;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-grow: 1;
+      display: inline-block;
+
+      &:hover {
+        color: var(--secondary);
+      }
+    }
+
+    // Folder badge count
+    .folder-badge {
+      font-size: 0.68rem;
+      font-weight: 600;
+      background: color-mix(in srgb, var(--lightgray) 45%, transparent);
+      color: var(--gray);
+      padding: 1px 6px;
+      border-radius: 99px;
+      margin-left: auto;
+      flex-shrink: 0;
+      opacity: 0.85;
+    }
+  }
 }
 
-li:has(> .folder-outer:not(.open)) > .folder-container > svg {
-  transform: rotate(-90deg);
+// Chevron states & Open/Close Folder glyph toggle
+li.explorer-folder-item {
+  &:not(.open-folder) {
+    .folder-icon {
+      transform: rotate(-90deg);
+    }
+
+    .folder-open {
+      display: none !important;
+    }
+  }
+
+  &.open-folder {
+    .folder-closed {
+      display: none !important;
+    }
+  }
 }
 
-.folder-icon:hover {
-  color: var(--tertiary);
+// Nested folders hierarchy guide line
+.folder-outer {
+  visibility: collapse;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition-property: grid-template-rows, visibility;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
+
+  &.open {
+    visibility: visible;
+    grid-template-rows: 1fr;
+  }
+
+  &>ul.content {
+    overflow: hidden;
+    margin-left: 10px;
+    padding-left: 0.6rem;
+    border-left: 1.5px solid color-mix(in srgb, var(--lightgray) 30%, transparent);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    transition: border-color 0.2s ease;
+  }
 }
 
+// Highlight vertical guide line on hover
+li.explorer-folder-item:hover>.folder-outer>ul.content {
+  border-left-color: color-mix(in srgb, var(--secondary) 30%, transparent);
+}
+
+// ── Files Styling ─────────────────────────────────────────────────────────────
+.explorer-file-item {
+  margin: 0;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.28rem 0.4rem;
+    border-radius: 6px;
+    color: var(--darkgray) !important;
+    font-size: 0.86rem;
+    font-weight: 500;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    background: transparent !important;
+    transition: background 0.2s, color 0.2s;
+
+    &:hover {
+      background: color-mix(in srgb, var(--lightgray) 35%, transparent);
+      color: var(--secondary) !important;
+
+      .file-icon {
+        color: var(--secondary);
+      }
+    }
+
+    .file-icon {
+      color: var(--gray);
+      flex-shrink: 0;
+      transition: color 0.2s;
+    }
+
+    .file-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-grow: 1;
+    }
+  }
+
+  // Active note highlight style
+  &.active-file {
+    a {
+      background: color-mix(in srgb, var(--secondary) 10%, transparent) !important;
+      color: var(--secondary) !important;
+      font-weight: 600;
+      box-shadow: inset 3px 0 0 0 var(--secondary);
+      border-radius: 0 6px 6px 0;
+      padding-left: 0.6rem; // offset due to inset border padding effect
+
+      .file-icon {
+        color: var(--secondary) !important;
+      }
+    }
+  }
+}
+
+// ── Mobile Responsive Sidebar View overlay ───────────────────────────────────
 .explorer {
   @media all and ($mobile) {
     &.collapsed {
       flex: 0 0 34px;
 
-      & > .explorer-content {
+      &>.explorer-content {
         transform: translateX(-100vw);
         visibility: hidden;
       }
@@ -235,7 +468,7 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
     &:not(.collapsed) {
       flex: 0 0 34px;
 
-      & > .explorer-content {
+      &>.explorer-content {
         transform: translateX(0);
         visibility: visible;
       }
@@ -249,17 +482,20 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
       left: 0;
       margin-top: 0;
       background-color: var(--light);
-      max-width: 100vw;
+      max-width: 100%;
       width: 100vw;
       transform: translateX(-100vw);
       transition:
         transform 200ms ease,
         visibility 200ms ease;
       overflow: hidden;
-      padding: 4rem 0 2rem 0;
+      padding: 4rem 1rem 2rem 1rem;
       height: 100dvh;
       max-height: 100dvh;
       visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
     }
 
     .mobile-explorer {
@@ -271,13 +507,38 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
         stroke: var(--darkgray);
       }
     }
+
+    // Add extra breathing room inside mobile tree view
+    ul.explorer-ul {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding-bottom: 2rem !important;
+
+      .folder-container,
+      .explorer-file-item a {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.95rem;
+      }
+
+      .folder-badge {
+        font-size: 0.72rem;
+      }
+    }
   }
 }
 
 .mobile-no-scroll {
   @media all and ($mobile) {
-    .explorer-content > .explorer-ul {
+    .explorer-content>.explorer-ul {
       overscroll-behavior: contain;
     }
   }
+}
+
+// Category Folder custom icon styles
+.cat-icon {
+  font-size: 1.05rem;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
 }

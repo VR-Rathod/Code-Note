@@ -1,25 +1,171 @@
-import { FileTrieNode } from "../../util/fileTrie"
-import { FullSlug, resolveRelative, simplifySlug } from "../../util/path"
+// import { FileTrieNode } from "../../util/fileTrie"
+import { FullSlug, resolveRelative } from "../../util/path"
 import { ContentDetails } from "../../plugins/emitters/contentIndex"
 
 type MaybeHTMLElement = HTMLElement | undefined
 
-interface ParsedOptions {
-  folderClickBehavior: "collapse" | "link"
-  folderDefaultState: "collapsed" | "open"
-  useSavedState: boolean
-  sortFn: (a: FileTrieNode, b: FileTrieNode) => number
-  filterFn: (node: FileTrieNode) => boolean
-  mapFn: (node: FileTrieNode) => void
-  order: "sort" | "filter" | "map"[]
+interface NamespaceNode {
+  name: string
+  fullName: string
+  slug: string
+  children: NamespaceNode[]
 }
 
-type FolderState = {
-  path: string
-  collapsed: boolean
+function escapeHTML(str: string): string {
+  return str.replace(/[&<>'"]/g,
+    tag => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;'
+    }[tag as '&' | '<' | '>' | "'" | '"'] || tag)
+  );
 }
 
-let currentExplorerState: Array<FolderState>
+function checkIsDescendantActive(node: NamespaceNode, currentSlug: FullSlug): boolean {
+  if (node.slug === currentSlug) return true
+  for (const child of node.children) {
+    if (checkIsDescendantActive(child, currentSlug)) return true
+  }
+  return false
+}
+
+function countTotalFiles(node: NamespaceNode): number {
+  let count = 0
+  if (node.slug) count += 1
+  for (const child of node.children) {
+    count += countTotalFiles(child)
+  }
+  return count
+}
+
+function renderNamespaceNode(
+  node: NamespaceNode,
+  currentSlug: FullSlug,
+  isCollapsedDefault: boolean
+): string {
+  if (node.children.length === 0) {
+    const href = resolveRelative(currentSlug, node.slug as FullSlug)
+    const activeClass = currentSlug === node.slug ? ' class="active"' : ""
+    const activeClassForLi = currentSlug === node.slug ? ' active-file' : ""
+    return `<li class="explorer-file-item${activeClassForLi}">
+      <a href="${href}" data-for="${node.slug}"${activeClass}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="file-icon">
+          <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+          <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+        </svg>
+        <span class="file-title">${escapeHTML(node.name)}</span>
+      </a>
+    </li>`
+  }
+
+  const folderPath = node.fullName
+  const activeClass = currentSlug === node.slug ? ' active' : ""
+
+  let titleHtml = ""
+  if (node.slug) {
+    const href = resolveRelative(currentSlug, node.slug as FullSlug)
+    titleHtml = `<a href="${href}" data-for="${node.slug}" class="folder-title">${escapeHTML(node.name)}</a>`
+  } else {
+    titleHtml = `<button class="folder-button"><span class="folder-title">${escapeHTML(node.name)}</span></button>`
+  }
+
+  let savedState: Record<string, boolean> = {}
+  try {
+    savedState = JSON.parse(localStorage.getItem("explorerNamespaceStates") || "{}")
+  } catch (e) { }
+
+  const isDescendantActive = checkIsDescendantActive(node, currentSlug)
+  const isCollapsed = isDescendantActive ? false : (savedState[folderPath] ?? isCollapsedDefault)
+
+  const openClass = !isCollapsed ? ' open' : ""
+  const parentOpenClass = !isCollapsed ? ' open-folder' : ""
+
+  let childrenHtml = ""
+  node.children.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: "base" }))
+  for (const child of node.children) {
+    childrenHtml += renderNamespaceNode(child, currentSlug, isCollapsedDefault)
+  }
+
+  return `<li class="explorer-folder-item${parentOpenClass}">
+    <div class="folder-container${activeClass}" data-folderpath="${folderPath}">
+      <span class="folder-chevron-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="folder-icon">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </span>
+      <div class="folder-title-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-glyph-icon folder-closed">
+          <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-glyph-icon folder-open">
+          <path d="M6 20h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H6a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>
+          <path d="M2 10h20"/>
+        </svg>
+        ${titleHtml}
+        <span class="folder-badge">${countTotalFiles(node)}</span>
+      </div>
+    </div>
+    <div class="folder-outer${openClass}">
+      <ul class="content">${childrenHtml}</ul>
+    </div>
+  </li>`
+}
+
+function createFileItemStr(currentSlug: FullSlug, slug: string, title: string): string {
+  const href = resolveRelative(currentSlug, slug as FullSlug)
+  const activeClass = currentSlug === slug ? ' class="active"' : ""
+  const activeClassForLi = currentSlug === slug ? ' active-file' : ""
+  return `<li class="explorer-file-item${activeClassForLi}">
+    <a href="${href}" data-for="${slug}"${activeClass}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="file-icon">
+        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+        <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+      </svg>
+      <span class="file-title">${escapeHTML(title)}</span>
+    </a>
+  </li>`
+}
+
+function createCategoryFolderStr(
+  categoryId: string,
+  icon: string,
+  title: string,
+  count: number,
+  childrenHtml: string,
+  isChildActive: boolean,
+  isCollapsedDefault: boolean = true
+): string {
+  let savedState: Record<string, boolean> = {}
+  try {
+    savedState = JSON.parse(localStorage.getItem("explorerCatStates") || "{}")
+  } catch (e) { }
+
+  const isCollapsed = isChildActive ? false : (savedState[categoryId] ?? isCollapsedDefault)
+
+  const openClass = !isCollapsed ? ' open' : ""
+  const parentOpenClass = !isCollapsed ? ' open-folder' : ""
+
+  return `<li class="explorer-folder-item${parentOpenClass}" data-catid="${categoryId}">
+    <div class="folder-container" data-folderpath="${categoryId}">
+      <span class="folder-chevron-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="folder-icon">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </span>
+      <div class="folder-title-wrapper">
+        <span class="cat-icon" style="margin-right: 4px;">${icon}</span>
+        <button class="folder-button"><span class="folder-title">${escapeHTML(title)}</span></button>
+        <span class="folder-badge">${count}</span>
+      </div>
+    </div>
+    <div class="folder-outer${openClass}">
+      <ul class="content">${childrenHtml}</ul>
+    </div>
+  </li>`
+}
+
 function toggleExplorer(this: HTMLElement) {
   const nearestExplorer = this.closest(".explorer") as HTMLElement
   if (!nearestExplorer) return
@@ -30,7 +176,6 @@ function toggleExplorer(this: HTMLElement) {
   )
 
   if (!explorerCollapsed) {
-    // Stop <html> from being scrollable when mobile explorer is open
     document.documentElement.classList.add("mobile-no-scroll")
   } else {
     document.documentElement.classList.remove("mobile-no-scroll")
@@ -42,194 +187,274 @@ function toggleFolder(evt: MouseEvent) {
   const target = evt.target as MaybeHTMLElement
   if (!target) return
 
-  // Check if target was svg icon or button
-  const isSvg = target.nodeName === "svg"
-
-  // corresponding <ul> element relative to clicked button/folder
-  const folderContainer = (
-    isSvg
-      ? // svg -> div.folder-container
-        target.parentElement
-      : // button.folder-button -> div -> div.folder-container
-        target.parentElement?.parentElement
-  ) as MaybeHTMLElement
+  const folderContainer = target.closest(".folder-container") as HTMLElement | null
   if (!folderContainer) return
   const childFolderContainer = folderContainer.nextElementSibling as MaybeHTMLElement
   if (!childFolderContainer) return
 
   childFolderContainer.classList.toggle("open")
 
-  // Collapse folder container
   const isCollapsed = !childFolderContainer.classList.contains("open")
   setFolderState(childFolderContainer, isCollapsed)
 
-  const currentFolderState = currentExplorerState.find(
-    (item) => item.path === folderContainer.dataset.folderpath,
-  )
-  if (currentFolderState) {
-    currentFolderState.collapsed = isCollapsed
-  } else {
-    currentExplorerState.push({
-      path: folderContainer.dataset.folderpath as FullSlug,
-      collapsed: isCollapsed,
-    })
+  const parentLi = folderContainer.parentElement
+  if (parentLi) {
+    parentLi.classList.toggle("open-folder", !isCollapsed)
   }
 
-  const stringifiedFileTree = JSON.stringify(currentExplorerState)
+  const folderPath = folderContainer.dataset.folderpath
+  if (folderPath) {
+    try {
+      const savedNamespaceState = JSON.parse(localStorage.getItem("explorerNamespaceStates") || "{}")
+      const savedCatState = JSON.parse(localStorage.getItem("explorerCatStates") || "{}")
+
+      savedNamespaceState[folderPath] = isCollapsed
+      savedCatState[folderPath] = isCollapsed
+
+      localStorage.setItem("explorerNamespaceStates", JSON.stringify(savedNamespaceState))
+      localStorage.setItem("explorerCatStates", JSON.stringify(savedCatState))
+    } catch (e) { }
+  }
+}
+
+function collapseAllFolders(explorer: HTMLElement) {
+  const explorerUl = explorer.querySelector(".explorer-ul")
+  if (!explorerUl) return
+
+  const allFolders = explorerUl.querySelectorAll("li.explorer-folder-item")
+  allFolders.forEach((folderLi) => {
+    folderLi.classList.remove("open-folder")
+    const folderOuter = folderLi.querySelector(".folder-outer")
+    if (folderOuter) {
+      folderOuter.classList.remove("open")
+    }
+  })
+
   try {
-    localStorage.setItem("fileTree", stringifiedFileTree)
-  } catch (e) {}
+    const savedNamespaceState: Record<string, boolean> = {}
+    const savedCatState: Record<string, boolean> = {}
+
+    const categories = ["history", "hierarchies", "standalone"]
+    categories.forEach(c => {
+      savedCatState[c] = true
+    })
+
+    const namespaceContainers = explorerUl.querySelectorAll(".folder-container[data-folderpath]")
+    namespaceContainers.forEach(container => {
+      const path = (container as HTMLElement).dataset.folderpath
+      if (path) {
+        savedNamespaceState[path] = true
+      }
+    })
+
+    localStorage.setItem("explorerNamespaceStates", JSON.stringify(savedNamespaceState))
+    localStorage.setItem("explorerCatStates", JSON.stringify(savedCatState))
+  } catch (e) { }
 }
 
-function escapeHTML(str: string): string {
-  return str.replace(/[&<>'"]/g, 
-    tag => ({
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      "'": '&#39;',
-      '"': '&quot;'
-    }[tag as '&' | '<' | '>' | "'" | '"'] || tag)
-  );
-}
+function filterExplorer(query: string, explorer: HTMLElement) {
+  const q = query.toLowerCase().trim()
+  const explorerUl = explorer.querySelector(".explorer-ul")
+  if (!explorerUl) return
 
-function createFileNodeStr(currentSlug: FullSlug, node: FileTrieNode): string {
-  const href = resolveRelative(currentSlug, node.slug)
-  const activeClass = currentSlug === node.slug ? ' class="active"' : ""
-  const displayName = escapeHTML(node.displayName)
-  return `<li><a href="${href}" data-for="${node.slug}"${activeClass}>${displayName}</a></li>`
-}
+  if (q === "") {
+    explorerUl.classList.remove("search-active")
+    const allFolders = explorerUl.querySelectorAll("li.explorer-folder-item")
+    allFolders.forEach((folderLi) => {
+      const folderContainer = folderLi.querySelector(".folder-container") as HTMLElement
+      const folderOuter = folderLi.querySelector(".folder-outer") as HTMLElement
+      if (!folderContainer || !folderOuter) return
 
-function createFolderNodeStr(
-  currentSlug: FullSlug,
-  node: FileTrieNode,
-  opts: ParsedOptions,
-): string {
-  const folderPath = node.slug
-  const activeClass = currentSlug === folderPath ? ' active' : ""
-  const displayName = escapeHTML(node.displayName)
-  
-  let titleHtml = ""
-  if (opts.folderClickBehavior === "link") {
-    const href = resolveRelative(currentSlug, folderPath)
-    titleHtml = `<a href="${href}" data-for="${folderPath}" class="folder-title">${displayName}</a>`
-  } else {
-    titleHtml = `<button class="folder-button"><span class="folder-title">${displayName}</span></button>`
+      const folderPath = folderContainer.dataset.folderpath
+      let savedNamespaceState: Record<string, boolean> = {}
+      let savedCatState: Record<string, boolean> = {}
+      try {
+        savedNamespaceState = JSON.parse(localStorage.getItem("explorerNamespaceStates") || "{}")
+        savedCatState = JSON.parse(localStorage.getItem("explorerCatStates") || "{}")
+      } catch (e) { }
+
+      const collapsed = savedNamespaceState[folderPath ?? ""] ?? savedCatState[folderPath ?? ""] ?? (folderPath === "hierarchies" ? false : true)
+
+      folderLi.classList.remove("search-hidden", "search-match", "search-child-match")
+      folderOuter.classList.toggle("open", !collapsed)
+      folderLi.classList.toggle("open-folder", !collapsed)
+    })
+
+    const allFiles = explorerUl.querySelectorAll("li.explorer-file-item")
+    allFiles.forEach((fileLi) => {
+      fileLi.classList.remove("search-hidden", "search-match")
+    })
+    return
   }
 
-  const isCollapsed =
-    currentExplorerState.find((item) => item.path === folderPath)?.collapsed ??
-    opts.folderDefaultState === "collapsed"
+  explorerUl.classList.add("search-active")
 
-  const simpleFolderPath = simplifySlug(folderPath)
-  const folderIsPrefixOfCurrentSlug =
-    simpleFolderPath === currentSlug.slice(0, simpleFolderPath.length)
+  function processLi(li: HTMLElement): boolean {
+    let matches = false
 
-  const openClass = !isCollapsed || folderIsPrefixOfCurrentSlug ? ' open' : ""
+    if (li.classList.contains("explorer-file-item")) {
+      const titleSpan = li.querySelector(".file-title")
+      const title = titleSpan ? titleSpan.textContent || "" : ""
+      matches = title.toLowerCase().includes(q)
 
-  let childrenHtml = ""
-  for (const child of node.children) {
-    childrenHtml += child.isFolder
-      ? createFolderNodeStr(currentSlug, child, opts)
-      : createFileNodeStr(currentSlug, child)
+      if (matches) {
+        li.classList.remove("search-hidden")
+        li.classList.add("search-match")
+      } else {
+        li.classList.remove("search-match")
+        li.classList.add("search-hidden")
+      }
+    } else if (li.classList.contains("explorer-folder-item")) {
+      const folderTitleSpan = li.querySelector(".folder-title")
+      const folderTitle = folderTitleSpan ? folderTitleSpan.textContent || "" : ""
+      const folderMatchesSelf = folderTitle.toLowerCase().includes(q)
+
+      const childUl = li.querySelector(".folder-outer > ul.content")
+      let childMatches = false
+      if (childUl) {
+        const childLis = Array.from(childUl.children) as HTMLElement[]
+        for (const childLi of childLis) {
+          if (processLi(childLi)) {
+            childMatches = true
+          }
+        }
+      }
+
+      matches = folderMatchesSelf || childMatches
+
+      if (matches) {
+        li.classList.remove("search-hidden")
+        if (folderMatchesSelf) {
+          li.classList.add("search-match")
+        } else {
+          li.classList.remove("search-match")
+        }
+
+        if (childMatches) {
+          li.classList.add("search-child-match")
+          const folderOuter = li.querySelector(".folder-outer")
+          if (folderOuter) folderOuter.classList.add("open")
+          li.classList.add("open-folder")
+        } else {
+          li.classList.remove("search-child-match")
+        }
+      } else {
+        li.classList.add("search-hidden")
+        li.classList.remove("search-match", "search-child-match")
+      }
+    }
+
+    return matches
   }
 
-  return `<li>
-    <div class="folder-container${activeClass}" data-folderpath="${folderPath}">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon">
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
-      <div>${titleHtml}</div>
-    </div>
-    <div class="folder-outer${openClass}">
-      <ul class="content">${childrenHtml}</ul>
-    </div>
-  </li>`
+  const rootLis = Array.from(explorerUl.children) as HTMLElement[]
+  for (const rootLi of rootLis) {
+    processLi(rootLi)
+  }
 }
 
 async function setupExplorer(currentSlug: FullSlug) {
   const allExplorers = document.querySelectorAll("div.explorer") as NodeListOf<HTMLElement>
 
   for (const explorer of allExplorers) {
-    const dataFns = JSON.parse(explorer.dataset.dataFns || "{}")
-    const opts: ParsedOptions = {
-      folderClickBehavior: (explorer.dataset.behavior || "collapse") as "collapse" | "link",
-      folderDefaultState: (explorer.dataset.collapsed || "collapsed") as "collapsed" | "open",
-      useSavedState: explorer.dataset.savestate === "true",
-      order: dataFns.order || ["filter", "map", "sort"],
-      sortFn: new Function("return " + (dataFns.sortFn || "undefined"))(),
-      filterFn: new Function("return " + (dataFns.filterFn || "undefined"))(),
-      mapFn: new Function("return " + (dataFns.mapFn || "undefined"))(),
-    }
-
-    // Get folder state from local storage
-    let storageTree: string | null = null
-    try {
-      storageTree = localStorage.getItem("fileTree")
-    } catch (e) {}
-    const serializedExplorerState = storageTree && opts.useSavedState ? JSON.parse(storageTree) : []
-    const oldIndex = new Map<string, boolean>(
-      serializedExplorerState.map((entry: FolderState) => [entry.path, entry.collapsed]),
-    )
-
     const data = await fetchData
     const entries = [...Object.entries(data)] as [FullSlug, ContentDetails][]
-    const trie = FileTrieNode.fromEntries(entries)
 
-    // Apply functions in order
-    for (const fn of opts.order) {
-      switch (fn) {
-        case "filter":
-          if (opts.filterFn) trie.filter(opts.filterFn)
-          break
-        case "map":
-          if (opts.mapFn) trie.map(opts.mapFn)
-          break
-        case "sort":
-          if (opts.sortFn) trie.sort(opts.sortFn)
-          break
+    const rootNodes: NamespaceNode[] = []
+
+    function insertNamespace(parts: string[], slug: string) {
+      let currentList = rootNodes
+      let currentPath = ""
+
+      for (let i = 0; i < parts.length; i++) {
+        const part = parts[i]
+        currentPath = currentPath ? `${currentPath} - ${part}` : part
+
+        let node = currentList.find(n => n.name === part)
+        if (!node) {
+          node = {
+            name: part,
+            fullName: currentPath,
+            slug: i === parts.length - 1 ? slug : "",
+            children: []
+          }
+          currentList.push(node)
+        } else {
+          if (i === parts.length - 1) {
+            node.slug = slug
+          }
+        }
+        currentList = node.children
       }
     }
 
-    // Get folder paths for state management
-    const folderPaths = trie.getFolderPaths()
-    currentExplorerState = folderPaths.map((path) => {
-      const previousState = oldIndex.get(path)
-      return {
-        path,
-        collapsed:
-          previousState === undefined ? opts.folderDefaultState === "collapsed" : previousState,
+    for (const [slug, page] of entries) {
+      if (slug === "index" || page.title === "index" || page.title === "") continue
+
+      const parts = (page.title || slug).split(" - ").map(s => s.trim())
+      insertNamespace(parts, slug)
+    }
+
+    const hierarchyNodes: NamespaceNode[] = []
+    const standaloneNodes: NamespaceNode[] = []
+
+    for (const node of rootNodes) {
+      if (node.children.length > 0) {
+        hierarchyNodes.push(node)
+      } else {
+        standaloneNodes.push(node)
       }
-    })
+    }
+
+    const alphaSort = (a: NamespaceNode, b: NamespaceNode) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: "base" })
+    hierarchyNodes.sort(alphaSort)
+    standaloneNodes.sort(alphaSort)
 
     const explorerUl = explorer.querySelector(".explorer-ul")
     if (!explorerUl) continue
 
-    // Create and insert new content
     let htmlStr = ""
-    for (const child of trie.children) {
-      htmlStr += child.isFolder
-        ? createFolderNodeStr(currentSlug, child, opts)
-        : createFileNodeStr(currentSlug, child)
+
+    let history: string[] = []
+    try {
+      history = JSON.parse(sessionStorage.getItem("explorerHistory") || "[]")
+    } catch (e) { }
+
+    const historyPages = history.filter(slug => data[slug]).map(slug => [slug, data[slug].title] as [string, string])
+    if (historyPages.length > 0) {
+      const isHistoryActive = historyPages.some(x => x[0] === currentSlug)
+      let historyHtml = ""
+      for (const [slug, title] of historyPages) {
+        historyHtml += createFileItemStr(currentSlug, slug, title)
+      }
+      htmlStr += createCategoryFolderStr("history", "🕒", "Recent Sessions", historyPages.length, historyHtml, isHistoryActive, true)
     }
+
+    if (hierarchyNodes.length > 0) {
+      const isHierarchyActive = hierarchyNodes.some(node => checkIsDescendantActive(node, currentSlug))
+      let hierarchyHtml = ""
+      for (const node of hierarchyNodes) {
+        hierarchyHtml += renderNamespaceNode(node, currentSlug, true)
+      }
+      htmlStr += createCategoryFolderStr("hierarchies", "📚", "Page Hierarchies", countTotalFiles({ name: "", fullName: "", slug: "", children: hierarchyNodes }), hierarchyHtml, isHierarchyActive, false)
+    }
+
+    if (standaloneNodes.length > 0) {
+      const isStandaloneActive = standaloneNodes.some(node => node.slug === currentSlug)
+      let standaloneHtml = ""
+      for (const node of standaloneNodes) {
+        standaloneHtml += renderNamespaceNode(node, currentSlug, true)
+      }
+      htmlStr += createCategoryFolderStr("standalone", "📝", "Standalone Notes", standaloneNodes.length, standaloneHtml, isStandaloneActive, true)
+    }
+
     explorerUl.innerHTML = htmlStr
 
-    // restore explorer scrollTop position if it exists
-    let scrollTop: string | null = null
-    try {
-      scrollTop = sessionStorage.getItem("explorerScrollTop")
-    } catch (e) {}
-    if (scrollTop) {
-      explorerUl.scrollTop = parseInt(scrollTop)
-    } else {
-      // try to scroll to the active element if it exists
-      const activeElement = explorerUl.querySelector(".active")
-      if (activeElement) {
-        activeElement.scrollIntoView({ behavior: "smooth" })
-      }
+    const activeElement = explorerUl.querySelector(".active")
+    if (activeElement) {
+      activeElement.scrollIntoView({ behavior: "smooth", block: "nearest" })
     }
 
-    // Set up event handlers
     const explorerButtons = explorer.getElementsByClassName(
       "explorer-toggle",
     ) as HTMLCollectionOf<HTMLElement>
@@ -238,41 +463,71 @@ async function setupExplorer(currentSlug: FullSlug) {
       window.addCleanup(() => button.removeEventListener("click", toggleExplorer))
     }
 
-    // Set up folder click handlers
-    if (opts.folderClickBehavior === "collapse") {
-      const folderButtons = explorer.getElementsByClassName(
-        "folder-button",
-      ) as HTMLCollectionOf<HTMLElement>
-      for (const button of folderButtons) {
-        button.addEventListener("click", toggleFolder)
-        window.addCleanup(() => button.removeEventListener("click", toggleFolder))
+    const filterInput = explorer.querySelector(".explorer-filter") as HTMLInputElement | null
+    const filterClear = explorer.querySelector(".explorer-filter-clear") as HTMLButtonElement | null
+    if (filterInput) {
+      const handleInput = () => {
+        const query = filterInput.value
+        if (filterClear) {
+          filterClear.style.display = query ? "block" : "none"
+        }
+        filterExplorer(query, explorer)
+      }
+      filterInput.addEventListener("input", handleInput)
+      window.addCleanup(() => filterInput.removeEventListener("input", handleInput))
+
+      if (filterClear) {
+        const handleClear = () => {
+          filterInput.value = ""
+          filterClear.style.display = "none"
+          filterExplorer("", explorer)
+          filterInput.focus()
+        }
+        filterClear.addEventListener("click", handleClear)
+        window.addCleanup(() => filterClear.removeEventListener("click", handleClear))
       }
     }
 
-    const folderIcons = explorer.getElementsByClassName(
-      "folder-icon",
+    const collapseAllBtn = explorer.querySelector(".collapse-all-btn") as HTMLButtonElement | null
+    if (collapseAllBtn) {
+      const handleCollapseAll = () => {
+        collapseAllFolders(explorer)
+      }
+      collapseAllBtn.addEventListener("click", handleCollapseAll)
+      window.addCleanup(() => collapseAllBtn.removeEventListener("click", handleCollapseAll))
+    }
+
+    const folderContainers = explorer.getElementsByClassName(
+      "folder-container",
     ) as HTMLCollectionOf<HTMLElement>
-    for (const icon of folderIcons) {
-      icon.addEventListener("click", toggleFolder)
-      window.addCleanup(() => icon.removeEventListener("click", toggleFolder))
+    for (const container of folderContainers) {
+      container.addEventListener("click", toggleFolder)
+      window.addCleanup(() => container.removeEventListener("click", toggleFolder))
     }
   }
 }
 
 document.addEventListener("prenav", async () => {
-  // save explorer scrollTop position
-  const explorer = document.querySelector(".explorer-ul")
-  if (!explorer) return
-  try {
-    sessionStorage.setItem("explorerScrollTop", explorer.scrollTop.toString())
-  } catch (e) {}
 })
 
 document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   const currentSlug = e.detail.url
+
+  if (currentSlug && currentSlug !== "index") {
+    let history: string[] = []
+    try {
+      history = JSON.parse(sessionStorage.getItem("explorerHistory") || "[]")
+    } catch (err) { }
+
+    history = [currentSlug, ...history.filter(s => s !== currentSlug)].slice(0, 5)
+
+    try {
+      sessionStorage.setItem("explorerHistory", JSON.stringify(history))
+    } catch (err) { }
+  }
+
   await setupExplorer(currentSlug)
 
-  // if mobile hamburger is visible, collapse by default
   for (const explorer of document.getElementsByClassName("explorer")) {
     const mobileExplorer = explorer.querySelector(".mobile-explorer")
     if (!mobileExplorer) return
@@ -280,8 +535,6 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
     if (mobileExplorer.checkVisibility()) {
       explorer.classList.add("collapsed")
       explorer.setAttribute("aria-expanded", "false")
-
-      // Allow <html> to be scrollable when mobile explorer is collapsed
       document.documentElement.classList.remove("mobile-no-scroll")
     }
 
@@ -290,8 +543,6 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
 })
 
 window.addEventListener("resize", function () {
-  // Desktop explorer opens by default, and it stays open when the window is resized
-  // to mobile screen size. Applies `no-scroll` to <html> in this edge case.
   const explorer = document.querySelector(".explorer")
   if (explorer && !explorer.classList.contains("collapsed")) {
     document.documentElement.classList.add("mobile-no-scroll")

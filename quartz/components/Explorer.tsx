@@ -120,6 +120,26 @@ export default ((userOpts?: Partial<Options>) => {
           </svg>
         </button>
         <div id={id} class="explorer-content" aria-expanded={false} role="group">
+          <div class="explorer-actions-row">
+            <span class="explorer-subtitle">NAVIGATE</span>
+            <div class="explorer-actions">
+              <button type="button" class="explorer-action-btn collapse-all-btn" title="Collapse All">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-up">
+                  <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>
+                  <path d="M12 10v6"/>
+                  <path d="m9 13 3-3 3 3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="explorer-filter-container">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="filter-search-icon">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.3-4.3"/>
+            </svg>
+            <input type="text" class="explorer-filter" placeholder="Filter notes..." aria-label="Filter notes" />
+            <button type="button" class="explorer-filter-clear" title="Clear filter" style="display: none;">&times;</button>
+          </div>
           <OverflowList class="explorer-ul" />
         </div>
         <template id="template-file">
