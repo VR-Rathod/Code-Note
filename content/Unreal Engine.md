@@ -205,7 +205,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
   collapsed:: true
 	- ## UObject & Macros
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // All Unreal classes use UCLASS, UPROPERTY, UFUNCTION macros
 		  // These enable reflection, serialization, Blueprint exposure, GC
 		  
@@ -245,7 +245,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## UPROPERTY Specifiers
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  UPROPERTY(EditAnywhere)          // editable in editor (instance + CDO)
 		  UPROPERTY(EditDefaultsOnly)      // editable only in Blueprint defaults
 		  UPROPERTY(EditInstanceOnly)      // editable only on placed instances
@@ -262,7 +262,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## UFUNCTION Specifiers
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  UFUNCTION(BlueprintCallable)         // callable from Blueprint
 		  UFUNCTION(BlueprintPure)             // no exec pin, no side effects
 		  UFUNCTION(BlueprintImplementableEvent) // implemented in Blueprint
@@ -276,7 +276,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Constructor & Component Setup
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  AMyActor::AMyActor()
 		  {
 		      PrimaryActorTick.bCanEverTick = true;
@@ -325,7 +325,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Character Movement
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // ACharacter has UCharacterMovementComponent built in
 		  
 		  void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -370,7 +370,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 		  3. Map keys to actions in IMC
 		  4. Add IMC to PlayerController in BeginPlay
 		  ```
-		- ```cpp
+		- ```c++
 		  void AMyPlayerController::BeginPlay()
 		  {
 		      Super::BeginPlay();
@@ -384,7 +384,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
   collapsed:: true
 	- ## Logging
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // UE_LOG(Category, Verbosity, Format, ...)
 		  UE_LOG(LogTemp, Log,     TEXT("Info message"));
 		  UE_LOG(LogTemp, Warning, TEXT("Player health: %f"), Health);
@@ -398,7 +398,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Timers
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  FTimerHandle TimerHandle;
 		  
 		  // Call function after delay
@@ -423,7 +423,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Delegates & Events
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Declare delegate type
 		  DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHealthChanged, float, NewHealth);
 		  
@@ -448,7 +448,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Casting & Type Checking
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Cast (returns nullptr if wrong type)
 		  AMyCharacter* Player = Cast<AMyCharacter>(OtherActor);
 		  if (Player)
@@ -468,7 +468,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Spawning Actors
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Spawn from class reference
 		  UPROPERTY(EditDefaultsOnly)
 		  TSubclassOf<AActor> BulletClass;
@@ -511,7 +511,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Line Trace (Raycast)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  void AMyCharacter::ShootRay()
 		  {
 		      FVector Start = GetActorLocation();
@@ -537,7 +537,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Overlap Events
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // In constructor — enable overlap
 		  TriggerBox->SetGenerateOverlapEvents(true);
 		  
@@ -558,7 +558,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Physics Bodies
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Enable physics simulation on mesh
 		  Mesh->SetSimulatePhysics(true);
 		  Mesh->SetEnableGravity(true);
@@ -607,7 +607,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 		  
 		  In C++:
 		  ```
-		- ```cpp
+		- ```c++
 		  // Override in AnimInstance or listen via delegate
 		  UFUNCTION()
 		  void OnFootstep(USkeletalMeshComponent* MeshComp,
@@ -636,7 +636,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Montages
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Animation Montage — play one-shot animations (attack, reload, death)
 		  // Supports sections, blending, notifies
 		  
@@ -679,7 +679,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Creating & Showing Widgets
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  UPROPERTY(EditDefaultsOnly)
 		  TSubclassOf<UUserWidget> HUDWidgetClass;
 		  
@@ -707,7 +707,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Widget C++ Binding
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // In Widget Blueprint C++ class
 		  UCLASS()
 		  class UMyHUDWidget : public UUserWidget
@@ -752,7 +752,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Playing Audio
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include "Kismet/GameplayStatics.h"
 		  
 		  // Play at location (fire and forget)
@@ -792,7 +792,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## AI Controller Setup
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  UCLASS()
 		  class AMyAIController : public AAIController
 		  {
@@ -823,7 +823,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Custom BT Task
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  UCLASS()
 		  class UBTTask_AttackPlayer : public UBTTaskNode
 		  {
@@ -845,7 +845,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Navigation & Pathfinding
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Move to actor
 		  MoveToActor(TargetActor, 150.f); // 150 = acceptance radius
 		  
@@ -889,7 +889,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## RepNotify
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Called on clients when variable changes
 		  UPROPERTY(ReplicatedUsing = OnRep_Health)
 		  float Health;
@@ -904,7 +904,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## RPCs (Remote Procedure Calls)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Server RPC — client calls, runs on server
 		  UFUNCTION(Server, Reliable, WithValidation)
 		  void ServerFire(FVector Direction);
@@ -936,7 +936,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Network Roles
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Check where code is running
 		  HasAuthority()                    // true on server
 		  IsLocallyControlled()             // true on owning client
@@ -1027,7 +1027,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 		    Child of a Material — override parameters without recompile
 		    Dynamic Material Instance (MID) — change params at runtime
 		  ```
-		- ```cpp
+		- ```c++
 		  // Create dynamic material instance at runtime
 		  UMaterialInstanceDynamic* MID =
 		      UMaterialInstanceDynamic::Create(BaseMaterial, this);
@@ -1059,7 +1059,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Controlling Niagara from C++
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include "NiagaraFunctionLibrary.h"
 		  #include "NiagaraComponent.h"
 		  
@@ -1088,7 +1088,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
   collapsed:: true
 	- ## SaveGame
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // 1. Create SaveGame class
 		  UCLASS()
 		  class UMySaveGame : public USaveGame
@@ -1149,7 +1149,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## AttributeSet
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  UCLASS()
 		  class UMyAttributeSet : public UAttributeSet
 		  {
@@ -1289,7 +1289,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Soft References & Async Loading
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Hard reference — loads immediately (avoid for large assets)
 		  UPROPERTY(EditDefaultsOnly)
 		  UTexture2D* Texture;
@@ -1313,7 +1313,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
   collapsed:: true
 	- ## UGameplayStatics
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include "Kismet/GameplayStatics.h"
 		  
 		  // Get player
@@ -1340,7 +1340,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## FMath Utilities
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  FMath::Clamp(Value, 0.f, 100.f)
 		  FMath::Lerp(A, B, Alpha)
 		  FMath::InterpTo(Current, Target, DeltaTime, Speed)  // smooth follow
@@ -1362,7 +1362,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Debug Helpers
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include "DrawDebugHelpers.h"
 		  
 		  DrawDebugLine(World, Start, End, FColor::Red, false, 2.f);
@@ -1398,7 +1398,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Playing Sequences from C++
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include "LevelSequencePlayer.h"
 		  #include "LevelSequenceActor.h"
 		  
@@ -1461,7 +1461,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Setup
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // 1. Enable plugin: Edit → Plugins → Gameplay Abilities
 		  // 2. Add to Build.cs:
 		  PublicDependencyModuleNames.AddRange(new string[] {
@@ -1481,7 +1481,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## AttributeSet
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  UCLASS()
 		  class UMyAttributeSet : public UAttributeSet
 		  {
@@ -1511,7 +1511,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## GameplayAbility
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  UCLASS()
 		  class UGA_FireWeapon : public UGameplayAbility
 		  {
@@ -1570,7 +1570,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## GameplayTags
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Define tags in DefaultGameplayTags.ini or via editor
 		  // Tags are hierarchical: "Ability.Fire" is child of "Ability"
 		  
@@ -1648,7 +1648,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Dynamic Material Instances
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Create dynamic instance at runtime
 		  UMaterialInstanceDynamic* DynMat =
 		      UMaterialInstanceDynamic::Create(BaseMaterial, this);
@@ -1723,7 +1723,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Spawning from C++
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include "NiagaraFunctionLibrary.h"
 		  #include "NiagaraComponent.h"
 		  
@@ -1904,7 +1904,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 		  
 		  In C++:
 		  ```
-		- ```cpp
+		- ```c++
 		  // Apply external strain to trigger fracture
 		  #include "GeometryCollection/GeometryCollectionComponent.h"
 		  
@@ -1936,7 +1936,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Chaos Vehicles
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Enable plugin: ChaosVehicles
 		  // Base class: UChaosWheeledVehicleMovementComponent
 		  
@@ -1988,7 +1988,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Data Layers
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Load/unload data layer at runtime
 		  #include "WorldPartition/DataLayer/DataLayerSubsystem.h"
 		  
@@ -2003,7 +2003,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Level Streaming (Legacy)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Stream sub-level in/out (pre-World Partition approach)
 		  UGameplayStatics::LoadStreamLevel(this,
 		      FName("Level_Cave"), true, false, FLatentActionInfo());
@@ -2053,7 +2053,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## PCG from C++
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Custom PCG node
 		  UCLASS()
 		  class UPCGMyCustomNode : public UPCGSettings
@@ -2095,7 +2095,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Fragments & Processors
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Define a Fragment (pure data)
 		  USTRUCT()
 		  struct FMassVelocityFragment : public FMassFragment
@@ -2163,7 +2163,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
   collapsed:: true
 	- ## Subsystems
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Subsystems are auto-instanced singletons tied to a lifetime scope
 		  // Cleaner alternative to GameInstance variables or static singletons
 		  
@@ -2196,7 +2196,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Object Pooling in UE
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // UE-style object pool using TArray
 		  UCLASS()
 		  class UBulletPoolSubsystem : public UWorldSubsystem
@@ -2236,7 +2236,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Async Tasks & Background Work
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Async task on background thread
 		  AsyncTask(ENamedThreads::AnyBackgroundThreadNormalTask, [this]()
 		  {
@@ -2266,7 +2266,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Soft References & Asset Manager
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Hard reference — always loaded (avoid for large assets)
 		  UPROPERTY(EditDefaultsOnly)
 		  UTexture2D* HardRef;  // loaded when class loads
@@ -2294,7 +2294,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
   collapsed:: true
 	- ## SaveGame Class
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // 1. Create SaveGame class
 		  UCLASS()
 		  class UMySaveGame : public USaveGame
@@ -2341,7 +2341,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Async Save/Load
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Async save (non-blocking)
 		  UGameplayStatics::AsyncSaveGameToSlot(SaveData, TEXT("Slot1"), 0,
 		      FAsyncSaveGameToSlotDelegate::CreateUObject(
@@ -2484,7 +2484,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Custom Render Pass (Advanced)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Add custom pass via SceneViewExtension
 		  class FMySceneViewExtension : public FSceneViewExtensionBase
 		  {
@@ -2514,7 +2514,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Global Shaders
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Define a global shader (runs outside material system)
 		  class FMyComputeShader : public FGlobalShader
 		  {
@@ -2592,7 +2592,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Editor Tools (Detail Customization)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Custom Details panel for a class
 		  class FMyActorDetails : public IDetailCustomization
 		  {
@@ -2796,7 +2796,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 		  
 		  In C++:
 		  ```
-		- ```cpp
+		- ```c++
 		  // Play sequence from C++
 		  #include "LevelSequencePlayer.h"
 		  
@@ -2845,7 +2845,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Data Assets
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Data Asset — config/data container (no gameplay logic)
 		  // Better than Blueprint defaults for data-heavy configs
 		  
@@ -2882,7 +2882,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Interface Pattern
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // UE Interface — cleaner than Cast for interaction
 		  UINTERFACE(MinimalAPI, BlueprintType)
 		  class UInteractable : public UInterface
@@ -2919,7 +2919,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
 	-
 	- ## Debug Helpers
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Draw debug shapes (editor + PIE only in shipping builds)
 		  #include "DrawDebugHelpers.h"
 		  
@@ -3006,7 +3006,7 @@ keywords: "Unreal Engine, UE5, Blueprints, C++ gameplay, GAS, Gameplay Ability S
   collapsed:: true
 	- ## Automation Testing
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Unit test with UE Automation Framework
 		  #include "Misc/AutomationTest.h"
 		  

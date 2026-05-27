@@ -32,7 +32,7 @@ title:: PathTracer Learning Concept Async Compute
 - ---
 - ## Vulkan Async Compute Setup
 	- Find a compute-only queue family
-		- ```cpp
+		- ```c++
 		  for (auto& queueFamily : queueFamilies) {
 		      if ((queueFamily.queueFlags & VK_QUEUE_COMPUTE_BIT) &&
 		          !(queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT)) {
@@ -46,7 +46,7 @@ title:: PathTracer Learning Concept Async Compute
 - ## Synchronization
 	- Async compute requires careful synchronization
 	- Timeline semaphores (Vulkan 1.2) — preferred
-		- ```cpp
+		- ```c++
 		  VkSemaphoreTypeCreateInfo typeInfo{};
 		  typeInfo.semaphoreType = VK_SEMAPHORE_TYPE_TIMELINE;
 		  typeInfo.initialValue = 0;

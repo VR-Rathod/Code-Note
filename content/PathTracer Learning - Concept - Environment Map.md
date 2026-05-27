@@ -41,7 +41,7 @@ title:: PathTracer Learning - Concept - Environment Map
 		- PDF: `p(ω) = L(ω) / ∫L(ω)dω` — proportional to luminance
 		- Dramatically reduces variance for scenes with bright sun/sky
 	- Building the 2D CDF
-		- ```cpp
+		- ```c++
 		  // Compute luminance for each texel
 		  for (int y = 0; y < height; y++) {
 		      float sin_theta = sin(π * (y + 0.5) / height);  // solid angle weight

@@ -18,7 +18,7 @@ title:: PathTracer Learning - Phase 2 - CPU Ray Tracing
 		- Thin lens: depth of field via aperture sampling
 		- Anti-aliasing: jitter ray within pixel footprint
 	- Generating a camera ray
-		- ```cpp
+		- ```c++
 		  Ray generateRay(Camera cam, float u, float v) {
 		      // u, v in [0,1] — pixel UV with jitter for AA
 		      vec3 horizontal = cam.right * cam.viewport_width;
@@ -50,7 +50,7 @@ title:: PathTracer Learning - Phase 2 - CPU Ray Tracing
 		- Naive O(N) per ray → BVH O(log N) per ray
 		- SAH (Surface Area Heuristic) for optimal splits
 		- Binned SAH: O(N) per level, K=32 bins
-	- [[PathTracer Learning - Concept - BVH Traversal]]
+	- [[Pathtracer Concept BVH Traversal]]
 		- Recursive descent: test AABB, if hit recurse into children
 		- Leaf nodes contain actual triangles
 		- Ordered traversal: visit closer child first for early exit

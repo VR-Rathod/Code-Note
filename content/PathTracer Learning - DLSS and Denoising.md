@@ -59,7 +59,7 @@ title:: PathTracer Learning - DLSS and Denoising
 	- Input: color + optional albedo + optional normal (all noisy)
 	- Output: denoised color
 	- Integration
-		- ```cpp
+		- ```c++
 		  oidn::DeviceRef device = oidn::newDevice();
 		  device.commit();
 		  oidn::FilterRef filter = device.newFilter("RT");

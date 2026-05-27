@@ -73,4 +73,4 @@ title:: PathTracer Learning - Concept - Ray-Triangle Intersection
 - ---
 - ## Related
 	- [[PathTracer Learning - Concept - Ray Definition]]
-	- [[PathTracer Learning - Concept - BVH Traversal]]
+	- [[Pathtracer Concept BVH Traversal]]
