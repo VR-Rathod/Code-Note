@@ -64,7 +64,7 @@ title:: PathTracer Learning - Phase 4 - Godot Internals
 		- `render_scene_buffers.get_velocity_texture()` — motion vectors
 		- These are already populated by Godot's pre-pass
 	- Creating custom buffers
-		- ```cpp
+		- ```c++
 		  RID accum_buffer = RD::get_singleton()->texture_create(
 		      RDTextureFormat{
 		          .format = RD::DATA_FORMAT_R32G32B32A32_SFLOAT,
@@ -81,7 +81,7 @@ title:: PathTracer Learning - Phase 4 - Godot Internals
 		- Extracts vertex/index buffers via `RenderingServer.mesh_get_surface_arrays()`
 		- Builds BLAS per mesh, TLAS per frame
 	- Mesh data extraction
-		- ```cpp
+		- ```c++
 		  Array arrays = RS::get_singleton()->mesh_get_surface_arrays(mesh_rid, surface_idx);
 		  PackedVector3Array vertices = arrays[RS::ARRAY_VERTEX];
 		  PackedInt32Array   indices  = arrays[RS::ARRAY_INDEX];
@@ -96,7 +96,7 @@ title:: PathTracer Learning - Phase 4 - Godot Internals
 	- Instance data buffer
 		- Custom buffer storing per-instance material data, transform, etc.
 		- Indexed by `gl_InstanceCustomIndexEXT` in the closest-hit shader
-		- ```cpp
+		- ```c++
 		  struct InstanceData {
 		      uint64_t vertex_address;  // buffer device address
 		      uint64_t index_address;
@@ -140,7 +140,7 @@ title:: PathTracer Learning - Phase 4 - Godot Internals
 	- Use `RenderingServer.call_on_render_thread()` to execute code on render thread
 	- TLAS rebuild must happen before `vkCmdTraceRaysKHR`
 	- Barrier between TLAS build and RT dispatch:
-		- ```cpp
+		- ```c++
 		  VkMemoryBarrier barrier{};
 		  barrier.srcAccessMask = VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR;
 		  barrier.dstAccessMask = VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR;

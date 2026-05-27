@@ -56,7 +56,7 @@ displayTitle: SDL2 (Simple DirectMedia Layer)
   collapsed:: true
 	- ## Initialization & Window
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <SDL2/SDL.h>
 		  
 		  int main(int argc, char* argv[]) {
@@ -90,7 +90,7 @@ displayTitle: SDL2 (Simple DirectMedia Layer)
 	-
 	- ## Renderer & Drawing
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Create hardware-accelerated renderer
 		  SDL_Renderer* renderer = SDL_CreateRenderer(
 		      window, -1,
@@ -130,7 +130,7 @@ displayTitle: SDL2 (Simple DirectMedia Layer)
   collapsed:: true
 	- ## Keyboard
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  SDL_Event event;
 		  while (SDL_PollEvent(&event)) {
 		      if (event.type == SDL_KEYDOWN) {
@@ -152,7 +152,7 @@ displayTitle: SDL2 (Simple DirectMedia Layer)
 	-
 	- ## Mouse
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  SDL_Event event;
 		  while (SDL_PollEvent(&event)) {
 		      if (event.type == SDL_MOUSEBUTTONDOWN) {
@@ -170,7 +170,7 @@ displayTitle: SDL2 (Simple DirectMedia Layer)
 		  ```
 - # Textures & Images (SDL_image)
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <SDL2/SDL_image.h>
 	  
 	  // Initialize SDL_image
@@ -198,7 +198,7 @@ displayTitle: SDL2 (Simple DirectMedia Layer)
 	  ```
 - # Audio (SDL_mixer)
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <SDL2/SDL_mixer.h>
 	  
 	  // Initialize mixer
@@ -222,7 +222,7 @@ displayTitle: SDL2 (Simple DirectMedia Layer)
 	  ```
 - # Delta Time & Frame Rate
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  Uint32 lastTime = SDL_GetTicks();
 	  
 	  while (running) {

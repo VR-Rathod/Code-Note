@@ -61,4 +61,4 @@ title:: PathTracer Learning - Concept - AABB
 - ---
 - ## Related
 	- [[PathTracer Learning - Concept - BVH Construction]]
-	- [[PathTracer Learning - Concept - BVH Traversal]]
+	- [[Pathtracer Concept BVH Traversal]]

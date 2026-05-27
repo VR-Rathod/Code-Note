@@ -160,7 +160,7 @@ keywords: "linear search, sequential search, O(n), unsorted array, brute force s
 	  print(linear_search(arr, 5))          # Output: -1
 	  ```
 	  
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  
@@ -331,7 +331,9 @@ keywords: "linear search, sequential search, O(n), unsorted array, brute force s
 		- Dataset is **very large** — millions of elements where O(n) is too slow
 		- You need **fast average-case** performance in a production search system
 		-
+-
 - # Key Takeaways
+  collapsed:: true
 	- **Core idea** — check every element one by one → **O(n)** time, **O(1)** space.
 	- **No prerequisites** — works on sorted, unsorted, and partially sorted arrays equally well.
 	- **Best case O(1)** — if the target is at the first position.
@@ -341,6 +343,7 @@ keywords: "linear search, sequential search, O(n), unsorted array, brute force s
 	- **Use [[Binary Search]] instead** whenever the data is sorted and lookups are frequent.
 	-
 - # More Learn
+  collapsed:: true
 	- ## GitHub & Webs
 		- [TheAlgorithms – Linear Search](https://github.com/TheAlgorithms/Python/blob/master/searches/linear_search.py)
 		- [Big-O Cheat Sheet](https://www.bigocheatsheet.com/)

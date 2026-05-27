@@ -58,7 +58,7 @@ title:: PathTracer Learning - Vulkan RT Pipeline
 		- `hitGroupIndex = instanceSBTOffset + geometryIndex * sbtStride + rayContributionToHitGroupIndex`
 		- `instanceSBTOffset` = `VkAccelerationStructureInstanceKHR.instanceShaderBindingTableRecordOffset`
 	- Building the SBT
-		- ```cpp
+		- ```c++
 		  // Get shader handles
 		  std::vector<uint8_t> handles(groupCount * handleSize);
 		  vkGetRayTracingShaderGroupHandlesKHR(device, pipeline, 0, groupCount, handles.size(), handles.data());
@@ -179,7 +179,7 @@ title:: PathTracer Learning - Vulkan RT Pipeline
 	- Shadow miss shader: `layout(location=1) rayPayloadInEXT bool isShadowed; void main() { isShadowed = false; }`
 - ---
 - ## Pipeline Creation
-	- ```cpp
+	- ```c++
 	  // Shader stages
 	  std::vector<VkPipelineShaderStageCreateInfo> stages = {
 	      { .stage = VK_SHADER_STAGE_RAYGEN_BIT_KHR,       .module = rgenModule },

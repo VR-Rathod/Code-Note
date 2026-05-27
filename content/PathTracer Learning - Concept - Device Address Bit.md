@@ -24,28 +24,28 @@ title:: PathTracer Learning - Concept - Device Address Bit
 - ---
 - ## How to Use
 	- Buffer creation
-		- ```cpp
+		- ```c++
 		  VkBufferCreateInfo bufferInfo{};
 		  bufferInfo.usage = VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT
 		                   | VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR;
 		  // ... create buffer ...
 		  ```
 	- Memory allocation — must enable device address feature
-		- ```cpp
+		- ```c++
 		  VkMemoryAllocateFlagsInfo flagsInfo{};
 		  flagsInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO;
 		  flagsInfo.flags = VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT;
 		  // chain into VkMemoryAllocateInfo.pNext
 		  ```
 	- Getting the device address
-		- ```cpp
+		- ```c++
 		  VkBufferDeviceAddressInfo addressInfo{};
 		  addressInfo.sType = VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO;
 		  addressInfo.buffer = myBuffer;
 		  VkDeviceAddress address = vkGetBufferDeviceAddress(device, &addressInfo);
 		  ```
 	- Using in AS build
-		- ```cpp
+		- ```c++
 		  geometry.geometry.triangles.vertexData.deviceAddress = vertexBufferAddress;
 		  geometry.geometry.triangles.indexData.deviceAddress  = indexBufferAddress;
 		  ```
@@ -68,7 +68,7 @@ title:: PathTracer Learning - Concept - Device Address Bit
 	- Forgetting `VK_MEMORY_ALLOCATE_DEVICE_ADDRESS_BIT` on memory allocation
 		- Buffer creation succeeds but `vkGetBufferDeviceAddress` returns 0
 	- Not enabling `bufferDeviceAddress` feature in `VkPhysicalDeviceVulkan12Features`
-		- ```cpp
+		- ```c++
 		  VkPhysicalDeviceVulkan12Features features12{};
 		  features12.bufferDeviceAddress = VK_TRUE;
 		  ```

@@ -63,7 +63,7 @@ displayTitle: OpenCV
   collapsed:: true
 	- ## Reading, Writing & Displaying Images
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // C++
 		  #include <opencv2/opencv.hpp>
 		  
@@ -97,7 +97,7 @@ displayTitle: OpenCV
 	-
 	- ## The Mat Object (C++)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  cv::Mat img(480, 640, CV_8UC3);  // 480x640, 3-channel uint8
 		  cv::Mat zeros = cv::Mat::zeros(100, 100, CV_8UC1);
 		  cv::Mat ones  = cv::Mat::ones(100, 100, CV_32F);
@@ -117,7 +117,7 @@ displayTitle: OpenCV
 		  ```
 - # Color Spaces
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  // C++
 	  cv::Mat bgr = cv::imread("img.jpg");
 	  cv::Mat gray, hsv, lab;
