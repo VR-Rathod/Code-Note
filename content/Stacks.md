@@ -81,7 +81,7 @@ keywords: "Stack, LIFO, Data Structures, DSA, Push, Pop, Monotonic Stack, Array 
 	  print(s.pop()) # Output: 20
 	  ```
 	  
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <stdexcept>
 	  #define MAX 1000

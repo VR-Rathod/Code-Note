@@ -236,7 +236,7 @@ keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geo
 	  # Output: [(0,0), (2,0), (2,2), (0,2)]
 	  ```
 
-	  ```cpp
+	  ```c++
 	  #include <iostream>
 	  #include <vector>
 

@@ -16,7 +16,7 @@ displayTitle: STL (Standard Template Library)
   collapsed:: true
 	- ## std::vector — Dynamic Array
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <vector>
 		  
 		  std::vector<int> v = {1, 2, 3, 4, 5};
@@ -44,7 +44,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## std::deque — Double-Ended Queue
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <deque>
 		  
 		  std::deque<int> dq = {2, 3, 4};
@@ -61,7 +61,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## std::list — Doubly Linked List
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <list>
 		  
 		  std::list<int> lst = {1, 2, 3, 4, 5};
@@ -86,7 +86,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## std::array — Fixed-Size Array (C++11)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <array>
 		  
 		  std::array<int, 5> arr = {1, 2, 3, 4, 5};
@@ -102,7 +102,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## std::forward_list — Singly Linked List (C++11)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <forward_list>
 		  
 		  std::forward_list<int> fl = {1, 2, 3};
@@ -117,7 +117,7 @@ displayTitle: STL (Standard Template Library)
   collapsed:: true
 	- ## std::map — Sorted Key-Value (BST)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <map>
 		  
 		  std::map<std::string, int> scores;
@@ -147,7 +147,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## std::unordered_map — Hash Map (C++11)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <unordered_map>
 		  
 		  std::unordered_map<std::string, int> umap;
@@ -169,7 +169,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## std::set — Sorted Unique Elements
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <set>
 		  
 		  std::set<int> s = {5, 3, 1, 4, 2, 3}; // duplicates removed
@@ -191,7 +191,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## std::unordered_set — Hash Set (C++11)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <unordered_set>
 		  
 		  std::unordered_set<int> us = {1, 2, 3, 4, 5};
@@ -204,7 +204,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## std::multimap & std::multiset
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <map>
 		  #include <set>
 		  
@@ -223,7 +223,7 @@ displayTitle: STL (Standard Template Library)
   collapsed:: true
 	- ## std::stack — LIFO
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <stack>
 		  
 		  std::stack<int> st;
@@ -240,7 +240,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## std::queue — FIFO
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <queue>
 		  
 		  std::queue<int> q;
@@ -256,7 +256,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## std::priority_queue — Max-Heap by Default
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <queue>
 		  
 		  // Max-heap (largest element on top)
@@ -294,7 +294,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## Iterator Usage
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  std::vector<int> v = {1, 2, 3, 4, 5};
 		  
 		  // begin/end
@@ -322,7 +322,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## std::advance & std::distance
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <iterator>
 		  
 		  std::list<int> lst = {10, 20, 30, 40, 50};
@@ -337,7 +337,7 @@ displayTitle: STL (Standard Template Library)
   collapsed:: true
 	- ## Sorting
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <algorithm>
 		  #include <vector>
 		  
@@ -356,7 +356,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## Searching
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  std::vector<int> v = {1, 2, 3, 4, 5};
 		  
 		  // Linear search
@@ -380,7 +380,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## Transforming
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  std::vector<int> v = {1, 2, 3, 4, 5};
 		  std::vector<int> out(v.size());
 		  
@@ -407,7 +407,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## Removing & Filtering
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  std::vector<int> v = {1, 2, 3, 2, 4, 2, 5};
 		  
 		  // remove + erase idiom (erase-remove)
@@ -427,7 +427,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## Numeric Algorithms
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <numeric>
 		  
 		  std::vector<int> v = {1, 2, 3, 4, 5};
@@ -453,7 +453,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## Set Operations (on sorted ranges)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  std::vector<int> a = {1, 2, 3, 4, 5};
 		  std::vector<int> b = {3, 4, 5, 6, 7};
 		  std::vector<int> result;
@@ -476,7 +476,7 @@ displayTitle: STL (Standard Template Library)
   collapsed:: true
 	- ## std::pair & std::tuple
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <utility>
 		  #include <tuple>
 		  
@@ -497,7 +497,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## std::optional (C++17)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <optional>
 		  
 		  std::optional<int> findIndex(const std::vector<int>& v, int target) {
@@ -514,7 +514,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## std::variant (C++17)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <variant>
 		  
 		  std::variant<int, double, std::string> v;
@@ -533,7 +533,7 @@ displayTitle: STL (Standard Template Library)
 	-
 	- ## std::span (C++20) — Non-Owning View
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <span>
 		  
 		  void process(std::span<int> data) {
