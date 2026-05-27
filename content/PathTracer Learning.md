@@ -49,7 +49,7 @@ title:: PathTracer Learning
 	- [[PathTracer Learning - Concept - Ray-Triangle Intersection]]
 	- [[PathTracer Learning - Concept - AABB]]
 	- [[PathTracer Learning - Concept - BVH Construction]]
-	- [[PathTracer Learning - Concept - BVH Traversal]]
+	- [[Pathtracer Concept BVH Traversal]]
 	- [[PathTracer Learning - Concept - Camera Model]]
 - ---
 - ## Shading & Material Concepts

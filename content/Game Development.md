@@ -71,7 +71,7 @@ keywords: "game development, game loop, physics engine, rendering, game AI, audi
 		    - Used for physics, collision, deterministic simulation
 		    - Accumulator pattern handles leftover time
 		  ```
-		- ```cpp
+		- ```c++
 		  // Accumulator pattern (fixed timestep)
 		  double accumulator = 0.0;
 		  const double fixed_dt = 1.0 / 60.0;
@@ -141,7 +141,7 @@ keywords: "game development, game loop, physics engine, rendering, game AI, audi
 	-
 	- ## ECS in Practice
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Minimal ECS example (conceptual)
 		  struct Position { float x, y; };
 		  struct Velocity { float dx, dy; };
@@ -364,7 +364,7 @@ keywords: "game development, game loop, physics engine, rendering, game AI, audi
 		  Simple, predictable, easy to debug.
 		  Problem: state explosion with complex behaviors.
 		  ```
-		- ```cpp
+		- ```c++
 		  enum class AIState { Idle, Patrol, Chase, Attack, Dead };
 		  
 		  void update(float dt) {
@@ -722,7 +722,7 @@ keywords: "game development, game loop, physics engine, rendering, game AI, audi
 	-
 	- ## Object Pooling Example
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  class BulletPool {
 		      std::vector<Bullet*> pool;
 		  public:

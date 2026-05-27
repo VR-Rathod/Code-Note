@@ -1,7 +1,8 @@
 ---
 seoTitle: Dijkstra's Algorithm – Shortest Path in Weighted Graphs
 description: "Comprehensive guide to Dijkstra's Algorithm. Covers greedy shortest path traversal, priority queue implementation, edge relaxation, and time complexities in Python, C++, JavaScript, Java, and C."
-keywords: "Dijkstra algorithm, shortest path, weighted graph, priority queue, greedy algorithm, O(E log V), time complexity, space complexity, non-negative weights, VR-Rathod, Code-Note"
+keywords: "Dijkstra algorithm, shortest path, weighted graph, priority queue, greedy algorithm, O(E log V), time complexity, space complexity, non-negative weights, VR-Rathod, Code-Note , Dijkstras Algorithm"
+displayTitle: Dijkstra's Algorithm
 ---
 
 > [!info] What is Dijkstra's Algorithm?

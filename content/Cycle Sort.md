@@ -649,3 +649,9 @@ keywords: "cycle sort, cyclesort, minimum writes, in-place sort, comparison sort
 	- **O(n²) Complexity** — requires quadratic time in best, worst, and average cases due to counting smaller elements for each position.
 	- **Permutation Cycles** — maps sorting directly to the concept of decomposing a mathematical permutation into disjoint cycles.
 	- **EEPROM/Flash Friendly** — specifically chosen for microcontroller and embedded setups where write endurance is limited.
+-
+- # More Learn
+  collapsed:: true
+	- ## GitHub & Webs
+		- [GeeksforGeeks -> Cycle Sort](https://www.geeksforgeeks.org/cycle-sort/)
+		- [TheAlgorithms – Cycle Sort (Python)](https://github.com/TheAlgorithms/Python/blob/master/sorts/cycle_sort.py)

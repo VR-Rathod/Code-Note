@@ -49,7 +49,7 @@ displayTitle: Eigen
 		  ```
 	-
 	- ## Include
-		- ```cpp
+		- ```c++
 		  #include <Eigen/Dense>   // matrices, vectors, decompositions
 		  #include <Eigen/Sparse>  // sparse matrices
 		  using namespace Eigen;
@@ -58,7 +58,7 @@ displayTitle: Eigen
   collapsed:: true
 	- ## Matrix & Vector Types
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <Eigen/Dense>
 		  using namespace Eigen;
 		  
@@ -82,7 +82,7 @@ displayTitle: Eigen
 	-
 	- ## Initialization
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  Matrix3d m;
 		  m << 1, 2, 3,
 		       4, 5, 6,
@@ -103,7 +103,7 @@ displayTitle: Eigen
 	-
 	- ## Basic Operations
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  Matrix3d a = Matrix3d::Random();
 		  Matrix3d b = Matrix3d::Random();
 		  
@@ -128,7 +128,7 @@ displayTitle: Eigen
 	-
 	- ## Vector Operations
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  Vector3d u(1, 0, 0);
 		  Vector3d v(0, 1, 0);
 		  
@@ -142,7 +142,7 @@ displayTitle: Eigen
 		  ```
 - # Accessing Elements
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  MatrixXd m(3, 3);
 	  m << 1, 2, 3,
 	       4, 5, 6,
@@ -167,7 +167,7 @@ displayTitle: Eigen
   collapsed:: true
 	- ## Solving Linear Systems (Ax = b)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  MatrixXd A(3, 3);
 		  A << 2, 1, -1,
 		       -3, -1, 2,
@@ -186,7 +186,7 @@ displayTitle: Eigen
 	-
 	- ## Common Decompositions
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  MatrixXd A = MatrixXd::Random(4, 4);
 		  
 		  // LU (PartialPivLU — fast, general)
@@ -211,7 +211,7 @@ displayTitle: Eigen
 		  ```
 - # Geometry (Eigen/Geometry)
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <Eigen/Geometry>
 	  
 	  // 3D rotation

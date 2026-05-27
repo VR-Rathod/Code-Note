@@ -627,3 +627,9 @@ keywords: "counting sort, non-comparison sort, linear time sort, O(n+k), stable 
 	- **Negative Value Offset** — shifts indices by subtracting the minimum value (`key - min_val`), enabling sorting of negative integers.
 	- **Memory Overhead** — allocates $O(n + k)$ auxiliary space, which can become a severe bottleneck if the integer values are sparse.
 	- **Subroutine Foundation** — acts as the core stable subroutine for other non-comparison algorithms like **Radix Sort**.
+-
+- # More Learn
+  collapsed:: true
+	- ## GitHub & Webs
+		- [GeeksforGeeks -> Counting Sort](https://www.geeksforgeeks.org/counting-sort/)
+		- [TheAlgorithms – Counting Sort (Python)](https://github.com/TheAlgorithms/Python/blob/master/sorts/counting_sort.py)

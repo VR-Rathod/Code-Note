@@ -221,7 +221,7 @@ displayTitle: Game Audio
 	-
 	- ## FMOD C++ Integration
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include "fmod_studio.hpp"
 		  #include "fmod.hpp"
 		  
@@ -402,7 +402,7 @@ displayTitle: Game Audio
 	-
 	- ## Wwise C++ Integration
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <AK/SoundEngine/Common/AkSoundEngine.h>
 		  #include <AK/SoundEngine/Common/AkMemoryMgr.h>
 		  #include <AK/MusicEngine/Common/AkMusicEngine.h>
@@ -519,7 +519,7 @@ displayTitle: Game Audio
 		  5. Set transition conditions based on parameter value
 		  6. Add volume automation curves per layer
 		  ```
-		- ```cpp
+		- ```c++
 		  // In game code — update music based on gameplay state
 		  void GameAudio::UpdateMusicState(float combatIntensity,
 		                                    bool bossActive,
@@ -577,7 +577,7 @@ displayTitle: Game Audio
 		  | Inverse | `volume = minDist / dist` | Realistic falloff | Most 3D games |
 		  | Inverse Square | `volume = minDist² / dist²` | Physically accurate | Simulation |
 		  | Custom curve | Designer-defined | Full control | AAA games |
-		- ```cpp
+		- ```c++
 		  // FMOD — set 3D attributes on an event instance
 		  FMOD_3D_ATTRIBUTES attributes = {};
 		  attributes.position = { x, y, z };        // world position
@@ -626,7 +626,7 @@ displayTitle: Game Audio
 		          R5["Cathedral"] -->|"Very long reverb"| R6["Massive, ethereal sound"]
 		      end
 		  ```
-		- ```cpp
+		- ```c++
 		  // Steam Audio occlusion (Godot / Unity plugin)
 		  // Raycast from listener to source — if blocked, apply occlusion
 		  float occlusionFactor = 0.0f;
@@ -826,7 +826,7 @@ displayTitle: Game Audio
 	-
 	- ## Unreal Engine Audio
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Unreal Engine 5 — MetaSound and audio components
 		  #include "Components/AudioComponent.h"
 		  #include "Kismet/GameplayStatics.h"
@@ -881,7 +881,7 @@ displayTitle: Game Audio
 		  | Distance culling | Don't play sounds beyond max audible distance |
 		  | Priority system | High priority (player, boss) never stolen |
 		  | Virtualization | Distant sounds tracked but not mixed — resume when close |
-		- ```cpp
+		- ```c++
 		  // FMOD — set max voices per event
 		  // In FMOD Studio: Event → Max Instances → set limit
 		  // In code: check if event is already playing

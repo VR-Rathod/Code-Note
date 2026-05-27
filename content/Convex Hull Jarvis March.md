@@ -1,5 +1,5 @@
 ---
-seoTitle: Jarvis March Algorithm – Convex Hull Gift Wrapping Explained
+seoTitle: Convex Hull Jarvis March – Gift Wrapping Algorithm Guide
 description: "Jarvis March (Gift Wrapping) finds the convex hull of a 2D point set by wrapping around outermost points. Covers orientation test, cross product, O(nh) complexity, and implementations in Python, C++, JavaScript, and Java."
 keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geometry, orientation test, cross product, O(nh) complexity, DSA, algorithms, point set, convex polygon, jarvis algorithm, convex hull C++, convex hull Python, VR-Rathod, Code-Note, code note vr, vr book"
 ---
@@ -38,7 +38,7 @@ keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geo
 		- ```
 		  cross(O, A, B) = (A.x - O.x) * (B.y - O.y)
 		                 - (A.y - O.y) * (B.x - O.x)
-
+		  
 		  Result > 0  →  Counter-clockwise (left turn)  ← Jarvis March wants this
 		  Result = 0  →  Collinear (no turn) — pick the farther point
 		  Result < 0  →  Clockwise (right turn)
@@ -66,11 +66,11 @@ keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geo
 		- ```
 		  INPUT:  set of 2D points
 		  OUTPUT: list of hull points in counter-clockwise order
-
+		  
 		  1. leftmost  ← point with smallest x-coordinate (guaranteed on hull)
 		  2. current   ← leftmost
 		  3. hull      ← []
-
+		  
 		  4. DO:
 		     a. Add current to hull
 		     b. candidate ← any other point (e.g., points[0])
@@ -81,7 +81,7 @@ keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geo
 		               candidate ← farther point (by squared distance)
 		     d. current ← candidate
 		  5. WHILE current ≠ leftmost
-
+		  
 		  6. RETURN hull
 		  ```
 		-
@@ -92,19 +92,19 @@ keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geo
 		  Step 1: Start at leftmost → (0,0)
 		          Scan all others → most CCW is (2,0)
 		          Hull: [(0,0)]
-
+		  
 		  Step 2: current = (2,0)
 		          Scan all → most CCW from (0,0)→(2,0) direction is (2,2)
 		          Hull: [(0,0), (2,0)]
-
+		  
 		  Step 3: current = (2,2)
 		          Scan all → most CCW is (0,2)
 		          Hull: [(0,0), (2,0), (2,2)]
-
+		  
 		  Step 4: current = (0,2)
 		          Scan all → most CCW brings us back to (0,0)
 		          current == leftmost → STOP
-
+		  
 		  Final Hull: [(0,0), (2,0), (2,2), (0,2)]
 		  Interior points NOT on hull: (1,1) — correctly excluded
 		  ```
@@ -184,7 +184,7 @@ keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geo
 	  > Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
-
+	  
 	  ```python
 	  def cross(O, A, B):
 	      """
@@ -192,7 +192,7 @@ keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geo
 	      > 0: counter-clockwise, = 0: collinear, < 0: clockwise
 	      """
 	      return (A[0] - O[0]) * (B[1] - O[1]) - (A[1] - O[1]) * (B[0] - O[0])
-
+	  
 	  def jarvis_march(points):
 	      """
 	      Jarvis March (Gift Wrapping) Algorithm
@@ -202,16 +202,16 @@ keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geo
 	      n = len(points)
 	      if n < 3:
 	          return points
-
+	  
 	      # Start from the leftmost point (guaranteed on hull)
 	      start = min(points, key=lambda p: p[0])
 	      hull = []
 	      current = start
-
+	  
 	      while True:
 	          hull.append(current)
 	          candidate = points[0]
-
+	  
 	          for point in points[1:]:
 	              c = cross(current, candidate, point)
 	              if c > 0:
@@ -222,28 +222,28 @@ keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geo
 	                  d2 = (candidate[0]-current[0])**2 + (candidate[1]-current[1])**2
 	                  if d1 > d2:
 	                      candidate = point
-
+	  
 	          current = candidate
 	          if current == start:    # Hull is closed
 	              break
-
+	  
 	      return hull
-
+	  
 	  # Example
 	  points = [(0,0), (1,1), (2,0), (2,2), (0,2), (1,0)]
 	  hull = jarvis_march(points)
 	  print("Convex Hull:", hull)
 	  # Output: [(0,0), (2,0), (2,2), (0,2)]
 	  ```
-
+	  
 	  ```c++
 	  #include <iostream>
 	  #include <vector>
-
+	  
 	  struct Point {
 	      int x, y;
 	  };
-
+	  
 	  // Cross product of vectors OA and OB
 	  // > 0 : counter-clockwise
 	  // = 0 : collinear
@@ -252,24 +252,24 @@ keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geo
 	      return (A.x - O.x) * (B.y - O.y)
 	           - (A.y - O.y) * (B.x - O.x);
 	  }
-
+	  
 	  std::vector<Point> jarvisMarch(std::vector<Point>& points) {
 	      int n = points.size();
 	      if (n < 3) return points;
-
+	  
 	      // Find leftmost point
 	      int leftmost = 0;
 	      for (int i = 1; i < n; i++)
 	          if (points[i].x < points[leftmost].x)
 	              leftmost = i;
-
+	  
 	      std::vector<Point> hull;
 	      int current = leftmost;
-
+	  
 	      do {
 	          hull.push_back(points[current]);
 	          int candidate = (current + 1) % n;
-
+	  
 	          for (int i = 0; i < n; i++) {
 	              int c = cross(points[current], points[candidate], points[i]);
 	              if (c > 0) {
@@ -285,29 +285,29 @@ keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geo
 	                      candidate = i;
 	              }
 	          }
-
+	  
 	          current = candidate;
 	      } while (current != leftmost);
-
+	  
 	      return hull;
 	  }
-
+	  
 	  int main() {
 	      std::vector<Point> points = {
 	          {0,0}, {1,1}, {2,0}, {2,2}, {0,2}, {1,0}
 	      };
-
+	  
 	      auto hull = jarvisMarch(points);
-
+	  
 	      std::cout << "Convex Hull:\n";
 	      for (auto& p : hull)
 	          std::cout << "(" << p.x << ", " << p.y << ")\n";
 	      // (0,0) → (2,0) → (2,2) → (0,2)
-
+	  
 	      return 0;
 	  }
 	  ```
-
+	  
 	  ```javascript
 	  // Cross product of vectors OA and OB
 	  // > 0: counter-clockwise, = 0: collinear, < 0: clockwise
@@ -315,20 +315,20 @@ keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geo
 	      return (A[0] - O[0]) * (B[1] - O[1])
 	           - (A[1] - O[1]) * (B[0] - O[0]);
 	  }
-
+	  
 	  function jarvisMarch(points) {
 	      const n = points.length;
 	      if (n < 3) return points;
-
+	  
 	      // Find leftmost point
 	      let start = points.reduce((a, b) => a[0] < b[0] ? a : b);
 	      const hull = [];
 	      let current = start;
-
+	  
 	      do {
 	          hull.push(current);
 	          let candidate = points[0];
-
+	  
 	          for (const point of points) {
 	              const c = cross(current, candidate, point);
 	              if (c > 0) {
@@ -340,47 +340,47 @@ keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geo
 	                  if (d1 > d2) candidate = point;
 	              }
 	          }
-
+	  
 	          current = candidate;
 	      } while (current !== start && JSON.stringify(current) !== JSON.stringify(start));
-
+	  
 	      return hull;
 	  }
-
+	  
 	  const points = [[0,0],[1,1],[2,0],[2,2],[0,2],[1,0]];
 	  console.log("Convex Hull:", jarvisMarch(points));
 	  // [[0,0],[2,0],[2,2],[0,2]]
 	  ```
-
+	  
 	  ```java
 	  import java.util.ArrayList;
 	  import java.util.List;
-
+	  
 	  public class JarvisMarch {
-
+	  
 	      static int cross(int[] O, int[] A, int[] B) {
 	          // Cross product of vectors OA and OB
 	          // > 0: CCW, = 0: collinear, < 0: CW
 	          return (A[0] - O[0]) * (B[1] - O[1])
 	               - (A[1] - O[1]) * (B[0] - O[0]);
 	      }
-
+	  
 	      static List<int[]> jarvisMarch(int[][] points) {
 	          int n = points.length;
 	          List<int[]> hull = new ArrayList<>();
 	          if (n < 3) return hull;
-
+	  
 	          // Find leftmost point
 	          int leftmost = 0;
 	          for (int i = 1; i < n; i++)
 	              if (points[i][0] < points[leftmost][0])
 	                  leftmost = i;
-
+	  
 	          int current = leftmost;
 	          do {
 	              hull.add(points[current]);
 	              int candidate = (current + 1) % n;
-
+	  
 	              for (int i = 0; i < n; i++) {
 	                  int c = cross(points[current], points[candidate], points[i]);
 	                  if (c > 0) {
@@ -397,10 +397,10 @@ keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geo
 	              }
 	              current = candidate;
 	          } while (current != leftmost);
-
+	  
 	          return hull;
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          int[][] points = {{0,0},{1,1},{2,0},{2,2},{0,2},{1,0}};
 	          List<int[]> hull = jarvisMarch(points);
@@ -411,7 +411,7 @@ keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geo
 	      }
 	  }
 	  ```
-
+	  
 	  :::
 	-
 - # Collinear Point Handling
@@ -436,16 +436,17 @@ keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geo
 		- You are building a **teaching or prototype** implementation
 	-
 	- ## ❌ Avoid Jarvis March When
-		- Hull may contain **many points** (e.g., points distributed on a circle) — use **Graham Scan O(n log n)**
+		- Hull may contain **many points** (e.g., points distributed on a circle) — use **[[Convex Hull Graham Scan]] O(n log n)**
 		- `n` is very large (tens of thousands+) and `h` is unpredictable — use **Chan's Algorithm O(n log h)**
 		- You need **guaranteed O(n log n)** performance regardless of output size
 		-
 - # Key Takeaways
+  collapsed:: true
 	- **Gift Wrapping analogy** — start at the leftmost point, keep "wrapping" to the most counter-clockwise candidate until you return to the start.
 	- **Core operation** — the **cross product** determines turn direction (CCW, collinear, or CW).
 	- **Output-sensitive** — time is **O(n·h)**, best when `h` is small and degrades to O(n²) when all points are on the hull.
 	- **Collinear handling** — when cross product is zero, always pick the **farther** point to correctly skip intermediate collinear vertices.
-	- **Alternatives** — prefer [[Convex Hull | Set 2 (Graham Scan)]] for large inputs, Chan's Algorithm for optimal output-sensitive performance.
+	- **Alternatives** — prefer [[Convex Hull Graham Scan]] for large inputs, Chan's Algorithm for optimal output-sensitive performance.
 	- See [[Complexity Analysis]] for the full mathematical breakdown of O(n·h).
 	-
 - # More Learn
@@ -454,8 +455,8 @@ keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geo
 		- [Visualgo – Convex Hull Visualization](https://visualgo.net/en/convexhull)
 		- [CP-Algorithms – Convex Hull](https://cp-algorithms.com/geometry/convex-hull.html)
 	- ## Related Pages
-		- [[Convex Hull | Set 2 (Graham Scan)]] – O(n log n) sort-based convex hull
-		- [[Convex Hull using Divide and Conquer Algorithm]] – divide and conquer approach
-		- [[Quickhull Algorithm for Convex Hull]] – fast average-case divide and conquer
+		- [[Convex Hull Graham Scan]] – O(n log n) sort-based convex hull
+		- [[Convex Hull Divide and Conquer]] – divide and conquer approach
+		- [[Convex Hull Quickhull]] – fast average-case divide and conquer
 		- [[DSA Algo & System Design]] – Full algorithm reference
 		- [[Complexity Analysis]] – Understanding O(n·h) mathematically

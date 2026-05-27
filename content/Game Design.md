@@ -384,7 +384,7 @@ displayTitle: Game Design
 		      Z3 --> B3["⚔️ Final Boss\nPeak challenge"]
 		  ```
 		- > [!tip] Pacing Rule
-		  > Pattern: **gradual rise → spike (boss) → relief → rise again**
+		  > Pattern : **gradual rise → spike (boss) → relief → rise again**
 		  > Each "relief" valley after a boss teaches new mechanics safely.
 		  > Never stack 3 hard sections without a breathing room moment.
 	-
@@ -1089,12 +1089,12 @@ displayTitle: Game Design
 		- [[Software]] — full list of game engines and tools
 -
 - # More Learn
-	- ## Books (Essential Reading)
-		- [The Art of Game Design — Jesse Schell](https://www.schellgames.com/art-of-game-design/) — The most comprehensive game design book. 100+ design lenses. Must-read.
-		- [A Theory of Fun — Raph Koster](https://www.theoryoffun.com/) — Why games are fun, from a cognitive science perspective.
-		- [Game Programming Patterns — Robert Nystrom](https://gameprogrammingpatterns.com/) — Free online. Design patterns specifically for games.
-		- [Level Up! — Scott Rogers](https://www.wiley.com/en-us/Level+Up%21) — Practical guide from concept to completion.
-		- [Rules of Play — Salen & Zimmerman](https://mitpress.mit.edu/9780262240451/rules-of-play/) — Academic but thorough. Foundational theory.
+	- ## Books (Essential Free Reading)
+		- [The Art of Game Design — Jesse Schell](https://archive.org/details/artofgamedesignb0000sche) — Free digital borrowing on Internet Archive. Over 100 lenses to view your game's mechanics.
+		- [A Theory of Fun for Game Design — Raph Koster](https://archive.org/details/theoryoffunforga0000kost_2edi) — Free digital borrowing on Internet Archive. Cognitive science behind why games are fun.
+		- [Game Programming Patterns — Robert Nystrom](https://gameprogrammingpatterns.com/) — Fully free to read online. Design patterns specifically optimized for games.
+		- [Level Up! The Guide to Great Video Game Design — Scott Rogers](https://openlibrary.org/search?q=level+up+scott+rogers) — Search and borrow for free on Open Library. Practical concept-to-completion guide.
+		- [Rules of Play: Game Design Fundamentals — Katie Salen & Eric Zimmerman](https://openlibrary.org/search?q=rules+of+play+katie+salen+eric+zimmerman) — Search and borrow for free on Open Library. Foundational academic design theory.
 	-
 	- ## Free Online Resources
 		- [GDC Vault Free](https://gdcvault.com/free) — Hundreds of free Game Developers Conference talks from industry professionals.

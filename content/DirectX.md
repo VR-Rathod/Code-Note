@@ -41,7 +41,7 @@ title:: DirectX
   collapsed:: true
 	- ## Windows COM Interface
 		- DirectX uses **COM (Component Object Model)** interfaces. Every D3D12 object is a COM interface (`ID3D12Something`). You must use `Microsoft::WRL::ComPtr<T>` instead of raw pointers — it auto-releases when it goes out of scope (like `shared_ptr` for COM objects).
-		- ```cpp
+		- ```c++
 		  #include <d3d12.h>
 		  #include <dxgi1_6.h>
 		  #include <d3dcompiler.h>
@@ -63,7 +63,7 @@ title:: DirectX
 	-
 	- ## Enabling the Debug Layer
 		- The D3D12 Debug Layer validates every API call and catches mistakes. Always enable it in debug builds.
-		- ```cpp
+		- ```c++
 		  #if defined(_DEBUG)
 		  ComPtr<ID3D12Debug1> debugController;
 		  if (SUCCEEDED(D3D12GetDebugInterface(IID_PPV_ARGS(&debugController)))) {
@@ -86,7 +86,7 @@ title:: DirectX
 	- ## DXGI — The Hardware Bridge
 	  collapsed:: true
 		- DXGI (DirectX Graphics Infrastructure) is the layer between DirectX and the GPU hardware. It handles adapter enumeration, swapchain creation, and display management. DXGI is separate from D3D12 — it works across DX11, DX12, and even Vulkan (on Windows via DXVK).
-		- ```cpp
+		- ```c++
 		  // Create DXGI Factory (required for everything DXGI)
 		  UINT dxgiFactoryFlags = 0;
 		  #if defined(_DEBUG)
@@ -131,7 +131,7 @@ title:: DirectX
 		  | `D3D_FEATURE_LEVEL_12_2` | NVIDIA Ampere+ / AMD RDNA2+ | DXR Tier 1.1, Mesh Shaders, VRS |
 	- ## Creating the Device
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  ComPtr<ID3D12Device8> device;
 		  HRESULT hr = D3D12CreateDevice(
 		      adapter.Get(),                 // Specific adapter to use
@@ -174,7 +174,7 @@ title:: DirectX
 		  ```
 	- ## Creating Each Component
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // ---- Create the Command QUEUE ----
 		  D3D12_COMMAND_QUEUE_DESC queueDesc{};
 		  queueDesc.Type     = D3D12_COMMAND_LIST_TYPE_DIRECT; // Graphics + Compute + Copy
@@ -209,7 +209,7 @@ title:: DirectX
   collapsed:: true
 	- ## Creating the Swapchain
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  DXGI_SWAP_CHAIN_DESC1 swapChainDesc{};
 		  swapChainDesc.Width              = windowWidth;
 		  swapChainDesc.Height             = windowHeight;
@@ -267,7 +267,7 @@ title:: DirectX
 		  | `DSV` | Depth Stencil Views | NO | Depth and stencil buffers |
 	- ## Creating Descriptor Heaps
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // ---- RTV Heap (Render Target Views for the swapchain back buffers) ----
 		  D3D12_DESCRIPTOR_HEAP_DESC rtvHeapDesc{};
 		  rtvHeapDesc.NumDescriptors = numFrames; // One RTV per back buffer
@@ -323,7 +323,7 @@ title:: DirectX
 	- ## Creating a Buffer Resource
 	  collapsed:: true
 		- D3D12 uses `CreateCommittedResource` (simple, one allocation = one heap) or `CreatePlacedResource` (manual heap management, advanced).
-		- ```cpp
+		- ```c++
 		  auto createBuffer = [&device](UINT64 size, D3D12_HEAP_TYPE heapType,
 		                                D3D12_RESOURCE_STATES initialState) -> ComPtr<ID3D12Resource> {
 		      D3D12_HEAP_PROPERTIES heapProps{};
@@ -383,7 +383,7 @@ title:: DirectX
 		  | `D3D12_RESOURCE_STATE_COPY_SOURCE` | Source for a GPU copy |
 		  | `D3D12_RESOURCE_STATE_COPY_DEST` | Destination for a GPU copy |
 		  | `D3D12_RESOURCE_STATE_GENERIC_READ` | Any read-only access (upload heaps only) |
-		- ```cpp
+		- ```c++
 		  // Helper: create a transition barrier
 		  D3D12_RESOURCE_BARRIER TransitionBarrier(ID3D12Resource* resource,
 		                                            D3D12_RESOURCE_STATES before,
@@ -432,7 +432,7 @@ title:: DirectX
 		  ```
 	- ## Creating a Root Signature
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Example: 1 CBV (camera matrices) + 1 descriptor table (texture)
 		  
 		  // Slot 0: Root Descriptor (CBV at register b0)
@@ -573,7 +573,7 @@ title:: DirectX
 		  ```
 	- ## Compiling HLSL at Runtime
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Old way: use d3dcompiler.lib (still works, ships with Windows SDK)
 		  ComPtr<ID3DBlob> vertexShader, pixelShader, error;
 		  
@@ -602,7 +602,7 @@ title:: DirectX
 	  collapsed:: true
 		- Like Vulkan's `VkPipeline`, the DX12 `ID3D12PipelineState` bakes shader code + all render states into one immutable blob. This means no per-draw state changes — the driver can pre-compile everything.
 		- > [!tip] Common practice: create ALL your PSOs during loading, cache them in a map, and just call `SetPipelineState()` to switch. Creating PSOs at runtime causes hitches.
-		- ```cpp
+		- ```c++
 		  // Input Layout: matches POSITION/NORMAL/TEXCOORD0 semantics in vertex shader
 		  D3D12_INPUT_ELEMENT_DESC inputLayout[] = {
 		      { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0,  D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
@@ -655,7 +655,7 @@ title:: DirectX
   collapsed:: true
 	- ## Synchronization with Fences
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  ComPtr<ID3D12Fence> fence;
 		  device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&fence));
 		  UINT64 fenceValues[numFrames] = {0};
@@ -677,7 +677,7 @@ title:: DirectX
 		  ```
 	- ## The Complete D3D12 Frame
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  void drawFrame() {
 		      UINT frameIndex = swapChain->GetCurrentBackBufferIndex();
 		  
@@ -801,7 +801,7 @@ title:: DirectX
 		      g_Particles[index] = p;
 		  }
 		  ```
-		- ```cpp
+		- ```c++
 		  // C++ side: dispatch compute
 		  commandList->SetComputeRootSignature(computeRootSignature.Get());
 		  commandList->SetPipelineState(computePso.Get());

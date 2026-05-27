@@ -1,7 +1,8 @@
 ---
 seoTitle: Borůvka's Algorithm – Minimum Spanning Tree (MST) for Parallel Processing
 description: "Master Boruvka's algorithm, the oldest MST algorithm. Covers component-level greedy choices, O(E log V) complexity, phase reduction, and parallel/distributed computing applications."
-keywords: "Boruvka algorithm, Minimum Spanning Tree, MST, Sollin's algorithm, parallel MST, O(E log V), greedy algorithm, graph algorithm, VR-Rathod, Code-Note"
+keywords: "Boruvka algorithm, Minimum Spanning Tree, MST, Sollin's algorithm, parallel MST, O(E log V), greedy algorithm, graph algorithm, VR-Rathod, Code-Note, Boruvkas Algorithm"
+displayTitle: Borůvka's Algorithm
 ---
 
 > [!info] What is Borůvka's Algorithm?

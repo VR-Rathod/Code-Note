@@ -1,7 +1,8 @@
 ---
 seoTitle: Rope Data Structure Complete Guide – Efficient Large-String Manipulation
 description: "A comprehensive guide on the Rope data structure. Learn how binary trees optimize string concatenation and split operations in O(log n) time."
-keywords: "rope data structure, string manipulation, text editor, binary tree, rope weight, string concatenation, string split, time complexity, space complexity, VR-Rathod, Code-Note, code note vr, vr book"
+keywords: "rope data structure, string manipulation, text editor, binary tree, rope weight, string concatenation, string split, time complexity, space complexity, VR-Rathod, Code-Note, code note vr, vr book,Rope (Data Structure)"
+diplayTitle: Rope (Data Structure)
 ---
 
 > [!info] What is a Rope?

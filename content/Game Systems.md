@@ -60,7 +60,7 @@ title:: Game Systems
 		  ```
 	- ## The Item Data Model
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Item Definition — the TEMPLATE (stored in your item database, not in savegames)
 		  struct ItemDefinition {
 		      std::string id;          // "sword_iron" — unique key
@@ -98,7 +98,7 @@ title:: Game Systems
 		- > [!tip] Separate DEFINITION from INSTANCE. The definition is a read-only template shared across all copies of "Iron Sword". The instance holds the specific reality (its durability, enchantments, ownership).
 	- ## Inventory Container
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  class Inventory {
 		  public:
 		      int maxSlots;
@@ -167,7 +167,7 @@ title:: Game Systems
 		  ```
 	- ## Equipment System
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  enum class EquipSlot { Head, Chest, Legs, Feet, Hands, MainHand, OffHand, Ring1, Ring2, Neck };
 		  
 		  class EquipmentSystem {
@@ -264,7 +264,7 @@ title:: Game Systems
 		  ```
 	- ## Quest Data Model
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // A single condition that must be true for an objective to complete
 		  struct QuestCondition {
 		      enum class Type {
@@ -323,7 +323,7 @@ title:: Game Systems
 		  ```
 	- ## Quest Manager (Runtime Engine)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  class QuestManager {
 		      // All quest states for the current player
 		      std::unordered_map<std::string, QuestStatus> questStates;
@@ -387,7 +387,7 @@ title:: Game Systems
 		      C1 --> B2
 		  ```
 		- The key design principle: **track choices as flags**, not as conditional logic hardcoded in objectives.
-		- ```cpp
+		- ```c++
 		  // Player made a choice — store it as a world state variable
 		  worldState.set("heist_method", "stolen"); // or "purchased"
 		  
@@ -420,7 +420,7 @@ title:: Game Systems
 		  ```
 	- ## Dialogue Node Data Model
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  struct DialogueNode {
 		      std::string id;
 		      std::string speakerId;  // "blacksmith_kira" (maps to NPC name + portrait)
@@ -455,7 +455,7 @@ title:: Game Systems
 		  ```
 	- ## Dialogue Runner
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  class DialogueRunner {
 		      const DialogueTree* currentTree = nullptr;
 		      std::string currentNodeId;
@@ -563,7 +563,7 @@ title:: Game Systems
 		  | **XML** | Very portable | Verbose, slow | Legacy engines |
 	- ## Save System in C++
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <nlohmann/json.hpp> // Single-header JSON library
 		  using json = nlohmann::json;
 		  
@@ -649,7 +649,7 @@ title:: Game Systems
 		- > [!warning] Version Your Save Files
 		  > If you ship a game update that changes item IDs, removes a quest, or adds new fields to Player — your players' old save files MUST still load without crashing.
 		  > Always write a migration function from version N to N+1.
-		- ```cpp
+		- ```c++
 		  json migrateSaveV1toV2(const json& v1Data) {
 		      json v2 = v1Data;
 		      v2["version"] = 2;
@@ -712,7 +712,7 @@ title:: Game Systems
   collapsed:: true
 	- ## Achievement Data Model
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  struct AchievementDefinition {
 		      std::string id;           // "first_blood"
 		      std::string title;        // "First Blood"
@@ -732,7 +732,7 @@ title:: Game Systems
 		  ```
 	- ## Achievement Manager (Event-Driven)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // The WRONG way: Check achievements inside game code
 		  void Player::onEnemyKilled(Enemy* enemy) {
 		      killCount++;
@@ -826,7 +826,7 @@ title:: Game Systems
 		  ```
 	- ## Terrain Generation with FBM
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <cmath>
 		  #include <functional>
 		  
@@ -878,7 +878,7 @@ title:: Game Systems
 		  ```
 	- ## Dungeon Generation: BSP Algorithm
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Binary Space Partitioning — split a rectangle repeatedly, put a room in each leaf
 		  struct Rect { int x, y, w, h; };
 		  

@@ -54,14 +54,14 @@ displayTitle: spdlog
 		  ```
 	-
 	- ## Header-only include
-		- ```cpp
+		- ```c++
 		  #include <spdlog/spdlog.h>
 		  ```
 - # Core Concepts
   collapsed:: true
 	- ## Basic Logging
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <spdlog/spdlog.h>
 		  
 		  int main() {
@@ -77,7 +77,7 @@ displayTitle: spdlog
 	-
 	- ## Log Levels
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Levels (lowest to highest):
 		  // trace < debug < info < warn < error < critical < off
 		  
@@ -90,7 +90,7 @@ displayTitle: spdlog
 	-
 	- ## Named Loggers
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <spdlog/spdlog.h>
 		  
 		  auto logger = spdlog::stdout_color_mt("my_logger");
@@ -105,7 +105,7 @@ displayTitle: spdlog
   collapsed:: true
 	- ## Console Sink (colored)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <spdlog/sinks/stdout_color_sinks.h>
 		  
 		  auto console = spdlog::stdout_color_mt("console");
@@ -118,7 +118,7 @@ displayTitle: spdlog
 	-
 	- ## File Sink
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <spdlog/sinks/basic_file_sink.h>
 		  
 		  auto file_logger = spdlog::basic_logger_mt("file_logger", "logs/app.log");
@@ -130,7 +130,7 @@ displayTitle: spdlog
 	-
 	- ## Rotating File Sink
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <spdlog/sinks/rotating_file_sink.h>
 		  
 		  // Max 5MB per file, keep 3 files
@@ -144,7 +144,7 @@ displayTitle: spdlog
 	-
 	- ## Daily File Sink
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <spdlog/sinks/daily_file_sink.h>
 		  
 		  // New file every day at 02:30
@@ -154,7 +154,7 @@ displayTitle: spdlog
 	-
 	- ## Multi-Sink Logger
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <spdlog/sinks/stdout_color_sinks.h>
 		  #include <spdlog/sinks/rotating_file_sink.h>
 		  #include <spdlog/logger.h>
@@ -168,7 +168,7 @@ displayTitle: spdlog
 		  ```
 - # Async Logging
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <spdlog/async.h>
 	  #include <spdlog/sinks/basic_file_sink.h>
 	  
@@ -185,7 +185,7 @@ displayTitle: spdlog
 	  ```
 - # Custom Patterns
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  // Pattern flags:
 	  // %Y-%m-%d  date
 	  // %H:%M:%S  time
@@ -203,7 +203,7 @@ displayTitle: spdlog
 	  ```
 - # Flush Policy
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  // Flush on every error or above
 	  spdlog::flush_on(spdlog::level::err);
 	  

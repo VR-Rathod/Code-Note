@@ -642,6 +642,7 @@ keywords: "breadth first search, BFS, graph traversal, queue, shortest path, bip
 		  :::
 -
 - # Key Takeaways
+  collapsed:: true
 	- **Core idea** — explore level-by-level, expanding outwards like ripples in water.
 	- **Queue-based** — uses a FIFO queue to manage the nodes that need processing.
 	- **Complexity** — $O(V + E)$ time and $O(V)$ space.
@@ -649,6 +650,7 @@ keywords: "breadth first search, BFS, graph traversal, queue, shortest path, bip
 	- **Memory footprint** — can become very large for high branching factor trees (exponential space growth).
 -
 - # More Learn
+  collapsed:: true
 	- ## GitHub & Webs
 		- [TheAlgorithms – BFS (Python)](https://github.com/TheAlgorithms/Python/blob/master/graphs/breadth_first_search.py)
 		- [Visualgo — BFS/DFS Visualizations](https://visualgo.net/en/dfsbfs)

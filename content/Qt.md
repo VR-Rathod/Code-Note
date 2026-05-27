@@ -57,7 +57,7 @@ displayTitle: Qt Framework
   collapsed:: true
 	- ## QObject & Signals/Slots
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <QObject>
 		  #include <QDebug>
 		  
@@ -95,7 +95,7 @@ displayTitle: Qt Framework
 	-
 	- ## Hello World (Qt Widgets)
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <QApplication>
 		  #include <QLabel>
 		  
@@ -114,7 +114,7 @@ displayTitle: Qt Framework
   collapsed:: true
 	- ## Common Widgets
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  #include <QWidget>
 		  #include <QPushButton>
 		  #include <QLineEdit>
@@ -146,7 +146,7 @@ displayTitle: Qt Framework
 	-
 	- ## Layouts
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  QVBoxLayout* vbox = new QVBoxLayout();  // vertical stack
 		  QHBoxLayout* hbox = new QHBoxLayout();  // horizontal stack
 		  QGridLayout* grid = new QGridLayout();  // grid
@@ -191,7 +191,7 @@ displayTitle: Qt Framework
 	-
 	- ## C++ ↔ QML Integration
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // Expose C++ class to QML
 		  class Backend : public QObject {
 		      Q_OBJECT
@@ -217,7 +217,7 @@ displayTitle: Qt Framework
 		  ```
 - # Networking
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <QNetworkAccessManager>
 	  #include <QNetworkRequest>
 	  #include <QNetworkReply>
@@ -237,7 +237,7 @@ displayTitle: Qt Framework
 	  ```
 - # Database (Qt SQL)
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <QSqlDatabase>
 	  #include <QSqlQuery>
 	  #include <QSqlError>
@@ -266,7 +266,7 @@ displayTitle: Qt Framework
 	  ```
 - # Threading
   collapsed:: true
-	- ```cpp
+	- ```c++
 	  #include <QThread>
 	  #include <QRunnable>
 	  #include <QThreadPool>

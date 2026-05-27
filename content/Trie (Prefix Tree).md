@@ -1,7 +1,8 @@
 ---
 seoTitle: Trie (Prefix Tree) – Autocomplete & Prefix Retrieval Guide
 description: "Master Trie (Prefix Tree) data structure in DSA. Learn how to implement prefix retrieval, search, insert, and build an autocomplete engine."
-keywords: "Trie, Prefix Tree, Autocomplete, String Search, Spell Checker, Data Structures, DSA, Trie Implementation, Trie Python, Trie C++"
+keywords: "Trie, Prefix Tree, Autocomplete, String Search, Spell Checker, Data Structures, DSA, Trie Implementation, Trie Python, Trie C++, Trie (Prefix Tree)"
+displayTitle: Trie (Prefix Tree)
 ---
 
 > [!info] What is a Trie?
@@ -312,3 +313,161 @@ keywords: "Trie, Prefix Tree, Autocomplete, String Search, Spell Checker, Data S
 	  ```
 	  
 	  :::
+
+- # How It Works
+  collapsed:: true
+	- ## The Core Idea
+	  collapsed:: true
+		- Each character of a key maps to a **child node**. The root represents the empty string. A key is stored by following (or creating) one node per character, marking the final node with `isEnd = true`.
+		-
+		- ```mermaid
+		  flowchart TD
+		      A["Start — insert('cat')"] --> B["node = root"]
+		      B --> C["char='c': not in root → create TrieNode\nnode = root.children['c']"]
+		      C --> D["char='a': not in node → create TrieNode\nnode = node.children['a']"]
+		      D --> E["char='t': not in node → create TrieNode\nnode = node.children['t']"]
+		      E --> F["End of word → node.is_end = True"]
+		      F --> G["✅ 'cat' inserted"]
+		      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
+		  ```
+	-
+	- ## Step-by-Step Trace (Inserting "cat", "car", "do")
+	  collapsed:: true
+		- ```
+		  Start: root = TrieNode(children={}, is_end=False)
+
+		  Insert "cat":
+		    root → 'c'(new) → 'a'(new) → 't'(new, is_end=True)
+		    root.children = {'c': node_c}
+		    node_ca.children = {'t': node_cat}
+
+		  Insert "car":
+		    root → 'c'(exists) → 'a'(exists) → 'r'(new, is_end=True)
+		    node_ca.children = {'t': node_cat, 'r': node_car}   ← 'ca' shared!
+
+		  Insert "do":
+		    root → 'd'(new) → 'o'(new, is_end=True)
+		    root.children = {'c': node_c, 'd': node_d}
+
+		  Final Trie:
+		    root
+		    ├── 'c' → 'a'
+		    │         ├── 't' [END]
+		    │         └── 'r' [END]
+		    └── 'd' → 'o' [END]
+
+		  Search "cat":
+		    root→'c'✓→'a'✓→'t'✓, is_end=True  →  Found ✅
+
+		  Search "ca":
+		    root→'c'✓→'a'✓, is_end=False  →  Not a word ❌
+
+		  StartsWith "ca":
+		    root→'c'✓→'a'✓  →  Prefix exists ✅
+		  ```
+
+- # Alternative Variant (Compressed Trie / Radix Tree)
+  collapsed:: true
+	- > [!tip] Compressed Trie — Reducing Node Count
+	  > A **Compressed Trie** (Radix Tree / Patricia Tree) merges chains of single-child nodes into one edge labeled with a multi-character string. This reduces node count from $O(N \cdot L)$ to $O(N)$ where $N$ is the number of inserted words — a significant memory saving for long, non-overlapping keys.
+	-
+	- :::code-tabs
+	  
+	  ```python
+	  class CompressedTrieNode:
+	      def __init__(self):
+	          # Maps edge_label (str) -> CompressedTrieNode
+	          self.children: dict[str, "CompressedTrieNode"] = {}
+	          self.is_end = False
+
+	  class CompressedTrie:
+	      def __init__(self):
+	          self.root = CompressedTrieNode()
+
+	      def insert(self, word: str):
+	          node = self.root
+	          i = 0
+	          while i < len(word):
+	              matched = False
+	              for label in list(node.children.keys()):
+	                  j = 0
+	                  while j < len(label) and i + j < len(word) and label[j] == word[i + j]:
+	                      j += 1
+	                  if j == 0:
+	                      continue
+	                  if j == len(label):       # Fully matched edge — descend
+	                      node = node.children[label]
+	                      i += j
+	                  else:                      # Partial match — split edge
+	                      old_child = node.children.pop(label)
+	                      mid = CompressedTrieNode()
+	                      node.children[label[:j]] = mid
+	                      mid.children[label[j:]] = old_child
+	                      if i + j < len(word):
+	                          leaf = CompressedTrieNode()
+	                          leaf.is_end = True
+	                          mid.children[word[i + j:]] = leaf
+	                      else:
+	                          mid.is_end = True
+	                      return
+	                  matched = True
+	                  break
+	              if not matched:
+	                  leaf = CompressedTrieNode()
+	                  leaf.is_end = True
+	                  node.children[word[i:]] = leaf
+	                  return
+	          node.is_end = True
+
+	  # Example
+	  ct = CompressedTrie()
+	  for word in ["cat", "car", "cab"]:
+	      ct.insert(word)
+	  # Internally: root → 'ca' edge → {'t'[END], 'r'[END], 'b'[END]}
+	  # Only 4 nodes vs 7 in a standard Trie
+	  print("Compressed Trie built for: cat, car, cab")
+	  ```
+	  
+	  :::
+
+- # When to Use a Trie
+  collapsed:: true
+	- ```mermaid
+	  flowchart TD
+	      Q{"Are your keys\nstrings or sequences?"}
+	      Q -- No --> R1["Use Hash Table\nor BST"]
+	      Q -- Yes --> S1{"Do you need prefix\nqueries or autocomplete?"}
+	      S1 -- No --> S2{"Exact lookups only?"}
+	      S2 -- Yes --> R2["Use Hash Table\n(simpler, O(L) average)"]
+	      S2 -- No --> R3["✅ Use Trie\n(prefix + exact, O(L) guaranteed)"]
+	      S1 -- Yes --> R3
+	      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
+	  ```
+	-
+	- ## ✅ Use a Trie When
+		- You need **prefix-based queries** — autocomplete, spell-checker, IP routing.
+		- Keys are **strings with shared prefixes** — common prefix nodes are shared, saving memory.
+		- You need **guaranteed $O(L)$ worst-case** lookup (no hash collisions).
+		- Implementing a **dictionary** where you enumerate all keys with a given prefix.
+	-
+	- ## ❌ Avoid a Trie When
+		- Keys are **not strings** or have a very large alphabet ($A \gg 26$), causing memory explosion per node.
+		- You only need **exact lookups** with no prefix requirements — a Hash Table is simpler and typically faster.
+		- **Memory is constrained** — each Trie node stores up to $A$ pointers; use a HashMap-backed node to trade speed for memory.
+
+- # Key Takeaways
+  collapsed:: true
+	- **Position Defines Key** — No node stores its own key; the path from root to that node *is* the key.
+	- **Shared Prefixes** — Words with common prefixes (e.g., "cat", "car") share nodes up to the divergence point, saving space.
+	- **$O(L)$ Operations** — Insert, search, and startsWith are all $O(L)$ where $L$ is the key length, regardless of how many keys are stored.
+	- **Autocomplete by DFS** — Once a prefix is located, a depth-first traversal of the subtree yields all matching words.
+	- **Alphabet-Bounded Branching** — Each node has at most $A$ children (alphabet size). For Unicode, use a HashMap instead of a fixed-size array.
+	- **Compressed Variants** — Radix Trees / Patricia Trees compress single-child chains into labeled edges, reducing node count from $O(N \cdot L)$ to $O(N)$.
+
+- # More Learn
+  collapsed:: true
+	- ## GitHub & Webs
+		- [GeeksforGeeks → Trie (Insert and Search)](https://www.geeksforgeeks.org/trie-insert-and-search/)
+		- [Visualgo → Suffix Tree Visualization](https://visualgo.net/en/suffixtree)
+		- [LeetCode → Implement Trie – Problem 208](https://leetcode.com/problems/implement-trie-prefix-tree/)
+		- [TheAlgorithms – Trie (Python)](https://github.com/TheAlgorithms/Python/blob/master/data_structures/trie.py)

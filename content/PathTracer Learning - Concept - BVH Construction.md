@@ -59,7 +59,7 @@ title:: PathTracer Learning - Concept - BVH Construction
 		- Very fast (GPU-friendly), slightly lower quality
 		- Used for real-time BLAS builds in Vulkan
 		- Morton code: interleave bits of (x, y, z) coordinates
-			- ```cpp
+			- ```c++
 			  uint32_t expandBits(uint32_t v) {
 			      v = (v * 0x00010001u) & 0xFF0000FFu;
 			      v = (v * 0x00000101u) & 0x0F00F00Fu;
@@ -117,5 +117,5 @@ title:: PathTracer Learning - Concept - BVH Construction
 - ---
 - ## Related
 	- [[PathTracer Learning - Concept - AABB]]
-	- [[PathTracer Learning - Concept - BVH Traversal]]
+	- [[Pathtracer Concept BVH Traversal]]
 	- [[PathTracer Learning - BLAS and TLAS]]

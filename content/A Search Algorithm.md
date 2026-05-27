@@ -1,7 +1,7 @@
 ---
 seoTitle: A* Search Algorithm – Heuristic Pathfinding Algorithm Guide
 description: "Comprehensive guide to the A* Search algorithm. Explains the f(n) = g(n) + h(n) evaluation, admissibility, consistency, distance metrics, and complete grid-based pathfinding in Python, C++, JavaScript, Java, and C."
-keywords: "A* search algorithm, A* pathfinding, heuristic search, shortest path, grid pathfinding, Dijkstra vs A*, Manhattan distance, Euclidean distance, time complexity, space complexity, VR-Rathod, Code-Note, Vaibhav Rathod"
+keywords: "A* search algorithm, A* pathfinding, heuristic search, shortest path, grid pathfinding, Dijkstra vs A*, Manhattan distance, Euclidean distance, time complexity, space complexity, VR-Rathod, Code-Note, Vaibhav Rathod , A Search Algorithm"
 displayTitle: A* Search Algorithm
 ---
 

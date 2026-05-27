@@ -1,7 +1,8 @@
 ---
-seoTitle: Abstraction in OOP – C++ Guide with Examples
-description: "Abstraction hides implementation details and exposes only essential features. Covers data abstraction, procedural abstraction, abstract classes, and C++ examples."
-keywords: "abstraction, OOP, C++, abstract class, encapsulation, interface, data hiding, design principles, software design"
+seoTitle: Abstraction in OOP – Complete In-Depth Guide | Data Hiding, Abstract Classes, Multi-Language
+description: "Deep dive into Abstraction in OOP. Covers data abstraction, procedural abstraction, abstract classes, interfaces, and when to apply abstraction with examples in Python, C++, Java, JavaScript, and C#."
+keywords: "abstraction, OOP, abstract class, interface, data hiding, Python abstraction, Java abstraction, C++ abstract class, JavaScript abstraction, CSharp abstraction, design principles, VR-Rathod, Code-Note"
+displayTitle: Abstraction
 ---
 
 - # Introduction
@@ -119,7 +120,7 @@ keywords: "abstraction, OOP, C++, abstract class, encapsulation, interface, data
 		  // [Console] Processing done
 		  ```
 -
-- # C++ Examples
+- # Implementation
   collapsed:: true
 	- ## Shape Abstraction
 	  collapsed:: true
@@ -165,9 +166,45 @@ keywords: "abstraction, OOP, C++, abstract class, encapsulation, interface, data
 		  }
 		  ```
 	-
-	- ## Payment System Abstraction
+	- ## Payment System — Multi-Language
 	  collapsed:: true
-		- ```c++
+		- > [!note] A `PaymentProcessor` abstract base with `StripeProcessor` and `PayPalProcessor` concrete implementations.
+		  > Languages: [[Python]] · [[Cpp]] · [[Java]] · [[Java Script]] · [[CSharp]]
+		-
+		- :::code-tabs
+		  
+		  ```python
+		  from abc import ABC, abstractmethod
+		  
+		  class PaymentProcessor(ABC):
+		      @abstractmethod
+		      def process_payment(self, amount: float) -> bool: ...
+		  
+		      @abstractmethod
+		      def provider_name(self) -> str: ...
+		  
+		  class StripeProcessor(PaymentProcessor):
+		      def process_payment(self, amount: float) -> bool:
+		          print(f"Stripe: charging ${amount}")
+		          return True
+		      def provider_name(self) -> str: return "Stripe"
+		  
+		  class PayPalProcessor(PaymentProcessor):
+		      def process_payment(self, amount: float) -> bool:
+		          print(f"PayPal: charging ${amount}")
+		          return True
+		      def provider_name(self) -> str: return "PayPal"
+		  
+		  def checkout(processor: PaymentProcessor, total: float):
+		      if processor.process_payment(total):
+		          print(f"Payment via {processor.provider_name()} successful")
+		  
+		  checkout(StripeProcessor(), 99.99)
+		  # Stripe: charging $99.99
+		  # Payment via Stripe successful
+		  ```
+		  
+		  ```c++
 		  class PaymentProcessor {
 		  public:
 		      virtual bool processPayment(double amount) = 0;
@@ -179,30 +216,81 @@ keywords: "abstraction, OOP, C++, abstract class, encapsulation, interface, data
 		  public:
 		      bool processPayment(double amount) override {
 		          std::cout << "Stripe: charging $" << amount << "\n";
-		          return true; // internal Stripe API calls hidden
+		          return true;
 		      }
 		      std::string getProviderName() override { return "Stripe"; }
 		  };
 		  
-		  class PayPalProcessor : public PaymentProcessor {
-		  public:
-		      bool processPayment(double amount) override {
-		          std::cout << "PayPal: charging $" << amount << "\n";
-		          return true;
-		      }
-		      std::string getProviderName() override { return "PayPal"; }
-		  };
-		  
-		  void checkout(PaymentProcessor& processor, double total) {
-		      if (processor.processPayment(total))
-		          std::cout << "Payment via " << processor.getProviderName() << " successful\n";
+		  void checkout(PaymentProcessor& p, double total) {
+		      if (p.processPayment(total))
+		          std::cout << "Payment via " << p.getProviderName() << " successful\n";
 		  }
 		  
 		  StripeProcessor stripe;
 		  checkout(stripe, 99.99);
-		  // Stripe: charging $99.99
-		  // Payment via Stripe successful
 		  ```
+		  
+		  ```java
+		  interface PaymentProcessor {
+		      boolean processPayment(double amount);
+		      String getProviderName();
+		  }
+		  
+		  class StripeProcessor implements PaymentProcessor {
+		      public boolean processPayment(double amount) {
+		          System.out.printf("Stripe: charging $%.2f%n", amount);
+		          return true;
+		      }
+		      public String getProviderName() { return "Stripe"; }
+		  }
+		  
+		  static void checkout(PaymentProcessor p, double total) {
+		      if (p.processPayment(total))
+		          System.out.println("Payment via " + p.getProviderName() + " successful");
+		  }
+		  checkout(new StripeProcessor(), 99.99);
+		  ```
+		  
+		  ```javascript
+		  class PaymentProcessor {
+		      processPayment(amount) { throw new Error("Not implemented"); }
+		      get providerName() { throw new Error("Not implemented"); }
+		  }
+		  
+		  class StripeProcessor extends PaymentProcessor {
+		      processPayment(amount) { console.log(`Stripe: charging $${amount}`); return true; }
+		      get providerName() { return "Stripe"; }
+		  }
+		  
+		  function checkout(processor, total) {
+		      if (processor.processPayment(total))
+		          console.log(`Payment via ${processor.providerName} successful`);
+		  }
+		  checkout(new StripeProcessor(), 99.99);
+		  ```
+		  
+		  ```csharp
+		  interface IPaymentProcessor {
+		      bool ProcessPayment(double amount);
+		      string ProviderName { get; }
+		  }
+		  
+		  class StripeProcessor : IPaymentProcessor {
+		      public bool ProcessPayment(double amount) {
+		          Console.WriteLine($"Stripe: charging ${amount}");
+		          return true;
+		      }
+		      public string ProviderName => "Stripe";
+		  }
+		  
+		  static void Checkout(IPaymentProcessor p, double total) {
+		      if (p.ProcessPayment(total))
+		          Console.WriteLine($"Payment via {p.ProviderName} successful");
+		  }
+		  Checkout(new StripeProcessor(), 99.99);
+		  ```
+		  
+		  :::
 -
 - # When to Apply Abstraction
   collapsed:: true
@@ -223,6 +311,16 @@ keywords: "abstraction, OOP, C++, abstract class, encapsulation, interface, data
 	- ## ❌ Avoid When:
 		- Writing simple Data Transfer Objects (DTOs) or mathematical structs (e.g., `Vector3 { x, y, z }`) where getters/setters just add boilerplate without value.
 		- Premature abstraction: Don't abstract a simple script or one-off utility unless complexity demands it.
+-
+- # Related Concepts
+  collapsed:: true
+	- | Concept | Relationship |
+	  |---|---|
+	  | [[Encapsulation]] | Abstraction hides *complexity*; Encapsulation hides *data* |
+	  | [[Abstract Classes]] | Primary C++/Java tool for implementing abstraction |
+	  | [[Interface]] | Pure abstraction — all methods are abstract |
+	  | [[Polymorphism]] | Abstraction enables treating different types uniformly |
+	  | [[Class]] | The container in which abstraction is applied |
 -
 - # Abstraction vs Encapsulation
   collapsed:: true

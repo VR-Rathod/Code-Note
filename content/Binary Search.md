@@ -279,8 +279,6 @@ keywords: "binary search, search algorithm, sorted array, O(log n), divide and c
 	      printf("%d\n", binarySearch(arr, n, 6));   /* Output: -1 */
 	      return 0;
 	  }
-	  ```
-	  
 	  :::
 -
 - # Recursive Variant
@@ -397,7 +395,7 @@ keywords: "binary search, search algorithm, sorted array, O(log n), divide and c
 	  }
 	  ```
 	  
-	  ``` javascript
+	  ```javascript
 	  function binarySearchRecursive(
 	      arr,
 	      target,
@@ -552,6 +550,7 @@ keywords: "binary search, search algorithm, sorted array, O(log n), divide and c
 		- You need **approximate or fuzzy matching** (use variant forms instead)
 -
 - # Binary Search Variants
+  collapsed:: true
 	- > [!important] Why Variants Matter
 	  > Standard binary search finds *any* occurrence of the target.
 	  > If duplicates exist, you often need the **first** or **last** occurrence — that's where Lower/Upper Bound come in.
@@ -832,7 +831,7 @@ keywords: "binary search, search algorithm, sorted array, O(log n), divide and c
 		  print(contains(arr, 5))               # True
 		  print(contains(arr, 6))               # False
 		  ```
-
+		  
 		  ```c++
 		  #include <iostream>
 		  #include <vector>
@@ -860,7 +859,7 @@ keywords: "binary search, search algorithm, sorted array, O(log n), divide and c
 		  }
 		  ```
 		  
-		  ``` javascript
+		  ```javascript
 		  function lowerBound(arr, target) {
 		  
 		      let left = 0;
@@ -916,7 +915,7 @@ keywords: "binary search, search algorithm, sorted array, O(log n), divide and c
 		      }
 		  }
 		  ```
-		:::
+		  :::
 -
 - # Key Takeaways
   collapsed:: true

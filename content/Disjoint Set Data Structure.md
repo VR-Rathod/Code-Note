@@ -1,7 +1,8 @@
 ---
 seoTitle: Disjoint-Set Data Structure (Union-Find) Complete Guide – Union by Rank and Path Compression
 description: "A comprehensive guide on the Disjoint-Set (Union-Find) data structure. Covers path compression, union by rank, complexity analysis, and Python/C++ implementations."
-keywords: "disjoint set, union find, path compression, union by rank, inverse ackermann, connected components, graph algorithms, kruskals algorithm, VR-Rathod, Code-Note, code note vr, vr book"
+keywords: "disjoint set, union find, path compression, union by rank, inverse ackermann, connected components, graph algorithms, kruskals algorithm, VR-Rathod, Code-Note, code note vr, vr book, Disjoint-set Data Structure"
+
 ---
 
 > [!info] What is the Disjoint-Set Data Structure?

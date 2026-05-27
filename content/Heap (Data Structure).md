@@ -1,7 +1,8 @@
 ---
 seoTitle: Heap Data Structure – Min-Heap, Max-Heap & Priority Queue
 description: "Master Heaps in Data Structures & Algorithms. Learn about binary heap representation, heapify operations, O(N) build-heap, and custom priority queue implementations."
-keywords: "Heap, Binary Heap, Min-Heap, Max-Heap, Priority Queue, Heapify, Build-Heap, Data Structures, DSA, Heap C++, Heap Python"
+keywords: "Heap, Binary Heap, Min-Heap, Max-Heap, Priority Queue, Heapify, Build-Heap, Data Structures, DSA, Heap C++, Heap Python, Heap (Data Structure)"
+displayTitle: Heap (Data Structure)
 ---
 
 > [!info] What is a Heap?
@@ -306,3 +307,213 @@ keywords: "Heap, Binary Heap, Min-Heap, Max-Heap, Priority Queue, Heapify, Build
 	  ```
 	  
 	  :::
+
+- # How It Works
+  collapsed:: true
+	- ## The Core Idea
+	  collapsed:: true
+		- **Insertion**: Append the new element at the end of the array (maintaining complete binary tree shape), then bubble it up to restore the heap property.
+		- **Extraction**: Remove the root (min/max), replace it with the last element, then sift it down to restore the heap property.
+		-
+		- ```mermaid
+		  flowchart TD
+		      subgraph INSERT["Insert(10) into Min-Heap [5, 15, 30, 40, 50]"]
+		          A["Append 10 at end → [5, 15, 30, 40, 50, 10]"] --> B["Parent of idx 5 = idx 2 (value 30)"]
+		          B --> C{"10 < 30? Yes → Swap"}
+		          C --> D["Array: [5, 15, 10, 40, 50, 30]"]
+		          D --> E["Parent of idx 2 = idx 0 (value 5)"]
+		          E --> F{"10 < 5? No → Stop"}
+		          F --> G["✅ Heap restored"]
+		      end
+		      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
+		  ```
+	-
+	- ## Step-by-Step Trace (Building Min-Heap from [15, 30, 10, 40, 50])
+	  collapsed:: true
+		- ```
+		  Insert 15: heap = [15]
+		  Insert 30: heap = [15, 30]
+		    → Parent(idx1) = idx0 (val 15). 30 > 15, no swap.
+		  Insert 10: heap = [15, 30, 10]
+		    → Parent(idx2) = idx0 (val 15). 10 < 15, swap!
+		    → heap = [10, 30, 15]
+		  Insert 40: heap = [10, 30, 15, 40]
+		    → Parent(idx3) = idx1 (val 30). 40 > 30, no swap.
+		  Insert 50: heap = [10, 30, 15, 40, 50]
+		    → Parent(idx4) = idx1 (val 30). 50 > 30, no swap.
+
+		  Final Min-Heap: [10, 30, 15, 40, 50]
+
+		  Extract Min (remove root 10):
+		    Step 1: Replace root with last element → [50, 30, 15, 40]
+		    Step 2: Sift down 50 from idx 0:
+		      Children: left=30(idx1), right=15(idx2). Smallest=15.
+		      50 > 15 → swap → [15, 30, 50, 40]
+		      Children of idx 2: none. Stop.
+		    Final heap: [15, 30, 50, 40]
+		    Extracted: 10 ✅
+		  ```
+
+- # Alternative Variant (Max-Heap & Language Built-ins)
+  collapsed:: true
+	- > [!tip] Using Built-in Heap Libraries
+	  > Most languages provide built-in priority queue / heap utilities. Python's `heapq` is a **Min-Heap** by default — negate values to simulate a Max-Heap. C++ STL's `priority_queue` is a **Max-Heap** by default.
+	-
+	- :::code-tabs
+	  
+	  ```python
+	  import heapq
+
+	  # --- Min-Heap (default) ---
+	  min_heap = []
+	  for val in [15, 30, 10, 40, 50]:
+	      heapq.heappush(min_heap, val)
+	  print("Min peek:", min_heap[0])               # 10
+	  print("Extract:", heapq.heappop(min_heap))    # 10
+	  print("Extract:", heapq.heappop(min_heap))    # 15
+
+	  # --- Max-Heap (negate values trick) ---
+	  max_heap = []
+	  for val in [15, 30, 10, 40, 50]:
+	      heapq.heappush(max_heap, -val)
+	  print("Max peek:", -max_heap[0])              # 50
+	  print("Extract:", -heapq.heappop(max_heap))  # 50
+
+	  # --- Build heap in O(N) from existing list ---
+	  data = [15, 30, 10, 40, 50]
+	  heapq.heapify(data)
+	  print("Heapified:", data)                     # [10, 30, 15, 40, 50]
+	  ```
+	  
+	  ```c++
+	  #include <iostream>
+	  #include <queue>
+	  #include <vector>
+
+	  int main() {
+	      // --- Max-Heap (default in C++ STL) ---
+	      std::priority_queue<int> maxHeap;
+	      for (int val : {15, 30, 10, 40, 50}) maxHeap.push(val);
+	      std::cout << "Max: " << maxHeap.top() << "\n"; // 50
+	      maxHeap.pop();
+	      std::cout << "Max: " << maxHeap.top() << "\n"; // 40
+
+	      // --- Min-Heap using greater<int> ---
+	      std::priority_queue<int, std::vector<int>, std::greater<int>> minHeap;
+	      for (int val : {15, 30, 10, 40, 50}) minHeap.push(val);
+	      std::cout << "Min: " << minHeap.top() << "\n"; // 10
+	      minHeap.pop();
+	      std::cout << "Min: " << minHeap.top() << "\n"; // 15
+	      return 0;
+	  }
+	  ```
+	  
+	  ```javascript
+	  // JavaScript has no built-in heap.
+	  // Flip the comparator in the custom MinHeap to get a MaxHeap:
+	  class MaxHeap {
+	      constructor() { this.heap = []; }
+	      getParent(i) { return Math.floor((i - 1) / 2); }
+	      getLeft(i) { return 2 * i + 1; }
+	      getRight(i) { return 2 * i + 2; }
+
+	      insert(key) {
+	          this.heap.push(key);
+	          this.bubbleUp(this.heap.length - 1);
+	      }
+	      extractMax() {
+	          if (!this.heap.length) return null;
+	          if (this.heap.length === 1) return this.heap.pop();
+	          const max = this.heap[0];
+	          this.heap[0] = this.heap.pop();
+	          this.siftDown(0);
+	          return max;
+	      }
+	      bubbleUp(i) {
+	          let p = this.getParent(i);
+	          if (i > 0 && this.heap[i] > this.heap[p]) {
+	              [this.heap[i], this.heap[p]] = [this.heap[p], this.heap[i]];
+	              this.bubbleUp(p);
+	          }
+	      }
+	      siftDown(i) {
+	          let largest = i;
+	          const l = this.getLeft(i), r = this.getRight(i);
+	          if (l < this.heap.length && this.heap[l] > this.heap[largest]) largest = l;
+	          if (r < this.heap.length && this.heap[r] > this.heap[largest]) largest = r;
+	          if (largest !== i) {
+	              [this.heap[i], this.heap[largest]] = [this.heap[largest], this.heap[i]];
+	              this.siftDown(largest);
+	          }
+	      }
+	  }
+	  const mh = new MaxHeap();
+	  [15, 30, 10, 40, 50].forEach(v => mh.insert(v));
+	  console.log(mh.extractMax()); // 50
+	  console.log(mh.extractMax()); // 40
+	  ```
+	  
+	  ```java
+	  import java.util.PriorityQueue;
+	  import java.util.Collections;
+
+	  public class HeapBuiltins {
+	      public static void main(String[] args) {
+	          // --- Min-Heap (default in Java) ---
+	          PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+	          for (int val : new int[]{15, 30, 10, 40, 50}) minHeap.offer(val);
+	          System.out.println("Min: " + minHeap.poll()); // 10
+	          System.out.println("Min: " + minHeap.poll()); // 15
+
+	          // --- Max-Heap using reverseOrder() ---
+	          PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+	          for (int val : new int[]{15, 30, 10, 40, 50}) maxHeap.offer(val);
+	          System.out.println("Max: " + maxHeap.poll()); // 50
+	          System.out.println("Max: " + maxHeap.poll()); // 40
+	      }
+	  }
+	  ```
+	  
+	  :::
+
+- # When to Use a Heap
+  collapsed:: true
+	- ```mermaid
+	  flowchart TD
+	      Q{"Do you need repeated\naccess to the min\nor max element?"}
+	      Q -- No --> R1["Use a plain Array\nor LinkedList"]
+	      Q -- Yes --> S1{"Do you need both\nsorted order AND\nrange queries?"}
+	      S1 -- Yes --> R2["Use a Segment Tree\nor Sorted Array"]
+	      S1 -- No --> S2{"O(1) peek of\nextreme value needed?"}
+	      S2 -- Yes --> R3["✅ Use a Heap / Priority Queue\n(O(1) peek, O(log n) insert/extract)"]
+	      S2 -- No --> R4["Consider a BST\nfor full sorted traversal"]
+	      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
+	  ```
+	-
+	- ## ✅ Use a Heap When
+		- You need **repeated extraction** of the minimum or maximum element (Dijkstra's, Prim's MST).
+		- Implementing a **Priority Queue** where tasks are scheduled by priority level.
+		- **K-th largest/smallest** element queries — maintain a heap of size K.
+		- **Merging K sorted lists** — use a min-heap to efficiently pick the global minimum across lists.
+	-
+	- ## ❌ Avoid a Heap When
+		- You need **arbitrary element access** by index — heaps do not support $O(1)$ random access.
+		- You need **sorted traversal** of all elements — use a sorted array or BST.
+		- Data is **static and queried rarely** — a sorted array with binary search is simpler.
+
+- # Key Takeaways
+  collapsed:: true
+	- **Complete Binary Tree** — A heap is always a complete binary tree, enabling efficient array-based storage without pointers.
+	- **Heap Property** — Every parent is ≤ its children (Min-Heap) or ≥ its children (Max-Heap). Only the root is globally extreme.
+	- **O(1) Peek** — The minimum or maximum is always at index 0, giving constant-time access to the extreme element.
+	- **O(log n) Operations** — Both insertion (bubble-up) and extraction (sift-down) traverse at most the tree height $\lfloor \log_2 n \rfloor$.
+	- **O(N) Build** — Building a heap from an unsorted array via bottom-up heapify is $O(N)$, not $O(N \log N)$.
+	- **Priority Queue Foundation** — Heaps are the standard underlying data structure for priority queues in all major languages.
+
+- # More Learn
+  collapsed:: true
+	- ## GitHub & Webs
+		- [GeeksforGeeks → Heap Data Structure](https://www.geeksforgeeks.org/heap-data-structure/)
+		- [Visualgo → Heap Visualization](https://visualgo.net/en/heap)
+		- [TheAlgorithms – Heap Sort (Python)](https://github.com/TheAlgorithms/Python/blob/master/sorts/heap_sort.py)
+		- [CP Algorithms → Binary Heap](https://cp-algorithms.com/data_structures/heap_operations.html)

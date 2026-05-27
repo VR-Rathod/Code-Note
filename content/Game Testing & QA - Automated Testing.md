@@ -210,7 +210,7 @@ displayTitle: Game Testing & QA - Automated Testing
 	-
 	- ## C++ Unit Test
 	  collapsed:: true
-		- ```cpp
+		- ```c++
 		  // MyGame.cpp — UE automation test macro
 		  #include "Misc/AutomationTest.h"
 		  #include "DamageSystem.h"
