@@ -8,34 +8,20 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 	- ## The **core concepts** of OOP are **14** :-
 	  collapsed:: true
 		- [[Class]] - Blueprint for creating objects, defining properties and methods. Allocates no memory itself — only its instances do.
-		  logseq.order-list-type:: number
 		- [[Constructor]] - Special method that automatically runs when an object is created, used to initialize attributes with starting values.
-		  logseq.order-list-type:: number
 		- [[Destructors]] - Cleanup method called when an object is destroyed or goes out of scope; releases resources (memory, file handles, connections).
-		  logseq.order-list-type:: number
 		- [[Object]] - A concrete instance of a class. Holds its own copy of attributes and accesses shared class methods via reference.
-		  logseq.order-list-type:: number
 		- [[Encapsulation]] - Bundling data and methods into a class and restricting direct access to internal state using access modifiers (public / protected / private).
-		  logseq.order-list-type:: number
 		- [[Abstraction]] - Hiding complex implementation details and exposing only essential, relevant features to the user of the class.
-		  logseq.order-list-type:: number
 		- [[Inheritance]] - A child class derives (inherits) attributes and methods from a parent class, enabling code reuse and specialization. Represents an **is-a** relationship.
-		  logseq.order-list-type:: number
 		- [[Polymorphism]] - One interface, many behaviors. Objects of different types can be treated as a common base type, and the correct method is called at runtime.
-		  logseq.order-list-type:: number
 		- [[Composition]] - Building complex objects by embedding simpler objects inside them (**has-a** relationship, strong dependency — child cannot exist without parent).
 		  id:: 67e63024-2a0a-4a19-aff1-05ad33f056cf
-		  logseq.order-list-type:: number
 		- [[Interface]] - A contract (pure abstract definition) that a class must fulfill, listing method signatures without any implementation body.
-		  logseq.order-list-type:: number
 		- [[Method Overloading]] - Defining multiple methods with the **same name** but **different parameter lists** within the same class (compile-time polymorphism).
-		  logseq.order-list-type:: number
 		- [[Method Overriding]] - A subclass redefines a method inherited from the parent class to change or extend its behavior (runtime polymorphism).
-		  logseq.order-list-type:: number
 		- [[Static Methods and Class Methods]] - Methods that belong to the **class itself**, not to individual instances. Static methods have no `self`/`cls`; class methods receive the class as their first argument.
-		  logseq.order-list-type:: number
 		- [[Dynamic Binding]] (Late Binding) - The process of resolving which method implementation to invoke at **runtime** based on the actual object type, not the declared type.
-		  logseq.order-list-type:: number
 	-
 	- ## **Additional related concepts** or **design patterns** that extend OOP :-
 	  collapsed:: true
@@ -77,15 +63,10 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 	- ## **SOLID Principles** — 5 rules for clean OOP design :-
 	  collapsed:: true
 		- [[Single Responsibility Principle (SRP)]] - A class should have **one and only one reason to change** — it should do exactly one thing.
-		  logseq.order-list-type:: number
 		- [[Open Closed Principle (OCP)]] - Software entities should be **open for extension** but **closed for modification** — add new behavior without touching existing code.
-		  logseq.order-list-type:: number
 		- [[Liskov Substitution Principle (LSP)]] - Objects of a subclass must be substitutable for objects of the parent class **without breaking** program correctness.
-		  logseq.order-list-type:: number
 		- [[Interface Segregation Principle (ISP)]] - Prefer **many small, specific interfaces** over one large general-purpose interface — clients should not be forced to implement methods they don't need.
-		  logseq.order-list-type:: number
 		- [[Dependency Inversion Principle (DIP)]] - High-level modules should not depend on low-level modules; **both should depend on abstractions** (interfaces/abstract classes), not concrete implementations.
-		  logseq.order-list-type:: number
 -
 - # Complexity Analysis
 	- [[Complexity Analysis]] - Complete guide to time and space complexity, Big O notation, and algorithm mathematics.

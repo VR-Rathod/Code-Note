@@ -8,7 +8,7 @@ tags:: concept, bvh, traversal, algorithm
 title:: Pathtracer Concept BVH Traversal
 
 - # Concept: BVH Traversal
-	- Parent: [[PathTracer Learning - Phase 2 - CPU Ray Tracing]]
+	- Parent: [[PathTracer Learning Phase 2 CPU Ray Tracing]]
 - ---
 - ## Basic Traversal Algorithm
 	- Recursive version (conceptual)
@@ -86,6 +86,6 @@ title:: Pathtracer Concept BVH Traversal
 		- Used in production GPU path tracers
 - ---
 - ## Related
-	- [[PathTracer Learning - Concept - BVH Construction]]
-	- [[PathTracer Learning - Concept - AABB]]
-	- [[PathTracer Learning - BLAS and TLAS]]
+	- [[PathTracer Learning BVH Construction]]
+	- [[PathTracer Learning AABB]]
+	- [[PathTracer Learning BLAS and TLAS]]
