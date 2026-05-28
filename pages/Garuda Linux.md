@@ -1337,7 +1337,6 @@ enableToc: true
 			  end
 			  ```
 - # Troubleshooting
-  collapsed:: true
 	- ## System Won't Boot After Update
 		- ```
 		  1. Reboot → GRUB menu → "Garuda Linux snapshots"

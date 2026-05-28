@@ -8,76 +8,85 @@ tags:: index, pathtracer, graphics-programming
 title:: PathTracer Learning
 
 - # PathTracer Learning — Master Index
-	- A deep-dive learning graph for building a GPU path tracer in Godot, based on the NVPathtracer contributor discussions and modern rendering research.
+	- A deep-dive learning graph for building a GPU path tracer in [[Godot]] , based on the NVPathtracer contributor discussions and modern rendering research.
 	- This graph covers everything from foundational math to Vulkan ray tracing pipelines and Godot engine internals.
 - ---
 - ## Learning Phases
-	- [[PathTracer Learning - Phase 1 - Math for Graphics]]
+  collapsed:: true
+	- [[PathTracer Learning Phase 1 Math for Graphics]]
 		- Vectors, matrices, coordinate systems, radiometry, probability theory
-	- [[PathTracer Learning - Phase 2 - CPU Ray Tracing]]
+	- [[PathTracer Learning Phase 2 CPU Ray Tracing]]
 		- Build a software ray tracer first — understand the algorithm before GPU
-	- [[PathTracer Learning - Phase 3 - GPU and Vulkan]]
+	- [[PathTracer Learning Phase 3 GPU and Vulkan]]
 		- Vulkan ray tracing pipeline, shader binding tables, acceleration structures
-	- [[PathTracer Learning - Phase 4 - Godot Internals]]
+	- [[PathTracer Learning Phase 4 Godot Internals]]
 		- RenderingDevice, RenderSceneBuffers, how Godot's renderer is structured
-	- [[PathTracer Learning - Phase 5 - Advanced Topics]]
+	- [[PathTracer Learning Phase 5 Advanced Topics]]
 		- ReSTIR, DLSS, denoising, production-quality rendering
 - ---
 - ## Key Algorithm Pages
-	- [[PathTracer Learning - Path Tracing Algorithm]]
+  collapsed:: true
+	- [[PathTracer Learning Path Tracing Algorithm]]
 		- The core rendering equation and how path tracing solves it
-	- [[PathTracer Learning - BLAS and TLAS]]
+	- [[PathTracer Learning BLAS and TLAS]]
 		- Bottom-level and top-level acceleration structures for RT
-	- [[PathTracer Learning - Vulkan RT Pipeline]]
+	- [[PathTracer Learning Vulkan RT Pipeline]]
 		- VK_KHR_ray_tracing_pipeline — stages, SBT, ray generation
-	- [[PathTracer Learning - DLSS and Denoising]]
+	- [[PathTracer Learning DLSS and Denoising]]
 		- Temporal accumulation, DLSS 3.5 Ray Reconstruction
-	- [[PathTracer Learning - ReSTIR]]
+	- [[PathTracer Learning ReSTIR]]
 		- Reservoir-based spatiotemporal importance resampling
 - ---
 - ## Math & Radiometry Concepts
-	- [[PathTracer Learning - Concept - Dot Product]]
-	- [[PathTracer Learning - Concept - Cross Product]]
-	- [[PathTracer Learning - Concept - Solid Angle]]
-	- [[PathTracer Learning - Concept - Radiometry]]
-	- [[PathTracer Learning - Concept - Monte Carlo Integration]]
-	- [[PathTracer Learning - Concept - Importance Sampling]]
-	- [[PathTracer Learning - Concept - MIS]]
+  collapsed:: true
+	- [[PathTracer Learning Dot Product]]
+	- [[PathTracer Learning Cross Product]]
+	- [[PathTracer Learning Solid Angle]]
+	- [[PathTracer Learning Radiometry]]
+	- [[PathTracer Learning Monte Carlo Integration]]
+	- [[PathTracer Learning Importance Sampling]]
+	- [[PathTracer Learning MIS]]
 - ---
 - ## Geometry & Intersection Concepts
-	- [[PathTracer Learning - Concept - Ray Definition]]
-	- [[PathTracer Learning - Concept - Ray-Triangle Intersection]]
-	- [[PathTracer Learning - Concept - AABB]]
-	- [[PathTracer Learning - Concept - BVH Construction]]
+  collapsed:: true
+	- [[PathTracer Learning Ray Definition]]
+	- [[PathTracer Learning Ray Triangle Intersection]]
+	- [[PathTracer Learning AABB]]
+	- [[PathTracer Learning BVH Construction]]
 	- [[Pathtracer Concept BVH Traversal]]
-	- [[PathTracer Learning - Concept - Camera Model]]
+	- [[PathTracer Learning Camera Model]]
 - ---
 - ## Shading & Material Concepts
-	- [[PathTracer Learning - Concept - BRDF]]
-	- [[PathTracer Learning - Concept - Microfacet Theory]]
-	- [[PathTracer Learning - Concept - Fresnel Effect]]
-	- [[PathTracer Learning - Concept - Normal Mapping]]
-	- [[PathTracer Learning - Concept - Environment Map]]
+  collapsed:: true
+	- [[PathTracer Learning BRDF]]
+	- [[PathTracer Learning Microfacet Theory]]
+	- [[PathTracer Learning Fresnel Effect]]
+	- [[PathTracer Learning Normal Mapping]]
+	- [[PathTracer Learning Environment Map]]
 - ---
 - ## Path Tracing Concepts
-	- [[PathTracer Learning - Concept - Russian Roulette]]
-	- [[PathTracer Learning - Concept - Next Event Estimation]]
-	- [[PathTracer Learning - Concept - Temporal Accumulation]]
-	- [[PathTracer Learning - Concept - Temporal Rejection]]
-	- [[PathTracer Learning - Concept - Tone Mapping]]
-	- [[PathTracer Learning - Concept - Anti-Aliasing]]
+  collapsed:: true
+	- [[PathTracer Learning Russian Roulette]]
+	- [[PathTracer Learning Next Event Estimation]]
+	- [[PathTracer Learning Temporal Accumulation]]
+	- [[PathTracer Learning Concept Temporal Rejection]]
+	- [[PathTracer Learning Tone Mapping]]
+	- [[PathTracer Learning Anti-Aliasing]]
 - ---
 - ## Vulkan Concepts
-	- [[PathTracer Learning Concept Async Compute]]
-	- [[PathTracer Learning - Concept - Device Address Bit]]
+  collapsed:: true
+	- [[PathTracer Learning Async Compute]]
+	- [[PathTracer Learning Device Address Bit]]
 - ---
 - ## Reference
-	- [[PathTracer Learning - Books and Tutorials]]
-	- [[PathTracer Learning - Chat Analysis]]
+  collapsed:: true
+	- [[PathTracer Learning Books and Tutorials]]
+	- [[PathTracer Learning Chat Analysis]]
 		- Notes from the actual Godot NVPathtracer contributor chat
 - ---
 - ## Projects
-	- [[PathTracer Learning - Project - Math Library]]
-	- [[PathTracer Learning - Project - CPU Path Tracer]]
-	- [[PathTracer Learning - Project - Vulkan RT]]
-- ---
+  collapsed:: true
+	- [[PathTracer Learning Project Math Library]]
+	- [[PathTracer Learning Project CPU Path Tracer]]
+	- [[PathTracer Learning Project Vulkan RT]]
+-

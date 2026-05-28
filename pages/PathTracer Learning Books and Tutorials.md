@@ -1,0 +1,104 @@
+---
+seoTitle: Path Tracing Books and Tutorials – Learning Resources Reference
+description: "Curated path tracing and ray tracing learning resources including books, tutorials, papers, and online courses for GPU rendering and physically-based rendering."
+keywords: "pathtracer books, path tracing, ray tracing, learning resources, books, tutorials, physically-based rendering, PBR, GPU rendering, Vulkan, BVH, PBRT"
+---
+
+tags:: reference, books, tutorials, resources
+title:: PathTracer Learning Books and Tutorials
+
+- # Books and Tutorials
+	- Parent: [[PathTracer Learning]]
+- ---
+- ## Essential Books
+	- "Ray Tracing in One Weekend" series — Peter Shirley (free online)
+		- Book 1: Ray Tracing in One Weekend — basic ray tracer
+		- Book 2: Ray Tracing: The Next Week — BVH, textures, motion blur
+		- Book 3: Ray Tracing: The Rest of Your Life — Monte Carlo, importance sampling
+		- [Click here](https://raytracing.github.io/) to Get Book Free
+		- Best starting point — builds intuition before GPU
+	- "Physically Based Rendering: From Theory to Implementation" (PBRT)
+		- Pharr, Jakob, Humphreys — the definitive reference
+		- 4th edition free online: [Read Book](https://pbr-book.org/)
+		- Covers everything: BVH, BRDFs, Monte Carlo, spectral rendering, volumes
+		- Very dense — use as reference, not cover-to-cover
+		- Chapter 9 (Reflection Models) and Chapter 13 (Monte Carlo) are essential
+	- "Real-Time Rendering" — Akenine-Möller et al.
+		- Chapter 26: Real-Time Ray Tracing
+		- Good overview of hardware RT and denoising
+	- "Fundamentals of Computer Graphics" — Shirley & Marschner
+		- Good intro to the math before diving into PBRT
+- ---
+- ## Vulkan Ray Tracing
+	- Vulkan Ray Tracing Tutorial — NVIDIA (nvpro-samples)
+		- https://github.com/nvpro-samples/vk_raytracing_tutorial_KHR
+		- Step-by-step from basic triangle to full path tracer
+		- Uses C++ + GLSL, very practical
+	- Vulkan Specification — Ray Tracing chapters
+		- https://registry.khronos.org/vulkan/specs/1.3-extensions/html/
+		- Chapters on VK_KHR_ray_tracing_pipeline, VK_KHR_acceleration_structure
+	- "Ray Tracing Gems" (free PDF)
+		- https://www.realtimerendering.com/raytracinggems/
+		- Collection of practical techniques from industry experts
+		- Chapter 3: Introduction to DirectX Raytracing (concepts apply to Vulkan)
+		- Chapter 20: Texture Level of Detail Strategies for Real-Time Ray Tracing
+	- "Ray Tracing Gems II" (free PDF)
+		- https://www.realtimerendering.com/raytracinggems/rtg2/
+		- More advanced topics: ReSTIR, denoising, production techniques
+		- Chapter 23: ReSTIR GI
+- ---
+- ## Key Papers
+	- Kajiya 1986 — "The Rendering Equation"
+		- Foundation of physically-based rendering
+	- Möller & Trumbore 1997 — "Fast, Minimum Storage Ray/Triangle Intersection"
+		- The standard ray-triangle intersection algorithm
+	- Walter et al. 2007 — "Microfacet Models for Refraction through Rough Surfaces"
+		- GGX BRDF derivation
+	- Heitz 2014 — "Understanding the Masking-Shadowing Function in Microfacet-Based BRDFs"
+		- Definitive reference for Smith G term
+	- Heitz 2018 — "Sampling the GGX Distribution of Visible Normals"
+		- VNDF sampling — better importance sampling for GGX
+	- Burley 2012 — "Physically-Based Shading at Disney"
+		- Disney Principled BRDF — the basis for most PBR workflows
+	- Veach & Guibas 1995 — "Optimally Combining Sampling Techniques for Monte Carlo Rendering"
+		- MIS (Multiple Importance Sampling) — essential for path tracing
+	- Bitterli et al. 2020 — "Spatiotemporal reservoir resampling for real-time ray tracing with dynamic direct lighting"
+		- ReSTIR DI paper
+	- Ouyang et al. 2021 — "ReSTIR GI: Path Resampling for Real-Time Path Tracing"
+		- ReSTIR GI paper
+	- Schied et al. 2017 — "Spatiotemporal Variance-Guided Filtering"
+		- SVGF denoiser
+	- Müller et al. 2017 — "Practical Path Guiding for Efficient Light-Transport Simulation"
+		- SD-Tree path guiding
+	- Woop et al. 2013 — "Watertight Ray/Triangle Intersection"
+		- Prevents light leaking through mesh cracks
+- ---
+- ## Video Courses
+	- "Computer Graphics" — TU Wien (YouTube, free)
+		- Excellent lectures on rendering theory
+		- Covers path tracing, BRDFs, Monte Carlo in depth
+		- https://www.youtube.com/playlist?list=PLujxSBD-JXgnGmsn7gEyN28P1DnRZG7qi
+	- "Advances in Real-Time Rendering" — SIGGRAPH courses
+		- Annual course with cutting-edge techniques
+		- https://advances.realtimerendering.com/
+	- "Introduction to Computer Graphics" — Cem Yuksel (YouTube)
+		- Clear explanations of rendering fundamentals
+	- "GAMES101" — Lingqi Yan (YouTube, Chinese with subtitles)
+		- Comprehensive graphics course, excellent path tracing coverage
+- ---
+- ## Online Resources
+	- Shadertoy — https://www.shadertoy.com/
+		- Many path tracer implementations to study
+		- Search "path tracer" for examples
+	- Inigo Quilez's articles — https://iquilezles.org/articles/
+		- Excellent math and rendering articles
+	- JCGT (Journal of Computer Graphics Techniques) — https://jcgt.org/
+		- Free peer-reviewed graphics papers
+- ---
+- ## Godot Specific
+	- [[Godot]] source code — `servers/rendering/renderer_rd/`
+		- Best documentation is the code itself
+	- NVPathtracer PR/fork — study the actual implementation
+	- [[Godot]] - [Rendering Documentation](https://docs.godotengine.org/en/stable/tutorials/rendering/index.html#rendering)
+	- [[Godot]] RenderingDevice API docs
+		- https://docs.godotengine.org/en/stable/classes/class_renderingdevice.html

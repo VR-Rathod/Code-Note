@@ -136,7 +136,6 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	- [[Shopify]] - it is a **hosted e-commerce platform** that includes **some CMS-like features**.
 -
 - ## Operating Systems & Kernels
-  collapsed:: true
 	- ### Linux
 		- [[Kali Linux]] :- A Debian-based distribution designed for penetration testing and cybersecurity professionals, featuring 600+ pre-installed security tools, Metasploit, Nmap, Wireshark, Burp Suite, and full pentest methodology.
 		-

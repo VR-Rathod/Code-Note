@@ -333,7 +333,7 @@ keywords: "quick sort, quicksort, partitioning scheme, Hoare partition, Lomuto p
 	  
 	  ```python
 	  import random
-
+	  
 	  def quick_sort_iterative(arr):
 	      n = len(arr)
 	      if n <= 1:
@@ -370,19 +370,19 @@ keywords: "quick sort, quicksort, partitioning scheme, Hoare partition, Lomuto p
 	              if p + 1 < h:
 	                  stack.append((p + 1, h))
 	      return arr
-
+	  
 	  if __name__ == "__main__":
 	      data = [10, 80, 30, 90, 40, 50, 70]
 	      print("Iterative Sorted:", quick_sort_iterative(data))
 	  ```
-
+	  
 	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <stack>
 	  #include <cstdlib>
 	  #include <ctime>
-
+	  
 	  int partitionHoare(std::vector<int>& arr, int l, int h) {
 	      int pivotIdx = l + std::rand() % (h - l + 1);
 	      std::swap(arr[l], arr[pivotIdx]);
@@ -396,7 +396,7 @@ keywords: "quick sort, quicksort, partitioning scheme, Hoare partition, Lomuto p
 	          std::swap(arr[i], arr[j]);
 	      }
 	  }
-
+	  
 	  void quickSortIterative(std::vector<int>& arr) {
 	      int n = arr.size();
 	      if (n <= 1) return;
@@ -421,7 +421,7 @@ keywords: "quick sort, quicksort, partitioning scheme, Hoare partition, Lomuto p
 	          }
 	      }
 	  }
-
+	  
 	  int main() {
 	      std::srand(std::time(0));
 	      std::vector<int> data = {10, 80, 30, 90, 40, 50, 70};
@@ -432,7 +432,7 @@ keywords: "quick sort, quicksort, partitioning scheme, Hoare partition, Lomuto p
 	      return 0;
 	  }
 	  ```
-
+	  
 	  ```javascript
 	  function quickSortIterative(arr) {
 	      const n = arr.length;
@@ -476,20 +476,20 @@ keywords: "quick sort, quicksort, partitioning scheme, Hoare partition, Lomuto p
 	      }
 	      return arr;
 	  }
-
+	  
 	  const data = [10, 80, 30, 90, 40, 50, 70];
 	  quickSortIterative(data);
 	  console.log("Iterative Sorted:", data);
 	  ```
-
+	  
 	  ```java
 	  import java.util.Stack;
 	  import java.util.Random;
 	  import java.util.Arrays;
-
+	  
 	  public class QuickSortIterative {
 	      private static final Random rand = new Random();
-
+	  
 	      private static int partition(int[] arr, int l, int h) {
 	          int pivotIdx = l + rand.nextInt(h - l + 1);
 	          int tempPivot = arr[l];
@@ -503,13 +503,13 @@ keywords: "quick sort, quicksort, partitioning scheme, Hoare partition, Lomuto p
 	              do { i++; } while (arr[i] < pivot);
 	              do { j--; } while (arr[j] > pivot);
 	              if (i >= j) return j;
-
+	  
 	              int temp = arr[i];
 	              arr[i] = arr[j];
 	              arr[j] = temp;
 	          }
 	      }
-
+	  
 	      public static void quickSortIterative(int[] arr) {
 	          int n = arr.length;
 	          if (n <= 1) return;
@@ -533,7 +533,7 @@ keywords: "quick sort, quicksort, partitioning scheme, Hoare partition, Lomuto p
 	              }
 	          }
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          int[] data = {10, 80, 30, 90, 40, 50, 70};
 	          quickSortIterative(data);
@@ -541,18 +541,18 @@ keywords: "quick sort, quicksort, partitioning scheme, Hoare partition, Lomuto p
 	      }
 	  }
 	  ```
-
+	  
 	  ```c
 	  #include <stdio.h>
 	  #include <stdlib.h>
 	  #include <time.h>
-
+	  
 	  void swap_it(int* a, int* b) {
 	      int temp = *a;
 	      *a = *b;
 	      *b = temp;
 	  }
-
+	  
 	  int partitionHoareIterative(int arr[], int l, int h) {
 	      int pivotIdx = l + rand() % (h - l + 1);
 	      swap_it(&arr[l], &arr[pivotIdx]);
@@ -567,7 +567,7 @@ keywords: "quick sort, quicksort, partitioning scheme, Hoare partition, Lomuto p
 	          swap_it(&arr[i], &arr[j]);
 	      }
 	  }
-
+	  
 	  void quickSortIterative(int arr[], int n) {
 	      if (n <= 1) return;
 	      
@@ -595,7 +595,7 @@ keywords: "quick sort, quicksort, partitioning scheme, Hoare partition, Lomuto p
 	      }
 	      free(stack);
 	  }
-
+	  
 	  int main() {
 	      srand(time(NULL));
 	      int data[] = {10, 80, 30, 90, 40, 50, 70};
@@ -609,7 +609,7 @@ keywords: "quick sort, quicksort, partitioning scheme, Hoare partition, Lomuto p
 	      return 0;
 	  }
 	  ```
-
+	  
 	  :::
 -
 - # When to Use Quick Sort
