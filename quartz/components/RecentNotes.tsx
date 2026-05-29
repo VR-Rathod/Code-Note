@@ -76,7 +76,14 @@ export default ((userOpts?: Partial<Options>) => {
     const opts = { ...defaultOptions(), ...userOpts }
     
     const pages = allFiles.filter(opts.filter)
-    const recentUpdates = [...pages].sort(sortModified).slice(0, opts.limit)
+    const recentUpdates = [...pages]
+      .filter((page) => {
+        const created = page.dates?.created?.getTime() ?? 0
+        const modified = page.dates?.modified?.getTime() ?? 0
+        return modified > created
+      })
+      .sort(sortModified)
+      .slice(0, opts.limit)
     const recentNew = [...pages].sort(sortCreated).slice(0, opts.limit)
 
     return (
