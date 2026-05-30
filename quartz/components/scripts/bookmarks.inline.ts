@@ -470,12 +470,30 @@ function setupEvents() {
     if (deleteBtn) {
       e.preventDefault(); e.stopPropagation()
       if (!STATE.supabase || !STATE.user) return
-      if (!window.confirm("Delete all your bookmarks permanently? This cannot be undone.")) return
+      if (!window.confirm("Are you absolutely sure you want to permanently delete your account, bookmarks, and all associated user data? This cannot be undone.")) return
       deleteBtn.textContent = "Deleting…"
       const uid = STATE.user.id
       try {
-        await STATE.supabase.from("bookmarks").delete().eq("user_id", uid)
-        lsClear()
+        // Attempt to delete data across all possible database tables
+        await Promise.allSettled([
+          STATE.supabase.from("bookmarks").delete().eq("user_id", uid),
+          STATE.supabase.from("faq").delete().eq("user_id", uid),
+          STATE.supabase.from("faqs").delete().eq("user_id", uid),
+          STATE.supabase.from("profiles").delete().eq("id", uid),
+          STATE.supabase.from("user_data").delete().eq("user_id", uid),
+        ])
+
+        // Call the database function to delete the auth account
+        const { error } = await STATE.supabase.rpc("delete_user")
+        if (error) {
+          console.error("Supabase RPC delete_user failed:", error)
+          toast("⚠️ Account database record could not be deleted automatically. Make sure the 'delete_user' RPC is configured in Supabase.")
+        }
+      } catch (err) {
+        console.error("Error during deletion process:", err)
+      }
+      lsClear()
+      try {
         await Promise.race([STATE.supabase.auth.signOut(), new Promise(r => setTimeout(r, 1500))])
       } catch { }
       cleanOAuthUrl()

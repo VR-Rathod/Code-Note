@@ -54,7 +54,7 @@ const config: QuartzConfig = {
       Plugin.LogseqFlavoredMarkdown(),
       Plugin.FrontMatter(),
       Plugin.CreatedModifiedDate({
-        priority: ["frontmatter", "filesystem"],
+        priority: ["frontmatter", "git", "filesystem"],
       }),
       Plugin.SyntaxHighlighting({
         theme: {

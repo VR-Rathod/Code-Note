@@ -7,15 +7,15 @@
   }
 
   &>.graph-outer {
-    border-radius: 5px;
-    border: 1px solid #21262d;
+    border-radius: 8px;
+    border: 1px solid var(--lightgray);
     box-sizing: border-box;
     height: 250px;
     margin: 0.5em 0;
     position: relative;
     overflow: hidden;
-    background-color: #0d1117;
-    box-shadow: 0 0 0 1px #21262d, 0 0 16px rgba(88, 166, 255, 0.08);
+    background-color: var(--light);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 
     &>.global-graph-icon {
       cursor: pointer;
@@ -57,12 +57,12 @@
     }
 
     &>.global-graph-container {
-      border: 1px solid #21262d;
-      background-color: #0d1117;
-      border-radius: 5px;
+      border: 1px solid var(--lightgray);
+      background-color: var(--light);
+      border-radius: 8px;
       box-sizing: border-box;
       position: fixed;
-      box-shadow: 0 0 0 1px #21262d, 0 0 40px rgba(88, 166, 255, 0.1);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);

@@ -48,6 +48,8 @@ export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options>> = (u
           let repositoryWorkdir = ctx.argv.directory
           let oldestCommitDate: number | undefined = undefined
 
+          const gitDatesCache = new Map<string, { created: number; modified: number }>()
+
           if (opts.priority.includes("git")) {
             try {
               const stdout = execSync("git rev-parse --show-toplevel", { encoding: "utf8" }).trim()
@@ -65,6 +67,45 @@ export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options>> = (u
                   }
                 } catch (e) {
                   // ignore
+                }
+
+                // Fetch full git history dates for all files in one go
+                try {
+                  const gitLogOut = execSync(
+                    "git log --name-status --pretty=format:COMMIT:%aI",
+                    { cwd: repositoryWorkdir, encoding: "utf8", maxBuffer: 20 * 1024 * 1024 }
+                  )
+                  const lines = gitLogOut.split("\n")
+                  let currentCommitTime: number | null = null
+                  for (const line of lines) {
+                    const trimmed = line.trim()
+                    if (!trimmed) continue
+                    if (trimmed.startsWith("COMMIT:")) {
+                      const commitTimeStr = trimmed.substring(7)
+                      currentCommitTime = new Date(commitTimeStr).getTime()
+                    } else if (currentCommitTime !== null) {
+                      const parts = trimmed.split(/\s+/)
+                      if (parts.length >= 2) {
+                        const status = parts[0]
+                        const filePath = parts[parts.length - 1]
+                        const normPath = path.normalize(filePath).toLowerCase()
+                        
+                        let cached = gitDatesCache.get(normPath)
+                        if (!cached) {
+                          cached = { created: currentCommitTime, modified: currentCommitTime }
+                          gitDatesCache.set(normPath, cached)
+                        }
+                        
+                        if (status.startsWith("A")) {
+                          cached.created = currentCommitTime
+                        } else {
+                          cached.created = currentCommitTime
+                        }
+                      }
+                    }
+                  }
+                } catch (e) {
+                  // ignore or fall back
                 }
               }
             } catch (e) {
@@ -84,7 +125,6 @@ export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options>> = (u
 
             const fp = file.data.relativePath!
             const fullFp = file.data.filePath!
-            const relativePath = path.relative(repositoryWorkdir, fullFp)
             for (const source of opts.priority) {
               if (source === "filesystem") {
                 const st = await fs.promises.stat(fullFp)
@@ -95,39 +135,22 @@ export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options>> = (u
                 modified ||= file.data.frontmatter.modified as MaybeDate
                 published ||= file.data.frontmatter.published as MaybeDate
               } else if (source === "git") {
-                try {
-                  // Get modified date
-                  if (!modified) {
-                    const modifiedOut = execSync(`git log -1 --format=%aI -- "${relativePath}"`, { 
-                      cwd: repositoryWorkdir, 
-                      encoding: "utf8" 
-                    }).trim()
-                    if (modifiedOut) {
-                      modified = new Date(modifiedOut).getTime()
-                    } else if (oldestCommitDate) {
-                      modified = oldestCommitDate
-                    }
+                if (repositoryWorkdir) {
+                  const relativePath = path.relative(repositoryWorkdir, fullFp)
+                  const normPath = path.normalize(relativePath).toLowerCase()
+                  const cached = gitDatesCache.get(normPath)
+                  if (cached) {
+                    created ||= cached.created
+                    modified ||= cached.modified
                   }
-                  
-                  // Get creation date
-                  if (!created) {
-                    const createdOut = execSync(`git log --diff-filter=A --format=%aI -1 -- "${relativePath}"`, { 
-                      cwd: repositoryWorkdir, 
-                      encoding: "utf8" 
-                    }).trim()
-                    if (createdOut) {
-                      created = new Date(createdOut).getTime()
-                    } else if (oldestCommitDate) {
-                      created = oldestCommitDate
-                    }
-                  }
-                } catch {
-                  console.log(
-                    styleText(
-                      "yellow",
-                      `\nWarning: ${file.data.filePath!} isn't yet tracked by git, dates will be inaccurate`,
-                    ),
-                  )
+                }
+                
+                // Fallback to oldestCommitDate if git was specified but not found in cache
+                if (!created && oldestCommitDate) {
+                  created = oldestCommitDate
+                }
+                if (!modified && oldestCommitDate) {
+                  modified = oldestCommitDate
                 }
               }
             }

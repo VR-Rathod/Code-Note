@@ -198,7 +198,35 @@ document.addEventListener("nav", async () => {
 
   const textMapping: WeakMap<HTMLElement, string> = new WeakMap()
   for (const node of nodes) {
-    textMapping.set(node, node.innerText)
+    let text = node.innerText
+    const lines = text.split("\n")
+    
+    // Find minimum common indentation of non-empty lines
+    let minIndent = Infinity
+    for (const line of lines) {
+      if (line.trim().length === 0) continue
+      const match = line.match(/^([ \t]+)/)
+      const indentLength = match ? match[1].length : 0
+      if (indentLength < minIndent) {
+        minIndent = indentLength
+      }
+    }
+    
+    if (minIndent !== Infinity && minIndent > 0) {
+      text = lines
+        .map((line) => {
+          if (line.trim().length === 0) return ""
+          if (line.length >= minIndent) {
+            return line.slice(minIndent)
+          }
+          return line.trim()
+        })
+        .join("\n")
+    } else {
+      text = text.trim()
+    }
+    
+    textMapping.set(node, text)
   }
 
   async function renderMermaid() {

@@ -27,6 +27,7 @@ import ConditionalRender from "./ConditionalRender"
 import LanguageSwitcher from "./LanguageSwitcher"
 import Bookmarks from "./Bookmarks"
 import Donation from "./Donation"
+import ShareAndDownload from "./ShareAndDownload"
 
 export {
   ArticleTitle,
@@ -58,4 +59,5 @@ export {
   LanguageSwitcher,
   Bookmarks,
   Donation,
+  ShareAndDownload,
 }

@@ -59,6 +59,7 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     Component.ArticleTitle(),
     Component.ContentMeta(),
+    Component.ShareAndDownload(),
     Component.TagList(),
     Component.ConditionalRender({
       component: Component.AuthorCredit(),
