@@ -507,6 +507,99 @@ function setupCodeTabs() {
     switchTab(container, activeIndex)
   })
 
+  // 4. Automatically wrap all remaining code blocks (not already inside a .code-tabs container)
+  const allFiguresAndPres = Array.from(document.querySelectorAll("figure[data-rehype-pretty-code-figure], pre"))
+  allFiguresAndPres.forEach((el) => {
+    // If it's a pre inside a figure, ignore it (we'll process the parent figure instead)
+    if (el.tagName === "PRE" && el.parentElement?.closest("figure[data-rehype-pretty-code-figure]")) {
+      return
+    }
+    // If it's already inside a .code-tabs container, ignore it
+    if (el.closest(".code-tabs")) {
+      return
+    }
+    // Ignore if it's a mermaid block
+    if (el.querySelector("code.mermaid") || el.classList.contains("mermaid") || el.matches("pre:has(> code.mermaid)")) {
+      return
+    }
+
+    // Ignore if it has no syntax highlighting language (plain text blocks)
+    const code = el.querySelector("code")
+    let hasLanguage = false
+    if (code) {
+      const lang = code.getAttribute("data-language") || code.getAttribute("class") || ""
+      const normalizedLang = lang.toString().replace(/language-/, "").trim().toLowerCase()
+      if (normalizedLang && normalizedLang !== "text" && normalizedLang !== "txt" && normalizedLang !== "plaintext") {
+        hasLanguage = true
+      }
+    }
+    if (!hasLanguage) {
+      return
+    }
+
+    const container = document.createElement("div")
+    container.className = "code-tabs"
+    const nav = document.createElement("div")
+    nav.className = "code-tabs-nav"
+    nav.setAttribute("role", "tablist")
+    
+    const indicator = document.createElement("div")
+    indicator.className = "code-tabs-nav-indicator"
+    nav.appendChild(indicator)
+
+    container.appendChild(nav)
+
+    const panelWrapper = document.createElement("div")
+    panelWrapper.className = "code-tabs-panel"
+
+    let tabTitle = "Code"
+    const figure = el.matches("figure[data-rehype-pretty-code-figure]") ? el : null
+
+    if (figure) {
+      const figcaption = figure.querySelector("figcaption[data-rehype-pretty-code-title]")
+      if (figcaption) {
+        tabTitle = figcaption.textContent || "Code"
+        figcaption.setAttribute("style", "display: none !important;")
+      }
+    }
+
+    if (tabTitle === "Code") {
+      const code = el.querySelector("code")
+      if (code) {
+        const lang = code.getAttribute("data-language") || code.getAttribute("class") || ""
+        const normalizedLang = lang.toString().replace(/language-/, "")
+        tabTitle = normalizedLang
+          ? normalizedLang.charAt(0).toUpperCase() + normalizedLang.slice(1)
+          : "Code"
+      }
+    }
+
+    const button = document.createElement("button")
+    button.className = "code-tab-button"
+    button.type = "button"
+    button.role = "tab"
+    button.textContent = tabTitle
+    button.setAttribute("data-tab-index", "0")
+    button.setAttribute("data-tab-title", tabTitle)
+
+    const clickHandler = () => {
+      switchTab(container, 0)
+    }
+    button.addEventListener("click", clickHandler)
+    window.addCleanup(() => button.removeEventListener("click", clickHandler))
+
+    nav.appendChild(button)
+
+    const parent = el.parentNode
+    if (parent) {
+      parent.insertBefore(container, el)
+      panelWrapper.appendChild(el)
+      container.appendChild(panelWrapper)
+    }
+
+    switchTab(container, 0)
+  })
+
   // Reposition all indicators after layout has computed
   requestAnimationFrame(() => {
     repositionIndicators()

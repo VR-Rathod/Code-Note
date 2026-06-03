@@ -14,8 +14,7 @@
   transition: 0.2s;
 
   &>svg {
-    fill: var(--light);
-    filter: contrast(0.3);
+    fill: currentColor;
   }
 
   &:hover {
