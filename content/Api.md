@@ -1,78 +1,329 @@
 ---
-seoTitle: API Development Reference – REST, GraphQL, and Web API Guide
-description: "Comprehensive API reference covering REST principles, HTTP methods, status codes, authentication, versioning, GraphQL, OpenAPI specification, and API design."
-keywords: "API, REST API, GraphQL, HTTP methods, status codes, authentication, API versioning, OpenAPI, Swagger, API design, web API, JSON"
+seoTitle: API Development Reference – REST, SOAP, GraphQL, and gRPC Guide
+description: "Comprehensive API reference guide. Covers REST design principles, HTTP methods and status codes, SOAP, GraphQL, gRPC, authentication, caching, rate limiting, and code snippets in JavaScript, Python, Go, and Java."
+keywords: "API, REST API, GraphQL, gRPC, SOAP, HTTP methods, HTTP status codes, OAuth 2.0, JWT, API design, web API, JSON, Axios, Fetch, FastAPI"
+displayTitle: API Development
 ---
 
-- # History
-	- **How**:
-		- The history of APIs (Application Programming Interfaces) began as software systems needed a way to communicate with one another across different platforms. The term "API" started gaining traction in the 1960s but gained significant importance with the rise of web services.
-		- The first major API interfaces were introduced in the 1990s with companies offering software platforms and web-based services. As the internet grew, APIs became a standard for remote communication.
-		- REST APIs (Representational State Transfer) became popular in the early 2000s, with Roy Fielding's dissertation in 2000 laying the foundational principles.
-		- Today, APIs are used extensively across the internet for a variety of purposes, including web services, third-party integrations, and mobile apps.
+> [!info] What is an API?
+> An **API (Application Programming Interface)** is a set of defined rules, protocols, and tools that enables different software applications to communicate and share data with one another. It acts as an abstraction layer, hiding the underlying complexity of systems and databases while exposing a clean, secure interface for clients.
+
+- # Architecture & Communication Flow
+  collapsed:: true
+	- ## Client-Server Sequence
+		- ```mermaid
+		  sequenceDiagram
+		      autonumber
+		      actor Client as Client App (Web/Mobile)
+		      participant API as API Gateway / Router
+		      participant Server as Application Server
+		      participant DB as Database
+		      
+		      Client->>API: Send Request (HTTP Method, URL, Headers, Body)
+		      Note over API: Authenticate request & check Rate Limits
+		      API-->>Client: 401 Unauthorized (If authentication fails)
+		      API->>Server: Route request to Controller
+		      Server->>DB: Query / Mutate Data
+		      DB-->>Server: Return raw data
+		      Note over Server: Format data (usually to JSON) & process logic
+		      Server->>API: Send Response Payload + HTTP Status Code
+		      API->>Client: Deliver formatted Response Payload
+		  ```
 	-
-	- **Who**:
-		- **Roy Fielding**: Credited with popularizing RESTful APIs in his 2000 doctoral dissertation.
-		- **Jeff Bezos**: Amazon was one of the first companies to make its services available via API in the early 2000s, driving the growth of cloud computing.
-		- **Mark Zuckerberg**: The Facebook API, introduced in 2006, allowed developers to create applications that integrated with the platform, significantly growing the ecosystem.
-		- **Google**: Pioneered API offerings such as Google Maps API and Google Maps Geocoding API, which helped set the stage for location-based service APIs.
+	- ## API Styles Comparison
+		- | Feature | REST | SOAP | GraphQL | gRPC |
+		  |---|---|---|---|---|
+		  | **Protocol** | HTTP / HTTPS | HTTP, SMTP, TCP, etc. | HTTP / HTTPS | HTTP/2 |
+		  | **Data Format** | JSON, XML, HTML, Text | XML (strictly) | JSON | Protocol Buffers (Binary) |
+		  | **Statefulness** | Stateless | State-agnostic (often stateful) | Stateless | Stateful or Stateless |
+		  | **Operations** | CRUD via HTTP Methods | Remote Procedure Call (RPC) | Query, Mutation, Subscription | Remote Procedure Calls |
+		  | **Speed & Size** | Medium / Large (JSON text) | Heavy (verbose XML overhead) | Medium (Client-selected payload) | Extremely fast (packed binary) |
+		  | **Use Case** | General Web APIs, CRUD | Enterprise integrations, banking | Complex web frontends, mobile | Microservices communication |
+
+- # RESTful API Design Principles
+  collapsed:: true
+	- **REST (Representational State Transfer)** is an architectural style designed by Roy Fielding in 2000. For an API to be considered RESTful, it must adhere to these core constraints:
 	-
-	- **Why**:
-		- APIs were created to streamline communication between different software systems, enabling developers to build more sophisticated applications that could interact with other platforms, services, and databases.
-		- The rise of mobile apps, microservices, cloud computing, and the need for scalability has made APIs a central part of modern software development.
-		- APIs enable businesses to monetize their services and data by offering them as services to third-party developers (e.g., APIs for payment processing, social media sharing, etc.).
--
-- # Introduction
-	- ## Advantages:
-		- Rate Limiting**: Limits on how often an API can be accessed to prevent overuse or abuse. This is often handled via HTTP headers like `X-RateLimit-Limit`.
-		- **OAuth & Authentication**: APIs often require authentication methods like API keys, OAuth 2.0, or JWT for secure access.
-		- **Caching**: Using headers like `Cache-Control` to reduce unnecessary calls to the server and improve performance.
-		- **Webhooks & Event-Driven APIs**: Webhooks allow an API to push data to a client or server when a certain event occurs (e.g., a new user registers on a platform).
-		- **Versioning**: Managing different versions of an API to ensure backward compatibility for consumers of the API.
+	- ## Core Constraints
+		- 1. **Client-Server Separation**: The client (frontend/UI) and the server (backend/data storage) must evolve independently.
+		- 2. **Statelessness**: Each request from a client must contain all the information necessary to process it. The server does not store client session state.
+		- 3. **Cacheability**: Responses must declare themselves as cacheable or non-cacheable to improve performance.
+		- 4. **Layered System**: The client cannot tell whether it is connected directly to the end server or to an intermediate (e.g., load balancer, gateway).
+		- 5. **Uniform Interface**: Resources are identified by URIs. Interaction with resources is performed using standard representations (e.g., JSON) and HTTP methods.
+
+- # HTTP Methods & Status Codes
+  collapsed:: true
+	- ## HTTP Request Methods
+		- | Method | Purpose | Safe | Idempotent | Description |
+		  |---|---|---|---|---|
+		  | **`GET`** | Retrieve resource | Yes | Yes | Fetches data from server. Should never modify data. |
+		  | **`POST`** | Create resource | No | No | Submits data to create a new resource on the server. |
+		  | **`PUT`** | Replace resource | No | Yes | Replaces an entire target resource with the request payload. |
+		  | **`PATCH`** | Partially update | No | No | Applies partial modifications to an existing resource. |
+		  | **`DELETE`** | Remove resource | No | Yes | Deletes the specified resource. |
 	-
-	- ## Disadvantages:
-		- **Complex Authentication**: Some APIs require complex token systems or OAuth for security, which may increase integration complexity.
-		- **Rate Limiting**: APIs may restrict the number of requests in a time period, making it harder for applications to handle bursts of traffic.
-		- **Deprecation & Versioning Issues**: As APIs evolve, older versions may be deprecated, requiring consumers to upgrade their systems.
-		- **Latency**: Remote APIs might have latency issues depending on the network connection, impacting the responsiveness of an application.
--
-- # Notes
-	- ## Types of APIs:
-		- **REST (Representational State Transfer)**: A stateless, lightweight protocol commonly used in web services. It uses standard HTTP methods (GET, POST, PUT, DELETE).
-		-
-		- **SOAP (Simple Object Access Protocol)**: A more rigid protocol compared to REST, typically used for enterprise-level applications that require strict message formats.
-		-
-		- **GraphQL**: A query language for APIs, designed to allow clients to request only the data they need.
-		-
-		- **gRPC (Google Remote Procedure Call)**: A framework for building high-performance APIs, which uses HTTP/2 and Protocol Buffers for faster communication.
+	- ## Standard HTTP Status Codes
+		- ### 🟢 2xx Success
+		  collapsed:: true
+			- `200 OK`: Request succeeded. Response body contains the fetched data.
+			- `201 Created`: Request succeeded and a new resource was created.
+			- `204 No Content`: Request succeeded but there is no payload to return (often for DELETE/PUT updates).
+		- ### 🟡 3xx Redirection
+		  collapsed:: true
+			- `301 Moved Permanently`: The URI of the requested resource has changed.
+			- `304 Not Modified`: Cached response is still valid; client doesn't need to download the resource again.
+		- ### 🔴 4xx Client Errors
+		  collapsed:: true
+			- `400 Bad Request`: The request was invalid or could not be parsed by the server.
+			- `401 Unauthorized`: Authentication credentials are missing or invalid.
+			- `403 Forbidden`: The client is authenticated but does not have permission to access the resource.
+			- `404 Not Found`: The requested resource could not be found.
+			- `429 Too Many Requests`: The client has exceeded rate limits.
+		- ### 💥 5xx Server Errors
+		  collapsed:: true
+			- `500 Internal Server Error`: Generic fallback for unexpected backend crashes.
+			- `502 Bad Gateway`: Server acting as a gateway received an invalid response from upstream.
+			- `503 Service Unavailable`: Server is overloaded or down for maintenance.
+
+- # API Security & Traffic Control
+  collapsed:: true
+	- ## Authentication & Authorization
+		- **API Keys**: Simple tokens sent in request headers or queries. Easy to implement but lack security granularity and expiration dates.
+		- **JWT (JSON Web Token)**: Cryptographically signed tokens encoding user details and claims. Stateless, allowing servers to verify identity without database queries.
+		- **OAuth 2.0**: The industry-standard authorization framework. Utilizes access tokens, refresh tokens, and authentication servers to grant restricted access to third-party clients.
 	-
-	- ## Important Notes:
-		- **Authentication**: Always use secure authentication methods such as OAuth or API keys and store them securely.
-		- **Error Handling**: Ensure to handle errors (e.g., 404 Not Found, 500 Internal Server Error) gracefully to avoid system crashes.
-		- **Throttling**: Many APIs implement rate limiting or throttling to prevent excessive load on their servers. Be mindful of these limits during development.
-		- **Data Privacy**: Be aware of the privacy policies and data security regulations (e.g., GDPR) when handling sensitive data through APIs.
-	-
-	- **Data Sharing**:
-		- Many APIs return data in **JSON** or **XML** format, so it’s essential to parse and process the data correctly.
-		- Ensure any data shared via APIs is sanitized and validated to prevent security vulnerabilities like injection attacks.
-	-
-	- **Common API Status Codes**:
-		- **200 OK**: The request was successful.
-		- **201 Created**: A new resource has been created successfully.
-		- **400 Bad Request**: The request could not be understood due to invalid syntax.
-		- **401 Unauthorized**: The request lacks valid authentication credentials.
-		- **500 Internal Server Error**: A generic error indicating a problem on the server side.
--
-- # Libs & Framework
-	- **Axios (JavaScript)**: A promise-based HTTP client for the browser and Node.js, widely used for interacting with REST APIs.
-	- Link: [Axios Docs](https://axios-http.com/docs/intro)
-	- **Requests (Python)**: A simple, elegant HTTP library for Python. Ideal for making API requests.
-	- Link: [Request Docs](https://requests.readthedocs.io/en/latest/)
-	- **Flask (Python)**: A lightweight web framework to build simple APIs in Python.
-	- Link: [Flast Docs](https://flask.palletsprojects.com/en/stable/)
-	- **Express (Node.js)**: A minimal and flexible Node.js web application framework that provides robust APIs.
-	- Link: [Express Documentation](https://expressjs.com/)
-	- **Spring Boot (Java)**: A Java-based framework for building production-ready REST APIs.
-	- Link: [Spring Boot Documentation](https://spring.io/projects/spring-boot)
-	- **FastAPI (Python)**: A modern, fast framework for building APIs with Python 3.6+.
-	- Link: [FastApi Docs](https://fastapi.tiangolo.com/)
+	- ## Traffic Management
+		- **Rate Limiting & Throttling**: Restricting the number of requests a client can make in a given timeframe (e.g., 60 requests/minute). Solves Denial of Service (DoS) attacks and ensures fair usage. Response headers typically include:
+		  - `X-RateLimit-Limit`: Maximum requests allowed.
+		  - `X-RateLimit-Remaining`: Remaining request count in current window.
+		  - `X-RateLimit-Reset`: Time when the limit window resets.
+		- **Caching**: Storing API responses in cache layers (e.g., Redis or CDN) to reduce database load. Managed using HTTP headers:
+		  - `Cache-Control: max-age=3600`
+		  - `ETag`: Token identifying the version of the resource.
+		- **Webhooks**: Event-driven API patterns where the server pushes real-time data to a client's pre-configured URL endpoint upon event triggers.
+
+- # Consuming APIs (Code Examples)
+  collapsed:: true
+	- :::code-tabs
+	  
+	  ```javascript
+	  // ─── JS Fetch ────────────────────────────────────────────────────────
+	  // Making a GET and POST request using Native browser Fetch API
+	  
+	  const API_URL = "https://api.example.com/v1/users";
+	  
+	  // 1. GET Request
+	  async function getUsers() {
+	    try {
+	      const response = await fetch(API_URL, {
+	        method: "GET",
+	        headers: {
+	          "Accept": "application/json",
+	          "Authorization": "Bearer YOUR_JWT_TOKEN"
+	        }
+	      });
+	      if (!response.ok) {
+	        throw new Error(`HTTP error! status: ${response.status}`);
+	      }
+	      const users = await response.json();
+	      console.log("Users:", users);
+	    } catch (error) {
+	      console.error("GET failed:", error);
+	    }
+	  }
+	  
+	  // 2. POST Request
+	  async function createUser(userData) {
+	    try {
+	      const response = await fetch(API_URL, {
+	        method: "POST",
+	        headers: {
+	          "Content-Type": "application/json",
+	          "Authorization": "Bearer YOUR_JWT_TOKEN"
+	        },
+	        body: JSON.stringify(userData)
+	      });
+	      const newUser = await response.json();
+	      console.log("Created User:", newUser);
+	    } catch (error) {
+	      console.error("POST failed:", error);
+	    }
+	  }
+	  ```
+	  
+	  ```javascript
+	  // ─── JS Axios ────────────────────────────────────────────────────────
+	  // Consuming endpoints with Axios (automatically handles JSON parsing)
+	  import axios from 'axios';
+	  
+	  const apiClient = axios.create({
+	    baseURL: 'https://api.example.com/v1',
+	    timeout: 5000,
+	    headers: {
+	      'Authorization': 'Bearer YOUR_JWT_TOKEN',
+	      'Content-Type': 'application/json'
+	    }
+	  });
+	  
+	  // GET request
+	  async function fetchUsers() {
+	    try {
+	      const response = await apiClient.get('/users');
+	      console.log("Data:", response.data);
+	    } catch (error) {
+	      console.error("Axios GET failed:", error.message);
+	    }
+	  }
+	  
+	  // POST request
+	  async function addNewUser(userData) {
+	    try {
+	      const response = await apiClient.post('/users', userData);
+	      console.log("Created:", response.data);
+	    } catch (error) {
+	      console.error("Axios POST failed:", error.message);
+	    }
+	  }
+	  ```
+	  
+	  ```python
+	  # ─── Python Requests ──────────────────────────────────────────────────
+	  # Standard HTTP client consumption in Python
+	  import requests
+	  
+	  API_URL = "https://api.example.com/v1/users"
+	  headers = {
+	      "Authorization": "Bearer YOUR_JWT_TOKEN",
+	      "Content-Type": "application/json"
+	  }
+	  
+	  # GET Request
+	  def get_users():
+	      try:
+	          response = requests.get(API_URL, headers=headers, timeout=5)
+	          response.raise_for_status() # Raise exception for 4xx/5xx status codes
+	          users = response.json()
+	          print("Users:", users)
+	      except requests.exceptions.RequestException as e:
+	          print("Request failed:", e)
+	  
+	  # POST Request
+	  def create_user(user_data):
+	      try:
+	          response = requests.post(API_URL, headers=headers, json=user_data, timeout=5)
+	          response.raise_for_status()
+	          print("Created:", response.json())
+	      except requests.exceptions.RequestException as e:
+	          print("POST request failed:", e)
+	  ```
+	  
+	  ```go
+	  // ─── Go net/http ─────────────────────────────────────────────────────
+	  package main
+	  
+	  import (
+	  	"bytes"
+	  	"encoding/json"
+	  	"fmt"
+	  	"io"
+	  	"net/http"
+	  	"time"
+	  )
+	  
+	  type User struct {
+	  	Name  string `json:"name"`
+	  	Email string `json:"email"`
+	  }
+	  
+	  func main() {
+	  	client := &http.Client{Timeout: 5 * time.Second}
+	  	url := "https://api.example.com/v1/users"
+	  
+	  	// 1. GET Request
+	  	req, _ := http.NewRequest("GET", url, nil)
+	  	req.Header.Add("Authorization", "Bearer YOUR_JWT_TOKEN")
+	  	
+	  	resp, err := client.Do(req)
+	  	if err == nil {
+	  		defer resp.Body.Close()
+	  		body, _ := io.ReadAll(resp.Body)
+	  		fmt.Println("GET response:", string(body))
+	  	}
+	  
+	  	// 2. POST Request
+	  	newUser := User{Name: "Alice", Email: "alice@example.com"}
+	  	jsonData, _ := json.Marshal(newUser)
+	  	
+	  	postReq, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+	  	postReq.Header.Add("Content-Type", "application/json")
+	  	postReq.Header.Add("Authorization", "Bearer YOUR_JWT_TOKEN")
+	  	
+	  	postResp, postErr := client.Do(postReq)
+	  	if postErr == nil {
+	  		defer postResp.Body.Close()
+	  		body, _ := io.ReadAll(postResp.Body)
+	  		fmt.Println("POST response:", string(body))
+	  	}
+	  }
+	  ```
+	  
+	  ```java
+	  // ─── Java HttpClient ─────────────────────────────────────────────────
+	  import java.net.URI;
+	  import java.net.http.HttpClient;
+	  import java.net.http.HttpRequest;
+	  import java.net.http.HttpResponse;
+	  import java.time.Duration;
+	  
+	  public class ApiClientExample {
+	      private static final HttpClient client = HttpClient.newBuilder()
+	              .connectTimeout(Duration.ofSeconds(5))
+	              .build();
+	      private static final String API_URL = "https://api.example.com/v1/users";
+	  
+	      public static void main(String[] args) throws Exception {
+	          // 1. GET Request
+	          HttpRequest getRequest = HttpRequest.newBuilder()
+	                  .uri(URI.create(API_URL))
+	                  .header("Authorization", "Bearer YOUR_JWT_TOKEN")
+	                  .GET()
+	                  .build();
+	  
+	          HttpResponse<String> getResponse = client.send(getRequest, HttpResponse.BodyHandlers.ofString());
+	          System.out.println("GET Response: " + getResponse.body());
+	  
+	          // 2. POST Request
+	          String jsonBody = "{\"name\":\"Bob\",\"email\":\"bob@example.com\"}";
+	          HttpRequest postRequest = HttpRequest.newBuilder()
+	                  .uri(URI.create(API_URL))
+	                  .header("Content-Type", "application/json")
+	                  .header("Authorization", "Bearer YOUR_JWT_TOKEN")
+	                  .POST(HttpRequest.BodyPublishers.ofString(jsonBody))
+	                  .build();
+	  
+	          HttpResponse<String> postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
+	          System.out.println("POST Response: " + postResponse.body());
+	      }
+	  }
+	  ```
+	  
+	  :::
+
+- # API Backend Frameworks
+  collapsed:: true
+	- | Framework | Language | Architecture Style | Pros | Cons |
+	  |---|---|---|---|---|
+	  | **FastAPI** | Python | REST, GraphQL | Modern async support, auto-generated OpenAPI/Swagger UI docs, Pydantic type validation. | Relies on Python async ecosystem compatibility. |
+	  | **Express** | Node.js | REST, GraphQL | Highly flexible, lightweight, massive ecosystem, excellent middleware pattern. | Unstructured; requires developers to architect routing/DB layers. |
+	  | **Spring Boot**| Java | REST, SOAP, GraphQL | Enterprise-ready, dependency injection, robust security framework, highly scalable. | Heavy runtime footprint, steep learning curve. |
+	  | **ASP.NET Core**| C# | REST, gRPC | Blazing fast execution, strongly typed, excellent dependency injection support. | Relies heavily on Microsoft's .NET ecosystem. |
+	  | **Flask** | Python | REST | Extremely simple, lightweight microframework, perfect for tiny backends/prototypes. | Lacks native async features, requires extensions for enterprise use. |
+
+- # Learning References
+  collapsed:: true
+	- ## Documentation & Guidelines
+		- [Roy Fielding's REST Dissertation](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
+		- [MDN Web Docs — HTTP API Guideline](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+		- [OpenAPI Specification (OAS)](https://swagger.io/specification/)
+		- [GraphQL Foundation Documentation](https://graphql.org/learn/)
+		- [gRPC Guides & Docs](https://grpc.io/docs/)

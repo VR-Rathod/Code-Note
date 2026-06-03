@@ -23,7 +23,7 @@ Free Code Notes is a **free, educational programming knowledge base**. All conte
 ## 2. User Accounts (GitHub Sign-In)
 
 ### a) Account Creation
-You may optionally sign in using your GitHub account to enable cloud bookmark syncing. By doing so, you authorize us to access limited GitHub profile data (username, display name, and avatar) as described in our [[privacy-policy|Privacy Policy]].
+You may optionally sign in using your GitHub account to enable cloud bookmark syncing. By doing so, you authorize us to access limited GitHub profile data (email address, username, display name, and avatar) as described in our [[privacy-policy|Privacy Policy]].
 
 ### b) Your Responsibilities
 You are responsible for:
