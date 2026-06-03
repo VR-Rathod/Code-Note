@@ -58,7 +58,7 @@ keywords: "software development, SDLC, agile, version control, testing, code rev
 	- [[KeePass]]: Free and open-source password manager (note: used to securely store and manage passwords with encryption).
 	- [[Defold]]: Free and open-source game engine (note: lightweight, cross-platform engine focused on 2D game development with a powerful editor and scripting capabilities).
 	- [[Cocos2d-x]]: Free and open-source game engine (note: primarily for 2D game development but also supports 3D, with a focus on lightweight performance and multi-platform support).
-	- [[LÖVE]]: Free and open-source 2D game framework (note: written in Lua, designed for rapid game development with a simple and easy-to-use API).
+	- [[Love]]: Free and open-source 2D game framework (note: written in Lua, designed for rapid game development with a simple and easy-to-use API).
 	- [[Torque3D]]: Free and open-source 3D game engine (note: offers powerful 3D capabilities, including terrain rendering, physics, and multiplayer support).
 	- [[Bevy]]: Game engine for 2D and 3D game development in Rust..
 	- [[Fyrox]] : 3D and 2D game engine written in Rust
