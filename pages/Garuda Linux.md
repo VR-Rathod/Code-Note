@@ -704,19 +704,19 @@ enableToc: true
 	- ## Btrfs Snapshots & System Safety
 		- ```mermaid
 		  graph TD
-		      PacmanCmd[User executes pacman -Syu / upgrade] --> LibalpmHook[libalpm triggers pre-transaction hook]
-		      LibalpmHook --> SnapPre[Snapper creates Read-Only pre-snapshot]
-		      SnapPre --> PacmanUpgrade[Pacman performs upgrade modifications on target files]
-		      PacmanUpgrade --> LibalpmPost[libalpm triggers post-transaction hook]
-		      LibalpmPost --> SnapPost[Snapper creates Read-Only post-snapshot]
-		      SnapPost --> GRUBUpdate[systemd unit updates grub-btrfs menu entries]
+		      PacmanCmd["User executes pacman -Syu / upgrade"] --> LibalpmHook["libalpm triggers pre-transaction hook"]
+		      LibalpmHook --> SnapPre["Snapper creates Read-Only pre-snapshot"]
+		      SnapPre --> PacmanUpgrade["Pacman performs upgrade modifications on target files"]
+		      PacmanUpgrade --> LibalpmPost["libalpm triggers post-transaction hook"]
+		      LibalpmPost --> SnapPost["Snapper creates Read-Only post-snapshot"]
+		      SnapPost --> GRUBUpdate["systemd unit updates grub-btrfs menu entries"]
 		      
-		      subgraph Recovery Options
-		          BootSnap[1. Boot directly from Read-Only pre-snapshot via GRUB]
-		          BootSnap --> VerifySystem[2. System starts in volatile overlay filesystem]
-		          VerifySystem --> CliRollback[3. Run: snapper rollback <snapshot-id>]
-		          CliRollback --> DefaultSubvol[4. Recreates root subvolume pointing to snapshot state]
-		          CliRollback --> Reboot[5. Reboot into recovered system]
+		      subgraph "Recovery Options"
+		          BootSnap["1. Boot directly from Read-Only pre-snapshot via GRUB"]
+		          BootSnap --> VerifySystem["2. System starts in volatile overlay filesystem"]
+		          VerifySystem --> CliRollback["3. Run: snapper rollback [snapshot-id]"]
+		          CliRollback --> DefaultSubvol["4. Recreates root subvolume pointing to snapshot state"]
+		          CliRollback --> Reboot["5. Reboot into recovered system"]
 		      end
 		  ```
 		- ### Snapper & Snapshot Management Commands

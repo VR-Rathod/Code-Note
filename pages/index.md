@@ -107,11 +107,13 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	- [[Microsoft SQL Server]] : A relational database management system developed by Microsoft, often used in enterprise environments.
 -
 - ## APIs & Query Languages
+  collapsed:: true
 	- [[Api]] - You can find specific APIs and related documentation on the respective programming language or framework page.
 	-
 	- [[GraphQL]] - **GraphQL** is a query language for APIs and a runtime for executing those queries with your existing data. It was developed by **Facebook** and offers a more flexible and efficient alternative to REST APIs.
 -
-- ## CMS (Content Management Systems)
+- ## CMS (Content Management Systems) & SaaS
+  collapsed:: true
 	- [[WordPress]] :- A widely used, open-source CMS known for its ease of use, vast theme/plugin ecosystem, and flexibility for building various websites from blogs to e-commerce stores.
 	-
 	- [[Joomla]] :- A flexible and powerful CMS that allows for the creation of complex websites with various extensions and templates.
@@ -132,12 +134,9 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	-
 	- [[TYPO3]] :- A scalable, open-source CMS suitable for both small businesses and large enterprise-level websites, offering powerful content management and flexibility.
 -
-- ## SaaS ( Software as Service)
-	- [[Shopify]] - it is a **hosted e-commerce platform** that includes **some CMS-like features**.
--
 - ## Operating Systems & Kernels
-  collapsed:: true
 	- ### Linux
+	  collapsed:: true
 		- [[Kali Linux]] :- A Debian-based distribution designed for penetration testing and cybersecurity professionals, featuring 600+ pre-installed security tools, Metasploit, Nmap, Wireshark, Burp Suite, and full pentest methodology.
 		-
 		- [[Ubuntu]] :- A comprehensive guide to Ubuntu covering installation, kernel, shell, APT/Snap packages, networking, UFW, SSH, LAMP/LEMP stack, GNOME desktop, security, LVM, and server administration.
@@ -171,12 +170,13 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		- [[Linux Advanced]] :- Deep Linux internals covering kernel architecture, system calls, memory management, process lifecycle, networking stack, filesystem internals, performance analysis (perf, eBPF), and security hardening (SELinux, AppArmor, auditd, AIDE).
 	-
 	- ### Windows
+	  collapsed:: true
 		- [[Windows 10]] :- A comprehensive guide to Windows 10 covering architecture, kernel, CMD, PowerShell, registry, networking, security, WSL, Hyper-V, and system administration.
 		-
 		- [[Windows 11]] :- A comprehensive guide to Windows 11 covering TPM 2.0, new architecture, VBS/HVCI security, CMD, PowerShell, registry tweaks, networking, WSL2, Hyper-V, Snap Layouts, and system administration.
 	-
 	- ### macOS & BSD
-		- macOS :- Apple's Unix-based OS for Mac hardware. Homebrew package manager, zsh default shell, XCode toolchain, and Rosetta 2 for Apple Silicon compatibility.
+		- [[macos]] :- Apple's Unix-based OS for Mac hardware. Homebrew package manager, zsh default shell, XCode toolchain, and Rosetta 2 for Apple Silicon compatibility.
 		-
 		- FreeBSD :- A complete OS derived from BSD Unix — not Linux. Known for ZFS, jails (lightweight containers), pf firewall, and rock-solid networking. Powers Netflix CDN and PlayStation OS.
 		-
@@ -329,12 +329,12 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	- > [!info] Your Journey to Game Dev
 	  > Follow the roadmap below — Beginner → Super Advanced. Pick your level and jump in!
 	-
-	- ### 🟢 Beginner: Fundamentals & Design
+	- ### Beginner: Fundamentals & Design
 		- [[Game Development]] :- **Start Here.** Engine-agnostic fundamentals — game loop, physics, lighting, shaders, AI, audio, networking, optimization.
 		- [[Game Design]] :- How to design fun games — core loops, player psychology, level design, balancing, monetisation.
 		- [[Free Assets]] :- Free 2D sprites, 3D models, audio, textures to start prototyping immediately.
 	-
-	- ### 🟡 Intermediate: Pick Your Engine
+	- ### Intermediate: Pick Your Engine
 		- > [!tip] Famous Game Engines — Pick ONE and master it!
 		- | Engine | Language | Best For |
 		  |---|---|---|
@@ -344,7 +344,7 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		-
 		- [[Game Engines]] :- Other engines — **CryEngine, O3DE, GameMaker Studio 2, Construct, RPG Maker** — with full notes, scripting examples, and when to use each.
 	-
-	- ### 🟠 Advanced: Specializations
+	- ### Advanced: Specializations
 		- [[Blender]] :- Free 3D suite — box modeling, sculpting, UV unwrap, rigging, Cycles rendering.
 		- [[Game Audio]] :- FMOD, Wwise, adaptive music, 3D spatial audio, DSP effects.
 		- [[Mobile Game Development]] :- Touch controls, iOS/Android features, mobile GPU optimization, monetization, publishing.
@@ -387,6 +387,7 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		- [Learn Basic About  API](https://aws.amazon.com/what-is/api/)
 		- [Interview Preparation⚔](https://www.indiabix.com/)
 		- [Powerful Text and design And Animation⚜](https://github.com/chenglou/pretext)
+		- [The great Mind of Researech 🧠](https://www.ssp.sh/brain/)
 	-
 	- ## Lib
 		- [bhartiya Digital lib](https://ndl.iitkgp.ac.in/)

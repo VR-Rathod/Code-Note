@@ -55,6 +55,22 @@ displayTitle: Abstract Factory Pattern
 		          +render()
 		          +onCheck()
 		      }
+		      class WinButton {
+		          +render()
+		          +onClick()
+		      }
+		      class MacButton {
+		          +render()
+		          +onClick()
+		      }
+		      class WinCheckbox {
+		          +render()
+		          +onCheck()
+		      }
+		      class MacCheckbox {
+		          +render()
+		          +onCheck()
+		      }
 		      AbstractFactory <|.. WinFactory
 		      AbstractFactory <|.. MacFactory
 		      Button <|.. WinButton
