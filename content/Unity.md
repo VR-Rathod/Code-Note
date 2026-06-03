@@ -1570,6 +1570,7 @@ displayTitle: Unity
 - # Editor Scripting
   collapsed:: true
 	- Extending the Unity Editor to create custom tools, inspectors, and windows. Crucial for streamlining level layout and building prototyping tools during the production pipeline (see [[Game Design#Prototyping & Production]]).
+	  collapsed:: true
 	-
 	- ## Custom Inspectors (IMGUI)
 	  collapsed:: true
@@ -2015,6 +2016,7 @@ displayTitle: Unity
 - # Netcode for GameObjects (NGO)
   collapsed:: true
 	- Unity's official high-level networking framework for multiplayer games. Used to implement the social/multiplayer mechanics defined in [[Game Design#Game Mechanics Design]].
+	  collapsed:: true
 	- ```mermaid
 	  graph TD
 	      subgraph Client 1 (Owner)

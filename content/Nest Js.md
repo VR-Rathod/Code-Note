@@ -8,7 +8,7 @@ title: Nest Js
 - # History & Philosophy
 	- **Creator**: Kamil Myśliwiec in 2017.
 	- **Problem Statement**:
-		- [[Node.js]] backend frameworks like [[Express]] and [[Fastify]] are highly flexible and unopinionated but do not enforce any architecture.
+		- [[Node Js]] backend frameworks like [[Express]] and [[Fastify]] are highly flexible and unopinionated but do not enforce any architecture.
 		- This lack of structure leads to disorganized, hard-to-maintain codebases in large-scale applications or when multiple developers work together.
 		- NestJS solves this by providing a highly structured, opinionated architecture out of the box, ensuring consistency, scalability, and clean separation of concerns.
 	- **Core Architecture Roots**:
@@ -18,7 +18,7 @@ title: Nest Js
 		- Easily interchangeable with **[[Fastify]]** for high-performance applications.
 -
 - # Introduction & Architecture
-	- NestJS is a progressive [[Node.js]] framework for building efficient, reliable, and scalable server-side applications.
+	- NestJS is a progressive [[Node Js]] framework for building efficient, reliable, and scalable server-side applications.
 	- Relies on **[[TypeScript]] Decorators** (metadata reflection) and a robust **Dependency Injection (DI)** container to handle objects and class instantiation.
 	- Follows a strictly **Modular design**, isolating components into self-contained units (Modules).
 	- Great for building:

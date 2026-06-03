@@ -3,11 +3,12 @@ seoTitle: Playtesting Methodologies – Game Testing & QA Guide
 description: "Complete playtesting reference: structured sessions, think-aloud protocol, focus groups, alpha/beta strategies, telemetry, and feedback analysis for game developers."
 keywords: "playtesting, game testing methodologies, playtest sessions, game feedback, focus group, alpha testing, beta testing, think-aloud protocol, game QA, VR-Rathod, Code-Note"
 displayTitle: Game Testing & QA - Playtesting
+title: Game Testing & QA Playtesting
 ---
 
 > [!info] About This Page
 > This page covers **playtesting methodologies** — how to design, run, and analyse game testing sessions to extract actionable feedback.
-> Parent: [[Game Testing & QA]]. See also: [[Game Testing & QA - Bug Tracking]], [[Game Testing & QA - Performance Profiling]], [[Game Testing & QA - Automated Testing]].
+> Parent: [[Game Testing & QA]]. See also: [[Game Testing & QA Bug Tracking]], [[Game Testing & QA Performance Profiling]], [[Game Testing & QA Automated Testing]].
 
 > [!tip] Playtesting is Not Optional
 > Automated tests verify correctness; playtesting verifies **fun**. No unit test will tell you if a level is confusing or a boss is unfair.

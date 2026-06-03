@@ -38,7 +38,6 @@ displayTitle: Huffman Coding Compression
 		- Huffman coding produces the **shortest possible average code length** for a given symbol distribution (proven by Shannon's source coding theorem).
 		- Average length $L = \sum p_i \times l_i$, where $p_i$ is probability and $l_i$ is code length.
 		- This approaches the **entropy** $H = -\sum p_i \log_2 p_i$ bits/symbol — the theoretical minimum.
-
 - # How It Works
   collapsed:: true
 	- ## The Core Idea (4 Steps)
@@ -59,7 +58,7 @@ displayTitle: Huffman Coding Compression
 		      C -- No --> G["Root = remaining heap element"]
 		      G --> H["DFS the tree:\nleft → '0', right → '1'\nleaf → assign code"]
 		      H --> I["✅ Huffman codes ready\nEncode / Decode data"]
-
+		  
 		      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 		  ```
 	-
@@ -67,18 +66,18 @@ displayTitle: Huffman Coding Compression
 	  collapsed:: true
 		- ```
 		  Frequencies: A=5, B=2, C=1, D=1
-
+		  
 		  Initial min-heap: [(1,C), (1,D), (2,B), (5,A)]
-
+		  
 		  Step 1: Extract C(1), D(1) → merge → CD(2)
 		    Heap: [(2,B), (2,CD), (5,A)]
-
+		  
 		  Step 2: Extract B(2), CD(2) → merge → BCD(4)
 		    Heap: [(4,BCD), (5,A)]
-
+		  
 		  Step 3: Extract BCD(4), A(5) → merge → root(9)
 		    Heap: [(9,root)]
-
+		  
 		  Huffman Tree:
 		        root(9)
 		       /       \
@@ -90,17 +89,16 @@ displayTitle: Huffman Coding Compression
 		                  /    \
 		                C(1)  D(1)
 		                [110] [111]
-
+		  
 		  Codes:  A=0, B=10, C=110, D=111
-
+		  
 		  Encoding "ABAACABAD":
 		  A B  A A C   A B  A D
 		  0 10 0 0 110 0 10 0 111
 		  → "010001100100111"  (15 bits vs 72 bits fixed)
-
+		  
 		  Space saving: (72-15)/72 ≈ 79% compression ✅
 		  ```
-
 - # Complexity Analysis
   collapsed:: true
 	- | Step | Time Complexity | Space Complexity | Notes |
@@ -115,12 +113,11 @@ displayTitle: Huffman Coding Compression
 	- ## Decoding Complexity
 	  collapsed:: true
 		- Decoding a bit string of length $B$: $O(B \times \text{avg\_code\_length})$ — but with optimized trie traversal it's $O(B)$.
-
 - # Implementation
   collapsed:: true
 	- > [!note] Huffman Coding — Full Encode + Decode
 	  > The implementation below includes tree construction, code table generation, encoding, and decoding with byte-level storage.
-	  - Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
+		- Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
 	  
@@ -129,27 +126,27 @@ displayTitle: Huffman Coding Compression
 	  from collections import Counter
 	  from dataclasses import dataclass, field
 	  from typing import Optional
-
+	  
 	  @dataclass(order=True)
 	  class HuffNode:
 	      freq: int
 	      char: Optional[str] = field(default=None, compare=False)
 	      left: Optional["HuffNode"] = field(default=None, compare=False)
 	      right: Optional["HuffNode"] = field(default=None, compare=False)
-
+	  
 	  def build_huffman_tree(text: str) -> HuffNode:
 	      freq = Counter(text)
 	      heap = [HuffNode(f, c) for c, f in freq.items()]
 	      heapq.heapify(heap)
-
+	  
 	      while len(heap) > 1:
 	          lo = heapq.heappop(heap)
 	          hi = heapq.heappop(heap)
 	          merged = HuffNode(lo.freq + hi.freq, left=lo, right=hi)
 	          heapq.heappush(heap, merged)
-
+	  
 	      return heap[0]
-
+	  
 	  def generate_codes(node: HuffNode, prefix: str = "", codes: dict = None) -> dict:
 	      if codes is None:
 	          codes = {}
@@ -159,13 +156,13 @@ displayTitle: Huffman Coding Compression
 	          if node.left:  generate_codes(node.left,  prefix + "0", codes)
 	          if node.right: generate_codes(node.right, prefix + "1", codes)
 	      return codes
-
+	  
 	  def huffman_encode(text: str) -> tuple[str, HuffNode]:
 	      root = build_huffman_tree(text)
 	      codes = generate_codes(root)
 	      encoded = "".join(codes[c] for c in text)
 	      return encoded, root
-
+	  
 	  def huffman_decode(encoded: str, root: HuffNode) -> str:
 	      result = []
 	      node = root
@@ -175,12 +172,12 @@ displayTitle: Huffman Coding Compression
 	              result.append(node.char)
 	              node = root
 	      return "".join(result)
-
+	  
 	  # Example
 	  text = "ABAACABAD"
 	  encoded, root = huffman_encode(text)
 	  decoded = huffman_decode(encoded, root)
-
+	  
 	  codes = generate_codes(root)
 	  print("Codes:", codes)
 	  print(f"Original : {len(text)*8} bits")
@@ -196,7 +193,7 @@ displayTitle: Huffman Coding Compression
 	  #include <unordered_map>
 	  #include <string>
 	  #include <memory>
-
+	  
 	  struct HuffNode {
 	      char ch;
 	      int freq;
@@ -205,42 +202,42 @@ displayTitle: Huffman Coding Compression
 	      HuffNode(int f, std::shared_ptr<HuffNode> l, std::shared_ptr<HuffNode> r)
 	          : ch('\0'), freq(f), left(l), right(r) {}
 	  };
-
+	  
 	  struct Compare {
 	      bool operator()(const std::shared_ptr<HuffNode>& a, const std::shared_ptr<HuffNode>& b) {
 	          return a->freq > b->freq;
 	      }
 	  };
-
+	  
 	  void generateCodes(const std::shared_ptr<HuffNode>& node, const std::string& prefix,
 	                     std::unordered_map<char, std::string>& codes) {
 	      if (!node->left && !node->right) { codes[node->ch] = prefix.empty() ? "0" : prefix; return; }
 	      if (node->left)  generateCodes(node->left,  prefix + "0", codes);
 	      if (node->right) generateCodes(node->right, prefix + "1", codes);
 	  }
-
+	  
 	  int main() {
 	      std::string text = "ABAACABAD";
 	      std::unordered_map<char, int> freq;
 	      for (char c : text) freq[c]++;
-
+	  
 	      std::priority_queue<std::shared_ptr<HuffNode>,
 	          std::vector<std::shared_ptr<HuffNode>>, Compare> pq;
 	      for (auto& [c, f] : freq)
 	          pq.push(std::make_shared<HuffNode>(c, f));
-
+	  
 	      while (pq.size() > 1) {
 	          auto lo = pq.top(); pq.pop();
 	          auto hi = pq.top(); pq.pop();
 	          pq.push(std::make_shared<HuffNode>(lo->freq + hi->freq, lo, hi));
 	      }
-
+	  
 	      std::unordered_map<char, std::string> codes;
 	      generateCodes(pq.top(), "", codes);
-
+	  
 	      std::string encoded;
 	      for (char c : text) encoded += codes[c];
-
+	  
 	      std::cout << "Encoded bits: " << encoded.size() << "\n"; // ~15
 	      for (auto& [c, code] : codes)
 	          std::cout << c << ": " << code << "\n";
@@ -257,7 +254,7 @@ displayTitle: Huffman Coding Compression
 	          this.right = right;
 	      }
 	  }
-
+	  
 	  // Simple min-heap for HuffNode
 	  class MinHeap {
 	      constructor() { this.heap = []; }
@@ -268,35 +265,35 @@ displayTitle: Huffman Coding Compression
 	      pop() { return this.heap.shift(); }
 	      size() { return this.heap.length; }
 	  }
-
+	  
 	  function buildHuffmanTree(text) {
 	      const freq = {};
 	      for (const ch of text) freq[ch] = (freq[ch] || 0) + 1;
-
+	  
 	      const heap = new MinHeap();
 	      for (const [ch, f] of Object.entries(freq)) heap.push(new HuffNode(ch, f));
-
+	  
 	      while (heap.size() > 1) {
 	          const lo = heap.pop(), hi = heap.pop();
 	          heap.push(new HuffNode(null, lo.freq + hi.freq, lo, hi));
 	      }
 	      return heap.pop();
 	  }
-
+	  
 	  function generateCodes(node, prefix = "", codes = {}) {
 	      if (node.char !== null) { codes[node.char] = prefix || "0"; return codes; }
 	      if (node.left)  generateCodes(node.left,  prefix + "0", codes);
 	      if (node.right) generateCodes(node.right, prefix + "1", codes);
 	      return codes;
 	  }
-
+	  
 	  function huffmanEncode(text) {
 	      const root = buildHuffmanTree(text);
 	      const codes = generateCodes(root);
 	      const encoded = text.split("").map(c => codes[c]).join("");
 	      return { encoded, root, codes };
 	  }
-
+	  
 	  function huffmanDecode(encoded, root) {
 	      let node = root, result = "";
 	      for (const bit of encoded) {
@@ -305,7 +302,7 @@ displayTitle: Huffman Coding Compression
 	      }
 	      return result;
 	  }
-
+	  
 	  const text = "ABAACABAD";
 	  const { encoded, root, codes } = huffmanEncode(text);
 	  console.log("Codes:", codes);
@@ -315,7 +312,7 @@ displayTitle: Huffman Coding Compression
 	  
 	  ```java
 	  import java.util.*;
-
+	  
 	  public class HuffmanCoding {
 	      static class Node implements Comparable<Node> {
 	          char ch; int freq;
@@ -324,7 +321,7 @@ displayTitle: Huffman Coding Compression
 	          Node(int f, Node l, Node r) { freq = f; left = l; right = r; }
 	          public int compareTo(Node o) { return this.freq - o.freq; }
 	      }
-
+	  
 	      static void generateCodes(Node node, String prefix, Map<Character, String> codes) {
 	          if (node.left == null && node.right == null) {
 	              codes.put(node.ch, prefix.isEmpty() ? "0" : prefix); return;
@@ -332,26 +329,26 @@ displayTitle: Huffman Coding Compression
 	          if (node.left  != null) generateCodes(node.left,  prefix + "0", codes);
 	          if (node.right != null) generateCodes(node.right, prefix + "1", codes);
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          String text = "ABAACABAD";
 	          Map<Character, Integer> freq = new HashMap<>();
 	          for (char c : text.toCharArray()) freq.merge(c, 1, Integer::sum);
-
+	  
 	          PriorityQueue<Node> pq = new PriorityQueue<>();
 	          for (var e : freq.entrySet()) pq.offer(new Node(e.getKey(), e.getValue()));
-
+	  
 	          while (pq.size() > 1) {
 	              Node lo = pq.poll(), hi = pq.poll();
 	              pq.offer(new Node(lo.freq + hi.freq, lo, hi));
 	          }
-
+	  
 	          Map<Character, String> codes = new HashMap<>();
 	          generateCodes(pq.poll(), "", codes);
-
+	  
 	          StringBuilder encoded = new StringBuilder();
 	          for (char c : text.toCharArray()) encoded.append(codes.get(c));
-
+	  
 	          System.out.println("Codes: " + codes);
 	          System.out.println("Encoded bits: " + encoded.length()); // ~15
 	      }
@@ -359,7 +356,6 @@ displayTitle: Huffman Coding Compression
 	  ```
 	  
 	  :::
-
 - # Alternative Variant (Adaptive Huffman Coding)
   collapsed:: true
 	- > [!tip] Adaptive (Dynamic) Huffman Coding
@@ -370,7 +366,6 @@ displayTitle: Huffman Coding Compression
 	  | Tree sent? | Must transmit with data | Reconstructed during decode |
 	  | Update overhead | None | O(log K) per symbol |
 	  | Use case | File compression | Stream compression, real-time |
-
 - # When to Use Huffman Coding
   collapsed:: true
 	- ```mermaid
@@ -382,7 +377,7 @@ displayTitle: Huffman Coding Compression
 	      S1 -- No --> S2{"Is symbol distribution\nhighly skewed?"}
 	      S2 -- Yes --> R3["✅ Static Huffman\n(maximum compression gain)"]
 	      S2 -- No --> R4["Consider Arithmetic Coding\n(approaches entropy more closely)"]
-
+	  
 	      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 	  ```
 	-
@@ -396,7 +391,6 @@ displayTitle: Huffman Coding Compression
 		- Symbols have **nearly uniform frequency** — Huffman overhead exceeds benefit.
 		- You need **higher compression ratios** — use Arithmetic Coding or LZ77/LZ78 (used in ZIP).
 		- The alphabet is very large (e.g., Unicode) — the code table transmission overhead may dominate.
-
 - # Key Takeaways
   collapsed:: true
 	- **Greedy Optimality** — Huffman coding is provably optimal: it minimizes the expected code length $\sum p_i l_i$ for any symbol distribution (Shannon's source coding theorem).
@@ -405,7 +399,6 @@ displayTitle: Huffman Coding Compression
 	- **Two-Pass Algorithm** — First pass counts frequencies; second pass encodes. Adaptive Huffman eliminates the first pass for streaming.
 	- **Real-World Use** — DEFLATE (ZIP, GZIP, PNG, HTTP/2) = LZ77 dictionary compression + Huffman coding. JPEG = DCT quantization + Huffman coding.
 	- **Entropy Lower Bound** — Average Huffman code length is within 1 bit of the entropy $H = -\sum p_i \log_2 p_i$ — the theoretical minimum.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

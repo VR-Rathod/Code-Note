@@ -34,9 +34,9 @@ displayTitle: Prefix Sum Array
 	- ## Real-World Analogy
 	  collapsed:: true
 		- Imagine a **mileage odometer** 🚗:
-		  - You record the odometer reading at every city.
-		  - "How far from city 3 to city 7?" → `odometer[7] − odometer[3]`.
-		  - You computed the answer in O(1) using precomputed running totals.
+			- You record the odometer reading at every city.
+			- "How far from city 3 to city 7?" → `odometer[7] − odometer[3]`.
+			- You computed the answer in O(1) using precomputed running totals.
 	-
 	- ## 2D Prefix Sum — Submatrix Queries
 	  collapsed:: true
@@ -70,7 +70,6 @@ displayTitle: Prefix Sum Array
 		  | **Query** | O(1) | — |
 		  | **2D Build** | O(N×M) | O(N×M) |
 		  | **2D Query** | O(1) | — |
-
 - # Implementation
   collapsed:: true
 	- > [!note] Four problems: Range Sum Query, Subarray Sum = K (with hashmap), 2D prefix sum, and Difference Array for range updates.
@@ -330,7 +329,6 @@ displayTitle: Prefix Sum Array
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Build O(N), Query O(1)** — the core trade-off: pay once, query many times.
@@ -339,7 +337,6 @@ displayTitle: Prefix Sum Array
 	- **2D Prefix Sum** enables O(1) sub-matrix sum queries (image integral, used in image processing and competitive programming).
 	- **Difference Array** is the inverse: range updates in O(1), reconstruct with a prefix sum.
 	- Related: [[Sliding Window Technique]], [[Kadane's Algorithm]], [[MOs Algorithm (Query square root decomposition)]]
-
 - # More Learn
   collapsed:: true
 	- ## LeetCode Problems

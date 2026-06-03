@@ -3,6 +3,7 @@ seoTitle: Eulerian Path – Hierholzer's Algorithm Implementation Guide
 description: "Hierholzer's algorithm finds Eulerian circuits and paths in O(E) time. Covers Eulerian circuit conditions, directed and undirected graphs, and stack-based traversal with full implementations."
 keywords: "Eulerian path, Eulerian circuit, Hierholzer algorithm, graph theory, O(E) time, directed graph, undirected graph, time complexity, space complexity, edge traversal, Eukerian Path (Hierholzer's Algorithm)"
 displayTitle: Eukerian Path (Hierholzer's Algorithm)
+title: Eukerian Path Hierholzers Algorithm
 ---
 
 > [!info] What is an Eulerian Path?
@@ -16,13 +17,13 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	- ## Existence Conditions
 	  collapsed:: true
 		- ### Undirected Graph
-		  - **Eulerian Circuit**: Every vertex has an **even degree**. Start anywhere.
-		  - **Eulerian Path**: Exactly **two vertices have an odd degree** (one is the start, the other the end). All other vertices must have even degree.
-		  - All vertices with non-zero degree must be **connected**.
+			- **Eulerian Circuit**: Every vertex has an **even degree**. Start anywhere.
+			- **Eulerian Path**: Exactly **two vertices have an odd degree** (one is the start, the other the end). All other vertices must have even degree.
+			- All vertices with non-zero degree must be **connected**.
 		-
 		- ### Directed Graph
-		  - **Eulerian Circuit**: Every vertex has `in-degree == out-degree`. Graph is strongly connected.
-		  - **Eulerian Path**: Exactly one vertex has `out-degree - in-degree = +1` (start), exactly one vertex has `in-degree - out-degree = +1` (end), all others have equal in/out degree.
+			- **Eulerian Circuit**: Every vertex has `in-degree == out-degree`. Graph is strongly connected.
+			- **Eulerian Path**: Exactly one vertex has `out-degree - in-degree = +1` (start), exactly one vertex has `in-degree - out-degree = +1` (end), all others have equal in/out degree.
 	-
 	- ## Why Hierholzer's Works
 	  collapsed:: true
@@ -35,7 +36,6 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 		- **Stability:** Not applicable (not a sort).
 		- **In-Place:** Uses $O(V + E)$ auxiliary space for the adjacency list, stack, and output path.
 		- **Graph Type:** Works on both **directed** and **undirected** graphs with the appropriate existence conditions.
-
 - # How It Works
   collapsed:: true
 	- ## The Core Idea
@@ -58,7 +58,7 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 		      F -- No --> H["Pop vertex\nAppend to path"]
 		      H --> E
 		      E -- No --> I["Reverse path → ✅ Eulerian Path found"]
-
+		  
 		      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 		  ```
 	-
@@ -67,37 +67,36 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 		- ```
 		  Graph edges: 0-1, 1-2, 2-0
 		  Adjacency list: {0:[1,2], 1:[0,2], 2:[1,0]}
-
+		  
 		  All degrees = 2 (even) → Eulerian Circuit exists. Start at vertex 0.
-
+		  
 		  stack = [0], path = []
-
+		  
 		  Step 1: top=0, neighbors=[1,2]. Pop edge 0→2.
 		    stack = [0, 2]
-
+		  
 		  Step 2: top=2, neighbors=[1,0]. Pop edge 2→1.
 		    (also remove reverse edge 1→2)
 		    stack = [0, 2, 1]
-
+		  
 		  Step 3: top=1, neighbors=[0]. Pop edge 1→0.
 		    (also remove reverse edge 0→1)
 		    stack = [0, 2, 1, 0]
-
+		  
 		  Step 4: top=0, neighbors=[] (exhausted). Pop → path = [0]
 		    stack = [0, 2, 1]
-
+		  
 		  Step 5: top=1, neighbors=[] (exhausted). Pop → path = [0, 1]
 		    stack = [0, 2]
-
+		  
 		  Step 6: top=2, neighbors=[] (exhausted). Pop → path = [0, 1, 2]
 		    stack = [0]
-
+		  
 		  Step 7: top=0, neighbors=[] (exhausted). Pop → path = [0, 1, 2, 0]
 		    stack = []
-
+		  
 		  Reverse path = [0, 2, 1, 0]  ← Eulerian Circuit ✅
 		  ```
-
 - # Complexity Analysis
   collapsed:: true
 	- | Scenario | Time Complexity | Space Complexity | Notes |
@@ -110,28 +109,27 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	  collapsed:: true
 		- Each edge is **added to the stack once** and **removed once** when traversed. The output path appends each vertex at most once per edge removal. There are no repeated edge visits → total work is $O(E)$.
 		- The adjacency list is stored as a mutable list/deque, so edge removal is $O(1)$ amortized (pop from end).
-
 - # Implementation
   collapsed:: true
 	- > [!note] Hierholzer's Algorithm — Undirected & Directed Graph
 	  > The implementation below handles both undirected graphs (removing both directions of an edge) and includes a directed variant. Uses an iterative stack to avoid recursion-depth limits.
-	  - Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
+		- Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
 	  
 	  ```python
 	  from collections import defaultdict
-
+	  
 	  class EulerianGraph:
 	      def __init__(self, directed=False):
 	          self.graph = defaultdict(list)
 	          self.directed = directed
-
+	  
 	      def add_edge(self, u, v):
 	          self.graph[u].append(v)
 	          if not self.directed:
 	              self.graph[v].append(u)
-
+	  
 	      def _find_start(self):
 	          """Find the correct starting vertex based on degree conditions."""
 	          if self.directed:
@@ -154,20 +152,20 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	              if len(odd_vertices) not in (0, 2):
 	                  return None
 	              return odd_vertices[0] if odd_vertices else next(iter(self.graph))
-
+	  
 	      def find_eulerian_path(self):
 	          # Work on a copy so the original graph is preserved
 	          adj = defaultdict(list)
 	          for u in self.graph:
 	              adj[u] = list(self.graph[u])
-
+	  
 	          start = self._find_start()
 	          if start is None:
 	              return []   # No Eulerian path exists
-
+	  
 	          stack = [start]
 	          path = []
-
+	  
 	          while stack:
 	              v = stack[-1]
 	              if adj[v]:
@@ -177,15 +175,15 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	                  stack.append(u)
 	              else:
 	                  path.append(stack.pop())
-
+	  
 	          return path[::-1]
-
+	  
 	  # --- Example: Undirected Eulerian Circuit ---
 	  g = EulerianGraph(directed=False)
 	  for u, v in [(0, 1), (1, 2), (2, 0)]:
 	      g.add_edge(u, v)
 	  print("Circuit:", g.find_eulerian_path())   # [0, 1, 2, 0] or equivalent
-
+	  
 	  # --- Example: Directed Eulerian Path ---
 	  dg = EulerianGraph(directed=True)
 	  for u, v in [(0, 1), (1, 2), (2, 0), (0, 3), (3, 4)]:
@@ -199,19 +197,19 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	  #include <stack>
 	  #include <unordered_map>
 	  #include <algorithm>
-
+	  
 	  class EulerianGraph {
 	      std::unordered_map<int, std::vector<int>> adj;
 	      bool directed;
-
+	  
 	  public:
 	      explicit EulerianGraph(bool directed = false) : directed(directed) {}
-
+	  
 	      void addEdge(int u, int v) {
 	          adj[u].push_back(v);
 	          if (!directed) adj[v].push_back(u);
 	      }
-
+	  
 	      int findStart() {
 	          if (!directed) {
 	              int start = -1, oddCount = 0;
@@ -233,17 +231,17 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	          }
 	          return adj.begin()->first;
 	      }
-
+	  
 	      std::vector<int> findEulerianPath() {
 	          // Work on a copy
 	          auto adjCopy = adj;
 	          int start = findStart();
 	          if (start == -1) return {};
-
+	  
 	          std::stack<int> stk;
 	          std::vector<int> path;
 	          stk.push(start);
-
+	  
 	          while (!stk.empty()) {
 	              int v = stk.top();
 	              if (!adjCopy[v].empty()) {
@@ -263,7 +261,7 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	          return path;
 	      }
 	  };
-
+	  
 	  int main() {
 	      EulerianGraph g(false);
 	      g.addEdge(0, 1); g.addEdge(1, 2); g.addEdge(2, 0);
@@ -281,14 +279,14 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	          this.adj = new Map();
 	          this.directed = directed;
 	      }
-
+	  
 	      addEdge(u, v) {
 	          if (!this.adj.has(u)) this.adj.set(u, []);
 	          if (!this.adj.has(v)) this.adj.set(v, []);
 	          this.adj.get(u).push(v);
 	          if (!this.directed) this.adj.get(v).push(u);
 	      }
-
+	  
 	      findStart() {
 	          if (!this.directed) {
 	              let start = null, oddCount = 0;
@@ -309,18 +307,18 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	          }
 	          return this.adj.keys().next().value;
 	      }
-
+	  
 	      findEulerianPath() {
 	          // Deep copy adjacency list
 	          const adj = new Map();
 	          for (const [v, edges] of this.adj) adj.set(v, [...edges]);
-
+	  
 	          const start = this.findStart();
 	          if (start === null) return [];
-
+	  
 	          const stack = [start];
 	          const path = [];
-
+	  
 	          while (stack.length > 0) {
 	              const v = stack[stack.length - 1];
 	              if (adj.get(v)?.length > 0) {
@@ -337,7 +335,7 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	          return path.reverse();
 	      }
 	  }
-
+	  
 	  // Example
 	  const g = new EulerianGraph(false);
 	  [[0,1],[1,2],[2,0]].forEach(([u,v]) => g.addEdge(u, v));
@@ -346,21 +344,21 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	  
 	  ```java
 	  import java.util.*;
-
+	  
 	  public class EulerianGraph {
 	      private final Map<Integer, List<Integer>> adj = new HashMap<>();
 	      private final boolean directed;
-
+	  
 	      public EulerianGraph(boolean directed) {
 	          this.directed = directed;
 	      }
-
+	  
 	      public void addEdge(int u, int v) {
 	          adj.computeIfAbsent(u, k -> new ArrayList<>()).add(v);
 	          adj.computeIfAbsent(v, k -> new ArrayList<>());
 	          if (!directed) adj.get(v).add(u);
 	      }
-
+	  
 	      private int findStart() {
 	          if (!directed) {
 	              int start = -1, oddCount = 0;
@@ -381,20 +379,20 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	          }
 	          return adj.keySet().iterator().next();
 	      }
-
+	  
 	      public List<Integer> findEulerianPath() {
 	          // Deep copy adjacency list
 	          Map<Integer, List<Integer>> adjCopy = new HashMap<>();
 	          for (Map.Entry<Integer, List<Integer>> e : adj.entrySet())
 	              adjCopy.put(e.getKey(), new ArrayList<>(e.getValue()));
-
+	  
 	          int start = findStart();
 	          if (start == -1) return Collections.emptyList();
-
+	  
 	          Deque<Integer> stack = new ArrayDeque<>();
 	          List<Integer> path = new ArrayList<>();
 	          stack.push(start);
-
+	  
 	          while (!stack.isEmpty()) {
 	              int v = stack.peek();
 	              List<Integer> edges = adjCopy.get(v);
@@ -409,7 +407,7 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	          Collections.reverse(path);
 	          return path;
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          EulerianGraph g = new EulerianGraph(false);
 	          g.addEdge(0, 1); g.addEdge(1, 2); g.addEdge(2, 0);
@@ -419,7 +417,6 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	  ```
 	  
 	  :::
-
 - # Alternative Variant (Directed Graph — Reconstruct Itinerary)
   collapsed:: true
 	- > [!tip] Directed Eulerian Path — "Reconstruct Itinerary" Pattern
@@ -430,7 +427,7 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	  ```python
 	  from collections import defaultdict
 	  import heapq
-
+	  
 	  def find_itinerary(tickets: list[list[str]]) -> list[str]:
 	      """
 	      Reconstruct itinerary using Hierholzer's on a directed graph.
@@ -439,18 +436,18 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	      adj = defaultdict(list)
 	      for src, dst in tickets:
 	          heapq.heappush(adj[src], dst)
-
+	  
 	      path = []
 	      stack = ["JFK"]
-
+	  
 	      while stack:
 	          while adj[stack[-1]]:
 	              next_dest = heapq.heappop(adj[stack[-1]])
 	              stack.append(next_dest)
 	          path.append(stack.pop())
-
+	  
 	      return path[::-1]
-
+	  
 	  # Example
 	  tickets = [["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]]
 	  print(find_itinerary(tickets))
@@ -465,10 +462,10 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	          if (!adj[src]) adj[src] = [];
 	          adj[src].push(dst);
 	      }
-
+	  
 	      const path = [];
 	      const stack = ["JFK"];
-
+	  
 	      while (stack.length > 0) {
 	          const src = stack[stack.length - 1];
 	          if (adj[src] && adj[src].length > 0) {
@@ -479,14 +476,13 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	      }
 	      return path.reverse();
 	  }
-
+	  
 	  const tickets = [["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]];
 	  console.log(findItinerary(tickets));
 	  // Output: ['JFK', 'MUC', 'LHR', 'SFO', 'SJC']
 	  ```
 	  
 	  :::
-
 - # When to Use Hierholzer's Algorithm
   collapsed:: true
 	- ```mermaid
@@ -498,7 +494,7 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	      S1 -- Yes --> S2{"Directed or\nUndirected graph?"}
 	      S2 -- Undirected --> R2["✅ Hierholzer's\nCheck: 0 or 2 odd-degree vertices"]
 	      S2 -- Directed --> R3["✅ Hierholzer's\nCheck: in-degree == out-degree\n(±1 for path endpoints)"]
-
+	  
 	      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 	  ```
 	-
@@ -512,7 +508,6 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 		- You need to visit **every vertex** exactly once — that is the Hamiltonian Path problem (NP-Hard).
 		- The graph does **not satisfy** Eulerian degree conditions — verify first before running.
 		- You need to find the **shortest path** between two specific nodes — use Dijkstra's or BFS instead.
-
 - # Key Takeaways
   collapsed:: true
 	- **Edge Traversal, Not Vertex** — Eulerian paths must visit every *edge* exactly once; Hamiltonian paths must visit every *vertex* exactly once. These are entirely different problems.
@@ -521,7 +516,6 @@ displayTitle: Eukerian Path (Hierholzer's Algorithm)
 	- **Stack + Reverse Trick** — The iterative DFS appends vertices to the output only when they are fully exhausted (no remaining edges), then reverses the result for the correct path order.
 	- **Directed vs Undirected** — Both use the same algorithm skeleton, but directed graphs skip removing the reverse edge, and use in/out degree for existence checks.
 	- **Common Applications** — DNA fragment assembly, Chinese Postman Problem, circuit board routing, airline itinerary reconstruction (LeetCode #332).
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

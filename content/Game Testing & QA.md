@@ -7,7 +7,7 @@ displayTitle: Game Testing & QA
 
 > [!info] About This Page
 > This page covers **game-specific testing and quality assurance** — from playtesting sessions to shipping a polished, bug-free game.
-> Sub-pages: [[Game Testing & QA - Playtesting]], [[Game Testing & QA - Bug Tracking]], [[Game Testing & QA - Performance Profiling]], [[Game Testing & QA - Automated Testing]].
+> Sub-pages: [[Game Testing & QA Playtesting]], [[Game Testing & QA Bug Tracking]], [[Game Testing & QA Performance Profiling]], [[Game Testing & QA Automated Testing]].
 > For general software testing see [[QA and Testing]].
 > For console-specific profiling tools see [[Console Development]].
 
@@ -72,13 +72,13 @@ displayTitle: Game Testing & QA
 		  ```
 - # Sub-Pages
   collapsed:: true
-	- [[Game Testing & QA - Playtesting]] — Structured playtesting sessions, feedback frameworks, focus groups, internal vs external testing, alpha/beta strategies.
+	- [[Game Testing & QA Playtesting]] — Structured playtesting sessions, feedback frameworks, focus groups, internal vs external testing, alpha/beta strategies.
 	-
-	- [[Game Testing & QA - Bug Tracking]] — Game-specific bug classification, severity tiers, softlock/exploit reporting, bug lifecycle in Jira/Trello/Hansoft, triage workflow.
+	- [[Game Testing & QA Bug Tracking]] — Game-specific bug classification, severity tiers, softlock/exploit reporting, bug lifecycle in Jira/Trello/Hansoft, triage workflow.
 	-
-	- [[Game Testing & QA - Performance Profiling]] — GPU/CPU frame analysis, memory profiling, frame pacing, platform-specific profilers (PIX, Razor, NSight), optimization loop.
+	- [[Game Testing & QA Performance Profiling]] — GPU/CPU frame analysis, memory profiling, frame pacing, platform-specific profilers (PIX, Razor, NSight), optimization loop.
 	-
-	- [[Game Testing & QA - Automated Testing]] — Unit testing game logic, simulation testing, CI/CD for games, Unity Test Framework, Unreal Automation, headless testing, screenshot regression.
+	- [[Game Testing & QA Automated Testing]] — Unit testing game logic, simulation testing, CI/CD for games, Unity Test Framework, Unreal Automation, headless testing, screenshot regression.
 - # Game Bug Classification
   collapsed:: true
 	- ## Severity Tiers (Game-Specific)

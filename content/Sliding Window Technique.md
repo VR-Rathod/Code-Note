@@ -13,9 +13,9 @@ displayTitle: Sliding Window Technique
 	- ## Real-World Analogy
 	  collapsed:: true
 		- Think of looking through a **train window** 🚂:
-		  - As the train moves, one new tree enters your view from the front and one leaves from the back.
-		  - You don't re-scan the entire landscape — you just update what enters/exits.
-		  - Fixed window = same-sized frame. Variable window = you can zoom in/out based on conditions.
+			- As the train moves, one new tree enters your view from the front and one leaves from the back.
+			- You don't re-scan the entire landscape — you just update what enters/exits.
+			- Fixed window = same-sized frame. Variable window = you can zoom in/out based on conditions.
 	-
 	- ## Two Window Types
 	  collapsed:: true
@@ -24,23 +24,23 @@ displayTitle: Sliding Window Technique
 		  Initial window: [0 .. K-1]
 		  
 		  arr: [a, b, c, d, e, f]
-	                ┌───────────┐
-	  step 1:      [a, b, c]    sum = a+b+c
-	                    ┌───────────┐
-	  step 2:         [b, c, d]   sum += d, sum -= a
-	                       ┌───────────┐
-	  step 3:            [c, d, e]   sum += e, sum -= b
-	  ```
+		               ┌───────────┐
+		  step 1:      [a, b, c]    sum = a+b+c
+		                   ┌───────────┐
+		  step 2:         [b, c, d]   sum += d, sum -= a
+		                      ┌───────────┐
+		  step 3:            [c, d, e]   sum += e, sum -= b
+		  ```
 		- ### Variable-Size Window (shrink when constraint violated)
 		  ```
 		  left = 0
 		  for right in 0..N-1:
-	          add arr[right] to window
-	          while window violates constraint:
-	              remove arr[left] from window
-	              left++
-	          update answer with (right - left + 1)
-	  ```
+		         add arr[right] to window
+		         while window violates constraint:
+		             remove arr[left] from window
+		             left++
+		         update answer with (right - left + 1)
+		  ```
 	-
 	- ## Complexity
 	  collapsed:: true
@@ -48,7 +48,6 @@ displayTitle: Sliding Window Technique
 		  |---|---|---|
 		  | **Time** | O(N) | O(N) — each element enters and leaves at most once |
 		  | **Space** | O(1) | O(K) for frequency map |
-
 - # Implementation
   collapsed:: true
 	- > [!note] Four problems from easy to hard: Max Sum (fixed), Longest No-Repeat Substring (variable), Longest with K Distinct, Minimum Window Substring.
@@ -342,7 +341,6 @@ displayTitle: Sliding Window Technique
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Fixed window:** precompute initial sum; slide by `+arr[right] -arr[left]` each step.
@@ -350,7 +348,6 @@ displayTitle: Sliding Window Technique
 	- Use a **frequency map** (dict/HashMap) for character/element tracking in variable windows.
 	- **Minimum Window Substring** is the canonical hard problem — uses `missing` counter to avoid iterating the full map.
 	- Related: [[Two Pointers Technique]], [[Kadane's Algorithm]], [[Prefix Sum Array]]
-
 - # More Learn
   collapsed:: true
 	- ## LeetCode Problems

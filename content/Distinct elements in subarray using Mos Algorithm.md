@@ -3,6 +3,7 @@ seoTitle: Count Distinct Elements in Subarray – MO's Algorithm Variant | In-De
 description: "Complete guide to counting distinct elements in subarrays using MO's Algorithm. Covers frequency map add/remove, offline query processing, O((N+Q)√N) complexity, and implementations in Python, C++, Java, JavaScript, and C#."
 keywords: "distinct elements subarray, Mo's algorithm, count distinct, offline queries, frequency map, square root decomposition, range query, VR-Rathod, Code-Note, code note vr"
 displayTitle: Distinct elements in subarray using Mo's Algorithm
+title: Distinct elements in subarray using Mos Algorithm
 ---
 
 > [!info] What is this problem?
@@ -54,7 +55,6 @@ displayTitle: Distinct elements in subarray using Mo's Algorithm
 		  | **Time** | O((N + Q) × √N) |
 		  | **Space** | O(N) for frequency map + O(Q) for answers |
 		  | **Constraint** | Offline — all queries known upfront |
-
 - # Implementation
   collapsed:: true
 	- > [!note] Full MO's-based distinct count: frequency map, Mo ordering, pointer management, and result retrieval.
@@ -107,7 +107,7 @@ displayTitle: Distinct elements in subarray using Mo's Algorithm
 	          # Expand right
 	          while right < q.r: right += 1; add(right)
 	          # Expand left
-		      while left  > q.l: left  -= 1; add(left)
+	       while left  > q.l: left  -= 1; add(left)
 	          # Shrink right
 	          while right > q.r: remove(right); right -= 1
 	          # Shrink left
@@ -312,7 +312,6 @@ displayTitle: Distinct elements in subarray using Mo's Algorithm
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- The core add/remove pattern: `freq[x]++; if freq[x]==1: distinct++` / `freq[x]--; if freq[x]==0: distinct--`.
@@ -320,7 +319,6 @@ displayTitle: Distinct elements in subarray using Mo's Algorithm
 	- **Verification trick:** After computing, cross-check `len(set(arr[l:r+1]))` to verify answers.
 	- This is a direct application of [[MOs Algorithm (Query square root decomposition)]] specialised to the distinct-count aggregate.
 	- Related: [[MOs Algorithm (Query square root decomposition)]], [[Prefix Sum Array]], [[Sliding Window Technique]]
-
 - # More Learn
   collapsed:: true
 	- ## Resources
