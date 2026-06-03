@@ -30,7 +30,6 @@ displayTitle: Constructor
 		  ```
 		-
 		- > [!important] In Python, `__new__()` allocates memory and `__init__()` initializes it. You almost always only define `__init__`. In C++, the constructor does both.
-
 - # Types of Constructors
   collapsed:: true
 	- | Type | Description | Example |
@@ -49,10 +48,10 @@ displayTitle: Constructor
 	      CT --> COP["Copy\n(from existing object)"]
 	      CT --> DEL["Delegating / Chaining\n(calls another constructor)"]
 	  ```
-
 - # Constructor Chaining
   collapsed:: true
 	- One constructor can call another constructor of the same class to avoid code duplication:
+	- :::code-tabs
 	- ```python
 	  # Python — via __init__ default arguments
 	  class Connection:
@@ -87,7 +86,7 @@ displayTitle: Constructor
 	      }
 	  }
 	  ```
-
+	  :::
 - # Implementation
   collapsed:: true
 	- > [!note] A `DatabaseConnection` class demonstrating all constructor types, chaining, validation, and C++ initializer list.
@@ -368,7 +367,6 @@ displayTitle: Constructor
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- A constructor **runs automatically** at object creation — you never call it explicitly.
@@ -376,7 +374,6 @@ displayTitle: Constructor
 	- Use **constructor chaining** (`this(...)` in Java, `super(...)` in child classes, default args in Python) to avoid duplication.
 	- **C++ initializer lists** (`: field_(value)`) initialize members before the constructor body runs — more efficient than assignment inside the body.
 	- **Factory class methods** (`@classmethod` in Python, `static` in Java/C#) are alternative constructors with semantic names (`from_url()`, `local()`).
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

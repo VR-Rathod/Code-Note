@@ -171,7 +171,7 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 		- 10) [[Topological Sort Algorithm]] - used to order the vertices of a **directed acyclic graph**
 		- 11) [[Flood Fill Algorithm]] - used to determine the area connected to a given node
 		- 12) [[Lee Algorithm]] - BFS based algorithm used to find the shortest path
-		- 13) [[Eukerian Path (Hierholzer's Algorithm)]] - path that visits every edge exactly once.
+		- 13) [[Eukerian Path Hierholzers Algorithm]] - path that visits every edge exactly once.
 	-
 	- ## Arrays & Two Pointers:
 	  collapsed:: true
@@ -201,7 +201,7 @@ keywords: "DSA, data structures, algorithms, system design, technical interview,
 			- **Time:** O((N + Q) × √N) · **Space:** O(√N) for block bookkeeping
 			- **Key Insight:** Sort queries by (block of L, then R for even blocks / R descending for odd blocks). This minimizes total pointer movement across all queries to O((N + Q)√N).
 			- **Use cases:** Range sum/product queries, count distinct elements in range, offline interval problems.
-		- 6) [[Distinct elements in subarray using Mo's Algorithm]]
+		- 6) [[Distinct elements in subarray using Mos Algorithm]]
 			- **Purpose:** Count **distinct elements** across many arbitrary subarrays efficiently using MO's ordering.
 			- **Time:** O((N + Q) × √N) · **Space:** O(N) for frequency map
 			- **Key Insight:** Extend/shrink the window by one element at a time, updating a frequency table. Increment the distinct count only when a new frequency goes from 0 → 1, decrement when it goes 1 → 0.

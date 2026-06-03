@@ -8,6 +8,7 @@ comments: true
 ---
 
 - # History
+  collapsed:: true
 	- ## The NeXTSTEP Foundation (1985–1996)
 		- After Steve Jobs left Apple in 1985, he founded NeXT Computer, which developed **NeXTSTEP**—an advanced object-oriented operating system.
 		- NeXTSTEP was built on the Mach microkernel and 4.3BSD, introducing modern concepts such as Objective-C, interface builder frameworks, and display postscript rendering.
@@ -70,7 +71,8 @@ comments: true
 		  | macOS Sequoia | 15.0 | 2024 | Intel (x86_64), Apple Silicon (ARM64) | Active Support |
 	- ## macOS Boot and Execution layers
 		- macOS groups components into layered structures from hardware up to display applications:
-		- ```
+		- collapsed:: true
+		  ```
 		                     [ Cocoa / Swift UI / App Store Applications ]
 		                                           |
 		                                           v
@@ -88,7 +90,6 @@ comments: true
 		                                           v
 		                      [ Secure Enclave / BootROM / Apple Silicon ]
 		  ```
-
 - # Introduction
   collapsed:: true
 	- ## What is macOS?
@@ -119,7 +120,8 @@ comments: true
 		- **Limited Gaming Ecosystem**: Lacks broad support for DirectX APIs (though Apple provides Metal and the Game Porting Toolkit). Developers must optimize for Apple's custom Metal API.
 		- **Aggressive Deprecation Cycles**: Apple frequently removes legacy support (such as dropping all 32-bit binary applications in macOS Catalina, and deprecating OpenGL in favor of Metal).
 	- ## Comparison: macOS vs Windows 11 vs Fedora Linux
-		- | Feature | macOS | Windows 11 | Fedora Linux |
+		- collapsed:: true
+		  | Feature | macOS | Windows 11 | Fedora Linux |
 		  |---------|-------|------------|--------------|
 		  | **Kernel Architecture** | Hybrid (XNU: Mach + BSD) | Hybrid (NT Kernel) | Monolithic (Linux Kernel) |
 		  | **Shell Default** | Zsh | PowerShell / CMD | Bash |
@@ -128,7 +130,6 @@ comments: true
 		  | **Binary Format** | Mach-O | PE (Portable Executable) | ELF (Executable & Linkable) |
 		  | **License** | Proprietary (Darwin core open-source) | Proprietary | Open Source (GPL) |
 		  | **Hardware Restrictions** | Apple Hardware Only | TPM 2.0, SecureBoot, CPU restrictions | Almost any x86_64 or ARM device |
-
 - # Architecture & Kernel Internals
   collapsed:: true
 	- ## The XNU Kernel
@@ -184,7 +185,8 @@ comments: true
 			- 4. **XNU Kernel**: Initializes drivers, configures virtual memory, mounts the read-only Signed System Volume (SSV), and spawns the first user-space process (`launchd`).
 			- 5. **launchd (PID 1)**: Reads service plists and launches the login window, system services, and background agents.
 		- ### Comparison: Intel vs Apple Silicon Boot Sequence
-			- | Boot Stage | Intel Architecture | Apple Silicon Architecture |
+			- collapsed:: true
+			  | Boot Stage | Intel Architecture | Apple Silicon Architecture |
 			  |------------|--------------------|----------------------------|
 			  | **First Code** | EFI Firmware (SPI Flash) | Boot ROM (SoC ROM) |
 			  | **Boot Manager** | EFI Boot Picker | iBoot (Option screen) |
@@ -236,7 +238,6 @@ comments: true
 		  | **File Permissions** | POSIX permissions + TCC ACLs | POSIX permissions + SELinux | NTFS Access Control Lists (ACL)|
 		  | **Shared Libraries** | dyld shared cache | ld.so dynamic library cache | Dynamic Link Libraries (DLLs) |
 		  | **Hardware Interface** | Device Tree (compiled firmware) | Devicetree / ACPI tables | ACPI / UEFI tables |
-
 - # System Configuration & plist Files
   collapsed:: true
 	- ## The Property List (.plist) System
@@ -384,7 +385,8 @@ comments: true
 			  ```
 		- ### Controlling launchd Services via launchctl
 			- Modern launchd services are controlled using the `launchctl` CLI utility (targeting specific boot domain target paths):
-			- ```bash
+			- collapsed:: true
+			  ```bash
 			  # 1. Load and start a LaunchDaemon (system domain)
 			  sudo launchctl bootstrap system /Library/LaunchDaemons/com.agent.status.plist
 			  
@@ -397,7 +399,6 @@ comments: true
 			  # 4. Run an interactive agent service in the GUI user domain (UID 1000)
 			  launchctl bootstrap gui/1000 ~/Library/LaunchAgents/com.user.agent.plist
 			  ```
-
 - # Terminal Mastery & Package Management
   collapsed:: true
 	- ## Zsh Default Shell Environment
@@ -535,7 +536,8 @@ comments: true
 			  dtrace -l                       # List available dtrace instrumentation probes
 			  ```
 		- ### Networking & Port Management
-			- ```bash
+			- collapsed:: true
+			  ```bash
 			  ipconfig getifaddr en0          # Get IP address of en0 interface (Wi-Fi)
 			  ping -c 5 google.com            # Send ICMP packets to verify remote host
 			  lsof -i :8080                   # List processes listening on port 8080
@@ -554,7 +556,6 @@ comments: true
 			  tcpdump -i en0 -n               # Capture network packet headers on en0
 			  ndp -an                         # Show IPv6 neighbor cache mapping details
 			  ```
-
 - # Security & Hardening
   collapsed:: true
 	- ## System Integrity Protection (SIP)
@@ -632,6 +633,7 @@ comments: true
 	- ## App Sandboxing and Profiles (.sb)
 		- All applications distributed through the Mac App Store must run inside an **App Sandbox**.
 		- Sandboxing uses files with the `.sb` extension containing Scheme-like rules to declaratively define restrictions:
+		  collapsed:: true
 		- ```scheme
 		  ;; Custom sandboxing rules profile (.sb) configuration
 		  (version 1)
@@ -645,12 +647,13 @@ comments: true
 		  (allow file-read* (subpath "/usr/share"))
 		  ```
 		- ### Common Sandbox Entitlements
+		  collapsed:: true
 			- Applications declare resource requirements using XML plist keys signed directly into the binary file signatures:
 				- `com.apple.security.files.user-selected.read-write`: Grants read-write access only to files explicitly opened by the user via the file picker.
 				- `com.apple.security.network.client`: Permits outgoing TCP/UDP network connections.
 				- `com.apple.security.device.camera`: Grants access to capture camera feeds.
 				- `com.apple.security.device.microphone`: Grants access to record audio input.
-
+				  collapsed:: true
 - # Development Toolchain
   collapsed:: true
 	- ## Xcode Command Line Tools
@@ -707,7 +710,7 @@ comments: true
 		- ### Hardware Memory Ordering Support
 			- x86 and ARM utilize separate memory ordering rules: x86 uses Total Store Order (TSO) which is strict, whereas ARM uses Weak Ordering.
 			- To prevent race conditions in translated multi-threaded code, Apple Silicon CPU cores include a hardware switch. When a thread runs under Rosetta 2, the CPU switches that core to enforce strict TSO memory ordering natively, matching x86 behavior without software overhead.
-
+			  collapsed:: true
 - # Mach-O Binary & Virtual Memory Design (DSA)
   collapsed:: true
 	- ## The Mach-O Binary Format
@@ -805,13 +808,14 @@ comments: true
 	- ## Unified Memory Architecture (UMA)
 		- On Apple Silicon M-series chips, the CPU, GPU, Neural Engine, and Secure Enclave share a single pool of **Unified Memory**.
 		- Traditional architectures copy texture data from system RAM to discrete GPU VRAM over the PCIe bus. UMA eliminates this copy overhead; both the CPU and GPU access identical memory pointers within the same physical address space. This provides extremely high memory bandwidth (up to 800GB/s on M-series Max/Ultra chips).
-
+		  collapsed:: true
 - # XNU Virtual Memory Compressor Simulation (C Program)
   collapsed:: true
 	- ## Virtual Memory Page Compressor Simulation
 		- Below is a complete C program simulating an XNU VM Page Compressor using dictionary-based run-length encoding.
 		- It compresses a 1024-byte virtual page, displays compression stats, runs decompression, and verifies that the decompressed output matches the original data:
-		- ```c
+		- collapsed:: true
+		  ```c
 		  /* ==============================================================================
 		   * File: vm_compressor.c
 		   * Description: Simulation of a dictionary-based Virtual Memory Page Compressor.
@@ -1012,7 +1016,6 @@ comments: true
 		      return 0;
 		  }
 		  ```
-
 - # Shell & Automation Scripts
   collapsed:: true
 	- ## macOS Production-Ready Automation Scripts
@@ -1225,7 +1228,6 @@ comments: true
 			      sleep 300 # Run inspection every 5 minutes
 			  done
 			  ```
-
 - # More Learn
 	- ## Github & Webs
 		- [Official Apple Developer Documentation](https://developer.apple.com/documentation/) - Official API frameworks, Cocoa, Swift, and metal resources.

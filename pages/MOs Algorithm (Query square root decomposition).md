@@ -21,9 +21,9 @@ displayTitle: MO's Algorithm (Query square root decomposition)
 		- Divide array into blocks of size **B = √N**.
 		- Sort queries by: **(block of L, then R ascending for even blocks / R descending for odd blocks)**
 		- This "Mo's ordering" minimizes total pointer movement:
-		  - **Right pointer** moves O(N) per block × O(√N) blocks = O(N√N) total
-		  - **Left pointer** moves O(√N) per query × O(Q) queries = O(Q√N) total
-		  - Total: **O((N + Q)√N)**
+			- **Right pointer** moves O(N) per block × O(√N) blocks = O(N√N) total
+			- **Left pointer** moves O(√N) per query × O(Q) queries = O(Q√N) total
+			- Total: **O((N + Q)√N)**
 		- ```
 		  Block size B = √N
 		  
@@ -59,7 +59,6 @@ displayTitle: MO's Algorithm (Query square root decomposition)
 		  | **Time** | O((N + Q) × √N) |
 		  | **Space** | O(N + Q) for freq map and answers |
 		  | **Constraint** | **Offline only** — all queries must be known in advance |
-
 - # Implementation
   collapsed:: true
 	- > [!note] MO's Algorithm applied to range sum queries and count-distinct queries on the same array.
@@ -83,7 +82,7 @@ displayTitle: MO's Algorithm (Query square root decomposition)
 	          indexed = [(l, r, i) for i, (l, r) in enumerate(queries)]
 	          return sorted(indexed,
 	                        key=lambda q: (q[0] // self.block,
-		                                   q[1] if (q[0] // self.block) % 2 == 0 else -q[1]))
+	                                    q[1] if (q[0] // self.block) % 2 == 0 else -q[1]))
 	  
 	      # ── Range Sum via MO ──────────────────────────────────────────────
 	      def range_sums(self, queries: list[tuple[int,int]]) -> list[int]:
@@ -335,7 +334,6 @@ displayTitle: MO's Algorithm (Query square root decomposition)
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Sort queries** by (block of L, then R with alternating direction) to minimize total pointer travel.
@@ -343,8 +341,7 @@ displayTitle: MO's Algorithm (Query square root decomposition)
 	- Each pointer moves at most **O((N+Q)√N)** steps total across all queries.
 	- Works for **any aggregate** that supports efficient single-element add/remove (sum, distinct, XOR, frequency mode).
 	- **Offline only** — all queries must be known before processing starts.
-	- Related: [[Prefix Sum Array]], [[Sliding Window Technique]], [[Distinct elements in subarray using Mo's Algorithm]]
-
+	- Related: [[Prefix Sum Array]], [[Sliding Window Technique]], [[Distinct elements in subarray using Mos Algorithm]]
 - # More Learn
   collapsed:: true
 	- ## Resources

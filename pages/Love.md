@@ -3,7 +3,6 @@ seoTitle: LÖVE 2D Game Framework Reference – Lua Game Development Guide
 description: "Comprehensive in-depth reference for LÖVE (Love2D) framework in Lua — lifecycle, graphics, audio, physics (Box2D), input, filesystem, math, shaders, and community libraries."
 keywords: "love2d, LÖVE, lua, game development, 2D game engine, love2d tutorial, love2d reference, love2d physics, love2d graphics, love2d audio, love2d shaders, VR-Rathod, Code-Note, code note vr"
 displayTitle: LÖVE
-title: Love
 ---
 
 - # History

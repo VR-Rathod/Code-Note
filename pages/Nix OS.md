@@ -8,6 +8,7 @@ comments: true
 ---
 
 - # History
+  collapsed:: true
 	- ## The Functional Paradigm Shift (2003)
 		- Traditional package managers (such as APT, YUM, or Pacman) treat the operating system as a single global state. When a package is installed or updated, files are written directly to shared system directories (like `/usr/lib` or `/usr/bin`).
 		- This stateful approach leads to common problems: dependency conflicts ("dependency hell"), non-reproducible environments, and broken system states after partial updates.

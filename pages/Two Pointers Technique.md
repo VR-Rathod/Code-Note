@@ -45,7 +45,6 @@ displayTitle: Two Pointers Technique
 		  |---|---|
 		  | **Time** | O(N) after sorting; O(N log N) if sorting required |
 		  | **Space** | O(1) — in-place pointer movement |
-
 - # Implementation
   collapsed:: true
 	- > [!note] Four classic problems: Pair Sum, Three Sum, Palindrome, Container With Most Water, and Trapping Rain Water.
@@ -369,7 +368,6 @@ displayTitle: Two Pointers Technique
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Two patterns:** Opposite-direction (converging) for pair problems; Same-direction (fast/slow) for partition/removal problems.
@@ -377,7 +375,6 @@ displayTitle: Two Pointers Technique
 	- Requires **sorted array** for opposite-direction approach (or inherent monotonicity).
 	- **Trapping Rain Water** is the canonical hard problem — two pointers track left/right max water levels simultaneously.
 	- Related: [[Sliding Window Technique]], [[Kadane's Algorithm]], [[Prefix Sum Array]]
-
 - # More Learn
   collapsed:: true
 	- ## LeetCode Problems

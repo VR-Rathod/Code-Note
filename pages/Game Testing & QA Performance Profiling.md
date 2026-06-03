@@ -3,11 +3,12 @@ seoTitle: Performance Profiling for Games – Game Testing & QA Guide
 description: "Complete game performance profiling reference: GPU/CPU frame analysis, memory profiling, frame pacing, PIX, RenderDoc, Unity Profiler, Unreal Insights, platform-specific tools, and optimization workflow."
 keywords: "game performance profiling, GPU profiling, CPU profiling, memory profiling, frame pacing, PIX, RenderDoc, Unity Profiler, Unreal Insights, game optimization, VR-Rathod, Code-Note"
 displayTitle: Game Testing & QA - Performance Profiling
+title: Game Testing & QA Performance Profiling
 ---
 
 > [!info] About This Page
 > This page covers **game performance profiling** — how to measure, diagnose, and fix frame rate, memory, and load time issues.
-> Parent: [[Game Testing & QA]]. See also: [[Console Development]], [[Game Testing & QA - Automated Testing]].
+> Parent: [[Game Testing & QA]]. See also: [[Console Development]], [[Game Testing & QA Automated Testing]].
 
 > [!warning] Profile on Target Hardware
 > Always profile on the **lowest-spec machine** in your target range.

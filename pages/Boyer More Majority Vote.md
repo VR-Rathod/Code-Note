@@ -13,9 +13,9 @@ displayTitle: Boyer More Majority Vote
 	- ## Real-World Analogy
 	  collapsed:: true
 		- Imagine an election 🗳️ where voters shout their candidate. The rule is:
-		  - Every time two different candidates "clash", one vote from each is cancelled.
-		  - At the end, whoever is left standing is the **majority candidate**.
-		  - This works only if a true majority (> N/2 votes) exists — otherwise the survivor needs a second verification pass.
+			- Every time two different candidates "clash", one vote from each is cancelled.
+			- At the end, whoever is left standing is the **majority candidate**.
+			- This works only if a true majority (> N/2 votes) exists — otherwise the survivor needs a second verification pass.
 	-
 	- ## The Algorithm (2 passes)
 	  collapsed:: true
@@ -55,7 +55,6 @@ displayTitle: Boyer More Majority Vote
 		  |---|---|
 		  | **Time** | O(N) — two passes at most |
 		  | **Space** | O(1) — two variables: candidate + count |
-
 - # Implementation
   collapsed:: true
 	- > [!note] Standard majority (>N/2) + extended variant for elements appearing >N/3 times (returns up to 2 candidates).
@@ -277,7 +276,6 @@ displayTitle: Boyer More Majority Vote
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- Two passes: **Pass 1** finds the candidate (cancel pairs of different elements). **Pass 2** verifies it appears > N/2 times.
@@ -285,7 +283,6 @@ displayTitle: Boyer More Majority Vote
 	- Pass 2 is mandatory — without it, `[1, 2, 3]` would wrongly return 3.
 	- **N/3 variant** maintains 2 candidates and 2 counts for elements appearing > N/3 times (at most 2 such elements can exist).
 	- Related: [[Quick Select Algorithm]], [[Kadane's Algorithm]]
-
 - # More Learn
   collapsed:: true
 	- ## LeetCode Problems

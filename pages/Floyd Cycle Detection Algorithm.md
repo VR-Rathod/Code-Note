@@ -13,10 +13,10 @@ displayTitle: Floyd Cycle Detection Algorithm
 	- ## Real-World Analogy
 	  collapsed:: true
 		- Imagine two runners on a circular track 🏃:
-		  - The **tortoise** runs at 1 step/second.
-		  - The **hare** runs at 2 steps/second.
-		  - If there's a loop, the hare will eventually **lap** the tortoise and they'll meet inside the cycle.
-		  - If there's no loop, the hare reaches the end.
+			- The **tortoise** runs at 1 step/second.
+			- The **hare** runs at 2 steps/second.
+			- If there's a loop, the hare will eventually **lap** the tortoise and they'll meet inside the cycle.
+			- If there's no loop, the hare reaches the end.
 	-
 	- ## Phase 1 — Detect the Cycle
 	  collapsed:: true
@@ -28,7 +28,7 @@ displayTitle: Floyd Cycle Detection Algorithm
 		  or fast reaches null (no cycle)
 		  ```
 		- **Why do they always meet inside the cycle?**
-		  - Once both pointers enter the cycle, the fast pointer gains 1 step per iteration relative to the slow pointer. Since the cycle has finite length L, they meet after at most L iterations.
+			- Once both pointers enter the cycle, the fast pointer gains 1 step per iteration relative to the slow pointer. Since the cycle has finite length L, they meet after at most L iterations.
 	-
 	- ## Phase 2 — Find the Cycle Start
 	  collapsed:: true
@@ -61,7 +61,6 @@ displayTitle: Floyd Cycle Detection Algorithm
 		  |---|---|
 		  | **Time** | O(N) — at most 2 passes |
 		  | **Space** | O(1) — only 2 pointers |
-
 - # Implementation
   collapsed:: true
 	- > [!note] Three use cases: linked list cycle detection, finding cycle start, and finding a duplicate number in an array (array treated as a linked list).
@@ -413,7 +412,6 @@ displayTitle: Floyd Cycle Detection Algorithm
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Phase 1:** Slow (×1) and fast (×2) pointers — they meet inside the cycle if one exists.
@@ -421,7 +419,6 @@ displayTitle: Floyd Cycle Detection Algorithm
 	- **No extra memory** — O(1) space vs O(N) for a HashSet approach.
 	- **Array as linked list trick:** `nums[i]` = next pointer → detects duplicate numbers (LeetCode 287).
 	- Related: [[Two Pointers Technique]], [[Kadane's Algorithm]]
-
 - # More Learn
   collapsed:: true
 	- ## LeetCode Problems

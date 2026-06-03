@@ -8,6 +8,7 @@ comments: true
 ---
 
 - # History
+  collapsed:: true
 	- ## The Genesis: Raspbian (2012)
 		- The Raspberry Pi single-board computer was launched in February 2012 by the Raspberry Pi Foundation. The goal was to provide an affordable computer for teaching computer science.
 		- Originally, there was no dedicated operating system. Users ran various ARM-compatible Linux distributions, which were not optimized for the hardware.

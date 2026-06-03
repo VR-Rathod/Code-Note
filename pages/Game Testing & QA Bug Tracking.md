@@ -3,11 +3,12 @@ seoTitle: Bug Tracking for Games – Game Testing & QA Guide
 description: "Complete game bug tracking reference: severity tiers, game-specific bug types, bug lifecycle, triage workflows, Jira/Hansoft/Hacknplan setup, bug report templates, and softlock/exploit reporting."
 keywords: "game bug tracking, bug report, game QA, softlock, bug severity, bug lifecycle, Jira game dev, Hansoft, Hacknplan, game testing workflow, VR-Rathod, Code-Note"
 displayTitle: Game Testing & QA - Bug Tracking
+title: Game Testing & QA Bug Tracking
 ---
 
 > [!info] About This Page
 > This page covers **game bug tracking** — how to classify, report, triage, and resolve bugs in a game development pipeline.
-> Parent: [[Game Testing & QA]]. See also: [[Game Testing & QA - Playtesting]], [[Game Testing & QA - Performance Profiling]].
+> Parent: [[Game Testing & QA]]. See also: [[Game Testing & QA Playtesting]], [[Game Testing & QA Performance Profiling]].
 
 > [!important] Good Bug Reports Save Days
 > A poorly written bug report can waste hours of developer time. A well-written report with clear repro steps, platform info, and a video/screenshot can be fixed in minutes.

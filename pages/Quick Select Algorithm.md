@@ -60,7 +60,6 @@ displayTitle: Quick Select Algorithm
 		  |---|---|---|
 		  | **Time** | O(N) | O(N²) |
 		  | **Space** | O(log N) recursion stack | O(N) worst |
-
 - # Implementation
   collapsed:: true
 	- > [!note] Randomized Quick Select (k-th smallest), k-th largest variant, and the heap-based alternative.
@@ -98,7 +97,7 @@ displayTitle: Quick Select Algorithm
 	          p = partition(arr, left, right)
 	  
 	          if   p == k: return arr[p]     # Found
-		      elif p > k:  right = p - 1    # k-th is in left half
+	       elif p > k:  right = p - 1    # k-th is in left half
 	          else:        left  = p + 1    # k-th is in right half
 	  
 	      return arr[left]
@@ -286,7 +285,6 @@ displayTitle: Quick Select Algorithm
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Partition places pivot at its exact sorted position** — everything left is smaller, everything right is larger.
@@ -295,7 +293,6 @@ displayTitle: Quick Select Algorithm
 	- **k-th largest** = `quickSelect(arr, n-k)` (0-indexed).
 	- For production code with k << n, a **min-heap of size k** is often simpler: O(N log K).
 	- Related: [[Boyer More Majority Vote]], [[Two Pointers Technique]], [[Kadane's Algorithm]]
-
 - # More Learn
   collapsed:: true
 	- ## LeetCode Problems

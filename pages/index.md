@@ -135,6 +135,7 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	- [[TYPO3]] :- A scalable, open-source CMS suitable for both small businesses and large enterprise-level websites, offering powerful content management and flexibility.
 -
 - ## Operating Systems & Kernels
+  collapsed:: true
 	- ### Linux
 	  collapsed:: true
 		- [[Kali Linux]] :- A Debian-based distribution designed for penetration testing and cybersecurity professionals, featuring 600+ pre-installed security tools, Metasploit, Nmap, Wireshark, Burp Suite, and full pentest methodology.
@@ -176,13 +177,14 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		- [[Windows 11]] :- A comprehensive guide to Windows 11 covering TPM 2.0, new architecture, VBS/HVCI security, CMD, PowerShell, registry tweaks, networking, WSL2, Hyper-V, Snap Layouts, and system administration.
 	-
 	- ### macOS & BSD
+	  collapsed:: true
 		- [[macos]] :- Apple's Unix-based OS for Mac hardware. Homebrew package manager, zsh default shell, XCode toolchain, and Rosetta 2 for Apple Silicon compatibility.
 		-
-		- FreeBSD :- A complete OS derived from BSD Unix — not Linux. Known for ZFS, jails (lightweight containers), pf firewall, and rock-solid networking. Powers Netflix CDN and PlayStation OS.
+		- [[FreeBSD]] :- A complete OS derived from BSD Unix — not Linux. Known for ZFS, jails (lightweight containers), pf firewall, and rock-solid networking. Powers Netflix CDN and PlayStation OS.
 		-
-		- OpenBSD :- A security-first BSD OS with a minimal attack surface, strong cryptography defaults, and the origin of OpenSSH. Used in firewalls, routers, and high-security environments.
+		- [[OpenBSD]] :- A security-first BSD OS with a minimal attack surface, strong cryptography defaults, and the origin of OpenSSH. Used in firewalls, routers, and high-security environments.
 		-
-		- NetBSD :- A highly portable BSD OS that runs on almost any hardware architecture — from servers to embedded systems and retro hardware.
+		- [[NetBSD]] :- A highly portable BSD OS that runs on almost any hardware architecture — from servers to embedded systems and retro hardware.
 -
 - ## Data Structures , Algorithms & OOP
   collapsed:: true
@@ -193,15 +195,8 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	- [[System Design]]: In-depth guide to designing scalable, reliable, and high-performance systems — covering load balancing, caching, databases, microservices, CAP theorem, message queues, API design, and real-world case studies.
 -
 - ## Data Science & Machine Learning
-  collapsed:: true
-	- ### Core
 		- [[Data Science]] :- Interdisciplinary field combining statistics, programming, and ML to extract insights from data. Covers the full pipeline from EDA to MLOps — beginner to advanced.
-	-
-	- ### Visualization
-		- Matplotlib, Seaborn, Plotly — covered inside [[Data Science]]
-	-
-	- ### Big Data
-		- Apache Spark, Hadoop, Kafka — covered inside [[Data Science]]
+
 -
 - ## DevOps & CI/CD
 	- ### DevOps Concepts

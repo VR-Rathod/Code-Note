@@ -3,11 +3,12 @@ seoTitle: Automated Testing for Games – Game Testing & QA Guide
 description: "Complete automated game testing reference: Unity Test Framework, Unreal Automation, headless testing, CI/CD pipelines for games, screenshot regression, simulation testing, and game-specific automation patterns."
 keywords: "automated game testing, Unity Test Framework, Unreal Automation, game CI/CD, headless testing, screenshot regression, game unit testing, simulation testing, VR-Rathod, Code-Note"
 displayTitle: Game Testing & QA - Automated Testing
+title: Game Testing & QA Automated Testing
 ---
 
 > [!info] About This Page
 > This page covers **automated testing for games** — unit testing game logic, engine automation frameworks, CI/CD pipelines, headless testing, and screenshot regression.
-> Parent: [[Game Testing & QA]]. See also: [[Game Testing & QA - Performance Profiling]], [[QA and Testing]].
+> Parent: [[Game Testing & QA]]. See also: [[Game Testing & QA Performance Profiling]], [[QA and Testing]].
 
 > [!warning] Automation Coverage is Lower in Games
 > A typical web app can achieve 80–90% automated test coverage. A typical game reaches 30–50%. This is not a failure — physics, AI, and "fun" are not deterministically testable. Focus automation on logic, data integrity, and regression safety nets.
