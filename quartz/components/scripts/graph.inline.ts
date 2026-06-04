@@ -84,12 +84,10 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     centerForce,
     linkDistance,
     fontSize,
-    opacityScale,
     removeTags,
     showTags,
     focusOnHover,
     enableRadial,
-    neuronMode,
     driftAmplitude,
     driftFrequency,
     glowRadius,
@@ -172,13 +170,40 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   const width = graph.offsetWidth
   const height = Math.max(graph.offsetHeight, 250)
 
+  // helper to get the degree of a node in the graph
+  const getDegree = (nodeId: string) => {
+    return graphData.links.filter((l) => l.source.id === nodeId || l.target.id === nodeId).length
+  }
+
   // we virtualize the simulation and use pixi to actually render it
   const simulation: Simulation<NodeData, LinkData> = forceSimulation<NodeData>(graphData.nodes)
-    .force("charge", forceManyBody().strength(-100 * repelForce))
+    .force(
+      "charge",
+      forceManyBody().strength((n) => {
+        // Hub nodes repel more strongly to give breathing room in the core
+        const node = n as NodeData
+        const degree = getDegree(node.id)
+        return -100 * repelForce * (1 + degree * 0.25)
+      })
+    )
     .force("center", forceCenter().strength(centerForce))
-    .force("link", forceLink(graphData.links).distance(linkDistance))
-    .force("collide", forceCollide<NodeData>((n) => nodeRadius(n)).iterations(3))
-    .velocityDecay(0.6)
+    .force(
+      "link",
+      forceLink(graphData.links).distance((link) => {
+        // Leaf nodes (dendrites) stretch out further, while major hubs cluster tighter
+        const sourceNode = link.source as NodeData
+        const targetNode = link.target as NodeData
+        const sourceDeg = getDegree(sourceNode.id)
+        const targetDeg = getDegree(targetNode.id)
+        const avgDeg = (sourceDeg + targetDeg) / 2
+        return linkDistance * (1 + 1.5 / (1 + avgDeg))
+      })
+    )
+    .force(
+      "collide",
+      forceCollide<NodeData>((n) => nodeRadius(n) * 1.6 + 2).iterations(3)
+    )
+    .velocityDecay(0.55)
 
   const radius = (Math.min(width, height) / 2) * 0.8
   if (enableRadial) simulation.force("radial", forceRadial(radius).strength(0.2))
@@ -196,31 +221,54 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   ] as const
   const computedStyleMap = cssVars.reduce(
     (acc, key) => {
-      acc[key] = getComputedStyle(document.documentElement).getPropertyValue(key)
+      acc[key] = getComputedStyle(document.documentElement).getPropertyValue(key).trim()
       return acc
     },
     {} as Record<(typeof cssVars)[number], string>,
   )
 
-  // neuron-palette: cool blue/cyan/violet tones that read as neural tissue
-  const nodeColors = [
-    "#58a6ff", "#79c0ff", "#a5d6ff",
-    "#bc8cff", "#d2a8ff",
-    "#56d364", "#3fb950",
-    "#ffa657", "#f0883e",
-    "#ff7b72",
+  const lightBg = (computedStyleMap["--light"] || "#161618").trim().toLowerCase()
+  const isLight = lightBg.startsWith("#f") || lightBg.startsWith("#e") || lightBg.startsWith("white") || lightBg.startsWith("rgb(25")
+
+  // Dark Mode: glowing cosmic neon colors
+  const darkColors = [
+    "#58a6ff", // electric blue
+    "#79c0ff", // cyan
+    "#a5d6ff", // light starlight blue
+    "#bc8cff", // cosmic violet
+    "#d2a8ff", // soft magenta
+    "#56d364", // nebula green
+    "#3fb950", // aurora green
+    "#ffa657", // stellar orange
+    "#f0883e", // solar amber
+    "#ff7b72", // supernova red
   ]
+
+  // Light Mode: rich, high-contrast deep colors
+  const lightColors = [
+    "#1d63b8", // royal blue
+    "#008080", // deep teal
+    "#7932d2", // deep violet
+    "#a01490", // deep magenta
+    "#117028", // forest green
+    "#228b22", // dark green
+    "#b8681d", // burnt orange
+    "#b82e21", // crimson red
+    "#990000", // dark red
+  ]
+
+  const nodeColors = isLight ? lightColors : darkColors
   const tagColorMap = new Map<string, string>()
   let colorIdx = 0
 
   const color = (d: NodeData) => {
     const isCurrent = d.id === slug
     if (isCurrent) {
-      return "#79c0ff"  // bright blue for current node
+      return isLight ? "#1d63b8" : "#79c0ff"  // current node
     } else if (visited.has(d.id)) {
-      return "#58a6ff"
+      return isLight ? "#008080" : "#58a6ff"
     } else if (d.id.startsWith("tags/")) {
-      return "#bc8cff"  // violet for tag nodes
+      return isLight ? "#7932d2" : "#bc8cff"  // tag nodes
     } else {
       const firstTag = d.tags?.[0]
       if (firstTag) {
@@ -234,10 +282,8 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   }
 
   function nodeRadius(d: NodeData) {
-    const numLinks = graphData.links.filter(
-      (l) => l.source.id === d.id || l.target.id === d.id,
-    ).length
-    return 2 + Math.sqrt(numLinks)
+    const numLinks = getDegree(d.id)
+    return 1.8 + 0.8 * Math.sqrt(numLinks)
   }
 
   let hoveredNodeId: string | null = null
@@ -280,21 +326,22 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   function renderLinks() {
     tweens.get("link")?.stop()
     const tweenGroup = new TweenGroup()
+    const themeLightGray = computedStyleMap["--lightgray"] || "#30363d"
 
     for (const l of linkRenderData) {
       let alpha: number
 
       if (hoveredNodeId) {
         if (l.active) {
-          alpha = 0.9  // active links — pulse will be applied in animate loop
+          alpha = 0.95  // active links — pulse will be applied in animate loop
           l.color = "#58a6ff"  // bright blue axon when active
         } else {
-          alpha = 0.05  // non-connected links nearly invisible
-          l.color = "#30363d"
+          alpha = 0.04  // non-connected links nearly invisible
+          l.color = themeLightGray
         }
       } else {
-        alpha = 0.5  // idle default — visible but subtle
-        l.color = "#30363d"
+        alpha = 0.22  // idle default — very subtle to reduce visual noise (was 0.5)
+        l.color = themeLightGray
       }
 
       tweenGroup.add(new Tweened<LinkRenderData>(l).to({ alpha }, 250))
@@ -320,8 +367,15 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
       const nodeId = n.simulationData.id
 
       if (hoveredNodeId === null) {
+        // When not hovering, alpha is determined by zoom level and node degree
+        let targetAlpha = 0
+        if (currentTransform.k > 1.2) {
+          const degree = getDegree(nodeId)
+          const baseOpacity = Math.max(0, (currentTransform.k - 1.2) / 2)
+          targetAlpha = Math.min(0.85, baseOpacity * (0.35 + degree * 0.15))
+        }
         tweenGroup.add(
-          new Tweened<Text>(n.label).to({ alpha: 0, scale: { x: defaultScale, y: defaultScale } }, 200)
+          new Tweened<Text>(n.label).to({ alpha: targetAlpha, scale: { x: defaultScale, y: defaultScale } }, 200)
         )
       } else if (nodeId === hoveredNodeId) {
         tweenGroup.add(
@@ -423,6 +477,9 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   for (const n of graphData.nodes) {
     const nodeId = n.id
 
+    const labelColor = computedStyleMap["--dark"] || "#e6edf3"
+    const shadowColor = computedStyleMap["--light"] || "#000000"
+
     const label = new Text({
       interactive: false,
       eventMode: "none",
@@ -431,10 +488,10 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
       anchor: { x: 0.5, y: 1.6 },
       style: {
         fontSize: fontSize * 13,
-        fill: "#e6edf3",
+        fill: labelColor,
         fontFamily: computedStyleMap["--bodyFont"],
         dropShadow: {
-          color: "#000000",
+          color: shadowColor,
           blur: 4,
           distance: 0,
           alpha: 0.8,
@@ -583,15 +640,16 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
           stage.scale.set(transform.k, transform.k)
           stage.position.set(transform.x, transform.y)
 
-          // zoom adjusts opacity of labels too (disabled in neuronMode — hover controls visibility)
-          const scale = transform.k * opacityScale
-          let scaleOpacity = Math.max((scale - 1) / 3.75, 0)
+          // zoom adjusts opacity of labels too
           const activeNodes = nodeRenderData.filter((n) => n.active).flatMap((n) => n.label)
-
-          if (!neuronMode) {
-            for (const label of labelsContainer.children) {
-              if (!activeNodes.includes(label)) {
-                label.alpha = scaleOpacity
+          for (const n of nodeRenderData) {
+            if (!activeNodes.includes(n.label)) {
+              if (transform.k > 1.2) {
+                const degree = getDegree(n.simulationData.id)
+                const baseOpacity = Math.max(0, (transform.k - 1.2) / 2)
+                n.label.alpha = Math.min(0.85, baseOpacity * (0.35 + degree * 0.15))
+              } else {
+                n.label.alpha = 0
               }
             }
           }
@@ -600,7 +658,6 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   }
 
   let stopAnimation = false
-  let frameSkip = 0
   let paused = false
   let isIntersecting = false
   let animationFrameId: number | null = null
@@ -639,17 +696,6 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
       return
     }
 
-    const isIdle = hoveredNodeId === null && simulation.alpha() < 0.05
-    if (isIdle) {
-      frameSkip++
-      if (frameSkip % 2 !== 0) {
-        animationFrameId = requestAnimationFrame(animate)
-        return
-      }
-    } else {
-      frameSkip = 0
-    }
-
     if (simulation.alpha() < 0.1) {
       for (const n of graphData.nodes) {
         const phase = (n as any).driftPhase ?? 0
@@ -667,23 +713,66 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
       if (n.label) {
         n.label.position.set(x + width / 2, y + height / 2)
       }
-      if (!n.active) {
-        const pulse = Math.sin((time / (pulseSpeed ?? 2000)) * Math.PI * 2 + n.driftPhase) * 0.5 + 0.5
-        n.glowGfx.alpha = (glowAlpha ?? 0.35) * (0.6 + 0.4 * pulse)
+      if (n.active) {
+        // Firing electrical pulse: calmer and more organic
+        const pulse = Math.sin((time / 1600) * Math.PI * 2 + n.driftPhase) * 0.2 + 0.8
+        n.glowGfx.alpha = 0.9 * pulse
+      } else {
+        // Gentle breathing pulse with a starry twinkle!
+        const pulse = Math.sin((time / (pulseSpeed ?? 2000)) * Math.PI * 2 + n.driftPhase) * 0.4 + 0.6
+        // Fast subtle twinkle (7.5 Hz)
+        const twinkle = Math.sin(time * 0.012 + n.driftPhase * 10) * 0.12
+        n.glowGfx.alpha = Math.max(0.08, (glowAlpha ?? 0.35) * (pulse + twinkle))
       }
     }
 
     for (const l of linkRenderData) {
       const linkData = l.simulationData
       l.gfx.clear()
-      l.gfx.moveTo(linkData.source.x! + width / 2, linkData.source.y! + height / 2)
-      if (l.active) {
-        const pulseAlpha = 0.6 + 0.4 * Math.sin(time * 0.004)
-        l.gfx.lineTo(linkData.target.x! + width / 2, linkData.target.y! + height / 2)
-          .stroke({ alpha: pulseAlpha, width: 1.2, color: "#58a6ff" })
+
+      const x1 = linkData.source.x! + width / 2
+      const y1 = linkData.source.y! + height / 2
+      const x2 = linkData.target.x! + width / 2
+      const y2 = linkData.target.y! + height / 2
+
+      l.gfx.moveTo(x1, y1)
+
+      const dx = x2 - x1
+      const dy = y2 - y1
+      const len = Math.sqrt(dx * dx + dy * dy)
+
+      if (len > 0) {
+        // Perpendicular vector
+        const px = -dy / len
+        const py = dx / len
+        
+        // Dynamic curve offset (12% of connection distance)
+        const curveOffset = len * 0.12
+        // Deterministic curve direction based on lexicographical order of node IDs
+        const sign = linkData.source.id < linkData.target.id ? 1 : -1
+        const cx = (x1 + x2) / 2 + px * curveOffset * sign
+        const cy = (y1 + y2) / 2 + py * curveOffset * sign
+
+        if (l.active) {
+          const pulseAlpha = 0.7 + 0.3 * Math.sin(time * 0.0016)
+          l.gfx.quadraticCurveTo(cx, cy, x2, y2)
+            .stroke({ alpha: pulseAlpha, width: 1.4, color: "#58a6ff" })
+
+          // Action Potential Particle flowing along the path
+          const flowSpeed = 0.00065
+          const t = ((time * flowSpeed) + (linkData.source.id.charCodeAt(0) || 0) * 0.13) % 1.0
+          const mt = 1 - t
+          const px_t = mt * mt * x1 + 2 * mt * t * cx + t * t * x2
+          const py_t = mt * mt * y1 + 2 * mt * t * cy + t * t * y2
+
+          l.gfx.circle(px_t, py_t, 2.2).fill({ color: "#a5d6ff", alpha: 0.9 })
+        } else {
+          l.gfx.quadraticCurveTo(cx, cy, x2, y2)
+            .stroke({ alpha: l.alpha, width: 0.5, color: l.color })
+        }
       } else {
-        l.gfx.lineTo(linkData.target.x! + width / 2, linkData.target.y! + height / 2)
-          .stroke({ alpha: l.alpha, width: 0.6, color: l.color })
+        l.gfx.lineTo(x2, y2)
+          .stroke({ alpha: l.alpha, width: 0.5, color: l.color })
       }
     }
 

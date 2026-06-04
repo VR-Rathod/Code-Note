@@ -85,7 +85,7 @@ const positiveFloat = (min: number, max: number) =>
 
 const hexColor = fc
     .integer({ min: 0, max: 0xffffff })
-    .map((n) => `#${n.toString(16).padStart(6, "0")}`)
+    .map((n: number) => `#${n.toString(16).padStart(6, "0")}`)
 
 // ---------------------------------------------------------------------------
 // Property 4: Single BlurFilter invariant
@@ -96,7 +96,7 @@ describe("Property 4 — Single BlurFilter invariant", () => {
         fc.assert(
             fc.property(
                 positiveFloat(0.1, 100),
-                (glowRadius) => {
+                (glowRadius: number) => {
                     const container = createGlowContainer(glowRadius)
 
                     assert.ok(Array.isArray(container.filters), "filters must be an array")
@@ -121,7 +121,7 @@ describe("Property 4 — Single BlurFilter invariant", () => {
                 hexColor,
                 positiveFloat(1, 50),
                 positiveFloat(0.01, 1.0),
-                (color, radius, glowAlpha) => {
+                (color: string, radius: number, glowAlpha: number) => {
                     const gfx = createGlowGraphic(color, radius, glowAlpha)
 
                     assert.ok(
@@ -146,7 +146,7 @@ describe("Property 4 — Single BlurFilter invariant", () => {
                     }),
                     { maxLength: 300 },
                 ),
-                (glowRadius, nodes) => {
+                (glowRadius: number, nodes: { color: string; radius: number; glowAlpha: number }[]) => {
                     const container = createGlowContainer(glowRadius)
 
                     for (const { color, radius, glowAlpha } of nodes) {
@@ -228,7 +228,7 @@ describe("Property 12 — Hub ring condition", () => {
                 fc.integer({ min: 0, max: 5 }),
                 fc.float({ min: Math.fround(1), max: Math.fround(50), noNaN: true }),
                 hexColor,
-                (degree, nodeRadius, color) => {
+                (degree: number, nodeRadius: number, color: string) => {
                     const gfx = new StubRingGraphics()
                     maybeDrawHubRing(gfx, degree, nodeRadius, color)
 
@@ -249,7 +249,7 @@ describe("Property 12 — Hub ring condition", () => {
                 fc.integer({ min: 6, max: 1000 }),
                 fc.float({ min: Math.fround(1), max: Math.fround(50), noNaN: true }),
                 hexColor,
-                (degree, nodeRadius, color) => {
+                (degree: number, nodeRadius: number, color: string) => {
                     const gfx = new StubRingGraphics()
                     maybeDrawHubRing(gfx, degree, nodeRadius, color)
 
@@ -294,7 +294,7 @@ describe("Property 1 — Drift boundedness", () => {
                 fc.float({ min: Math.fround(0.1), max: Math.fround(2.0), noNaN: true }),
                 fc.float({ min: Math.fround(0.0001), max: Math.fround(0.01), noNaN: true }),
                 fc.float({ min: Math.fround(0), max: Math.fround(Math.PI * 2), noNaN: true }),
-                (time, amplitude, frequency, phase) => {
+                (time: number, amplitude: number, frequency: number, phase: number) => {
                     const dx = amplitude * Math.sin(time * frequency + phase)
                     const dy = amplitude * Math.cos(time * frequency * 0.7 + phase)
 
@@ -330,7 +330,7 @@ describe("Property 11 — Glow pulse range", () => {
                 fc.float({ min: Math.fround(0.001), max: Math.fround(10000), noNaN: true }),
                 fc.float({ min: Math.fround(0.01), max: Math.fround(1.0), noNaN: true }),
                 fc.float({ min: Math.fround(0), max: Math.fround(Math.PI * 2), noNaN: true }),
-                (time, pulseSpeed, glowAlpha, driftPhase) => {
+                (time: number, pulseSpeed: number, glowAlpha: number, driftPhase: number) => {
                     const pulse = Math.sin((time / pulseSpeed) * Math.PI * 2 + driftPhase) * 0.5 + 0.5
                     const alpha = glowAlpha * (0.6 + 0.4 * pulse)
 
@@ -362,7 +362,7 @@ describe("Property 8 — Active link pulse range", () => {
         fc.assert(
             fc.property(
                 fc.double({ min: 0, max: Number.MAX_SAFE_INTEGER, noNaN: true, noDefaultInfinity: true }),
-                (time) => {
+                (time: number) => {
                     const pulseAlpha = 0.7 + 0.3 * Math.sin(time * 0.005)
 
                     assert.ok(
@@ -406,7 +406,7 @@ describe("Property 6 — RAF throttle correctness", () => {
         fc.assert(
             fc.property(
                 fc.integer({ min: 0, max: 10000 }),
-                (frameSkip) => {
+                (frameSkip: number) => {
                     const result = throttleFrame(frameSkip, false)
 
                     assert.strictEqual(result.skip, false, "skip must be false when not idle")
@@ -421,7 +421,7 @@ describe("Property 6 — RAF throttle correctness", () => {
         fc.assert(
             fc.property(
                 fc.integer({ min: 0, max: 10000 }),
-                (frameSkip) => {
+                (frameSkip: number) => {
                     const result = throttleFrame(frameSkip, true)
                     const newSkip = frameSkip + 1
 
@@ -521,7 +521,7 @@ describe("Property 9 — Node scale pop bounds", () => {
                 fc.string({ minLength: 1 }),
                 fc.boolean(),
                 fc.float({ min: Math.fround(0.01), max: Math.fround(1.0), noNaN: true }),
-                (nodeId, focusOnHover, glowAlpha) => {
+                (nodeId: string, focusOnHover: boolean, glowAlpha: number) => {
                     const result = computeNodeTweenTargets(nodeId, true, nodeId, focusOnHover, glowAlpha)
                     assert.strictEqual(result.targetScale.x, 1.3, "hovered node scale.x must be 1.3")
                     assert.strictEqual(result.targetScale.y, 1.3, "hovered node scale.y must be 1.3")
@@ -539,7 +539,7 @@ describe("Property 9 — Node scale pop bounds", () => {
                 fc.string({ minLength: 1 }),
                 fc.boolean(),
                 fc.float({ min: Math.fround(0.01), max: Math.fround(1.0), noNaN: true }),
-                (nodeId, hoveredId, focusOnHover, glowAlpha) => {
+                (nodeId: string, hoveredId: string, focusOnHover: boolean, glowAlpha: number) => {
                     // Ensure nodeId !== hoveredId
                     fc.pre(nodeId !== hoveredId)
                     const result = computeNodeTweenTargets(nodeId, true, hoveredId, focusOnHover, glowAlpha)
@@ -558,7 +558,7 @@ describe("Property 9 — Node scale pop bounds", () => {
                 fc.string({ minLength: 1 }),
                 fc.string({ minLength: 1 }),
                 fc.float({ min: Math.fround(0.01), max: Math.fround(1.0), noNaN: true }),
-                (nodeId, hoveredId, glowAlpha) => {
+                (nodeId: string, hoveredId: string, glowAlpha: number) => {
                     fc.pre(nodeId !== hoveredId)
                     const result = computeNodeTweenTargets(nodeId, false, hoveredId, true, glowAlpha)
                     assert.strictEqual(result.targetScale.x, 1.0, "inactive node scale.x must be 1.0")
@@ -577,7 +577,7 @@ describe("Property 9 — Node scale pop bounds", () => {
                 fc.boolean(),
                 fc.boolean(),
                 fc.float({ min: Math.fround(0.01), max: Math.fround(1.0), noNaN: true }),
-                (nodeId, isActive, focusOnHover, glowAlpha) => {
+                (nodeId: string, isActive: boolean, focusOnHover: boolean, glowAlpha: number) => {
                     const result = computeNodeTweenTargets(nodeId, isActive, null, focusOnHover, glowAlpha)
                     assert.strictEqual(result.targetScale.x, 1.0, "scale.x must reset to 1.0 when no hover")
                     assert.strictEqual(result.targetScale.y, 1.0, "scale.y must reset to 1.0 when no hover")
@@ -627,9 +627,9 @@ describe("Property 2 — Label exclusivity", () => {
         fc.assert(
             fc.property(
                 fc.array(fc.string({ minLength: 1 }), { minLength: 1, maxLength: 50 }),
-                (nodeIds) => {
+                (nodeIds: string[]) => {
                     for (const nodeId of nodeIds) {
-                        const result = computeLabelTweenTarget(nodeId, null, new Set())
+                        const result = computeLabelTweenTarget(nodeId, null, new Set<string>())
                         assert.strictEqual(result.alpha, 0, `Expected alpha=0 for nodeId=${nodeId} when hoveredNodeId is null`)
                     }
                 },
@@ -643,8 +643,8 @@ describe("Property 2 — Label exclusivity", () => {
             fc.property(
                 fc.string({ minLength: 1 }),
                 fc.array(fc.string({ minLength: 1 }), { maxLength: 20 }),
-                (hoveredId, neighbourIds) => {
-                    const neighbours = new Set(neighbourIds.filter((id) => id !== hoveredId))
+                (hoveredId: string, neighbourIds: string[]) => {
+                    const neighbours = new Set<string>(neighbourIds.filter((id: string) => id !== hoveredId))
                     const result = computeLabelTweenTarget(hoveredId, hoveredId, neighbours)
                     assert.strictEqual(result.alpha, 1.0, "hovered node must have alpha = 1.0")
                 },
@@ -659,9 +659,9 @@ describe("Property 2 — Label exclusivity", () => {
                 fc.string({ minLength: 1 }),
                 fc.string({ minLength: 1 }),
                 fc.array(fc.string({ minLength: 1 }), { maxLength: 20 }),
-                (nodeId, hoveredId, otherNeighbourIds) => {
+                (nodeId: string, hoveredId: string, otherNeighbourIds: string[]) => {
                     fc.pre(nodeId !== hoveredId)
-                    const neighbours = new Set([nodeId, ...otherNeighbourIds.filter((id) => id !== hoveredId)])
+                    const neighbours = new Set<string>([nodeId, ...otherNeighbourIds.filter((id: string) => id !== hoveredId)])
                     const result = computeLabelTweenTarget(nodeId, hoveredId, neighbours)
                     assert.strictEqual(result.alpha, 0.75, "direct neighbour must have alpha = 0.75")
                 },
@@ -676,10 +676,10 @@ describe("Property 2 — Label exclusivity", () => {
                 fc.string({ minLength: 1 }),
                 fc.string({ minLength: 1 }),
                 fc.array(fc.string({ minLength: 1 }), { maxLength: 20 }),
-                (nodeId, hoveredId, neighbourIds) => {
+                (nodeId: string, hoveredId: string, neighbourIds: string[]) => {
                     fc.pre(nodeId !== hoveredId)
                     // Ensure nodeId is NOT in neighbours
-                    const neighbours = new Set(neighbourIds.filter((id) => id !== nodeId && id !== hoveredId))
+                    const neighbours = new Set<string>(neighbourIds.filter((id: string) => id !== nodeId && id !== hoveredId))
                     const result = computeLabelTweenTarget(nodeId, hoveredId, neighbours)
                     assert.strictEqual(result.alpha, 0, "non-neighbour node must have alpha = 0")
                 },
@@ -694,17 +694,17 @@ describe("Property 2 — Label exclusivity", () => {
                 fc.array(fc.string({ minLength: 1 }), { minLength: 2, maxLength: 30 }),
                 fc.integer({ min: 0, max: 29 }),
                 fc.array(fc.integer({ min: 0, max: 29 }), { maxLength: 10 }),
-                (nodeIds, hoveredIdx, neighbourIdxs) => {
+                (nodeIds: string[], hoveredIdx: number, neighbourIdxs: number[]) => {
                     // Deduplicate nodeIds first
                     const uniqueIds = [...new Set(nodeIds)]
                     fc.pre(uniqueIds.length >= 2)
 
                     const clampedHoveredIdx = hoveredIdx % uniqueIds.length
                     const hoveredId = uniqueIds[clampedHoveredIdx]
-                    const neighbours = new Set(
+                    const neighbours = new Set<string>(
                         neighbourIdxs
-                            .map((i) => uniqueIds[i % uniqueIds.length])
-                            .filter((id) => id !== hoveredId),
+                            .map((i: number) => uniqueIds[i % uniqueIds.length])
+                            .filter((id: string) => id !== hoveredId),
                     )
 
                     for (const nodeId of uniqueIds) {

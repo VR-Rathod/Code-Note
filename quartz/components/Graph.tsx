@@ -50,8 +50,8 @@ const defaultOptions: GraphOptions = {
     neuronMode: true,
     driftAmplitude: 0.3,
     driftFrequency: 0.0006,
-    glowRadius: 3,
-    glowAlpha: 0.5,
+    glowRadius: 6,
+    glowAlpha: 0.35,
     pulseSpeed: 2500,
   },
   globalGraph: {
@@ -71,8 +71,8 @@ const defaultOptions: GraphOptions = {
     neuronMode: true,
     driftAmplitude: 0.25,
     driftFrequency: 0.0005,
-    glowRadius: 4,
-    glowAlpha: 0.5,
+    glowRadius: 8,
+    glowAlpha: 0.35,
     pulseSpeed: 3000,
   },
 }

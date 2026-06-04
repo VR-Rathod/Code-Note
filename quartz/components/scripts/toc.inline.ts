@@ -8,7 +8,27 @@ function applyProximity(activeIdx: number, links: HTMLAnchorElement[]) {
   links.forEach((link, idx) => {
     link.classList.remove("toc-active", "toc-near", "toc-far", "toc-hidden")
     const dist = Math.abs(idx - activeIdx)
-    if (dist === 0) link.classList.add("toc-active")
+    if (dist === 0) {
+      link.classList.add("toc-active")
+
+      // Auto-scroll TOC container to center the active item
+      const tocContainer = link.closest("ul.toc-content")
+      if (tocContainer) {
+        const activeContainer = link.closest(".toc-item-container") || link
+        const activeRect = activeContainer.getBoundingClientRect()
+        const containerRect = tocContainer.getBoundingClientRect()
+
+        if (tocContainer.scrollHeight > tocContainer.clientHeight) {
+          const relativeTop = activeRect.top - containerRect.top + tocContainer.scrollTop
+          const targetScrollTop = relativeTop - containerRect.height / 2 + activeRect.height / 2
+          
+          tocContainer.scrollTo({
+            top: targetScrollTop,
+            behavior: "smooth"
+          })
+        }
+      }
+    }
     else if (dist === 1) link.classList.add("toc-near")
     else if (dist === 2) link.classList.add("toc-far")
     else link.classList.add("toc-hidden")

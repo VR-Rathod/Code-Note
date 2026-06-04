@@ -408,7 +408,7 @@ ul.toc-content {
 .toc {
     flex: 0 0 auto !important;
     max-height: 40vh;
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 ul.toc-content.overflow {
