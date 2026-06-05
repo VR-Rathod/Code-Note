@@ -2,6 +2,7 @@
 seoTitle: Binary Search Algorithm – O(log n) Divide and Conquer Search
 description: "Binary search efficiently finds elements in sorted arrays by halving the search space each step. Covers iterative and recursive implementations in Python, C++, JavaScript, Java, and C with O(log n) complexity."
 keywords: "binary search, search algorithm, sorted array, O(log n), divide and conquer, iterative binary search, recursive binary search, time complexity, space complexity, algorithm implementation, binary search C++, binary search Python, binary search Java, VR-Rathod, Code-Note, code note vr, vr book , Vaibhav Rathod, vaibhav, Rathod , book of rathod"
+treeTitle: DSA - Sorting & Searching - Binary Search
 ---
 
 > [!info] What is Binary Search?
@@ -280,24 +281,24 @@ keywords: "binary search, search algorithm, sorted array, O(log n), divide and c
 	      return 0;
 	  }
 	  :::
--
-- # Recursive Variant
-  collapsed:: true
-	- > [!tip] Iterative vs Recursive
+	  -
+	  - # Recursive Variant
+	  collapsed:: true
+	  - > [!tip] Iterative vs Recursive
 	  > Both have **O(log n) time**. The difference is space:
 	  > - **Iterative** → O(1) space (preferred in production, no stack risk)
 	  > - **Recursive** → O(log n) space (cleaner to read, good for learning)
-	-
-	- ## How Recursion Works Here
+	  -
+	  - ## How Recursion Works Here
 	  collapsed:: true
-		- ```mermaid
-		  flowchart TD
-		      A["binary_search(arr, 9, low=0, high=6)"]
-		      A --> B["mid=3, arr[3]=7 < 9\nCall: binary_search(arr, 9, low=4, high=6)"]
-		      B --> C["mid=5, arr[5]=11 > 9\nCall: binary_search(arr, 9, low=4, high=4)"]
-		      C --> D["mid=4, arr[4]=9 == 9\n✅ return 4"]
-		      D --> C --> B --> A
-		  ```
+	  - ```mermaid
+	   flowchart TD
+	       A["binary_search(arr, 9, low=0, high=6)"]
+	       A --> B["mid=3, arr[3]=7 < 9\nCall: binary_search(arr, 9, low=4, high=6)"]
+	       B --> C["mid=5, arr[5]=11 > 9\nCall: binary_search(arr, 9, low=4, high=4)"]
+	       C --> D["mid=4, arr[4]=9 == 9\n✅ return 4"]
+	       D --> C --> B --> A
+	   ```
 	-
 	- :::code-tabs
 	  

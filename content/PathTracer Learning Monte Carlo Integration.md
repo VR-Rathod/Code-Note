@@ -2,6 +2,7 @@
 seoTitle: Monte Carlo Integration in Path Tracing – Rendering Math Guide
 description: "Monte Carlo integration estimates integrals by random sampling, foundational to path tracing. Covers estimator, variance, convergence, importance sampling, and."
 keywords: "Monte Carlo integration, path tracing, ray tracing, random sampling, estimator, variance, convergence, importance sampling, Russian roulette, GPU rendering, Vulkan"
+treeTitle: Game Development - Path Tracing - Monte Carlo Integration
 ---
 
 tags:: concept, math, probability, monte-carlo

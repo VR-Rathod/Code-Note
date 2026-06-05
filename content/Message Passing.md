@@ -3,6 +3,7 @@ seoTitle: Message Passing in OOP – Complete In-Depth Guide | Object Communicat
 description: "Deep dive into Message Passing in OOP. Covers how objects communicate by sending messages, synchronous vs asynchronous passing, method dispatch, and examples in Python, C++, Java, JavaScript, and C#."
 keywords: "message passing, OOP, object communication, method dispatch, synchronous, asynchronous, actor model, event-driven, Python, Java, C++, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: Message Passing
+treeTitle: DSA - OOP - Message Passing
 ---
 
 > [!info] What is Message Passing?

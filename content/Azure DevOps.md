@@ -3,6 +3,7 @@ seoTitle: Azure DevOps Pipelines Reference – YAML, Agents, and Release Guide
 description: "Educational Azure DevOps Pipelines reference covering YAML syntax, agents, multi-stage deployments, variables, task groups, environments, and approvals."
 keywords: "Azure DevOps, Azure Pipelines, YAML pipeline, CI/CD, DevOps, azure-pipelines.yml, self-hosted agents, service connections, environments, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: Azure DevOps
+treeTitle: DevOps - Azure DevOps
 ---
 
 - # History

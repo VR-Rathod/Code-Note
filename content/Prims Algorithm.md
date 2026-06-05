@@ -3,6 +3,7 @@ seoTitle: Prim's Algorithm – Minimum Spanning Tree (MST) using Priority Queues
 description: "Master Prim's Algorithm for finding the Minimum Spanning Tree (MST). Covers the greedy growing tree approach, Priority Queue/Heap implementation, dense vs. sparse graph strategies, and code in 5 languages."
 keywords: "Prim's algorithm, Minimum Spanning Tree, MST, Priority Queue, greedy algorithm, O(E log V), time complexity, dense graphs, graph algorithm, VR-Rathod, Code-Note, Prims Algorithm"
 displayTitle: Prim's Algorithm
+treeTitle: DSA - Graph Algorithms - Prims Algorithm
 ---
 
 > [!info] What is Prim's Algorithm?

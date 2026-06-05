@@ -2,6 +2,7 @@
 seoTitle: Advanced Path Tracing Topics – ReSTIR, OIDN, and Optimization
 description: "Advanced path tracing covering ReSTIR, OIDN denoising, spectral rendering, volumetric scattering, bidirectional path tracing, and GPU performance optimization."
 keywords: "advanced path tracing, ReSTIR, OIDN, spectral rendering, volumetric scattering, bidirectional path tracing, GPU optimization, Vulkan, ray tracing, GPU rendering"
+treeTitle: Game Development - Path Tracing - Phase 5 Advanced Topics
 ---
 
 tags:: phase, advanced, restir, dlss, denoising, production

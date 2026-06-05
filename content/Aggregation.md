@@ -3,6 +3,7 @@ seoTitle: Aggregation in OOP – Complete In-Depth Guide | HAS-A Weak Ownership,
 description: "Deep dive into Aggregation in OOP. Covers weak HAS-A relationships, independent child lifecycle, differences from Composition and Association, UML notation, and examples in Python, C++, Java, JavaScript, and C#."
 keywords: "aggregation, OOP, has-a relationship, weak ownership, aggregation vs composition, independent lifecycle, Python aggregation, Java aggregation, C++ aggregation, UML diamond, VR-Rathod, Code-Note"
 displayTitle: Aggregation
+treeTitle: DSA - OOP - Aggregation
 ---
 
 > [!info] What is Aggregation?
@@ -30,7 +31,6 @@ displayTitle: Aggregation
 		  | Child lifecycle | Independent | **Independent** | Tied to parent |
 		  | UML | Simple line | ◇ empty diamond | ◆ filled diamond |
 		  | Example | Doctor–Patient | Team–Player | Car–Engine |
-
 - # Implementation
   collapsed:: true
 	- > [!note] A `Library` with `Books` and a `University` with `Departments` — books and departments can exist independently of their containers.
@@ -300,7 +300,6 @@ displayTitle: Aggregation
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Aggregation = HAS-A with weak ownership** — child objects survive parent destruction.
@@ -308,7 +307,6 @@ displayTitle: Aggregation
 	- A child can be shared between multiple parents (same Book in two Libraries).
 	- Weaker than [[Composition]] (strong ownership), stronger than pure [[Association]] (no ownership).
 	- Use aggregation when the child has meaning/utility **outside the containing object**.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

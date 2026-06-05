@@ -3,6 +3,7 @@ seoTitle: Huffman Coding Compression – Greedy Tree Building & Encoding Guide
 description: "Master Huffman Coding for lossless data compression. Covers frequency table, min-heap tree construction, prefix-free code assignment, encoding and decoding, with full implementations in Python, C++, JavaScript, and Java."
 keywords: "Huffman coding, lossless compression, prefix-free code, greedy algorithm, min-heap, entropy, frequency table, binary tree, encoding, decoding, ZIP, JPEG, Python, C++, Java, JavaScript"
 displayTitle: Huffman Coding Compression
+treeTitle: DSA - DP & Greedy - Huffman Coding Compression
 ---
 
 > [!info] What is Huffman Coding?

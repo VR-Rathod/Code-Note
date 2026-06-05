@@ -2,6 +2,7 @@
 seoTitle: Math for Graphics – Vectors, Matrices, and Transforms Reference
 description: "Essential mathematics for 3D graphics and path tracing. Covers vectors, dot/cross products, matrices, transforms, quaternions, and coordinate systems."
 keywords: "math for graphics, vectors, matrices, transforms, quaternions, coordinate systems, dot product, cross product, path tracing, ray tracing, GPU rendering, linear algebra"
+treeTitle: Game Development - Path Tracing - Phase 1 Math for Graphics
 ---
 
 tags:: phase, math, vectors, linear-algebra, probability, radiometry

@@ -2,6 +2,7 @@
 seoTitle: Kali Linux Complete Guide – Penetration Testing, Tools & Commands
 description: "Comprehensive Kali Linux reference covering installation, Linux fundamentals, shell commands, networking, user management, penetration testing tools, Metasploit, Nmap, Wireshark, Burp Suite, and ethical hacking workflows."
 keywords: "Kali Linux, penetration testing, ethical hacking, Metasploit, Nmap, Wireshark, Burp Suite, wireless security, security tools, cybersecurity, Linux commands, kali linux tutorial, kali linux guide, kali linux notes, VR-Rathod, Code-Note, code note vr, vr book"
+treeTitle: OS - Linux Distros - Kali Linux
 ---
 
 - # History

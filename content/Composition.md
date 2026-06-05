@@ -3,6 +3,7 @@ seoTitle: Composition in OOP – Complete In-Depth Guide | HAS-A Relationship, v
 description: "Deep dive into Composition in OOP. Covers the HAS-A relationship, Composition vs Inheritance, Aggregation vs Composition, dependency injection via composition, and examples in Python, C++, Java, JavaScript, and C#."
 keywords: "composition, OOP, has-a relationship, composition vs inheritance, aggregation, dependency injection, object composition, Python composition, Java composition, C++ composition, VR-Rathod, Code-Note"
 displayTitle: Composition
+treeTitle: DSA - OOP - Composition
 ---
 
 > [!info] What is Composition?
@@ -40,7 +41,6 @@ displayTitle: Composition
 		  | Lifecycle | Child destroyed with parent | Child survives parent destruction |
 		  | Example | `Car` + `Engine` (Engine created inside Car) | `Team` + `Player` (Player exists without team) |
 		  | UML symbol | ◆ (filled diamond) | ◇ (empty diamond) |
-
 - # Implementation
   collapsed:: true
 	- > [!note] A `Car` composed of `Engine`, `Transmission`, and `GPS` — showing composition, delegation, and dependency injection.
@@ -324,7 +324,6 @@ displayTitle: Composition
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Composition = HAS-A relationship** — an object contains other objects as its components.
@@ -332,7 +331,6 @@ displayTitle: Composition
 	- **Favor Composition Over Inheritance** — composition is more flexible, testable, and avoids tight coupling.
 	- **Dependency Injection** — pass composed objects via the constructor to make them swappable (great for testing).
 	- Composition delegates behavior to inner objects — the outer class acts as an **orchestrator**.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

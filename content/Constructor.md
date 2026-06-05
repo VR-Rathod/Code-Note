@@ -3,6 +3,7 @@ seoTitle: Constructor in OOP – Complete In-Depth Guide | Types, Default, Param
 description: "Deep dive into Constructors in OOP. Covers default, parameterized, copy, and conversion constructors, constructor chaining, initializer lists, and examples in Python, C++, Java, JavaScript, and C#."
 keywords: "constructor, OOP, default constructor, parameterized constructor, copy constructor, constructor chaining, initializer list, __init__, this keyword, Python constructor, Java constructor, C++ constructor, VR-Rathod, Code-Note"
 displayTitle: Constructor
+treeTitle: DSA - OOP - Constructor
 ---
 
 > [!info] What is a Constructor?

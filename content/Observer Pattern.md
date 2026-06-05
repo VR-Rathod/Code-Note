@@ -47,7 +47,6 @@ displayTitle: Observer Pattern
 		      Observer <|.. ConcreteObserverA
 		      Observer <|.. ConcreteObserverB
 		  ```
-
 - # Implementation
   collapsed:: true
 	- > [!note] A stock price tracker — `StockMarket` notifies `Portfolio`, `AlertService`, and `DashboardDisplay` observers on price changes.
@@ -373,14 +372,12 @@ displayTitle: Observer Pattern
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Subject** maintains a list of observers; **observers** register/unregister dynamically.
 	- Decouples **event producers** from **event consumers** — subject doesn't know observer internals.
 	- Foundation of: **GUI event handling**, **MVC/MVP pattern**, **reactive programming** (RxJS, etc.), **game event systems**.
 	- Watch out for: **memory leaks** (observers not unregistered), **notification storms** (too many observers slow things).
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

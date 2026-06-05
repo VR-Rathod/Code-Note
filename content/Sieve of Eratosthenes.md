@@ -3,6 +3,7 @@ seoTitle: Sieve of Eratosthenes – Prime Generation In-Depth Guide
 description: "Complete guide to the Sieve of Eratosthenes. Covers O(N log log N) marking algorithm, segmented sieve for large N, linear sieve, and implementations in Python, C++, Java, JavaScript, and C#."
 keywords: "Sieve of Eratosthenes, prime numbers, prime generation, O(N log log N), segmented sieve, linear sieve, number theory, competitive programming, VR-Rathod, Code-Note, code note vr"
 displayTitle: Sieve of Eratosthenes
+treeTitle: DSA - Math & Geometry - Sieve of Eratosthenes
 ---
 
 > [!info] What is the Sieve of Eratosthenes?
@@ -47,7 +48,6 @@ displayTitle: Sieve of Eratosthenes
 		  | **Time** | O(N log log N) |
 		  | **Space** | O(N) boolean array → O(N/8) with bitset |
 		  | **Outer loop** | Only up to √N |
-
 - # Implementation
   collapsed:: true
 	- > [!note] Standard sieve, segmented sieve (cache-friendly for large N), and using the sieve for prime factorisation.
@@ -256,7 +256,6 @@ displayTitle: Sieve of Eratosthenes
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- Start marking at `p²` — all smaller multiples already marked by earlier primes.
@@ -264,7 +263,6 @@ displayTitle: Sieve of Eratosthenes
 	- **SPF Sieve** precomputes smallest prime factors → O(log N) factorisation of any number ≤ N.
 	- **Segmented Sieve** works in O(√N) memory for very large ranges — cache-friendly.
 	- Related: [[Fast Exponentiation]], [[Euclid Algorithm]]
-
 - # More Learn
   collapsed:: true
 	- ## LeetCode / Resources

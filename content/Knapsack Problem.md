@@ -3,6 +3,7 @@ seoTitle: 0/1 Knapsack Problem – Dynamic Programming In-Depth Guide
 description: "Complete guide to the 0/1 Knapsack Problem. Covers DP recurrence, 2D and 1D space-optimised solutions, subset sum, partition equal subset, and implementations in Python, C++, Java, JavaScript, and C#."
 keywords: "0/1 knapsack, knapsack problem, dynamic programming, subset sum, partition equal subset, O(NW), DP table, VR-Rathod, Code-Note, code note vr"
 displayTitle: 0/1 Knapsack Problem
+treeTitle: DSA - DP & Greedy - Knapsack Problem
 ---
 
 > [!info] What is the 0/1 Knapsack Problem?
@@ -53,7 +54,6 @@ displayTitle: 0/1 Knapsack Problem
 		  |---|---|---|
 		  | **Time** | O(N × W) | O(N × W) |
 		  | **Space** | O(N × W) | **O(W)** |
-
 - # Implementation
   collapsed:: true
 	- > [!note] 0/1 Knapsack with item tracking, Subset Sum, and Partition Equal Subset Sum.
@@ -258,7 +258,6 @@ displayTitle: 0/1 Knapsack Problem
 	  ```
 	  
 	  :::
-
 - # Variants
   collapsed:: true
 	- | Variant | Change | Direction |
@@ -269,7 +268,6 @@ displayTitle: 0/1 Knapsack Problem
 	  | **Partition Equal Subset** | Subset sum = total/2 | Right-to-left |
 	  | **Coin Change (min coins)** | Unbounded, minimise count | Left-to-right |
 	  | **Coin Change (count ways)** | Unbounded, count combinations | Left-to-right |
-
 - # Key Takeaways
   collapsed:: true
 	- State: `dp[i][c]` = max value using first i items with capacity c.
@@ -277,7 +275,6 @@ displayTitle: 0/1 Knapsack Problem
 	- 1D optimisation: iterate capacity **right-to-left** to enforce "each item used once".
 	- **Backtracking** through 2D table reveals which items were selected.
 	- Related: [[Dynamic Programming Concepts]], [[Longest Common Subsequence (LCS)]], [[Longest Increasing Subsequence (LIS)]]
-
 - # More Learn
   collapsed:: true
 	- ## LeetCode Problems

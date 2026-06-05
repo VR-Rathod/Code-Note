@@ -5,6 +5,7 @@ keywords: "Linux Mint, Cinnamon Desktop, Mint Update, Timeshift, APT Package Man
 displayTitle: Linux Mint – Complete Guide
 enableToc: true
 comments: true
+treeTitle: OS - Linux Distros - Linux Mint
 ---
 
 - # History

@@ -2,6 +2,7 @@
 seoTitle: GPU Ray Tracing with Vulkan – VK_KHR_ray_tracing Implementation
 description: "GPU ray tracing using Vulkan ray tracing extensions. Covers VK_KHR_ray_tracing_pipeline, shader binding table, BLAS/TLAS, ray generation shaders, and hit."
 keywords: "GPU ray tracing, Vulkan, VK_KHR_ray_tracing, shader binding table, BLAS, TLAS, ray generation shader, hit shader, path tracing, GPU rendering, RTX, Vulkan extension"
+treeTitle: Game Development - Path Tracing - Phase 3 GPU and Vulkan
 ---
 
 tags:: phase, vulkan, gpu, ray-tracing, glsl

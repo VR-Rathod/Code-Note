@@ -8,9 +8,11 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 
 -
 - # Welcome to Your Code Book!
+  collapsed:: true
 	- Dive into the world of programming and technology with this comprehensive code book! Whether you’re a seasoned developer or just starting out, you'll find a wealth of information organized for easy access. From programming languages that power applications to the operating systems and kernels that form the backbone of our devices, this book is your go-to resource. Let’s embark on a journey of learning, discovery, and creativity!
 -
 - ## Programming Languages
+  collapsed:: true
 	- [[Python]] :- A beginner-friendly language known for its readability and extensive libraries.
 	-
 	- [[Java]] :- A robust, object-oriented language commonly used in enterprise applications and Android development.
@@ -63,7 +65,7 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	-
 	- [[Verilog]]: Another hardware description language used for designing circuits and systems.
 	-
-	- [[Objective-C]]: A general-purpose, object-oriented language that was used for macOS and iOS development before Swift.
+	- [[Objective C]] : A general-purpose, object-oriented language that was used for macOS and iOS development before Swift.
 	-
 	- [[COBOL]]: A legacy programming language primarily used in business, finance, and administrative systems for companies and governments.
 	-
@@ -86,7 +88,6 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	- [[Ada]]: A structured, statically typed language used for real-time systems and safety-critical applications, especially in aerospace and military contexts.
 	-
 	- [[Crystal]]: A compiled language with syntax similar to Ruby but with performance comparable to C, designed for high performance.
-	  collapsed:: true
 	-
 	- [[Zig]]: A systems programming language that aims to replace C with a focus on simplicity, performance, and safety.
 -
@@ -107,10 +108,11 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 -
 - ## APIs & Query Languages
   collapsed:: true
+	- [[Api]] - You can find specific APIs and related documentation on the respective programming language or framework page.
+	-
 	- [[GraphQL]] - **GraphQL** is a query language for APIs and a runtime for executing those queries with your existing data. It was developed by **Facebook** and offers a more flexible and efficient alternative to REST APIs.
 -
-- ## CMS (Content Management Systems)
-  collapsed:: true
+- ## CMS (Content Management Systems) & SaaS
 	- [[WordPress]] :- A widely used, open-source CMS known for its ease of use, vast theme/plugin ecosystem, and flexibility for building various websites from blogs to e-commerce stores.
 	-
 	- [[Joomla]] :- A flexible and powerful CMS that allows for the creation of complex websites with various extensions and templates.
@@ -131,13 +133,10 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	-
 	- [[TYPO3]] :- A scalable, open-source CMS suitable for both small businesses and large enterprise-level websites, offering powerful content management and flexibility.
 -
-- ## SaaS ( Software as Service)
-  collapsed:: true
-	- [[Shopify]] - it is a **hosted e-commerce platform** that includes **some CMS-like features**.
--
 - ## Operating Systems & Kernels
   collapsed:: true
 	- ### Linux
+	  collapsed:: true
 		- [[Kali Linux]] :- A Debian-based distribution designed for penetration testing and cybersecurity professionals, featuring 600+ pre-installed security tools, Metasploit, Nmap, Wireshark, Burp Suite, and full pentest methodology.
 		-
 		- [[Ubuntu]] :- A comprehensive guide to Ubuntu covering installation, kernel, shell, APT/Snap packages, networking, UFW, SSH, LAMP/LEMP stack, GNOME desktop, security, LVM, and server administration.
@@ -169,56 +168,49 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		- [[Garuda Linux]] :- An Arch-based gaming and performance-focused distribution. Covers Garuda Gamer tools, Btrfs + Snapper auto-snapshots, ZRAM, gaming optimizations (GameMode, MangoHud, Proton), Chaotic-AUR, Dr460nized KDE desktop, and system tuning.
 		-
 		- [[Linux Advanced]] :- Deep Linux internals covering kernel architecture, system calls, memory management, process lifecycle, networking stack, filesystem internals, performance analysis (perf, eBPF), and security hardening (SELinux, AppArmor, auditd, AIDE).
+		-
+		- [[eBPF]] :- Extended Berkeley Packet Filter — run sandboxed programs inside the Linux kernel. Covers BPF maps, program types (kprobe/tracepoint/XDP/TC/LSM), CO-RE, libbpf, bpftrace, BCC tools, XDP networking, security (Falco, Cilium), and production observability.
+		-
+		- [[systemd]] :- System and service manager for Linux. Covers systemctl, unit files, logging via journald, timers (cron replacement), socket activation, and security hardening.
 	-
 	- ### Windows
+	  collapsed:: true
 		- [[Windows 10]] :- A comprehensive guide to Windows 10 covering architecture, kernel, CMD, PowerShell, registry, networking, security, WSL, Hyper-V, and system administration.
 		-
 		- [[Windows 11]] :- A comprehensive guide to Windows 11 covering TPM 2.0, new architecture, VBS/HVCI security, CMD, PowerShell, registry tweaks, networking, WSL2, Hyper-V, Snap Layouts, and system administration.
 	-
 	- ### macOS & BSD
-		- macOS :- Apple's Unix-based OS for Mac hardware. Homebrew package manager, zsh default shell, XCode toolchain, and Rosetta 2 for Apple Silicon compatibility.
+	  collapsed:: true
+		- [[macos]] :- Apple's Unix-based OS for Mac hardware. Homebrew package manager, zsh default shell, XCode toolchain, and Rosetta 2 for Apple Silicon compatibility.
 		-
-		- FreeBSD :- A complete OS derived from BSD Unix — not Linux. Known for ZFS, jails (lightweight containers), pf firewall, and rock-solid networking. Powers Netflix CDN and PlayStation OS.
+		- [[FreeBSD]] :- A complete OS derived from BSD Unix — not Linux. Known for ZFS, jails (lightweight containers), pf firewall, and rock-solid networking. Powers Netflix CDN and PlayStation OS.
 		-
-		- OpenBSD :- A security-first BSD OS with a minimal attack surface, strong cryptography defaults, and the origin of OpenSSH. Used in firewalls, routers, and high-security environments.
+		- [[OpenBSD]] :- A security-first BSD OS with a minimal attack surface, strong cryptography defaults, and the origin of OpenSSH. Used in firewalls, routers, and high-security environments.
 		-
-		- NetBSD :- A highly portable BSD OS that runs on almost any hardware architecture — from servers to embedded systems and retro hardware.
--
-- ## Frameworks, Libraries Common Elements
-  collapsed:: true
-	- You Can find particular lib & Frameworks  in that programing page
-	- [[Api]] - You can find specific APIs and related documentation on the respective programming language or framework page.
+		- [[NetBSD]] :- A highly portable BSD OS that runs on almost any hardware architecture — from servers to embedded systems and retro hardware.
 -
 - ## Data Structures , Algorithms & OOP
   collapsed:: true
 	- [[DSA Algo & System Design]] : The study of organizing and manipulating data efficiently, focusing on fundamental structures like arrays, linked lists, stacks, queues, trees, and graphs, as well as algorithms for searching, sorting, and optimization.
 	-
-	- [[Complexity Analysis]] :- Guide to analyzing algorithms, Big O notation, space-time trade-offs, and mathematical foundations.
-	-
-	- [[Binary Space Partitioning]] :- Spatial data structure used in game engines for rendering optimization and collision detection.
+	- [[Binary Space Partitioning]] :- Spatial Data Structure used in game engines for rendering optimization and collision detection.
 	-
 	- [[System Design]]: In-depth guide to designing scalable, reliable, and high-performance systems — covering load balancing, caching, databases, microservices, CAP theorem, message queues, API design, and real-world case studies.
 -
-- ## Data Science & Machine Learning
+- ## Data Science, Machine Learning & AI
   collapsed:: true
-	- ### Core
-		- [[Data Science]] :- Interdisciplinary field combining statistics, programming, and ML to extract insights from data. Covers the full pipeline from EDA to MLOps — beginner to advanced.
+	- [[Data Science]] :- The full data science workflow — statistics, data wrangling, EDA, feature engineering, and visualization using the Python data stack. All library links (NumPy, Pandas, Matplotlib, Seaborn, Plotly, SciPy, SymPy) live inside this page. **Start here before Machine Learning.**
 	-
-	- ### Visualization
-		- Matplotlib, Seaborn, Plotly — covered inside [[Data Science]]
-	-
-	- ### Big Data
-		- Apache Spark, Hadoop, Kafka — covered inside [[Data Science]]
+	- [[Machine Learning]] :- Complete ML reference from mathematical foundations to production MLOps. Covers classical algorithms, deep learning, NLP, computer vision, reinforcement learning, transformers, LLMs, and RAG systems. All Python ML framework and library links (PyTorch, Scikit-learn, OpenCV, spaCy, XGBoost) live inside this page.
 -
 - ## DevOps & CI/CD
-  collapsed:: true
 	- ### DevOps Concepts
 	  collapsed:: true
 		- [[Collaboration & Communication]]: Emphasizes enhanced communication between development and operations teams to improve the software development lifecycle (SDLC).
 		-
 		- [[Automation]]: Automating manual tasks such as testing, deployments, and infrastructure provisioning to reduce errors and increase efficiency.
 		-
-		- [[Infrastructure as Code (IaC)]]: Managing and provisioning infrastructure using code, enabling version control and reproducibility in environments.
+		- [[Infrastructure as Code IaC]]: Managing and provisioning infrastructure using code, enabling version control and reproducibility in environments.
 		-
 		- [[Continuous Monitoring & Logging]]: Continuous observation of applications and infrastructure to track performance and issues in real-time.
 		-
@@ -242,7 +234,7 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		-
 		- [[GitLab CI]]: An integrated CI/CD tool built into GitLab, offering version control, CI/CD pipelines, and project management in a single platform.
 		-
-		- [[CircleCI]]: A cloud-based CI/CD service for automating workflows, providing a fast and scalable solution for integrating, testing, and deploying code.
+		- [[Circle CI]]: A cloud-based CI/CD service for automating workflows, providing a fast and scalable solution for integrating, testing, and deploying code.
 		-
 		- [[Travis CI]]: A cloud-based CI/CD tool that automatically tests and deploys code from GitHub repositories, commonly used for open-source projects.
 		-
@@ -313,7 +305,6 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		- [[Aqua Security]]: A container security platform that scans for vulnerabilities in container images and Kubernetes clusters.
 	-
 	- ### Agile & Project Management Tools
-	  collapsed:: true
 		- [[Jira]]: A project management tool often used in DevOps teams for managing tasks, bugs, and user stories, integrated with CI/CD pipelines.
 		-
 		- [[Trello]]: A visual project management tool to organize tasks and workflows in a simple board format, ideal for small teams and quick task tracking.
@@ -338,12 +329,12 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	- > [!info] Your Journey to Game Dev
 	  > Follow the roadmap below — Beginner → Super Advanced. Pick your level and jump in!
 	-
-	- ### 🟢 Beginner: Fundamentals & Design
+	- ### Beginner: Fundamentals & Design
 		- [[Game Development]] :- **Start Here.** Engine-agnostic fundamentals — game loop, physics, lighting, shaders, AI, audio, networking, optimization.
 		- [[Game Design]] :- How to design fun games — core loops, player psychology, level design, balancing, monetisation.
 		- [[Free Assets]] :- Free 2D sprites, 3D models, audio, textures to start prototyping immediately.
 	-
-	- ### 🟡 Intermediate: Pick Your Engine
+	- ### Intermediate: Pick Your Engine
 		- > [!tip] Famous Game Engines — Pick ONE and master it!
 		- | Engine | Language | Best For |
 		  |---|---|---|
@@ -353,13 +344,15 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		-
 		- [[Game Engines]] :- Other engines — **CryEngine, O3DE, GameMaker Studio 2, Construct, RPG Maker** — with full notes, scripting examples, and when to use each.
 	-
-	- ### 🟠 Advanced: Specializations
+	- ### Advanced: Specializations
 		- [[Blender]] :- Free 3D suite — box modeling, sculpting, UV unwrap, rigging, Cycles rendering.
 		- [[Game Audio]] :- FMOD, Wwise, adaptive music, 3D spatial audio, DSP effects.
 		- [[Mobile Game Development]] :- Touch controls, iOS/Android features, mobile GPU optimization, monetization, publishing.
 		- [[VR AR Development]] :- OpenXR, SteamVR, Meta Quest SDK, ARCore, ARKit, interaction design, foveated rendering.
 		- [[Console Development]] :- PS5, Xbox Series X/S, Nintendo Switch — SDK overview, DualSense haptics, adaptive triggers, HD Rumble, Joy-Con, cross-platform strategy, and full certification guide (TRC/TCR/LOT).
 		- [[Game Testing & QA]] :- Game-specific QA covering playtesting methodologies, bug classification (softlock, exploits, cert failures), performance profiling (PIX, RenderDoc, Unity Profiler, Unreal Insights), and automated testing (Unity Test Framework, Unreal Automation, GUT, CI/CD for games).
+		- [[Game AI]] :- Complete game AI reference covering FSM, Behavior Trees, GOAP, Utility AI, A* pathfinding, NavMesh, Flow Fields, steering behaviors, Boids, perception systems, ML-Agents, Minimax, MCTS, and strategy AI.
+		- [[Game Physics]] :- Comprehensive game physics covering rigid body dynamics, collision detection (AABB, SAT, GJK, EPA), impulse-based resolution, constraints, joints, soft bodies, cloth simulation, mass-spring systems, and physics engine comparison.
 	-
 	- ### 🔴 Super Advanced: Custom Engines & Graphics
 		- > [!warning] For developers building engines or hyper-optimized graphics pipelines.
@@ -396,6 +389,7 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		- [Learn Basic About  API](https://aws.amazon.com/what-is/api/)
 		- [Interview Preparation⚔](https://www.indiabix.com/)
 		- [Powerful Text and design And Animation⚜](https://github.com/chenglou/pretext)
+		- [The great Mind of Researech 🧠](https://www.ssp.sh/brain/)
 	-
 	- ## Lib
 		- [bhartiya Digital lib](https://ndl.iitkgp.ac.in/)

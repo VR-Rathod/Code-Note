@@ -3,6 +3,7 @@ seoTitle: VR/AR Development – Complete Virtual & Augmented Reality Guide
 description: "Comprehensive VR/AR development reference covering OpenXR, SteamVR, Meta SDK, ARCore, ARKit, interaction design, performance optimization, and engine integration for Unity, Unreal, and Godot."
 keywords: "VR development, AR development, virtual reality, augmented reality, OpenXR, SteamVR, Meta Quest, ARCore, ARKit, XR development, mixed reality, VR interaction design, VR optimization, Unity XR, Unreal VR, Godot XR, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: VR/AR Development
+treeTitle: Game Development - Platforms - VR & AR
 ---
 
 > [!info] About This Page

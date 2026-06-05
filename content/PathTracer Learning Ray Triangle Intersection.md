@@ -3,6 +3,7 @@ seoTitle: Ray-Triangle Intersection – Moller-Trumbore Algorithm Guide
 description: "Ray-triangle intersection is the core operation in ray tracing. Covers Moller-Trumbore algorithm, barycentric coordinates, backface culling, and GPU."
 keywords: "ray-triangle intersection, Moller-Trumbore, barycentric coordinates, ray tracing, path tracing, backface culling, GPU rendering, Vulkan, BVH, acceleration structure"
 title: PathTracer Learning Ray Triangle Intersection
+treeTitle: Game Development - Path Tracing - Ray Triangle Intersection
 ---
 
 tags:: concept, geometry, intersection, algorithm

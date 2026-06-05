@@ -2,6 +2,7 @@
 seoTitle: Circular Buffer (Ring Buffer) – Fixed-Size O(1) FIFO Queue
 description: "Master Circular Buffers (Ring Buffers). Learn about head/tail pointers, empty/full states, overwriting vs non-overwriting behavior, and implementations in 5 languages."
 keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) complexity, hardware buffer, tail pointer, head pointer, C++, Python, JavaScript, Java, C"
+treeTitle: DSA - Linear Data Structures - Circular Buffer
 ---
 
 > [!info] What is a Circular Buffer?
@@ -110,13 +111,13 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	          self.head = 0  # Read pointer
 	          self.tail = 0  # Write pointer
 	          self.count = 0  # Element count
-
+	  
 	      def is_full(self) -> bool:
 	          return self.count == self.capacity
-
+	  
 	      def is_empty(self) -> bool:
 	          return self.count == 0
-
+	  
 	      def enqueue(self, val) -> bool:
 	          if self.is_full():
 	              return False
@@ -124,7 +125,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	          self.tail = (self.tail + 1) % self.capacity
 	          self.count += 1
 	          return True
-
+	  
 	      def dequeue(self):
 	          if self.is_empty():
 	              return None
@@ -133,7 +134,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	          self.head = (self.head + 1) % self.capacity
 	          self.count -= 1
 	          return val
-
+	  
 	  # Example usage
 	  if __name__ == "__main__":
 	      cb = CircularBufferBase(3)
@@ -143,12 +144,12 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      print(cb.enqueue(4))  # False (Full)
 	      print(cb.dequeue())    # 1
 	  ```
-
+	  
 	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <stdexcept>
-
+	  
 	  template <typename T>
 	  class CircularBufferBase {
 	  private:
@@ -157,13 +158,13 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      int head;
 	      int tail;
 	      int count;
-
+	  
 	  public:
 	      CircularBufferBase(int cap) : capacity(cap), buffer(cap), head(0), tail(0), count(0) {}
-
+	  
 	      bool isFull() const { return count == capacity; }
 	      bool isEmpty() const { return count == 0; }
-
+	  
 	      bool enqueue(const T& val) {
 	          if (isFull()) return false;
 	          buffer[tail] = val;
@@ -171,7 +172,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	          count++;
 	          return true;
 	      }
-
+	  
 	      T dequeue() {
 	          if (isEmpty()) {
 	              throw std::underflow_error("Buffer empty");
@@ -182,7 +183,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	          return val;
 	      }
 	  };
-
+	  
 	  int main() {
 	      CircularBufferBase<int> cb(3);
 	      cb.enqueue(10);
@@ -193,7 +194,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      return 0;
 	  }
 	  ```
-
+	  
 	  ```javascript
 	  class CircularBufferBase {
 	      constructor(capacity) {
@@ -203,10 +204,10 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	          this.tail = 0;
 	          this.count = 0;
 	      }
-
+	  
 	      isFull() { return this.count === this.capacity; }
 	      isEmpty() { return this.count === 0; }
-
+	  
 	      enqueue(val) {
 	          if (this.isFull()) return false;
 	          this.buffer[this.tail] = val;
@@ -214,7 +215,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	          this.count++;
 	          return true;
 	      }
-
+	  
 	      dequeue() {
 	          if (this.isEmpty()) return null;
 	          const val = this.buffer[this.head];
@@ -224,7 +225,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	          return val;
 	      }
 	  }
-
+	  
 	  // Example Usage
 	  const cb = new CircularBufferBase(3);
 	  cb.enqueue(1);
@@ -233,7 +234,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	  console.log(cb.enqueue(4)); // false
 	  console.log(cb.dequeue());   // 1
 	  ```
-
+	  
 	  ```java
 	  public class CircularBufferBase<T> {
 	      private final T[] buffer;
@@ -241,16 +242,16 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      private int head = 0;
 	      private int tail = 0;
 	      private int count = 0;
-
+	  
 	      @SuppressWarnings("unchecked")
 	      public CircularBufferBase(int capacity) {
 	          this.capacity = capacity;
 	          this.buffer = (T[]) new Object[capacity];
 	      }
-
+	  
 	      public boolean isFull() { return count == capacity; }
 	      public boolean isEmpty() { return count == 0; }
-
+	  
 	      public boolean enqueue(T val) {
 	          if (isFull()) return false;
 	          buffer[tail] = val;
@@ -258,7 +259,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	          count++;
 	          return true;
 	      }
-
+	  
 	      public T dequeue() {
 	          if (isEmpty()) return null;
 	          T val = buffer[head];
@@ -267,7 +268,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	          count--;
 	          return val;
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          CircularBufferBase<Integer> cb = new CircularBufferBase<>(3);
 	          cb.enqueue(1);
@@ -278,12 +279,12 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      }
 	  }
 	  ```
-
+	  
 	  ```c
 	  #include <stdio.h>
 	  #include <stdlib.h>
 	  #include <stdbool.h>
-
+	  
 	  typedef struct {
 	      int* buffer;
 	      int capacity;
@@ -291,7 +292,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      int tail;
 	      int count;
 	  } CircularBufferBase;
-
+	  
 	  CircularBufferBase* createBuffer(int capacity) {
 	      CircularBufferBase* cb = (CircularBufferBase*)malloc(sizeof(CircularBufferBase));
 	      cb->buffer = (int*)malloc(capacity * sizeof(int));
@@ -301,10 +302,10 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      cb->count = 0;
 	      return cb;
 	  }
-
+	  
 	  bool isFull(CircularBufferBase* cb) { return cb->count == cb->capacity; }
 	  bool isEmpty(CircularBufferBase* cb) { return cb->count == 0; }
-
+	  
 	  bool enqueue(CircularBufferBase* cb, int val) {
 	      if (isFull(cb)) return false;
 	      cb->buffer[cb->tail] = val;
@@ -312,7 +313,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      cb->count++;
 	      return true;
 	  }
-
+	  
 	  int dequeue(CircularBufferBase* cb, bool* success) {
 	      if (isEmpty(cb)) {
 	          if (success) *success = false;
@@ -324,12 +325,12 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      if (success) *success = true;
 	      return val;
 	  }
-
+	  
 	  void freeBuffer(CircularBufferBase* cb) {
 	      free(cb->buffer);
 	      free(cb);
 	  }
-
+	  
 	  int main() {
 	      CircularBufferBase* cb = createBuffer(3);
 	      enqueue(cb, 1);
@@ -342,7 +343,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      return 0;
 	  }
 	  ```
-
+	  
 	  :::
 -
 - # Alternative Variant (Overwriting Circular Buffer)
@@ -361,10 +362,10 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	          self.head = 0
 	          self.tail = 0
 	          self.count = 0
-
+	  
 	      def is_full(self) -> bool: return self.count == self.capacity
 	      def is_empty(self) -> bool: return self.count == 0
-
+	  
 	      def enqueue(self, val):
 	          if self.is_full():
 	              # Overwrite slot and shift head forward to discard oldest element
@@ -375,7 +376,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	              self.buffer[self.tail] = val
 	              self.tail = (self.tail + 1) % self.capacity
 	              self.count += 1
-
+	  
 	      def dequeue(self):
 	          if self.is_empty():
 	              return None
@@ -384,7 +385,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	          self.head = (self.head + 1) % self.capacity
 	          self.count -= 1
 	          return val
-
+	  
 	  # Example usage
 	  if __name__ == "__main__":
 	      cb = CircularBufferVariant(3)
@@ -394,12 +395,12 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      cb.enqueue(4)          # Overwrites 1. Head advances to index 1 (value 2).
 	      print(cb.dequeue())    # Output: 2
 	  ```
-
+	  
 	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <stdexcept>
-
+	  
 	  template <typename T>
 	  class CircularBufferVariant {
 	  private:
@@ -408,13 +409,13 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      int head;
 	      int tail;
 	      int count;
-
+	  
 	  public:
 	      CircularBufferVariant(int cap) : capacity(cap), buffer(cap), head(0), tail(0), count(0) {}
-
+	  
 	      bool isFull() const { return count == capacity; }
 	      bool isEmpty() const { return count == 0; }
-
+	  
 	      void enqueue(const T& val) {
 	          if (isFull()) {
 	              buffer[tail] = val;
@@ -426,7 +427,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	              count++;
 	          }
 	      }
-
+	  
 	      T dequeue() {
 	          if (isEmpty()) {
 	              throw std::underflow_error("Buffer empty");
@@ -437,7 +438,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	          return val;
 	      }
 	  };
-
+	  
 	  int main() {
 	      CircularBufferVariant<int> cb(3);
 	      cb.enqueue(1);
@@ -448,7 +449,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      return 0;
 	  }
 	  ```
-
+	  
 	  ```javascript
 	  class CircularBufferVariant {
 	      constructor(capacity) {
@@ -458,10 +459,10 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	          this.tail = 0;
 	          this.count = 0;
 	      }
-
+	  
 	      isFull() { return this.count === this.capacity; }
 	      isEmpty() { return this.count === 0; }
-
+	  
 	      enqueue(val) {
 	          if (this.isFull()) {
 	              this.buffer[this.tail] = val;
@@ -473,7 +474,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	              this.count++;
 	          }
 	      }
-
+	  
 	      dequeue() {
 	          if (this.isEmpty()) return null;
 	          const val = this.buffer[this.head];
@@ -483,7 +484,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	          return val;
 	      }
 	  }
-
+	  
 	  // Example Usage
 	  const cb = new CircularBufferVariant(3);
 	  cb.enqueue(1);
@@ -492,7 +493,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	  cb.enqueue(4); // Overwrites 1
 	  console.log(cb.dequeue()); // 2
 	  ```
-
+	  
 	  ```java
 	  public class CircularBufferVariant<T> {
 	      private final T[] buffer;
@@ -500,16 +501,16 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      private int head = 0;
 	      private int tail = 0;
 	      private int count = 0;
-
+	  
 	      @SuppressWarnings("unchecked")
 	      public CircularBufferVariant(int capacity) {
 	          this.capacity = capacity;
 	          this.buffer = (T[]) new Object[capacity];
 	      }
-
+	  
 	      public boolean isFull() { return count == capacity; }
 	      public boolean isEmpty() { return count == 0; }
-
+	  
 	      public void enqueue(T val) {
 	          if (isFull()) {
 	              buffer[tail] = val;
@@ -521,7 +522,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	              count++;
 	          }
 	      }
-
+	  
 	      public T dequeue() {
 	          if (isEmpty()) return null;
 	          T val = buffer[head];
@@ -530,7 +531,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	          count--;
 	          return val;
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          CircularBufferVariant<Integer> cb = new CircularBufferVariant<>(3);
 	          cb.enqueue(1);
@@ -541,12 +542,12 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      }
 	  }
 	  ```
-
+	  
 	  ```c
 	  #include <stdio.h>
 	  #include <stdlib.h>
 	  #include <stdbool.h>
-
+	  
 	  typedef struct {
 	      int* buffer;
 	      int capacity;
@@ -554,7 +555,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      int tail;
 	      int count;
 	  } CircularBufferVariant;
-
+	  
 	  CircularBufferVariant* createBuffer(int capacity) {
 	      CircularBufferVariant* cb = (CircularBufferVariant*)malloc(sizeof(CircularBufferVariant));
 	      cb->buffer = (int*)malloc(capacity * sizeof(int));
@@ -564,7 +565,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      cb->count = 0;
 	      return cb;
 	  }
-
+	  
 	  void enqueue(CircularBufferVariant* cb, int val) {
 	      if (cb->count == cb->capacity) {
 	          cb->buffer[cb->tail] = val;
@@ -576,7 +577,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	          cb->count++;
 	      }
 	  }
-
+	  
 	  int dequeue(CircularBufferVariant* cb, bool* success) {
 	      if (cb->count == 0) {
 	          if (success) *success = false;
@@ -588,12 +589,12 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      if (success) *success = true;
 	      return val;
 	  }
-
+	  
 	  void freeBuffer(CircularBufferVariant* cb) {
 	      free(cb->buffer);
 	      free(cb);
 	  }
-
+	  
 	  int main() {
 	      CircularBufferVariant* cb = createBuffer(3);
 	      enqueue(cb, 1);
@@ -606,7 +607,7 @@ keywords: "circular buffer, ring buffer, FIFO queue, embedded systems, O(1) comp
 	      return 0;
 	  }
 	  ```
-
+	  
 	  :::
 -
 - # When to Use Circular Buffer

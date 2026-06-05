@@ -3,6 +3,7 @@ seoTitle: DRY Principle in OOP – Complete In-Depth Guide | Don't Repeat Yourse
 description: "Deep dive into the DRY (Don't Repeat Yourself) principle. Covers why duplication hurts, how to identify and eliminate repetition using functions, classes, inheritance, and design patterns, with examples in Python, Java, and JavaScript."
 keywords: "DRY principle, Don't Repeat Yourself, code reuse, single source of truth, refactoring, Python DRY, Java DRY, design principles, SOLID, clean code, VR-Rathod, Code-Note"
 displayTitle: DRY Principle
+treeTitle: DSA - OOP - DRY Principle
 ---
 
 > [!info] What is the DRY Principle?
@@ -38,7 +39,6 @@ displayTitle: DRY Principle
 		  | **Documentation** | Same explanation in 3 places | One doc, link to it |
 		  | **Database** | Same data in two tables | Normalize into one table |
 		  | **Tests** | Same setup in every test | Shared fixture / setup function |
-
 - # DRY in Code — Before & After
   collapsed:: true
 	- ## Bad (WET) vs Good (DRY) Code
@@ -89,7 +89,6 @@ displayTitle: DRY Principle
 		  def register_admin(name: str, age: int) -> dict:
 		      return {"name": _validate_name(name), "age": _validate_age(age), "role": "admin"}
 		  ```
-
 - # Implementation
   collapsed:: true
 	- > [!note] DRY applied at the class level — eliminating duplicated discount logic, repeated email formatting, and hard-coded magic values.
@@ -122,9 +121,9 @@ displayTitle: DRY Principle
 	              raise ValueError(f"Price must be >= {PricingConfig.MIN_PRICE}")
 	  
 	      # ── DRY: Single place for tax calculation ─────────
-		  @property
-		  def price_with_tax(self) -> Decimal:
-		      return self.base_price * (1 + PricingConfig.TAX_RATE)
+	   @property
+	   def price_with_tax(self) -> Decimal:
+	       return self.base_price * (1 + PricingConfig.TAX_RATE)
 	  
 	      def apply_discount(self, rate: Decimal) -> Decimal:
 	          if rate > PricingConfig.MAX_DISCOUNT:
@@ -268,7 +267,6 @@ displayTitle: DRY Principle
 	  ```
 	  
 	  :::
-
 - # When NOT to Apply DRY — The Danger of Premature Abstraction
   collapsed:: true
 	- DRY can be over-applied. Forcing two pieces of code into one shared abstraction when they are *accidentally similar* can create **wrong couplings**.
@@ -284,7 +282,6 @@ displayTitle: DRY Principle
 	  - You're abstracting with only 2 examples — wait for a 3rd occurrence (Rule of Three)
 	  ```
 	- > [!tip] **Rule of Three**: Duplicate once (it's acceptable). Duplicate twice — consider abstracting. Duplicate a third time — abstract it now.
-
 - # Key Takeaways
   collapsed:: true
 	- **Every piece of knowledge = one authoritative representation**.
@@ -293,7 +290,6 @@ displayTitle: DRY Principle
 	- Apply via: **functions**, **classes**, **constants**, **inheritance**, **templates**, **configs**.
 	- Don't over-abstract — wait for 3+ occurrences (Rule of Three) before generalizing.
 	- Related principles: [[YAGNI Principle]], [[Single Responsibility Principle (SRP)]], [[Law of Demeter]]
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

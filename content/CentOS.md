@@ -5,6 +5,7 @@ keywords: "CentOS, CentOS Stream, CentOS commands, RHEL, enterprise Linux, DNF, 
 displayTitle: CentOS – Complete Guide
 enableToc: true
 comments: true
+treeTitle: OS - Linux Distros - CentOS
 ---
 
 - # History

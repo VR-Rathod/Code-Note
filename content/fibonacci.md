@@ -3,6 +3,7 @@ seoTitle: Fibonacci Sequence – Advanced Tips & Fast Formulas
 description: "Explore advanced tricks for Fibonacci number computation including Binet's Formula for O(1) approximations and Fast Doubling for O(log n) exact calculations."
 keywords: "Fibonacci sequence, Binet's formula, Fast Doubling, Matrix exponentiation, O(1), O(log n), time complexity, golden ratio, advanced algorithm trick, VR-Rathod, Code-Note, code note vr, vr book"
 title: Fibonacci
+treeTitle: DSA - Advanced Tips - fibonacci
 ---
 
 > [!info] Advanced Fibonacci Computations

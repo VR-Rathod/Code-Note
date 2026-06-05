@@ -4,6 +4,7 @@ description: "Advanced Linux reference covering kernel internals, system calls, 
 keywords: "linux advanced, linux kernel, linux internals, linux system calls, linux memory management, linux networking, linux hardening, linux performance, linux security, linux administration advanced, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: Linux Advanced – Kernel, Internals & Security
 enableToc: true
+treeTitle: OS - Linux Advanced
 ---
 
 - > [!info] Prerequisites
@@ -249,6 +250,8 @@ enableToc: true
 -
 - # Linux Networking Deep Dive
   collapsed:: true
+	- > [!info] Networking Context
+	  > This covers kernel-level networking. For firewall automation in pipelines see [[DevOps]]. For packet-level attack/defense see [[Cybersecurity]] and [[Ethical Hacking Advanced]].
 	- ## Network Stack Architecture
 	  ```mermaid
 	  graph TD
@@ -449,6 +452,8 @@ enableToc: true
 -
 - # Performance Analysis & Tuning
   collapsed:: true
+	- > [!info] Performance in Production
+	  > For production infrastructure automation and observability pipelines see [[DevOps]]. For container-level performance, [[Docker]] and [[Kubernetes]] cgroup limits apply the same kernel primitives shown here.
 	- ## Performance Monitoring Stack
 	  ```mermaid
 	  graph TD
@@ -572,6 +577,8 @@ enableToc: true
 	  > 8. Disable unnecessary services
 	  > 9. Configure file integrity monitoring (AIDE)
 	  > 10. Run CIS benchmark audit (Lynis)
+	  > 
+	  > For broader attack/defense context see [[Cybersecurity]] and [[Ethical Hacking Advanced]].
 	- ## SSH Hardening
 	  ```ini title="/etc/ssh/sshd_config — hardened configuration"
 	  Port 2222                           # change default port
@@ -665,7 +672,7 @@ enableToc: true
 	  ```
 	- ## Privilege Escalation Prevention
 	  > [!warning] Common Linux PrivEsc Vectors (for defenders)
-	  > Understanding these helps you **close the gaps**:
+	  > Understanding these helps you **close the gaps**. See [[Ethical Hacking Advanced]] for offensive perspective and [[Cybersecurity Architecture]] for defense-in-depth design.
 	  
 	  ```bash title="Check for common misconfigurations"
 	  # SUID binaries (should be minimal)
@@ -692,6 +699,8 @@ enableToc: true
 -
 - # Advanced Shell & Scripting
   collapsed:: true
+	- > [!info] Shell & Scripting
+	  > This section covers advanced [[Shell Script]] patterns. For a dedicated scripting reference see [[Shell Script]].
 	- ## Bash Advanced Features
 	  ```bash title="Advanced bash scripting"
 	  # Process substitution
@@ -793,6 +802,89 @@ enableToc: true
 	  # Inside tmux: Ctrl+B d=detach  Ctrl+B c=new window  Ctrl+B %=split vertical
 	  ```
 -
+- # eBPF — In-Kernel Tracing & Networking
+  collapsed:: true
+	- [[eBPF]] lets you run sandboxed programs **inside the Linux kernel** without modifying kernel source or loading modules — the modern standard for production observability (Datadog, Pixie), security (Falco, Tetragon), and networking ([[Cilium]], [[Kubernetes]] CNI).
+	- Key hook types: `kprobe` (any kernel function), `tracepoint` (stable hooks), `uprobe` (user-space), [[XDP]] (NIC driver — line-rate packet processing), `TC` (ingress/egress), `LSM BPF` (runtime [[Cybersecurity]] enforcement).
+	- → Full coverage including BPF maps, CO-RE, libbpf, bpftrace one-liners, and production tooling: [[eBPF]]
+-
+- # Linux Containers — Kernel Internals
+  collapsed:: true
+	- > [!info] Containers = Linux Kernel Primitives
+	  > A container is NOT a VM. It's an isolated process using **namespaces** (isolation) + **cgroups** (resource limits) + **overlayfs** (layered filesystem).
+	  > For Docker usage see [[Docker]]. For orchestration see [[Kubernetes]].
+	-
+	- ## Namespaces — Process Isolation
+		- | Namespace | Isolates | Key Command |
+		  |-----------|---------|-------------|
+		  | `pid` | Process IDs — container has PID 1 | `unshare --pid --fork --mount-proc bash` |
+		  | `net` | Network stack — own interfaces, routes, iptables | `ip netns add myns` |
+		  | `mnt` | Mount points — own filesystem view | `unshare --mount bash` |
+		  | `uts` | Hostname and domain name | `unshare --uts bash` |
+		  | `ipc` | SysV IPC, POSIX message queues | `unshare --ipc bash` |
+		  | `user` | UID/GID mapping — root in container ≠ root on host | `unshare --user bash` |
+		  | `cgroup` | cgroup root — hides host cgroup tree | kernel 4.6+ |
+		  | `time` | Clock offsets (monotonic, boot time) | kernel 5.6+ |
+		- ```bash title="Inspect and enter namespaces"
+		  ls -la /proc/<PID>/ns/              # all namespaces of a process
+		  sudo nsenter -t <PID> --net --pid bash  # enter a container's namespaces
+		  sudo ip netns exec myns bash        # run shell in network namespace
+		  sudo unshare --pid --fork --mount-proc bash  # new isolated PID namespace
+		  ```
+	-
+	- ## cgroups v2 — Resource Limits
+		- ```bash title="cgroups v2 resource control"
+		  # Create cgroup and add process
+		  sudo mkdir /sys/fs/cgroup/mygroup
+		  echo $$ | sudo tee /sys/fs/cgroup/mygroup/cgroup.procs
+		  # CPU: 10% of one core (100ms per 1000ms period)
+		  echo "100000 1000000" | sudo tee /sys/fs/cgroup/mygroup/cpu.max
+		  # Memory: 512 MB hard limit
+		  echo $((512*1024*1024)) | sudo tee /sys/fs/cgroup/mygroup/memory.max
+		  # I/O: 1 MB/s read on /dev/sda (major:minor = 8:0)
+		  echo "8:0 rbps=1048576" | sudo tee /sys/fs/cgroup/mygroup/io.max
+		  # Inspect via systemd
+		  systemd-cgls              # tree view of all cgroups
+		  cat /sys/fs/cgroup/mygroup/memory.current
+		  ```
+	-
+	- ## OverlayFS — Layered Filesystem
+		- ```bash title="How Docker image layers work"
+		  # lower = read-only base layers  upper = writable container layer
+		  sudo mount -t overlay overlay \
+		    -o lowerdir=lower,upperdir=upper,workdir=work merged/
+		  # Files written in the container go to upper/ only — lower is untouched
+		  docker image inspect ubuntu:22.04 | jq '.[0].GraphDriver'
+		  ls /var/lib/docker/overlay2/   # inspect layer directories
+		  ```
+	-
+	- ## Build a Container from Scratch
+		- ```bash title="Minimal container using only kernel primitives"
+		  debootstrap focal /tmp/rootfs http://archive.ubuntu.com/ubuntu
+		  sudo unshare --pid --fork --mount-proc --net --uts --ipc \
+		    chroot /tmp/rootfs /bin/bash
+		  # Now inside: ps aux shows only your processes, empty network stack
+		  ```
+	-
+	- ## seccomp — Syscall Allowlist
+		- ```bash title="seccomp profile inspection"
+		  cat /etc/docker/seccomp.json | jq '.syscalls | length'  # Docker's default profile
+		  docker run --security-opt seccomp=my-profile.json ubuntu
+		  cat /proc/$(pgrep nginx)/status | grep Seccomp  # 0=off 1=strict 2=filter
+		  ```
+		- > [!tip] See Also
+		  > [[Docker]] — full container management, Dockerfile, multi-stage builds, volumes, networking.
+		  > [[Kubernetes]] — container orchestration, pods, services, namespaces, RBAC, Helm.
+		  > [[eBPF]] — `LSM BPF` and `seccomp-bpf` for advanced runtime security policies.
+-
+- # systemd — System and Service Manager
+  collapsed:: true
+	- > [!info] systemd is PID 1
+	  > systemd is the standard init system and service manager for all major Linux distributions (Ubuntu, Debian, Fedora, Arch, RHEL).
+	  > It manages services, sockets, mount points, and timers, and handles logging via `journald`.
+	- Key components: `systemctl` (service control), `journalctl` (centralized logging), systemd unit files (`.service`, `.timer`, `.socket`), socket activation, and boot performance analysis (`systemd-analyze`).
+	- → Full reference for service management, unit files, logging, custom timers, and security hardening: [[systemd]]
+-
 - # More Learn
 	- ## Github & Webs
 		- [Linux Kernel Documentation](https://www.kernel.org/doc/html/latest/)
@@ -801,6 +893,7 @@ enableToc: true
 		- [Brendan Gregg — Linux Performance](https://www.brendangregg.com/linuxperf.html)
 		- [Linux Hardening Guide](https://madaidans-insecurities.github.io/guides/linux-hardening.html)
 		- [CIS Benchmarks](https://www.cisecurity.org/cis-benchmarks)
+		- [[eBPF]] — Complete eBPF guide with BCC, bpftrace, CO-RE, XDP
 		- [[Kali Linux]] — security tools and penetration testing
 		- [[Ubuntu]] — desktop and server administration
 		- [[Ethical Hacking Advanced]] — advanced offensive security concepts

@@ -2,6 +2,7 @@
 seoTitle: Binary Search Tree (BST) – Operations & Deletion Guide
 description: "Master Binary Search Trees (BST) in Data Structures & Algorithms. Learn about insertion, searching, deletion algorithms (Hibbard deletion), and average vs worst case complexities."
 keywords: "Binary Search Tree, BST, Hibbard Deletion, BST Insertion, BST Search, Data Structures, DSA, Tree Operations, BST C++, BST Java"
+treeTitle: DSA - Trees - Binary Search Tree (BST)
 ---
 
 > [!info] What is a Binary Search Tree (BST)?
@@ -24,7 +25,6 @@ keywords: "Binary Search Tree, BST, Hibbard Deletion, BST Insertion, BST Search,
 		- In a sorted array, searching takes $O(\log n)$ via [[Binary Search]], but inserting a new element takes $O(n)$ because elements must be shifted.
 		- A BST combines the best of both: **$O(\log n)$ search** and **$O(\log n)$ insertion/deletion** (when balanced).
 		- An **In-order traversal** of a BST always yields keys in **sorted ascending order**.
-
 - # Operations
   collapsed:: true
 	- ## 1. Searching
@@ -116,12 +116,11 @@ keywords: "Binary Search Tree, BST, Hibbard Deletion, BST Insertion, BST Search,
 		- Traversing a BST in different orders yields different useful sequences.
 		- Consider this tree: `[50, 30, 70, 20, 40, 60, 80]`
 		- **In-order (Left, Root, Right)**: Visits elements in sorted ascending order.
-		  - `20, 30, 40, 50, 60, 70, 80`
+			- `20, 30, 40, 50, 60, 70, 80`
 		- **Pre-order (Root, Left, Right)**: Useful for creating a copy of the tree.
-		  - `50, 30, 20, 40, 70, 60, 80`
+			- `50, 30, 20, 40, 70, 60, 80`
 		- **Post-order (Left, Right, Root)**: Useful for deleting the tree (children deleted before parents).
-		  - `20, 40, 30, 60, 80, 70, 50`
-
+			- `20, 40, 30, 60, 80, 70, 50`
 - # Time & Space Complexity
   collapsed:: true
 	- > [!important] The Balance Caveat
@@ -136,7 +135,6 @@ keywords: "Binary Search Tree, BST, Hibbard Deletion, BST Insertion, BST Search,
 	  | **Space Complexity** | $O(h)$ | Auxiliary recursion stack space where $h$ is height of tree. |
 	- > [!tip] Self-Balancing trees
 	  > To prevent the worst-case $O(n)$ degradation, advanced self-balancing trees like AVL Trees and Red-Black Trees dynamically rebalance themselves to ensure $h = O(\log n)$ at all times.
-
 - # Implementation
   collapsed:: true
 	- > [!note] BST Implementation

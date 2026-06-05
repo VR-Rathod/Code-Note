@@ -2,6 +2,7 @@
 seoTitle: Shell Sort Algorithm – Gap Sequence Optimization, Complexity, and Code
 description: "In-depth guide to Shell Sort. Explains gap sequences (Shell's original, Knuth's 3k+1, and Ciura's), time and space complexity, stability analysis, and full implementations in Python, C++, JavaScript, Java, and C."
 keywords: "shell sort, shellsort, gap sequence, insertion sort, Knuth sequence, Ciura sequence, in-place sort, time complexity, space complexity, comparison sort, VR-Rathod, Code-Note, Vaibhav Rathod"
+treeTitle: DSA - Sorting & Searching - Shell Sort
 ---
 
 > [!info] What is Shell Sort?
@@ -53,22 +54,22 @@ keywords: "shell sort, shellsort, gap sequence, insertion sort, Knuth sequence, 
 		- Knuth's gap condition: `gap < 8/3` (2) $\rightarrow$ Initial `gap = 4` (since $1 \times 3 + 1 = 4$).
 		-
 		- ### Pass 1 (gap = 4):
-		  - Compare indices $(0, 4) \rightarrow 9 > 5 \rightarrow$ swap $\rightarrow$ `[5, 8, 3, 7, 9, 6, 4, 1]`
-		  - Compare indices $(1, 5) \rightarrow 8 > 6 \rightarrow$ swap $\rightarrow$ `[5, 6, 3, 7, 9, 8, 4, 1]`
-		  - Compare indices $(2, 6) \rightarrow 3 < 4 \rightarrow$ no swap $\rightarrow$ `[5, 6, 3, 7, 9, 8, 4, 1]`
-		  - Compare indices $(3, 7) \rightarrow 7 > 1 \rightarrow$ swap $\rightarrow$ `[5, 6, 3, 1, 9, 8, 4, 7]`
-		  - Array after Pass 1: `[5, 6, 3, 1, 9, 8, 4, 7]`
+			- Compare indices $(0, 4) \rightarrow 9 > 5 \rightarrow$ swap $\rightarrow$ `[5, 8, 3, 7, 9, 6, 4, 1]`
+			- Compare indices $(1, 5) \rightarrow 8 > 6 \rightarrow$ swap $\rightarrow$ `[5, 6, 3, 7, 9, 8, 4, 1]`
+			- Compare indices $(2, 6) \rightarrow 3 < 4 \rightarrow$ no swap $\rightarrow$ `[5, 6, 3, 7, 9, 8, 4, 1]`
+			- Compare indices $(3, 7) \rightarrow 7 > 1 \rightarrow$ swap $\rightarrow$ `[5, 6, 3, 1, 9, 8, 4, 7]`
+			- Array after Pass 1: `[5, 6, 3, 1, 9, 8, 4, 7]`
 		-
 		- ### Pass 2 (gap = 1):
-		  - Run standard Insertion Sort:
-		  - $i=1$: `6 > 5` $\rightarrow$ `[5, 6, 3, 1, 9, 8, 4, 7]`
-		  - $i=2$: `3 < 6` and `3 < 5` $\rightarrow$ insert 3 $\rightarrow$ `[3, 5, 6, 1, 9, 8, 4, 7]`
-		  - $i=3$: `1` shifts 6, 5, 3 $\rightarrow$ insert 1 $\rightarrow$ `[1, 3, 5, 6, 9, 8, 4, 7]`
-		  - $i=4$: `9` is in place $\rightarrow$ `[1, 3, 5, 6, 9, 8, 4, 7]`
-		  - $i=5$: `8 < 9` $\rightarrow$ shift 9 $\rightarrow$ `[1, 3, 5, 6, 8, 9, 4, 7]`
-		  - $i=6$: `4` shifts 9, 8, 6, 5 $\rightarrow$ insert 4 $\rightarrow$ `[1, 3, 4, 5, 6, 8, 9, 7]`
-		  - $i=7$: `7` shifts 9, 8 $\rightarrow$ insert 7 $\rightarrow$ `[1, 3, 4, 5, 6, 7, 8, 9]`
-		  - Final Sorted Array: `[1, 3, 4, 5, 6, 7, 8, 9]`
+			- Run standard Insertion Sort:
+			- $i=1$: `6 > 5` $\rightarrow$ `[5, 6, 3, 1, 9, 8, 4, 7]`
+			- $i=2$: `3 < 6` and `3 < 5` $\rightarrow$ insert 3 $\rightarrow$ `[3, 5, 6, 1, 9, 8, 4, 7]`
+			- $i=3$: `1` shifts 6, 5, 3 $\rightarrow$ insert 1 $\rightarrow$ `[1, 3, 5, 6, 9, 8, 4, 7]`
+			- $i=4$: `9` is in place $\rightarrow$ `[1, 3, 5, 6, 9, 8, 4, 7]`
+			- $i=5$: `8 < 9` $\rightarrow$ shift 9 $\rightarrow$ `[1, 3, 5, 6, 8, 9, 4, 7]`
+			- $i=6$: `4` shifts 9, 8, 6, 5 $\rightarrow$ insert 4 $\rightarrow$ `[1, 3, 4, 5, 6, 8, 9, 7]`
+			- $i=7$: `7` shifts 9, 8 $\rightarrow$ insert 7 $\rightarrow$ `[1, 3, 4, 5, 6, 7, 8, 9]`
+			- Final Sorted Array: `[1, 3, 4, 5, 6, 7, 8, 9]`
 -
 - # Complexity Analysis
   collapsed:: true
@@ -85,7 +86,7 @@ keywords: "shell sort, shellsort, gap sequence, insertion sort, Knuth sequence, 
 - # Implementation
   collapsed:: true
 	- > [!note] Shell Sort using Knuth's Gap Sequence ($3k + 1$).
-	  - Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
+		- Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
 	-
 	- :::code-tabs
 	  
@@ -226,7 +227,7 @@ keywords: "shell sort, shellsort, gap sequence, insertion sort, Knuth sequence, 
 	      while (gap < n / 3) {
 	          gap = gap * 3 + 1;
 	      }
-  
+	  
 	      while (gap > 0) {
 	          for (int i = gap; i < n; i++) {
 	              int temp = arr[i];

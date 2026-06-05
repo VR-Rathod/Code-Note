@@ -4,6 +4,7 @@ description: "Hierholzer's algorithm finds Eulerian circuits and paths in O(E) t
 keywords: "Eulerian path, Eulerian circuit, Hierholzer algorithm, graph theory, O(E) time, directed graph, undirected graph, time complexity, space complexity, edge traversal, Eukerian Path (Hierholzer's Algorithm)"
 displayTitle: Eukerian Path (Hierholzer's Algorithm)
 title: Eukerian Path Hierholzers Algorithm
+treeTitle: DSA - Graph Algorithms - Eukerian Path (Hierholzer's Algorithm)
 ---
 
 > [!info] What is an Eulerian Path?

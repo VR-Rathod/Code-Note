@@ -3,6 +3,7 @@ seoTitle: Loose Coupling and High Cohesion in OOP – Complete Guide | Clean Arc
 description: "Deep dive into Loose Coupling and High Cohesion — two core OOP design principles. Covers what coupling and cohesion are, how to measure them, how to achieve loose coupling and high cohesion, and real-world examples."
 keywords: "loose coupling, high cohesion, OOP, coupling, cohesion, clean architecture, design principles, dependency injection, single responsibility, VR-Rathod, Code-Note"
 displayTitle: Loose Coupling and High Cohesion
+treeTitle: DSA - OOP - Loose Coupling and High Cohesion
 ---
 
 > [!info] What are Coupling and Cohesion?
@@ -38,7 +39,6 @@ displayTitle: Loose Coupling and High Cohesion
 		  # To change DB to PostgreSQL, you MUST modify ReportService!
 		  # ReportService knows too much about too many things — TIGHT coupling.
 		  ```
-
 - # Cohesion Explained
   collapsed:: true
 	- ## Types of Cohesion (Worst to Best)
@@ -64,7 +64,6 @@ displayTitle: Loose Coupling and High Cohesion
 		      def format_date(self, timestamp): ...          # belongs in DateUtils
 		  # These methods have nothing to do with each other — low cohesion!
 		  ```
-
 - # Implementation — Before & After
   collapsed:: true
 	- > [!note] Refactoring a tight-coupled, low-cohesion `OrderProcessor` to loose-coupled, high-cohesion design.
@@ -223,7 +222,6 @@ displayTitle: Loose Coupling and High Cohesion
 	  ```
 	  
 	  :::
-
 - # Quick Reference — Coupling & Cohesion Quality Grid
   collapsed:: true
 	- ```
@@ -241,14 +239,12 @@ displayTitle: Loose Coupling and High Cohesion
 	  │         LOW COHESION                                         │
 	  └──────────────────────────────────────────────────────────────┘
 	  ```
-
 - # Key Takeaways
   collapsed:: true
 	- **Loose coupling**: classes interact via abstractions (interfaces), not concrete implementations.
 	- **High cohesion**: each class has one focused purpose (links to [[Single Responsibility Principle (SRP)]]).
 	- Achieve both via: **Dependency Injection**, **Interfaces/ABCs**, **separating concerns**.
 	- Loose + Cohesive code is: **testable** (mock dependencies), **flexible** (swap implementations), **readable** (small, focused classes).
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

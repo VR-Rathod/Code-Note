@@ -2,6 +2,7 @@
 seoTitle: Delegation Pattern in OOP – Design Pattern Reference Guide
 description: "Delegation forwards method calls to a helper object. Covers delegation vs inheritance, delegate pattern, event delegation, and language-specific examples."
 keywords: "delegation, OOP, design pattern, delegate pattern, method forwarding, composition, event delegation, software design, object-oriented programming, helper object"
+treeTitle: DSA - OOP - Delegation
 ---
 
 > [!info] What is Delegation?
@@ -15,9 +16,9 @@ keywords: "delegation, OOP, design pattern, delegate pattern, method forwarding,
 		- **Inheritance** ("Is-A"): `Car` extends `Vehicle`. The subclass *is a* type of the parent class. Behavior is baked into the hierarchy.
 		- **Delegation** ("Has-A"): `Computer` has a `Printer`. The delegator holds a reference to the helper object and *forwards* specific calls to it.
 		- Delegation is preferred when:
-		  - The relationship is behavioral, not taxonomic.
-		  - You want to swap or change behavior at runtime by replacing the delegate.
-		  - Adding inheritance would create an inflexible or illogical hierarchy.
+			- The relationship is behavioral, not taxonomic.
+			- You want to swap or change behavior at runtime by replacing the delegate.
+			- Adding inheritance would create an inflexible or illogical hierarchy.
 	-
 	- ## Real-World Analogy
 	  collapsed:: true
@@ -51,7 +52,7 @@ keywords: "delegation, OOP, design pattern, delegate pattern, method forwarding,
 		      Delegator["Computer\n(Delegator)"] -- "holds reference" --> Delegate["Printer\n(Delegate)"]
 		      Client(["Client"]) -- "calls print_document()" --> Delegator
 		      Delegator -- "forwards → print()" --> Delegate
-
+		  
 		      classDef delegator fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 		      classDef delegate fill:#1f2937,stroke:#10b981,stroke-width:2px,color:#fff;
 		      classDef client fill:#374151,stroke:#6b7280,stroke-width:2px,color:#d1d5db;
@@ -59,7 +60,6 @@ keywords: "delegation, OOP, design pattern, delegate pattern, method forwarding,
 		      class Delegate delegate;
 		      class Client client;
 		  ```
-
 - # Core Concepts
   collapsed:: true
 	- ## 1. Simple Delegation
@@ -77,10 +77,9 @@ keywords: "delegation, OOP, design pattern, delegate pattern, method forwarding,
 	- ## 3. Delegation vs Composition
 	  collapsed:: true
 		- Delegation *is a form of* Composition. The distinction is intent:
-		  - **Composition**: An object is built *from* other objects (structural).
-		  - **Delegation**: An object *forwards calls* to another object (behavioral).
+			- **Composition**: An object is built *from* other objects (structural).
+			- **Delegation**: An object *forwards calls* to another object (behavioral).
 		- All delegation uses composition, but not all composition is delegation.
-
 - # Time & Space Complexity
   collapsed:: true
 	- > [!important] Complexity of Delegation
@@ -93,7 +92,6 @@ keywords: "delegation, OOP, design pattern, delegate pattern, method forwarding,
 	  | **Runtime Swapping** | $O(1)$ — replacing the delegate reference is constant time |
 	  | **Testability** | High — delegate can be replaced with a mock object |
 	  | **Coupling** | Low — delegator depends on interface, not concrete implementation |
-
 - # Implementation
   collapsed:: true
 	- > [!note] Delegation Pattern Implementation
@@ -280,7 +278,6 @@ keywords: "delegation, OOP, design pattern, delegate pattern, method forwarding,
 	  ```
 	  
 	  :::
-
 - # How It Works
   collapsed:: true
 	- ## The Core Idea
@@ -295,7 +292,7 @@ keywords: "delegation, OOP, design pattern, delegate pattern, method forwarding,
 		      participant Client
 		      participant Computer as Computer (Delegator)
 		      participant Printer as Printer (Delegate)
-
+		  
 		      Client->>Computer: printDocument("Hello")
 		      Computer->>Printer: printDoc("Hello")
 		      Printer-->>Computer: (work done)
@@ -308,29 +305,28 @@ keywords: "delegation, OOP, design pattern, delegate pattern, method forwarding,
 		  Setup:
 		    printer = StandardPrinter()
 		    computer = Computer(printer)   ← stores reference
-
+		  
 		  Client calls:
 		    computer.printDocument("Hello World")
-
+		  
 		  Inside Computer.printDocument():
 		    → self._printer.print_doc("Hello World")   ← forward to delegate
-
+		  
 		  Inside StandardPrinter.print_doc():
 		    → print("[Standard] Printing: Hello World") ← actual work
-
+		  
 		  Output: [Standard] Printing: Hello World
-
+		  
 		  Runtime swap:
 		    computer.set_printer(PDFPrinter())          ← replace delegate
-
+		  
 		  Client calls again:
 		    computer.printDocument("Hello World")
 		    → PDFPrinter.print_doc("Hello World")
 		    → print("[PDF] Exporting to PDF: Hello World")
-
+		  
 		  Output: [PDF] Exporting to PDF: Hello World
 		  ```
-
 - # Alternative Variant (Event Delegation & Transparent Proxy)
   collapsed:: true
 	- > [!tip] Event Delegation — Delegating UI Event Handling
@@ -341,16 +337,16 @@ keywords: "delegation, OOP, design pattern, delegate pattern, method forwarding,
 	  ```javascript
 	  // --- DOM Event Delegation ---
 	  // One listener on the parent <ul> handles clicks on any child <li>
-
+	  
 	  const list = document.getElementById('item-list');
-
+	  
 	  list.addEventListener('click', function(event) {
 	      if (event.target && event.target.tagName === 'LI') {
 	          console.log('Clicked item:', event.target.textContent);
 	          event.target.classList.toggle('selected');
 	      }
 	  });
-
+	  
 	  // Adding 1000 items → still only ONE event listener on the parent
 	  for (let i = 1; i <= 5; i++) {
 	      const li = document.createElement('li');
@@ -362,29 +358,28 @@ keywords: "delegation, OOP, design pattern, delegate pattern, method forwarding,
 	  ```python
 	  # --- Transparent Proxy via __getattr__ ---
 	  # Delegates ALL unknown attribute accesses automatically
-
+	  
 	  class SmartDelegate:
 	      def __init__(self, delegate):
 	          self._delegate = delegate
-
+	  
 	      def __getattr__(self, name):
 	          # Forward any attribute/method not on SmartDelegate itself
 	          return getattr(self._delegate, name)
-
+	  
 	      def __repr__(self):
 	          return f"SmartDelegate({self._delegate!r})"
-
+	  
 	  class Printer:
 	      def print_doc(self, text): print(f"Printing: {text}")
 	      def get_status(self): return "Ready"
-
+	  
 	  proxy = SmartDelegate(Printer())
 	  proxy.print_doc("Hello")    # Printing: Hello
 	  print(proxy.get_status())   # Ready
 	  ```
 	  
 	  :::
-
 - # When to Use Delegation
   collapsed:: true
 	- ```mermaid
@@ -396,7 +391,7 @@ keywords: "delegation, OOP, design pattern, delegate pattern, method forwarding,
 	      S2 -- No --> R2["Use Inheritance"]
 	      S2 -- Yes --> R3["✅ Use Delegation\n(forward to delegate object)"]
 	      S1 -- No --> R3
-
+	  
 	      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 	  ```
 	-
@@ -410,7 +405,6 @@ keywords: "delegation, OOP, design pattern, delegate pattern, method forwarding,
 		- The forwarded behavior is **trivial** and only ever used in one place — a simple method call is enough.
 		- The overhead of maintaining a delegate reference and interface outweighs the flexibility gained.
 		- The behavior is genuinely **intrinsic to the class** — use regular inheritance or direct implementation.
-
 - # Key Takeaways
   collapsed:: true
 	- **"Has-A" Pattern** — The delegator *has a* reference to the delegate and uses it to get work done.
@@ -419,7 +413,6 @@ keywords: "delegation, OOP, design pattern, delegate pattern, method forwarding,
 	- **Testability** — Delegates can be independently tested and easily mocked during unit testing of the delegator.
 	- **Interface Coupling** — Well-designed delegation programs to an interface, not a concrete class, giving maximum flexibility.
 	- **Foundation of Composition** — Delegation is the behavioral core of the "Composition over Inheritance" principle.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

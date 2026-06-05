@@ -3,6 +3,7 @@ seoTitle: Abstract Classes in OOP – Complete In-Depth Guide | Abstract Methods
 description: "Deep dive into Abstract Classes in OOP. Covers what abstract classes are, abstract vs concrete methods, abstract class vs interface, the template method pattern, and examples in Python, C++, Java, JavaScript, and C#."
 keywords: "abstract class, OOP, abstract method, ABC, template method, Python abstract class, Java abstract class, C++ pure virtual, interface vs abstract class, VR-Rathod, Code-Note"
 displayTitle: Abstract Classes
+treeTitle: DSA - OOP - Abstract Classes
 ---
 
 > [!info] What is an Abstract Class?
@@ -49,7 +50,6 @@ displayTitle: Abstract Classes
 		      def analyze(self, data: list) -> dict:  # concrete default
 		          return {"count": len(data)}
 		  ```
-
 - # Implementation
   collapsed:: true
 	- > [!note] A `Shape` abstract class hierarchy + a `DataExporter` template method pattern.
@@ -350,7 +350,6 @@ displayTitle: Abstract Classes
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Abstract class** = template for subclasses — defines what must be done, may show how common parts work.
@@ -358,7 +357,6 @@ displayTitle: Abstract Classes
 	- Mix of **abstract methods** (must override) and **concrete methods** (optional to override).
 	- Prefer **abstract class** when: related classes share code + state. Prefer **interface** when: unrelated classes share capability.
 	- Enables **Template Method Pattern** — define algorithm skeleton in base, defer variable steps to subclasses.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

@@ -2,6 +2,7 @@
 seoTitle: Counting Sort Algorithm – Implementation, Range Offset, and Stability
 description: "In-depth guide to Counting Sort. Details non-comparative sorting mechanics, offset calculations to handle negative integers, stable element positioning, and complete implementations in Python, C++, JavaScript, Java, and C."
 keywords: "counting sort, non-comparison sort, linear time sort, O(n+k), stable sort, integer sorting, time complexity, space complexity, VR-Rathod, Code-Note, Vaibhav Rathod"
+treeTitle: DSA - Sorting & Searching - Counting Sort
 ---
 
 > [!info] What is Counting Sort?
@@ -88,7 +89,7 @@ keywords: "counting sort, non-comparison sort, linear time sort, O(n+k), stable 
 - # Implementation
   collapsed:: true
 	- > [!note] Stable implementations supporting negative integers.
-	  - Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
+		- Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
 	-
 	- :::code-tabs
 	  

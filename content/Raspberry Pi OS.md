@@ -5,6 +5,7 @@ keywords: "Raspberry Pi OS, Raspbian, GPIO, Broadcom SoC, Device Tree, config.tx
 displayTitle: Raspberry Pi OS – Complete Guide
 enableToc: true
 comments: true
+treeTitle: OS - Linux Distros - Raspberry Pi OS
 ---
 
 - # History

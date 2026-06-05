@@ -3,6 +3,7 @@ seoTitle: Law of Demeter in OOP – Complete Guide | Principle of Least Knowledg
 description: "Deep dive into the Law of Demeter (LoD) / Principle of Least Knowledge. Covers what LoD is, method chaining violations, the Tell-Don't-Ask principle, and how to refactor to comply, with examples in Python and Java."
 keywords: "Law of Demeter, Principle of Least Knowledge, Tell Don't Ask, coupling, object-oriented design, method chaining, LoD, clean code, SOLID, VR-Rathod, Code-Note"
 displayTitle: Law of Demeter
+treeTitle: DSA - OOP - Law of Demeter
 ---
 
 > [!info] What is the Law of Demeter?
@@ -49,7 +50,6 @@ displayTitle: Law of Demeter
 		  # order asks customer, customer asks membership, membership asks discount
 		  # Each object only talks to its immediate friend
 		  ```
-
 - # Tell, Don't Ask
   collapsed:: true
 	- The **Tell, Don't Ask** principle is closely related to LoD — instead of asking an object for its data to make a decision, **tell the object to make the decision itself**.
@@ -61,7 +61,6 @@ displayTitle: Law of Demeter
 	  # ✅ Telling (LoD-compliant)
 	  employee.giveRaise(10)  # employee decides how to apply the raise
 	  ```
-
 - # Implementation
   collapsed:: true
 	- > [!note] Refactoring an order system from LoD-violating code to compliant code.
@@ -241,7 +240,6 @@ displayTitle: Law of Demeter
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **"Only talk to your immediate friends"** — don't navigate deep into object graphs.
@@ -250,7 +248,6 @@ displayTitle: Law of Demeter
 	- Related pattern: **Tell, Don't Ask** — tell objects what to do; don't ask for data to decide externally.
 	- Reduces **coupling** — code depends on fewer classes, making changes safer.
 	- Related principles: [[Loose Coupling and High Cohesion]], [[DRY Principle]]
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

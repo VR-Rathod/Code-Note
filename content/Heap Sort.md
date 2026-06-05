@@ -2,6 +2,7 @@
 seoTitle: Heap Sort Algorithm – Implementation, Heap Mechanics, and Complexity
 description: "In-depth guide to Heap Sort. Explains max-heap representation, O(n) heapify phase, in-place sorting steps, stability, and complete code in Python, C++, JavaScript, Java, and C."
 keywords: "heap sort, heapsort, binary heap, max heap, heapify, O(n log n), unstable sort, in-place sort, time complexity, space complexity, comparison sort, VR-Rathod, Code-Note, Vaibhav Rathod"
+treeTitle: DSA - Sorting & Searching - Heap Sort
 ---
 
 > [!info] What is Heap Sort?
@@ -112,7 +113,7 @@ keywords: "heap sort, heapsort, binary heap, max heap, heapify, O(n log n), unst
 - # Implementation
   collapsed:: true
 	- > [!note] In-place Heap Sort implementations using max-heaps.
-	  - Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
+		- Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
 	-
 	- :::code-tabs
 	  

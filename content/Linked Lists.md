@@ -2,6 +2,7 @@
 seoTitle: Linked Lists Data Structure - Premium DSA Guide
 description: "Master Linked Lists. Explore Singly, Doubly, and Circular linked lists. Understand pointer manipulation, operations, and implement lists in Python, C++, JavaScript, Java, and C."
 keywords: "Linked List, DSA, Data Structures, Singly Linked List, Doubly Linked List, Pointer Manipulation, Node, Python, C++, Java"
+treeTitle: DSA - Linear Data Structures - Linked Lists
 ---
 
 > [!info] What is a Linked List?

@@ -4,6 +4,7 @@ description: "Comprehensive Fedora Linux reference covering installation, DNF pa
 keywords: "Fedora Linux, fedora guide, fedora commands, fedora dnf, fedora tutorial, fedora administration, fedora server, fedora workstation, fedora security, SELinux, Wayland, Flatpak, Podman, Cockpit, Btrfs, fedora notes, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: Fedora Linux – Complete Guide
 enableToc: true
+treeTitle: OS - Linux Distros - Fedora
 ---
 
 - # History

@@ -3,6 +3,7 @@ seoTitle: Inheritance in OOP – Complete In-Depth Guide | Types, Method Resolut
 description: "Deep dive into Inheritance in OOP. Covers single, multi-level, multiple, hierarchical, and hybrid inheritance, method resolution order (MRO), the super() keyword, and IS-A relationships with examples in Python, C++, Java, JavaScript, and C#."
 keywords: "inheritance, OOP, single inheritance, multiple inheritance, multilevel inheritance, hierarchical inheritance, method resolution order, MRO, super keyword, is-a relationship, Python inheritance, Java inheritance, C++ inheritance, VR-Rathod, Code-Note"
 displayTitle: Inheritance
+treeTitle: DSA - OOP - Inheritance
 ---
 
 > [!info] What is Inheritance?
@@ -31,7 +32,6 @@ displayTitle: Inheritance
 		  Student IS-A Person     Dog HAS-A Tail     (not: Tail IS-A Dog)
 		  Manager IS-A Employee   User HAS-A Address (not: Address IS-A User)
 		  ```
-
 - # Types of Inheritance
   collapsed:: true
 	- ## 1. Single Inheritance
@@ -80,7 +80,6 @@ displayTitle: Inheritance
 	  collapsed:: true
 		- A combination of multiple inheritance types. Can create the **Diamond Problem** (ambiguity in method resolution).
 		- Python resolves this with **MRO (Method Resolution Order)** using C3 linearization.
-
 - # Method Resolution Order (MRO)
   collapsed:: true
 	- When multiple parents define the same method, which one gets called? MRO answers this.
@@ -102,7 +101,6 @@ displayTitle: Inheritance
 	  d.greet()          # Hello from B  (MRO: D → B → C → A)
 	  print(D.__mro__)   # (<class 'D'>, <class 'B'>, <class 'C'>, <class 'A'>, <class 'object'>)
 	  ```
-
 - # The `super()` Keyword
   collapsed:: true
 	- `super()` calls a method from the **parent class**, allowing you to extend (not replace) inherited behavior.
@@ -130,7 +128,6 @@ displayTitle: Inheritance
 	  # Dog created: breed=Labrador
 	  print(dog.speak())  # Buddy makes a sound — Woof!
 	  ```
-
 - # Implementation
   collapsed:: true
 	- > [!note] Full multi-level inheritance example: `Animal → Mammal → Dog` demonstrating inheritance, super(), method overriding, and polymorphism.
@@ -422,7 +419,6 @@ displayTitle: Inheritance
 	  ```
 	  
 	  :::
-
 - # When to Use Inheritance
   collapsed:: true
 	- ```mermaid
@@ -443,7 +439,6 @@ displayTitle: Inheritance
 		- The relationship is **HAS-A** not IS-A (prefer [[Composition]]).
 		- You are inheriting just to reuse code with **no logical relationship** (use [[Mixin]] or utility functions).
 		- Deep inheritance chains (more than 3–4 levels) make code hard to follow.
-
 - # Key Takeaways
   collapsed:: true
 	- **IS-A** — inheritance models "is-a" relationships. Always verify before using.
@@ -452,7 +447,6 @@ displayTitle: Inheritance
 	- **MRO** — Python uses C3 linearization to resolve method lookup order in multiple inheritance.
 	- **Polymorphism enabler** — base class references can hold derived class objects, and virtual methods dispatch correctly at runtime.
 	- Prefer **shallow** hierarchies — deep chains hurt readability and maintainability.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

@@ -2,6 +2,7 @@
 seoTitle: Crit-bit Trees Explained – Fast Binary Trie with Compact Footprint
 description: "A comprehensive reference for Crit-bit Trees (PATRICIA tries). Covers critical bit indexing, binary branch traversal, insertions, deletions, and implementations in Python and C++."
 keywords: "crit-bit tree, binary trie, prefix tree, string lookup, critical bit, radix tree, time complexity, space complexity, data structure, key-value store, VR-Rathod, Code-Note, code note vr, vr book"
+treeTitle: DSA - Trees - Crit bit Trees
 ---
 
 > [!info] What is a Crit-bit Tree?
@@ -16,9 +17,9 @@ keywords: "crit-bit tree, binary trie, prefix tree, string lookup, critical bit,
 	  collapsed:: true
 		- Think of a **customs passport checkpoint**.
 		- Instead of reading your entire passport details line by line at each gate, the system has checkpoints that ask only binary questions:
-		  - "Is the 3rd letter of your passport ID 'A' or 'B'?" -> Go left or right.
-		  - "Is the 7th letter 'X' or 'Y'?" -> Go left or right.
-		  - Only when you reach the final booth does the officer do a full comparison check of your passport to verify it matches.
+			- "Is the 3rd letter of your passport ID 'A' or 'B'?" -> Go left or right.
+			- "Is the 7th letter 'X' or 'Y'?" -> Go left or right.
+			- Only when you reach the final booth does the officer do a full comparison check of your passport to verify it matches.
 	-
 	- ## Why Crit-bit Trees?
 	  collapsed:: true

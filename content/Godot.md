@@ -2,6 +2,7 @@
 seoTitle: Godot Engine Notes – Complete Game Dev Reference
 description: "Complete Godot 4 reference — scenes, nodes, physics, animation, shaders, networking, UI, audio, and 3D development. GDScript language reference is in the dedicated GDScript note."
 keywords: "Godot engine, Godot 4, game development, Godot nodes, Godot physics, Godot animation, Godot shaders, open source game engine, 2D game development, 3D game development, godot notes, godot guide, godot cheatsheet, godot reference, GDScript, VR-Rathod, Code-Note, code note vr, vr book"
+treeTitle: Game Development - Engines - Godot
 ---
 
 - # History

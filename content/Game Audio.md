@@ -3,6 +3,7 @@ seoTitle: Game Audio – Complete Sound Design & Implementation Guide
 description: "Comprehensive game audio reference covering audio fundamentals, FMOD, Wwise, adaptive music, 3D spatial audio, DSP effects, audio optimization, and engine integration from beginner to super advanced."
 keywords: "game audio, FMOD, Wwise, adaptive music, spatial audio, 3D audio, DSP effects, audio middleware, game sound design, audio implementation, audio optimization, HRTF, audio engine, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: Game Audio
+treeTitle: Game Development - Audio
 ---
 
 > [!info] About This Page

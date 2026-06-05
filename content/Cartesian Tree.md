@@ -2,6 +2,7 @@
 seoTitle: Cartesian Tree – Hybrid BST & Heap Properties Guide
 description: "Master Cartesian Trees in DSA. Learn $O(N)$ construction from arrays using a monotonic stack, range minimum query mapping, and comparisons with Treaps."
 keywords: "Cartesian Tree, Treap, Heap Property, BST Property, Monotonic Stack, RMQ, Range Minimum Query, Data Structures, DSA, Cartesian Tree Python, Cartesian Tree C++"
+treeTitle: DSA - Trees - Cartesian Tree
 ---
 
 > [!info] What is a Cartesian Tree?
@@ -15,10 +16,10 @@ keywords: "Cartesian Tree, Treap, Heap Property, BST Property, Monotonic Stack, 
 	  collapsed:: true
 		- For any array, its Cartesian Tree is **unique** if all elements are distinct.
 		- If we construct a Min-Heap Cartesian tree:
-		  - The minimum element of the array becomes the **Root**.
-		  - All elements to the left of this minimum in the array form the **Left Subtree**.
-		  - All elements to the right of this minimum in the array form the **Right Subtree**.
-		  - This structure repeats recursively.
+			- The minimum element of the array becomes the **Root**.
+			- All elements to the left of this minimum in the array form the **Left Subtree**.
+			- All elements to the right of this minimum in the array form the **Right Subtree**.
+			- This structure repeats recursively.
 	-
 	- ## Treap Relationship
 	  collapsed:: true
@@ -28,9 +29,8 @@ keywords: "Cartesian Tree, Treap, Heap Property, BST Property, Monotonic Stack, 
 	- ## Range Minimum Query (RMQ) Connection
 	  collapsed:: true
 		- Cartesian Trees are closely linked to range queries:
-		  - The Lowest Common Ancestor (LCA) of nodes corresponding to indices $i$ and $j$ in a Cartesian tree is the **minimum element** in the subarray `arr[i...j]`.
-		  - This reduces the RMQ problem to an LCA query on the Cartesian tree.
-
+			- The Lowest Common Ancestor (LCA) of nodes corresponding to indices $i$ and $j$ in a Cartesian tree is the **minimum element** in the subarray `arr[i...j]`.
+			- This reduces the RMQ problem to an LCA query on the Cartesian tree.
 - # How It Works (O(N) Construction)
   collapsed:: true
 	- While a naive recursive construction takes $O(N^2)$ (always scanning for the minimum), we can construct it in **linear $O(N)$ time** using a **Monotonic Stack**.
@@ -68,7 +68,6 @@ keywords: "Cartesian Tree, Treap, Heap Property, BST Property, Monotonic Stack, 
 		      
 		      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 		  ```
-
 - # Time & Space Complexity
   collapsed:: true
 	- > [!important] Complexity Summary
@@ -79,7 +78,6 @@ keywords: "Cartesian Tree, Treap, Heap Property, BST Property, Monotonic Stack, 
 	  |-----------|-----------------|------------------|
 	  | **Build (Stack)** | $O(N)$ | $O(N)$ auxiliary stack space |
 	  | **LCA Query (RMQ)** | $O(1)$ after preprocessing | $O(N)$ tree storage |
-
 - # Implementation
   collapsed:: true
 	- > [!note] O(N) Cartesian Tree Construction

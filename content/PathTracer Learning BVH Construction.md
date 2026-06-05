@@ -4,6 +4,7 @@ description: "BVH construction organizes scene geometry for fast ray intersectio
 keywords: "BVH construction, bounding volume hierarchy, SAH, surface area heuristic, LBVH, ray tracing, path tracing, GPU rendering, Vulkan, acceleration structure, BVH"
 title: PathTracer Learning BVH Construction
 tags::  bvh, acceleration-structure, 
+treeTitle: Game Development - Path Tracing - BVH Construction
 ---
 
 - # Concept: BVH Construction

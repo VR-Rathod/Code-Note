@@ -2,6 +2,7 @@
 seoTitle: FM-Index Complete Guide – Burrows-Wheeler Transform & Backward Search
 description: "A comprehensive guide to the FM-index (Ferragina-Manzini index). Covers suffix arrays, BWT construction, LF-mapping, backward search, complexity, and full Python/C++ implementations."
 keywords: "FM-index, Burrows-Wheeler Transform, BWT, suffix array, LF-mapping, backward search, string matching, bioinformatics, data compression, VR-Rathod, Code-Note, code note vr, vr book"
+treeTitle: DSA - Advanced Data Structures - FM index
 ---
 
 > [!info] What is the FM-Index?

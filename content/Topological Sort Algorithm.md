@@ -3,6 +3,7 @@ seoTitle: Topological Sort Algorithm – DAG Ordering with DFS and Kahn's
 description: "Comprehensive guide to Topological Sorting. Covers Directed Acyclic Graphs (DAG), Kahn's BFS Algorithm, DFS-based post-order stack, and O(V+E) time complexity."
 keywords: "topological sort, DAG, directed acyclic graph, DFS, Kahn algorithm, BFS, cycle detection, O(V+E), time complexity, space complexity, dependency resolution, VR-Rathod, Code-Note, Topological Sort Algorithm"
 displayTitle: Topological Sort Algorithm
+treeTitle: DSA - Graph Algorithms - Topological Sort Algorithm
 ---
 
 > [!info] What is Topological Sort?
@@ -31,9 +32,9 @@ displayTitle: Topological Sort Algorithm
 		- Calculate the **in-degree** (number of incoming edges) for every vertex.
 		- Push all vertices with an in-degree of `0` into a Queue.
 		- While the Queue is not empty:
-		  - Pop vertex `U`. Add `U` to the topological order array.
-		  - For every neighbor `V` of `U`, decrement `V`'s in-degree by 1.
-		  - If `V`'s in-degree hits `0`, push `V` into the Queue.
+			- Pop vertex `U`. Add `U` to the topological order array.
+			- For every neighbor `V` of `U`, decrement `V`'s in-degree by 1.
+			- If `V`'s in-degree hits `0`, push `V` into the Queue.
 		- If the final sorted array doesn't contain all $V$ vertices, the graph has a cycle!
 		-
 		- ```mermaid
@@ -58,9 +59,9 @@ displayTitle: Topological Sort Algorithm
 		- Create an empty Stack and a `visited` boolean array.
 		- Loop through all vertices. If a vertex is unvisited, launch a `DFS(vertex)`.
 		- Inside `DFS(u)`:
-		  - Mark `u` as visited.
-		  - Recursively call DFS on all unvisited neighbors of `u`.
-		  - Once all neighbors are processed, **Push `u` to the Stack**.
+			- Mark `u` as visited.
+			- Recursively call DFS on all unvisited neighbors of `u`.
+			- Once all neighbors are processed, **Push `u` to the Stack**.
 		- After the loop finishes, popping everything off the stack yields the topological order.
 -
 - # Time & Space Complexity

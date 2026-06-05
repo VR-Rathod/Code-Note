@@ -3,6 +3,7 @@ seoTitle: Activity Selection Problem – Greedy Interval Scheduling Algorithm Gu
 description: "Master the Activity Selection Problem using greedy interval scheduling. Covers earliest finish time strategy, exchange argument proof, weighted variant with DP, and full implementations in Python, C++, JavaScript, and Java."
 keywords: "activity selection problem, interval scheduling, greedy algorithm, earliest finish time, non-overlapping intervals, weighted job scheduling, DP, Python, C++, Java, JavaScript, DSA"
 displayTitle: Activity Selection Problem
+treeTitle: DSA - DP & Greedy - Activity Selection Problem
 ---
 
 > [!info] What is the Activity Selection Problem?

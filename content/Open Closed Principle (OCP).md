@@ -3,6 +3,7 @@ seoTitle: Open Closed Principle (OCP) – Complete Guide | Open for Extension, C
 description: "Deep dive into the Open/Closed Principle (OCP) from SOLID. Covers what it means to be open for extension and closed for modification, how to use polymorphism and strategy pattern for OCP, and examples in Python, Java, and JavaScript."
 keywords: "Open Closed Principle, OCP, SOLID, open for extension, closed for modification, polymorphism, strategy pattern, Python OCP, Java OCP, clean architecture, VR-Rathod, Code-Note"
 displayTitle: Open Closed Principle (OCP)
+treeTitle: DSA - OOP - Open Closed Principle (OCP)
 ---
 
 > [!info] What is the Open/Closed Principle?
@@ -57,7 +58,6 @@ displayTitle: Open Closed Principle (OCP)
 		  shapes = [Circle(5), Rectangle(4, 6), Triangle(3, 8)]
 		  print(calculate_total_area(shapes))  # 127.42
 		  ```
-
 - # Implementation
   collapsed:: true
 	- > [!note] A discount system — adding new discount types without modifying the calculation engine.
@@ -250,7 +250,6 @@ displayTitle: Open Closed Principle (OCP)
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Open for extension** — new behavior can be added by writing new code (new classes/functions).
@@ -258,7 +257,6 @@ displayTitle: Open Closed Principle (OCP)
 	- Implemented via **polymorphism**, **abstract classes**, **interfaces**, and **strategy/plugin patterns**.
 	- The key: define **stable abstractions** (interfaces) that vary points implement — the core code never sees the concrete type.
 	- Closely related to: [[Strategy Pattern]], [[Polymorphism]], [[Dependency Inversion Principle (DIP)]]
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

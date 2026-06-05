@@ -2,6 +2,7 @@
 seoTitle: Convex Hull Divide and Conquer – Recursive Merge & Tangents Guide
 description: "Divide and Conquer Convex Hull recursively splits the point set and merges hulls via upper and lower tangents. Covers tangent walk algorithms, O(n log n) merge complexity, and implementations in Python, C++, JavaScript, and Java."
 keywords: "convex hull, divide and conquer, computational geometry, upper tangent, lower tangent, tangent walk, O(n log n), merge hull, point set, recursive algorithm"
+treeTitle: DSA - Math & Geometry - Convex Hull Divide and Conquer
 ---
 
 > [!info] What is Divide and Conquer Convex Hull?
@@ -45,12 +46,12 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	  collapsed:: true
 		- 1. Let $A$ be the rightmost point on the left hull, and $B$ be the leftmost point on the right hull.
 		- 2. To find the **Upper Tangent**:
-		   - Check if the segment $AB$ can be pushed higher.
-		   - Move $A$ counter-clockwise (upward along the left hull) if it makes the angle with $B$ steeper.
-		   - Move $B$ clockwise (upward along the right hull) if it makes the angle with $A$ steeper.
-		   - Repeat this until no further steps can be made on either side.
+			- Check if the segment $AB$ can be pushed higher.
+			- Move $A$ counter-clockwise (upward along the left hull) if it makes the angle with $B$ steeper.
+			- Move $B$ clockwise (upward along the right hull) if it makes the angle with $A$ steeper.
+			- Repeat this until no further steps can be made on either side.
 		- 3. To find the **Lower Tangent**:
-		   - Move $A$ clockwise (downward along the left hull) and $B$ counter-clockwise (downward along the right hull) until no further steps can be made.
+			- Move $A$ clockwise (downward along the left hull) and $B$ counter-clockwise (downward along the right hull) until no further steps can be made.
 		-
 - # Merge Step Walkthrough
   collapsed:: true
@@ -61,7 +62,7 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 		  Let n1 = size(left_hull), n2 = size(right_hull)
 		  Let ia = index of rightmost point in left_hull
 		  Let ib = index of leftmost point in right_hull
-
+		  
 		  ia_curr = ia, ib_curr = ib
 		  done = false
 		  while not done:
@@ -74,7 +75,7 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 		      while direction(right_hull[ib_curr], left_hull[ia_curr], right_hull[(ib_curr + 1) % n2]) is CW:
 		          ib_curr = (ib_curr + 1) % n2
 		          done = false
-
+		  
 		  UPPER_TANGENT = (left_hull[ia_curr], right_hull[ib_curr])
 		  ```
 		-
@@ -96,17 +97,17 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	  > Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
-
+	  
 	  ```python
 	  def orientation(p, q, r):
 	      val = (q[1] - p[1]) * (r[0] - q[0]) - (q[0] - p[0]) * (r[1] - q[1])
 	      if val == 0:
 	          return 0  # Collinear
 	      return 1 if val > 0 else 2  # 1 -> Clockwise, 2 -> Counter-Clockwise
-
+	  
 	  def dist_sq(p1, p2):
 	      return (p1[0] - p2[0])**2 + (p1[1] - p2[1])**2
-
+	  
 	  def graham_scan_for_base(points):
 	      # Simple utility to build small hulls (size <= 5)
 	      n = len(points)
@@ -124,9 +125,9 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	              stack.pop()
 	          stack.append(p)
 	      return stack
-
+	  
 	  import math
-
+	  
 	  def merge_hulls(left_hull, right_hull):
 	      # Both hulls are in clockwise order
 	      n1 = len(left_hull)
@@ -191,7 +192,7 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	          idx = (idx + 1) % n2
 	          
 	      return merged
-
+	  
 	  def divide_and_conquer_hull(points):
 	      if len(points) <= 5:
 	          # Small base cases solved via Graham Scan
@@ -208,32 +209,32 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	      right_hull = divide_and_conquer_hull(points[mid:])
 	      
 	      return merge_hulls(left_hull, right_hull)
-
+	  
 	  # Example usage
 	  pts = [(0, 3), (1, 1), (2, 2), (4, 4), (0, 0), (1, 2), (3, 1), (3, 3)]
 	  print("Convex Hull (CW order):", divide_and_conquer_hull(pts))
 	  ```
-
+	  
 	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <algorithm>
 	  #include <cmath>
-
+	  
 	  struct Point {
 	      int x, y;
 	  };
-
+	  
 	  int orientation(Point p, Point q, Point r) {
 	      int val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
 	      if (val == 0) return 0;
 	      return (val > 0) ? 1 : 2; // 1: CW, 2: CCW
 	  }
-
+	  
 	  int distSq(Point p1, Point p2) {
 	      return (p1.x - p2.x)*(p1.x - p2.x) + (p1.y - p2.y)*(p1.y - p2.y);
 	  }
-
+	  
 	  std::vector<Point> smallHull(std::vector<Point>& points) {
 	      int n = points.size();
 	      if (n < 3) return points;
@@ -258,13 +259,13 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	      }
 	      return hull;
 	  }
-
+	  
 	  std::vector<Point> mergeHulls(const std::vector<Point>& left, const std::vector<Point>& right) {
 	      int n1 = left.size(), n2 = right.size();
 	      int ia = 0, ib = 0;
 	      for (int i = 1; i < n1; i++) if (left[i].x > left[ia].x) ia = i;
 	      for (int i = 1; i < n2; i++) if (right[i].x < right[ib].x) ib = i;
-
+	  
 	      int ia_u = ia, ib_u = ib;
 	      bool done = false;
 	      while (!done) {
@@ -278,7 +279,7 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	              done = false;
 	          }
 	      }
-
+	  
 	      int ia_l = ia, ib_l = ib;
 	      done = false;
 	      while (!done) {
@@ -292,7 +293,7 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	              done = false;
 	          }
 	      }
-
+	  
 	      std::vector<Point> merged;
 	      int idx = ia_u;
 	      while (true) {
@@ -308,7 +309,7 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	      }
 	      return merged;
 	  }
-
+	  
 	  std::vector<Point> divideAndConquer(std::vector<Point>& points) {
 	      if (points.size() <= 5) {
 	          auto hull = smallHull(points);
@@ -328,7 +329,7 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	      auto right_hull = divideAndConquer(right);
 	      return mergeHulls(left_hull, right_hull);
 	  }
-
+	  
 	  int main() {
 	      std::vector<Point> points = {{0, 3}, {1, 1}, {2, 2}, {4, 4}, {0, 0}, {1, 2}, {3, 1}, {3, 3}};
 	      auto hull = divideAndConquer(points);
@@ -338,18 +339,18 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	      return 0;
 	  }
 	  ```
-
+	  
 	  ```javascript
 	  function orientation(p, q, r) {
 	      const val = (q[1] - p[1]) * (r[0] - q[0]) - (q[0] - p[0]) * (r[1] - q[1]);
 	      if (val === 0) return 0;
 	      return (val > 0) ? 1 : 2; // 1: CW, 2: CCW;
 	  }
-
+	  
 	  function distSq(p1, p2) {
 	      return (p1[0] - p2[0])**2 + (p1[1] - p2[1])**2;
 	  }
-
+	  
 	  function smallHull(points) {
 	      const n = points.length;
 	      if (n < 3) return points;
@@ -374,13 +375,13 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	      }
 	      return stack;
 	  }
-
+	  
 	  function mergeHulls(left, right) {
 	      const n1 = left.length, n2 = right.length;
 	      let ia = 0, ib = 0;
 	      for (let i = 1; i < n1; i++) if (left[i][0] > left[ia][0]) ia = i;
 	      for (let i = 1; i < n2; i++) if (right[i][0] < right[ib][0]) ib = i;
-
+	  
 	      let ia_u = ia, ib_u = ib;
 	      let done = false;
 	      while (!done) {
@@ -394,7 +395,7 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	              done = false;
 	          }
 	      }
-
+	  
 	      let ia_l = ia, ib_l = ib;
 	      done = false;
 	      while (!done) {
@@ -408,7 +409,7 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	              done = false;
 	          }
 	      }
-
+	  
 	      const merged = [];
 	      let idx = ia_u;
 	      while (true) {
@@ -424,7 +425,7 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	      }
 	      return merged;
 	  }
-
+	  
 	  function divideAndConquer(points) {
 	      if (points.length <= 5) {
 	          const hull = smallHull(points);
@@ -440,30 +441,30 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	      const rightHull = divideAndConquer(right);
 	      return mergeHulls(leftHull, rightHull);
 	  }
-
+	  
 	  const pts = [[0, 3], [1, 1], [2, 2], [4, 4], [0, 0], [1, 2], [3, 1], [3, 3]];
 	  console.log("Convex Hull:", divideAndConquer(pts));
 	  ```
-
+	  
 	  ```java
 	  import java.util.*;
-
+	  
 	  public class ConvexHullDivideAndConquer {
 	      static class Point {
 	          int x, y;
 	          Point(int x, int y) { this.x = x; this.y = y; }
 	      }
-
+	  
 	      static int orientation(Point p, Point q, Point r) {
 	          int val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
 	          if (val == 0) return 0;
 	          return (val > 0) ? 1 : 2; // 1: CW, 2: CCW
 	      }
-
+	  
 	      static int distSq(Point p1, Point p2) {
 	          return (p1.x - p2.x)*(p1.x - p2.x) + (p1.y - p2.y)*(p1.y - p2.y);
 	      }
-
+	  
 	      static List<Point> smallHull(List<Point> points) {
 	          int n = points.size();
 	          if (n < 3) return points;
@@ -494,13 +495,13 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	          }
 	          return hull;
 	      }
-
+	  
 	      static List<Point> mergeHulls(List<Point> left, List<Point> right) {
 	          int n1 = left.size(), n2 = right.size();
 	          int ia = 0, ib = 0;
 	          for (int i = 1; i < n1; i++) if (left.get(i).x > left.get(ia).x) ia = i;
 	          for (int i = 1; i < n2; i++) if (right.get(i).x < right.get(ib).x) ib = i;
-
+	  
 	          int ia_u = ia, ib_u = ib;
 	          boolean done = false;
 	          while (!done) {
@@ -514,7 +515,7 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	                  done = false;
 	              }
 	          }
-
+	  
 	          int ia_l = ia, ib_l = ib;
 	          done = false;
 	          while (!done) {
@@ -528,7 +529,7 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	                  done = false;
 	              }
 	          }
-
+	  
 	          List<Point> merged = new ArrayList<>();
 	          int idx = ia_u;
 	          while (true) {
@@ -544,7 +545,7 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	          }
 	          return merged;
 	      }
-
+	  
 	      static List<Point> divideAndConquer(List<Point> points) {
 	          if (points.size() <= 5) {
 	              List<Point> hull = smallHull(points);
@@ -560,7 +561,7 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	          List<Point> rightHull = divideAndConquer(right);
 	          return mergeHulls(leftHull, rightHull);
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          List<Point> points = new ArrayList<>(Arrays.asList(
 	              new Point(0, 3), new Point(1, 1), new Point(2, 2), new Point(4, 4),
@@ -573,7 +574,7 @@ keywords: "convex hull, divide and conquer, computational geometry, upper tangen
 	      }
 	  }
 	  ```
-
+	  
 	  :::
 	-
 - # When to Use Divide and Conquer Convex Hull

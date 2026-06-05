@@ -2,6 +2,7 @@
 seoTitle: Cycle Sort Algorithm – Optimal Writes, Complexity, and Code
 description: "In-depth guide to Cycle Sort. Explains cycle detection, why it is optimal for write-sensitive hardware (EEPROM/Flash), time/space complexity analysis, and complete code implementations in five languages."
 keywords: "cycle sort, cyclesort, minimum writes, in-place sort, comparison sort, write-optimal, time complexity, space complexity, EEPROM sorting, VR-Rathod, Code-Note, Vaibhav Rathod"
+treeTitle: DSA - Sorting & Searching - Cycle Sort
 ---
 
 > [!info] What is Cycle Sort?
@@ -55,31 +56,31 @@ keywords: "cycle sort, cyclesort, minimum writes, in-place sort, comparison sort
 		- Initial array: `[5, 2, 9, 1]` ($N = 4$)
 		-
 		- ### Pass 1 (cycle_start = 0):
-		  - `item = 5`, `pos = 0`.
-		  - Count smaller elements: `2` and `1` are smaller than `5` $\rightarrow$ `pos` becomes $2$.
-		  - `pos != cycle_start` (2 != 0). Swap `5` with `arr[2]` (`9`).
-		  - Array becomes: `[5, 2, 5, 1]`, `item` becomes `9`. (Write count = 1).
-		  -
-		  - **Cycle continuation (pos != cycle_start (2 != 0)):**
-		    - Reset `pos = 0`. Count elements smaller than `9` in array: `2`, `5`, `1` are smaller $\rightarrow$ `pos` becomes $3$.
-		    - Swap `9` with `arr[3]` (`1`).
-		    - Array becomes: `[5, 2, 5, 9]`, `item` becomes `1`. (Write count = 2).
-		  -
-		  - **Cycle continuation (pos != cycle_start (3 != 0)):**
-		    - Reset `pos = 0`. Count elements smaller than `1` in array: None $\rightarrow$ `pos` remains $0$.
-		    - Swap `1` with `arr[0]` (`5`).
-		    - Array becomes: `[1, 2, 5, 9]`, `item` becomes `5`. (Write count = 3).
-		    - Since `pos == cycle_start` (0 == 0), this cycle terminates.
+			- `item = 5`, `pos = 0`.
+			- Count smaller elements: `2` and `1` are smaller than `5` $\rightarrow$ `pos` becomes $2$.
+			- `pos != cycle_start` (2 != 0). Swap `5` with `arr[2]` (`9`).
+			- Array becomes: `[5, 2, 5, 1]`, `item` becomes `9`. (Write count = 1).
+			-
+			- **Cycle continuation (pos != cycle_start (2 != 0)):**
+				- Reset `pos = 0`. Count elements smaller than `9` in array: `2`, `5`, `1` are smaller $\rightarrow$ `pos` becomes $3$.
+				- Swap `9` with `arr[3]` (`1`).
+				- Array becomes: `[5, 2, 5, 9]`, `item` becomes `1`. (Write count = 2).
+			-
+			- **Cycle continuation (pos != cycle_start (3 != 0)):**
+				- Reset `pos = 0`. Count elements smaller than `1` in array: None $\rightarrow$ `pos` remains $0$.
+				- Swap `1` with `arr[0]` (`5`).
+				- Array becomes: `[1, 2, 5, 9]`, `item` becomes `5`. (Write count = 3).
+				- Since `pos == cycle_start` (0 == 0), this cycle terminates.
 		-
 		- ### Pass 2 (cycle_start = 1):
-		  - `item = arr[1] = 2`.
-		  - Count smaller elements in index range $[2, 3]$: None $\rightarrow$ `pos` remains $1$.
-		  - `pos == cycle_start` $\rightarrow$ Already in correct position.
+			- `item = arr[1] = 2`.
+			- Count smaller elements in index range $[2, 3]$: None $\rightarrow$ `pos` remains $1$.
+			- `pos == cycle_start` $\rightarrow$ Already in correct position.
 		-
 		- ### Pass 3 (cycle_start = 2):
-		  - `item = arr[2] = 5`.
-		  - Count smaller elements in index range $[3, 3]$: None $\rightarrow$ `pos` remains $2$.
-		  - `pos == cycle_start` $\rightarrow$ Already in correct position.
+			- `item = arr[2] = 5`.
+			- Count smaller elements in index range $[3, 3]$: None $\rightarrow$ `pos` remains $2$.
+			- `pos == cycle_start` $\rightarrow$ Already in correct position.
 		-
 		- Final Sorted Array: `[1, 2, 5, 9]` with exactly 3 writes.
 -
@@ -98,7 +99,7 @@ keywords: "cycle sort, cyclesort, minimum writes, in-place sort, comparison sort
 - # Implementation
   collapsed:: true
 	- > [!note] In-place Cycle Sort returning total array writes.
-	  - Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
+		- Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
 	-
 	- :::code-tabs
 	  
@@ -179,7 +180,7 @@ keywords: "cycle sort, cyclesort, minimum writes, in-place sort, comparison sort
 	  
 	          std::swap(arr[pos], item);
 	          writes++;
-  
+	  
 	          while (pos != cycleStart) {
 	              pos = cycleStart;
 	              for (int i = cycleStart + 1; i < n; ++i) {

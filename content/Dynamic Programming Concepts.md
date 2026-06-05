@@ -3,6 +3,7 @@ seoTitle: Dynamic Programming – Memoization & Tabulation In-Depth Guide
 description: "Complete guide to Dynamic Programming. Covers optimal substructure, overlapping subproblems, memoization (top-down), tabulation (bottom-up), state design, space optimisation, and implementations in Python, C++, Java, JavaScript, and C#."
 keywords: "dynamic programming, memoization, tabulation, top-down, bottom-up, optimal substructure, overlapping subproblems, recurrence, DP, VR-Rathod, Code-Note, code note vr"
 displayTitle: Dynamic Programming Concepts
+treeTitle: DSA - DP & Greedy - Dynamic Programming Concepts
 ---
 
 > [!info] What is Dynamic Programming?
@@ -31,7 +32,6 @@ displayTitle: Dynamic Programming Concepts
 		  Time: O(2^N) without DP → O(N) with DP
 		  ```
 		- **Does NOT hold for:** Merge Sort (subproblems are distinct, non-overlapping).
-
 - # Two DP Paradigms
   collapsed:: true
 	- ## Top-Down — Memoization
@@ -78,7 +78,6 @@ displayTitle: Dynamic Programming Concepts
 		  | **Stack overhead** | Yes | No |
 		  | **Space optimisation** | Harder | Easy (rolling array) |
 		  | **Speed in practice** | Slightly slower | Slightly faster |
-
 - # The DP Design Framework
   collapsed:: true
 	- ```
@@ -98,7 +97,6 @@ displayTitle: Dynamic Programming Concepts
 	      → If dp[i] depends only on dp[i-1], use two variables
 	      → If dp[i][j] depends only on dp[i-1][...], use 1D rolling array
 	  ```
-
 - # Implementation — Fibonacci (Learning Template)
   collapsed:: true
 	- > [!note] Fibonacci shows all 4 approaches: naive recursion, memoization, tabulation, and O(1) space.
@@ -353,7 +351,6 @@ displayTitle: Dynamic Programming Concepts
 	  ```
 	  
 	  :::
-
 - # DP Problem Categories
   collapsed:: true
 	- | Category | Examples | Pattern |
@@ -365,7 +362,6 @@ displayTitle: Dynamic Programming Concepts
 	  | **Tree** | Tree DP, House Robber III | dp[node][included/excluded] |
 	  | **Bitmask** | TSP, Assignment | dp[mask][i] = states as subsets |
 	  | **Digit** | Count numbers with property | dp[pos][tight][...] |
-
 - # Key Takeaways
   collapsed:: true
 	- Two required properties: **Optimal Substructure** + **Overlapping Subproblems**.
@@ -373,7 +369,6 @@ displayTitle: Dynamic Programming Concepts
 	- Design state → write recurrence → choose approach → optimise space.
 	- Space optimisation: if dp[i] depends only on dp[i-1], use two variables (O(1) space).
 	- Related: [[0/1 Knapsack Problem]], [[Longest Common Subsequence (LCS)]], [[Longest Increasing Subsequence (LIS)]], [[Matrix Chain Multiplication]]
-
 - # More Learn
   collapsed:: true
 	- ## LeetCode

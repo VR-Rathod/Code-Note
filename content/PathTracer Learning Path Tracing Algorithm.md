@@ -2,6 +2,7 @@
 seoTitle: Path Tracing Algorithm – Monte Carlo Light Transport Explained
 description: "Path tracing simulates light transport by tracing random ray paths. Covers the rendering equation, Monte Carlo estimator, direct and indirect illumination, and."
 keywords: "path tracing algorithm, Monte Carlo, light transport, rendering equation, direct illumination, indirect illumination, ray tracing, GPU rendering, Vulkan, convergence"
+treeTitle: Game Development - Path Tracing - Path Tracing Algorithm
 ---
 
 tags:: algorithm, path-tracing, rendering-equation, core

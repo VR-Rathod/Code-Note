@@ -144,7 +144,7 @@ displayTitle: Data Science
 - # Python for Data Science
   collapsed:: true
 	- See [[Python]] for full language reference. This section covers the data science-specific stack.
-	- ## NumPy — Numerical Computing
+	- ## [[NumPy]] — Numerical Computing
 	  collapsed:: true
 		- ```python
 		  import numpy as np
@@ -185,7 +185,7 @@ displayTitle: Data Science
 		  print(m.max())         # 9
 		  print(m.argmax())      # 8 (flat index)
 		  ```
-	- ## Pandas — Data Manipulation
+	- ## [[Pandas]] — Data Manipulation
 	  collapsed:: true
 		- ```python
 		  import pandas as pd
@@ -245,7 +245,7 @@ displayTitle: Data Science
 		  ```
 - # Data Visualization
   collapsed:: true
-	- ## Matplotlib — Core Plotting
+	- ## [[Matplotlib]] — Core Plotting
 	  collapsed:: true
 		- ```python
 		  import matplotlib.pyplot as plt
@@ -279,7 +279,7 @@ displayTitle: Data Science
 		  plt.bar(categories, values, color="coral")
 		  plt.show()
 		  ```
-	- ## Seaborn — Statistical Visualization
+	- ## [[Seaborn]] — Statistical Visualization
 	  collapsed:: true
 		- ```python
 		  import seaborn as sns
@@ -309,7 +309,7 @@ displayTitle: Data Science
 		  sns.pairplot(tips, hue="sex")
 		  plt.show()
 		  ```
-	- ## Plotly — Interactive Visualization
+	- ## [[Plotly]] — Interactive Visualization
 	  collapsed:: true
 		- ```python
 		  import plotly.express as px

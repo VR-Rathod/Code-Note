@@ -3,6 +3,7 @@ seoTitle: Argo CD Reference – Declarative GitOps, Sync Policies, and Applicati
 description: "In-depth educational Argo CD reference covering GitOps principles, Application CRD schema, sync policies, reconciliation loops, app-of-apps pattern, and CLI commands."
 keywords: "Argo CD, ArgoCD, GitOps, Kubernetes, K8s, GitOps controller, Application CRD, SyncPolicy, App-of-Apps, reconciliation, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: Argo CD
+treeTitle: DevOps - ArgoCD
 ---
 
 - # History

@@ -3,6 +3,7 @@ seoTitle: Heap Data Structure – Min-Heap, Max-Heap & Priority Queue
 description: "Master Heaps in Data Structures & Algorithms. Learn about binary heap representation, heapify operations, O(N) build-heap, and custom priority queue implementations."
 keywords: "Heap, Binary Heap, Min-Heap, Max-Heap, Priority Queue, Heapify, Build-Heap, Data Structures, DSA, Heap C++, Heap Python, Heap (Data Structure)"
 displayTitle: Heap (Data Structure)
+treeTitle: DSA - Trees - Heap (Data Structure)
 ---
 
 > [!info] What is a Heap?
@@ -17,9 +18,9 @@ displayTitle: Heap (Data Structure)
 	  collapsed:: true
 		- Because a heap is a complete binary tree, it can be extremely efficiently stored in a contiguous 1D array/vector (no pointers needed!).
 		- For a node stored at 0-based index $i$:
-		  - **Left Child Index**: $2i + 1$
-		  - **Right Child Index**: $2i + 2$
-		  - **Parent Index**: $\lfloor \frac{i-1}{2} \rfloor$
+			- **Left Child Index**: $2i + 1$
+			- **Right Child Index**: $2i + 2$
+			- **Parent Index**: $\lfloor \frac{i-1}{2} \rfloor$
 		-
 		- ```
 		  Binary Tree representation:
@@ -27,7 +28,7 @@ displayTitle: Heap (Data Structure)
 		          /  \
 		  (idx 1) 15   30 (idx 2)
 		         /  \
-		 (idx 3)40  50 (idx 4)
+		  (idx 3)40  50 (idx 4)
 		  
 		  Array Representation:
 		  Index:  [  0 ,  1 ,  2 ,  3 ,  4  ]
@@ -43,7 +44,6 @@ displayTitle: Heap (Data Structure)
 		      
 		      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 		  ```
-
 - # Key Heap Operations
   collapsed:: true
 	- ## 1. Insertion (Up-Heapify / Bubble-Up)
@@ -65,7 +65,6 @@ displayTitle: Heap (Data Structure)
 	  collapsed:: true
 		- To build a heap from an unsorted array of size $N$, run `sift-down` on all internal nodes starting from the last internal node $\lfloor \frac{N}{2} \rfloor - 1$ down to root index 0.
 		- Mathematically, the sum of heights of all nodes is bounded by $O(N)$, making this initialization cost $O(N)$ instead of $N \log N$.
-
 - # Time & Space Complexity
   collapsed:: true
 	- > [!important] Complexity Summary
@@ -79,15 +78,13 @@ displayTitle: Heap (Data Structure)
 	  | **Extract Min/Max** | $O(\log n)$ | Element replacement at root may sift down to leaf. |
 	  | **Build Heap** | $O(n)$ | Math bounded sum of node heights. |
 	  | **Space Complexity** | $O(n)$ | Stores elements in a contiguous array. |
-
 - # Priority Queues
   collapsed:: true
 	- A **Priority Queue** is an abstract data type where each element has a "priority". Elements with higher priority are served before elements with lower priority.
 	- Heaps are the default data structure used to implement priority queues:
-	  - `priority_queue` in C++ STL (default Max-Heap).
-	  - `PriorityQueue` in Java (default Min-Heap).
-	  - `heapq` in Python (provides Min-Heap operations on standard list).
-
+		- `priority_queue` in C++ STL (default Max-Heap).
+		- `PriorityQueue` in Java (default Min-Heap).
+		- `heapq` in Python (provides Min-Heap operations on standard list).
 - # Implementation
   collapsed:: true
 	- > [!note] Custom Min-Heap Implementation
@@ -307,7 +304,6 @@ displayTitle: Heap (Data Structure)
 	  ```
 	  
 	  :::
-
 - # How It Works
   collapsed:: true
 	- ## The Core Idea
@@ -341,9 +337,9 @@ displayTitle: Heap (Data Structure)
 		    → Parent(idx3) = idx1 (val 30). 40 > 30, no swap.
 		  Insert 50: heap = [10, 30, 15, 40, 50]
 		    → Parent(idx4) = idx1 (val 30). 50 > 30, no swap.
-
+		  
 		  Final Min-Heap: [10, 30, 15, 40, 50]
-
+		  
 		  Extract Min (remove root 10):
 		    Step 1: Replace root with last element → [50, 30, 15, 40]
 		    Step 2: Sift down 50 from idx 0:
@@ -353,7 +349,6 @@ displayTitle: Heap (Data Structure)
 		    Final heap: [15, 30, 50, 40]
 		    Extracted: 10 ✅
 		  ```
-
 - # Alternative Variant (Max-Heap & Language Built-ins)
   collapsed:: true
 	- > [!tip] Using Built-in Heap Libraries
@@ -363,7 +358,7 @@ displayTitle: Heap (Data Structure)
 	  
 	  ```python
 	  import heapq
-
+	  
 	  # --- Min-Heap (default) ---
 	  min_heap = []
 	  for val in [15, 30, 10, 40, 50]:
@@ -371,14 +366,14 @@ displayTitle: Heap (Data Structure)
 	  print("Min peek:", min_heap[0])               # 10
 	  print("Extract:", heapq.heappop(min_heap))    # 10
 	  print("Extract:", heapq.heappop(min_heap))    # 15
-
+	  
 	  # --- Max-Heap (negate values trick) ---
 	  max_heap = []
 	  for val in [15, 30, 10, 40, 50]:
 	      heapq.heappush(max_heap, -val)
 	  print("Max peek:", -max_heap[0])              # 50
 	  print("Extract:", -heapq.heappop(max_heap))  # 50
-
+	  
 	  # --- Build heap in O(N) from existing list ---
 	  data = [15, 30, 10, 40, 50]
 	  heapq.heapify(data)
@@ -389,7 +384,7 @@ displayTitle: Heap (Data Structure)
 	  #include <iostream>
 	  #include <queue>
 	  #include <vector>
-
+	  
 	  int main() {
 	      // --- Max-Heap (default in C++ STL) ---
 	      std::priority_queue<int> maxHeap;
@@ -397,7 +392,7 @@ displayTitle: Heap (Data Structure)
 	      std::cout << "Max: " << maxHeap.top() << "\n"; // 50
 	      maxHeap.pop();
 	      std::cout << "Max: " << maxHeap.top() << "\n"; // 40
-
+	  
 	      // --- Min-Heap using greater<int> ---
 	      std::priority_queue<int, std::vector<int>, std::greater<int>> minHeap;
 	      for (int val : {15, 30, 10, 40, 50}) minHeap.push(val);
@@ -416,7 +411,7 @@ displayTitle: Heap (Data Structure)
 	      getParent(i) { return Math.floor((i - 1) / 2); }
 	      getLeft(i) { return 2 * i + 1; }
 	      getRight(i) { return 2 * i + 2; }
-
+	  
 	      insert(key) {
 	          this.heap.push(key);
 	          this.bubbleUp(this.heap.length - 1);
@@ -456,7 +451,7 @@ displayTitle: Heap (Data Structure)
 	  ```java
 	  import java.util.PriorityQueue;
 	  import java.util.Collections;
-
+	  
 	  public class HeapBuiltins {
 	      public static void main(String[] args) {
 	          // --- Min-Heap (default in Java) ---
@@ -464,7 +459,7 @@ displayTitle: Heap (Data Structure)
 	          for (int val : new int[]{15, 30, 10, 40, 50}) minHeap.offer(val);
 	          System.out.println("Min: " + minHeap.poll()); // 10
 	          System.out.println("Min: " + minHeap.poll()); // 15
-
+	  
 	          // --- Max-Heap using reverseOrder() ---
 	          PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
 	          for (int val : new int[]{15, 30, 10, 40, 50}) maxHeap.offer(val);
@@ -475,7 +470,6 @@ displayTitle: Heap (Data Structure)
 	  ```
 	  
 	  :::
-
 - # When to Use a Heap
   collapsed:: true
 	- ```mermaid
@@ -500,7 +494,6 @@ displayTitle: Heap (Data Structure)
 		- You need **arbitrary element access** by index — heaps do not support $O(1)$ random access.
 		- You need **sorted traversal** of all elements — use a sorted array or BST.
 		- Data is **static and queried rarely** — a sorted array with binary search is simpler.
-
 - # Key Takeaways
   collapsed:: true
 	- **Complete Binary Tree** — A heap is always a complete binary tree, enabling efficient array-based storage without pointers.
@@ -509,7 +502,6 @@ displayTitle: Heap (Data Structure)
 	- **O(log n) Operations** — Both insertion (bubble-up) and extraction (sift-down) traverse at most the tree height $\lfloor \log_2 n \rfloor$.
 	- **O(N) Build** — Building a heap from an unsorted array via bottom-up heapify is $O(N)$, not $O(N \log N)$.
 	- **Priority Queue Foundation** — Heaps are the standard underlying data structure for priority queues in all major languages.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

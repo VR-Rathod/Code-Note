@@ -2,6 +2,7 @@
 seoTitle: Selection Sort Algorithm – Implementation, Analysis, and Swap Minimization
 description: "In-depth guide to Selection Sort. Explains selection logic, why it is unstable, swap minimization properties, and contains complete code in Python, C++, JavaScript, Java, and C."
 keywords: "selection sort, sorting algorithm, min element swap, O(n^2), unstable sort, in-place sort, time complexity, space complexity, comparison sort, VR-Rathod, Code-Note, Vaibhav Rathod"
+treeTitle: DSA - Sorting & Searching - Selection Sort
 ---
 
 > [!info] What is Selection Sort?
@@ -24,9 +25,9 @@ keywords: "selection sort, sorting algorithm, min element swap, O(n^2), unstable
 	- ## Core Properties
 	  collapsed:: true
 		- **Stability:** **Unstable** (No). Long-distance swaps can easily bypass identical elements and alter their relative order. For example, sorting `[4a, 4b, 2]`:
-		  - Find min element which is `2`.
-		  - Swap `2` with `4a` -> `[2, 4b, 4a]`.
-		  - The relative order of `4a` and `4b` has been reversed!
+			- Find min element which is `2`.
+			- Swap `2` with `4a` -> `[2, 4b, 4a]`.
+			- The relative order of `4a` and `4b` has been reversed!
 		- **In-Place:** **Yes**. Requires only $O(1)$ auxiliary space.
 		- **Adaptability:** **No**. The algorithm must scan all remaining elements to find the minimum regardless of whether the array is already sorted or not, resulting in $O(n^2)$ complexity in all cases.
 -
@@ -98,7 +99,7 @@ keywords: "selection sort, sorting algorithm, min element swap, O(n^2), unstable
 - # Implementation
   collapsed:: true
 	- > [!note] Standard in-place selection sort implementations.
-	  - Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
+		- Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
 	-
 	- :::code-tabs
 	  

@@ -3,6 +3,7 @@ seoTitle: Johnson's Algorithm – All-Pairs Shortest Path for Sparse Graphs
 description: "Master Johnson's algorithm for all-pairs shortest paths. Covers Bellman-Ford reweighting, Dijkstra integration, mathematical proofs, and O(V^2 log V + VE) implementations in Python, C++, JavaScript, Java, and C."
 keywords: "Johnson algorithm, all-pairs shortest path, sparse graph, reweighting, Dijkstra, Bellman-Ford, O(V^2 log V), time complexity, space complexity, graph algorithm, VR-Rathod, Code-Note"
 displayTitle: Johnson Algorithm
+treeTitle: DSA - Graph Algorithms - Johnson Algorithm
 ---
 
 > [!info] What is Johnson's Algorithm?

@@ -2,6 +2,7 @@
 seoTitle: Dekker's Algorithm – Mutual Exclusion, Memory Barriers & Concurrency Guide
 description: "An exhaustive master-level guide to Dekker's Algorithm. Covers Critical Section criteria, why naive synchronization attempts fail, Peterson's algorithm comparison, CPU memory reordering fences, MESI cache coherency, and multi-language implementations."
 keywords: "Dekkers algorithm, mutual exclusion, concurrency, critical section, busy waiting, Peterson's algorithm, memory barrier, volatile, multi-threading, synchronization, cache coherency, MESI"
+treeTitle: DSA - Math & Geometry - Dekkers Algorithm
 ---
 
 > [!info] What is Dekker's Algorithm?
@@ -76,14 +77,14 @@ keywords: "Dekkers algorithm, mutual exclusion, concurrency, critical section, b
 	- Dekker's algorithm resolves the deadlock of Attempt 3 by using a `turn` variable to force one thread to yield its flag if both express interest:
 	-
 	- ## Entry Protocol for Thread $i$ ($j = 1-i$):
-	  - 1. Set `flag[i] = true` to declare intent.
-	  - 2. While the other thread is interested (`flag[j] == true`):
-	     - Check if it is the other thread's turn (`turn == j`).
-	     - If so, **temporarily lower our flag** (`flag[i] = false`) to let the other thread proceed and avoid deadlock.
-	     - Busy-wait in a sub-loop until `turn == i`.
-	     - Once the turn shifts back, **re-assert our flag** (`flag[i] = true`) and re-check.
-	  - 3. Enter the Critical Section.
-	  - 4. Exit Protocol: Pass the turn to the other thread (`turn = j`) and retract intent (`flag[i] = false`).
+		- 1. Set `flag[i] = true` to declare intent.
+		- 2. While the other thread is interested (`flag[j] == true`):
+			- Check if it is the other thread's turn (`turn == j`).
+			- If so, **temporarily lower our flag** (`flag[i] = false`) to let the other thread proceed and avoid deadlock.
+			- Busy-wait in a sub-loop until `turn == i`.
+			- Once the turn shifts back, **re-assert our flag** (`flag[i] = true`) and re-check.
+		- 3. Enter the Critical Section.
+		- 4. Exit Protocol: Pass the turn to the other thread (`turn = j`) and retract intent (`flag[i] = false`).
 	-
 - # Comparison: Dekker's vs Peterson's
   collapsed:: true
@@ -124,10 +125,10 @@ keywords: "Dekkers algorithm, mutual exclusion, concurrency, critical section, b
 		  ```
 		- Because the write to `flag[0]` and the read of `flag[1]` access different memory addresses, a modern CPU sees no dependency between them. It may reorder them (a **Store-Load reordering**), executing the read before the write.
 		- If both CPUs perform this reordering:
-		  - $CPU_0$ reads `flag[1]` as `false`.
-		  - $CPU_1$ reads `flag[0]` as `false`.
-		  - Both threads enter the Critical Section.
-		  - **Mutual exclusion is violated**.
+			- $CPU_0$ reads `flag[1]` as `false`.
+			- $CPU_1$ reads `flag[0]` as `false`.
+			- Both threads enter the Critical Section.
+			- **Mutual exclusion is violated**.
 		-
 	- ## 2. Memory Barriers (Fences)
 		- To prevent this reordering, we must insert a **Memory Barrier** (or fence) between the write and the read. A barrier forces the CPU to complete all pending writes before executing subsequent reads.
@@ -136,8 +137,8 @@ keywords: "Dekkers algorithm, mutual exclusion, concurrency, critical section, b
 	- ## 3. Cache Coherency (MESI Protocol)
 		- Multi-core CPUs store variables in local L1/L2 caches. When $CPU_0$ writes to `flag[0]`, the change is initially in its local cache.
 		- Under the **MESI cache coherency protocol**:
-		  - The cache line containing `flag[0]` in $CPU_1$'s L1 cache must be transitioned to the **Invalid (I)** state.
-		  - When $CPU_1$ reads `flag[0]`, it misses its cache and fetches the updated value from $CPU_0$ or main memory.
+			- The cache line containing `flag[0]` in $CPU_1$'s L1 cache must be transitioned to the **Invalid (I)** state.
+			- When $CPU_1$ reads `flag[0]`, it misses its cache and fetches the updated value from $CPU_0$ or main memory.
 		- Volatile keywords in Java and memory barriers in C++ enforce this cache invalidation and flushing, ensuring **memory visibility** across threads.
 		-
 - # Implementation
@@ -146,20 +147,20 @@ keywords: "Dekkers algorithm, mutual exclusion, concurrency, critical section, b
 	  > Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
-
+	  
 	  ```python
 	  import threading
 	  import time
-
+	  
 	  # Shared state variables
 	  flag = [False, False]
 	  turn = 0
-
+	  
 	  def critical_section(thread_id):
 	      print(f"[Thread {thread_id}] entered critical section.")
 	      time.sleep(0.1)  # Simulate work
 	      print(f"[Thread {thread_id}] leaving critical section.")
-
+	  
 	  def run_thread(thread_id):
 	      global turn, flag
 	      other_id = 1 - thread_id
@@ -182,7 +183,7 @@ keywords: "Dekkers algorithm, mutual exclusion, concurrency, critical section, b
 	          flag[thread_id] = False
 	          
 	          time.sleep(0.05)  # Simulate remainder section
-
+	  
 	  if __name__ == "__main__":
 	      t0 = threading.Thread(target=run_thread, args=(0,))
 	      t1 = threading.Thread(target=run_thread, args=(1,))
@@ -191,23 +192,23 @@ keywords: "Dekkers algorithm, mutual exclusion, concurrency, critical section, b
 	      t0.join()
 	      t1.join()
 	  ```
-
+	  
 	  ```c++
 	  #include <iostream>
 	  #include <thread>
 	  #include <atomic>
 	  #include <chrono>
-
+	  
 	  // Using std::atomic to prevent CPU memory reordering
 	  std::atomic<bool> flag[2] = {false, false};
 	  std::atomic<int> turn(0);
-
+	  
 	  void critical_section(int thread_id) {
 	      std::cout << "[Thread " << thread_id << "] entered critical section.\n";
 	      std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	      std::cout << "[Thread " << thread_id << "] leaving critical section.\n";
 	  }
-
+	  
 	  void run_thread(int thread_id) {
 	      int other_id = 1 - thread_id;
 	      for (int i = 0; i < 3; ++i) {
@@ -222,18 +223,18 @@ keywords: "Dekkers algorithm, mutual exclusion, concurrency, critical section, b
 	                  flag[thread_id].store(true, std::memory_order_seq_cst);
 	              }
 	          }
-
+	  
 	          // Critical Section
 	          critical_section(thread_id);
-
+	  
 	          // Exit Protocol
 	          turn.store(other_id, std::memory_order_seq_cst);
 	          flag[thread_id].store(false, std::memory_order_seq_cst);
-
+	  
 	          std::this_thread::sleep_for(std::chrono::milliseconds(50));
 	      }
 	  }
-
+	  
 	  int main() {
 	      std::thread t0(run_thread, 0);
 	      std::thread t1(run_thread, 1);
@@ -242,17 +243,17 @@ keywords: "Dekkers algorithm, mutual exclusion, concurrency, critical section, b
 	      return 0;
 	  }
 	  ```
-
+	  
 	  ```javascript
 	  // In JavaScript, single-threaded execution makes busy-waiting freeze the browser.
 	  // We simulate concurrency using asynchronous tasks (Web Workers or async intervals).
 	  const flag = [false, false];
 	  let turn = 0;
-
+	  
 	  function sleep(ms) {
 	      return new Promise(resolve => setTimeout(resolve, ms));
 	  }
-
+	  
 	  async function runThread(threadId) {
 	      const otherId = 1 - threadId;
 	      for (let i = 0; i < 3; i++) {
@@ -268,45 +269,45 @@ keywords: "Dekkers algorithm, mutual exclusion, concurrency, critical section, b
 	              }
 	              await sleep(1);
 	          }
-
+	  
 	          // Critical Section
 	          console.log(`[Thread ${threadId}] entered critical section.`);
 	          await sleep(100);
 	          console.log(`[Thread ${threadId}] leaving critical section.`);
-
+	  
 	          // Exit Protocol
 	          turn = otherId;
 	          flag[threadId] = false;
-
+	  
 	          await sleep(50);
 	      }
 	  }
-
+	  
 	  runThread(0);
 	  runThread(1);
 	  ```
-
+	  
 	  ```java
 	  public class DekkersLock {
 	      // Volatile flags & turn to guarantee memory visibility across threads
 	      private static volatile boolean[] flag = new boolean[2];
 	      private static volatile int turn = 0;
-
+	  
 	      static class DekkerThread extends Thread {
 	          private final int threadId;
 	          private final int otherId;
-
+	  
 	          DekkerThread(int id) {
 	              this.threadId = id;
 	              this.otherId = 1 - id;
 	          }
-
+	  
 	          private void criticalSection() {
 	              System.out.println("[Thread " + threadId + "] entered critical section.");
 	              try { Thread.sleep(100); } catch (InterruptedException e) {}
 	              System.out.println("[Thread " + threadId + "] leaving critical section.");
 	          }
-
+	  
 	          @Override
 	          public void run() {
 	              for (int i = 0; i < 3; i++) {
@@ -322,19 +323,19 @@ keywords: "Dekkers algorithm, mutual exclusion, concurrency, critical section, b
 	                          flag[threadId] = true;
 	                      }
 	                  }
-
+	  
 	                  // Critical Section
 	                  criticalSection();
-
+	  
 	                  // Exit Protocol
 	                  turn = otherId;
 	                  flag[threadId] = false;
-
+	  
 	                  try { Thread.sleep(50); } catch (InterruptedException e) {}
 	              }
 	          }
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          Thread t0 = new DekkerThread(0);
 	          Thread t1 = new DekkerThread(1);
@@ -343,10 +344,11 @@ keywords: "Dekkers algorithm, mutual exclusion, concurrency, critical section, b
 	      }
 	  }
 	  ```
-
+	  
 	  :::
 	-
 - # Key Takeaways
+  collapsed:: true
 	- **Three CS Criteria** — Any valid synchronization solution must satisfy Mutual Exclusion, Progress, and Bounded Waiting.
 	- **Deadlock Avoidance** — Dekker's avoids deadlocks by having the thread without turn priority temporarily lower its interest flag.
 	- **Fences are Mandatory** — Due to modern Store-Load reorderings, memory fences (like `std::memory_order_seq_cst` in C++ or `volatile` in Java) are required to execute Dekker's correctly.

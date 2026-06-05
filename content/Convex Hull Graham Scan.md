@@ -2,6 +2,7 @@
 seoTitle: Convex Hull Graham Scan – Polar Sort & Stack Algorithm Guide
 description: "Graham Scan computes the convex hull of a 2D point set by sorting points by polar angle and using a stack to filter right turns. Covers pivot selection, cross product orientation test, O(n log n) complexity, and full code in Python, C++, JavaScript, and Java."
 keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algorithm, computational geometry, O(n log n), time complexity, space complexity, point set, orientation test, collinear points"
+treeTitle: DSA - Math & Geometry - Convex Hull Graham Scan
 ---
 
 > [!info] What is Graham Scan?
@@ -41,7 +42,7 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 		- Instead, we use the **cross product** to determine the relative angle of two points $A$ and $B$ from $P_0$:
 		- ```
 		  cross(P0, A, B) = (A.x - P0.x) * (B.y - P0.y) - (A.y - P0.y) * (B.x - P0.x)
-
+		  
 		  Result > 0  →  A is clockwise from B (A has smaller polar angle than B)
 		  Result < 0  →  A is counter-clockwise from B (A has larger polar angle than B)
 		  Result = 0  →  Collinear (same angle) — keep the point farther from P0
@@ -65,7 +66,7 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 		- ```
 		  INPUT:  set of 2D points
 		  OUTPUT: stack of hull points in counter-clockwise order
-
+		  
 		  1. Find pivot P0 (lowest Y, then lowest X).
 		  2. Sort remaining points by polar angle with P0.
 		     - If two points have the same angle, remove the closer one.
@@ -110,13 +111,13 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 	  > Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
-
+	  
 	  ```python
 	  import math
-
+	  
 	  def dist_sq(p1, p2):
 	      return (p1[0] - p2[0])**2 + (p1[1] - p2[1])**2
-
+	  
 	  def orientation(p, q, r):
 	      """
 	      0 -> Collinear
@@ -127,12 +128,12 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 	      if val == 0:
 	          return 0
 	      return 1 if val > 0 else 2
-
+	  
 	  def graham_scan(points):
 	      n = len(points)
 	      if n < 3:
 	          return points
-
+	  
 	      # 1. Find pivot (lowest y, then lowest x)
 	      pivot_idx = 0
 	      for i in range(1, n):
@@ -140,20 +141,20 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 	              pivot_idx = i
 	          elif points[i][1] == points[pivot_idx][1] and points[i][0] < points[pivot_idx][0]:
 	              pivot_idx = i
-
+	  
 	      # Swap pivot to the first position
 	      points[0], points[pivot_idx] = points[pivot_idx], points[0]
 	      p0 = points[0]
-
+	  
 	      # 2. Sort remaining points by polar angle with p0
 	      # If polar angles are same, sort by distance from p0
 	      def polar_comparator(p):
 	          # Returns (angle, distance)
 	          # Using atan2 is simpler in Python, but we can also do custom keys
 	          return (math.atan2(p[1] - p0[1], p[0] - p0[0]), dist_sq(p0, p))
-
+	  
 	      sorted_points = sorted(points[1:], key=polar_comparator)
-
+	  
 	      # Handle collinear points: keep only the furthest point for same angle
 	      unique_points = []
 	      for p in sorted_points:
@@ -162,58 +163,58 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 	                  unique_points[-1] = p
 	          else:
 	              unique_points.append(p)
-
+	  
 	      if len(unique_points) < 2:
 	          return [p0] + unique_points
-
+	  
 	      # 3. Stack traversal
 	      stack = [p0, unique_points[0], unique_points[1]]
 	      for p in unique_points[2:]:
 	          while len(stack) > 1 and orientation(stack[-2], stack[-1], p) != 2:
 	              stack.pop()
 	          stack.append(p)
-
+	  
 	      return stack
-
+	  
 	      # Example
 	  points = [(0, 3), (1, 1), (2, 2), (4, 4), (0, 0), (1, 2), (3, 1), (3, 3)]
 	  print("Convex Hull:", graham_scan(points))
 	  # Output: [(0, 0), (3, 1), (4, 4), (0, 3)]
 	  ```
-
+	  
 	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <algorithm>
 	  #include <stack>
-
+	  
 	  struct Point {
 	      int x, y;
 	  };
-
+	  
 	  Point p0; // Global pivot point for sorting
-
+	  
 	  int distSq(Point p1, Point p2) {
 	      return (p1.x - p2.x)*(p1.x - p2.x) + (p1.y - p2.y)*(p1.y - p2.y);
 	  }
-
+	  
 	  int orientation(Point p, Point q, Point r) {
 	      int val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
 	      if (val == 0) return 0;  // Collinear
 	      return (val > 0) ? 1 : 2; // Clockwise or Counter-Clockwise
 	  }
-
+	  
 	  bool compare(Point p1, Point p2) {
 	      int orient = orientation(p0, p1, p2);
 	      if (orient == 0)
 	          return distSq(p0, p1) < distSq(p0, p2);
 	      return (orient == 2);
 	  }
-
+	  
 	  std::vector<Point> grahamScan(std::vector<Point>& points) {
 	      int n = points.size();
 	      if (n < 3) return points;
-
+	  
 	      // Find pivot
 	      int ymin = points[0].y, min_idx = 0;
 	      for (int i = 1; i < n; i++) {
@@ -223,13 +224,13 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 	              min_idx = i;
 	          }
 	      }
-
+	  
 	      std::swap(points[0], points[min_idx]);
 	      p0 = points[0];
-
+	  
 	      // Sort points[1...n-1]
 	      std::sort(points.begin() + 1, points.end(), compare);
-
+	  
 	      // Filter collinear points
 	      int m = 1; // Index of modified array
 	      for (int i = 1; i < n; i++) {
@@ -237,24 +238,24 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 	              i++;
 	          points[m++] = points[i];
 	      }
-
+	  
 	      if (m < 3) return std::vector<Point>({points[0], points[1]});
-
+	  
 	      std::vector<Point> hull;
 	      hull.push_back(points[0]);
 	      hull.push_back(points[1]);
 	      hull.push_back(points[2]);
-
+	  
 	      for (int i = 3; i < m; i++) {
 	          while (hull.size() > 1 && orientation(hull[hull.size()-2], hull.back(), points[i]) != 2) {
 	              hull.pop_back();
 	          }
 	          hull.push_back(points[i]);
 	      }
-
+	  
 	      return hull;
 	  }
-
+	  
 	  int main() {
 	      std::vector<Point> points = {{0, 3}, {1, 1}, {2, 2}, {4, 4}, {0, 0}, {1, 2}, {3, 1}, {3, 3}};
 	      auto hull = grahamScan(points);
@@ -264,22 +265,22 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 	      return 0;
 	  }
 	  ```
-
+	  
 	  ```javascript
 	  function distSq(p1, p2) {
 	      return (p1[0] - p2[0])**2 + (p1[1] - p2[1])**2;
 	  }
-
+	  
 	  function orientation(p, q, r) {
 	      const val = (q[1] - p[1]) * (r[0] - q[0]) - (q[0] - p[0]) * (r[1] - q[1]);
 	      if (val === 0) return 0;
 	      return (val > 0) ? 1 : 2;
 	  }
-
+	  
 	  function grahamScan(points) {
 	      const n = points.length;
 	      if (n < 3) return points;
-
+	  
 	      // Find pivot
 	      let pivotIdx = 0;
 	      for (let i = 1; i < n; i++) {
@@ -289,10 +290,10 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 	              pivotIdx = i;
 	          }
 	      }
-
+	  
 	      const p0 = points[pivotIdx];
 	      const remaining = points.filter((_, idx) => idx !== pivotIdx);
-
+	  
 	      remaining.sort((p1, p2) => {
 	          const orient = orientation(p0, p1, p2);
 	          if (orient === 0) {
@@ -300,7 +301,7 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 	          }
 	          return (orient === 2) ? -1 : 1;
 	      });
-
+	  
 	      // Filter collinear points
 	      const unique = [];
 	      for (const p of remaining) {
@@ -312,9 +313,9 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 	              unique.push(p);
 	          }
 	      }
-
+	  
 	      if (unique.length < 2) return [p0, ...unique];
-
+	  
 	      const stack = [p0, unique[0], unique[1]];
 	      for (let i = 2; i < unique.length; i++) {
 	          while (stack.length > 1 && orientation(stack[stack.length - 2], stack[stack.length - 1], unique[i]) !== 2) {
@@ -322,39 +323,39 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 	          }
 	          stack.push(unique[i]);
 	      }
-
+	  
 	      return stack;
 	  }
-
+	  
 	  const points = [[0, 3], [1, 1], [2, 2], [4, 4], [0, 0], [1, 2], [3, 1], [3, 3]];
 	  console.log("Convex Hull:", grahamScan(points));
 	  ```
-
+	  
 	  ```java
 	  import java.util.*;
-
+	  
 	  public class GrahamScan {
 	      static class Point {
 	          int x, y;
 	          Point(int x, int y) { this.x = x; this.y = y; }
 	      }
-
+	  
 	      static Point p0;
-
+	  
 	      static int distSq(Point p1, Point p2) {
 	          return (p1.x - p2.x)*(p1.x - p2.x) + (p1.y - p2.y)*(p1.y - p2.y);
 	      }
-
+	  
 	      static int orientation(Point p, Point q, Point r) {
 	          int val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
 	          if (val == 0) return 0;
 	          return (val > 0) ? 1 : 2;
 	      }
-
+	  
 	      static List<Point> grahamScan(List<Point> points) {
 	          int n = points.size();
 	          if (n < 3) return points;
-
+	  
 	          int minIdx = 0;
 	          for (int i = 1; i < n; i++) {
 	              if (points.get(i).y < points.get(minIdx).y) {
@@ -363,11 +364,11 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 	                  minIdx = i;
 	              }
 	          }
-
+	  
 	          p0 = points.get(minIdx);
 	          points.set(minIdx, points.get(0));
 	          points.set(0, p0);
-
+	  
 	          points.subList(1, n).sort((p1, p2) -> {
 	              int orient = orientation(p0, p1, p2);
 	              if (orient == 0) {
@@ -375,7 +376,7 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 	              }
 	              return (orient == 2) ? -1 : 1;
 	          });
-
+	  
 	          List<Point> unique = new ArrayList<>();
 	          for (int i = 1; i < n; i++) {
 	              Point p = points.get(i);
@@ -387,19 +388,19 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 	                  unique.add(p);
 	              }
 	          }
-
+	  
 	          if (unique.size() < 2) {
 	              List<Point> res = new ArrayList<>();
 	              res.add(p0);
 	              res.addAll(unique);
 	              return res;
 	          }
-
+	  
 	          Stack<Point> stack = new Stack<>();
 	          stack.push(p0);
 	          stack.push(unique.get(0));
 	          stack.push(unique.get(1));
-
+	  
 	          for (int i = 2; i < unique.size(); i++) {
 	              Point next = unique.get(i);
 	              while (stack.size() > 1) {
@@ -412,10 +413,10 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 	              }
 	              stack.push(next);
 	          }
-
+	  
 	          return new ArrayList<>(stack);
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          List<Point> points = new ArrayList<>(Arrays.asList(
 	              new Point(0, 3), new Point(1, 1), new Point(2, 2), new Point(4, 4),
@@ -428,7 +429,7 @@ keywords: "convex hull, Graham scan, polar angle sort, cross product, stack algo
 	      }
 	  }
 	  ```
-
+	  
 	  :::
 	-
 - # When to Use Graham Scan

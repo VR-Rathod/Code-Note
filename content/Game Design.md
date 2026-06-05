@@ -3,6 +3,7 @@ seoTitle: Game Design – Complete Theory & Practice Guide Beginner to Super Adv
 description: "Comprehensive game design reference covering MDA framework, game loops, player psychology, level design, mechanics, balancing, economy, narrative, UI/UX, monetization, genre patterns, and advanced systemic design."
 keywords: "game design, game design theory, MDA framework, game mechanics, level design, player psychology, game economy, narrative design, game balancing, game loops, game UI UX, monetization, indie game design, AAA game design, game design patterns, systemic design, emergent gameplay, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: Game Design
+treeTitle: Game Development - Design
 ---
 
 > [!info] About This Page
@@ -608,6 +609,43 @@ displayTitle: Game Design
 		  | Polynomial | 100, 150, 210, 280... | Sweet spot, feels fair | Most RPGs |
 		  | Flat then spike | Equal until boss gates | Sudden walls | Soulslike games |
 -
+- # Math & Probability in Game Design
+  collapsed:: true
+	- > [!tip] The Designer's Tool
+	  > Math is the engine of systems design. It determines how fast a player progresses, how fair a combat system feels, and how economies scale without collapsing.
+	-
+	- ## Probability & Player Perception
+		- Humans are notoriously bad at intuitive probability. A 90% hit chance that misses three times in a row feels "broken" to players.
+		- | Concept | Description | Solution | Example |
+		  |---------|-------------|----------|---------|
+		  | **True RNG** | Each event is independent ($P(A) = C$) | Can lead to extreme streaks | Tabletop dice rolls |
+		  | **Pseudo-Random Distribution (PRD)** | Probability increases with each failure | Guarantees consistency, reduces streaks | Critical strikes in Dota 2 |
+		  | **Pity System** | Guaranteed success after $N$ failures | Prevents worst-case bad luck | Gacha drop rates (Genshin Impact) |
+		- > [!info] Pseudo-Random Formula
+		  > In PRD, the probability of an event happening on the $N$-th trial is:
+		  > $P(N) = C \times N$
+		  > If it triggers, the counter resets. This makes high-streak misses virtually impossible while maintaining the targeted average rate.
+	-
+	- ## Expected Value (EV) in Combat Balance
+		- Expected Value is the average outcome of a random variable over many trials.
+		- $$\text{EV} = \sum (x_i \times p_i)$$
+		- For a basic attack:
+		  $$\text{Expected Damage} = \text{Base Damage} \times (1 - \text{Crit Chance}) + (\text{Base Damage} \times \text{Crit Multiplier}) \times \text{Crit Chance}$$
+		  If Base Damage = 100, Crit Chance = 20%, Crit Multiplier = 2.0x:
+		  $$\text{EV} = 100 \times 0.8 + 200 \times 0.2 = 80 + 40 = 120\text{ average damage}$$
+		- Use EV to compare different weapon or build choices (e.g., fast/weak weapons vs slow/strong weapons) to ensure they are mathematically balanced.
+	-
+	- ## Progression & Scaling Curves
+		- How values (XP, HP, Gold costs) scale over time.
+		- | Curve Type | Formula | Growth Rate | Best For |
+		  |------------|---------|-------------|----------|
+		  | **Linear** | $Y = mX + c$ | Constant | Simple stat progression |
+		  | **Polynomial** | $Y = aX^b + c$ | Accelerating | RPG levels, stat growth |
+		  | **Exponential** | $Y = ab^X$ | Explosive | Idle/Incremental games, hyper-inflation |
+		  | **Logarithmic** | $Y = a\ln(X) + b$ | Decelerating | Diminishing returns (soft caps) |
+		- > [!warning] Scaling Dangers
+		  > Exponential scaling ($ab^X$) runs out of hand extremely fast. If your base cost is 10 and increases by 15% per level ($1.15^X$), by level 100 the cost is $11,743,134$! Only use this if you have matching exponential income sources (like in Clicker Heroes).
+-
 - # Narrative Design
   collapsed:: true
 	- ## Story vs Narrative Design
@@ -1075,6 +1113,8 @@ displayTitle: Game Design
   collapsed:: true
 	- Related Engine :
 		- [[Game Development]] — technical implementation of design concepts
+		- [[Game AI]] — AI systems: FSM, Behavior Trees, GOAP, Utility AI, pathfinding
+		- [[Game Physics]] — rigid body dynamics, collision detection, soft bodies
 		- [[Godot]] — implement designs in Godot engine
 		- [[Unity]] — implement designs in Unity engine
 		- [[Unreal Engine]] — implement designs in Unreal Engine

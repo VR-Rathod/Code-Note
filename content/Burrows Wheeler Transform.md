@@ -2,6 +2,7 @@
 seoTitle: Burrows-Wheeler Transform (BWT) – Data Compression & Reversible Transformation
 description: "Comprehensive guide to the Burrows-Wheeler Transform (BWT). Covers cyclic rotations, suffix sorting, stable inverse BWT decoding, and implementation in 5 languages."
 keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrows Wheeler, bzip2, LF-mapping, suffix array, string transformation, C++, Python, Java, JavaScript, C , burrows-wheeler-transform"
+treeTitle: DSA - String Algorithms - Burrows Wheeler Transform
 ---
 
 > [!info] What is the Burrows-Wheeler Transform?
@@ -94,18 +95,18 @@ keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrow
 	      rotations.sort()
 	      # Extract the last character of each rotation
 	      return "".join(rotation[-1] for rotation in rotations)
-
+	  
 	  # Example Usage
 	  if __name__ == "__main__":
 	      print(burrows_wheeler_transform("banana"))  # Output: "annb$aa"
 	  ```
-
+	  
 	  ```c++
 	  #include <iostream>
 	  #include <string>
 	  #include <vector>
 	  #include <algorithm>
-
+	  
 	  // Forward Burrows-Wheeler Transform
 	  // Time: O(N^2 log N) | Space: O(N^2)
 	  std::string burrowsWheelerTransform(const std::string& s) {
@@ -127,13 +128,13 @@ keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrow
 	      }
 	      return bwt;
 	  }
-
+	  
 	  int main() {
 	      std::cout << burrowsWheelerTransform("banana") << "\n"; // Output: annb$aa
 	      return 0;
 	  }
 	  ```
-
+	  
 	  ```javascript
 	  /**
 	   * Forward Burrows-Wheeler Transform
@@ -157,14 +158,14 @@ keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrow
 	      }
 	      return bwt;
 	  }
-
+	  
 	  // Example Usage
 	  console.log(burrowsWheelerTransform("banana")); // Output: "annb$aa"
 	  ```
-
+	  
 	  ```java
 	  import java.util.Arrays;
-
+	  
 	  public class BWTForward {
 	      /**
 	       * Computes the forward Burrows-Wheeler Transform.
@@ -189,22 +190,22 @@ keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrow
 	          }
 	          return bwt.toString();
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          System.out.println(burrowsWheelerTransform("banana")); // Output: annb$aa
 	      }
 	  }
 	  ```
-
+	  
 	  ```c
 	  #include <stdio.h>
 	  #include <string.h>
 	  #include <stdlib.h>
-
+	  
 	  int compareStrings(const void* a, const void* b) {
 	      return strcmp(*(const char**)a, *(const char**)b);
 	  }
-
+	  
 	  /* Forward Burrows-Wheeler Transform
 	     Time: O(N^2 log N) | Space: O(N^2) */
 	  char* burrowsWheelerTransform(const char* s) {
@@ -240,7 +241,7 @@ keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrow
 	      
 	      return bwt;
 	  }
-
+	  
 	  int main() {
 	      char* result = burrowsWheelerTransform("banana");
 	      printf("%s\n", result); // Output: annb$aa
@@ -248,7 +249,7 @@ keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrow
 	      return 0;
 	  }
 	  ```
-
+	  
 	  :::
 -
 - # Alternative Variant (Inverse Burrows-Wheeler Transform)
@@ -283,30 +284,30 @@ keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrow
 	          reconstructed.append(bwt[idx])
 	          
 	      return "".join(reconstructed[::-1])
-
+	  
 	  # Example Usage
 	  if __name__ == "__main__":
 	      print(inverse_burrows_wheeler_transform("annb$aa"))  # Output: "banana"
 	  ```
-
+	  
 	  ```c++
 	  #include <iostream>
 	  #include <string>
 	  #include <vector>
 	  #include <algorithm>
-
+	  
 	  struct Element {
 	      char val;
 	      int originalIdx;
 	  };
-
+	  
 	  bool compareElements(const Element& a, const Element& b) {
 	      if (a.val == b.val) {
 	          return a.originalIdx < b.originalIdx; // Keep stable sort order
 	      }
 	      return a.val < b.val;
 	  }
-
+	  
 	  // Inverse Burrows-Wheeler Transform
 	  // Time: O(N log N) | Space: O(N)
 	  std::string inverseBurrowsWheeler(const std::string& bwt) {
@@ -340,13 +341,13 @@ keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrow
 	      std::reverse(reconstructed.begin(), reconstructed.end());
 	      return reconstructed;
 	  }
-
+	  
 	  int main() {
 	      std::cout << inverseBurrowsWheeler("annb$aa") << "\n"; // Output: banana
 	      return 0;
 	  }
 	  ```
-
+	  
 	  ```javascript
 	  function inverseBurrowsWheeler(bwt) {
 	      const n = bwt.length;
@@ -375,15 +376,15 @@ keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrow
 	      
 	      return reconstructed.reverse().join("");
 	  }
-
+	  
 	  // Example Usage
 	  console.log(inverseBurrowsWheeler("annb$aa")); // Output: "banana"
 	  ```
-
+	  
 	  ```java
 	  import java.util.Arrays;
 	  import java.util.Comparator;
-
+	  
 	  public class BWTInverse {
 	      static class Element {
 	          char val;
@@ -393,7 +394,7 @@ keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrow
 	              this.originalIdx = originalIdx;
 	          }
 	      }
-
+	  
 	      /**
 	       * Decoding the BWT string to the original string.
 	       * Time: O(N log N) | Space: O(N)
@@ -425,23 +426,23 @@ keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrow
 	          
 	          return sb.reverse().toString();
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          System.out.println(inverseBurrowsWheeler("annb$aa")); // Output: banana
 	      }
 	  }
 	  ```
-
+	  
 	  ```c
 	  #include <stdio.h>
 	  #include <string.h>
 	  #include <stdlib.h>
-
+	  
 	  typedef struct {
 	      char val;
 	      int originalIdx;
 	  } Element;
-
+	  
 	  int compareElements(const void* a, const void* b) {
 	      Element* ea = (Element*)a;
 	      Element* eb = (Element*)b;
@@ -450,7 +451,7 @@ keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrow
 	      }
 	      return ea->val - eb->val;
 	  }
-
+	  
 	  /* Inverse Burrows-Wheeler Transform
 	     Time: O(N log N) | Space: O(N) */
 	  char* inverseBurrowsWheeler(const char* bwt) {
@@ -494,7 +495,7 @@ keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrow
 	      free(lf);
 	      return reconstructed;
 	  }
-
+	  
 	  int main() {
 	      char* result = inverseBurrowsWheeler("annb$aa");
 	      printf("%s\n", result); // Output: banana
@@ -502,7 +503,7 @@ keywords: "Burrows-Wheeler Transform, BWT, inverse BWT, data compression, Burrow
 	      return 0;
 	  }
 	  ```
-
+	  
 	  :::
 -
 - # When to Use BWT

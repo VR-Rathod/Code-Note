@@ -3,6 +3,7 @@ seoTitle: Bellman-Ford Algorithm – Shortest Path with Negative Edges
 description: "Comprehensive guide to the Bellman-Ford Algorithm. Covers dynamic programming approach, V-1 edge relaxations, negative weight cycle detection, and time complexities in Python, C++, JavaScript, Java, and C."
 keywords: "Bellman-Ford algorithm, shortest path, negative edges, graph algorithm, edge relaxation, negative cycle detection, dynamic programming, time complexity, space complexity, VR-Rathod, Code-Note , Bellman Ford Algorithm"
 displayTitle: Bellman Ford Algorithm
+treeTitle: DSA - Graph Algorithms - Bellman Ford Algorithm
 ---
 
 > [!info] What is the Bellman-Ford Algorithm?

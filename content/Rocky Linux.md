@@ -4,6 +4,7 @@ description: "Comprehensive Rocky Linux reference covering installation, DNF pac
 keywords: "Rocky Linux, rocky linux guide, rocky linux commands, rocky linux dnf, rocky linux tutorial, rocky linux server, rocky linux rhel, rocky linux selinux, rocky linux firewalld, rocky linux administration, enterprise linux, RHEL compatible, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: Rocky Linux – Complete Guide
 enableToc: true
+treeTitle: OS - Linux Distros - Rocky Linux
 ---
 
 - # History

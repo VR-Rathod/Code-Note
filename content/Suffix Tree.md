@@ -2,6 +2,7 @@
 seoTitle: Suffix Tree Explained – Ukkonen's O(n) Construction & Applications
 description: "A comprehensive guide to Suffix Trees and Ukkonen's linear-time construction algorithm. Covers substring queries, pattern matching, and implementations in Python and C++."
 keywords: "suffix tree, Ukkonen's algorithm, suffix link, pattern matching, string indexing, bio-informatics, O(n) construction, data structures, algorithms, VR-Rathod, Code-Note, code note vr, vr book"
+treeTitle: DSA - Trees - Suffix Tree
 ---
 
 > [!info] What is a Suffix Tree?

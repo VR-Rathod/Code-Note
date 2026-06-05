@@ -3,6 +3,7 @@ seoTitle: Static Methods and Class Methods in OOP – Complete In-Depth Guide
 description: "Deep dive into Static Methods and Class Methods in OOP. Covers the difference between instance, class, and static methods, when to use each, factory patterns, and examples in Python, C++, Java, JavaScript, and C#."
 keywords: "static methods, class methods, instance methods, @staticmethod, @classmethod, static keyword, factory method, Python static, Java static, C++ static, VR-Rathod, Code-Note"
 displayTitle: Static Methods and Class Methods
+treeTitle: DSA - OOP - Static Methods and Class Methods
 ---
 
 > [!info] What are Static and Class Methods?
@@ -46,7 +47,6 @@ displayTitle: Static Methods and Class Methods
 		- **Instance method** = A member borrowing a specific book (needs to know *which* member and *which* book).
 		- **Class method** = The library administrator changing the library's opening hours (acts on the *library as a whole*, not a specific member).
 		- **Static method** = A utility posted on the wall: "How to find the Dewey Decimal section" (useful to the library, but needs no knowledge of any specific member or current state).
-
 - # Class Methods as Factory Constructors
   collapsed:: true
 	- The most powerful use of `@classmethod` is creating **alternative constructors** (factory methods) with meaningful names:
@@ -82,7 +82,6 @@ displayTitle: Static Methods and Class Methods
 	  print(d1)  # Date(2024-05-26)
 	  print(d2)  # Date(2024-05-26)
 	  ```
-
 - # Implementation
   collapsed:: true
 	- > [!note] A `MathUtils` class with static utility methods, and a `User` class with class-level factory constructors.
@@ -352,7 +351,6 @@ displayTitle: Static Methods and Class Methods
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Instance methods** → need object state (`self`). The most common type.
@@ -360,7 +358,6 @@ displayTitle: Static Methods and Class Methods
 	- **Static methods** (`@staticmethod`) → no `self` or `cls`. Pure **utility functions** scoped inside a class for logical grouping.
 	- In Java/C++/C#, `static` keyword on a method or field means it belongs to the class, shared by all instances.
 	- Static fields/methods are accessed via `ClassName.method()` — not via an object instance.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

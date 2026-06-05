@@ -3,6 +3,7 @@ seoTitle: Class in OOP – Complete In-Depth Guide | Blueprints, Attributes, Met
 description: "Deep dive into Classes in Object-Oriented Programming. Covers what a class is, anatomy of a class, attributes vs methods, access modifiers, static vs instance members, constructors, class relationships, memory model, and when to use classes. With code examples in Python, C++, Java, JavaScript, and C#."
 keywords: "class, OOP, object-oriented programming, class definition, class vs object, attributes, methods, constructor, destructor, access modifiers, static members, instance members, encapsulation, class anatomy, class diagram, class memory model, Python class, C++ class, Java class, JavaScript class, CSharp class, VR-Rathod, Code-Note, Vaibhav Rathod"
 displayTitle: Class in OOP
+treeTitle: DSA - OOP - Class
 ---
 
 > [!info] What is a Class?

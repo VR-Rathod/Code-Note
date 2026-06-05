@@ -2,6 +2,7 @@
 seoTitle: Mixins in OOP – Reusable Behavior Without Inheritance Guide
 description: "Mixins add reusable behavior to classes without traditional inheritance. Covers mixin pattern, multiple inheritance, Python mixins, Ruby modules, and language-specific examples."
 keywords: "mixin, OOP, reusable behavior, multiple inheritance, Python mixin, Ruby module, TypeScript mixin, composition, software design, object-oriented programming, trait"
+treeTitle: DSA - OOP - Mixin
 ---
 
 > [!info] What is a Mixin?
@@ -27,7 +28,6 @@ keywords: "mixin, OOP, reusable behavior, multiple inheritance, Python mixin, Ru
 		- **No Instantiation**: Mixins are never used standalone; they are always mixed into another class.
 		- **No State (Ideally)**: Well-designed mixins are stateless and contain only methods, making them truly plug-and-play.
 		- **Multiple Mixins**: A class can inherit from many mixins simultaneously, enabling fine-grained capability composition.
-
 - # How It Works
   collapsed:: true
 	- ## The Core Idea
@@ -42,7 +42,7 @@ keywords: "mixin, OOP, reusable behavior, multiple inheritance, Python mixin, Ru
 		      B --> C["Target class instance\nhas methods from both"]
 		      C --> D["Call mixin method on target\n(e.g. dog.log('Barked'))"]
 		      D --> E["Mixin method executes\nwithout knowing target class"]
-
+		  
 		      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 		  ```
 	-
@@ -50,31 +50,30 @@ keywords: "mixin, OOP, reusable behavior, multiple inheritance, Python mixin, Ru
 	  collapsed:: true
 		- ```
 		  Goal: Add log() and serialize() capabilities to Dog and Car without a shared base class.
-
+		  
 		  Step 1 — Define Mixins:
 		    class LogMixin:
 		        def log(self, msg): print(f"[LOG] {self.__class__.__name__}: {msg}")
-
+		  
 		    class SerializeMixin:
 		        def to_dict(self): return self.__dict__
-
+		  
 		  Step 2 — Mix into target classes:
 		    class Dog(LogMixin, SerializeMixin):
 		        def __init__(self, name): self.name = name
-
+		  
 		    class Car(LogMixin):
 		        def __init__(self, model): self.model = model
-
+		  
 		  Step 3 — Use mixed-in methods:
 		    d = Dog("Rex")
 		    d.log("Barked")        # → [LOG] Dog: Barked
 		    print(d.to_dict())    # → {'name': 'Rex'}
-
+		  
 		    c = Car("Tesla")
 		    c.log("Accelerated")  # → [LOG] Car: Accelerated
 		    # c.to_dict() → AttributeError (Car didn't mix in SerializeMixin)
 		  ```
-
 - # Complexity Analysis
   collapsed:: true
 	- > [!important] Complexity of Mixins
@@ -93,12 +92,11 @@ keywords: "mixin, OOP, reusable behavior, multiple inheritance, Python mixin, Ru
 		- When the mixin requires knowledge of the target class's internal state — this creates hidden coupling.
 		- When too many mixins are stacked, making the MRO hard to reason about (the "Mixin Hell" problem).
 		- When the behavior is core to the class identity — use regular inheritance instead.
-
 - # Implementation
   collapsed:: true
 	- > [!note] Mixin Pattern Implementation
 	  > Below are examples of a `LogMixin` and `SerializeMixin` being mixed into unrelated classes.
-	  - Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
+		- Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
 	  
@@ -107,33 +105,33 @@ keywords: "mixin, OOP, reusable behavior, multiple inheritance, Python mixin, Ru
 	  class LogMixin:
 	      def log(self, message: str) -> None:
 	          print(f"[LOG] {self.__class__.__name__}: {message}")
-
+	  
 	  class SerializeMixin:
 	      def to_dict(self) -> dict:
 	          return self.__dict__
-
+	  
 	  # --- Target Classes ---
 	  class Dog(LogMixin, SerializeMixin):
 	      def __init__(self, name: str, breed: str):
 	          self.name = name
 	          self.breed = breed
-
+	  
 	      def bark(self):
 	          self.log("Barked!")
-
+	  
 	  class Car(LogMixin):
 	      def __init__(self, model: str, speed: int):
 	          self.model = model
 	          self.speed = speed
-
+	  
 	      def accelerate(self):
 	          self.log(f"Accelerating to {self.speed} km/h")
-
+	  
 	  # --- Example Usage ---
 	  dog = Dog("Rex", "Labrador")
 	  dog.bark()               # [LOG] Dog: Barked!
 	  print(dog.to_dict())     # {'name': 'Rex', 'breed': 'Labrador'}
-
+	  
 	  car = Car("Tesla", 200)
 	  car.accelerate()         # [LOG] Car: Accelerating to 200 km/h
 	  ```
@@ -223,7 +221,7 @@ keywords: "mixin, OOP, reusable behavior, multiple inheritance, Python mixin, Ru
 	  
 	  ```java
 	  // Java uses Interfaces with default methods as the closest equivalent to Mixins.
-
+	  
 	  // --- Mixin Interfaces ---
 	  interface LogMixin {
 	      default void log(String message) {
@@ -268,7 +266,6 @@ keywords: "mixin, OOP, reusable behavior, multiple inheritance, Python mixin, Ru
 	  ```
 	  
 	  :::
-
 - # Alternative Variant (Mixin with Shared State via `__init__`)
   collapsed:: true
 	- > [!tip] Stateful Mixins Using Cooperative Multiple Inheritance
@@ -282,20 +279,20 @@ keywords: "mixin, OOP, reusable behavior, multiple inheritance, Python mixin, Ru
 	          super().__init__(**kwargs)
 	          import datetime
 	          self.created_at = datetime.datetime.now().isoformat()
-
+	  
 	  class TagMixin:
 	      def __init__(self, tags=None, **kwargs):
 	          super().__init__(**kwargs)
 	          self.tags = tags or []
-
+	  
 	      def add_tag(self, tag: str):
 	          self.tags.append(tag)
-
+	  
 	  class Article(TimestampMixin, TagMixin):
 	      def __init__(self, title: str, **kwargs):
 	          super().__init__(**kwargs)
 	          self.title = title
-
+	  
 	  # --- Example Usage ---
 	  article = Article(title="OOP Patterns", tags=["python", "oop"])
 	  article.add_tag("design-patterns")
@@ -305,7 +302,6 @@ keywords: "mixin, OOP, reusable behavior, multiple inheritance, Python mixin, Ru
 	  ```
 	  
 	  :::
-
 - # When to Use Mixins
   collapsed:: true
 	- ```mermaid
@@ -317,7 +313,7 @@ keywords: "mixin, OOP, reusable behavior, multiple inheritance, Python mixin, Ru
 	      S1 -- Yes --> S2{"Does it fit\nan 'Is-A' relationship?"}
 	      S2 -- Yes --> R3["Use Inheritance"]
 	      S2 -- No --> R4["✅ Use a Mixin\n(Can-Do relationship)"]
-
+	  
 	      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 	  ```
 	-
@@ -330,7 +326,6 @@ keywords: "mixin, OOP, reusable behavior, multiple inheritance, Python mixin, Ru
 		- The mixin needs **deep access to the target's internal state** — this creates tight hidden coupling.
 		- Stacking too many mixins creates an overly complex MRO that is hard to debug ("Mixin Hell").
 		- The shared behavior is **core to the class identity** — prefer regular inheritance.
-
 - # Key Takeaways
   collapsed:: true
 	- **"Can-Do" Relationship** — Mixins express capabilities (`Loggable`, `Serializable`) rather than identity (`Animal`, `Vehicle`).
@@ -339,7 +334,6 @@ keywords: "mixin, OOP, reusable behavior, multiple inheritance, Python mixin, Ru
 	- **Stateless by Design** — The best mixins carry only methods, avoiding state that creates coupling to the host class.
 	- **Language Parity** — Python uses multiple inheritance, C++ uses CRTP templates, JavaScript uses factory functions, and Java uses `interface default` methods to achieve mixin-like behavior.
 	- **Composition Alternative** — When inheritance hierarchies become rigid, mixins allow behavior reuse with minimal coupling.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

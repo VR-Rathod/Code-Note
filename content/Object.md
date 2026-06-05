@@ -3,6 +3,7 @@ seoTitle: Object in OOP – Complete In-Depth Guide | Instances, Memory Model, I
 description: "Deep dive into Objects in OOP. Covers what an object is, object identity vs equality, shallow vs deep copy, object lifecycle, memory model, and practical examples in Python, C++, Java, JavaScript, and C#."
 keywords: "object, OOP, instance, object identity, object equality, shallow copy, deep copy, object lifecycle, garbage collection, Python object, Java object, C++ object, VR-Rathod, Code-Note"
 displayTitle: Object
+treeTitle: DSA - OOP - Object
 ---
 
 > [!info] What is an Object?
@@ -42,7 +43,6 @@ displayTitle: Object
 		  │    [bark method → shared class]  │
 		  └──────────────────────────────────┘
 		  ```
-
 - # Object Identity, Equality & Value
   collapsed:: true
 	- Three ways objects can be "the same" — and they are **not** the same thing:
@@ -72,7 +72,6 @@ displayTitle: Object
 	  print(id(p1))     # e.g. 140234567890 — memory address
 	  print(id(p2))     # different address
 	  ```
-
 - # Shallow Copy vs Deep Copy
   collapsed:: true
 	- When you copy an object, **nested mutable objects** may or may not be copied:
@@ -102,7 +101,6 @@ displayTitle: Object
 	  print(shallow.members)  # ['Alice', 'Bob', 'Charlie']  ← shared inner list!
 	  print(deep.members)     # ['Alice', 'Bob']             ← fully independent ✅
 	  ```
-
 - # Object Lifecycle
   collapsed:: true
 	- ```mermaid
@@ -116,7 +114,6 @@ displayTitle: Object
 	      F -- "Yes" --> G["🗑️ Destructor called\n__del__ / ~MyClass()"]
 	      G --> H["♻️ Memory freed\n(GC or manual delete)"]
 	  ```
-
 - # Implementation
   collapsed:: true
 	- > [!note] A `GameCharacter` object demonstrating creation, copying, identity, equality, and lifecycle across 5 languages.
@@ -363,7 +360,6 @@ displayTitle: Object
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- An **object** is a runtime instance of a class — it **occupies memory** and holds its own state.
@@ -371,7 +367,6 @@ displayTitle: Object
 	- **Shallow copy** copies the top-level object but shares nested mutable objects. **Deep copy** is fully independent.
 	- Python manages memory via **reference counting + garbage collection**. C++ requires manual `delete` or RAII.
 	- Each object holds its own **instance attributes**, but shares **class methods** with all other instances.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

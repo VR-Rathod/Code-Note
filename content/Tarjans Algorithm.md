@@ -3,6 +3,7 @@ seoTitle: Tarjan's Algorithm – Strongly Connected Components (SCC) in One Pass
 description: "Master Tarjan's algorithm for finding Strongly Connected Components in a directed graph using a single DFS pass, low-link values, and a recursion stack."
 keywords: "Tarjan algorithm, Strongly Connected Components, SCC, DFS, low-link values, graph traversal, O(V+E), algorithm, VR-Rathod, Code-Note, Tarjans Algorithm"
 displayTitle: Tarjan's Algorithm
+treeTitle: DSA - Graph Algorithms - Tarjans Algorithm
 ---
 
 > [!info] What is Tarjan's Algorithm?

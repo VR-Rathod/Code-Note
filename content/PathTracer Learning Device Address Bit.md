@@ -3,6 +3,7 @@ seoTitle: Device Address in Vulkan Ray Tracing – Buffer Reference Guide
 description: "Device addresses enable GPU buffer access in Vulkan ray tracing. Covers VkDeviceAddress, buffer device address feature, shader binding table, and BLAS/TLAS."
 keywords: "device address, Vulkan ray tracing, VkDeviceAddress, buffer device address, shader binding table, BLAS, TLAS, GPU rendering, path tracing, Vulkan, ray tracing"
 title: PathTracer Learning Device Address Bit
+treeTitle: Game Development - Path Tracing - Device Address Bit
 ---
 
 tags:: concept, vulkan, memory, device-address

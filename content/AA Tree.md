@@ -2,6 +2,7 @@
 seoTitle: AA Tree Explained – Self-Balancing BST with C++ and Python
 description: "Learn AA Trees, a simplified Red-Black Tree variant using levels instead of colors. Detailed skew, split, insert, delete operations in C++ and Python."
 keywords: "AA tree, balanced BST, self-balancing tree, skew, split, C++, Python, data structures, algorithms, binary search tree, tree rotation, VR-Rathod, Code-Note, code note vr, vr book"
+treeTitle: DSA - Trees - AA Tree
 ---
 
 > [!info] What is an AA Tree?
@@ -9,15 +10,15 @@ keywords: "AA tree, balanced BST, self-balancing tree, skew, split, C++, Python,
 > It enforces balance using node **levels** (integers) rather than colors, significantly reducing the number of rotation cases needed during insertions and deletions.
 
 - # Explanation
-	- An **AA Tree** is a variant of the Red-Black Tree that eliminates half of the restructuring cases by requiring that **only right children** can be at the same level as their parent. 
+	- An **AA Tree** is a variant of the Red-Black Tree that eliminates half of the restructuring cases by requiring that **only right children** can be at the same level as their parent.
 	- Instead of colors (Red/Black), every node is tagged with an integer **level** representing the black height of the node.
 	-
 	- ## Real-World Analogy
 	  collapsed:: true
 		- Think of a **corporate hierarchy** where employees are assigned strict grade levels.
-		  - You can have a peer (at your same grade level) working directly under you, but to avoid structural confusion, they **must sit on your right**. 
-		  - No peers are allowed to sit on your left (left-child same level).
-		  - You can have at most one peer reporting to you; if a second peer joins them, it triggers a promotion (level increment) to rebalance the team.
+			- You can have a peer (at your same grade level) working directly under you, but to avoid structural confusion, they **must sit on your right**.
+			- No peers are allowed to sit on your left (left-child same level).
+			- You can have at most one peer reporting to you; if a second peer joins them, it triggers a promotion (level increment) to rebalance the team.
 	-
 	- ## Why AA Tree Over Red-Black Tree?
 	  collapsed:: true

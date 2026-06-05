@@ -2,6 +2,7 @@
 seoTitle: Pigeonhole Sort Algorithm – Stability, Key Mapping, and Complexity
 description: "In-depth guide to Pigeonhole Sort. Details structural list-based mapping for stability, comparison with Counting Sort, time/space complexity analysis, and complete code implementations in five languages."
 keywords: "pigeonhole sort, pigeonholesort, non-comparison sort, stable sort, key mapping, counting sort comparison, time complexity, space complexity, VR-Rathod, Code-Note, Vaibhav Rathod"
+treeTitle: DSA - Sorting & Searching - Pigeonhole Sort
 ---
 
 > [!info] What is Pigeonhole Sort?
@@ -14,8 +15,8 @@ keywords: "pigeonhole sort, pigeonholesort, non-comparison sort, stable sort, ke
 	- ## Pigeonhole Sort vs. Counting Sort
 	  collapsed:: true
 		- While both algorithms share a time complexity of $O(n + Range)$, they differ in execution:
-		  - **Counting Sort** accumulates frequencies and calculates index offsets. The auxiliary array contains counts.
-		  - **Pigeonhole Sort** maintains lists in each hole. Items are physically appended to their corresponding hole list. This preserves duplicate item stability directly and allows sorting structs/objects with aux data.
+			- **Counting Sort** accumulates frequencies and calculates index offsets. The auxiliary array contains counts.
+			- **Pigeonhole Sort** maintains lists in each hole. Items are physically appended to their corresponding hole list. This preserves duplicate item stability directly and allows sorting structs/objects with aux data.
 	-
 	- ## Core Properties
 	  collapsed:: true
@@ -59,13 +60,13 @@ keywords: "pigeonhole sort, pigeonholesort, non-comparison sort, stable sort, ke
 		  | **8** | 6 | Hole 6 | `[[2], [3], [4], [], [6], [7], [8, 8]]` (Appended) |
 		-
 		- **Rebuilding Array from Holes:**
-		  - Read Hole 0 `[2]` $\rightarrow$ `[2]`
-		  - Read Hole 1 `[3]` $\rightarrow$ `[2, 3]`
-		  - Read Hole 2 `[4]` $\rightarrow$ `[2, 3, 4]`
-		  - Read Hole 3 `[]`
-		  - Read Hole 4 `[6]` $\rightarrow$ `[2, 3, 4, 6]`
-		  - Read Hole 5 `[7]` $\rightarrow$ `[2, 3, 4, 6, 7]`
-		  - Read Hole 6 `[8, 8]` $\rightarrow$ `[2, 3, 4, 6, 7, 8, 8]` (Stability maintained)
+			- Read Hole 0 `[2]` $\rightarrow$ `[2]`
+			- Read Hole 1 `[3]` $\rightarrow$ `[2, 3]`
+			- Read Hole 2 `[4]` $\rightarrow$ `[2, 3, 4]`
+			- Read Hole 3 `[]`
+			- Read Hole 4 `[6]` $\rightarrow$ `[2, 3, 4, 6]`
+			- Read Hole 5 `[7]` $\rightarrow$ `[2, 3, 4, 6, 7]`
+			- Read Hole 6 `[8, 8]` $\rightarrow$ `[2, 3, 4, 6, 7, 8, 8]` (Stability maintained)
 -
 - # Complexity Analysis
   collapsed:: true
@@ -82,7 +83,7 @@ keywords: "pigeonhole sort, pigeonholesort, non-comparison sort, stable sort, ke
 - # Implementation
   collapsed:: true
 	- > [!note] Stable Pigeonhole Sort using list-based buckets.
-	  - Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
+		- Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
 	-
 	- :::code-tabs
 	  
@@ -135,7 +136,7 @@ keywords: "pigeonhole sort, pigeonholesort, non-comparison sort, stable sort, ke
 	      for (int x : arr) {
 	          holes[x - minVal].push_back(x);
 	      }
-  
+	  
 	      int idx = 0;
 	      for (int i = 0; i < range; ++i) {
 	          for (int x : holes[i]) {
@@ -253,7 +254,7 @@ keywords: "pigeonhole sort, pigeonholesort, non-comparison sort, stable sort, ke
 	          if (arr[i] < minVal) minVal = arr[i];
 	          if (arr[i] > maxVal) maxVal = arr[i];
 	      }
-  
+	  
 	      int range = maxVal - minVal + 1;
 	      struct Node** holes = (struct Node**)malloc(range * sizeof(struct Node*));
 	      struct Node** tails = (struct Node**)malloc(range * sizeof(struct Node*));

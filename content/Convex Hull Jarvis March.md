@@ -2,6 +2,7 @@
 seoTitle: Convex Hull Jarvis March – Gift Wrapping Algorithm Guide
 description: "Jarvis March (Gift Wrapping) finds the convex hull of a 2D point set by wrapping around outermost points. Covers orientation test, cross product, O(nh) complexity, and implementations in Python, C++, JavaScript, and Java."
 keywords: "convex hull, Jarvis march, gift wrapping algorithm, computational geometry, orientation test, cross product, O(nh) complexity, DSA, algorithms, point set, convex polygon, jarvis algorithm, convex hull C++, convex hull Python, VR-Rathod, Code-Note, code note vr, vr book"
+treeTitle: DSA - Math & Geometry - Convex Hull Jarvis March
 ---
 
 > [!info] What is Jarvis March?

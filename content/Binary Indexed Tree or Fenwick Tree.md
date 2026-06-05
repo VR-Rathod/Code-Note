@@ -3,6 +3,7 @@ seoTitle: Fenwick Tree (Binary Indexed Tree) – Prefix Sum Data Structure
 description: "Master Fenwick Trees (Binary Indexed Trees) in DSA. Learn dynamic prefix sums, point updates using bitwise LSB operations, and O(N) tree building."
 keywords: "Fenwick Tree, Binary Indexed Tree, BIT, Prefix Sum, LSB, Point Update, Range Query, Data Structures, DSA, BIT C++, BIT Python"
 displayTitle: Binary Indexed Tree or Fenwick Tree
+treeTitle: DSA - Trees - Binary Indexed Tree or Fenwick Tree
 ---
 
 > [!info] What is a Fenwick Tree?
@@ -15,9 +16,9 @@ displayTitle: Binary Indexed Tree or Fenwick Tree
 	  collapsed:: true
 		- Both Fenwick Trees and [[Segment Tree]] solve the dynamic prefix sum/range query problem in $O(\log n)$ time.
 		- However, a Fenwick Tree has significant advantages:
-		  - **Memory Efficiency**: A Segment Tree requires up to $4N$ memory slots. A Fenwick Tree requires exactly $N+1$ slots (an identical footprint to the original array).
-		  - **Code Simplicity**: A Fenwick Tree is implemented in just a few lines of loop-based code (no recursion needed).
-		  - **Performance**: Due to bitwise calculations, Fenwick Trees are faster in practice with smaller constant overheads.
+			- **Memory Efficiency**: A Segment Tree requires up to $4N$ memory slots. A Fenwick Tree requires exactly $N+1$ slots (an identical footprint to the original array).
+			- **Code Simplicity**: A Fenwick Tree is implemented in just a few lines of loop-based code (no recursion needed).
+			- **Performance**: Due to bitwise calculations, Fenwick Trees are faster in practice with smaller constant overheads.
 		- *Note: Unlike Segment Trees, a standard Fenwick Tree only supports operations that are **invertible** (like sum, multiplication, XOR). It cannot easily support Range Minimum/Maximum queries without additional overhead.*
 	-
 	- ## The Bitwise LSB Logic
@@ -27,10 +28,10 @@ displayTitle: Binary Indexed Tree or Fenwick Tree
 		- **LSB formula**:
 		  $$LSB(i) = i \ \& \ (-i)$$
 		- *Example index range coverage:*
-		  - Index $1 \ (0001_2)$: LSB is $1$. Stores sum of range `[1, 1]`.
-		  - Index $2 \ (0010_2)$: LSB is $2$. Stores sum of range `[1, 2]`.
-		  - Index $3 \ (0011_2)$: LSB is $1$. Stores sum of range `[3, 3]`.
-		  - Index $4 \ (0100_2)$: LSB is $4$. Stores sum of range `[1, 4]`.
+			- Index $1 \ (0001_2)$: LSB is $1$. Stores sum of range `[1, 1]`.
+			- Index $2 \ (0010_2)$: LSB is $2$. Stores sum of range `[1, 2]`.
+			- Index $3 \ (0011_2)$: LSB is $1$. Stores sum of range `[3, 3]`.
+			- Index $4 \ (0100_2)$: LSB is $4$. Stores sum of range `[1, 4]`.
 		-
 		- ```
 		  Fenwick Range Coverage:
@@ -56,7 +57,6 @@ displayTitle: Binary Indexed Tree or Fenwick Tree
 		      
 		      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 		  ```
-
 - # Core Operations
   collapsed:: true
 	- ## 1. Query (Prefix Sum up to Index $i$)
@@ -86,7 +86,6 @@ displayTitle: Binary Indexed Tree or Fenwick Tree
 		- Instead of performing $N$ updates (which takes $O(N \log N)$), we can initialize in $O(N)$ time:
 		  1. Copy the original array to the tree (1-indexed).
 		  2. For each index $i$ from 1 to $N$, add its value to its immediate parent: `parent = i + (i & -i)`. If `parent <= N`, add `tree[i]` to `tree[parent]`.
-
 - # Time & Space Complexity
   collapsed:: true
 	- > [!important] Complexity Summary
@@ -99,7 +98,6 @@ displayTitle: Binary Indexed Tree or Fenwick Tree
 	  | **Prefix Query** | $O(\log N)$ | $O(1)$ iterative |
 	  | **Point Update** | $O(\log N)$ | $O(1)$ iterative |
 	  | **Range Query** | $O(\log N)$ | $O(1)$ iterative |
-
 - # Implementation
   collapsed:: true
 	- > [!note] Fenwick Tree Implementation

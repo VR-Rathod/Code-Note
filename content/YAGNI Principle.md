@@ -3,6 +3,7 @@ seoTitle: YAGNI Principle in Software Design – Complete Guide | You Aren't Gon
 description: "Deep dive into the YAGNI (You Aren't Gonna Need It) principle. Covers why premature features hurt, over-engineering vs pragmatism, when to apply YAGNI, and real-world examples in Python and Java."
 keywords: "YAGNI, You Aren't Gonna Need It, software design, over-engineering, premature optimization, XP principles, agile, clean code, DRY, SOLID, VR-Rathod, Code-Note"
 displayTitle: YAGNI Principle
+treeTitle: DSA - OOP - YAGNI Principle
 ---
 
 > [!info] What is YAGNI?
@@ -35,7 +36,6 @@ displayTitle: YAGNI Principle
 		  | Trigger | "I'm copy-pasting this again" | "I might need this someday" |
 		  | Action | Refactor current code | Don't write the speculative code |
 		  | Timing | Applied to existing codebase | Applied to new work decisions |
-
 - # YAGNI — Before & After
   collapsed:: true
 	- ```python
@@ -73,7 +73,6 @@ displayTitle: YAGNI Principle
 	  
 	      # Add caching, replicas, rate limiting WHEN the requirement arises
 	  ```
-
 - # Implementation — Spotting YAGNI Violations
   collapsed:: true
 	- > [!note] Real-world patterns where YAGNI is violated and their pragmatic alternatives.
@@ -198,7 +197,6 @@ displayTitle: YAGNI Principle
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Build now, for now** — implement what the current requirement demands, nothing more.
@@ -206,7 +204,6 @@ displayTitle: YAGNI Principle
 	- **Rule**: If there's no test for it, no requirement for it, and no current use — don't write it.
 	- YAGNI works best with **refactoring** — when you *do* need the feature, add it then using the knowledge of what you actually need.
 	- Related: [[DRY Principle]], [[Law of Demeter]], [[Single Responsibility Principle (SRP)]]
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

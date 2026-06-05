@@ -3,6 +3,7 @@ seoTitle: Interface in OOP – Complete In-Depth Guide | Contracts, Abstract Met
 description: "Deep dive into Interfaces in OOP. Covers what an interface is, interface vs abstract class, implementing multiple interfaces, default methods, and examples in Python (ABC/Protocol), C++, Java, JavaScript, and C#."
 keywords: "interface, OOP, abstract method, contract, protocol, ABC, implements, multiple interface, Python interface, Java interface, C++ interface, TypeScript interface, VR-Rathod, Code-Note"
 displayTitle: Interface
+treeTitle: DSA - OOP - Interface
 ---
 
 > [!info] What is an Interface?
@@ -40,7 +41,6 @@ displayTitle: Interface
 		  e.g. Flyable, Serializable,      e.g. Animal (base for Dog, Cat)
 		       Printable, Comparable             Shape (base for Circle, Rect)
 		  ```
-
 - # Python — Interface Patterns
   collapsed:: true
 	- Python has no `interface` keyword. Interfaces are implemented via:
@@ -64,7 +64,6 @@ displayTitle: Interface
 	      def draw(self) -> None: ...
 	      def get_area(self) -> float: ...
 	  ```
-
 - # Implementation
   collapsed:: true
 	- > [!note] A `Printable` + `Serializable` interface implemented by `Document` and `Invoice` — showing multiple interfaces per class.
@@ -321,7 +320,6 @@ displayTitle: Interface
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- An interface defines **what** — not **how**. It's a pure contract.
@@ -329,7 +327,6 @@ displayTitle: Interface
 	- **Interface = Can-do / capability** (Flyable, Serializable). **Abstract class = Is-a / identity** (Animal, Shape).
 	- Python uses `ABC` (nominal) or `Protocol` (structural/duck typing) to simulate interfaces.
 	- Interfaces are the core tool for applying the **Dependency Inversion Principle** — depend on abstractions, not concretions.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

@@ -5,6 +5,7 @@ keywords: "openSUSE, openSUSE Leap, openSUSE Tumbleweed, Zypper, YaST, Btrfs, Sn
 displayTitle: openSUSE – Complete Guide
 enableToc: true
 comments: true
+treeTitle: OS - Linux Distros - OpenSUSE
 ---
 
 - # History
@@ -815,7 +816,7 @@ comments: true
 		    <ipv4>
 		      <enabled>true</enabled>
 		      <address>
-			<local>192.168.1.50/24</local>
+		  <local>192.168.1.50/24</local>
 		      </address>
 		    </ipv4>
 		    <ipv4:route>

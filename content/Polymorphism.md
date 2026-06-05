@@ -3,6 +3,7 @@ seoTitle: Polymorphism in OOP – Complete In-Depth Guide | Compile-time vs Runt
 description: "Deep dive into Polymorphism in OOP. Covers compile-time (method overloading, operator overloading) vs runtime (method overriding, virtual dispatch) polymorphism, duck typing, and practical examples in Python, C++, Java, JavaScript, and C#."
 keywords: "polymorphism, OOP, runtime polymorphism, compile-time polymorphism, method overloading, method overriding, virtual functions, duck typing, dynamic dispatch, upcasting, Python polymorphism, Java polymorphism, C++ virtual, VR-Rathod, Code-Note"
 displayTitle: Polymorphism
+treeTitle: DSA - OOP - Polymorphism
 ---
 
 > [!info] What is Polymorphism?
@@ -36,7 +37,6 @@ displayTitle: Polymorphism
 		  |---|---|---|---|
 		  | **Compile-time** | At compile/parse time | Overloading, templates | `add(int)` vs `add(float)` |
 		  | **Runtime** | At execution time | Virtual dispatch, overriding | `shape.area()` → Circle or Square area |
-
 - # Compile-Time Polymorphism
   collapsed:: true
 	- ## Method Overloading
@@ -77,7 +77,6 @@ displayTitle: Polymorphism
 		  print(v1 + v2)    # Vector(4, 6)
 		  print(v1 == v2)   # False
 		  ```
-
 - # Runtime Polymorphism
   collapsed:: true
 	- ## Method Overriding + Virtual Dispatch
@@ -112,7 +111,6 @@ displayTitle: Polymorphism
 		      make_sound(animal)
 		  # Quack!  Woof!  Meow!
 		  ```
-
 - # Implementation
   collapsed:: true
 	- > [!note] Runtime polymorphism via a `Shape` hierarchy — `Circle`, `Rectangle`, `Triangle` each implement `area()` and `describe()` differently.
@@ -360,7 +358,6 @@ displayTitle: Polymorphism
 	  ```
 	  
 	  :::
-
 - # When to Use Polymorphism
   collapsed:: true
 	- ```mermaid
@@ -380,7 +377,6 @@ displayTitle: Polymorphism
 	- ## ❌ Avoid When
 		- Only one type exists — no need for the abstraction.
 		- The behavior differs **so radically** between types that a shared interface would be meaningless.
-
 - # Key Takeaways
   collapsed:: true
 	- **One interface, many behaviors** — the defining motto of polymorphism.
@@ -389,7 +385,6 @@ displayTitle: Polymorphism
 	- **Duck typing** (Python/JS) — polymorphism without inheritance — any object with the right method qualifies.
 	- Enables **Open/Closed Principle** — add new types without changing existing code.
 	- Always use an **abstract base class or interface** to define the shared contract.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

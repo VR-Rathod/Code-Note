@@ -3,6 +3,7 @@ seoTitle: Abstraction in OOP – Complete In-Depth Guide | Data Hiding, Abstract
 description: "Deep dive into Abstraction in OOP. Covers data abstraction, procedural abstraction, abstract classes, interfaces, and when to apply abstraction with examples in Python, C++, Java, JavaScript, and C#."
 keywords: "abstraction, OOP, abstract class, interface, data hiding, Python abstraction, Java abstraction, C++ abstract class, JavaScript abstraction, CSharp abstraction, design principles, VR-Rathod, Code-Note"
 displayTitle: Abstraction
+treeTitle: DSA - OOP - Abstraction
 ---
 
 - # Introduction

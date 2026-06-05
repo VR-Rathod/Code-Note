@@ -4,6 +4,7 @@ description: "Comprehensive Garuda Linux reference covering installation, Garuda
 keywords: "Garuda Linux, garuda linux guide, garuda gaming, garuda linux tutorial, arch linux gaming, garuda gamer, btrfs snapshots, chaotic aur, gamemode, mangohud, proton, wine, garuda dr460nized, garuda linux notes, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: Garuda Linux – Gaming & Performance Guide
 enableToc: true
+treeTitle: OS - Linux Distros - Garuda Linux
 ---
 
 - # History

@@ -2,6 +2,7 @@
 seoTitle: Hash Tables Data Structure - Premium DSA Guide
 description: "Master Hash Tables (Hash Maps, Dictionaries). Understand hash functions, O(1) lookups, collision resolution techniques like Chaining and Linear Probing, and multi-language implementations."
 keywords: "Hash Table, Hash Map, Dictionary, DSA, Data Structures, Hashing, Collision Handling, Chaining, Linear Probing"
+treeTitle: DSA - Linear Data Structures - Hash Tables
 ---
 
 > [!info] What is a Hash Table?
@@ -38,7 +39,6 @@ keywords: "Hash Table, Hash Map, Dictionary, DSA, Data Structures, Hashing, Coll
 		  Instead of storing the value directly in the array slot, each array slot holds a **Linked List**. If a collision occurs, the new key-value pair is simply appended to the linked list at that index.
 		- ### 2. Open Addressing (Linear Probing)
 		  If a collision occurs (the slot is already full), the algorithm simply looks at the *very next* adjacent array slot. If that's full, it looks at the next one, until it finds an empty slot to place the data.
-
 - # Time & Space Complexity
   collapsed:: true
 	- > [!important] The $O(1)$ Illusion
@@ -50,7 +50,6 @@ keywords: "Hash Table, Hash Map, Dictionary, DSA, Data Structures, Hashing, Coll
 	  | **Insert / Put** | $O(1)$ | $O(N)$ |
 	  | **Delete / Remove** | $O(1)$ | $O(N)$ |
 	  | **Space Complexity**| $O(N)$ | $O(N)$ |
-
 - # Implementation
   collapsed:: true
 	- > [!note] Building a Hash Table with Chaining

@@ -2,6 +2,7 @@
 seoTitle: Mo's Algorithm with Hilbert Curve – Advanced Query Sorting Optimization
 description: "Optimize Mo's Algorithm range queries using a Hilbert Space-Filling Curve. Learn how mapping 2D (L, R) coordinates to a 1D Hilbert index minimizes pointer travel, yielding a 2x constant factor speedup. Includes implementations in Python, C++, JavaScript, and Java."
 keywords: "Mo's Algorithm, Mos algorithm, Hilbert curve, query sorting, space-filling curve, range query optimization, square root decomposition, competitive programming, DSA"
+treeTitle: DSA - Advanced Tips - Mos Algorithm with Hilbert Curve
 ---
 
 > [!info] What is Mo's Algorithm with Hilbert Curve?
@@ -67,7 +68,7 @@ keywords: "Mo's Algorithm, Mos algorithm, Hilbert curve, query sorting, space-fi
 	  > Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
-
+	  
 	  ```python
 	  # Hilbert curve coordinate conversion helper
 	  # K is the power of 2 for grid size (e.g. 20 for N <= 10^6)
@@ -97,7 +98,7 @@ keywords: "Mo's Algorithm, Mos algorithm, Hilbert curve, query sorting, space-fi
 	      else:
 	          ans += (sub_square_size - 1 - add)
 	      return ans
-
+	  
 	  # Mo's Algorithm using Hilbert Curve Sorting
 	  def mos_algorithm_hilbert(arr, queries):
 	      # Add query indices and compute Hilbert values
@@ -131,19 +132,19 @@ keywords: "Mo's Algorithm, Mos algorithm, Hilbert curve, query sorting, space-fi
 	          ans[idx] = curr_sum
 	          
 	      return ans
-
+	  
 	  # Example Usage
 	  array = [1, 2, 1, 3, 4, 2, 3, 1]
 	  queries = [(0, 4), (2, 6), (1, 3), (0, 7)]
 	  print("Range Sums:", mos_algorithm_hilbert(array, queries))
 	  # Output: [11, 13, 6, 17]
 	  ```
-
+	  
 	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <algorithm>
-
+	  
 	  inline long long getHilbert(int x, int y, int pow_val, int rotate) {
 	      if (pow_val == 0) return 0;
 	      int hpow = 1 << (pow_val - 1);
@@ -158,12 +159,12 @@ keywords: "Mo's Algorithm, Mos algorithm, Hilbert curve, query sorting, space-fi
 	      ans += (seg == 1 || seg == 2) ? add : (subSquareSize - 1 - add);
 	      return ans;
 	  }
-
+	  
 	  struct Query {
 	      int l, r, idx;
 	      long long h_val;
 	  };
-
+	  
 	  std::vector<long long> solveMosHilbert(const std::vector<int>& arr, std::vector<Query>& queries) {
 	      for (auto& q : queries) {
 	          q.h_val = getHilbert(q.l, q.r, 20, 0); // 20 bits grid size
@@ -172,11 +173,11 @@ keywords: "Mo's Algorithm, Mos algorithm, Hilbert curve, query sorting, space-fi
 	      std::sort(queries.begin(), queries.end(), [](const Query& a, const Query& b) {
 	          return a.h_val < b.h_val;
 	      });
-
+	  
 	      std::vector<long long> ans(queries.size());
 	      long long curr_sum = 0;
 	      int left = 0, right = -1;
-
+	  
 	      for (const auto& q : queries) {
 	          while (right < q.r) curr_sum += arr[++right];
 	          while (left > q.l) curr_sum += arr[--left];
@@ -186,7 +187,7 @@ keywords: "Mo's Algorithm, Mos algorithm, Hilbert curve, query sorting, space-fi
 	      }
 	      return ans;
 	  }
-
+	  
 	  int main() {
 	      std::vector<int> arr = {1, 2, 1, 3, 4, 2, 3, 1};
 	      std::vector<Query> queries = {{0, 4, 0, 0}, {2, 6, 1, 0}, {1, 3, 2, 0}, {0, 7, 3, 0}};
@@ -196,7 +197,7 @@ keywords: "Mo's Algorithm, Mos algorithm, Hilbert curve, query sorting, space-fi
 	      return 0;
 	  }
 	  ```
-
+	  
 	  ```javascript
 	  function getHilbert(x, y, powVal = 20, rotate = 0) {
 	      if (powVal === 0) return 0n;
@@ -226,18 +227,18 @@ keywords: "Mo's Algorithm, Mos algorithm, Hilbert curve, query sorting, space-fi
 	      }
 	      return ans;
 	  }
-
+	  
 	  function solveMosHilbert(arr, queries) {
 	      const indexed = queries.map(([l, r], i) => {
 	          return { l, r, idx: i, hVal: getHilbert(l, r, 20, 0) };
 	      });
-
+	  
 	      indexed.sort((a, b) => (a.hVal < b.hVal ? -1 : a.hVal > b.hVal ? 1 : 0));
-
+	  
 	      const ans = new Array(queries.length);
 	      let currSum = 0;
 	      let left = 0, right = -1;
-
+	  
 	      for (const q of indexed) {
 	          while (right < q.r) currSum += arr[++right];
 	          while (left > q.l) currSum += arr[--left];
@@ -247,16 +248,16 @@ keywords: "Mo's Algorithm, Mos algorithm, Hilbert curve, query sorting, space-fi
 	      }
 	      return ans;
 	  }
-
+	  
 	  const arr = [1, 2, 1, 3, 4, 2, 3, 1];
 	  console.log("Range Sums:", solveMosHilbert(arr, [[0,4],[2,6],[1,3],[0,7]]));
 	  ```
-
+	  
 	  ```java
 	  import java.util.*;
-
+	  
 	  public class MosHilbert {
-
+	  
 	      public static long getHilbert(int x, int y, int powVal, int rotate) {
 	          if (powVal == 0) return 0;
 	          int hpow = 1 << (powVal - 1);
@@ -272,7 +273,7 @@ keywords: "Mo's Algorithm, Mos algorithm, Hilbert curve, query sorting, space-fi
 	          ans += (seg == 1 || seg == 2) ? add : (subSquareSize - 1 - add);
 	          return ans;
 	      }
-
+	  
 	      static class Query {
 	          int l, r, idx;
 	          long hVal;
@@ -283,14 +284,14 @@ keywords: "Mo's Algorithm, Mos algorithm, Hilbert curve, query sorting, space-fi
 	              this.hVal = getHilbert(l, r, 20, 0);
 	          }
 	      }
-
+	  
 	      public static long[] solveMosHilbert(int[] arr, List<Query> queries) {
 	          queries.sort(Comparator.comparingLong(q -> q.hVal));
-
+	  
 	          long[] ans = new long[queries.size()];
 	          long currSum = 0;
 	          int left = 0, right = -1;
-
+	  
 	          for (Query q : queries) {
 	              while (right < q.r) currSum += arr[++right];
 	              while (left > q.l) currSum += arr[--left];
@@ -300,7 +301,7 @@ keywords: "Mo's Algorithm, Mos algorithm, Hilbert curve, query sorting, space-fi
 	          }
 	          return ans;
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          int[] arr = {1, 2, 1, 3, 4, 2, 3, 1};
 	          List<Query> queries = new ArrayList<>(Arrays.asList(
@@ -311,7 +312,7 @@ keywords: "Mo's Algorithm, Mos algorithm, Hilbert curve, query sorting, space-fi
 	      }
 	  }
 	  ```
-
+	  
 	  :::
 	-
 - # Key Takeaways

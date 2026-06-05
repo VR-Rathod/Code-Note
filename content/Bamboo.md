@@ -3,6 +3,7 @@ seoTitle: Bamboo Reference – Specs, Plan Branches, and Deployments Guide
 description: "Educational Atlassian Bamboo CI/CD reference covering plans, stages, jobs, tasks, Bamboo Specs (Java/YAML configuration-as-code), plan branches, and deployment projects."
 keywords: "Bamboo, Atlassian, Bamboo Specs, CI/CD, devops, Jira integration, build plans, build agent, plan branches, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: Bamboo
+treeTitle: DevOps - Bamboo
 ---
 
 - # History

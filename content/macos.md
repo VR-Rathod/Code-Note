@@ -5,6 +5,7 @@ keywords: "macOS, Apple Silicon, Darwin, APFS, Homebrew, plist, launchd, Zsh, SI
 displayTitle: macOS – Complete Guide
 enableToc: true
 comments: true
+treeTitle: OS - macOS
 ---
 
 - # History

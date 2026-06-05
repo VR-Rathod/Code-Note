@@ -4,6 +4,7 @@ description: "Deep-dive multiplayer game networking reference covering architect
 keywords: "multiplayer networking, game networking, client server, peer to peer, lag compensation, client side prediction, server reconciliation, entity interpolation, dead reckoning, tick rate, UDP game networking, RUDP, ENet, GameNetworkingSockets, WebRTC, WebSocket, relay server, matchmaking, ELO, anti-cheat, NAT traversal, game sync, lockstep, rollback netcode, GGPO, authoritative server, deterministic simulation, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: Multiplayer Networking – Game Dev Deep Dive
 enableToc: true
+treeTitle: Game Development - Multiplayer Networking
 ---
 
 > [!info] About This Page

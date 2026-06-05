@@ -3,6 +3,7 @@ seoTitle: Backtracking Concepts – State Space Search, Pruning & Algorithm Patt
 description: "Master Backtracking algorithms in DSA. Learn the state space tree model, pruning strategies, the standard backtracking template, and how it applies to N-Queens, Sudoku, Subset Sum, and permutation problems."
 keywords: "backtracking, state space tree, pruning, constraint satisfaction, N-Queens, Sudoku, subset sum, permutations, combinations, recursion, DFS, algorithm design, Python, C++, Java, JavaScript"
 displayTitle: Backtracking Concepts
+treeTitle: DSA - DP & Greedy - Backtracking Concepts
 ---
 
 > [!info] What is Backtracking?
@@ -49,7 +50,6 @@ displayTitle: Backtracking Concepts
 		  Level 3:  [1,2,3][1,2][1,3][1][2,3][2][3][]
 		  → All 8 subsets explored via DFS
 		  ```
-
 - # How It Works
   collapsed:: true
 	- ## The Universal Backtracking Template
@@ -59,7 +59,7 @@ displayTitle: Backtracking Concepts
 		      if is_goal(state):           # Base case: complete solution found
 		          result.append(copy(state))
 		          return
-
+		  
 		      for choice in choices:
 		          if is_valid(state, choice):       # Constraint check (PRUNE HERE)
 		              apply(state, choice)           # Make choice
@@ -79,7 +79,7 @@ displayTitle: Backtracking Concepts
 		      H --> I["undo(state, choice)\n(restore state — BACKTRACK)"]
 		      I --> D
 		      D --> J["All choices exhausted\nReturn to parent"]
-
+		  
 		      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 		  ```
 	-
@@ -99,10 +99,9 @@ displayTitle: Backtracking Concepts
 		        Choose 1: path=[2,3,1] → GOAL → add [2,3,1] ✅
 		    Choose 3: path=[3], remaining=[1,2]
 		      ... → [3,1,2] ✅, [3,2,1] ✅
-
+		  
 		  Total: 6 permutations (3! = 6) ✅
 		  ```
-
 - # Complexity Analysis
   collapsed:: true
 	- > [!important] Backtracking Complexity Depends on Pruning
@@ -115,18 +114,17 @@ displayTitle: Backtracking Concepts
 	  | **[[N-Queens Problem]] (N=8)** | $O(8^8)$ = 16M | ~2,057 nodes | Dramatic pruning |
 	  | **[[Sudoku Solver]] (9×9)** | $O(9^{81})$ | Exponentially smaller | Constraint propagation |
 	  | **Subset Sum** | $O(2^N)$ | $O(2^N)$ worst | Pruning helps on average |
-
 - # Implementation
   collapsed:: true
 	- > [!note] Classic Backtracking Problems — Subsets, Permutations, Combination Sum
 	  > Three fundamental backtracking patterns every developer should know.
-	  - Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
+		- Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
 	  
 	  ```python
 	  from copy import deepcopy
-
+	  
 	  # === 1. All Subsets ===
 	  def subsets(nums: list[int]) -> list[list[int]]:
 	      result = []
@@ -138,7 +136,7 @@ displayTitle: Backtracking Concepts
 	              path.pop()                    # Backtrack
 	      backtrack(0, [])
 	      return result
-
+	  
 	  # === 2. All Permutations ===
 	  def permutations(nums: list[int]) -> list[list[int]]:
 	      result = []
@@ -152,12 +150,12 @@ displayTitle: Backtracking Concepts
 	              path.pop()                    # Backtrack
 	      backtrack([], nums)
 	      return result
-
+	  
 	  # === 3. Combination Sum (reuse allowed) ===
 	  def combination_sum(candidates: list[int], target: int) -> list[list[int]]:
 	      result = []
 	      candidates.sort()
-
+	  
 	      def backtrack(start: int, path: list[int], remaining: int):
 	          if remaining == 0:               # Goal reached
 	              result.append(path[:])
@@ -168,10 +166,10 @@ displayTitle: Backtracking Concepts
 	              path.append(candidates[i])
 	              backtrack(i, path, remaining - candidates[i])  # i = allow reuse
 	              path.pop()                   # Backtrack
-
+	  
 	      backtrack(0, [], target)
 	      return result
-
+	  
 	  # Examples
 	  print("Subsets:", subsets([1,2,3]))
 	  print("Perms:", permutations([1,2,3]))
@@ -182,7 +180,7 @@ displayTitle: Backtracking Concepts
 	  #include <iostream>
 	  #include <vector>
 	  #include <algorithm>
-
+	  
 	  // All Subsets
 	  void subsetsHelper(const std::vector<int>& nums, int start,
 	                     std::vector<int>& path, std::vector<std::vector<int>>& result) {
@@ -193,7 +191,7 @@ displayTitle: Backtracking Concepts
 	          path.pop_back();  // backtrack
 	      }
 	  }
-
+	  
 	  // All Permutations
 	  void permsHelper(std::vector<int>& nums, int start, std::vector<std::vector<int>>& result) {
 	      if (start == (int)nums.size()) { result.push_back(nums); return; }
@@ -203,15 +201,15 @@ displayTitle: Backtracking Concepts
 	          std::swap(nums[start], nums[i]);  // backtrack
 	      }
 	  }
-
+	  
 	  int main() {
 	      std::vector<int> nums = {1, 2, 3};
 	      std::vector<int> path;
 	      std::vector<std::vector<int>> result;
-
+	  
 	      subsetsHelper(nums, 0, path, result);
 	      std::cout << "Subsets count: " << result.size() << "\n"; // 8
-
+	  
 	      result.clear();
 	      permsHelper(nums, 0, result);
 	      std::cout << "Perms count: " << result.size() << "\n";   // 6
@@ -234,7 +232,7 @@ displayTitle: Backtracking Concepts
 	      backtrack(0, []);
 	      return result;
 	  }
-
+	  
 	  // All Permutations
 	  function permutations(nums) {
 	      const result = [];
@@ -249,14 +247,14 @@ displayTitle: Backtracking Concepts
 	      backtrack([], nums);
 	      return result;
 	  }
-
+	  
 	  console.log("Subsets:", subsets([1,2,3]).length);     // 8
 	  console.log("Perms:", permutations([1,2,3]).length);  // 6
 	  ```
 	  
 	  ```java
 	  import java.util.*;
-
+	  
 	  public class BacktrackingBasics {
 	      // All Subsets
 	      public static List<List<Integer>> subsets(int[] nums) {
@@ -272,7 +270,7 @@ displayTitle: Backtracking Concepts
 	              path.remove(path.size() - 1);  // backtrack
 	          }
 	      }
-
+	  
 	      // All Permutations
 	      public static List<List<Integer>> permutations(int[] nums) {
 	          List<List<Integer>> result = new ArrayList<>();
@@ -291,7 +289,7 @@ displayTitle: Backtracking Concepts
 	              tmp = nums[start]; nums[start] = nums[i]; nums[i] = tmp;  // backtrack
 	          }
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          System.out.println("Subsets: " + subsets(new int[]{1,2,3}).size());     // 8
 	          System.out.println("Perms: " + permutations(new int[]{1,2,3}).size());  // 6
@@ -300,7 +298,6 @@ displayTitle: Backtracking Concepts
 	  ```
 	  
 	  :::
-
 - # Alternative Variant (Backtracking with Memoization — Word Break)
   collapsed:: true
 	- > [!tip] Backtracking + Memoization = Top-Down DP
@@ -310,14 +307,14 @@ displayTitle: Backtracking Concepts
 	  
 	  ```python
 	  from functools import lru_cache
-
+	  
 	  def word_break(s: str, word_dict: list[str]) -> bool:
 	      """
 	      Can s be segmented into words from word_dict?
 	      Backtracking + memoization = O(N² * L) vs O(2^N) pure backtracking.
 	      """
 	      words = set(word_dict)
-
+	  
 	      @lru_cache(maxsize=None)
 	      def backtrack(start: int) -> bool:
 	          if start == len(s):
@@ -326,9 +323,9 @@ displayTitle: Backtracking Concepts
 	              if s[start:end] in words and backtrack(end):
 	                  return True
 	          return False                 # No valid split from this position
-
+	  
 	      return backtrack(0)
-
+	  
 	  # Example
 	  print(word_break("leetcode", ["leet", "code"]))     # True
 	  print(word_break("applepenapple", ["apple", "pen"])) # True
@@ -336,7 +333,6 @@ displayTitle: Backtracking Concepts
 	  ```
 	  
 	  :::
-
 - # When to Use Backtracking
   collapsed:: true
 	- ```mermaid
@@ -348,7 +344,7 @@ displayTitle: Backtracking Concepts
 	      S1 -- No --> S2{"Can invalid paths\nbe detected early?"}
 	      S2 -- Yes --> R3["✅ Use Backtracking with Pruning\n(much faster than brute force)"]
 	      S2 -- No --> R4["Use Backtracking\n(explores full state space)"]
-
+	  
 	      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 	  ```
 	-
@@ -362,7 +358,6 @@ displayTitle: Backtracking Concepts
 		- The problem has **overlapping subproblems** — add memoization or switch to [[Dynamic Programming Concepts]].
 		- You only need **one optimal solution** (not all solutions) — consider [[Greedy Algorithm Concepts]] if applicable.
 		- The search space is too large even with pruning (e.g., very large $N$) — use heuristics (simulated annealing, genetic algorithms).
-
 - # Key Takeaways
   collapsed:: true
 	- **DFS on Implicit Tree** — Backtracking is depth-first search on a state space tree that is never explicitly built — nodes are generated on the fly.
@@ -371,7 +366,6 @@ displayTitle: Backtracking Concepts
 	- **State Restoration** — The `undo` step must perfectly reverse the `apply` step. Forgetting this causes subtle bugs where the state leaks between branches.
 	- **Backtrack + Memo = DP** — When sub-results are reusable, caching transforms exponential backtracking into polynomial [[Dynamic Programming Concepts]].
 	- **Template Recognition** — If you see: "find all combinations/permutations/subsets/arrangements satisfying constraints" → it's almost certainly backtracking.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

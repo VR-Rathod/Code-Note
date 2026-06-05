@@ -2,6 +2,7 @@
 seoTitle: Merge Sort Algorithm – Implementation, Recursion Tree, and Complexity
 description: "In-depth guide to Merge Sort. Explains divide-and-conquer strategy, linear-time merge phase, stability characteristics, and contains implementations in Python, C++, JavaScript, Java, and C."
 keywords: "merge sort, sorting algorithm, divide and conquer, O(n log n), stable sort, auxiliary space, recursion tree, algorithm implementation, VR-Rathod, Code-Note, Vaibhav Rathod"
+treeTitle: DSA - Sorting & Searching - Merge Sort
 ---
 
 > [!info] What is Merge Sort?
@@ -85,7 +86,7 @@ keywords: "merge sort, sorting algorithm, divide and conquer, O(n log n), stable
 - # Implementation
   collapsed:: true
 	- > [!note] Standard out-of-place recursive merge sort implementations.
-	  - Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
+		- Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
 	-
 	- :::code-tabs
 	  
