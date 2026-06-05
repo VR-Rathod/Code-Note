@@ -1,8 +1,7 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import breadcrumbsStyle from "./styles/breadcrumbs.scss"
-import { FullSlug, SimpleSlug, resolveRelative, simplifySlug } from "../util/path"
+import { FullSlug, resolveRelative } from "../util/path"
 import { classNames } from "../util/lang"
-import { trieFromAllFiles } from "../util/ctx"
 
 type CrumbData = {
   displayName: string
@@ -35,52 +34,70 @@ const defaultOptions: BreadcrumbOptions = {
   showCurrentPage: true,
 }
 
-function formatCrumb(displayName: string, baseSlug: FullSlug, currentSlug: SimpleSlug): CrumbData {
-  return {
-    displayName: displayName.replaceAll("-", " "),
-    path: resolveRelative(baseSlug, currentSlug),
-  }
-}
-
 export default ((opts?: Partial<BreadcrumbOptions>) => {
   const options: BreadcrumbOptions = { ...defaultOptions, ...opts }
   const Breadcrumbs: QuartzComponent = ({
     fileData,
     allFiles,
     displayClass,
-    ctx,
   }: QuartzComponentProps) => {
-    const trie = (ctx.trie ??= trieFromAllFiles(allFiles))
-    const slugParts = fileData.slug!.split("/")
-    const pathNodes = trie.ancestryChain(slugParts)
-
-    if (!pathNodes) {
+    if (fileData.slug === "index") {
       return null
     }
 
-    const crumbs: CrumbData[] = pathNodes.map((node, idx) => {
-      const crumb = formatCrumb(node.displayName, fileData.slug!, simplifySlug(node.slug))
-      if (idx === 0) {
-        crumb.displayName = options.rootName
-      }
+    const title = fileData.frontmatter?.treeTitle || fileData.frontmatter?.title || fileData.slug!
+    const segments = title.split(" - ").map((s) => s.trim())
 
-      // For last node (current page), set empty path
-      if (idx === pathNodes.length - 1) {
-        crumb.path = ""
-      }
+    const findSlugForSegment = (segment: string) => {
+      const match = allFiles.find((f) => {
+        if (f.slug === "index") return false
+        const fTitle = f.frontmatter?.title?.toLowerCase()
+        const fTreeTitle = f.frontmatter?.treeTitle?.toLowerCase()
 
-      return crumb
-    })
+        if (fTitle === segment.toLowerCase()) return true
 
-    if (!options.showCurrentPage) {
-      crumbs.pop()
+        if (fTreeTitle) {
+          const parts = fTreeTitle.split(" - ").map((s) => s.trim().toLowerCase())
+          if (parts[parts.length - 1] === segment.toLowerCase()) return true
+        }
+
+        return false
+      })
+      return match?.slug
+    }
+
+    const crumbs: CrumbData[] = [
+      {
+        displayName: options.rootName,
+        path: resolveRelative(fileData.slug!, "index" as FullSlug),
+      },
+    ]
+
+    for (let i = 0; i < segments.length - 1; i++) {
+      const segment = segments[i]
+      const matchedSlug = findSlugForSegment(segment)
+      crumbs.push({
+        displayName: segment.replaceAll("-", " "),
+        path: matchedSlug ? resolveRelative(fileData.slug!, matchedSlug) : "",
+      })
+    }
+
+    if (options.showCurrentPage) {
+      crumbs.push({
+        displayName: segments[segments.length - 1].replaceAll("-", " "),
+        path: "",
+      })
     }
 
     return (
       <nav class={classNames(displayClass, "breadcrumb-container")} aria-label="breadcrumbs">
         {crumbs.map((crumb, index) => (
           <div class="breadcrumb-element">
-            <a href={crumb.path}>{crumb.displayName}</a>
+            {crumb.path ? (
+              <a href={crumb.path}>{crumb.displayName}</a>
+            ) : (
+              <span>{crumb.displayName}</span>
+            )}
             {index !== crumbs.length - 1 && <p>{` ${options.spacerSymbol} `}</p>}
           </div>
         ))}

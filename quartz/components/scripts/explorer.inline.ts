@@ -391,7 +391,7 @@ async function setupExplorer(currentSlug: FullSlug) {
     for (const [slug, page] of entries) {
       if (slug === "index" || page.title === "index" || page.title === "") continue
 
-      const parts = (page.title || slug).split(" - ").map(s => s.trim())
+      const parts = (page.treeTitle || page.title || slug).split(" - ").map(s => s.trim())
       insertNamespace(parts, slug)
     }
 
