@@ -218,7 +218,7 @@ treeTitle: DSA - Graphs - Directed & Undirected Graphs
 - # Variations & Related Concepts
   collapsed:: true
 	- **Directed Acyclic Graph (DAG)**: A directed graph containing no cycles. Highly important for dependency modeling.
-	- **Strongly Connected Component (SCC)**: A subset of vertices in a directed graph where every vertex is reachable from every other vertex in the subset. Found using [[kosarajus-algorithm]] or [[tarjans-algorithm]].
+	- **Strongly Connected Component (SCC)**: A subset of vertices in a directed graph where every vertex is reachable from every other vertex in the subset. Found using [[Kosarajus Algorithm]] or [[tarjans-algorithm]].
 -
 - # Key Takeaways
   collapsed:: true
