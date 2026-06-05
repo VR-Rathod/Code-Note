@@ -861,3 +861,13 @@ body {
     }
   }
 }
+
+// ── Left sidebar — scrollable on desktop/tablet when content overflows ─────
+@media (min-width: 800px) {
+  .sidebar.left {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    scrollbar-width: thin;
+    scrollbar-color: var(--lightgray) transparent;
+  }
+}

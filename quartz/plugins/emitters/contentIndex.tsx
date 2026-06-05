@@ -13,6 +13,7 @@ export type ContentDetails = {
   slug: FullSlug
   filePath: FilePath
   title: string
+  treeTitle?: string
   links: SimpleSlug[]
   tags: string[]
   content: string
@@ -107,6 +108,7 @@ export const ContentIndex: QuartzEmitterPlugin<Partial<Options>> = (opts) => {
             slug,
             filePath: file.data.relativePath!,
             title: file.data.frontmatter?.title!,
+            treeTitle: file.data.frontmatter?.treeTitle as string | undefined,
             links: file.data.links ?? [],
             tags: file.data.frontmatter?.tags ?? [],
             content: slug.toLowerCase() === "free-assets"
