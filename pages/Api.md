@@ -11,6 +11,7 @@ displayTitle: API Development
 - # Architecture & Communication Flow
   collapsed:: true
 	- ## Client-Server Sequence
+	  collapsed:: true
 		- ```mermaid
 		  sequenceDiagram
 		      autonumber
@@ -31,6 +32,7 @@ displayTitle: API Development
 		  ```
 	-
 	- ## API Styles Comparison
+	  collapsed:: true
 		- | Feature | REST | SOAP | GraphQL | gRPC |
 		  |---|---|---|---|---|
 		  | **Protocol** | HTTP / HTTPS | HTTP, SMTP, TCP, etc. | HTTP / HTTPS | HTTP/2 |
@@ -39,7 +41,7 @@ displayTitle: API Development
 		  | **Operations** | CRUD via HTTP Methods | Remote Procedure Call (RPC) | Query, Mutation, Subscription | Remote Procedure Calls |
 		  | **Speed & Size** | Medium / Large (JSON text) | Heavy (verbose XML overhead) | Medium (Client-selected payload) | Extremely fast (packed binary) |
 		  | **Use Case** | General Web APIs, CRUD | Enterprise integrations, banking | Complex web frontends, mobile | Microservices communication |
-
+-
 - # RESTful API Design Principles
   collapsed:: true
 	- **REST (Representational State Transfer)** is an architectural style designed by Roy Fielding in 2000. For an API to be considered RESTful, it must adhere to these core constraints:
@@ -50,10 +52,11 @@ displayTitle: API Development
 		- 3. **Cacheability**: Responses must declare themselves as cacheable or non-cacheable to improve performance.
 		- 4. **Layered System**: The client cannot tell whether it is connected directly to the end server or to an intermediate (e.g., load balancer, gateway).
 		- 5. **Uniform Interface**: Resources are identified by URIs. Interaction with resources is performed using standard representations (e.g., JSON) and HTTP methods.
-
+-
 - # HTTP Methods & Status Codes
   collapsed:: true
 	- ## HTTP Request Methods
+	  collapsed:: true
 		- | Method | Purpose | Safe | Idempotent | Description |
 		  |---|---|---|---|---|
 		  | **`GET`** | Retrieve resource | Yes | Yes | Fetches data from server. Should never modify data. |
@@ -63,6 +66,7 @@ displayTitle: API Development
 		  | **`DELETE`** | Remove resource | No | Yes | Deletes the specified resource. |
 	-
 	- ## Standard HTTP Status Codes
+	  collapsed:: true
 		- ### 🟢 2xx Success
 		  collapsed:: true
 			- `200 OK`: Request succeeded. Response body contains the fetched data.
@@ -84,24 +88,26 @@ displayTitle: API Development
 			- `500 Internal Server Error`: Generic fallback for unexpected backend crashes.
 			- `502 Bad Gateway`: Server acting as a gateway received an invalid response from upstream.
 			- `503 Service Unavailable`: Server is overloaded or down for maintenance.
-
+-
 - # API Security & Traffic Control
   collapsed:: true
 	- ## Authentication & Authorization
+	  collapsed:: true
 		- **API Keys**: Simple tokens sent in request headers or queries. Easy to implement but lack security granularity and expiration dates.
 		- **JWT (JSON Web Token)**: Cryptographically signed tokens encoding user details and claims. Stateless, allowing servers to verify identity without database queries.
 		- **OAuth 2.0**: The industry-standard authorization framework. Utilizes access tokens, refresh tokens, and authentication servers to grant restricted access to third-party clients.
 	-
 	- ## Traffic Management
+	  collapsed:: true
 		- **Rate Limiting & Throttling**: Restricting the number of requests a client can make in a given timeframe (e.g., 60 requests/minute). Solves Denial of Service (DoS) attacks and ensures fair usage. Response headers typically include:
-		  - `X-RateLimit-Limit`: Maximum requests allowed.
-		  - `X-RateLimit-Remaining`: Remaining request count in current window.
-		  - `X-RateLimit-Reset`: Time when the limit window resets.
+			- `X-RateLimit-Limit`: Maximum requests allowed.
+			- `X-RateLimit-Remaining`: Remaining request count in current window.
+			- `X-RateLimit-Reset`: Time when the limit window resets.
 		- **Caching**: Storing API responses in cache layers (e.g., Redis or CDN) to reduce database load. Managed using HTTP headers:
-		  - `Cache-Control: max-age=3600`
-		  - `ETag`: Token identifying the version of the resource.
+			- `Cache-Control: max-age=3600`
+			- `ETag`: Token identifying the version of the resource.
 		- **Webhooks**: Event-driven API patterns where the server pushes real-time data to a client's pre-configured URL endpoint upon event triggers.
-
+-
 - # Consuming APIs (Code Examples)
   collapsed:: true
 	- :::code-tabs
@@ -308,7 +314,7 @@ displayTitle: API Development
 	  ```
 	  
 	  :::
-
+-
 - # API Backend Frameworks
   collapsed:: true
 	- | Framework | Language | Architecture Style | Pros | Cons |
@@ -318,7 +324,7 @@ displayTitle: API Development
 	  | **Spring Boot**| Java | REST, SOAP, GraphQL | Enterprise-ready, dependency injection, robust security framework, highly scalable. | Heavy runtime footprint, steep learning curve. |
 	  | **ASP.NET Core**| C# | REST, gRPC | Blazing fast execution, strongly typed, excellent dependency injection support. | Relies heavily on Microsoft's .NET ecosystem. |
 	  | **Flask** | Python | REST | Extremely simple, lightweight microframework, perfect for tiny backends/prototypes. | Lacks native async features, requires extensions for enterprise use. |
-
+-
 - # Learning References
   collapsed:: true
 	- ## Documentation & Guidelines
