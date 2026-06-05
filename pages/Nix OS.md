@@ -5,6 +5,7 @@ keywords: "NixOS, Nix, Nix Package Manager, Nix Flakes, configuration.nix, Home 
 displayTitle: NixOS – Complete Guide
 enableToc: true
 comments: true
+treeTitle: OS - Linux Distros - Nix OS
 ---
 
 - # History

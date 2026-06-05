@@ -4,6 +4,7 @@ description: "Comprehensive guide to Continuous Delivery (CD) covering CD vs Con
 keywords: "continuous delivery, CD, deployment strategies, canary deployment, blue-green deployment, GitOps, ArgoCD, Terraform, Ansible, rollbacks, pipeline configuration, DevOps"
 displayTitle: Continuous Delivery
 enableToc: true
+treeTitle: DevOps - Continuous Delivery
 ---
 
 - # Introduction to Continuous Delivery (CD)

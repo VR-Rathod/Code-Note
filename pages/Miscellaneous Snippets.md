@@ -2,6 +2,7 @@
 seoTitle: Miscellaneous Python Snippets
 description: "A collection of quick python snippets for basic algorithms like factorial, frequency counting, leap year, and subarray sums."
 keywords: "python snippets, array algorithms, basic algorithms, leap year, frequency count, factorial, VR-Rathod, Code-Note, code note vr, vr book"
+treeTitle: DSA - Advanced Tips - Miscellaneous Snippets
 ---
 
 - # Miscellaneous Python Snippets

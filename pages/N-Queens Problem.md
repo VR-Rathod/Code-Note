@@ -3,6 +3,7 @@ seoTitle: N-Queens Problem – Backtracking & Bitmask Optimization Guide
 description: "Master the N-Queens Problem with backtracking and bitmask optimization. Covers row/column/diagonal constraints, all-solutions vs one-solution variants, O(N!) pruning, and full implementations in Python, C++, JavaScript, and Java."
 keywords: "N-Queens, N-Queens problem, backtracking, bitmask, diagonal guards, constraint satisfaction, chess, state space search, DSA, Python, C++, Java, JavaScript, algorithm"
 displayTitle: N-Queens Problem
+treeTitle: DSA - DP & Greedy - N-Queens Problem
 ---
 
 > [!info] What is the N-Queens Problem?
@@ -21,9 +22,9 @@ displayTitle: N-Queens Problem
 	- ## The Three Constraints
 	  collapsed:: true
 		- For a queen placed at `(row, col)`:
-		  - **Column**: No other queen in the same column → track `cols_used` set.
-		  - **Main diagonal** (top-left → bottom-right): All cells where `row - col` is constant.
-		  - **Anti-diagonal** (top-right → bottom-left): All cells where `row + col` is constant.
+			- **Column**: No other queen in the same column → track `cols_used` set.
+			- **Main diagonal** (top-left → bottom-right): All cells where `row - col` is constant.
+			- **Anti-diagonal** (top-right → bottom-left): All cells where `row + col` is constant.
 		- ```
 		  For an 8×8 board:
 		  Main diagonal index  = row - col  ∈ [-7, 7] (15 values)
@@ -42,7 +43,6 @@ displayTitle: N-Queens Problem
 		  | 8 | 92 | Classic 8-Queens |
 		  | 10 | 724 | — |
 		  | 15 | 2,279,184 | — |
-
 - # How It Works
   collapsed:: true
 	- ## The Core Idea
@@ -64,7 +64,7 @@ displayTitle: N-Queens Problem
 		      G --> H["backtrack(row+1)"]
 		      H --> I["Remove queen (row,col)\nRestore cols, diag, anti_diag — BACKTRACK"]
 		      I --> D
-
+		  
 		      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 		  ```
 	-
@@ -72,7 +72,7 @@ displayTitle: N-Queens Problem
 	  collapsed:: true
 		- ```
 		  N=4, rows 0..3, cols 0..3
-
+		  
 		  Row 0: try col=0 → place Q at (0,0). cols={0}, diag={0}, anti={0}
 		    Row 1: col=0 → col conflict, skip
 		           col=1 → diag (1-1=0) conflict, skip
@@ -96,7 +96,7 @@ displayTitle: N-Queens Problem
 		      ALL FAIL → backtrack to row 1
 		  Row 0: col=1 → place Q at (0,1). cols={1}, diag={1}, anti={1}
 		    ... (continues to find 2 solutions for N=4)
-
+		  
 		  N=4 Solutions:
 		  Solution 1:    Solution 2:
 		  . Q . .        . . Q .
@@ -104,7 +104,6 @@ displayTitle: N-Queens Problem
 		  Q . . .        . . . Q
 		  . . Q .        . Q . .
 		  ```
-
 - # Complexity Analysis
   collapsed:: true
 	- | Approach | Time Complexity | Space Complexity | Notes |
@@ -117,12 +116,11 @@ displayTitle: N-Queens Problem
 	  collapsed:: true
 		- At row 0: $N$ choices. Row 1: at most $N-1$ (one column taken). Row 2: at most $N-2$. ... → Total ≤ $N! = N \times (N-1) \times \ldots \times 1$.
 		- In practice, diagonal pruning eliminates most paths. For $N=8$: only 92 solutions out of $8! = 40,320$ permutations.
-
 - # Implementation
   collapsed:: true
 	- > [!note] N-Queens — Standard Backtracking + Bitmask Optimization
 	  > The bitmask variant tracks columns, main diagonal, and anti-diagonal as three integers and uses bitwise operations for O(1) constraint checks.
-	  - Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
+		- Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
 	  
@@ -131,11 +129,11 @@ displayTitle: N-Queens Problem
 	      """Returns all N-Queens solutions as board strings."""
 	      results = []
 	      queens = [-1] * n       # queens[row] = col where queen is placed
-
+	  
 	      cols    = set()          # occupied columns
 	      diag    = set()          # occupied main diagonals (row - col)
 	      anti    = set()          # occupied anti-diagonals (row + col)
-
+	  
 	      def backtrack(row: int):
 	          if row == n:
 	              board = []
@@ -153,16 +151,16 @@ displayTitle: N-Queens Problem
 	              backtrack(row + 1)
 	              # Remove queen — BACKTRACK
 	              cols.discard(col); diag.discard(row-col); anti.discard(row+col)
-
+	  
 	      backtrack(0)
 	      return results
-
+	  
 	  # Bitmask optimization — O(N!) but with faster constant via bit ops
 	  def solve_n_queens_bitmask(n: int) -> int:
 	      """Returns count of solutions using bitmask tracking."""
 	      count = [0]
 	      limit = (1 << n) - 1     # N ones = all columns
-
+	  
 	      def backtrack(cols: int, left_diag: int, right_diag: int):
 	          if cols == limit:     # All columns filled → solution found
 	              count[0] += 1
@@ -177,16 +175,16 @@ displayTitle: N-Queens Problem
 	                  (left_diag | pos) << 1,   # Shift diagonals
 	                  (right_diag | pos) >> 1
 	              )
-
+	  
 	      backtrack(0, 0, 0)
 	      return count[0]
-
+	  
 	  # Examples
 	  solutions = solve_n_queens(4)
 	  print(f"N=4: {len(solutions)} solutions")  # 2
 	  for sol in solutions:
 	      print("\n".join(sol)); print()
-
+	  
 	  print(f"N=8 (bitmask): {solve_n_queens_bitmask(8)} solutions")  # 92
 	  ```
 	  
@@ -195,13 +193,13 @@ displayTitle: N-Queens Problem
 	  #include <vector>
 	  #include <string>
 	  #include <unordered_set>
-
+	  
 	  class NQueens {
 	      int n;
 	      std::vector<std::vector<std::string>> results;
 	      std::vector<int> queens;
 	      std::unordered_set<int> cols, diag, anti;
-
+	  
 	      void backtrack(int row) {
 	          if (row == n) {
 	              std::vector<std::string> board;
@@ -222,15 +220,15 @@ displayTitle: N-Queens Problem
 	              cols.erase(col); diag.erase(row-col); anti.erase(row+col);
 	          }
 	      }
-
+	  
 	  public:
 	      explicit NQueens(int n) : n(n), queens(n, -1) {}
-
+	  
 	      std::vector<std::vector<std::string>> solve() {
 	          backtrack(0);
 	          return results;
 	      }
-
+	  
 	      // Bitmask count only
 	      static int countBitmask(int n) {
 	          int count = 0, limit = (1 << n) - 1;
@@ -247,12 +245,12 @@ displayTitle: N-Queens Problem
 	          return count;
 	      }
 	  };
-
+	  
 	  int main() {
 	      NQueens nq(4);
 	      auto solutions = nq.solve();
 	      std::cout << "N=4 solutions: " << solutions.size() << "\n"; // 2
-
+	  
 	      std::cout << "N=8 (bitmask): " << NQueens::countBitmask(8) << "\n"; // 92
 	      return 0;
 	  }
@@ -263,7 +261,7 @@ displayTitle: N-Queens Problem
 	      const results = [];
 	      const queens = new Array(n).fill(-1);
 	      const cols = new Set(), diag = new Set(), anti = new Set();
-
+	  
 	      function backtrack(row) {
 	          if (row === n) {
 	              const board = queens.map(col =>
@@ -280,11 +278,11 @@ displayTitle: N-Queens Problem
 	              cols.delete(col); diag.delete(row-col); anti.delete(row+col);
 	          }
 	      }
-
+	  
 	      backtrack(0);
 	      return results;
 	  }
-
+	  
 	  const solutions = solveNQueens(4);
 	  console.log(`N=4: ${solutions.length} solutions`); // 2
 	  solutions.forEach(sol => console.log(sol.join("\n") + "\n"));
@@ -292,15 +290,15 @@ displayTitle: N-Queens Problem
 	  
 	  ```java
 	  import java.util.*;
-
+	  
 	  public class NQueens {
 	      private int n;
 	      private List<List<String>> results = new ArrayList<>();
 	      private int[] queens;
 	      private Set<Integer> cols = new HashSet<>(), diag = new HashSet<>(), anti = new HashSet<>();
-
+	  
 	      public NQueens(int n) { this.n = n; this.queens = new int[n]; }
-
+	  
 	      private void backtrack(int row) {
 	          if (row == n) {
 	              List<String> board = new ArrayList<>();
@@ -321,9 +319,9 @@ displayTitle: N-Queens Problem
 	              cols.remove(col); diag.remove(row-col); anti.remove(row+col);
 	          }
 	      }
-
+	  
 	      public List<List<String>> solve() { backtrack(0); return results; }
-
+	  
 	      public static void main(String[] args) {
 	          NQueens nq = new NQueens(4);
 	          System.out.println("N=4: " + nq.solve().size() + " solutions"); // 2
@@ -332,7 +330,6 @@ displayTitle: N-Queens Problem
 	  ```
 	  
 	  :::
-
 - # Alternative Variant (Find Any One Solution – Early Exit)
   collapsed:: true
 	- > [!tip] Finding Just the First Solution — O(N!) but exits at first success
@@ -345,7 +342,7 @@ displayTitle: N-Queens Problem
 	      """Find any one valid queen placement. Returns column indices per row, or None."""
 	      queens = [-1] * n
 	      cols = set(); diag = set(); anti = set()
-
+	  
 	      def backtrack(row: int) -> bool:
 	          if row == n:
 	              return True           # Found one solution → stop immediately
@@ -358,16 +355,15 @@ displayTitle: N-Queens Problem
 	                  return True       # Propagate success upward — no backtrack needed
 	              cols.discard(col); diag.discard(row-col); anti.discard(row+col)
 	          return False              # No valid placement at this row
-
+	  
 	      return queens if backtrack(0) else None
-
+	  
 	  # Example
 	  sol = solve_n_queens_one(8)
 	  print("One solution (col indices):", sol)  # e.g. [0,4,7,5,2,6,1,3]
 	  ```
 	  
 	  :::
-
 - # When to Use N-Queens / Backtracking
   collapsed:: true
 	- ```mermaid
@@ -379,7 +375,7 @@ displayTitle: N-Queens Problem
 	      S1 -- Yes --> S2{"Need all solutions\nor just one?"}
 	      S2 -- All --> R3["✅ [[Backtracking Concepts]]\nwith set/bitmask constraints"]
 	      S2 -- One --> R4["✅ [[Backtracking Concepts]]\nwith early exit (return True on first)"]
-
+	  
 	      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 	  ```
 	-
@@ -393,7 +389,6 @@ displayTitle: N-Queens Problem
 		- [[Sudoku Solver]] — 2D constraint satisfaction, same [[Backtracking Concepts]] template.
 		- Knight's Tour — place a knight visiting every cell exactly once (backtracking + Warnsdorff's heuristic).
 		- LeetCode #51 (N-Queens all solutions), #52 (count only).
-
 - # Key Takeaways
   collapsed:: true
 	- **One Queen Per Row** — Fixing one queen per row reduces branching from $O(N^2)$ to $O(N)$ per level while guaranteeing no row conflicts.
@@ -402,7 +397,6 @@ displayTitle: N-Queens Problem
 	- **O(N!) Unavoidable for All Solutions** — To enumerate all solutions, the algorithm must explore all valid paths. For $N=8$: 92 solutions found in ~2000 explored nodes (vs $8!$ = 40,320 brute force).
 	- **Early Exit for One Solution** — Returning `True` immediately on finding the first solution propagates upward, skipping all unexplored siblings.
 	- **Canonical Backtracking Example** — N-Queens perfectly demonstrates: choose a column, check constraints, recurse to next row, undo if stuck.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

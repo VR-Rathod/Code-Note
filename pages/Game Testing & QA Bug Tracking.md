@@ -4,6 +4,7 @@ description: "Complete game bug tracking reference: severity tiers, game-specifi
 keywords: "game bug tracking, bug report, game QA, softlock, bug severity, bug lifecycle, Jira game dev, Hansoft, Hacknplan, game testing workflow, VR-Rathod, Code-Note"
 displayTitle: Game Testing & QA - Bug Tracking
 title: Game Testing & QA Bug Tracking
+treeTitle: Game Development - Testing & QA - Bug Tracking
 ---
 
 > [!info] About This Page

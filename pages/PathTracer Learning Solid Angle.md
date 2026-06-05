@@ -2,6 +2,7 @@
 seoTitle: Solid Angle in Path Tracing – Steradian and Hemisphere Sampling
 description: "Solid angle measures the angular extent of a surface as seen from a point. Covers steradians, hemisphere integration, projected solid angle, and light sampling."
 keywords: "solid angle, steradian, path tracing, ray tracing, hemisphere sampling, projected solid angle, light sampling, radiometry, GPU rendering, Vulkan, Monte Carlo"
+treeTitle: Game Development - Path Tracing - Solid Angle
 ---
 
 tags:: concept, math, geometry, radiometry

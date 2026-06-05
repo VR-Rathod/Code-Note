@@ -3,6 +3,7 @@ seoTitle: Dependency Inversion Principle (DIP) – Complete Guide | SOLID, Depen
 description: "Deep dive into the Dependency Inversion Principle (DIP) from SOLID. Covers high-level vs low-level modules, depending on abstractions, dependency injection, and examples in Python, Java, and JavaScript."
 keywords: "Dependency Inversion Principle, DIP, SOLID, depend on abstractions, dependency injection, inversion of control, IoC, high-level module, low-level module, Python DIP, Java DIP, VR-Rathod, Code-Note"
 displayTitle: Dependency Inversion Principle (DIP)
+treeTitle: DSA - OOP - Dependency Inversion Principle (DIP)
 ---
 
 > [!info] What is the Dependency Inversion Principle?
@@ -46,7 +47,6 @@ displayTitle: Dependency Inversion Principle (DIP)
 		                                       def __init__(self, db: IDatabase):  ← injected
 		                                           self.db = db
 		  ```
-
 - # Implementation
   collapsed:: true
 	- > [!note] A `NotificationService` that works with any notifier backend — Email, SMS, Push — all swappable via DIP.
@@ -213,7 +213,6 @@ displayTitle: Dependency Inversion Principle (DIP)
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **High-level code depends on abstractions** (interfaces/ABCs), not concrete low-level classes.
@@ -221,7 +220,6 @@ displayTitle: Dependency Inversion Principle (DIP)
 	- DIP makes code **testable** — swap real implementations for mocks/stubs at test time.
 	- DIP makes code **flexible** — swap databases, email providers, payment gateways without touching business logic.
 	- Closely related to: [[Interface]], [[Strategy Pattern]], [[Open Closed Principle (OCP)]], [[Single Responsibility Principle (SRP)]]
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

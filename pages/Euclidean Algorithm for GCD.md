@@ -2,6 +2,7 @@
 seoTitle: Euclidean Algorithm for GCD – Standard, Extended, and Diophantine Guide
 description: "An exhaustive master-level guide to the Euclidean Algorithm for Greatest Common Divisor (GCD) and its Extended variant. Includes the mathematical proof of Lamé's Theorem, solving Linear Diophantine Equations, modular multiplicative inverse derivation, and complete implementations in Python, C++, JavaScript, and Java."
 keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean, Bezout identity, modular inverse, Lamé's Theorem, linear Diophantine equations, number theory, competitive programming, DSA"
+treeTitle: DSA - Math & Geometry - Euclidean Algorithm for GCD
 ---
 
 > [!info] What is the Euclidean Algorithm?
@@ -82,24 +83,24 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 		- **Final Result**: $\gcd(240, 46) = 2$. Coefficients are $x = 5, y = -26$.
 		- Verification: $240(5) + 46(-26) = 1200 - 1196 = 4 \implies$ Wait, $46 \cdot 26 = 1196$. $1200 - 1196 = 4$ — wait, is the GCD 2 or 4?
 		- Let's re-calculate:
-		  - $240 = 5 \cdot 46 + 10$.
-		  - $46 = 4 \cdot 10 + 6$.
-		  - $10 = 1 \cdot 6 + 4$.
-		  - $6 = 1 \cdot 4 + 2$.
-		  - $4 = 2 \cdot 2 + 0 \implies$ GCD is indeed 2.
-		  - Let's check coefficients: $240(5) + 46(-26) = 1200 - 1196 = 4 \ne 2$. Where is the error?
-		  - Let's backtrack carefully:
-		    - Step 5: $a=4, b=2 \implies x = y_1 = 1$, $y = x_1 - 2 \cdot y_1$. Wait, from base case $x_1=1, y_1=0$, we get:
-		      $x = 0$, $y = 1 - 2(0) = 1$. Verification: $4(0) + 2(1) = 2$. Correct.
-		    - Step 4: $a=6, b=4 \implies x_1 = 0, y_1 = 1$. Update:
-		      $x = y_1 = 1$, $y = x_1 - 1(y_1) = 0 - 1(1) = -1$. Verification: $6(1) + 4(-1) = 2$. Correct.
-		    - Step 3: $a=10, b=6 \implies x_1 = 1, y_1 = -1$. Update:
-		      $x = y_1 = -1$, $y = x_1 - 1(y_1) = 1 - 1(-1) = 2$. Verification: $10(-1) + 6(2) = 2$. Correct.
-		    - Step 2: $a=46, b=10 \implies x_1 = -1, y_1 = 2$. Update:
-		      $x = y_1 = 2$, $y = x_1 - 4(y_1) = -1 - 8 = -9$. Verification: $46(2) + 10(-9) = 92 - 90 = 2$. Correct.
-		    - Step 1: $a=240, b=46 \implies x_1 = 2, y_1 = -9$. Update:
-		      $x = y_1 = -9$, $y = x_1 - 5(y_1) = 2 - 5(-9) = 2 + 45 = 47$. Verification: $240(-9) + 46(47) = -2160 + 2162 = 2$. Correct!
-		    - Ah! The table coefficients had a minor copy error in backtracking. Let's fix the table values to be exactly correct.
+			- $240 = 5 \cdot 46 + 10$.
+			- $46 = 4 \cdot 10 + 6$.
+			- $10 = 1 \cdot 6 + 4$.
+			- $6 = 1 \cdot 4 + 2$.
+			- $4 = 2 \cdot 2 + 0 \implies$ GCD is indeed 2.
+			- Let's check coefficients: $240(5) + 46(-26) = 1200 - 1196 = 4 \ne 2$. Where is the error?
+			- Let's backtrack carefully:
+				- Step 5: $a=4, b=2 \implies x = y_1 = 1$, $y = x_1 - 2 \cdot y_1$. Wait, from base case $x_1=1, y_1=0$, we get:
+				  $x = 0$, $y = 1 - 2(0) = 1$. Verification: $4(0) + 2(1) = 2$. Correct.
+				- Step 4: $a=6, b=4 \implies x_1 = 0, y_1 = 1$. Update:
+				  $x = y_1 = 1$, $y = x_1 - 1(y_1) = 0 - 1(1) = -1$. Verification: $6(1) + 4(-1) = 2$. Correct.
+				- Step 3: $a=10, b=6 \implies x_1 = 1, y_1 = -1$. Update:
+				  $x = y_1 = -1$, $y = x_1 - 1(y_1) = 1 - 1(-1) = 2$. Verification: $10(-1) + 6(2) = 2$. Correct.
+				- Step 2: $a=46, b=10 \implies x_1 = -1, y_1 = 2$. Update:
+				  $x = y_1 = 2$, $y = x_1 - 4(y_1) = -1 - 8 = -9$. Verification: $46(2) + 10(-9) = 92 - 90 = 2$. Correct.
+				- Step 1: $a=240, b=46 \implies x_1 = 2, y_1 = -9$. Update:
+				  $x = y_1 = -9$, $y = x_1 - 5(y_1) = 2 - 5(-9) = 2 + 45 = 47$. Verification: $240(-9) + 46(47) = -2160 + 2162 = 2$. Correct!
+				- Ah! The table coefficients had a minor copy error in backtracking. Let's fix the table values to be exactly correct.
 		- Corrected Trace Table:
 		- | Step | $a$ | $b$ | $\lfloor a/b \rfloor$ | Recurse | Returned $(g, x_1, y_1)$ | Computed $(x, y)$ |
 		  |---|---|---|---|---|---|---|
@@ -130,19 +131,19 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 		  $$r_{n-2} = q_{n-1} \cdot r_{n-1} + r_n$$
 		  $$r_{n-1} = q_n \cdot r_n + 0$$
 		  Since $r_n \ge 1$ and all quotients $q_i \ge 1$ (with $q_n \ge 2$ because if $q_n$ were 1, the division would have ended earlier):
-		  - $r_n \ge 1 = F_2$ (where $F_k$ is the $k$-th Fibonacci number)
-		  - $r_{n-1} \ge 2 \cdot r_n \ge 2 = F_3$
-		  - $r_{n-2} \ge r_{n-1} + r_n \ge F_3 + F_2 = F_4$
-		  - By induction: $r_1 \ge F_{n+1}$.
-		  
-		  Therefore, the smaller number $b = r_1 \ge F_{n+1}$.
-		  From the golden ratio approximation of Fibonacci numbers:
-		  $$F_{n+1} \approx \frac{\phi^{n+1}}{\sqrt{5}} \quad \text{where} \quad \phi = \frac{1 + \sqrt{5}}{2} \approx 1.618$$
-		  Taking the base-10 logarithm on both sides:
-		  $$\log_{10} b \ge \log_{10} F_{n+1} > (n-1) \log_{10} \phi - \log_{10} \sqrt{5}$$
-		  Since $\log_{10} \phi \approx 0.208 > 1/5$:
-		  $$\log_{10} b > \frac{n-1}{5} \implies n < 5 \log_{10} b + 1$$
-		  Thus, the number of steps $n$ is at most $5$ times the number of digits of $b$. Q.E.D.
+			- $r_n \ge 1 = F_2$ (where $F_k$ is the $k$-th Fibonacci number)
+			- $r_{n-1} \ge 2 \cdot r_n \ge 2 = F_3$
+			- $r_{n-2} \ge r_{n-1} + r_n \ge F_3 + F_2 = F_4$
+			- By induction: $r_1 \ge F_{n+1}$.
+			  
+			  Therefore, the smaller number $b = r_1 \ge F_{n+1}$.
+			  From the golden ratio approximation of Fibonacci numbers:
+			  $$F_{n+1} \approx \frac{\phi^{n+1}}{\sqrt{5}} \quad \text{where} \quad \phi = \frac{1 + \sqrt{5}}{2} \approx 1.618$$
+			  Taking the base-10 logarithm on both sides:
+			  $$\log_{10} b \ge \log_{10} F_{n+1} > (n-1) \log_{10} \phi - \log_{10} \sqrt{5}$$
+			  Since $\log_{10} \phi \approx 0.208 > 1/5$:
+			  $$\log_{10} b > \frac{n-1}{5} \implies n < 5 \log_{10} b + 1$$
+			  Thus, the number of steps $n$ is at most $5$ times the number of digits of $b$. Q.E.D.
 		-
 - # Applications & Diophantine Equations
   collapsed:: true
@@ -180,14 +181,14 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	  > Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
-
+	  
 	  ```python
 	  # 1. Standard Iterative GCD
 	  def gcd(a, b):
 	      while b:
 	          a, b = b, a % b
 	      return a
-
+	  
 	  # 2. Extended GCD
 	  # Returns (gcd, x, y)
 	  def extended_gcd(a, b):
@@ -197,14 +198,14 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	      x = y1
 	      y = x1 - (a // b) * y1
 	      return g, x, y
-
+	  
 	  # 3. Modular Multiplicative Inverse
 	  def mod_inverse(a, m):
 	      g, x, _ = extended_gcd(a, m)
 	      if g != 1:
 	          return None  # Inverse does not exist
 	      return (x % m + m) % m
-
+	  
 	  # 4. Linear Diophantine Equation Solver
 	  # Solves ax + by = c. Returns (Success, x0, y0, dx, dy)
 	  # where x = x0 + k*dx, y = y0 + k*dy
@@ -221,7 +222,7 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	      if b < 0: y0 = -y0
 	          
 	      return True, x0, y0, b // g, -a // g
-
+	  
 	  # Example Usage
 	  print("GCD(240, 46) =", gcd(240, 46))
 	  g, x, y = extended_gcd(240, 46)
@@ -232,12 +233,12 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	      print(f"Diophantine particular solution: x0={x0}, y0={y0}")
 	      print(f"General solution: x = {x0} + k*{dx}, y = {y0} + k*{dy}")
 	  ```
-
+	  
 	  ```c++
 	  #include <iostream>
 	  #include <tuple>
 	  #include <cmath>
-
+	  
 	  // 1. Standard Iterative GCD
 	  long long gcd(long long a, long long b) {
 	      while (b) {
@@ -246,7 +247,7 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	      }
 	      return a;
 	  }
-
+	  
 	  // 2. Extended GCD
 	  std::tuple<long long, long long, long long> extended_gcd(long long a, long long b) {
 	      if (b == 0) return {a, 1, 0};
@@ -255,21 +256,21 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	      long long y = x1 - (a / b) * y1;
 	      return {g, x, y};
 	  }
-
+	  
 	  // 3. Modular Multiplicative Inverse
 	  long long mod_inverse(long long a, long long m) {
 	      auto [g, x, y] = extended_gcd(a, m);
 	      if (g != 1) return -1;
 	      return (x % m + m) % m;
 	  }
-
+	  
 	  // 4. Linear Diophantine Equation Solver
 	  struct DiophantineResult {
 	      bool has_solution;
 	      long long x0, y0;
 	      long long dx, dy;
 	  };
-
+	  
 	  DiophantineResult solve_diophantine(long long a, long long b, long long c) {
 	      auto [g, x0_prime, y0_prime] = extended_gcd(std::abs(a), std::abs(b));
 	      if (c % g != 0) {
@@ -281,7 +282,7 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	      if (b < 0) y0 = -y0;
 	      return {true, x0, y0, b / g, -a / g};
 	  }
-
+	  
 	  int main() {
 	      std::cout << "GCD(240, 46) = " << gcd(240, 46) << "\n";
 	      auto [g, x, y] = extended_gcd(240, 46);
@@ -295,7 +296,7 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	      return 0;
 	  }
 	  ```
-
+	  
 	  ```javascript
 	  // 1. Standard Iterative GCD
 	  function gcd(a, b) {
@@ -306,7 +307,7 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	      }
 	      return a;
 	  }
-
+	  
 	  // 2. Extended GCD
 	  function extendedGcd(a, b) {
 	      if (b === 0) return [a, 1, 0];
@@ -315,14 +316,14 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	      const y = x1 - Math.floor(a / b) * y1;
 	      return [g, x, y];
 	  }
-
+	  
 	  // 3. Modular Multiplicative Inverse
 	  function modInverse(a, m) {
 	      const [g, x] = extendedGcd(a, m);
 	      if (g !== 1) return -1;
 	      return (x % m + m) % m;
 	  }
-
+	  
 	  // 4. Linear Diophantine Solver
 	  function solveDiophantine(a, b, c) {
 	      const [g, x0Prime, y0Prime] = extendedGcd(Math.abs(a), Math.abs(b));
@@ -340,7 +341,7 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	          dy: -Math.floor(a / g)
 	      };
 	  }
-
+	  
 	  console.log("GCD(240, 46) =", gcd(240, 46));
 	  const [g, x, y] = extendedGcd(240, 46);
 	  console.log(`Extended: 240*(${x}) + 46*(${y}) = ${g}`);
@@ -349,7 +350,7 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	      console.log(`Diophantine solution: x = ${res.x0} + k*${res.dx}, y = ${res.y0} + k*${res.dy}`);
 	  }
 	  ```
-
+	  
 	  ```java
 	  public class ExtendedGCDSolver {
 	      
@@ -362,7 +363,7 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	          }
 	          return a;
 	      }
-
+	  
 	      static class GCDResult {
 	          long gcd, x, y;
 	          GCDResult(long g, long x, long y) {
@@ -371,7 +372,7 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	              this.y = y;
 	          }
 	      }
-
+	  
 	      // 2. Extended GCD
 	      public static GCDResult extendedGcd(long a, long b) {
 	          if (b == 0) return new GCDResult(a, 1, 0);
@@ -380,19 +381,19 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	          long y = next.x - (a / b) * next.y;
 	          return new Result(next.gcd, x, y);
 	      }
-
+	  
 	      // Helper to avoid naming conflicts with previous implementations
 	      static class Result extends GCDResult {
 	          Result(long g, long x, long y) { super(g, x, y); }
 	      }
-
+	  
 	      // 3. Modular Multiplicative Inverse
 	      public static long modInverse(long a, long m) {
 	          GCDResult res = extendedGcd(a, m);
 	          if (res.gcd != 1) return -1;
 	          return (res.x % m + m) % m;
 	      }
-
+	  
 	      static class DiophantineResult {
 	          boolean hasSolution;
 	          long x0, y0, dx, dy;
@@ -404,7 +405,7 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	              this.dy = dy;
 	          }
 	      }
-
+	  
 	      // 4. Linear Diophantine Equation Solver
 	      public static DiophantineResult solveDiophantine(long a, long b, long c) {
 	          GCDResult res = extendedGcd(Math.abs(a), Math.abs(b));
@@ -417,7 +418,7 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	          if (b < 0) y0 = -y0;
 	          return new DiophantineResult(true, x0, y0, b / res.gcd, -a / res.gcd);
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          System.out.println("GCD(240, 46) = " + gcd(240, 46));
 	          GCDResult res = extendedGcd(240, 46);
@@ -431,7 +432,7 @@ keywords: "Euclidean algorithm, GCD, greatest common divisor, extended Euclidean
 	      }
 	  }
 	  ```
-
+	  
 	  :::
 	-
 - # Key Takeaways

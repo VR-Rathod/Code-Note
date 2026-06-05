@@ -2,6 +2,7 @@
 seoTitle: Breadth First Search (BFS) – Graph Traversal Algorithm Guide
 description: "Comprehensive guide to Breadth First Search (BFS). Covers queue-based level order traversal, unweighted shortest paths, bipartite verification, grid routing, and complexities in Python, C++, JavaScript, Java, and C."
 keywords: "breadth first search, BFS, graph traversal, queue, shortest path, bipartite graph, grid pathfinding, time complexity, space complexity, VR-Rathod, Code-Note, Vaibhav Rathod"
+treeTitle: DSA - Sorting & Searching - Breadth First Search
 ---
 
 > [!info] What is Breadth First Search (BFS)?

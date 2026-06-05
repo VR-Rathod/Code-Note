@@ -3,6 +3,7 @@ seoTitle: Lee Algorithm – Shortest Path in a Maze using BFS
 description: "Master the Lee Algorithm for routing and maze solving. Covers BFS expansion, wave propagation, backtracking, and optimal shortest path extraction in a 2D grid."
 keywords: "Lee algorithm, BFS, shortest path, maze solving, grid traversal, wave propagation, O(RxC), algorithm, VR-Rathod, Code-Note, Lee Algorithm"
 displayTitle: Lee Algorithm
+treeTitle: DSA - Graph Algorithms - Lee Algorithm
 ---
 
 > [!info] What is the Lee Algorithm?
@@ -11,7 +12,7 @@ displayTitle: Lee Algorithm
 
 - # Explanation
   collapsed:: true
-	- **The Core Problem:** Given a 2D grid filled with empty spaces and obstacles (walls), how do we find the absolute shortest path from point $S$ to point $E$? DFS might find a path, but it will likely weave around inefficiently. 
+	- **The Core Problem:** Given a 2D grid filled with empty spaces and obstacles (walls), how do we find the absolute shortest path from point $S$ to point $E$? DFS might find a path, but it will likely weave around inefficiently.
 	- **The Solution:** BFS guarantees that the first time we discover the destination node, it was reached via the shortest possible sequence of steps. The Lee Algorithm systematically labels expanding rings of neighbors with their distance from the source.
 	-
 	- ## The 3 Phases of the Lee Algorithm

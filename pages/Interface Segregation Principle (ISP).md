@@ -3,6 +3,7 @@ seoTitle: Interface Segregation Principle (ISP) – Complete Guide | SOLID, Fat 
 description: "Deep dive into the Interface Segregation Principle (ISP) from SOLID. Covers fat interface problems, splitting interfaces by client need, and examples in Python, Java, and JavaScript."
 keywords: "Interface Segregation Principle, ISP, SOLID, fat interface, interface splitting, client-specific interfaces, Python ISP, Java ISP, VR-Rathod, Code-Note"
 displayTitle: Interface Segregation Principle (ISP)
+treeTitle: DSA - OOP - Interface Segregation Principle (ISP)
 ---
 
 > [!info] What is the Interface Segregation Principle?
@@ -36,7 +37,6 @@ displayTitle: Interface Segregation Principle (ISP)
 		      def staple(self, doc): raise NotImplementedError("This printer can't staple!")
 		  # SimplePrinter is forced to depend on methods it doesn't use!
 		  ```
-
 - # Implementation
   collapsed:: true
 	- > [!note] Splitting a fat printer interface into segregated, focused interfaces.
@@ -192,14 +192,12 @@ displayTitle: Interface Segregation Principle (ISP)
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **No client should implement methods it doesn't use** — split fat interfaces into focused ones.
 	- Small, focused interfaces are more **reusable** and easier to implement correctly.
 	- If a class has to throw `NotImplementedError` or `UnsupportedOperationException` for inherited methods → ISP violated.
 	- ISP is the interface counterpart of [[Single Responsibility Principle (SRP)]] — SRP for classes, ISP for interfaces.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

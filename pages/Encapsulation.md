@@ -3,6 +3,7 @@ seoTitle: Encapsulation in OOP – Complete In-Depth Guide | Data Hiding, Access
 description: "Deep dive into Encapsulation in OOP. Covers data hiding, access modifiers (public/protected/private), getters and setters, properties, why encapsulation matters, and real-world examples in Python, C++, Java, JavaScript, and C#."
 keywords: "encapsulation, OOP, data hiding, access modifiers, public private protected, getters setters, properties, object-oriented programming, encapsulation examples, Python encapsulation, Java encapsulation, C++ encapsulation, VR-Rathod, Code-Note"
 displayTitle: Encapsulation
+treeTitle: DSA - OOP - Encapsulation
 ---
 
 > [!info] What is Encapsulation?
@@ -38,7 +39,6 @@ displayTitle: Encapsulation
 		  | **Flexibility** | Change internal implementation without breaking callers |
 		  | **Maintainability** | Isolate changes — fix one place, not everywhere |
 		  | **Testability** | Mock public interfaces; internals stay hidden |
-
 - # Access Modifiers
   collapsed:: true
 	- Access modifiers are the mechanism that enforces encapsulation. They control **who can see** an attribute or method.
@@ -63,7 +63,6 @@ displayTitle: Encapsulation
 	  ```
 	-
 	- > [!tip] In Python, access control is **by convention**, not enforced by the interpreter. `self.__name` becomes `self._ClassName__name` via name mangling — still accessible but clearly marked private. Java/C++ enforce it **at compile time**.
-
 - # Getters & Setters
   collapsed:: true
 	- When attributes are private, you provide **getter** (read) and **setter** (write) methods to control access safely.
@@ -87,7 +86,6 @@ displayTitle: Encapsulation
 	  │  External code: person.__age = 25   ❌        │
 	  └───────────────────────────────────────────────┘
 	  ```
-
 - # Implementation
   collapsed:: true
 	- > [!note] Full encapsulation example — a `Person` class with private attributes, validated setters, Python properties, and equivalent in all 5 languages.
@@ -328,7 +326,6 @@ displayTitle: Encapsulation
 	  ```
 	  
 	  :::
-
 - # Encapsulation vs Abstraction
   collapsed:: true
 	- These two are closely linked but serve different purposes:
@@ -339,7 +336,6 @@ displayTitle: Encapsulation
 	- **Encapsulation** = *"I will protect my data."*
 	- **Abstraction** = *"I will only show you what you need to know."*
 	- > [!tip] Encapsulation is how you *implement* abstraction — they work together, not against each other.
-
 - # When to Use Encapsulation
   collapsed:: true
 	- ```mermaid
@@ -360,7 +356,6 @@ displayTitle: Encapsulation
 	- ## ❌ Skip It When
 		- Simple **data containers** (DTOs, Config structs) where all fields are valid by design.
 		- **One-off scripts** where the overhead of getters/setters adds no value.
-
 - # Key Takeaways
   collapsed:: true
 	- **Bundle** data and methods into one class — the capsule.
@@ -369,7 +364,6 @@ displayTitle: Encapsulation
 	- **Python** enforces this by convention (`_` protected, `__` private via name mangling).
 	- **Java/C++/C#** enforce it at **compile time** — true access restriction.
 	- Works hand-in-hand with [[Abstraction]] — encapsulation hides *data*, abstraction hides *complexity*.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

@@ -2,6 +2,7 @@
 seoTitle: Convex Hull Quickhull – Partitioning & Triangle Pruning Guide
 description: "Quickhull finds the convex hull of a 2D point set recursively by selecting farthest points and pruning points inside triangles. Covers O(n log n) average vs O(n^2) worst complexity, and implementations in Python, C++, JavaScript, and Java."
 keywords: "convex hull, Quickhull, divide and conquer, computational geometry, farthest point, triangle pruning, O(n log n), worst case O(n^2), DSA, algorithms"
+treeTitle: DSA - Math & Geometry - Convex Hull Quickhull
 ---
 
 > [!info] What is Quickhull?
@@ -36,7 +37,7 @@ keywords: "convex hull, Quickhull, divide and conquer, computational geometry, f
 		- Given a line segment $AB$, we can classify any point $P$ based on which side of the line it lies:
 		- ```
 		  cross(A, B, P) = (B.x - A.x) * (P.y - A.y) - (B.y - A.y) * (P.x - A.x)
-
+		  
 		  Result > 0  →  P is to the left of line AB
 		  Result < 0  →  P is to the right of line AB
 		  Result = 0  →  P is collinear with line AB
@@ -63,7 +64,7 @@ keywords: "convex hull, Quickhull, divide and conquer, computational geometry, f
 		- ```
 		  INPUT:  set of 2D points
 		  OUTPUT: list of hull points
-
+		  
 		  1. Find leftmost point A and rightmost point B. Add A and B to Hull.
 		  2. Split points into:
 		     - S1: points to the left of A -> B
@@ -71,7 +72,7 @@ keywords: "convex hull, Quickhull, divide and conquer, computational geometry, f
 		  3. FindHull(S1, A, B)
 		  4. FindHull(S2, B, A)
 		  5. RETURN Hull
-
+		  
 		  Function FindHull(P, A, B):
 		     IF P is empty: RETURN
 		     C ← point in P with maximum distance to AB
@@ -100,27 +101,27 @@ keywords: "convex hull, Quickhull, divide and conquer, computational geometry, f
 	  > Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
-
+	  
 	  ```python
 	  def cross_product(a, b, c):
 	      # Returns positive if c is to the left of ab, negative if to the right, 0 if collinear
 	      return (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])
-
+	  
 	  def distance(a, b, c):
 	      # Cross product is proportional to perpendicular distance
 	      return abs(cross_product(a, b, c))
-
+	  
 	  def quickhull(points):
 	      n = len(points)
 	      if n < 3:
 	          return points
-
+	  
 	      # 1. Find extreme points
 	      min_x = min(points, key=lambda p: (p[0], p[1]))
 	      max_x = max(points, key=lambda p: (p[0], p[1]))
-
+	  
 	      hull = []
-
+	  
 	      # Partition points to left and right of min_x -> max_x
 	      left_set = []
 	      right_set = []
@@ -132,55 +133,55 @@ keywords: "convex hull, Quickhull, divide and conquer, computational geometry, f
 	              left_set.append(p)
 	          elif cp < 0:
 	              right_set.append(p)
-
+	  
 	      def find_hull(pts, p1, p2):
 	          if not pts:
 	              return []
-
+	  
 	          # Find farthest point
 	          farthest = max(pts, key=lambda p: distance(p1, p2, p))
-
+	  
 	          # Points to the left of p1 -> farthest
 	          s1 = [p for p in pts if cross_product(p1, farthest, p) > 0]
 	          # Points to the left of farthest -> p2
 	          s2 = [p for p in pts if cross_product(farthest, p2, p) > 0]
-
+	  
 	          # Farthest point is part of hull, recurse on sides
 	          return find_hull(s1, p1, farthest) + [farthest] + find_hull(s2, farthest, p2)
-
+	  
 	      # Combine results: min_x -> upper hull -> max_x -> lower hull -> back to min_x
 	      upper = find_hull(left_set, min_x, max_x)
 	      lower = find_hull(right_set, max_x, min_x)
-
+	  
 	      return [min_x] + upper + [max_x] + lower
-
+	  
 	  # Example usage
 	  pts = [(0, 3), (1, 1), (2, 2), (4, 4), (0, 0), (1, 2), (3, 1), (3, 3)]
 	  print("Convex Hull (CCW order):", quickhull(pts))
 	  # Output: [(0, 0), (3, 1), (4, 4), (0, 3)]
 	  ```
-
+	  
 	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <algorithm>
 	  #include <cmath>
-
+	  
 	  struct Point {
 	      int x, y;
 	  };
-
+	  
 	  int crossProduct(Point a, Point b, Point c) {
 	      return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
 	  }
-
+	  
 	  int distance(Point a, Point b, Point c) {
 	      return std::abs(crossProduct(a, b, c));
 	  }
-
+	  
 	  void findHull(const std::vector<Point>& pts, Point p1, Point p2, std::vector<Point>& hull) {
 	      if (pts.empty()) return;
-
+	  
 	      // Find farthest point
 	      int max_dist = -1;
 	      Point farthest = pts[0];
@@ -191,30 +192,30 @@ keywords: "convex hull, Quickhull, divide and conquer, computational geometry, f
 	              farthest = p;
 	          }
 	      }
-
+	  
 	      // Split remaining points
 	      std::vector<Point> s1, s2;
 	      for (const auto& p : pts) {
 	          if (crossProduct(p1, farthest, p) > 0) s1.push_back(p);
 	          else if (crossProduct(farthest, p2, p) > 0) s2.push_back(p);
 	      }
-
+	  
 	      findHull(s1, p1, farthest, hull);
 	      hull.push_back(farthest);
 	      findHull(s2, farthest, p2, hull);
 	  }
-
+	  
 	  std::vector<Point> quickHull(std::vector<Point>& points) {
 	      int n = points.size();
 	      if (n < 3) return points;
-
+	  
 	      auto min_max = std::minmax_element(points.begin(), points.end(), [](Point a, Point b) {
 	          return a.x < b.x || (a.x == b.x && a.y < b.y);
 	      });
-
+	  
 	      Point min_x = *min_max.first;
 	      Point max_x = *min_max.second;
-
+	  
 	      std::vector<Point> left_set, right_set;
 	      for (const auto& p : points) {
 	          if ((p.x == min_x.x && p.y == min_x.y) || (p.x == max_x.x && p.y == max_x.y))
@@ -223,16 +224,16 @@ keywords: "convex hull, Quickhull, divide and conquer, computational geometry, f
 	          if (cp > 0) left_set.push_back(p);
 	          else if (cp < 0) right_set.push_back(p);
 	      }
-
+	  
 	      std::vector<Point> hull;
 	      hull.push_back(min_x);
 	      findHull(left_set, min_x, max_x, hull);
 	      hull.push_back(max_x);
 	      findHull(right_set, max_x, min_x, hull);
-
+	  
 	      return hull;
 	  }
-
+	  
 	  int main() {
 	      std::vector<Point> points = {{0, 3}, {1, 1}, {2, 2}, {4, 4}, {0, 0}, {1, 2}, {3, 1}, {3, 3}};
 	      auto hull = quickHull(points);
@@ -242,40 +243,40 @@ keywords: "convex hull, Quickhull, divide and conquer, computational geometry, f
 	      return 0;
 	  }
 	  ```
-
+	  
 	  ```javascript
 	  function crossProduct(a, b, c) {
 	      return (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]);
 	  }
-
+	  
 	  function distance(a, b, c) {
 	      return Math.abs(crossProduct(a, b, c));
 	  }
-
+	  
 	  function quickHull(points) {
 	      const n = points.length;
 	      if (n < 3) return points;
-
+	  
 	      let minX = points[0];
 	      let maxX = points[0];
 	      for (let i = 1; i < n; i++) {
 	          if (points[i][0] < minX[0] || (points[i][0] === minX[0] && points[i][1] < minX[1])) minX = points[i];
 	          if (points[i][0] > maxX[0] || (points[i][0] === maxX[0] && points[i][1] > maxX[1])) maxX = points[i];
 	      }
-
+	  
 	      const leftSet = [];
 	      const rightSet = [];
-
+	  
 	      for (const p of points) {
 	          if (p === minX || p === maxX) continue;
 	          const cp = crossProduct(minX, maxX, p);
 	          if (cp > 0) leftSet.push(p);
 	          else if (cp < 0) rightSet.push(p);
 	      }
-
+	  
 	      function findHull(pts, p1, p2) {
 	          if (pts.length === 0) return [];
-
+	  
 	          let farthest = pts[0];
 	          let maxDist = -1;
 	          for (const p of pts) {
@@ -285,44 +286,44 @@ keywords: "convex hull, Quickhull, divide and conquer, computational geometry, f
 	                  farthest = p;
 	              }
 	          }
-
+	  
 	          const s1 = [];
 	          const s2 = [];
 	          for (const p of pts) {
 	              if (crossProduct(p1, farthest, p) > 0) s1.push(p);
 	              else if (crossProduct(farthest, p2, p) > 0) s2.push(p);
 	          }
-
+	  
 	          return [...findHull(s1, p1, farthest), farthest, ...findHull(s2, farthest, p2)];
 	      }
-
+	  
 	      return [minX, ...findHull(leftSet, minX, maxX), maxX, ...findHull(rightSet, maxX, minX)];
 	  }
-
+	  
 	  const points = [[0, 3], [1, 1], [2, 2], [4, 4], [0, 0], [1, 2], [3, 1], [3, 3]];
 	  console.log("Convex Hull:", quickHull(points));
 	  ```
-
+	  
 	  ```java
 	  import java.util.*;
-
+	  
 	  public class ConvexHullQuickhull {
 	      static class Point {
 	          int x, y;
 	          Point(int x, int y) { this.x = x; this.y = y; }
 	      }
-
+	  
 	      static int crossProduct(Point a, Point b, Point c) {
 	          return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
 	      }
-
+	  
 	      static int distance(Point a, Point b, Point c) {
 	          return Math.abs(crossProduct(a, b, c));
 	      }
-
+	  
 	      static void findHull(List<Point> pts, Point p1, Point p2, List<Point> hull) {
 	          if (pts.isEmpty()) return;
-
+	  
 	          int maxDist = -1;
 	          Point farthest = pts.get(0);
 	          for (Point p : pts) {
@@ -332,49 +333,49 @@ keywords: "convex hull, Quickhull, divide and conquer, computational geometry, f
 	                  farthest = p;
 	              }
 	          }
-
+	  
 	          List<Point> s1 = new ArrayList<>();
 	          List<Point> s2 = new ArrayList<>();
 	          for (Point p : pts) {
 	              if (crossProduct(p1, farthest, p) > 0) s1.add(p);
 	              else if (crossProduct(farthest, p2, p) > 0) s2.add(p);
 	          }
-
+	  
 	          findHull(s1, p1, farthest, hull);
 	          hull.add(farthest);
 	          findHull(s2, farthest, p2, hull);
 	      }
-
+	  
 	      public static List<Point> quickHull(List<Point> points) {
 	          int n = points.size();
 	          List<Point> hull = new ArrayList<>();
 	          if (n < 3) return points;
-
+	  
 	          Point minX = points.get(0);
 	          Point maxX = points.get(0);
 	          for (Point p : points) {
 	              if (p.x < minX.x || (p.x == minX.x && p.y < minX.y)) minX = p;
 	              if (p.x > maxX.x || (p.x == maxX.x && p.y > maxX.y)) maxX = p;
 	          }
-
+	  
 	          List<Point> leftSet = new ArrayList<>();
 	          List<Point> rightSet = new ArrayList<>();
-
+	  
 	          for (Point p : points) {
 	              if (p == minX || p == maxX) continue;
 	              int cp = crossProduct(minX, maxX, p);
 	              if (cp > 0) leftSet.add(p);
 	              else if (cp < 0) rightSet.add(p);
 	          }
-
+	  
 	          hull.add(minX);
 	          findHull(leftSet, minX, maxX, hull);
 	          hull.add(maxX);
 	          findHull(rightSet, maxX, minX, hull);
-
+	  
 	          return hull;
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          List<Point> points = new ArrayList<>(Arrays.asList(
 	              new Point(0, 3), new Point(1, 1), new Point(2, 2), new Point(4, 4),
@@ -387,7 +388,7 @@ keywords: "convex hull, Quickhull, divide and conquer, computational geometry, f
 	      }
 	  }
 	  ```
-
+	  
 	  :::
 	-
 - # When to Use Quickhull

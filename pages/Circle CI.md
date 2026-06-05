@@ -3,6 +3,7 @@ seoTitle: CircleCI Reference – Config.yml, Workflows, Orbs, and Executors Guid
 description: "In-depth CircleCI reference guide covering config.yml structure, jobs, workflows, docker executors, reusable parameters, caching, and custom Orbs."
 keywords: "CircleCI, config.yml, workflows, orbs, CI/CD, executors, pipelines, caching, parameters, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: Circle CI
+treeTitle: DevOps - Circle CI
 ---
 
 - # History

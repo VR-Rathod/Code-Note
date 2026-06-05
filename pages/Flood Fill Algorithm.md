@@ -3,6 +3,7 @@ seoTitle: Flood Fill Algorithm – Matrix Traversal and Region Filling
 description: "Master the Flood Fill Algorithm for matrix traversal. Covers DFS and BFS implementations for painting, image rendering, and connected components."
 keywords: "Flood Fill, matrix traversal, BFS, DFS, image rendering, connected components, recursive fill, algorithm, VR-Rathod, Code-Note, Flood Fill Algorithm"
 displayTitle: Flood Fill Algorithm
+treeTitle: DSA - Graph Algorithms - Flood Fill Algorithm
 ---
 
 > [!info] What is the Flood Fill Algorithm?
@@ -12,7 +13,7 @@ displayTitle: Flood Fill Algorithm
 - # Explanation
   collapsed:: true
 	- **The Core Problem:** Given a 2D grid where each cell represents a color/state, starting at a specific $(X, Y)$ coordinate, we want to replace its color and all adjacent cells of the *same* color with a new replacement color.
-	- **The Solution:** We can use basic graph traversal algorithms. A 2D grid is just a graph where every pixel is a node, and it has edges connecting to its 4-way (Up, Down, Left, Right) or 8-way neighbors. 
+	- **The Solution:** We can use basic graph traversal algorithms. A 2D grid is just a graph where every pixel is a node, and it has edges connecting to its 4-way (Up, Down, Left, Right) or 8-way neighbors.
 	-
 	- ## DFS vs BFS for Flood Fill
 	  collapsed:: true
@@ -23,7 +24,7 @@ displayTitle: Flood Fill Algorithm
   collapsed:: true
 	- ## Step-by-Step Execution (Recursive DFS)
 	  collapsed:: true
-		- 1. **Check Base Cases:** 
+		- 1. **Check Base Cases:**
 			- If the starting coordinates $(X, Y)$ are out of bounds, return.
 			- If the color of the cell $(X, Y)$ is NOT the original target color, return.
 			- If the color of the cell $(X, Y)$ is ALREADY the replacement color, return (prevents infinite loops).

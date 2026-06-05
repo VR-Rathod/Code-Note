@@ -3,6 +3,7 @@ seoTitle: Floyd-Warshall Algorithm – All-Pairs Shortest Path Explained
 description: "Comprehensive guide to the Floyd-Warshall Algorithm. Covers dynamic programming formulation, O(V^3) time complexity, matrix initialization, negative cycle detection, and code implementations."
 keywords: "Floyd-Warshall, all-pairs shortest path, dynamic programming, O(V^3), negative cycle, graph algorithm, time complexity, space complexity, adjacency matrix, VR-Rathod, Code-Note, Floyd Warshall Algorithm"
 displayTitle: Floyd Warshall Algorithm
+treeTitle: DSA - Graph Algorithms - Floyd Warshall Algorithm
 ---
 
 > [!info] What is the Floyd-Warshall Algorithm?

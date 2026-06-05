@@ -2,6 +2,7 @@
 seoTitle: Rabin-Karp Algorithm – Rolling Hash String Search Explained
 description: "Rabin-Karp uses rolling hash for O(n+m) average pattern matching. Covers polynomial rolling hash, hash collision handling, multiple pattern search, and Rabin."
 keywords: "Rabin-Karp, rolling hash, string search, pattern matching, polynomial hash, hash collision, O(n+m), time complexity, space complexity, multiple pattern search"
+treeTitle: DSA - String Algorithms - Rabin-Karp Algorithm
 ---
 
 > [!info] What is the Rabin-Karp Algorithm?

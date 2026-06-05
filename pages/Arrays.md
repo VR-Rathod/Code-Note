@@ -2,6 +2,7 @@
 seoTitle: Arrays Data Structure - Comprehensive DSA Guide
 description: "Master Arrays in Data Structures & Algorithms. Learn about static vs dynamic arrays, memory contiguity, amortized time complexity, and implement dynamic arrays in multiple languages."
 keywords: "Arrays, DSA, Data Structures, Dynamic Array, Static Array, Amortized Time Complexity, Memory Contiguity, C++ Vector, Java ArrayList, Python List"
+treeTitle: DSA - Linear Data Structures - Arrays
 ---
 
 > [!info] What is an Array?

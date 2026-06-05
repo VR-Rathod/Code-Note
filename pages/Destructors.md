@@ -3,6 +3,7 @@ seoTitle: Destructor in OOP – Complete In-Depth Guide | RAII, Cleanup, Memory 
 description: "Deep dive into Destructors in OOP. Covers purpose, RAII pattern, when destructors are called, virtual destructors, Python __del__, and resource management in Python, C++, Java, JavaScript, and C#."
 keywords: "destructor, OOP, RAII, __del__, virtual destructor, cleanup, garbage collection, resource management, Python destructor, C++ destructor, Java finalizer, VR-Rathod, Code-Note"
 displayTitle: Destructors
+treeTitle: DSA - OOP - Destructors
 ---
 
 > [!info] What is a Destructor?
@@ -35,7 +36,6 @@ displayTitle: Destructors
 		  // No resource leak, even if exception thrown
 		  ```
 		- > [!tip] In Python/Java/C#, use `with` / `try-with-resources` / `using` statements as the equivalent of RAII — they guarantee cleanup via context managers.
-
 - # Virtual Destructor (C++)
   collapsed:: true
 	- In C++, if you delete a derived class object through a **base class pointer**, the base destructor runs (not the derived). This causes resource leaks in the derived class. Fix: make the base destructor `virtual`.
@@ -62,7 +62,6 @@ displayTitle: Destructors
 	  // Without virtual: only Base destroyed → MEMORY LEAK ❌
 	  ```
 	- > [!important] **Rule**: Any class meant to be used as a base class MUST declare a `virtual` destructor in C++.
-
 - # Implementation
   collapsed:: true
 	- > [!note] A `FileManager` class demonstrating proper resource cleanup via destructor, context manager, and RAII equivalents.
@@ -305,7 +304,6 @@ displayTitle: Destructors
 	  ```
 	  
 	  :::
-
 - # Destructor vs Context Manager / IDisposable
   collapsed:: true
 	- | Language | Destructor | Preferred RAII Pattern | Guarantee |
@@ -317,7 +315,6 @@ displayTitle: Destructors
 	  | **C#** | `~ClassName()` finalizer | `using` + `IDisposable` | ✅ Guaranteed by `using` |
 	-
 	- > [!warning] Never rely on `__del__` (Python) or finalizers (Java/C#) as the **only** cleanup mechanism. GC timing is non-deterministic — resources may leak. Always use context managers or `IDisposable`.
-
 - # Key Takeaways
   collapsed:: true
 	- Destructors run **automatically** — you don't call them manually.
@@ -326,7 +323,6 @@ displayTitle: Destructors
 	- **Java** — `finalize()` is deprecated; use `AutoCloseable` + `try-with-resources`.
 	- **C#** — use `IDisposable` + `using` statement; finalizers are last-resort fallbacks.
 	- Always declare **virtual destructors** in C++ base classes to prevent resource leaks on polymorphic deletion.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

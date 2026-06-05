@@ -2,6 +2,7 @@
 seoTitle: Linear Basis Algorithm – XOR Subset Maximization and Vector Spaces
 description: "Master the Linear Basis Algorithm in competitive programming. Learn vector spaces over F_2, inserting elements in O(D), finding maximum XOR subset sum, and implementations in Python, C++, JavaScript, and Java."
 keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, linear algebra, competitive programming, bitwise algorithms, DSA"
+treeTitle: DSA - Advanced Tips - Linear Basis Algorithm
 ---
 
 > [!info] What is the Linear Basis Algorithm?
@@ -32,19 +33,19 @@ keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, line
 	-
 	- ## 1. Insertion (`insert(x)`)
 		- To insert a number $x$:
-		  - Iterate through its bits from MSB ($D-1$) down to LSB ($0$).
-		  - If the $i$-th bit of $x$ is set ($1$):
-		    - If `basis[i]` is empty ($0$), we insert $x$ here (`basis[i] = x`) and stop.
-		    - If `basis[i]` is occupied, we XOR $x$ with `basis[i]` (`x ^= basis[i]`) and continue.
-		  - If $x$ becomes $0$, it means $x$ was already linearly dependent on the current basis elements, so it cannot be added.
+			- Iterate through its bits from MSB ($D-1$) down to LSB ($0$).
+			- If the $i$-th bit of $x$ is set ($1$):
+				- If `basis[i]` is empty ($0$), we insert $x$ here (`basis[i] = x`) and stop.
+				- If `basis[i]` is occupied, we XOR $x$ with `basis[i]` (`x ^= basis[i]`) and continue.
+			- If $x$ becomes $0$, it means $x$ was already linearly dependent on the current basis elements, so it cannot be added.
 		-
 	- ## 2. Querying Maximum XOR (`query_max()`)
 		- To find the maximum possible XOR sum of any subset of the inserted numbers:
-		  - Initialize `res = 0`.
-		  - Iterate from $D-1$ down to $0$.
-		  - If `(res ^ basis[i]) > res`, set `res ^= basis[i]`.
-		  - Return `res`.
-		  - This greedy approach is guaranteed to yield the global maximum because the MSB of `basis[i]` is strictly at index $i$, meaning each step optimizes the highest possible bit.
+			- Initialize `res = 0`.
+			- Iterate from $D-1$ down to $0$.
+			- If `(res ^ basis[i]) > res`, set `res ^= basis[i]`.
+			- Return `res`.
+			- This greedy approach is guaranteed to yield the global maximum because the MSB of `basis[i]` is strictly at index $i$, meaning each step optimizes the highest possible bit.
 		-
 - # Step-by-Step Trace (Insert `[4, 6, 2]`)
   collapsed:: true
@@ -52,23 +53,23 @@ keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, line
 	- Let's insert the numbers `4`, `6`, and `2`:
 	-
 	- 1. **Insert 4** (`100` in binary):
-	   - MSB is at bit index 2.
-	   - `basis[2]` is empty ($0$).
-	   - Insert: `basis[2] = 4`.
-	   - `basis` is now `[4, 0, 0]`.
+		- MSB is at bit index 2.
+		- `basis[2]` is empty ($0$).
+		- Insert: `basis[2] = 4`.
+		- `basis` is now `[4, 0, 0]`.
 	- 2. **Insert 6** (`110` in binary):
-	   - MSB is at bit index 2.
-	   - `basis[2]` is occupied ($4$, `100`).
-	   - XOR: `6 ^ 4 = 2` (`010` in binary).
-	   - Now process $2$. MSB of $2$ is at bit index 1.
-	   - `basis[1]` is empty ($0$).
-	   - Insert: `basis[1] = 2`.
-	   - `basis` is now `[4, 2, 0]`.
+		- MSB is at bit index 2.
+		- `basis[2]` is occupied ($4$, `100`).
+		- XOR: `6 ^ 4 = 2` (`010` in binary).
+		- Now process $2$. MSB of $2$ is at bit index 1.
+		- `basis[1]` is empty ($0$).
+		- Insert: `basis[1] = 2`.
+		- `basis` is now `[4, 2, 0]`.
 	- 3. **Insert 2** (`010` in binary):
-	   - MSB is at bit index 1.
-	   - `basis[1]` is occupied ($2$, `010`).
-	   - XOR: `2 ^ 2 = 0`.
-	   - Value becomes $0$. Not inserted (already spanned by $4 \oplus 6 = 2$).
+		- MSB is at bit index 1.
+		- `basis[1]` is occupied ($2$, `010`).
+		- XOR: `2 ^ 2 = 0`.
+		- Value becomes $0$. Not inserted (already spanned by $4 \oplus 6 = 2$).
 	-
 	- **Final Basis**: `[4, 2, 0]`. Spans the subset values $\{0, 2, 4, 6\}$.
 	- Max XOR sum is `query_max() = 0 ^ 4 ^ 2 = 6`.
@@ -92,13 +93,13 @@ keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, line
 	  > Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
-
+	  
 	  ```python
 	  class LinearBasis:
 	      def __init__(self, d=30):
 	          self.d = d
 	          self.basis = [0] * d
-
+	  
 	      def insert(self, x):
 	          for i in range(self.d - 1, -1, -1):
 	              if (x >> i) & 1:
@@ -107,14 +108,14 @@ keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, line
 	                      return True
 	                  x ^= self.basis[i]
 	          return False
-
+	  
 	      def query_max(self):
 	          res = 0
 	          for i in range(self.d - 1, -1, -1):
 	              if (res ^ self.basis[i]) > res:
 	                  res ^= self.basis[i]
 	          return res
-
+	  
 	      def exists(self, x):
 	          for i in range(self.d - 1, -1, -1):
 	              if (x >> i) & 1:
@@ -122,7 +123,7 @@ keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, line
 	                      return False
 	                  x ^= self.basis[i]
 	          return x == 0
-
+	  
 	  # Example usage
 	  lb = LinearBasis()
 	  lb.insert(4)
@@ -132,19 +133,19 @@ keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, line
 	  print("Exists 2:", lb.exists(2))      # True
 	  print("Exists 5:", lb.exists(5))      # False
 	  ```
-
+	  
 	  ```c++
 	  #include <iostream>
 	  #include <vector>
-
+	  
 	  class LinearBasis {
 	  private:
 	      int d;
 	      std::vector<long long> basis;
-
+	  
 	  public:
 	      LinearBasis(int d = 60) : d(d), basis(d, 0) {}
-
+	  
 	      bool insert(long long x) {
 	          for (int i = d - 1; i >= 0; --i) {
 	              if ((x >> i) & 1) {
@@ -157,7 +158,7 @@ keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, line
 	          }
 	          return false;
 	      }
-
+	  
 	      long long query_max() {
 	          long long res = 0;
 	          for (int i = d - 1; i >= 0; --i) {
@@ -167,7 +168,7 @@ keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, line
 	          }
 	          return res;
 	      }
-
+	  
 	      bool exists(long long x) {
 	          for (int i = d - 1; i >= 0; --i) {
 	              if ((x >> i) & 1) {
@@ -178,7 +179,7 @@ keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, line
 	          return x == 0;
 	      }
 	  };
-
+	  
 	  int main() {
 	      LinearBasis lb(30);
 	      lb.insert(4);
@@ -189,14 +190,14 @@ keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, line
 	      return 0;
 	  }
 	  ```
-
+	  
 	  ```javascript
 	  class LinearBasis {
 	      constructor(d = 30) {
 	          this.d = d;
 	          this.basis = new Array(d).fill(0);
 	      }
-
+	  
 	      insert(x) {
 	          for (let i = this.d - 1; i >= 0; i--) {
 	              if ((x >> i) & 1) {
@@ -209,7 +210,7 @@ keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, line
 	          }
 	          return false;
 	      }
-
+	  
 	      queryMax() {
 	          let res = 0;
 	          for (let i = this.d - 1; i >= 0; i--) {
@@ -219,7 +220,7 @@ keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, line
 	          }
 	          return res;
 	      }
-
+	  
 	      exists(x) {
 	          for (let i = this.d - 1; i >= 0; i--) {
 	              if ((x >> i) & 1) {
@@ -230,24 +231,24 @@ keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, line
 	          return x === 0;
 	      }
 	  }
-
+	  
 	  const lb = new LinearBasis();
 	  lb.insert(4);
 	  lb.insert(6);
 	  lb.insert(2);
 	  console.log("Max XOR sum:", lb.queryMax()); // 6
 	  ```
-
+	  
 	  ```java
 	  public class LinearBasis {
 	      private final int d;
 	      private final long[] basis;
-
+	  
 	      public LinearBasis(int d) {
 	          this.d = d;
 	          this.basis = new long[d];
 	      }
-
+	  
 	      public boolean insert(long x) {
 	          for (int i = d - 1; i >= 0; i--) {
 	              if (((x >> i) & 1) == 1) {
@@ -260,7 +261,7 @@ keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, line
 	          }
 	          return false;
 	      }
-
+	  
 	      public long queryMax() {
 	          long res = 0;
 	          for (int i = d - 1; i >= 0; i--) {
@@ -270,7 +271,7 @@ keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, line
 	          }
 	          return res;
 	      }
-
+	  
 	      public boolean exists(long x) {
 	          for (int i = d - 1; i >= 0; i--) {
 	              if (((x >> i) & 1) == 1) {
@@ -280,7 +281,7 @@ keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, line
 	          }
 	          return x == 0;
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          LinearBasis lb = new LinearBasis(30);
 	          lb.insert(4);
@@ -290,7 +291,7 @@ keywords: "linear basis, XOR basis, vector spaces, F_2, maximum XOR subset, line
 	      }
 	  }
 	  ```
-
+	  
 	  :::
 	-
 - # Key Takeaways

@@ -113,7 +113,6 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	- [[GraphQL]] - **GraphQL** is a query language for APIs and a runtime for executing those queries with your existing data. It was developed by **Facebook** and offers a more flexible and efficient alternative to REST APIs.
 -
 - ## CMS (Content Management Systems) & SaaS
-  collapsed:: true
 	- [[WordPress]] :- A widely used, open-source CMS known for its ease of use, vast theme/plugin ecosystem, and flexibility for building various websites from blogs to e-commerce stores.
 	-
 	- [[Joomla]] :- A flexible and powerful CMS that allows for the creation of complex websites with various extensions and templates.
@@ -169,6 +168,10 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		- [[Garuda Linux]] :- An Arch-based gaming and performance-focused distribution. Covers Garuda Gamer tools, Btrfs + Snapper auto-snapshots, ZRAM, gaming optimizations (GameMode, MangoHud, Proton), Chaotic-AUR, Dr460nized KDE desktop, and system tuning.
 		-
 		- [[Linux Advanced]] :- Deep Linux internals covering kernel architecture, system calls, memory management, process lifecycle, networking stack, filesystem internals, performance analysis (perf, eBPF), and security hardening (SELinux, AppArmor, auditd, AIDE).
+		-
+		- [[eBPF]] :- Extended Berkeley Packet Filter — run sandboxed programs inside the Linux kernel. Covers BPF maps, program types (kprobe/tracepoint/XDP/TC/LSM), CO-RE, libbpf, bpftrace, BCC tools, XDP networking, security (Falco, Cilium), and production observability.
+		-
+		- [[systemd]] :- System and service manager for Linux. Covers systemctl, unit files, logging via journald, timers (cron replacement), socket activation, and security hardening.
 	-
 	- ### Windows
 	  collapsed:: true
@@ -194,9 +197,11 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	-
 	- [[System Design]]: In-depth guide to designing scalable, reliable, and high-performance systems — covering load balancing, caching, databases, microservices, CAP theorem, message queues, API design, and real-world case studies.
 -
-- ## Data Science & Machine Learning
-		- [[Data Science]] :- Interdisciplinary field combining statistics, programming, and ML to extract insights from data. Covers the full pipeline from EDA to MLOps — beginner to advanced.
-
+- ## Data Science, Machine Learning & AI
+  collapsed:: true
+	- [[Data Science]] :- The full data science workflow — statistics, data wrangling, EDA, feature engineering, and visualization using the Python data stack. All library links (NumPy, Pandas, Matplotlib, Seaborn, Plotly, SciPy, SymPy) live inside this page. **Start here before Machine Learning.**
+	-
+	- [[Machine Learning]] :- Complete ML reference from mathematical foundations to production MLOps. Covers classical algorithms, deep learning, NLP, computer vision, reinforcement learning, transformers, LLMs, and RAG systems. All Python ML framework and library links (PyTorch, Scikit-learn, OpenCV, spaCy, XGBoost) live inside this page.
 -
 - ## DevOps & CI/CD
 	- ### DevOps Concepts
@@ -205,7 +210,7 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		-
 		- [[Automation]]: Automating manual tasks such as testing, deployments, and infrastructure provisioning to reduce errors and increase efficiency.
 		-
-		- [[Infrastructure as Code (IaC)]]: Managing and provisioning infrastructure using code, enabling version control and reproducibility in environments.
+		- [[Infrastructure as Code IaC]]: Managing and provisioning infrastructure using code, enabling version control and reproducibility in environments.
 		-
 		- [[Continuous Monitoring & Logging]]: Continuous observation of applications and infrastructure to track performance and issues in real-time.
 		-
@@ -346,6 +351,8 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		- [[VR AR Development]] :- OpenXR, SteamVR, Meta Quest SDK, ARCore, ARKit, interaction design, foveated rendering.
 		- [[Console Development]] :- PS5, Xbox Series X/S, Nintendo Switch — SDK overview, DualSense haptics, adaptive triggers, HD Rumble, Joy-Con, cross-platform strategy, and full certification guide (TRC/TCR/LOT).
 		- [[Game Testing & QA]] :- Game-specific QA covering playtesting methodologies, bug classification (softlock, exploits, cert failures), performance profiling (PIX, RenderDoc, Unity Profiler, Unreal Insights), and automated testing (Unity Test Framework, Unreal Automation, GUT, CI/CD for games).
+		- [[Game AI]] :- Complete game AI reference covering FSM, Behavior Trees, GOAP, Utility AI, A* pathfinding, NavMesh, Flow Fields, steering behaviors, Boids, perception systems, ML-Agents, Minimax, MCTS, and strategy AI.
+		- [[Game Physics]] :- Comprehensive game physics covering rigid body dynamics, collision detection (AABB, SAT, GJK, EPA), impulse-based resolution, constraints, joints, soft bodies, cloth simulation, mass-spring systems, and physics engine comparison.
 	-
 	- ### 🔴 Super Advanced: Custom Engines & Graphics
 		- > [!warning] For developers building engines or hyper-optimized graphics pipelines.

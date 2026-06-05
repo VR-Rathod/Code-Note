@@ -2,6 +2,7 @@
 seoTitle: Submask Bitwise Iteration – O(3^N) Subset DP Optimization Guide
 description: "Learn the advanced bitwise hack to iterate through all submasks of a bitmask in O(3^N) total time instead of O(4^N). Covers the mathematical binomial theorem proof, trace walkthrough, and code in Python, C++, JavaScript, and Java."
 keywords: "submask iteration, bitwise algorithms, bitmask DP, O(3^N) complexity, subset iteration, dynamic programming, competitive programming, DSA"
+treeTitle: DSA - Advanced Tips - Submask Bitwise Iteration
 ---
 
 > [!info] What is Submask Bitwise Iteration?
@@ -55,8 +56,8 @@ keywords: "submask iteration, bitwise algorithms, bitmask DP, O(3^N) complexity,
 	   $$\text{Total Iterations} = 3^N$$
 	-
 	- This is a massive improvement. For $N = 20$:
-	  - $4^{20} \approx 1.1 \times 10^{12}$ operations (takes several minutes, TLE).
-	  - $3^{20} \approx 3.48 \times 10^9$ operations (takes a few seconds).
+		- $4^{20} \approx 1.1 \times 10^{12}$ operations (takes several minutes, TLE).
+		- $3^{20} \approx 3.48 \times 10^9$ operations (takes a few seconds).
 	-
 - # Step-by-Step Trace ($M = 13$)
   collapsed:: true
@@ -89,7 +90,7 @@ keywords: "submask iteration, bitwise algorithms, bitmask DP, O(3^N) complexity,
 	  > Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
-
+	  
 	  ```python
 	  # 1. Iterate submasks of a single mask
 	  def get_submasks(mask):
@@ -100,7 +101,7 @@ keywords: "submask iteration, bitwise algorithms, bitmask DP, O(3^N) complexity,
 	          s = (s - 1) & mask
 	      submasks.append(0)  # Add the empty set
 	      return submasks
-
+	  
 	  # 2. Iterate all submasks for all masks up to N (O(3^N))
 	  def iterate_all(n):
 	      total_iterations = 0
@@ -111,16 +112,16 @@ keywords: "submask iteration, bitwise algorithms, bitmask DP, O(3^N) complexity,
 	              s = (s - 1) & mask
 	          total_iterations += 1  # For s = 0
 	      return total_iterations
-
+	  
 	  # Example
 	  print("Submasks of 13:", get_submasks(13))
 	  print("Total iterations for N=5 (3^5 = 243):", iterate_all(5))
 	  ```
-
+	  
 	  ```c++
 	  #include <iostream>
 	  #include <vector>
-
+	  
 	  // 1. Iterate submasks of a single mask
 	  std::vector<int> get_submasks(int mask) {
 	      std::vector<int> submasks;
@@ -130,19 +131,19 @@ keywords: "submask iteration, bitwise algorithms, bitmask DP, O(3^N) complexity,
 	      submasks.push_back(0); // Empty set
 	      return submasks;
 	  }
-
+	  
 	  // 2. Sample O(3^N) DP skeleton
 	  void subset_dp(int n, const std::vector<int>& cost) {
 	      std::vector<int> dp(1 << n, 1e9);
 	      dp[0] = 0;
-
+	  
 	      for (int mask = 1; mask < (1 << n); ++mask) {
 	          for (int s = mask; s > 0; s = (s - 1) & mask) {
 	              dp[mask] = std::min(dp[mask], dp[s] + cost[mask ^ s]);
 	          }
 	      }
 	  }
-
+	  
 	  int main() {
 	      auto subs = get_submasks(13);
 	      std::cout << "Submasks of 13:\n";
@@ -151,7 +152,7 @@ keywords: "submask iteration, bitwise algorithms, bitmask DP, O(3^N) complexity,
 	      return 0;
 	  }
 	  ```
-
+	  
 	  ```javascript
 	  // 1. Iterate submasks of a single mask
 	  function getSubmasks(mask) {
@@ -164,14 +165,14 @@ keywords: "submask iteration, bitwise algorithms, bitmask DP, O(3^N) complexity,
 	      submasks.push(0);
 	      return submasks;
 	  }
-
+	  
 	  // Example
 	  console.log("Submasks of 13:", getSubmasks(13));
 	  ```
-
+	  
 	  ```java
 	  import java.util.*;
-
+	  
 	  public class SubmaskIteration {
 	      
 	      // 1. Get all submasks of a single mask
@@ -183,13 +184,13 @@ keywords: "submask iteration, bitwise algorithms, bitmask DP, O(3^N) complexity,
 	          submasks.add(0);
 	          return submasks;
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          System.out.println("Submasks of 13: " + getSubmasks(13));
 	      }
 	  }
 	  ```
-
+	  
 	  :::
 	-
 - # Key Takeaways

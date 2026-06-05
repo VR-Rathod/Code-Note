@@ -2,6 +2,7 @@
 seoTitle: Weighted vs Unweighted Graphs Complete Guide – Representations and Algorithms
 description: "A comprehensive guide on Weighted and Unweighted Graphs. Covers edge weights representation in lists and matrices, and algorithmic contexts (Dijkstra, MST)."
 keywords: "weighted graph, unweighted graph, edge weights, adjacency list, adjacency matrix, dijkstras algorithm, minimum spanning tree, VR-Rathod, Code-Note, code note vr, vr book"
+treeTitle: DSA - Graphs - Weighted & Unweighted Graphs
 ---
 
 > [!info] What are Weighted and Unweighted Graphs?

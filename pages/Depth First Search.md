@@ -2,6 +2,7 @@
 seoTitle: Depth First Search (DFS) – Graph Traversal Algorithm Guide
 description: "Comprehensive guide to Depth First Search (DFS). Covers iterative and recursive implementations, edge classifications, cycle detection, topological sorting, and complexities in Python, C++, JavaScript, Java, and C."
 keywords: "depth first search, DFS, graph traversal, recursion, backtracking, cycle detection, topological sort, connected components, Tarjan algorithm, time complexity, space complexity, graph coloring, VR-Rathod, Code-Note, Vaibhav Rathod"
+treeTitle: DSA - Sorting & Searching - Depth First Search
 ---
 
 > [!info] What is Depth First Search (DFS)?

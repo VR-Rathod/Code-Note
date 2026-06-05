@@ -3,6 +3,7 @@ seoTitle: Association in OOP – Complete In-Depth Guide | Uses-A Relationship, 
 description: "Deep dive into Association in OOP. Covers the uses-a relationship, unidirectional vs bidirectional association, multiplicity (one-to-one, one-to-many), difference from aggregation and composition, and examples in Python, C++, Java, JavaScript, and C#."
 keywords: "association, OOP, uses-a relationship, object relationship, unidirectional association, bidirectional association, multiplicity, one-to-many, Python association, Java association, VR-Rathod, Code-Note"
 displayTitle: Association
+treeTitle: DSA - OOP - Association
 ---
 
 > [!info] What is Association?
@@ -44,7 +45,6 @@ displayTitle: Association
 		  | Lifecycle | Independent | Independent | Dependent |
 		  | Example | Doctor–Patient | Team–Player | Car–Engine |
 		  | UML | Simple line | ◇ empty diamond | ◆ filled diamond |
-
 - # Implementation
   collapsed:: true
 	- > [!note] A `Doctor`–`Patient` bidirectional association and `Teacher`–`Student` one-to-many association.
@@ -325,7 +325,6 @@ displayTitle: Association
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Association** = loosest relationship — one class "uses" another, no ownership.
@@ -333,7 +332,6 @@ displayTitle: Association
 	- Can be **unidirectional** (A → B) or **bidirectional** (A ↔ B).
 	- Association links are represented as **references/pointers** — not embedded instances.
 	- Hierarchy of coupling: **Association < [[Aggregation]] < [[Composition]]**
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

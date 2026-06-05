@@ -2,6 +2,7 @@
 seoTitle: Insertion Sort Algorithm – Implementation, Mechanics, and Practical Applications
 description: "In-depth guide to Insertion Sort. Explains card-sorting analogy, stability, adaptability, performance on partially sorted datasets, and complete implementations in Python, C++, JavaScript, Java, and C."
 keywords: "insertion sort, sorting algorithm, playing cards sort, O(n^2), stable sort, in-place sort, time complexity, space complexity, comparison sort, hybrid sort, VR-Rathod, Code-Note, Vaibhav Rathod"
+treeTitle: DSA - Sorting & Searching - Insertion Sort
 ---
 
 > [!info] What is Insertion Sort?
@@ -93,7 +94,7 @@ keywords: "insertion sort, sorting algorithm, playing cards sort, O(n^2), stable
 - # Implementation
   collapsed:: true
 	- > [!note] In-place insertion sort implementations.
-	  - Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
+		- Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
 	-
 	- :::code-tabs
 	  

@@ -34,12 +34,13 @@ Every page **must** start with SEO frontmatter:
 
 seoTitle: <Page Name> Complete Guide – <Short Description>
 description: "Comprehensive <topic> reference covering <key topics>."
-keywords: "<keyword1>, <keyword2>, ..., VR-Rathod, Code-Note, code note vr, vr book , <You'r name / your code tags>"
+keywords: "<keyword1>, <keyword2>, ..., VR-Rathod, Code-Note,Vaibhav Rathod, vaibhav, Vaibhav, VR, code note vr, vr book , <You'r name / your code tags>"
 displayTitle: Better Title  # This is title of page (not required for  all page)
 `seoTitle` — Keep under 60 characters. Format: `Topic Name – Subtitle`
 `description` — 1-2 sentences, 120-160 characters. Mention key subtopics.
 `keywords` — Comma-separated. Always end with the standard author tags.
 comments: false/true (For Enabling or disable comments)
+treeTitle: main page - sub page - sub page
 ```
 
 ### For Single Writer

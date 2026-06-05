@@ -2,6 +2,7 @@
 seoTitle: Bucket Sort Algorithm – Complete Guide, Complexity, and Multi-Language Code
 description: "In-depth guide to Bucket Sort. Explains uniform distribution assumption, normalization techniques, insertion sub-sort, time and space complexity, and complete code implementations in Python, C++, JavaScript, Java, and C."
 keywords: "bucket sort, bucketsort, distribution sort, sorting algorithm, uniform distribution, time complexity, space complexity, insertion sort, VR-Rathod, Code-Note, Vaibhav Rathod"
+treeTitle: DSA - Sorting & Searching - Bucket Sort
 ---
 
 > [!info] What is Bucket Sort?
@@ -62,20 +63,20 @@ keywords: "bucket sort, bucketsort, distribution sort, sorting algorithm, unifor
 		  | **0.55** | 0.6530 | $\lfloor 3.265 \rfloor = 3$ | Bucket 3 |
 		-
 		- **Buckets before sorting:**
-		  - Bucket 0: `[0.32, 0.23]`
-		  - Bucket 1: `[0.42]`
-		  - Bucket 2: `[]`
-		  - Bucket 3: `[0.53, 0.55]`
-		  - Bucket 4: `[]`
-		  - Bucket 5: `[0.72]`
+			- Bucket 0: `[0.32, 0.23]`
+			- Bucket 1: `[0.42]`
+			- Bucket 2: `[]`
+			- Bucket 3: `[0.53, 0.55]`
+			- Bucket 4: `[]`
+			- Bucket 5: `[0.72]`
 		-
 		- **Buckets after sorting:**
-		  - Bucket 0: `[0.23, 0.32]`
-		  - Bucket 1: `[0.42]`
-		  - Bucket 2: `[]`
-		  - Bucket 3: `[0.53, 0.55]`
-		  - Bucket 4: `[]`
-		  - Bucket 5: `[0.72]`
+			- Bucket 0: `[0.23, 0.32]`
+			- Bucket 1: `[0.42]`
+			- Bucket 2: `[]`
+			- Bucket 3: `[0.53, 0.55]`
+			- Bucket 4: `[]`
+			- Bucket 5: `[0.72]`
 		-
 		- **Final Concatenation:** `[0.23, 0.32, 0.42, 0.53, 0.55, 0.72]`
 -
@@ -94,7 +95,7 @@ keywords: "bucket sort, bucketsort, distribution sort, sorting algorithm, unifor
 - # Implementation
   collapsed:: true
 	- > [!note] Bucket Sort with Insertion Sort Subroutine.
-	  - Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
+		- Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]] · [[C]]
 	-
 	- :::code-tabs
 	  

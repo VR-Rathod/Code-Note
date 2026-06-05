@@ -3,6 +3,7 @@ seoTitle: Vulkan Ray Tracing Pipeline – Setup, Shaders, and SBT Guide
 description: "Vulkan ray tracing pipeline setup covering ray generation, miss, closest-hit, any-hit shaders, shader binding table layout, and pipeline creation."
 keywords: "Vulkan ray tracing pipeline, ray generation shader, miss shader, closest-hit shader, any-hit shader, shader binding table, SBT, path tracing, GPU rendering, Vulkan"
 title: PathTracer Learning Vulkan RT Pipeline
+treeTitle: Game Development - Path Tracing - Vulkan RT Pipeline
 ---
 
 tags:: vulkan, ray-tracing, pipeline, sbt, shaders

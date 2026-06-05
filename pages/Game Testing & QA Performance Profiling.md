@@ -4,6 +4,7 @@ description: "Complete game performance profiling reference: GPU/CPU frame analy
 keywords: "game performance profiling, GPU profiling, CPU profiling, memory profiling, frame pacing, PIX, RenderDoc, Unity Profiler, Unreal Insights, game optimization, VR-Rathod, Code-Note"
 displayTitle: Game Testing & QA - Performance Profiling
 title: Game Testing & QA Performance Profiling
+treeTitle: Game Development - Testing & QA - Performance Profiling
 ---
 
 > [!info] About This Page

@@ -3,6 +3,7 @@ seoTitle: Kosaraju's Algorithm – Strongly Connected Components (SCC)
 description: "Master Kosaraju's algorithm for finding Strongly Connected Components in a directed graph. Covers the 2-pass DFS strategy, graph transposition, and O(V+E) complexity in 5 languages."
 keywords: "Kosaraju algorithm, Strongly Connected Components, SCC, graph traversal, DFS, transpose graph, O(V+E), algorithm, VR-Rathod, Code-Note, Kosarajus Algorithm"
 displayTitle: Kosaraju's Algorithm
+treeTitle: DSA - Graph Algorithms - Kosarajus Algorithm
 ---
 
 > [!info] What is Kosaraju's Algorithm?
@@ -17,7 +18,7 @@ displayTitle: Kosaraju's Algorithm
 	- ## Why Reversing Works (The Magic)
 	  collapsed:: true
 		- In a directed graph, SCCs form a Directed Acyclic Graph (DAG) of components. If there is an edge from $SCC_A$ to $SCC_B$, there cannot be a path back (otherwise they'd merge into one SCC).
-		- If we do a DFS, nodes in a "sink" SCC (no outgoing edges to other SCCs) will finish expanding first. 
+		- If we do a DFS, nodes in a "sink" SCC (no outgoing edges to other SCCs) will finish expanding first.
 		- When we **reverse all edges**, "sink" SCCs become "source" SCCs.
 		- If we process the nodes in the reverse of their DFS finishing times, we are guaranteed to explore the reversed graph starting from the sink SCCs. The DFS is thus trapped inside that single SCC and cannot bleed into other components!
 -
@@ -26,7 +27,7 @@ displayTitle: Kosaraju's Algorithm
 	- ## Step-by-Step Execution
 	  collapsed:: true
 		- 1. **Pass 1 (DFS for Finishing Times):** Perform a DFS from every unvisited vertex in the original graph. When a recursive DFS call finishes (meaning all its descendants are explored), push that vertex onto a stack.
-		- 2. **Transpose the Graph:** Create a new graph where the direction of every edge is reversed. 
+		- 2. **Transpose the Graph:** Create a new graph where the direction of every edge is reversed.
 		- 3. **Pass 2 (Extract SCCs):** While the stack is not empty:
 			- Pop a vertex from the stack.
 			- If it hasn't been visited (reset the visited array for Pass 2), start a DFS on the transposed graph from this vertex.

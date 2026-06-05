@@ -1,4 +1,3 @@
--
 ---
 seoTitle: Node.js Complete Reference – JavaScript Runtime Guide
 description: "Comprehensive Node.js reference covering modules, async/await, streams, HTTP, Express, file system, events, buffers, clusters, and best practices."

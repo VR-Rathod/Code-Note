@@ -4,6 +4,7 @@ description: "Comprehensive Debian Linux reference covering installation, APT pa
 keywords: "Debian Linux, debian guide, debian commands, debian apt, debian tutorial, debian administration, debian server, debian stable, debian testing, debian sid, debian security, AppArmor, debian notes, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: Debian Linux – Complete Guide
 enableToc: true
+treeTitle: OS - Linux Distros - Debian
 ---
 
 - # History

@@ -4,6 +4,7 @@ description: "Complete playtesting reference: structured sessions, think-aloud p
 keywords: "playtesting, game testing methodologies, playtest sessions, game feedback, focus group, alpha testing, beta testing, think-aloud protocol, game QA, VR-Rathod, Code-Note"
 displayTitle: Game Testing & QA - Playtesting
 title: Game Testing & QA Playtesting
+treeTitle: Game Development - Testing & QA - Playtesting
 ---
 
 > [!info] About This Page

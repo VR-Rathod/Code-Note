@@ -3,6 +3,7 @@ seoTitle: Liskov Substitution Principle (LSP) – Complete Guide | SOLID, Subtyp
 description: "Deep dive into the Liskov Substitution Principle (LSP) from SOLID. Covers what it means for subtypes to be substitutable, classic violations (Square-Rectangle problem), preconditions, postconditions, and examples in Python and Java."
 keywords: "Liskov Substitution Principle, LSP, SOLID, subtype, square rectangle problem, behavioral subtyping, preconditions, postconditions, Python LSP, Java LSP, VR-Rathod, Code-Note"
 displayTitle: Liskov Substitution Principle (LSP)
+treeTitle: DSA - OOP - Liskov Substitution Principle (LSP)
 ---
 
 > [!info] What is the Liskov Substitution Principle?
@@ -57,7 +58,6 @@ displayTitle: Liskov Substitution Principle (LSP)
 		  
 		  # Fix: don't inherit Square from Rectangle. Use a common Shape interface.
 		  ```
-
 - # LSP Rules
   collapsed:: true
 	- | Rule | Description |
@@ -78,7 +78,6 @@ displayTitle: Liskov Substitution Principle (LSP)
 	  ✅ LSP compliant: SavingsAccount.can_withdraw() honors same contract
 	     (only narrows postcondition, never expands precondition)
 	  ```
-
 - # Implementation
   collapsed:: true
 	- > [!note] LSP-compliant account hierarchy and Bird hierarchy — avoiding classic violations.
@@ -154,7 +153,7 @@ displayTitle: Liskov Substitution Principle (LSP)
 	  
 	      def can_withdraw(self, amount: Decimal) -> bool:
 	          # Savings requires minimum balance — THIS IS DOCUMENTED in the class, not sneaky
-		      return amount > 0 and (self._balance - amount) >= self.min_balance
+	       return amount > 0 and (self._balance - amount) >= self.min_balance
 	  
 	  # LSP test: substitute any Account freely
 	  def process_withdrawal(account: Account, amount: Decimal) -> None:
@@ -242,7 +241,6 @@ displayTitle: Liskov Substitution Principle (LSP)
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Subtypes must honor their parent's contract** — same input acceptance, same output guarantees.
@@ -250,7 +248,6 @@ displayTitle: Liskov Substitution Principle (LSP)
 	- **Bird/Ostrich problem**: Don't put `fly()` in a base `Bird` class if not all birds can fly — use capability interfaces (`Flyable`).
 	- A class that throws `UnsupportedOperationException` or `NotImplementedException` for inherited methods is a **red flag** for LSP violation.
 	- Works closely with: [[Inheritance]], [[Interface]], [[Open Closed Principle (OCP)]]
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

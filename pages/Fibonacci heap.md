@@ -2,6 +2,7 @@
 seoTitle: Fibonacci Heap Explained – Amortized O(1) Decrease-Key Heap
 description: "A detailed guide to Fibonacci Heaps. Covers lazy consolidation, cascading cuts, mark bits, Dijkstra optimizations, and implementations in Python and C++."
 keywords: "Fibonacci heap, priority queue, amortized complexity, decrease key, lazy merge, cascading cut, O(1) amortized, time complexity, space complexity, graph algorithms, VR-Rathod, Code-Note, code note vr, vr book"
+treeTitle: DSA - Trees - Fibonacci heap
 ---
 
 > [!info] What is a Fibonacci Heap?
@@ -14,7 +15,7 @@ keywords: "Fibonacci heap, priority queue, amortized complexity, decrease key, l
 	-
 	- ## Real-World Analogy
 	  collapsed:: true
-		- Imagine a **lazy office assistant**. 
+		- Imagine a **lazy office assistant**.
 		- When documents arrive, the assistant doesn't file them in alphabetical folders immediately (which is expensive). Instead, they pile them onto a desk in a loose stack ($O(1)$ lazy insert).
 		- Only when the boss asks for the lowest-numbered document (extract-min) does the assistant clean the entire desk, organizing all papers into neat folders of matching sizes (consolidation) to speed up future requests.
 	-
@@ -29,10 +30,10 @@ keywords: "Fibonacci heap, priority queue, amortized complexity, decrease key, l
 	- ## Node Attributes
 	  collapsed:: true
 		- Every node contains:
-		  - `key` and `value`
-		  - Pointers: `parent`, `child`, `left` (sibling), `right` (sibling)
-		  - `degree`: The number of children.
-		  - `mark`: A boolean flag indicating whether the node has lost a child since it was made a child of another node. This is the secret to keeping tree heights logarithmic.
+			- `key` and `value`
+			- Pointers: `parent`, `child`, `left` (sibling), `right` (sibling)
+			- `degree`: The number of children.
+			- `mark`: A boolean flag indicating whether the node has lost a child since it was made a child of another node. This is the secret to keeping tree heights logarithmic.
 	-
 	- ## Lazy Merging & Root List
 	  collapsed:: true
@@ -52,10 +53,10 @@ keywords: "Fibonacci heap, priority queue, amortized complexity, decrease key, l
 	- ## Decrease Key & Cascading Cuts
 	  collapsed:: true
 		- When key $x$ is decreased:
-		  - If $x$'s new key violates the heap property (smaller than its parent $y$), we **cut** $x$ from $y$ and move it to the root list.
-		  - We then perform a **cascading cut** on $y$:
-		    - If $y$ is unmarked, mark it.
-		    - If $y$ is already marked, cut $y$ from its parent $z$, move it to the root list, unmark it, and recursively check $z$.
+			- If $x$'s new key violates the heap property (smaller than its parent $y$), we **cut** $x$ from $y$ and move it to the root list.
+			- We then perform a **cascading cut** on $y$:
+				- If $y$ is unmarked, mark it.
+				- If $y$ is already marked, cut $y$ from its parent $z$, move it to the root list, unmark it, and recursively check $z$.
 -
 - # Time & Space Complexity
   collapsed:: true

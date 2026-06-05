@@ -2,6 +2,7 @@
 seoTitle: Comb Sort Algorithm – Eliminating Turtles, Complexity, and Code
 description: "In-depth guide to Comb Sort. Explains how gap-based comparison solves Bubble Sort's 'turtle' problem, details shrink factor optimization, complexity analysis, and complete code implementations."
 keywords: "comb sort, combsort, sorting algorithm, bubble sort, shrink factor, turtles and rabbits, in-place sort, time complexity, space complexity, comparison sort, VR-Rathod, Code-Note, Vaibhav Rathod"
+treeTitle: DSA - Sorting & Searching - Comb Sort
 ---
 
 > [!info] What is Comb Sort?
@@ -163,7 +164,7 @@ keywords: "comb sort, combsort, sorting algorithm, bubble sort, shrink factor, t
 	              gap = 1;
 	              sorted = true;
 	          }
-  
+	  
 	          for (let i = 0; i < n - gap; i++) {
 	              if (arr[i] > arr[i + gap]) {
 	                  const temp = arr[i];

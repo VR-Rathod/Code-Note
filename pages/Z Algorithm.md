@@ -2,6 +2,7 @@
 seoTitle: Z Algorithm – Linear Time String Matching and Pattern Search
 description: "The Z algorithm computes the Z-array for O(n+m) pattern matching. Covers Z-function definition, Z-box construction, pattern search application, and comparison."
 keywords: "Z algorithm, Z-function, string matching, pattern search, O(n+m), linear time, Z-array, Z-box, time complexity, space complexity, string algorithm"
+treeTitle: DSA - String Algorithms - Z Algorithm
 ---
 
 > [!info] What is the Z Algorithm?

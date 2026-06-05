@@ -3,6 +3,7 @@ seoTitle: Travis CI Reference – YAML Configuration and Multi-Language Build Gu
 description: "In-depth Travis CI reference guide covering .travis.yml, multi-language matrices, build lifecycle hooks, caching, environment keys, and deploy triggers."
 keywords: "Travis CI, .travis.yml, CI/CD, build lifecycle, matrix builds, deployment, caching, env variables, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: Travis CI
+treeTitle: DevOps - Travis CI
 ---
 
 - # History
@@ -72,15 +73,15 @@ displayTitle: Travis CI
 	  collapsed:: true
 		- Travis executing engines run scripts in a strictly sequenced cycle of hook stages:
 		- **Lifecycle Sequence**:
-			1. `before_install`: Execute steps before installing dependencies (e.g. system key registrations).
-			2. `install`: Install project dependencies (default commands vary by language).
-			3. `before_script`: Set up databases or start background services.
-			4. `script`: Run primary test suites.
-			5. `after_success` or `after_failure`: Trigger notifications or cleanups based on script results.
-			6. `before_deploy`: Tasks needed before packaging or publishing.
-			7. `deploy`: Push artifacts to hosting providers.
-			8. `after_deploy`: Final post-deployment verification.
-			9. `after_script`: Clean up workspaces and close connections.
+		  1. `before_install`: Execute steps before installing dependencies (e.g. system key registrations).
+		  2. `install`: Install project dependencies (default commands vary by language).
+		  3. `before_script`: Set up databases or start background services.
+		  4. `script`: Run primary test suites.
+		  5. `after_success` or `after_failure`: Trigger notifications or cleanups based on script results.
+		  6. `before_deploy`: Tasks needed before packaging or publishing.
+		  7. `deploy`: Push artifacts to hosting providers.
+		  8. `after_deploy`: Final post-deployment verification.
+		  9. `after_script`: Clean up workspaces and close connections.
 		- **Detailed Pipeline Example**:
 		- ```yaml
 		  language: python

@@ -2,6 +2,7 @@
 seoTitle: Advanced Bitwise Hacks – O(1) Fast Formulas
 description: "Master advanced bitwise operations including Brian Kernighan's Algorithm, XOR Swaps, and Power of 2 checks."
 keywords: "bitwise hacks, brian kernighan algorithm, xor swap, power of 2, bit manipulation, fast formulas, O(1), VR-Rathod, Code-Note, code note vr, vr book"
+treeTitle: DSA - Advanced Tips - Bitwise Hacks
 ---
 
 > [!info] What are Bitwise Hacks?

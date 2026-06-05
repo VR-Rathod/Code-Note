@@ -3,6 +3,7 @@ seoTitle: Jenkins Reference – Pipelines, DSL, and Administration Guide
 description: "Comprehensive Jenkins reference covering Declarative vs Scripted pipelines, Jenkinsfile syntax, plugins, agent nodes, distributed builds, security, and administration."
 keywords: "Jenkins, Jenkinsfile, CI/CD, Devops, declarative pipeline, scripted pipeline, shared libraries, Jenkins agents, build automation, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: Jenkins
+treeTitle: DevOps - Jenkins
 ---
 
 - # History

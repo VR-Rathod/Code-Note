@@ -3,6 +3,7 @@ seoTitle: Method Overriding in OOP – Complete In-Depth Guide | Runtime Polymor
 description: "Deep dive into Method Overriding in OOP. Covers runtime polymorphism, how child classes redefine parent methods, the super() keyword, @override annotation, virtual dispatch, and examples in Python, C++, Java, JavaScript, and C#."
 keywords: "method overriding, OOP, runtime polymorphism, virtual function, override, super, @Override, Python override, Java override, C++ virtual override, VR-Rathod, Code-Note"
 displayTitle: Method Overriding
+treeTitle: DSA - OOP - Method Overriding
 ---
 
 > [!info] What is Method Overriding?
@@ -48,7 +49,6 @@ displayTitle: Method Overriding
 		  | **Same or wider return type** | Can return a subtype (covariant return — Java/C++) |
 		  | **Same or broader access** | Can't narrow access (public → private is invalid) |
 		  | **Not final/static** | Final methods can't be overridden; static methods are hidden, not overridden |
-
 - # Implementation
   collapsed:: true
 	- > [!note] A `Shape → Circle / Rectangle / Triangle` hierarchy demonstrating full override of `area()`, `perimeter()`, and `describe()`.
@@ -308,7 +308,6 @@ displayTitle: Method Overriding
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Same signature, different class** — that's method overriding.
@@ -316,7 +315,6 @@ displayTitle: Method Overriding
 	- Use `super()` / `super.method()` / `base.Method()` to **extend** (not replace) parent behavior.
 	- `@Override` (Java) / `override` (C#/C++) keywords catch typos at compile time — always use them.
 	- `final` (Java) / `sealed` (C#) / no `virtual` (C++) methods **cannot** be overridden.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

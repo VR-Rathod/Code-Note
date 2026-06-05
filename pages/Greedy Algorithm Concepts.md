@@ -3,6 +3,7 @@ seoTitle: Greedy Algorithm Concepts – Strategy, Proof Techniques & Pattern Gui
 description: "Master Greedy Algorithms in DSA. Learn the greedy choice property, optimal substructure, exchange argument proofs, and when greedy works vs fails with real-world examples and full implementations."
 keywords: "greedy algorithm, greedy choice property, optimal substructure, exchange argument, activity selection, interval scheduling, greedy vs DP, DSA, algorithm design, Python, C++, Java"
 displayTitle: Greedy Algorithm Concepts
+treeTitle: DSA - DP & Greedy - Greedy Algorithm Concepts
 ---
 
 > [!info] What is a Greedy Algorithm?
@@ -31,7 +32,7 @@ displayTitle: Greedy Algorithm Concepts
 		  ```
 		  Items: (weight=10, value=60), (weight=20, value=100), (weight=30, value=120)
 		  Capacity = 50
-
+		  
 		  Greedy by value/weight ratio: Pick item1(ratio=6), item2(ratio=5), item3(ratio=4)
 		  Greedy picks: item1+item2 = value 160 (fits: 30kg used)
 		  Actually optimal: item2+item3 = value 220 ← Greedy FAILS here
@@ -47,7 +48,6 @@ displayTitle: Greedy Algorithm Concepts
 		  | Correctness | Requires proof | Always correct if recurrence is right |
 		  | Revisiting | Never | Yes (overlapping subproblems) |
 		  | Examples | Dijkstra, Huffman, Kruskal | LCS, LIS, Knapsack |
-
 - # How It Works
   collapsed:: true
 	- ## The Greedy Template
@@ -68,7 +68,7 @@ displayTitle: Greedy Algorithm Concepts
 		      F --> C
 		      G --> C
 		      C --> H["✅ Greedy solution complete"]
-
+		  
 		      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 		  ```
 	-
@@ -85,7 +85,6 @@ displayTitle: Greedy Algorithm Concepts
 		  Since Y finishes ≤ X, swapping X for Y in OPT leaves at least as many
 		  compatible activities remaining → OPT' ≥ OPT → G is optimal. ✅
 		  ```
-
 - # Complexity Analysis
   collapsed:: true
 	- > [!important] Complexity by Problem Type
@@ -99,12 +98,11 @@ displayTitle: Greedy Algorithm Concepts
 	  | [[Kruskals Algorithm]] | $O(E \log E)$ | Sort edges by weight |
 	  | Fractional Knapsack | $O(N \log N)$ | Sort by value/weight ratio |
 	  | [[Prims Algorithm]] | $O((V+E) \log V)$ | Min spanning tree, greedy edge selection |
-
 - # Implementation
   collapsed:: true
 	- > [!note] Fractional Knapsack — A Clean Greedy Example
 	  > Unlike the 0/1 [[Knapsack Problem]] (which requires DP), the **Fractional Knapsack** allows taking fractions of items. Sorting by value/weight ratio and greedily taking the best is provably optimal.
-	  - Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
+		- Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
 	  
@@ -117,7 +115,7 @@ displayTitle: Greedy Algorithm Concepts
 	      """
 	      # Sort by value/weight ratio descending (greedy choice)
 	      items.sort(key=lambda x: x[1] / x[0], reverse=True)
-
+	  
 	      total_value = 0.0
 	      for weight, value in items:
 	          if capacity <= 0:
@@ -125,9 +123,9 @@ displayTitle: Greedy Algorithm Concepts
 	          take = min(weight, capacity)        # take as much as possible
 	          total_value += take * (value / weight)
 	          capacity -= take
-
+	  
 	      return total_value
-
+	  
 	  # Example
 	  items = [(10, 60), (20, 100), (30, 120)]  # (weight, value)
 	  capacity = 50
@@ -139,15 +137,15 @@ displayTitle: Greedy Algorithm Concepts
 	  #include <iostream>
 	  #include <vector>
 	  #include <algorithm>
-
+	  
 	  struct Item { int weight, value; };
-
+	  
 	  double fractionalKnapsack(int capacity, std::vector<Item> items) {
 	      // Greedy: sort by value/weight ratio descending
 	      std::sort(items.begin(), items.end(), [](const Item& a, const Item& b) {
 	          return (double)a.value / a.weight > (double)b.value / b.weight;
 	      });
-
+	  
 	      double totalValue = 0.0;
 	      for (const auto& item : items) {
 	          if (capacity <= 0) break;
@@ -157,7 +155,7 @@ displayTitle: Greedy Algorithm Concepts
 	      }
 	      return totalValue;
 	  }
-
+	  
 	  int main() {
 	      std::vector<Item> items = {{10, 60}, {20, 100}, {30, 120}};
 	      std::cout << "Max Value: " << fractionalKnapsack(50, items) << "\n"; // 240
@@ -169,7 +167,7 @@ displayTitle: Greedy Algorithm Concepts
 	  function fractionalKnapsack(capacity, items) {
 	      // items: [{weight, value}, ...]
 	      items.sort((a, b) => (b.value / b.weight) - (a.value / a.weight));
-
+	  
 	      let totalValue = 0;
 	      for (const { weight, value } of items) {
 	          if (capacity <= 0) break;
@@ -179,14 +177,14 @@ displayTitle: Greedy Algorithm Concepts
 	      }
 	      return totalValue;
 	  }
-
+	  
 	  const items = [{weight:10,value:60},{weight:20,value:100},{weight:30,value:120}];
 	  console.log("Max Value:", fractionalKnapsack(50, items)); // 240
 	  ```
 	  
 	  ```java
 	  import java.util.Arrays;
-
+	  
 	  public class FractionalKnapsack {
 	      public static double solve(int capacity, int[][] items) {
 	          // items[i] = {weight, value}
@@ -194,7 +192,7 @@ displayTitle: Greedy Algorithm Concepts
 	          Arrays.sort(items, (a, b) -> Double.compare(
 	              (double)b[1]/b[0], (double)a[1]/a[0]
 	          ));
-
+	  
 	          double totalValue = 0;
 	          for (int[] item : items) {
 	              if (capacity <= 0) break;
@@ -204,7 +202,7 @@ displayTitle: Greedy Algorithm Concepts
 	          }
 	          return totalValue;
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          int[][] items = {{10, 60}, {20, 100}, {30, 120}};
 	          System.out.println("Max Value: " + solve(50, items)); // 240.0
@@ -213,7 +211,6 @@ displayTitle: Greedy Algorithm Concepts
 	  ```
 	  
 	  :::
-
 - # Alternative Variant (Job Scheduling to Minimize Lateness)
   collapsed:: true
 	- > [!tip] Earliest Deadline First (EDF) Scheduling
@@ -230,19 +227,19 @@ displayTitle: Greedy Algorithm Concepts
 	      """
 	      jobs_with_idx = [(t, d, i+1) for i, (t, d) in enumerate(jobs)]
 	      jobs_with_idx.sort(key=lambda x: x[1])  # sort by deadline
-
+	  
 	      time = 0
 	      max_lateness = 0
 	      schedule = []
-
+	  
 	      for proc_time, deadline, job_id in jobs_with_idx:
 	          time += proc_time
 	          lateness = max(0, time - deadline)
 	          max_lateness = max(max_lateness, lateness)
 	          schedule.append((job_id, time, lateness))
-
+	  
 	      return max_lateness, schedule
-
+	  
 	  # Example
 	  jobs = [(3, 6), (2, 8), (1, 9), (4, 9), (3, 14), (2, 15)]
 	  max_late, sched = minimize_max_lateness(jobs)
@@ -252,7 +249,6 @@ displayTitle: Greedy Algorithm Concepts
 	  ```
 	  
 	  :::
-
 - # When to Use Greedy
   collapsed:: true
 	- ```mermaid
@@ -264,7 +260,7 @@ displayTitle: Greedy Algorithm Concepts
 	      S1 -- Yes --> S2{"Is sorting / priority queue\nsufficient to make greedy choice?"}
 	      S2 -- Yes --> R3["✅ Use Greedy Algorithm\n(O(N log N) typically)"]
 	      S2 -- No --> R4["Use Greedy with\nUnion-Find or Segment Trees"]
-
+	  
 	      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 	  ```
 	-
@@ -281,7 +277,6 @@ displayTitle: Greedy Algorithm Concepts
 		- **Shortest Path with negative edges** — must use Bellman-Ford.
 		- **Coin Change (arbitrary coins)** — greedy can fail (use DP).
 		- **Traveling Salesman Problem (TSP)** — greedy gives approximation only.
-
 - # Key Takeaways
   collapsed:: true
 	- **Local → Global** — Greedy makes the locally best choice at each step. Correctness requires proving that local optimality implies global optimality.
@@ -290,7 +285,6 @@ displayTitle: Greedy Algorithm Concepts
 	- **Faster than DP** — Greedy is typically $O(N \log N)$ (dominated by sorting), vs DP's $O(N^2)$ or higher.
 	- **Irreversible Decisions** — Unlike backtracking or DP, greedy never reconsiders past choices. This is its speed advantage and its risk.
 	- **Recognize by Pattern** — Common greedy patterns: sort by ratio/deadline/finish time, use a priority queue (heap), or pick smallest/largest remaining element.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

@@ -2,6 +2,7 @@
 seoTitle: DSA and System Design Reference – Interview Preparation Guide
 description: "Data structures, algorithms, and system design reference for technical interviews. Covers arrays, trees, graphs, sorting, design patterns, scalability, and."
 keywords: "DSA, data structures, algorithms, system design, technical interview, arrays, trees, graphs, sorting, design patterns, scalability, coding interview, dsa notes, dsa cheatsheet, dsa guide, algorithm reference, competitive programming, VR-Rathod, Code-Note, code note vr, vr book"
+treeTitle: DSA
 ---
 
 - # OOP Concepts

@@ -2,6 +2,7 @@
 seoTitle: Finger Tree Explained – Functional 2-3 Tree Sequence with O(1) Deque
 description: "A detailed guide to Finger Trees. Explains functional persistent 2-3 trees with prefix/suffix nodes, deep recursive spines, and implementations in Python and C++."
 keywords: "finger tree, functional data structure, deque, O(1) access, O(log n) split, monoid annotation, 2-3 tree, time complexity, space complexity, persistent data structure, VR-Rathod, Code-Note, code note vr, vr book"
+treeTitle: DSA - Trees - Finger Tree
 ---
 
 > [!info] What is a Finger Tree?
@@ -11,22 +12,22 @@ keywords: "finger tree, functional data structure, deque, O(1) access, O(log n) 
 - # Explanation
 	- A **Finger Tree** is structured recursively. A tree is either `Empty`, a `Single` element, or `Deep`.
 	- A `Deep` node contains:
-	  - A **left prefix** of 1 to 4 elements.
-	  - A **spine** which is another Finger Tree containing **Nodes** (which are either `Node2` or `Node3` grouping 2 or 3 elements).
-	  - A **right suffix** of 1 to 4 elements.
-	  -
-	  - ```
-	                   Deep
-	                  /  |  \
-	             Left  Spine  Right
-	            (1..4) (Tree of (1..4)
-	                   Nodes)
-	    ```
+		- A **left prefix** of 1 to 4 elements.
+		- A **spine** which is another Finger Tree containing **Nodes** (which are either `Node2` or `Node3` grouping 2 or 3 elements).
+		- A **right suffix** of 1 to 4 elements.
+		-
+		- ```
+		                 Deep
+		                /  |  \
+		           Left  Spine  Right
+		          (1..4) (Tree of (1..4)
+		                 Nodes)
+		  ```
 	- Because operations take place at the left and right prefixes, they only propagate deeper into the spine when a prefix overflows (exceeds size 4) or underflows (goes below size 1).
 	-
 	- ## Real-World Analogy
 	  collapsed:: true
-		- Think of a **shipping cargo container terminal**. 
+		- Think of a **shipping cargo container terminal**.
 		- To load/unload cargo quickly, you keep the most active containers at the front and back gates (left and right prefixes, size 1-4).
 		- If the front gate gets too crowded, you group 3 containers onto a cargo train and send them to the main central storage yard (spine).
 		- If the front gate runs out of containers, you recall a grouped set from the central yard, split them back up, and place them at the gate.
@@ -42,20 +43,20 @@ keywords: "finger tree, functional data structure, deque, O(1) access, O(log n) 
 	- ## Recursive Structure
 	  collapsed:: true
 		- A Finger Tree is defined recursively:
-		  - `FingerTree T` is either `Empty`, `Single(T)`, or `Deep(Prefix T, FingerTree (Node T), Suffix T)`
-		  - `Prefix` and `Suffix` are tuples of size 1 to 4 containing elements of type `T`.
-		  - `Node T` is either a `Node2` containing 2 elements of `T`, or `Node3` containing 3 elements of `T`.
+			- `FingerTree T` is either `Empty`, `Single(T)`, or `Deep(Prefix T, FingerTree (Node T), Suffix T)`
+			- `Prefix` and `Suffix` are tuples of size 1 to 4 containing elements of type `T`.
+			- `Node T` is either a `Node2` containing 2 elements of `T`, or `Node3` containing 3 elements of `T`.
 	-
 	- ## Deque Operations
 	  collapsed:: true
 		- ### Push Front
-		  - If `left` prefix has size $< 4$, simply prepend the new element to `left` prefix. ($O(1)$)
-		  - If `left` prefix has size $= 4$, keep the first element, group the remaining 3 elements into a `Node3`, and recursively push this `Node3` to the front of the `spine`.
+			- If `left` prefix has size $< 4$, simply prepend the new element to `left` prefix. ($O(1)$)
+			- If `left` prefix has size $= 4$, keep the first element, group the remaining 3 elements into a `Node3`, and recursively push this `Node3` to the front of the `spine`.
 		- ### Pop Front
-		  - Remove the first element of `left` prefix.
-		  - If `left` prefix is now empty:
-		    - If the `spine` is not empty, pop a node from the `spine`, unpack it (which yields 2 or 3 elements), and make those the new `left` prefix.
-		    - If the `spine` is empty, construct a new tree from the `right` suffix.
+			- Remove the first element of `left` prefix.
+			- If `left` prefix is now empty:
+				- If the `spine` is not empty, pop a node from the `spine`, unpack it (which yields 2 or 3 elements), and make those the new `left` prefix.
+				- If the `spine` is empty, construct a new tree from the `right` suffix.
 -
 - # Time & Space Complexity
   collapsed:: true

@@ -4,6 +4,7 @@ description: "Comprehensive Parrot OS reference covering installation, AnonSurf,
 keywords: "Parrot OS, Parrot Security, parrot linux, parrot os guide, parrot os tutorial, anonsurf, parrot privacy, parrot pentesting, parrot forensics, parrot vs kali, debian security linux, ethical hacking linux, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: Parrot OS – Complete Guide
 enableToc: true
+treeTitle: OS - Linux Distros - Parrot OS
 ---
 
 - # History

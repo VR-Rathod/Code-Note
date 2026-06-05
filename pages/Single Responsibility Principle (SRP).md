@@ -3,6 +3,7 @@ seoTitle: Single Responsibility Principle (SRP) – Complete Guide | SOLID, One 
 description: "Deep dive into the Single Responsibility Principle (SRP) from SOLID. Covers what SRP means, why God classes are bad, how to identify violations, and refactoring to SRP-compliant designs with examples in Python, Java, and JavaScript."
 keywords: "Single Responsibility Principle, SRP, SOLID, one reason to change, God class, separation of concerns, clean architecture, Python SRP, Java SRP, VR-Rathod, Code-Note"
 displayTitle: Single Responsibility Principle (SRP)
+treeTitle: DSA - OOP - Single Responsibility Principle (SRP)
 ---
 
 > [!info] What is the Single Responsibility Principle?
@@ -42,7 +43,6 @@ displayTitle: Single Responsibility Principle (SRP)
 		  | Method names from different domains (save, email, render, validate) | Separate by domain/concern |
 		  | Many different imports (DB, email, HTTP, file IO) | Separate by infrastructure concern |
 		  | Hard to unit test without mocking 10 things | Each class = testable in isolation |
-
 - # Before & After
   collapsed:: true
 	- ```python
@@ -98,7 +98,6 @@ displayTitle: Single Responsibility Principle (SRP)
 	          self.emailer.send_welcome(name, email)
 	          return user
 	  ```
-
 - # Implementation
   collapsed:: true
 	- > [!note] Applying SRP to a report generation system — splitting data retrieval, formatting, and export into separate classes.
@@ -309,7 +308,6 @@ displayTitle: Single Responsibility Principle (SRP)
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **One class = one reason to change** — one actor, one concern.
@@ -317,7 +315,6 @@ displayTitle: Single Responsibility Principle (SRP)
 	- Easier to **test** — small, focused classes are trivially mockable.
 	- Watch out for **God classes** — if a class has >5 different types of methods, it likely violates SRP.
 	- Use **dependency injection** and **composition** to wire SRP-compliant classes together.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

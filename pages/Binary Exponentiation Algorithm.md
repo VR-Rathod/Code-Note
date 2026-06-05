@@ -2,6 +2,7 @@
 seoTitle: Binary Exponentiation – Modular Reduction, Matrix Power & Proofs Guide
 description: "An exhaustive master-level guide to Binary Exponentiation (Fast Exponentiation). Covers mathematical induction proofs, modular exponentiation, Fermat's and Euler's totient theorem exponent reductions, general linear recurrence matrix exponentiation, and 4-language implementations."
 keywords: "binary exponentiation, fast exponentiation, modular exponentiation, modular power, matrix exponentiation, Fibonacci O(log N), Euler's totient, Fermat's Little Theorem, RSA, time complexity, DSA"
+treeTitle: DSA - Math & Geometry - Binary Exponentiation Algorithm
 ---
 
 > [!info] What is Binary Exponentiation?
@@ -15,17 +16,18 @@ keywords: "binary exponentiation, fast exponentiation, modular exponentiation, m
 	- correctly computes $a^b$ for all integers $b \ge 0$.
 	-
 	- **Proof by Induction**:
-	  - **Base Case**: For $b = 0$, $P(a, 0) = 1 = a^0$. The base case holds.
-	  - **Inductive Step**: Assume the formula is correct for all exponents smaller than $b$. We show it holds for $b$:
-	    - **Case 1: $b$ is even ($b = 2k$)**
-	      $$P(a, 2k) = P(a, k)^2$$
-	      By the induction hypothesis, $P(a, k) = a^k$. Therefore:
-	      $$P(a, 2k) = (a^k)^2 = a^{2k} = a^b$$
-	    - **Case 2: $b$ is odd ($b = 2k + 1$)**
-	      $$P(a, 2k+1) = a \cdot P(a, k)^2$$
-	      By the induction hypothesis, $P(a, k) = a^k$. Therefore:
-	      $$P(a, 2k+1) = a \cdot (a^k)^2 = a \cdot a^{2k} = a^{2k+1} = a^b$$
-	  In both cases, $P(a, b) = a^b$. By mathematical induction, the algorithm is correct. Q.E.D.
+	  collapsed:: true
+		- **Base Case**: For $b = 0$, $P(a, 0) = 1 = a^0$. The base case holds.
+		- **Inductive Step**: Assume the formula is correct for all exponents smaller than $b$. We show it holds for $b$:
+			- **Case 1: $b$ is even ($b = 2k$)**
+			  $$P(a, 2k) = P(a, k)^2$$
+			  By the induction hypothesis, $P(a, k) = a^k$. Therefore:
+			  $$P(a, 2k) = (a^k)^2 = a^{2k} = a^b$$
+			- **Case 2: $b$ is odd ($b = 2k + 1$)**
+			  $$P(a, 2k+1) = a \cdot P(a, k)^2$$
+			  By the induction hypothesis, $P(a, k) = a^k$. Therefore:
+			  $$P(a, 2k+1) = a \cdot (a^k)^2 = a \cdot a^{2k} = a^{2k+1} = a^b$$
+			  In both cases, $P(a, b) = a^b$. By mathematical induction, the algorithm is correct. Q.E.D.
 	-
 - # Modular Exponentiation & Exponent Reduction
   collapsed:: true
@@ -85,7 +87,7 @@ keywords: "binary exponentiation, fast exponentiation, modular exponentiation, m
 	  > Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
-
+	  
 	  ```python
 	  # 1. Iterative Modular Exponentiation: (a^b) % m
 	  def bin_pow(a, b, m):
@@ -97,7 +99,7 @@ keywords: "binary exponentiation, fast exponentiation, modular exponentiation, m
 	          a = (a * a) % m
 	          b >>= 1
 	      return res
-
+	  
 	  # 2. Matrix Multiplication Helper
 	  def multiply_matrix(A, B, m):
 	      C = [[0, 0], [0, 0]]
@@ -106,7 +108,7 @@ keywords: "binary exponentiation, fast exponentiation, modular exponentiation, m
 	              for k in range(2):
 	                  C[i][j] = (C[i][j] + A[i][k] * B[k][j]) % m
 	      return C
-
+	  
 	  # 3. Matrix Exponentiation to get Fibonacci F_N % m
 	  def fibonacci_matrix(n, m):
 	      if n == 0:
@@ -125,16 +127,16 @@ keywords: "binary exponentiation, fast exponentiation, modular exponentiation, m
 	          power >>= 1
 	      # F_n is I[0][0]
 	      return I[0][0]
-
+	  
 	  # Example usage
 	  print("3^13 % 1000000007 =", bin_pow(3, 13, 1000000007))
 	  print("10th Fibonacci % 10007 =", fibonacci_matrix(10, 10007))  # 55
 	  ```
-
+	  
 	  ```c++
 	  #include <iostream>
 	  #include <vector>
-
+	  
 	  // 1. Iterative Modular Exponentiation: (a^b) % m
 	  long long bin_pow(long long a, long long b, long long m) {
 	      long long res = 1;
@@ -147,9 +149,9 @@ keywords: "binary exponentiation, fast exponentiation, modular exponentiation, m
 	      }
 	      return res;
 	  }
-
+	  
 	  typedef std::vector<std::vector<long long>> Matrix;
-
+	  
 	  // Helper to multiply 2x2 matrices
 	  Matrix multiply(const Matrix& A, const Matrix& B, long long m) {
 	      Matrix C(2, std::vector<long long>(2, 0));
@@ -162,13 +164,13 @@ keywords: "binary exponentiation, fast exponentiation, modular exponentiation, m
 	      }
 	      return C;
 	  }
-
+	  
 	  // 2. Matrix Exponentiation to get Fibonacci F_N % m
 	  long long fibonacci_matrix(long long n, long long m) {
 	      if (n == 0) return 0;
 	      Matrix T = {{1, 1}, {1, 0}};
 	      Matrix I = {{1, 0}, {0, 1}};
-
+	  
 	      long long power = n - 1;
 	      while (power > 0) {
 	          if (power & 1)
@@ -178,14 +180,14 @@ keywords: "binary exponentiation, fast exponentiation, modular exponentiation, m
 	      }
 	      return I[0][0];
 	  }
-
+	  
 	  int main() {
 	      std::cout << "3^13 % 1000000007 = " << bin_pow(3, 13, 1000000007) << "\n";
 	      std::cout << "10th Fibonacci % 10007 = " << fibonacci_matrix(10, 10007) << "\n";
 	      return 0;
 	  }
 	  ```
-
+	  
 	  ```javascript
 	  // 1. Iterative Modular Exponentiation: (a^b) % m using BigInt for safety
 	  function binPow(a, b, m) {
@@ -203,7 +205,7 @@ keywords: "binary exponentiation, fast exponentiation, modular exponentiation, m
 	      }
 	      return Number(res);
 	  }
-
+	  
 	  // Helper to multiply 2x2 matrices
 	  function multiply(A, B, m) {
 	      const C = [[0n, 0n], [0n, 0n]];
@@ -217,13 +219,13 @@ keywords: "binary exponentiation, fast exponentiation, modular exponentiation, m
 	      }
 	      return C;
 	  }
-
+	  
 	  // 2. Matrix Exponentiation to get Fibonacci F_N % m
 	  function fibonacciMatrix(n, m) {
 	      if (n === 0) return 0;
 	      let T = [[1n, 1n], [1n, 0n]];
 	      let I = [[1n, 0n], [0n, 1n]];
-
+	  
 	      let power = BigInt(n - 1);
 	      while (power > 0n) {
 	          if (power & 1n) {
@@ -234,16 +236,16 @@ keywords: "binary exponentiation, fast exponentiation, modular exponentiation, m
 	      }
 	      return Number(I[0][0]);
 	  }
-
+	  
 	  console.log("3^13 % 1000000007 =", binPow(3, 13, 1000000007));
 	  console.log("10th Fibonacci % 10007 =", fibonacciMatrix(10, 10007));
 	  ```
-
+	  
 	  ```java
 	  import java.util.*;
-
+	  
 	  public class BinaryExponentiation {
-
+	  
 	      // 1. Iterative Modular Exponentiation: (a^b) % m
 	      public static long binPow(long a, long b, long m) {
 	          long res = 1;
@@ -257,7 +259,7 @@ keywords: "binary exponentiation, fast exponentiation, modular exponentiation, m
 	          }
 	          return res;
 	      }
-
+	  
 	      // Helper to multiply 2x2 matrices
 	      private static long[][] multiply(long[][] A, long[][] B, long m) {
 	          long[][] C = new long[2][2];
@@ -270,13 +272,13 @@ keywords: "binary exponentiation, fast exponentiation, modular exponentiation, m
 	          }
 	          return C;
 	      }
-
+	  
 	      // 2. Matrix Exponentiation to get Fibonacci F_N % m
 	      public static long fibonacciMatrix(long n, long m) {
 	          if (n == 0) return 0;
 	          long[][] T = {{1, 1}, {1, 0}};
 	          long[][] I = {{1, 0}, {0, 1}};
-
+	  
 	          long power = n - 1;
 	          while (power > 0) {
 	              if ((power & 1) == 1) {
@@ -287,17 +289,18 @@ keywords: "binary exponentiation, fast exponentiation, modular exponentiation, m
 	          }
 	          return I[0][0];
 	          }
-
+	  
 	      public static void main(String[] args) {
 	          System.out.println("3^13 % 1000000007 = " + binPow(3, 13, 1000000007));
 	          System.out.println("10th Fibonacci % 10007 = " + fibonacciMatrix(10, 10007));
 	      }
 	  }
 	  ```
-
+	  
 	  :::
 	-
 - # Key Takeaways
+  collapsed:: true
 	- **Logarithmic Exponentiation** — Halving the exponent size at each step by squaring the base reduces linear multiplication loops $O(b)$ to $O(\log b)$ operations.
 	- **Modular Safety & Euler Reduction** — Modular multiplication prevents overflow. Euler's Totient Theorem ($a^b \equiv a^{b \bmod \phi(m)} \pmod m$) enables reducing massive exponent terms.
 	- **Matrix Recurrence Solving** — Linear homogeneous recurrences (e.g. Fibonacci, Tribonacci) are solvable in $O(k^3 \log N)$ time by exponentiating the transition matrix $T$.

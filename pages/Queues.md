@@ -2,6 +2,7 @@
 seoTitle: Queues Data Structure - Premium DSA Guide
 description: "Master the Queue data structure. Learn the FIFO principle, Enqueue/Dequeue operations, Circular Queues, Deques, and multi-language implementations."
 keywords: "Queue, FIFO, Data Structures, DSA, Enqueue, Dequeue, Circular Queue, Deque, Breadth First Search"
+treeTitle: DSA - Linear Data Structures - Queues
 ---
 
 > [!info] What is a Queue?
@@ -30,7 +31,6 @@ keywords: "Queue, FIFO, Data Structures, DSA, Enqueue, Dequeue, Circular Queue, 
 		      B --> A[Element 1 - Head]
 		      A -.->|Removes from Head| Dequeue[Dequeue]
 		  ```
-
 - # Variations of Queues
   collapsed:: true
 	- ### 1. Standard Queue
@@ -41,7 +41,6 @@ keywords: "Queue, FIFO, Data Structures, DSA, Enqueue, Dequeue, Circular Queue, 
 	  Elements can be inserted and removed from **both the front and the back**. It combines the powers of a Stack and a Queue.
 	- ### 4. Priority Queue
 	  Elements are dequeued based on their *priority* rather than their arrival time. Implemented using a [[Heap (Data Structure)]].
-
 - # Time & Space Complexity
   collapsed:: true
 	- > [!important] Arrays vs Linked Lists for Queues
@@ -52,7 +51,6 @@ keywords: "Queue, FIFO, Data Structures, DSA, Enqueue, Dequeue, Circular Queue, 
 	  | **Enqueue** | $O(1)$ | $O(1)$ per element |
 	  | **Dequeue** | $O(1)$ | $O(1)$ |
 	  | **Peek Front**| $O(1)$ | $O(1)$ |
-
 - # Implementation
   collapsed:: true
 	- > [!note] Linked-List Queue Implementation

@@ -3,6 +3,7 @@ seoTitle: Dynamic Binding in OOP – Complete In-Depth Guide | Late Binding, Vir
 description: "Deep dive into Dynamic Binding (Late Binding) in OOP. Covers runtime method resolution, vtable mechanism, early vs late binding, virtual functions, and examples in Python, C++, Java, JavaScript, and C#."
 keywords: "dynamic binding, late binding, early binding, virtual dispatch, vtable, runtime polymorphism, virtual function, Python dynamic binding, Java dynamic dispatch, C++ vtable, VR-Rathod, Code-Note"
 displayTitle: Dynamic Binding (Late Binding)
+treeTitle: DSA - OOP - Dynamic Binding
 ---
 
 > [!info] What is Dynamic Binding?
@@ -46,7 +47,6 @@ displayTitle: Dynamic Binding (Late Binding)
 		  s's vtable → slot [0] → Circle::area()  ← runtime dispatch!
 		  ```
 		- Each object holds a hidden **vptr** (virtual pointer) pointing to its class's vtable. When you call a virtual method, the runtime follows the vptr → vtable → correct function.
-
 - # Implementation
   collapsed:: true
 	- > [!note] Dynamic binding demonstrated via a `Notification` system — `EmailNotifier`, `SMSNotifier`, `PushNotifier` resolved at runtime.
@@ -287,7 +287,6 @@ displayTitle: Dynamic Binding (Late Binding)
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Dynamic binding** = method resolved at **runtime** based on actual object type.
@@ -297,7 +296,6 @@ displayTitle: Dynamic Binding (Late Binding)
 	- **Mechanism** — C++ uses vtable/vptr; Java/C# use method dispatch tables; Python uses MRO.
 	- Dynamic binding is **what makes polymorphism work** — same base reference, different runtime behavior.
 	- `final` (Java) / `sealed` / non-`virtual` disables dynamic binding for performance-critical code.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

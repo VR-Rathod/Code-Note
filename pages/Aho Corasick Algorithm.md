@@ -2,6 +2,7 @@
 seoTitle: Aho Corasick Algorithm – Efficient Multi-Pattern String Matching
 description: "Comprehensive guide to the Aho Corasick Algorithm. Explains trie-based multi-pattern matching, failure links, dictionary links, and full implementations in 5 languages."
 keywords: "Aho-Corasick, multi-pattern search, trie, failure link, dictionary link, string matching, algorithm, C++, Python, Java, JavaScript, C, VR-Rathod, Code-Note, Vaibhav Rathod"
+treeTitle: DSA - String Algorithms - Aho Corasick Algorithm
 ---
 
 > [!info] What is the Aho Corasick Algorithm?

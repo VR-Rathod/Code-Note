@@ -3,6 +3,7 @@ seoTitle: GitLab CI/CD Reference – Pipelines, Runners, and YAML Configuration 
 description: "Comprehensive GitLab CI/CD reference covering .gitlab-ci.yml syntax, runners, stages, variables, cache, artifacts, rules, dynamic child pipelines, and environments."
 keywords: "GitLab CI, GitLab CI/CD, .gitlab-ci.yml, runner, CI/CD pipeline, devops, cache vs artifacts, dynamic pipelines, rules, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: GitLab CI
+treeTitle: DevOps - GitLab CI
 ---
 
 - # History

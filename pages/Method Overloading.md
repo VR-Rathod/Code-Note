@@ -3,6 +3,7 @@ seoTitle: Method Overloading in OOP – Complete In-Depth Guide | Compile-time P
 description: "Deep dive into Method Overloading in OOP. Covers compile-time polymorphism, how different languages handle overloading, Python alternatives (default args, *args, @singledispatch), and examples in Python, C++, Java, JavaScript, and C#."
 keywords: "method overloading, OOP, compile-time polymorphism, function overloading, @singledispatch, default arguments, Python overloading, Java overloading, C++ overloading, VR-Rathod, Code-Note"
 displayTitle: Method Overloading
+treeTitle: DSA - OOP - Method Overloading
 ---
 
 > [!info] What is Method Overloading?
@@ -45,7 +46,6 @@ displayTitle: Method Overloading
 		  # 3. @singledispatch (functools)
 		  # 4. Type checking inside the method
 		  ```
-
 - # Implementation
   collapsed:: true
 	- > [!note] A `Calculator` class with overloaded `add()`, `multiply()`, and `convert()` methods across all 5 languages.
@@ -280,7 +280,6 @@ displayTitle: Method Overloading
 	  ```
 	  
 	  :::
-
 - # Key Takeaways
   collapsed:: true
 	- **Same name, different parameters** — that's method overloading.
@@ -288,7 +287,6 @@ displayTitle: Method Overloading
 	- **Python** has no native overloading — use default arguments, `*args`, or `@singledispatch`.
 	- **Java/C++/C#** support true overloading — compiler picks the best match based on argument types.
 	- Return type alone is **not enough** to distinguish overloaded methods — parameter list must differ.
-
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

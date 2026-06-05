@@ -2,6 +2,7 @@
 seoTitle: Quick Sort Algorithm – Implementation, Partitioning Schemes, and Complexity
 description: "In-depth guide to Quick Sort. Compares Lomuto vs Hoare partitioning, pivot selection strategies to avoid O(n^2) worst case, and contains complete codes in Python, C++, JavaScript, Java, and C."
 keywords: "quick sort, quicksort, partitioning scheme, Hoare partition, Lomuto partition, random pivot, O(n log n), unstable sort, sorting algorithm, VR-Rathod, Code-Note, Vaibhav Rathod"
+treeTitle: DSA - Sorting & Searching - Quick Sort
 ---
 
 > [!info] What is Quick Sort?

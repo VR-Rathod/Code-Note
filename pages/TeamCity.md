@@ -3,6 +3,7 @@ seoTitle: TeamCity Reference – Configuration, Build Chains, and Kotlin DSL Gui
 description: "In-depth TeamCity developer reference covering build configurations, VCS roots, build chains (DAG dependencies), agent scaling, and Kotlin DSL pipelines-as-code."
 keywords: "TeamCity, JetBrains, Kotlin DSL, build chains, VCS root, build configuration, CI/CD, DevOps, build agent, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: TeamCity
+treeTitle: DevOps - TeamCity
 ---
 
 - # History

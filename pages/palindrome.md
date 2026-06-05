@@ -3,6 +3,7 @@ seoTitle: Palindrome Detection – Advanced Short Tricks
 description: "Explore the shortest, most pythonic and C++ tricks to reverse strings and verify palindromes in a single line of code."
 keywords: "palindrome, python slice, string reverse, string manipulation, short trick, fast formula, VR-Rathod, Code-Note, code note vr, vr book"
 title: Palindrome
+treeTitle: DSA - Advanced Tips - palindrome
 ---
 
 > [!info] Palindrome Short Tricks

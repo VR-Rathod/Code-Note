@@ -2,6 +2,7 @@
 seoTitle: Interval Tree Explained – Augmented Balanced BST for Interval Queries
 description: "A comprehensive guide to Interval Trees. Explains augmented BSTs (AVL/Red-Black) with max subtree endpoints, interval overlapping queries, and implementations in Python and C++."
 keywords: "interval tree, overlapping intervals, augmented BST, O(log n + k), range query, scheduling, segment overlap, time complexity, space complexity, data structure, VR-Rathod, Code-Note, code note vr, vr book"
+treeTitle: DSA - Trees - Interval Tree
 ---
 
 > [!info] What is an Interval Tree?
@@ -14,8 +15,8 @@ keywords: "interval tree, overlapping intervals, augmented BST, O(log n + k), ra
 	-
 	- ## Real-World Analogy
 	  collapsed:: true
-		- Think of a **classroom scheduling system**. 
-		- When reserving a slot for an exam from 2:00 PM to 4:00 PM (`[14, 16]`), the scheduler checks if there are any conflicting exams. 
+		- Think of a **classroom scheduling system**.
+		- When reserving a slot for an exam from 2:00 PM to 4:00 PM (`[14, 16]`), the scheduler checks if there are any conflicting exams.
 		- Rather than checking every class slot scheduled that day (linear search), the scheduler walks a decision tree to quickly bypass non-overlapping time ranges.
 	-
 	- ## Why Interval Trees?
@@ -29,8 +30,8 @@ keywords: "interval tree, overlapping intervals, augmented BST, O(log n + k), ra
 	- ## Node Augmentation
 	  collapsed:: true
 		- Each node $x$ contains:
-		  - `interval`: `[low, high]`
-		  - `max`: `max(x.interval.high, x.left.max, x.right.max)`
+			- `interval`: `[low, high]`
+			- `max`: `max(x.interval.high, x.left.max, x.right.max)`
 		- ```
 		              [15, 20] (max = 30)
 		             /                  \

@@ -2,6 +2,7 @@
 seoTitle: Line Sweep Algorithm – Geometric Processing & Sweep Status Guide
 description: "Line sweep processes geometric events in sorted order to solve intersection and closest pair problems. Covers event queue, sweep line status, O(n log n) closest pair algorithm, and implementations in Python, C++, JavaScript, and Java."
 keywords: "line sweep, sweep line, computational geometry, event queue, sweep line status, closest pair of points, O(n log n), time complexity, space complexity, geometric algorithm, Bentley-Ottmann"
+treeTitle: DSA - Math & Geometry - Line Sweep Algorithm
 ---
 
 > [!info] What is the Line Sweep Algorithm?

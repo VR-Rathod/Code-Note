@@ -2,6 +2,7 @@
 seoTitle: Splay Tree Explained – Self-Adjusting BST with Amortized O(log n)
 description: "Splay trees move recently accessed nodes to the root via splaying rotations. Covers zig, zig-zig, zig-zag cases, amortized O(log n), and cache-friendly access."
 keywords: "splay tree, self-adjusting BST, splaying, zig rotation, zig-zig, zig-zag, amortized O(log n), time complexity, space complexity, cache-friendly, data structure, VR-Rathod, Code-Note, code note vr, vr book"
+treeTitle: DSA - Trees - Splay Tree
 ---
 
 > [!info] What is a Splay Tree?
@@ -13,7 +14,7 @@ keywords: "splay tree, self-adjusting BST, splaying, zig rotation, zig-zig, zig-
 	-
 	- ## Real-World Analogy
 	  collapsed:: true
-		- Think of a **desk file organizer**. When you need a folder, you pull it out and place it right at the **front**. 
+		- Think of a **desk file organizer**. When you need a folder, you pull it out and place it right at the **front**.
 		- Over time, files you use frequently stay at the front of the organizer for quick access, while rarely used files naturally drift to the back.
 	-
 	- ## Why Splay Trees?

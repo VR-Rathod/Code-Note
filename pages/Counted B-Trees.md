@@ -2,6 +2,7 @@
 seoTitle: Counted B-Trees – Order Statistics and Database Indexing
 description: "Master Counted B-Trees (Augmented B-Trees). Learn dynamic Rank and Select operations in databases, and complete implementations in Python, C++, and Java."
 keywords: "Counted B-Tree, Augmented B-Tree, Order Statistics, Database Index, B-Tree Rank, B-Tree Select, Data Structures, DSA, Python, C++, Java, VR-Rathod, Code-Note, code note vr, vr book"
+treeTitle: DSA - Trees - Counted B-Trees
 ---
 
 > [!info] What is a Counted B-Tree?
@@ -14,8 +15,8 @@ keywords: "Counted B-Tree, Augmented B-Tree, Order Statistics, Database Index, B
 		- Standard B-Trees are widely used in DBMS engines (like MySQL, PostgreSQL) to enable $O(\log N)$ search, insertion, and deletion by matching node sizes with disk pages.
 		- However, finding the **median** value or querying the **rank** of an element by value in standard structures requires $O(N)$ scanning.
 		- By adding a `count` field alongside each child pointer:
-		  - We can skip whole subtrees during searches, similar to binary search.
-		  - Updates (insert/delete) maintain the count sums along the parent path recursively with negligible overhead.
+			- We can skip whole subtrees during searches, similar to binary search.
+			- Updates (insert/delete) maintain the count sums along the parent path recursively with negligible overhead.
 	-
 	- ## Structure Example
 	  collapsed:: true
@@ -25,28 +26,28 @@ keywords: "Counted B-Tree, Augmented B-Tree, Order Statistics, Database Index, B
 		                /        |          \
 		   Child 1 (size: 5)  Child 2 (size: 12)  Child 3 (size: 8)
 		  ```
-		  - This tells us:
-		    - There are 5 keys smaller than 50.
-		    - There are 12 keys between 50 and 100.
-		    - There are 8 keys greater than 100.
-		    - Total size of this subtree = $5 + 12 + 8 + 2 \text{ (local keys)} = 27$ elements.
--
+			- This tells us:
+				- There are 5 keys smaller than 50.
+				- There are 12 keys between 50 and 100.
+				- There are 8 keys greater than 100.
+				- Total size of this subtree = $5 + 12 + 8 + 2 \text{ (local keys)} = 27$ elements.
+- collapsed:: true
 - # How It Works
   collapsed:: true
 	- ## 1. Select Query (Find $k$-th Smallest Element)
 	  collapsed:: true
 		- Start at the root node.
 		- For each child pointer, inspect the subtree size:
-		  - If $k \leq \text{size of Left Subtree}$, recurse into the Left Child.
-		  - If $k == \text{size of Left Subtree} + 1$, the current key is the target.
-		  - If $k > \text{size of Left Subtree} + 1$, subtract the left size + 1 from $k$, and search the next child pointer.
+			- If $k \leq \text{size of Left Subtree}$, recurse into the Left Child.
+			- If $k == \text{size of Left Subtree} + 1$, the current key is the target.
+			- If $k > \text{size of Left Subtree} + 1$, subtract the left size + 1 from $k$, and search the next child pointer.
 		- **Time Complexity: $O(\log N)$**
 	-
 	- ## 2. Rank Query (Find Index position of Key)
 	  collapsed:: true
 		- To find the rank of a key $X$ (the number of elements strictly smaller than $X$):
-		  - During the search down to $X$, keep a running sum of sizes of all subtrees and keys that lie to the **left** of the search path.
-		  - When $X$ is found, add the size of its left subtree to the running sum and return it.
+			- During the search down to $X$, keep a running sum of sizes of all subtrees and keys that lie to the **left** of the search path.
+			- When $X$ is found, add the size of its left subtree to the running sum and return it.
 		- **Time Complexity: $O(\log N)$**
 -
 - # Time & Space Complexity

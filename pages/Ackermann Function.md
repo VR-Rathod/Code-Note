@@ -2,6 +2,7 @@
 seoTitle: Ackermann Function – Computability, Up-Arrows & Inverse Ackermann Guide
 description: "An exhaustive master-level guide to the Ackermann Function. Covers Computability Theory, Primitive Recursive vs General Recursive functions, Knuth's Up-Arrow notation, recursive trace trees, and the Inverse Ackermann complexity bounds in Disjoint Set Union."
 keywords: "Ackermann function, recursion, primitive recursive, computability theory, Knuth up-arrow, inverse Ackermann, Union-Find complexity, tetration, stack overflow, DSA"
+treeTitle: DSA - Math & Geometry - Ackermann Function
 ---
 
 > [!info] What is the Ackermann Function?
@@ -121,7 +122,7 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
 	  > Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
-
+	  
 	  ```python
 	  # 1. Basic Recursive
 	  def ackermann_recursive(m: int, n: int) -> int:
@@ -130,7 +131,7 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
 	      if n == 0:
 	          return ackermann_recursive(m - 1, 1)
 	      return ackermann_recursive(m - 1, ackermann_recursive(m, n - 1))
-
+	  
 	  # 2. Memoized (to handle slightly larger values)
 	  memo = {}
 	  def ackermann_memo(m: int, n: int) -> int:
@@ -145,7 +146,7 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
 	          res = ackermann_memo(m - 1, ackermann_memo(m, n - 1))
 	      memo[key] = res
 	      return res
-
+	  
 	  # 3. Iterative with Explicit Stack (prevents stack overflow)
 	  def ackermann_iterative(m: int, n: int) -> int:
 	      stack = [m]
@@ -161,25 +162,25 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
 	              stack.append(m_val)
 	              n = n - 1
 	      return n
-
+	  
 	  # Example usage
 	  print("A(2, 1) =", ackermann_recursive(2, 1))  # 5
 	  print("A(3, 4) =", ackermann_memo(3, 4))        # 125
 	  print("A(3, 7) =", ackermann_iterative(3, 7))   # 4093
 	  ```
-
+	  
 	  ```c++
 	  #include <iostream>
 	  #include <map>
 	  #include <stack>
-
+	  
 	  // 1. Basic Recursive
 	  long long ackermann_recursive(long long m, long long n) {
 	      if (m == 0) return n + 1;
 	      if (n == 0) return ackermann_recursive(m - 1, 1);
 	      return ackermann_recursive(m - 1, ackermann_recursive(m, n - 1));
 	  }
-
+	  
 	  // 2. Memoized
 	  std::map<std::pair<long long, long long>, long long> memo;
 	  long long ackermann_memo(long long m, long long n) {
@@ -197,7 +198,7 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
 	      memo[key] = res;
 	      return res;
 	  }
-
+	  
 	  // 3. Iterative with Explicit Stack
 	  long long ackermann_iterative(long long m, long long n) {
 	      std::stack<long long> stk;
@@ -217,7 +218,7 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
 	      }
 	      return n;
 	  }
-
+	  
 	  int main() {
 	      std::cout << "A(2, 1) = " << ackermann_recursive(2, 1) << "\n"; // 5
 	      std::cout << "A(3, 4) = " << ackermann_memo(3, 4) << "\n";       // 125
@@ -225,7 +226,7 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
 	      return 0;
 	  }
 	  ```
-
+	  
 	  ```javascript
 	  // 1. Basic Recursive
 	  function ackermannRecursive(m, n) {
@@ -233,7 +234,7 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
 	      if (n === 0) return ackermannRecursive(m - 1, 1);
 	      return ackermannRecursive(m - 1, ackermannRecursive(m, n - 1));
 	  }
-
+	  
 	  // 2. Memoized
 	  const memo = new Map();
 	  function ackermannMemo(m, n) {
@@ -250,7 +251,7 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
 	      memo.set(key, res);
 	      return res;
 	  }
-
+	  
 	  // 3. Iterative with Explicit Stack
 	  function ackermannIterative(m, n) {
 	      const stack = [m];
@@ -269,15 +270,15 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
 	      }
 	      return n;
 	  }
-
+	  
 	  console.log("A(2, 1) =", ackermannRecursive(2, 1));
 	  console.log("A(3, 4) =", ackermannMemo(3, 4));
 	  console.log("A(3, 7) =", ackermannIterative(3, 7));
 	  ```
-
+	  
 	  ```java
 	  import java.util.*;
-
+	  
 	  public class Ackermann {
 	      
 	      // 1. Basic Recursive
@@ -286,7 +287,7 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
 	          if (n == 0) return ackermannRecursive(m - 1, 1);
 	          return ackermannRecursive(m - 1, ackermannRecursive(m, n - 1));
 	      }
-
+	  
 	      // 2. Memoized
 	      private static Map<String, Long> memo = new HashMap<>();
 	      public static long ackermannMemo(long m, long n) {
@@ -303,7 +304,7 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
 	          memo.put(key, res);
 	          return res;
 	      }
-
+	  
 	      // 3. Iterative with Explicit Stack
 	      public static long ackermannIterative(long m, long n) {
 	          Stack<Long> stack = new Stack<>();
@@ -323,7 +324,7 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
 	          }
 	          return n;
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          System.out.println("A(2, 1) = " + ackermannRecursive(2, 1));
 	          System.out.println("A(3, 4) = " + ackermannMemo(3, 4));
@@ -331,7 +332,7 @@ keywords: "Ackermann function, recursion, primitive recursive, computability the
 	      }
 	  }
 	  ```
-
+	  
 	  :::
 	-
 - # Key Takeaways

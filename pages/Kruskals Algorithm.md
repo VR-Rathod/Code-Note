@@ -3,6 +3,7 @@ seoTitle: Kruskal's Algorithm – Minimum Spanning Tree (MST) using Union-Find
 description: "Master Kruskal's Algorithm for finding the Minimum Spanning Tree (MST). Covers Disjoint Set Union (DSU), greedy sorting, complexity analysis, and implementations in Python, C++, JavaScript, Java, and C."
 keywords: "Kruskal algorithm, Minimum Spanning Tree, MST, Union-Find, Disjoint Set, DSU, greedy algorithm, O(E log E), time complexity, graph algorithm, VR-Rathod, Code-Note"
 displayTitle: Kruskal's Algorithm
+treeTitle: DSA - Graph Algorithms - Kruskals Algorithm
 ---
 
 > [!info] What is Kruskal's Algorithm?

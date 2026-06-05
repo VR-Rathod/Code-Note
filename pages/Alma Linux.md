@@ -2,9 +2,8 @@
 seoTitle: AlmaLinux Complete Guide – DNF, SELinux & ELevate Hardening
 description: "Comprehensive AlmaLinux reference covering history, DNF package management, ELevate migrations, SELinux configurations, firewalld, and Completely Fair Scheduler (CFS) kernel architectures."
 keywords: "AlmaLinux, DNF Package Manager, SELinux, ELevate, firewalld, Apache HTTPD, MariaDB, NFS, Completely Fair Scheduler, CFS Scheduler, Virtual Memory, Kernel Scheduling, VR-Rathod, Code-Note, code note vr, vr book"
-displayTitle: AlmaLinux – Complete Guide
-enableToc: true
-comments: true
+displayTitle: Alma Linux
+treeTitle: OS - Linux Distros - Alma Linux
 ---
 
 - # History
@@ -1447,9 +1446,9 @@ comments: true
 		  // Print runqueue in execution order
 		  void print_runqueue(struct task_node *root) {
 		      if (root != NULL) {
-			  print_runqueue(root->left);
-			  printf("Task PID: %d (vruntime: %d ms)\n", root->pid, root->vruntime);
-			  print_runqueue(root->right);
+		   print_runqueue(root->left);
+		   printf("Task PID: %d (vruntime: %d ms)\n", root->pid, root->vruntime);
+		   print_runqueue(root->right);
 		      }
 		  }
 		  
@@ -1469,14 +1468,14 @@ comments: true
 		      // Select leftmost task for execution
 		      struct task_node *next_task = find_leftmost_task(runqueue);
 		      if (next_task != NULL) {
-			  printf("\n[SCHEDULE] Dispatching leftmost task PID %d (vruntime: %d ms) to CPU\n", next_task->pid, next_task->vruntime);
-			  
-			  // Simulate execution: increment vruntime and reinsert
-			  int old_vruntime = next_task->vruntime;
-			  int pid = next_task->pid;
-			  
-			  runqueue = remove_task(runqueue, old_vruntime);
-			  runqueue = insert_task(runqueue, new_task(pid, old_vruntime + 25)); // Run task for 25ms
+		   printf("\n[SCHEDULE] Dispatching leftmost task PID %d (vruntime: %d ms) to CPU\n", next_task->pid, next_task->vruntime);
+		   
+		   // Simulate execution: increment vruntime and reinsert
+		   int old_vruntime = next_task->vruntime;
+		   int pid = next_task->pid;
+		   
+		   runqueue = remove_task(runqueue, old_vruntime);
+		   runqueue = insert_task(runqueue, new_task(pid, old_vruntime + 25)); // Run task for 25ms
 		      }
 		      
 		      printf("\nUpdated Runqueue after scheduling execution cycle:\n");
@@ -1484,8 +1483,8 @@ comments: true
 		      
 		      // Clean memory
 		      while (runqueue != NULL) {
-			  struct task_node *leftmost = find_leftmost_task(runqueue);
-			  runqueue = remove_task(runqueue, leftmost->vruntime);
+		   struct task_node *leftmost = find_leftmost_task(runqueue);
+		   runqueue = remove_task(runqueue, leftmost->vruntime);
 		      }
 		      
 		      return 0;

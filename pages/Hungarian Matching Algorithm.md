@@ -2,6 +2,7 @@
 seoTitle: Hungarian Matching Algorithm – Master LP, König's & Matrix Reduction Guide
 description: "An exhaustive master-level guide to the Hungarian (Kuhn-Munkres) Algorithm. Covers the Linear Programming primal-dual formulation, König's Theorem, programmatic minimum vertex cover line drawing, a complete 4x4 trace, and 4-language implementations."
 keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matching, linear programming, Konig's Theorem, vertex cover, matrix reduction, time complexity, DSA"
+treeTitle: DSA - Math & Geometry - Hungarian Matching Algorithm
 ---
 
 > [!info] What is the Hungarian Algorithm?
@@ -59,41 +60,41 @@ keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matc
 	  $$C = \begin{pmatrix} 9 & 2 & 7 & 8 \\ 6 & 4 & 3 & 7 \\ 5 & 8 & 1 & 8 \\ 7 & 6 & 9 & 4 \end{pmatrix}$$
 	-
 	- ### Step 1: Row Reduction
-	  - Row minima: Row 1 = 2, Row 2 = 3, Row 3 = 1, Row 4 = 4.
-	  - Subtract minima:
-	    $$C_{row} = \begin{pmatrix} 9-2 & 2-2 & 7-2 & 8-2 \\ 6-3 & 4-3 & 3-3 & 7-3 \\ 5-1 & 8-1 & 1-1 & 8-1 \\ 7-4 & 6-4 & 9-4 & 4-4 \end{pmatrix} = \begin{pmatrix} 7 & 0 & 5 & 6 \\ 3 & 1 & 0 & 4 \\ 4 & 7 & 0 & 7 \\ 3 & 2 & 5 & 0 \end{pmatrix}$$
+		- Row minima: Row 1 = 2, Row 2 = 3, Row 3 = 1, Row 4 = 4.
+		- Subtract minima:
+		  $$C_{row} = \begin{pmatrix} 9-2 & 2-2 & 7-2 & 8-2 \\ 6-3 & 4-3 & 3-3 & 7-3 \\ 5-1 & 8-1 & 1-1 & 8-1 \\ 7-4 & 6-4 & 9-4 & 4-4 \end{pmatrix} = \begin{pmatrix} 7 & 0 & 5 & 6 \\ 3 & 1 & 0 & 4 \\ 4 & 7 & 0 & 7 \\ 3 & 2 & 5 & 0 \end{pmatrix}$$
 	-
 	- ### Step 2: Column Reduction
-	  - Column minima of $C_{row}$: Col 1 = 3, Col 2 = 0, Col 3 = 0, Col 4 = 0.
-	  - Subtract minima:
-	    $$C_{col} = \begin{pmatrix} 7-3 & 0 & 5 & 6 \\ 3-3 & 1 & 0 & 4 \\ 4-3 & 7 & 0 & 7 \\ 3-3 & 2 & 5 & 0 \end{pmatrix} = \begin{pmatrix} 4 & 0 & 5 & 6 \\ 0 & 1 & 0 & 4 \\ 1 & 7 & 0 & 7 \\ 0 & 2 & 5 & 0 \end{pmatrix}$$
+		- Column minima of $C_{row}$: Col 1 = 3, Col 2 = 0, Col 3 = 0, Col 4 = 0.
+		- Subtract minima:
+		  $$C_{col} = \begin{pmatrix} 7-3 & 0 & 5 & 6 \\ 3-3 & 1 & 0 & 4 \\ 4-3 & 7 & 0 & 7 \\ 3-3 & 2 & 5 & 0 \end{pmatrix} = \begin{pmatrix} 4 & 0 & 5 & 6 \\ 0 & 1 & 0 & 4 \\ 1 & 7 & 0 & 7 \\ 0 & 2 & 5 & 0 \end{pmatrix}$$
 	-
 	- ### Step 3: Draw Lines to Cover Zeros
-	  - Zeros are at $(0,1)$, $(1,0)$, $(1,2)$, $(2,2)$, $(3,0)$, $(3,3)$.
-	  - Let's cover them:
-	    - Line 1: Col 1 (covers $(1,0)$ and $(3,0)$)
-	    - Line 2: Col 3 (covers $(1,2)$ and $(2,2)$)
-	    - Line 3: Row 1 (covers $(0,1)$)
-	    - Line 4: Row 4 (covers $(3,3)$)
-	    Wait! Can we cover all zeros with 3 lines?
-	    Let's check:
-	    - Col 1 (covers $(1,0)$, $(3,0)$)
-	    - Col 3 (covers $(1,2)$, $(2,2)$)
-	    - Row 1 (covers $(0,1)$)
-	    - Row 4 (covers $(3,3)$)
-	    Is there a way with 3 lines?
-	    If we select Col 1, Col 3, and Row 1:
-	      - Remaining uncovered zeros: $(3,3)$. We need a line for it (either Row 4 or Col 4).
-	      So we need at least 4 lines to cover all zeros.
-	      Since the number of lines $k = 4 = N$, we already have our optimal matching!
+		- Zeros are at $(0,1)$, $(1,0)$, $(1,2)$, $(2,2)$, $(3,0)$, $(3,3)$.
+		- Let's cover them:
+			- Line 1: Col 1 (covers $(1,0)$ and $(3,0)$)
+			- Line 2: Col 3 (covers $(1,2)$ and $(2,2)$)
+			- Line 3: Row 1 (covers $(0,1)$)
+			- Line 4: Row 4 (covers $(3,3)$)
+			  Wait! Can we cover all zeros with 3 lines?
+			  Let's check:
+			- Col 1 (covers $(1,0)$, $(3,0)$)
+			- Col 3 (covers $(1,2)$, $(2,2)$)
+			- Row 1 (covers $(0,1)$)
+			- Row 4 (covers $(3,3)$)
+			  Is there a way with 3 lines?
+			  If we select Col 1, Col 3, and Row 1:
+				- Remaining uncovered zeros: $(3,3)$. We need a line for it (either Row 4 or Col 4).
+				  So we need at least 4 lines to cover all zeros.
+				  Since the number of lines $k = 4 = N$, we already have our optimal matching!
 	-
 	- ### Step 4: Final Optimal Assignment
-	  - Find rows/columns with a single zero first:
-	    - Row 1: Zero at Col 2 $\implies$ Worker 1 $\to$ Task 2 (Original Cost = 2).
-	    - Row 3: Zero at Col 3 $\implies$ Worker 3 $\to$ Task 3 (Original Cost = 1).
-	    - Row 4: Zeros at Col 1 and Col 4. Since Col 1 is assigned to Row 2, assign Worker 4 $\to$ Task 4 (Original Cost = 4).
-	    - Row 2: Zero at Col 1 $\implies$ Worker 2 $\to$ Task 1 (Original Cost = 6).
-	  - **Total Minimum Cost** = $2 + 6 + 1 + 4 = 13$.
+		- Find rows/columns with a single zero first:
+			- Row 1: Zero at Col 2 $\implies$ Worker 1 $\to$ Task 2 (Original Cost = 2).
+			- Row 3: Zero at Col 3 $\implies$ Worker 3 $\to$ Task 3 (Original Cost = 1).
+			- Row 4: Zeros at Col 1 and Col 4. Since Col 1 is assigned to Row 2, assign Worker 4 $\to$ Task 4 (Original Cost = 4).
+			- Row 2: Zero at Col 1 $\implies$ Worker 2 $\to$ Task 1 (Original Cost = 6).
+		- **Total Minimum Cost** = $2 + 6 + 1 + 4 = 13$.
 	-
 - # Variations and Edge Cases
   collapsed:: true
@@ -122,16 +123,16 @@ keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matc
 	  > Languages: [[Python]] · [[Cpp]] · [[Java Script]] · [[Java]]
 	-
 	- :::code-tabs
-
+	  
 	  ```python
 	  # 1. Standard Library Implementation (Requires SciPy)
 	  from scipy.optimize import linear_sum_assignment
-
+	  
 	  def solve_assignment_scipy(cost_matrix):
 	      row_ind, col_ind = linear_sum_assignment(cost_matrix)
 	      total_cost = sum(cost_matrix[r][c] for r, c in zip(row_ind, col_ind))
 	      return list(zip(row_ind, col_ind)), total_cost
-
+	  
 	  # Example
 	  costs = [
 	      [9, 2, 7, 8],
@@ -142,13 +143,13 @@ keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matc
 	  assignments, total = solve_assignment_scipy(costs)
 	  print("SciPy Assignment:", assignments, "Total Cost:", total)
 	  ```
-
+	  
 	  ```c++
 	  #include <iostream>
 	  #include <vector>
 	  #include <algorithm>
 	  #include <cmath>
-
+	  
 	  // Self-contained O(N^3) Hungarian implementation
 	  class Hungarian {
 	  private:
@@ -156,7 +157,7 @@ keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matc
 	      std::vector<std::vector<double>> cost;
 	      std::vector<double> u, v;
 	      std::vector<int> p, way;
-
+	  
 	  public:
 	      Hungarian(const std::vector<std::vector<double>>& cost_matrix) {
 	          n = cost_matrix.size();
@@ -166,7 +167,7 @@ keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matc
 	          p.assign(n + 1, 0);
 	          way.assign(n + 1, 0);
 	      }
-
+	  
 	      double solve(std::vector<int>& assignment) {
 	          for (int i = 1; i <= n; ++i) {
 	              p[0] = i;
@@ -206,7 +207,7 @@ keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matc
 	                  j0 = j1;
 	              } while (j0 != 0);
 	          }
-
+	  
 	          assignment.assign(n, 0);
 	          for (int j = 1; j <= n; ++j) {
 	              assignment[p[j] - 1] = j - 1;
@@ -214,7 +215,7 @@ keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matc
 	          return -v[0];
 	      }
 	  };
-
+	  
 	  int main() {
 	      std::vector<std::vector<double>> cost_matrix = {
 	          {9, 2, 7, 8},
@@ -225,7 +226,7 @@ keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matc
 	      Hungarian solver(cost_matrix);
 	      std::vector<int> assignment;
 	      double min_cost = solver.solve(assignment);
-
+	  
 	      std::cout << "Optimal assignment:\n";
 	      for (int i = 0; i < cost_matrix.size(); ++i) {
 	          std::cout << "Worker " << i << " -> Task " << assignment[i] << "\n";
@@ -234,7 +235,7 @@ keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matc
 	      return 0;
 	  }
 	  ```
-
+	  
 	  ```javascript
 	  // Self-contained Hungarian Algorithm
 	  function hungarian(costMatrix) {
@@ -243,7 +244,7 @@ keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matc
 	      const v = new Array(n + 1).fill(0);
 	      const p = new Array(n + 1).fill(0);
 	      const way = new Array(n + 1).fill(0);
-
+	  
 	      for (let i = 1; i <= n; i++) {
 	          p[0] = i;
 	          let j0 = 0;
@@ -287,14 +288,14 @@ keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matc
 	              j0 = j1;
 	          } while (j0 !== 0);
 	      }
-
+	  
 	      const assignment = new Array(n);
 	      for (let j = 1; j <= n; j++) {
 	          assignment[p[j] - 1] = j - 1;
 	      }
 	      return { assignment, cost: -v[0] };
 	  }
-
+	  
 	  const costs = [
 	      [9, 2, 7, 8],
 	      [6, 4, 3, 7],
@@ -305,10 +306,10 @@ keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matc
 	  console.log("Assignments:", res.assignment);
 	  console.log("Total Cost:", res.cost);
 	  ```
-
+	  
 	  ```java
 	  import java.util.*;
-
+	  
 	  public class HungarianAlgorithm {
 	      
 	      public static double solve(double[][] costMatrix, int[] assignment) {
@@ -317,20 +318,20 @@ keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matc
 	          double[] v = new double[n + 1];
 	          int[] p = new int[n + 1];
 	          int[] way = new int[n + 1];
-
+	  
 	          for (int i = 1; i <= n; i++) {
 	              p[0] = i;
 	              int j0 = 0;
 	              double[] minv = new double[n + 1];
 	              Arrays.fill(minv, Double.MAX_VALUE);
 	              boolean[] used = new boolean[n + 1];
-
+	  
 	              do {
 	                  used[j0] = true;
 	                  int i0 = p[j0];
 	                  int j1 = 0;
 	                  double delta = Double.MAX_VALUE;
-
+	  
 	                  for (int j = 1; j <= n; j++) {
 	                      if (!used[j]) {
 	                          double cur = costMatrix[i0 - 1][j - 1] - u[i0] - v[j];
@@ -344,7 +345,7 @@ keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matc
 	                          }
 	                      }
 	                  }
-
+	  
 	                  for (int j = 0; j <= n; j++) {
 	                      if (used[j]) {
 	                          u[p[j]] += delta;
@@ -355,20 +356,20 @@ keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matc
 	                  }
 	                  j0 = j1;
 	              } while (p[j0] != 0);
-
+	  
 	              do {
 	                  int j1 = way[j0];
 	                  p[j0] = p[j1];
 	                  j0 = j1;
 	              } while (j0 != 0);
 	          }
-
+	  
 	          for (int j = 1; j <= n; j++) {
 	              assignment[p[j] - 1] = j - 1;
 	          }
 	          return -v[0];
 	      }
-
+	  
 	      public static void main(String[] args) {
 	          double[][] costs = {
 	              {9, 2, 7, 8},
@@ -378,13 +379,13 @@ keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matc
 	          };
 	          int[] assign = new int[costs.length];
 	          double cost = solve(costs, assign);
-
+	  
 	          System.out.println("Assignments: " + Arrays.toString(assign));
 	          System.out.println("Total Cost: " + cost);
 	      }
 	  }
 	  ```
-
+	  
 	  :::
 	-
 - # When to Use Hungarian Matching
@@ -398,6 +399,7 @@ keywords: "Hungarian algorithm, Kuhn-Munkres, assignment problem, bipartite matc
 		- The coordinates represent geometric positions — specialized geometric matching algorithms exist that can solve assignments in better time.
 		-
 - # Key Takeaways
+  collapsed:: true
 	- **LP Dual Potentials** — By maintaining potentials $u_i + v_j \le c_{ij}$ and matching only slack edges ($u_i + v_j = c_{ij}$), the algorithm constructs an optimal assignment.
 	- **Kőnig's Theorem** — Validates that the minimum lines drawn to cover zeros is equal to the size of the maximum zero matching.
 	- **Complexity** — Polynomial bounds $O(N^3)$ replace the NP-Hard permutations ($O(N!)$) brute-force.

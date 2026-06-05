@@ -4,6 +4,7 @@ description: "Comprehensive guide to Continuous Integration (CI) covering pipeli
 keywords: "continuous integration, CI, CI/CD, github actions, jenkins, gitlab ci, trunk-based development, git flow, code linting, SAST, unit testing, DevOps, build automation"
 displayTitle: Continuous Integration
 enableToc: true
+treeTitle: DevOps - Continuous Integration
 ---
 
 - # Introduction to Continuous Integration (CI)

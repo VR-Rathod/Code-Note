@@ -2,6 +2,7 @@
 seoTitle: Binary Tree Data Structure - Properties & Traversals Guide
 description: "Master Binary Trees in Data Structures & Algorithms. Learn about Full, Complete, Perfect, and Balanced Binary Trees, traversals (pre-order, in-order, post-order, level-order), and multi-language implementations."
 keywords: "Binary Tree, Tree Traversal, Inorder, Preorder, Postorder, Level Order, DFS, BFS, Balanced Tree, Complete Binary Tree, Data Structures, DSA"
+treeTitle: DSA - Trees - Binary Tree
 ---
 
 > [!info] What is a Binary Tree?
@@ -49,7 +50,6 @@ keywords: "Binary Tree, Tree Traversal, Inorder, Preorder, Postorder, Level Orde
 		          PB --> PF((7))
 		      end
 		  ```
-
 - # Tree Traversals
   collapsed:: true
 	- Unlike linear structures (arrays, linked lists) which have a single logical way to traverse them, trees can be traversed in multiple ways.
@@ -79,11 +79,10 @@ keywords: "Binary Tree, Tree Traversal, Inorder, Preorder, Postorder, Level Orde
 		      classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#fff;
 		  ```
 		- Traversing the tree above:
-		  - **Pre-Order**: A → B → D → E → C
-		  - **In-Order**: D → B → E → A → C
-		  - **Post-Order**: D → E → B → C → A
-		  - **Level-Order**: A → B → C → D → E
-
+			- **Pre-Order**: A → B → D → E → C
+			- **In-Order**: D → B → E → A → C
+			- **Post-Order**: D → E → B → C → A
+			- **Level-Order**: A → B → C → D → E
 - # Properties of Binary Trees
   collapsed:: true
 	- 1. **Maximum nodes at level $L$** (root is level 0) is $2^L$.
@@ -91,7 +90,6 @@ keywords: "Binary Tree, Tree Traversal, Inorder, Preorder, Postorder, Level Orde
 	- 3. **Minimum height of a binary tree with $N$ nodes** is $\lceil\log_2(N+1)\rceil - 1$.
 	- 4. **Relation between leaf nodes and 2-child nodes**: In any non-empty binary tree, if $L$ is the number of leaf nodes and $N_2$ is the number of nodes with 2 children, then:
 	     $$L = N_2 + 1$$
-
 - # Time & Space Complexity
   collapsed:: true
 	- > [!important] Complexity Summary
@@ -103,7 +101,6 @@ keywords: "Binary Tree, Tree Traversal, Inorder, Preorder, Postorder, Level Orde
 	  |------------------|-----------------|--------------------------|----------------------------|
 	  | **DFS (Pre/In/Post)** | $O(n)$ | $O(n)$ (Skewed tree) | $O(\log n)$ (Balanced tree) |
 	  | **BFS (Level-Order)** | $O(n)$ | $O(n)$ (Wide tree - leaves level) | $O(w)$ where $w$ is max width |
-
 - # Implementation
   collapsed:: true
 	- > [!note] Standard Recursive Traversals and Iterative Level-Order

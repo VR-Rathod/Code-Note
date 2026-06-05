@@ -2,6 +2,7 @@
 seoTitle: Eulerian Path & Circuit (Hierholzer's Algorithm)
 description: "Master Hierholzer's algorithm for finding Eulerian Paths and Circuits. Covers degree counting, DFS backtracking, and O(V+E) time complexity."
 keywords: "Hierholzer algorithm, Eulerian Path, Eulerian Circuit, graph traversal, DFS, degree counting, O(V+E), algorithm, VR-Rathod, Code-Note"
+treeTitle: DSA - Graph Algorithms - Eukerian Path (Hierholzer's Algorithm)
 ---
 
 > [!info] What is Hierholzer's Algorithm?
