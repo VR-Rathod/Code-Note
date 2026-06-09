@@ -115,6 +115,7 @@ displayTitle: System Design - Scalability & CAP
 	  collapsed:: true
 		- **Consistency (C)**
 		  Every read returns the **most recent write** — all nodes show the same data.
+		  *(Consistency ordering is often managed by logical clocks, see [[System Design - Logical Clocks]])*
 		  > Think: You update your profile picture. Every server in the world sees the new picture instantly.
 		-
 		- **Availability (A)**
@@ -209,6 +210,8 @@ displayTitle: System Design - Scalability & CAP
 		  > If you have plenty of budget left, you can move fast.
 - # Consistent Hashing (How Distributed Caches Scale)
   collapsed:: true
+	- > [!info] Full Guide
+	  > See [[System Design - Consistent Hashing]] for in-depth coverage, mathematical rebalancing, and Python/JS code.
 	- ## The Problem First
 	  collapsed:: true
 		- Imagine you have 3 Redis servers and you want to distribute keys across them.

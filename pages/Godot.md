@@ -93,6 +93,37 @@ treeTitle: Game Development - Engines - Godot
 		  var data  = preload("res://data/item.res")        # binary resource
 		  ```
 	-
+	- ## UID (Unique Identifier) System
+	  collapsed:: true
+		- In Godot 4, files and assets can be identified by a **UID** rather than a hardcoded project path (`res://...`).
+		- ### How it Works
+		  collapsed:: true
+			- Every imported asset or resource is assigned a globally unique 64-bit integer ID.
+			- This ID is saved inside a `.uid` file (for text resources) or within the `.import` files of your project directory.
+			- The engine compiles all UIDs into a central database located at `.godot/uid_cache.bin`.
+			- UIDs use the prefix `uid://` followed by a base-36 representation of the unique integer (e.g., `uid://d4e94a21924e`).
+		- ### Why Use UIDs?
+		  collapsed:: true
+			- **Prevents Broken References**: If you rename or move an asset (e.g., a texture, script, or sub-scene) within the Godot FileSystem dock, Godot automatically updates its cache, but other scene files referencing it do not break because they reference the stable UID instead of the path.
+			- **Better Team Collaboration**: Decreases merge conflicts in team environments when multiple developers move or organize directories.
+		- ### Example: Path vs. UID
+		  collapsed:: true
+			- **Hardcoded Path reference (Fragile)**:
+			  ```gdscript
+			  # If Player.tscn is moved to res://characters/player/Player.tscn, this fails:
+			  var player_scene = preload("res://scenes/Player.tscn")
+			  ```
+			- **UID Reference (Resilient)**:
+			  ```gdscript
+			  # This works even if the scene is moved or renamed anywhere in the project:
+			  var player_scene = preload("uid://cc1ygqg530w8x")
+			  ```
+			- You can copy a resource's UID by right-clicking it in the Godot FileSystem dock and selecting **Copy UID**.
+		- ### Best Practices & Caveats
+		  collapsed:: true
+			- **Version Control**: Always commit `.uid` files to Git. If a `.uid` file is deleted, Godot will regenerate it, which might assign a new ID and cause reference issues on other machines.
+			- **Text Files**: When looking at a `.tscn` file, you will see resources linked via both UID and path, like `ext_resource type="PackedScene" uid="uid://..." path="res://..." id="1"`. Godot uses the path as a fallback if the UID cache is rebuilding.
+	-
 	- ## Common Node Types
 	  collapsed:: true
 		- ```
@@ -162,6 +193,289 @@ treeTitle: Game Development - Engines - Godot
 		      velocity.x = dir * speed
 		      move_and_slide()
 		  ```
+-
+- # Signals & Event-Driven Architecture
+  collapsed:: true
+	- Signals are Godot's implementation of the **Observer Pattern**. They allow nodes to send notifications to other nodes without needing direct references, enabling a decoupled, event-driven codebase.
+	- The golden rule of Godot scene design: **"Signals Up, Call Down"**. Parents call methods on children directly; children emit signals to notify parents of events.
+	-
+	- ## Defining & Emitting Signals
+	  collapsed:: true
+		- Signals are declared at the top of a script using the `signal` keyword. They can define typed arguments.
+		- ```gdscript
+		  extends CharacterBody2D
+		  
+		  # 1. Declaration (simple)
+		  signal clicked
+		  
+		  # 2. Declaration with typed arguments (highly recommended)
+		  signal health_changed(old_value: int, new_value: int)
+		  signal status_effect_applied(effect_name: StringName, duration: float)
+		  
+		  var health: int = 100
+		  
+		  func take_damage(amount: int) -> void:
+		      var old_health = health
+		      health = max(0, health - amount)
+		      
+		      # 3. Emitting the signal
+		      health_changed.emit(old_health, health)
+		  ```
+	-
+	- ## Connecting Signals
+	  collapsed:: true
+		- ### 1. Via the Editor UI
+		  collapsed:: true
+			- Select the node in the Scene tree.
+			- Go to the **Node tab** (next to Inspector) → **Signals**.
+			- Double-click a signal → Select the target node → Click **Connect**.
+			- This creates a connection entry visible in the Editor and saved in the `.tscn` file.
+		- ### 2. Via Code (GDScript Callables)
+		  collapsed:: true
+			- In Godot 4, connections are made using the `connect` method on the signal object, passing a `Callable` (method reference).
+			- ```gdscript
+			  # Connect signal to local method
+			  func _ready() -> void:
+			      $Button.pressed.connect(_on_button_pressed)
+			      
+			      # Checking if connected
+			      if not health_changed.is_connected(_on_health_changed):
+			          health_changed.connect(_on_health_changed)
+			  
+			  func _on_button_pressed() -> void:
+			      print("Button clicked!")
+			  
+			  func _on_health_changed(old_val: int, new_val: int) -> void:
+			      print("Health went from ", old_val, " to ", new_val)
+			  ```
+	-
+	- ## Advanced Signal Connections
+	  collapsed:: true
+		- ### 1. Passing Extra Arguments (Binding)
+		  collapsed:: true
+			- You can bind extra arguments to a connection that weren't defined in the original signal. This is useful for passing data like indices or node references.
+			- ```gdscript
+			  # Multiple buttons call the same method, but pass different parameters
+			  func _ready() -> void:
+			      $BuySwordButton.pressed.connect(_on_purchase_clicked.bind("sword", 150))
+			      $BuyShieldButton.pressed.connect(_on_purchase_clicked.bind("shield", 100))
+			  
+			  func _on_purchase_clicked(item_type: String, cost: int) -> void:
+			      print("Purchasing: ", item_type, " for ", cost, " gold.")
+			  ```
+		- ### 2. Lambda (Anonymous) Connections
+		  collapsed:: true
+			- You can connect a signal directly to an inline anonymous function (lambda).
+			- ```gdscript
+			  func _ready() -> void:
+			      # Basic inline lambda
+			      $Timer.timeout.connect(func(): print("Time is up!"))
+			      
+			      # Lambda with closure (captures local variables)
+			      var local_multiplier = 1.5
+			      $Enemy.died.connect(func(xp_reward: int):
+			          add_experience(xp_reward * local_multiplier)
+			      )
+			  ```
+		- ### 3. Connection Flags (Custom Behavior)
+		  collapsed:: true
+			- You can pass connection flags as an optional parameter to `connect()`.
+			- ```gdscript
+			  # Connect flags are passed via ConnectFlags enum
+			  
+			  # CONNECT_DEFERRED: Defers the call to the end of the physics/idle frame.
+			  # Vital when modifying physics states or scene hierarchy during collision signals.
+			  body_entered.connect(_on_body_entered, CONNECT_DEFERRED)
+			  
+			  # CONNECT_ONE_SHOT: Automatically disconnects the signal after it fires once.
+			  level_loaded.connect(_on_level_init, CONNECT_ONE_SHOT)
+			  
+			  # CONNECT_PERSISTED: Connection is saved when the scene is saved (used inside @tool scripts).
+			  property_changed.connect(_on_prop_update, CONNECT_PERSISTED)
+			  ```
+	-
+	- ## Signal Disconnection & Safety
+	  collapsed:: true
+		- Connections are automatically removed when either the emitter or receiver node is deleted (`queue_free()`), so memory leaks are rarely an issue for scene nodes.
+		- However, manual disconnection is sometimes needed:
+		- ```gdscript
+		  # Manual disconnect
+		  if button.pressed.is_connected(_on_button_pressed):
+		      button.pressed.disconnect(_on_button_pressed)
+		  ```
+		- To prevent calling code on an object that is in the middle of deletion or check if a Callable is valid:
+		- ```gdscript
+		  # Check if target object exists and callable is valid
+		  var my_callable = Callable(target_node, "receive_event")
+		  if my_callable.is_valid():
+		      my_callable.call()
+		  ```
+-
+- # Component-Based Architecture
+  collapsed:: true
+	- ## The Composition Pattern
+	  collapsed:: true
+		- In game development, deep inheritance trees (e.g. `Entity` → `Actor` → `Character` → `Player`) cause rigid codebases. If both a `Player` and an `ExplosiveBarrel` need health, putting health in a shared ancestor class forces it onto nodes that shouldn't have it (like static walls).
+		- Godot implements **Composition** using **Nodes as Components**. Instead of inheriting features, a parent node gets its capabilities by having small, specialized child nodes attached to it.
+		-
+		- ### Composition vs. Inheritance Architecture
+		  collapsed:: true
+			- ```
+			  INHERITANCE PATHWAY (Rigid)
+			  Node2D ── PhysicsBody2D ── CharacterBody2D ── LivingEntity ── Player
+			                                                   │
+			                                                   └── Enemy (forces health on static objects)
+			  
+			  COMPOSITION PATHWAY (Modular)
+			  CharacterBody2D (Player)
+			  ├── HealthComponent (Node) - Manages health variables and math
+			  ├── HitboxComponent (Area2D) - Detects incoming damage
+			  ├── InputComponent (Node) - Gathers inputs
+			  └── VelocityComponent (Node) - Handles movement math
+			  ```
+	-
+	- ## In-Depth Tutorial: Creating Components
+	  collapsed:: true
+		- Here is a complete component system for damage, health, and movement.
+		- ### 1. HealthComponent
+		  collapsed:: true
+			- A pure logical component (extends `Node`) that tracks health, handles heals/damage, and notifies the parent via signals.
+			- ```gdscript
+			  # res://components/HealthComponent.gd
+			  class_name HealthComponent
+			  extends Node
+			  
+			  signal health_changed(old_value: int, new_value: int)
+			  signal health_depleted
+			  
+			  @export var max_health: int = 100
+			  @onready var current_health: int = max_health
+			  
+			  func damage(amount: int) -> void:
+			      if amount <= 0: return
+			      var old_health = current_health
+			      current_health = max(0, current_health - amount)
+			      health_changed.emit(old_health, current_health)
+			      
+			      if current_health == 0:
+			          health_depleted.emit()
+			  
+			  func heal(amount: int) -> void:
+			      if amount <= 0: return
+			      var old_health = current_health
+			      current_health = min(max_health, current_health + amount)
+			      health_changed.emit(old_health, current_health)
+			  ```
+		- ### 2. HitboxComponent
+		  collapsed:: true
+			- An `Area2D` component that represents the physical area where an object can *receive* damage. It delegates damage to a `HealthComponent`.
+			- ```gdscript
+			  # res://components/HitboxComponent.gd
+			  class_name HitboxComponent
+			  extends Area2D
+			  
+			  # Reference to the health component representing this object
+			  @export var health_component: HealthComponent
+			  
+			  # Allows specifying a damage multiplier (e.g., 2.0 for a headshot hitbox)
+			  @export var damage_multiplier: float = 1.0
+			  
+			  func receive_damage(base_damage: int) -> void:
+			      if health_component:
+			          var final_damage = int(base_damage * damage_multiplier)
+			          health_component.damage(final_damage)
+			  ```
+		- ### 3. HurtboxComponent
+		  collapsed:: true
+			- An `Area2D` component that represents the area that *inflicts* damage. It monitors overlaps with `HitboxComponents`.
+			- ```gdscript
+			  # res://components/HurtboxComponent.gd
+			  class_name HurtboxComponent
+			  extends Area2D
+			  
+			  @export var damage: int = 10
+			  
+			  func _ready() -> void:
+			      # Connect collision signal
+			      area_entered.connect(_on_area_entered)
+			  
+			  func _on_area_entered(area: Area2D) -> void:
+			      # Check if overlapping area is a Hitbox
+			      if area is HitboxComponent:
+			          area.receive_damage(damage)
+			  ```
+		- ### 4. VelocityComponent
+		  collapsed:: true
+			- Manages movement velocity calculations, easing friction, and acceleration, keeping movement math separate from input collecting.
+			- ```gdscript
+			  # res://components/VelocityComponent.gd
+			  class_name VelocityComponent
+			  extends Node
+			  
+			  @export var max_speed: float = 300.0
+			  @export var acceleration: float = 1200.0
+			  @export var friction: float = 800.0
+			  
+			  var velocity: Vector2 = Vector2.ZERO
+			  
+			  func accelerate_in_direction(direction: Vector2, delta: float) -> void:
+			      if direction != Vector2.ZERO:
+			          velocity = velocity.move_toward(direction * max_speed, acceleration * delta)
+			      else:
+			          velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+			  
+			  func apply_to_body(body: CharacterBody2D) -> void:
+			      body.velocity = velocity
+			      body.move_and_slide()
+			      # Save resolved velocity back
+			      velocity = body.velocity
+			  ```
+	-
+	- ## Connecting Components in a Scene
+	  collapsed:: true
+		- In your main Entity scene (e.g., Player or Enemy), you arrange these components as children and write a minimal orchestration script.
+		- ### Scene Tree Setup
+		  collapsed:: true
+			- ```
+			  CharacterBody2D (Player) - (Script: player.gd)
+			  ├── Sprite2D (Visual)
+			  ├── CollisionShape2D (Collides with walls)
+			  ├── HealthComponent (Saves stats)
+			  ├── HitboxComponent (Child Area2D)
+			  │   └── CollisionShape2D (Defines vulnerability zone)
+			  └── VelocityComponent (Calculates velocity)
+			  ```
+			- **Important**: In the editor, assign `HealthComponent` to the export property `health_component` on the `HitboxComponent`.
+		- ### Orchestration Script (player.gd)
+		  collapsed:: true
+			- ```gdscript
+			  extends CharacterBody2D
+			  
+			  @onready var health_comp: HealthComponent = $HealthComponent
+			  @onready var velocity_comp: VelocityComponent = $VelocityComponent
+			  
+			  func _ready() -> void:
+			      # Orchestrate responses to component signals
+			      health_comp.health_depleted.connect(_on_death)
+			      health_comp.health_changed.connect(_on_health_changed)
+			  
+			  func _physics_process(delta: float) -> void:
+			      # Gather inputs and delegate calculations to components
+			      var move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+			      
+			      # Calculate speed and apply movement physics
+			      velocity_comp.accelerate_in_direction(move_dir, delta)
+			      velocity_comp.apply_to_body(self)
+			  
+			  func _on_health_changed(old_hp: int, new_hp: int) -> void:
+			      print("Ouch! Player health is now: ", new_hp)
+			      # e.g., trigger screen shake or hit flash shader
+			  
+			  func _on_death() -> void:
+			      set_physics_process(false)
+			      # play death animation, then delete
+			      queue_free()
+			  ```
 -
 - # Core Lifecycle Methods
   collapsed:: true
@@ -1166,27 +1480,272 @@ treeTitle: Game Development - Engines - Godot
 		  ```
 		- Build with SCons, output a `.gdextension` file pointing to your `.dll`/`.so`.
 -
-- # Useful Patterns & Tips
+- # Advanced Godot Design Patterns & Tips
   collapsed:: true
 	- ## State Machine Pattern
 	  collapsed:: true
-		- ```gdscript
-		  enum State { IDLE, RUN, JUMP, ATTACK }
-		  var current_state: State = State.IDLE
-		  
-		  func _physics_process(delta: float) -> void:
-		      match current_state:
-		          State.IDLE:   _state_idle(delta)
-		          State.RUN:    _state_run(delta)
-		          State.JUMP:   _state_jump(delta)
-		          State.ATTACK: _state_attack(delta)
-		  
-		  func _state_idle(_delta: float) -> void:
-		      if Input.get_axis("move_left", "move_right") != 0:
-		          current_state = State.RUN
-		      if Input.is_action_just_pressed("jump"):
-		          current_state = State.JUMP
-		  ```
+		- For complex logic trees (like a player character who can move, jump, slide, wall-climb, and attack), basic `if/else` checks rapidly descend into "spaghetti code". A Finite State Machine (FSM) ensures a character is in exactly **one state** at a time and defines clear rules for changing states.
+		- ### 1. Simple Enum State Machine (Best for simple AI / simple actors)
+		  collapsed:: true
+			- ```gdscript
+			  enum State { IDLE, RUN, JUMP, FALL }
+			  var current_state: State = State.IDLE
+			  
+			  func _physics_process(delta: float) -> void:
+			      # State action execution
+			      match current_state:
+			          State.IDLE: _state_idle(delta)
+			          State.RUN:  _state_run(delta)
+			          State.JUMP: _state_jump(delta)
+			          State.FALL: _state_fall(delta)
+			  
+			      # State transition logic
+			      _check_transitions()
+			  
+			  func _check_transitions() -> void:
+			      var on_floor = is_on_floor()
+			      var move_input = Input.get_axis("move_left", "move_right") != 0
+			      
+			      match current_state:
+			          State.IDLE:
+			              if move_input: current_state = State.RUN
+			              elif not on_floor: current_state = State.FALL
+			          State.RUN:
+			              if not move_input: current_state = State.IDLE
+			              elif not on_floor: current_state = State.FALL
+			  ```
+		- ### 2. Node-Based State Machine (Best for complex actors/bosses)
+		  collapsed:: true
+			- Each state is represented by its own node/script. This keeps code modular, files short, and makes adding states easy.
+			- #### The State Base Class
+			  collapsed:: true
+				- ```gdscript
+				  # res://scripts/fsm/State.gd
+				  class_name State
+				  extends Node
+				  
+				  # Reference to the FSM manager
+				  var fsm: StateMachine
+				  # Reference to the physical entity (e.g. CharacterBody2D)
+				  var actor: CharacterBody2D
+				  
+				  # Virtual methods to be overridden by child states:
+				  func enter() -> void: pass
+				  func exit() -> void: pass
+				  func handle_input(event: InputEvent) -> void: pass
+				  func update(delta: float) -> void: pass
+				  func physics_update(delta: float) -> void: pass
+				  ```
+			- #### The StateMachine Manager Class
+			  collapsed:: true
+				- ```gdscript
+				  # res://scripts/fsm/StateMachine.gd
+				  class_name StateMachine
+				  extends Node
+				  
+				  @export var initial_state: State
+				  var current_state: State
+				  
+				  # Assign physical actor to pass down to states
+				  @onready var actor: CharacterBody2D = get_parent()
+				  
+				  func _ready() -> void:
+				      # Setup all children states
+				      for child in get_children():
+				          if child is State:
+				              child.fsm = self
+				              child.actor = actor
+				              
+				      if initial_state:
+				          transition_to(initial_state.name)
+				  
+				  func _unhandled_input(event: InputEvent) -> void:
+				      if current_state:
+				          current_state.handle_input(event)
+				  
+				  func _process(delta: float) -> void:
+				      if current_state:
+				          current_state.update(delta)
+				  
+				  func _physics_process(delta: float) -> void:
+				      if current_state:
+				          current_state.physics_update(delta)
+				  
+				  func transition_to(target_state_name: String) -> void:
+				      var target_state = get_node(target_state_name) as State
+				      if not target_state: 
+				          push_error("State machine: State not found: " + target_state_name)
+				          return
+				          
+				      if current_state:
+				          current_state.exit()
+				          
+				      current_state = target_state
+				      current_state.enter()
+				  ```
+			- #### Example Concrete State: PlayerIdleState
+			  collapsed:: true
+				- ```gdscript
+				  # res://scripts/fsm/PlayerIdleState.gd
+				  class_name PlayerIdleState
+				  extends State
+				  
+				  func enter() -> void:
+				      actor.get_node("AnimationPlayer").play("idle")
+				      actor.velocity.x = 0
+				  
+				  func physics_update(delta: float) -> void:
+				      # Apply gravity
+				      if not actor.is_on_floor():
+				          fsm.transition_to("PlayerFallState")
+				          return
+				          
+				      # Transition to run if input detected
+				      var input = Input.get_axis("move_left", "move_right")
+				      if input != 0:
+				          fsm.transition_to("PlayerRunState")
+				          return
+				          
+				      # Transition to jump if requested
+				      if Input.is_action_just_pressed("jump"):
+				          fsm.transition_to("PlayerJumpState")
+				  ```
+			- #### Scene Tree Setup
+			  collapsed:: true
+				- ```
+				  Player (CharacterBody2D)
+				  ├── Sprite2D
+				  ├── CollisionShape2D
+				  ├── AnimationPlayer
+				  └── StateMachine (Node) - [initial_state points to PlayerIdleState]
+				      ├── PlayerIdleState (Node)
+				      ├── PlayerRunState (Node)
+				      ├── PlayerJumpState (Node)
+				      └── PlayerFallState (Node)
+				  ```
+	-
+	- ## Event Bus (Signal Bus) Pattern
+	  collapsed:: true
+		- The **Event Bus** is a central communications hub that allows disconnected nodes to broadcast and listen to game-wide events (e.g., player scoring, UI popups, game state shifts) without referencing each other or navigating the scene tree.
+		- ### How to Setup the Event Bus
+		  collapsed:: true
+			- 1. Create a script called `EventBus.gd`.
+			- 2. Go to **Project Settings → Autoload**, select `EventBus.gd`, and add it as an Autoload named **`EventBus`** (making it a global singleton).
+		- ### Event Bus Implementation
+		  collapsed:: true
+			- ```gdscript
+			  # res://scripts/EventBus.gd
+			  extends Node
+			  
+			  # Define all global events here
+			  signal player_health_changed(current: int, max_health: int)
+			  signal enemy_defeated(score_value: int)
+			  signal item_collected(item_name: String, quantity: int)
+			  signal game_over(reason: String)
+			  signal show_notification(message: String)
+			  ```
+		- ### Publisher (Triggering Events)
+		  collapsed:: true
+			- ```gdscript
+			  # Inside an Enemy script when it dies
+			  func die() -> void:
+			      # Broadcast the event globally to any listeners
+			      EventBus.enemy_defeated.emit(100)
+			      EventBus.show_notification.emit("Enemy Slain! +100 PTS")
+			      queue_free()
+			  ```
+		- ### Subscriber (Listening to Events)
+		  collapsed:: true
+			- ```gdscript
+			  # Inside a UI Score Label script
+			  extends Label
+			  
+			  var current_score: int = 0
+			  
+			  func _ready() -> void:
+			      # Subscribe to the global Event Bus
+			      EventBus.enemy_defeated.connect(_on_enemy_defeated)
+			      
+			  func _on_enemy_defeated(points: int) -> void:
+			      current_score += points
+			      text = "Score: " + str(current_score)
+			  ```
+		- ### Performance & Cleaning Up
+		  collapsed:: true
+			- **Safety**: Since `EventBus` is a singleton, if a listening node is freed (`queue_free()`), Godot automatically disconnects its methods. However, if you hook up non-node Callables (like transient Resources or custom classes), you MUST disconnect them manually on deletion to prevent calling invalid memory.
+	-
+	- ## UI Separation Pattern (Model-View-Controller / Presenter)
+	  collapsed:: true
+		- In complex game interfaces (like menus, inventories, or skill trees), mixing data logic (e.g. inventory contents, gold coins) with UI rendering logic (e.g. updating labels, scaling progress bars) creates unmaintainable script structures. Godot developers solve this with a modified MVP/MVC pattern.
+		- ### Structure breakdown
+		  collapsed:: true
+			- **Model (Data)**: A custom `Resource` containing game data. Has no visual logic. (e.g. `CharacterStats.tres`).
+			- **View (Presentation)**: Control nodes that handle layout, button triggers, and graphics. They have no business logic and do not perform calculations.
+			- **Controller / Presenter (Glue)**: A controller script that connects the Model to the View. It listens to data changes on the model and pushes them to the view.
+		- ### Script Implementation Example
+		  collapsed:: true
+			- #### 1. The Model (Stats Resource)
+			  collapsed:: true
+				- ```gdscript
+				  # res://resources/PlayerStats.gd
+				  class_name PlayerStats
+				  extends Resource
+				  
+				  signal health_changed(new_hp: int)
+				  signal gold_changed(new_gold: int)
+				  
+				  @export var max_health: int = 100
+				  var health: int = 100 :
+				      set(value):
+				          health = clamp(value, 0, max_health)
+				          health_changed.emit(health)
+				  
+				  var gold: int = 0 :
+				      set(value):
+				          gold = max(0, value)
+				          gold_changed.emit(gold)
+				  ```
+			- #### 2. The View (UI Layout Controller)
+			  collapsed:: true
+				- ```gdscript
+				  # res://ui/PlayerHUDView.gd
+				  class_name PlayerHUDView
+				  extends CanvasLayer
+				  
+				  @onready var health_bar = $Margin/VBox/HealthBar
+				  @onready var gold_label = $Margin/VBox/GoldLabel
+				  
+				  # Pure setter functions, no business calculations
+				  func update_health_display(health: int, max_health: int) -> void:
+				      health_bar.max_value = max_health
+				      health_bar.value = health
+				  
+				  func update_gold_display(amount: int) -> void:
+				      gold_label.text = "Gold: " + str(amount)
+				  ```
+			- #### 3. The Controller / Presenter (Scene Orchestrator)
+			  collapsed:: true
+				- ```gdscript
+				  # res://scenes/GameHUDController.gd
+				  extends Node
+				  
+				  @export var player_stats: PlayerStats
+				  @onready var hud_view: PlayerHUDView = $PlayerHUDView
+				  
+				  func _ready() -> void:
+				      if player_stats:
+				          # Connect Model signals to updater methods in View
+				          player_stats.health_changed.connect(
+				              func(new_hp): hud_view.update_health_display(new_hp, player_stats.max_health)
+				          )
+				          player_stats.gold_changed.connect(
+				              func(new_gold): hud_view.update_gold_display(new_gold)
+				          )
+				          
+				          # Initialize view starting state
+				          hud_view.update_health_display(player_stats.health, player_stats.max_health)
+				          hud_view.update_gold_display(player_stats.gold)
+				  ```
 	-
 	- ## Object Pooling
 	  collapsed:: true
@@ -1206,23 +1765,6 @@ treeTitle: Game Development - Engines - Godot
 		  
 		  func return_to_pool(node: Node) -> void:
 		      node.visible = false
-		  ```
-	-
-	- ## Event Bus (Decoupled Signals)
-	  collapsed:: true
-		- ```gdscript
-		  # EventBus.gd — autoload singleton
-		  extends Node
-		  
-		  signal enemy_died(enemy_id: int)
-		  signal score_updated(new_score: int)
-		  signal level_completed
-		  
-		  # Any script can emit:
-		  EventBus.enemy_died.emit(id)
-		  
-		  # Any script can listen:
-		  EventBus.enemy_died.connect(_on_enemy_died)
 		  ```
 	-
 	- ## @tool Scripts (Editor Scripts)

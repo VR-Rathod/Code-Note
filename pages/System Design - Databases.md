@@ -65,7 +65,7 @@ displayTitle: System Design - Databases
 		- ```
 		  Benefits:
 		    ✅ Read scalability — distribute reads across replicas
-		    ✅ Failover — promote replica if primary fails
+		    ✅ Failover — promote replica if primary fails (consensus needed, see [[System Design - Consensus (Raft & Paxos)]])
 		    ✅ Backups — take snapshots from replica (no impact to primary)
 		  
 		  Replication lag:
@@ -78,10 +78,12 @@ displayTitle: System Design - Databases
 	  collapsed:: true
 		- ```
 		  Both nodes accept reads AND writes.
-		  Sync via bidirectional replication.
+		  Sync via bidirectional replication (often via Gossip, see [[System Design - Gossip Protocol]]).
 		  
 		  Pros: High write availability, geographic distribution
 		  Cons: Conflict resolution complexity (last-write-wins? custom?)
+		  
+		  *See [[System Design - CRDT]] for in-depth details on conflict-free data structures used to resolve multi-master write conflicts.*
 		  
 		  Use when: Multiple datacenters, each needing local writes
 		  ```
@@ -106,16 +108,16 @@ displayTitle: System Design - Databases
 		    → Remove server: only 1/N keys move to neighbours
 		    → Used in: Cassandra, DynamoDB, Redis Cluster
 		  
-		  See [[System Design - Scalability & CAP]] for full explanation.
+		  See [[System Design - Consistent Hashing]] for full explanation.
 		  ```
 	-
 	- ## Sharding Challenges
 	  collapsed:: true
 		- ```
 		  Cross-shard joins:     Application-level join (expensive)
-		  Cross-shard transactions: 2PC or Saga pattern
+		  Cross-shard transactions: 2PC or Saga pattern (see [[System Design - Distributed Transactions]])
 		  Resharding:           Move data while serving traffic (blue-green)
-		  Hot shards:           Consistent hashing + virtual nodes
+		  Hot shards:           Consistent hashing + virtual nodes (see [[System Design - Consistent Hashing]])
 		  ID generation:        Snowflake ID / UUID (no auto-increment)
 		  ```
 - # Database Indexing
@@ -130,6 +132,8 @@ displayTitle: System Design - Databases
 		  | Covering | Index includes all queried columns | Avoid table lookup entirely | Write-heavy tables |
 		  | Full-Text | Inverted index | LIKE '%keyword%' search | Structured data |
 		  | Partial | Index subset of rows | status = 'active' queries | Rarely filtered columns |
+		  
+		  *See [[System Design - LSM & B+ Trees]] for in-depth comparisons between read-optimized B+ Trees and write-optimized LSM Trees.*
 	-
 	- ## Index Best Practices
 	  collapsed:: true
