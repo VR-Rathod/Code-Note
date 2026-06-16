@@ -3,6 +3,7 @@ seoTitle: Intel TBB – Threading Building Blocks C++ Parallel Programming
 description: "Intel TBB (Threading Building Blocks) reference for C++ parallel programming. Covers parallel_for, parallel_reduce, task groups, concurrent containers, and flow graphs."
 keywords: "Intel TBB, Threading Building Blocks, C++ parallel programming, parallel_for, parallel_reduce, task groups, concurrent containers, oneTBB, multi-core, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: TBB (Threading Building Blocks)
+title: Threading Building Blocks
 ---
 
 - # History

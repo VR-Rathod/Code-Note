@@ -3,12 +3,14 @@ seoTitle: Distributed Consensus Algorithms (Paxos, Raft, Zab) – System Design
 description: "An in-depth guide to distributed consensus algorithms. Learn Paxos (single-decree, multi-paxos), Raft (leader election, log replication, safety), and Zab protocols."
 keywords: "consensus, raft, paxos, zab, distributed systems, leader election, log replication, split brain, distributed consistency, system design"
 displayTitle: System Design - Consensus (Raft & Paxos)
+title: System Design - Consensus Raft & Paxos
 ---
 
 > [!info] What is Distributed Consensus?
 > **Distributed Consensus** is the process by which a set of independent nodes in a network agree on a single data value or a sequence of state changes (a log), even if some nodes fail or the network is partitioned. It is the core building block of reliable distributed key-value stores and coordinator services.
 
 - # Consensus Overview
+  collapsed:: true
 	- In a distributed system, consensus is required to maintain a consistent state machine across replicated servers. The system must remain available and correct as long as a majority of nodes (a quorum, typically $F = \lfloor N/2 \rfloor + 1$ nodes) are functional.
 	-
 	- ## Core Consensus Trade-offs

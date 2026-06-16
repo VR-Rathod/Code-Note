@@ -588,7 +588,7 @@ treeTitle: DSA - Trees - AA Tree
 -
 - # Variations & Related
   collapsed:: true
-	- [[Binary Search Tree (BST)]] - The parent class of all ordered tree types.
+	- [[Binary Search Tree]] - The parent class of all ordered tree types.
 	- [[Segment Tree]] - Balanced interval querying structure.
 	- [[Splay Tree]] - A self-adjusting search tree that optimizes for recently queried elements.
 -

@@ -3,6 +3,7 @@ seoTitle: Google Test (gtest) – C++ Unit Testing Framework Reference
 description: "Google Test (gtest) is Google's C++ unit testing framework. Covers test cases, assertions, fixtures, mocking with gMock, parameterized tests, and CMake integration."
 keywords: "Google Test, gtest, C++ unit testing, gMock, test fixtures, assertions, parameterized tests, CMake testing, C++ testing framework, TDD, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: Google Test (gtest)
+title: Google Test
 ---
 
 - # History

@@ -3126,7 +3126,7 @@ displayTitle: C++
   id:: 673ac308-24d0-40b6-b0d7-a4b6cac5b79a
 	- [[Cpp for Unreal]] - Unreal-specific C++ patterns: UObject system, UPROPERTY/UFUNCTION macros, TArray/TMap, delegates, GC, networking replication.
 	-
-	- [[STL (Standard Template Library)]] - Vectors, maps, sets, algorithms, iterators — the backbone of every C++ program.
+	- [[Standard Template Library]] - Vectors, maps, sets, algorithms, iterators — the backbone of every C++ program.
 	-
 	- [[Boost]] - Peer-reviewed libraries extending C++: threading, filesystem, smart pointers, regex, and more.
 	-
@@ -3134,21 +3134,21 @@ displayTitle: C++
 	-
 	- [[OpenCV]] - Computer vision library for real-time image processing and object detection.
 	-
-	- [[SFML (Simple and Fast Multimedia Library)]] - Graphics, sound, and input for game development.
+	- [[Simple and Fast Multimedia Library]] - Graphics, sound, and input for game development.
 	-
 	- [[Eigen]] - Template library for linear algebra, matrices, and vectors — used in ML and scientific computing.
 	-
-	- [[Cpp REST SDK (cpprest)]] - Cross-platform RESTful web services and HTTP communication.
+	- [[Cpp REST SDK]] - Cross-platform RESTful web services and HTTP communication.
 	-
-	- [[POCO (C++ Portable Components)]] - HTTP, database, JSON/XML parsing for networked applications.
+	- [[POCO C++ Portable Components]] - HTTP, database, JSON/XML parsing for networked applications.
 	-
-	- [[Google Test (gtest)]] - Unit testing framework with mock objects and assertions.
+	- [[Google Test]] - Unit testing framework with mock objects and assertions.
 	-
-	- [[ACE (Adaptive Communicative Environment)]] - High-performance networked and real-time systems.
+	- [[ACE Adaptive Communicative Environment]] - High-performance networked and real-time systems.
 	-
-	- [[TBB (Threading Building Blocks)]] - Intel's parallel programming library for multi-core performance.
+	- [[Threading Building Blocks]] - Intel's parallel programming library for multi-core performance.
 	-
-	- [[SDL (Simple DirectMedia Layer)]] - Cross-platform multimedia: audio, graphics, input for games.
+	- [[Simple DirectMedia Layer]] - Cross-platform multimedia: audio, graphics, input for games.
 	-
 	- [[Catch2]] - Modern, header-only C++ testing framework — simpler than gtest.
 	-

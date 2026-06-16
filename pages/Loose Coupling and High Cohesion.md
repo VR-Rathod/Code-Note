@@ -242,7 +242,7 @@ treeTitle: DSA - OOP - Loose Coupling and High Cohesion
 - # Key Takeaways
   collapsed:: true
 	- **Loose coupling**: classes interact via abstractions (interfaces), not concrete implementations.
-	- **High cohesion**: each class has one focused purpose (links to [[Single Responsibility Principle (SRP)]]).
+	- **High cohesion**: each class has one focused purpose (links to [[Single Responsibility Principle SRP]]).
 	- Achieve both via: **Dependency Injection**, **Interfaces/ABCs**, **separating concerns**.
 	- Loose + Cohesive code is: **testable** (mock dependencies), **flexible** (swap implementations), **readable** (small, focused classes).
 - # More Learn

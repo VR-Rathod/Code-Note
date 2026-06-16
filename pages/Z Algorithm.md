@@ -19,7 +19,7 @@ treeTitle: DSA - String Algorithms - Z Algorithm
 	-
 	- ## Why the Z Algorithm?
 	  collapsed:: true
-		- Similar to [[Knuth Morris Pratt Algorithm (KMP)]], the Z Algorithm solves the string matching problem in linear time.
+		- Similar to [[Knuth Morris Pratt Algorithm]], the Z Algorithm solves the string matching problem in linear time.
 		- The Z Algorithm is often considered **conceptually simpler** because it only requires building one unified Z-array, rather than KMP's prefix function and state machine transitions.
 -
 - # How It Works

@@ -1658,7 +1658,7 @@ displayTitle: Python
 	- ## 4. Natural Language Processing (NLP)
 		- [[NLTK]]: Toolkit for working with human language data (text).
 		- [[spaCy]]: Industrial-strength NLP library for advanced text processing.
-		- [[Transformers (by Hugging Face)]]: Pre-trained models for NLP tasks such as text classification, translation, etc.
+		- [[Transformers by Hugging Face]]: Pre-trained models for NLP tasks such as text classification, translation, etc.
 	-
 	- ## 5. Web Scraping
 		- [[BeautifulSoup]]: Library for parsing HTML and XML documents and extracting data from them.

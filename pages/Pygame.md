@@ -98,4 +98,4 @@ keywords: "Pygame, Python game development, 2D games, sprites, collision detecti
 	- **Coordinate Space**: Always use Pygame `Rect` objects to manage positions. They provide useful attributes like `.center`, `.top`, `.bottom`, `.left`, `.right` for easy alignment.
 - # 🔗 **Navigation & Internal Links**
 	- **Parent**: [[Python]]
-	- **Related Notes**: [[Game Development]] | [[SDL (Simple DirectMedia Layer)]] | [[SFML (Simple and Fast Multimedia Library)]]
+	- **Related Notes**: [[Game Development]] | [[Simple DirectMedia Layer]] | [[Simple and Fast Multimedia Library]]

@@ -317,8 +317,8 @@ title: Distinct elements in subarray using Mos Algorithm
 	- The core add/remove pattern: `freq[x]++; if freq[x]==1: distinct++` / `freq[x]--; if freq[x]==0: distinct--`.
 	- This O(1) add/remove makes MO's work for this problem — total cost = number of pointer moves = O((N+Q)√N).
 	- **Verification trick:** After computing, cross-check `len(set(arr[l:r+1]))` to verify answers.
-	- This is a direct application of [[MOs Algorithm (Query square root decomposition)]] specialised to the distinct-count aggregate.
-	- Related: [[MOs Algorithm (Query square root decomposition)]], [[Prefix Sum Array]], [[Sliding Window Technique]]
+	- This is a direct application of [[MOs Algorithm Query square root decomposition]] specialised to the distinct-count aggregate.
+	- Related: [[MOs Algorithm Query square root decomposition]], [[Prefix Sum Array]], [[Sliding Window Technique]]
 - # More Learn
   collapsed:: true
 	- ## Resources

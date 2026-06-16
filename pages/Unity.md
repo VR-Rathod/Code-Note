@@ -2135,12 +2135,12 @@ treeTitle: Game Development - Engines - Unity
   collapsed:: true
 	- ## Core Unity Packages
 	  collapsed:: true
-		- [[Universal Render Pipeline (URP)]] — Scalable, high-performance rendering from mobile devices to high-end PCs.
-		- [[High Definition Render Pipeline (HDRP)]] — AAA-grade rendering, volumetric lighting, and physical cameras for PC and console.
+		- [[Universal Render Pipeline]] — Scalable, high-performance rendering from mobile devices to high-end PCs.
+		- [[High Definition Render Pipeline]] — AAA-grade rendering, volumetric lighting, and physical cameras for PC and console.
 		- [[Input System]] — Modern, event-based system supporting customized binding mappings and hot-swappable hardware.
 		- [[Cinemachine]] — Procedural camera system supporting tracking, camera blending, smart damping, and screen composition.
 		- [[TextMeshPro]] — High-fidelity text mesh layout system based on Signed Distance Field (SDF) textures.
-		- [[Unity UI (uGUI)]] — Standard Canvas-based user interface components.
+		- [[Unity UI]] — Standard Canvas-based user interface components.
 		- [[Addressables]] — Dynamic async asset grouping, loading, memory releasing, and content deployment workflows.
 		- [[Unity Netcode for GameObjects]] — Official high-level engine networking system for multiplayer synchronization.
 	-

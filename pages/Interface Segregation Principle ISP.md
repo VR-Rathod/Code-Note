@@ -197,7 +197,7 @@ treeTitle: DSA - OOP - Interface Segregation Principle (ISP)
 	- **No client should implement methods it doesn't use** — split fat interfaces into focused ones.
 	- Small, focused interfaces are more **reusable** and easier to implement correctly.
 	- If a class has to throw `NotImplementedError` or `UnsupportedOperationException` for inherited methods → ISP violated.
-	- ISP is the interface counterpart of [[Single Responsibility Principle (SRP)]] — SRP for classes, ISP for interfaces.
+	- ISP is the interface counterpart of [[Single Responsibility Principle SRP]] — SRP for classes, ISP for interfaces.
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

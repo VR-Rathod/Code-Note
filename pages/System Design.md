@@ -8,7 +8,7 @@ displayTitle: System Design
 > [!info] What is System Design?
 > System design is the process of defining **architecture, components, interfaces, and data flow** to satisfy specified requirements at scale.
 > It answers *how* a system will work — not just *what* it will do.
-> Sub-pages: [[System Design - Scalability & CAP]], [[System Design - Databases]], [[System Design - Caching]], [[System Design - Microservices]], [[System Design - APIs & Networking]], [[System Design - Case Studies]], [[System Design - CRDT]], [[System Design - Consensus (Raft & Paxos)]], [[System Design - Logical Clocks]], [[System Design - LSM & B+ Trees]], [[System Design - Gossip Protocol]], [[System Design - Distributed Transactions]], [[System Design - Vector Databases]], [[System Design - Consistent Hashing]].
+> Sub-pages: [[System Design - Scalability & CAP]], [[System Design - Databases]], [[System Design - Caching]], [[System Design - Microservices]], [[System Design - APIs & Networking]], [[System Design - Case Studies]], [[System Design - CRDT]], [[System Design - Consensus Raft & Paxos]], [[System Design - Logical Clocks]], [[System Design - LSM & B+ Trees]], [[System Design - Gossip Protocol]], [[System Design - Distributed Transactions]], [[System Design - Vector Databases]], [[System Design - Consistent Hashing]].
 
 > [!tip] Interview Approach — 7 Steps
 > **①** Clarify requirements → **②** Estimate scale (QPS, storage) → **③** Define APIs → **④** Draw HLD → **⑤** Deep dive components → **⑥** Identify bottlenecks & trade-offs → **⑦** Discuss failure & recovery
@@ -46,7 +46,7 @@ displayTitle: System Design
 		  | [[System Design - Microservices]] | 🔴 Advanced | Service mesh, Circuit breaker, Saga, CQRS, Outbox |
 		  | [[System Design - Case Studies]] | 🔴 Advanced | URL shortener, Chat, YouTube, Twitter feed, Uber |
 		  | [[System Design - CRDT]] | 🔴 Advanced | CvRDT, CmRDT, Join-Semilattice, LWW-Element-Set, Collaborative systems |
-		  | [[System Design - Consensus (Raft & Paxos)]] | 🔴 Advanced | Leader election, Log replication, Safety, Raft, Paxos |
+		  | [[System Design - Consensus Raft & Paxos]] | 🔴 Advanced | Leader election, Log replication, Safety, Raft, Paxos |
 		  | [[System Design - Logical Clocks]] | 🔴 Advanced | Lamport timestamps, Vector clocks, Causal order |
 		  | [[System Design - Gossip Protocol]] | 🔴 Advanced | Gossip propagation, SWIM membership, Failure detection |
 		  | [[System Design - Distributed Transactions]] | 🔴 Advanced | 2PC, 3PC, Saga pattern, Compensating transactions |

@@ -336,7 +336,7 @@ displayTitle: Prefix Sum Array
 	- **Subarray Sum = K** uses a running prefix + hashmap: look up `freq[prefix − k]` at each step.
 	- **2D Prefix Sum** enables O(1) sub-matrix sum queries (image integral, used in image processing and competitive programming).
 	- **Difference Array** is the inverse: range updates in O(1), reconstruct with a prefix sum.
-	- Related: [[Sliding Window Technique]], [[Kadane's Algorithm]], [[MOs Algorithm (Query square root decomposition)]]
+	- Related: [[Sliding Window Technique]], [[Kadane's Algorithm]], [[MOs Algorithm Query square root decomposition]]
 - # More Learn
   collapsed:: true
 	- ## LeetCode Problems

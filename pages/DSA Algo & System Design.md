@@ -63,11 +63,11 @@ treeTitle: DSA
 	-
 	- ## **SOLID Principles** — 5 rules for clean OOP design :-
 	  collapsed:: true
-		- [[Single Responsibility Principle (SRP)]] - A class should have **one and only one reason to change** — it should do exactly one thing.
-		- [[Open Closed Principle (OCP)]] - Software entities should be **open for extension** but **closed for modification** — add new behavior without touching existing code.
-		- [[Liskov Substitution Principle (LSP)]] - Objects of a subclass must be substitutable for objects of the parent class **without breaking** program correctness.
-		- [[Interface Segregation Principle (ISP)]] - Prefer **many small, specific interfaces** over one large general-purpose interface — clients should not be forced to implement methods they don't need.
-		- [[Dependency Inversion Principle (DIP)]] - High-level modules should not depend on low-level modules; **both should depend on abstractions** (interfaces/abstract classes), not concrete implementations.
+		- [[Single Responsibility Principle SRP]] - A class should have **one and only one reason to change** — it should do exactly one thing.
+		- [[Open Closed Principle OCP]] - Software entities should be **open for extension** but **closed for modification** — add new behavior without touching existing code.
+		- [[Liskov Substitution Principle LSP]] - Objects of a subclass must be substitutable for objects of the parent class **without breaking** program correctness.
+		- [[Interface Segregation Principle ISP]] - Prefer **many small, specific interfaces** over one large general-purpose interface — clients should not be forced to implement methods they don't need.
+		- [[Dependency Inversion Principle DIP]] - High-level modules should not depend on low-level modules; **both should depend on abstractions** (interfaces/abstract classes), not concrete implementations.
 -
 - # Complexity Analysis
 	- [[Complexity Analysis]] - Complete guide to time and space complexity, Big O notation, and algorithm mathematics.
@@ -85,9 +85,9 @@ treeTitle: DSA
 	  collapsed:: true
 		- ### Basic Trees:
 			- 1) [[Binary Tree]] - Hierarchical structure where each node has at most two children.
-			- 2) [[Binary Search Tree (BST)]] - Node-based binary tree with ordered left and right subtrees.
-			- 3) [[Heap (Data Structure)]] - Complete binary tree that satisfies the heap property for priority sorting.
-			- 4) [[Trie (Prefix Tree)]] - Search tree used for efficient prefix retrieval of keys over a character alphabet.
+			- 2) [[Binary Search Tree]] - Node-based binary tree with ordered left and right subtrees.
+			- 3) [[Heap]] - Complete binary tree that satisfies the heap property for priority sorting.
+			- 4) [[Trie Prefix Tree]] - Search tree used for efficient prefix retrieval of keys over a character alphabet.
 			- 5) [[Segment Tree]] - Tree structure used for storing interval information and answering range queries.
 		- ### Advanced Trees:
 			- 1) [[AA Tree]] - self-balancing binary search tree
@@ -114,7 +114,7 @@ treeTitle: DSA
 		- 1) [[Disjoint Set Data Structure]] (Union-Find) - Near-constant time dynamic connectivity tracking utilizing path compression and union by rank.
 			- Disjoint-set Data Structure
 		- 2) [[Bloom Filter]] - Space-efficient probabilistic data structure used for set membership queries with zero false negatives.
-		- 3) [[Rope (Data Structure)]] - Binary tree-based string representation optimized for efficient concatenation and substring manipulation of large texts.
+		- 3) [[Rope]] - Binary tree-based string representation optimized for efficient concatenation and substring manipulation of large texts.
 		- 4) [[Zipper]] - Functional cursor pattern enabling efficient, purely functional traversal and localized edits of tree structures.
 		- 5) [[Binary Decision Diagram]] - Compact canonical representation of boolean functions supporting efficient boolean operations.
 		- 6) [[Cuckoo Hashing]] - Hash table resolution scheme utilizing multiple tables and element displacement to guarantee O(1) worst-case lookup.
@@ -151,7 +151,7 @@ treeTitle: DSA
 	-
 	- ## String Algorithms:
 	  collapsed:: true
-		- 1) [[Knuth Morris Pratt Algorithm (KMP)]] - string searching algorithm that bypasses redundant comparisons using a failure function.
+		- 1) [[Knuth Morris Pratt Algorithm]] - string searching algorithm that bypasses redundant comparisons using a failure function.
 		- 2) [[Rabin-Karp Algorithm]] - string searching used to find a pattern within a larger text.
 		- 3) [[Z Algorithm]] - Linear-time pattern matching using the prefix-based Z-array, detailing string compression and periodicity check variants.
 		- 4) [[Manachers Algorithm]] - Finding the longest palindromic substring in O(N) time with string transformation, symmetry mirroring, and palindromic count variants.
@@ -197,7 +197,7 @@ treeTitle: DSA
 			- **Time:** O(N) · **Space:** O(1) — two variables only
 			- **Key Insight:** Maintain a `candidate` and a `count`. Each mismatch cancels one occurrence of the candidate. After one pass the surviving candidate is the majority (requires a second pass to confirm).
 			- **Use cases:** Majority vote in elections, finding dominant color in an image, consensus in distributed systems.
-		- 5) [[MOs Algorithm (Query square root decomposition)]]
+		- 5) [[MOs Algorithm Query square root decomposition]]
 			- **Purpose:** Answer **multiple offline range queries** on a static array faster than processing each query independently.
 			- **Time:** O((N + Q) × √N) · **Space:** O(√N) for block bookkeeping
 			- **Key Insight:** Sort queries by (block of L, then R for even blocks / R descending for odd blocks). This minimizes total pointer movement across all queries to O((N + Q)√N).
@@ -228,8 +228,8 @@ treeTitle: DSA
 	  collapsed:: true
 		- 1) [[Dynamic Programming Concepts]] - Core paradigms of overlapping subproblems and optimal substructure using Memoization (Top-down) or Tabulation (Bottom-up).
 		- 2) [[Knapsack Problem]] - Classic optimization problem of selecting items with weights and values, including space-optimized dynamic programming techniques.
-		- 3) [[Longest Common Subsequence (LCS)]] - Subsequence similarity matching utilizing a dynamic programming matrix for DNA alignment and diff tools.
-		- 4) [[Longest Increasing Subsequence (LIS)]] - Finding the longest ordered subsequence using dynamic programming or O(N log N) patience sorting with binary search.
+		- 3) [[Longest Common Subsequence]] - Subsequence similarity matching utilizing a dynamic programming matrix for DNA alignment and diff tools.
+		- 4) [[Longest Increasing Subsequence]] - Finding the longest ordered subsequence using dynamic programming or O(N log N) patience sorting with binary search.
 		- 5) [[Matrix Chain Multiplication]] - Classic interval dynamic programming problem optimizing parenthesization for matrix multiplication chain products.
 	-
 	- ## Greedy Algorithms & Backtracking:
