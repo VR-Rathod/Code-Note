@@ -205,6 +205,7 @@
         position: relative;
         width: 68px;
         height: 68px;
+        box-sizing: border-box;
 
         .profile-avatar {
           width: 68px;
@@ -215,6 +216,8 @@
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
           position: relative;
           z-index: 2;
+          margin: 0;
+          box-sizing: border-box;
         }
 
         .profile-avatar-letter {

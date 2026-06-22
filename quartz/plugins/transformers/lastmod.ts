@@ -84,9 +84,8 @@ export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options>> = (u
                       const commitTimeStr = trimmed.substring(7)
                       currentCommitTime = new Date(commitTimeStr).getTime()
                     } else if (currentCommitTime !== null) {
-                      const parts = trimmed.split(/\s+/)
+                      const parts = trimmed.split("\t")
                       if (parts.length >= 2) {
-                        const status = parts[0]
                         const filePath = parts[parts.length - 1]
                         const normPath = path.normalize(filePath).toLowerCase()
                         
@@ -96,11 +95,7 @@ export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options>> = (u
                           gitDatesCache.set(normPath, cached)
                         }
                         
-                        if (status.startsWith("A")) {
-                          cached.created = currentCommitTime
-                        } else {
-                          cached.created = currentCommitTime
-                        }
+                        cached.created = currentCommitTime
                       }
                     }
                   }

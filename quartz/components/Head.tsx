@@ -17,9 +17,10 @@ const AUTHOR = {
 }
 
 // ── Build BreadcrumbList JSON-LD ──────────────────────────────────────────────
-function buildBreadcrumbLd(baseUrl: string, slug: string, title: string) {
+function buildBreadcrumbLd(baseUrl: string, fileData: any, allFiles: any[]) {
+  const slug = fileData.slug
   if (!slug || slug === "index" || slug === "404") return null
-  const parts = slug.split("/").filter(Boolean)
+
   const items = [
     {
       "@type": "ListItem",
@@ -28,13 +29,66 @@ function buildBreadcrumbLd(baseUrl: string, slug: string, title: string) {
       item: `https://${baseUrl}`,
     },
   ]
-  parts.forEach((part, i) => {
-    const href = `https://${baseUrl}/${parts.slice(0, i + 1).join("/")}`
-    const name = i === parts.length - 1
-      ? title
-      : part.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
-    items.push({ "@type": "ListItem", position: i + 2, name, item: href })
-  })
+
+  // Try to use treeTitle first for visual/logical breadcrumbs
+  const title = fileData.frontmatter?.treeTitle || fileData.frontmatter?.title || slug
+  const segments = title.split(" - ").map((s: string) => s.trim())
+
+  if (segments.length > 1) {
+    const findSlugForSegment = (segment: string) => {
+      const match = allFiles.find((f) => {
+        if (f.slug === "index") return false
+        const fTitle = f.frontmatter?.title?.toLowerCase()
+        const fTreeTitle = f.frontmatter?.treeTitle?.toLowerCase()
+
+        if (fTitle === segment.toLowerCase()) return true
+
+        if (fTreeTitle) {
+          const parts = fTreeTitle.split(" - ").map((s: string) => s.trim().toLowerCase())
+          if (parts[parts.length - 1] === segment.toLowerCase()) return true
+        }
+
+        return false
+      })
+      return match?.slug
+    }
+
+    for (let i = 0; i < segments.length; i++) {
+      const segment = segments[i]
+      const isCurrentPage = i === segments.length - 1
+      
+      let itemUrl = `https://${baseUrl}`
+      if (!isCurrentPage) {
+        const matchedSlug = findSlugForSegment(segment)
+        if (matchedSlug) {
+          itemUrl = `https://${baseUrl}/${matchedSlug}`
+        } else {
+          const fallbackSlug = segment.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+          itemUrl = `https://${baseUrl}/${fallbackSlug}`
+        }
+      } else {
+        itemUrl = `https://${baseUrl}/${slug}`
+      }
+
+      items.push({
+        "@type": "ListItem",
+        position: i + 2,
+        name: segment.replaceAll("-", " "),
+        item: itemUrl,
+      })
+    }
+  } else {
+    // Fallback to standard slug structure (e.g. folders / nesting)
+    const parts = slug.split("/").filter(Boolean)
+    parts.forEach((part: string, i: number) => {
+      const href = `https://${baseUrl}/${parts.slice(0, i + 1).join("/")}`
+      const name = i === parts.length - 1
+        ? (fileData.frontmatter?.title || part)
+        : part.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
+      items.push({ "@type": "ListItem", position: i + 2, name, item: href })
+    })
+  }
+
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -152,6 +206,7 @@ export default (() => {
     fileData,
     externalResources,
     ctx,
+    allFiles,
   }: QuartzComponentProps) => {
     const titleSuffix = cfg.pageTitleSuffix ?? ""
     const rawTitle =
@@ -196,7 +251,7 @@ export default (() => {
       : null
 
     const breadcrumbLd = fileData.slug && cfg.baseUrl
-      ? buildBreadcrumbLd(cfg.baseUrl, fileData.slug, rawTitle as string)
+      ? buildBreadcrumbLd(cfg.baseUrl, fileData, allFiles)
       : null
 
     // Determine og:type — article for content pages, website for index

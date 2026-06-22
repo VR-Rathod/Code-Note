@@ -8,7 +8,8 @@ const config: QuartzConfig = {
     enableSPA: true,
     enablePopovers: true,
     analytics: {
-      provider: "vercel",
+      provider: "clarity",
+      projectId: "xav5a1i06f",
     },
     locale: "en-US",
     baseUrl: "code-note-vr.vercel.app",
