@@ -1,7 +1,7 @@
 ---
 title: Terms of Service
 description: "Terms of Service for Free Code Notes — a free, comprehensive programming knowledge base built by VR-Rathod."
-cssclasses:legal-page
+cssclasses: legal-page
 noindex: true
 ---
 
