@@ -289,7 +289,7 @@ treeTitle: DSA - OOP - DRY Principle
 	- Violations (WET code) create maintenance nightmares — N places to update, N chances to break.
 	- Apply via: **functions**, **classes**, **constants**, **inheritance**, **templates**, **configs**.
 	- Don't over-abstract — wait for 3+ occurrences (Rule of Three) before generalizing.
-	- Related principles: [[YAGNI Principle]], [[Single Responsibility Principle (SRP)]], [[Law of Demeter]]
+	- Related principles: [[YAGNI Principle]], [[Single Responsibility Principle SRP]], [[Law of Demeter]]
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

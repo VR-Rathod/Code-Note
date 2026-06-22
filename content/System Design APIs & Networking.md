@@ -3,11 +3,13 @@ seoTitle: APIs & Networking in System Design – REST, gRPC, WebSockets, CDN, Ra
 description: "Complete API and networking reference for system design: REST vs gRPC vs GraphQL, WebSockets vs SSE, DNS resolution, CDN, load balancing, rate limiting algorithms, and HTTP/2 vs HTTP/3."
 keywords: "REST API, gRPC, GraphQL, WebSockets, SSE, CDN, DNS, rate limiting, token bucket, load balancing, HTTP2, HTTP3, API design, system design, VR-Rathod, Code-Note"
 displayTitle: System Design - APIs & Networking
+title: System Design APIs & Networking
+treeTitle: System Design - APIs & Networking
 ---
 
 > [!info] About This Page
 > Covers **API design and networking** — protocols, real-time communication, DNS, CDN, and rate limiting.
-> Parent: [[System Design]]. See also: [[System Design - Microservices]], [[System Design - Scalability & CAP]].
+> Parent: [[System Design]]. See also: [[System Design Microservices]], [[System Design Scalability & CAP]].
 
 - # API Design Protocols
   collapsed:: true
@@ -291,7 +293,7 @@ displayTitle: System Design - APIs & Networking
 		  ```
 - # Useful Links & Resources
 	- [[System Design]] — Hub page
-	- [[System Design - Microservices]] — Service patterns, API gateway
+	- [[System Design Microservices]] — Service patterns, API gateway
 	- [HTTP/2 Explained](https://http2-explained.haxx.se) — Deep dive on HTTP/2
 	- [HTTP/3 Explained](https://http3-explained.haxx.se) — QUIC and HTTP/3
 	- [JWT.io](https://jwt.io) — JWT debugger and library list

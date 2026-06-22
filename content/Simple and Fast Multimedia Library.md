@@ -3,6 +3,7 @@ seoTitle: SFML – Simple and Fast Multimedia Library C++ Reference
 description: "SFML (Simple and Fast Multimedia Library) reference for C++ game development. Covers window, graphics, audio, networking, and system modules with examples."
 keywords: "SFML, Simple and Fast Multimedia Library, C++ game development, SFML graphics, SFML audio, SFML networking, sprites, textures, game loop, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: SFML (Simple and Fast Multimedia Library)
+title: Simple and Fast Multimedia Library
 ---
 
 - # History

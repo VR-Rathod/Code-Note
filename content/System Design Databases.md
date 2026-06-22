@@ -3,11 +3,13 @@ seoTitle: Database Design at Scale – System Design Guide
 description: "Complete database system design reference: SQL vs NoSQL, replication, sharding strategies, indexing, ACID transactions, connection pooling, read/write splitting, and choosing the right database."
 keywords: "database design, SQL vs NoSQL, database replication, sharding, indexing, ACID, connection pooling, PostgreSQL, Cassandra, DynamoDB, read replica, system design, VR-Rathod, Code-Note"
 displayTitle: System Design - Databases
+title: System Design Databases
+treeTitle: System Design - Databases
 ---
 
 > [!info] About This Page
 > Covers **database design at scale** — choosing DBs, replication, sharding, indexing, and ACID.
-> Parent: [[System Design]]. See also: [[System Design - Caching]], [[System Design - Scalability & CAP]].
+> Parent: [[System Design]]. See also: [[System Design Caching]], [[System Design Scalability & CAP]].
 
 - # SQL vs NoSQL
   collapsed:: true
@@ -133,7 +135,7 @@ displayTitle: System Design - Databases
 		  | Full-Text | Inverted index | LIKE '%keyword%' search | Structured data |
 		  | Partial | Index subset of rows | status = 'active' queries | Rarely filtered columns |
 		  
-		  *See [[System Design - LSM & B+ Trees]] for in-depth comparisons between read-optimized B+ Trees and write-optimized LSM Trees.*
+		  *See [[System Design LSM and Bplus Trees]] for in-depth comparisons between read-optimized B+ Trees and write-optimized LSM Trees.*
 	-
 	- ## Index Best Practices
 	  collapsed:: true
@@ -245,7 +247,7 @@ displayTitle: System Design - Databases
 		  ```
 - # Useful Links & Resources
 	- [[System Design]] — Hub page
-	- [[System Design - Caching]] — Redis patterns, eviction policies
+	- [[System Design Caching]] — Redis patterns, eviction policies
 	- [Designing Data-Intensive Applications](https://dataintensive.net) — Kleppmann — Best book on databases at scale
 	- [Use The Index, Luke](https://use-the-index-luke.com) — Free indexing guide
 	- [PostgreSQL Docs](https://www.postgresql.org/docs/) — Best RDBMS documentation

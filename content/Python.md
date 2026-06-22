@@ -1645,7 +1645,7 @@ displayTitle: Python
 		- [[NumPy]]: Fundamental package for scientific computing (handling arrays and matrices).
 		- [[Pandas]]: Library for data manipulation and analysis, especially for structured data.
 		- [[Matplotlib]]: Plotting library for creating static, animated, and interactive visualizations.
-		- [[Scikit-learn]]: Machine learning library for data mining and analysis.
+		- [[Scikit Learn]]: Machine learning library for data mining and analysis.
 		- [[PyTorch]]: Deep learning library for building neural networks.
 		- [[XGBoost]]: Optimized gradient boosting library for machine learning.
 	-
@@ -1658,7 +1658,7 @@ displayTitle: Python
 	- ## 4. Natural Language Processing (NLP)
 		- [[NLTK]]: Toolkit for working with human language data (text).
 		- [[spaCy]]: Industrial-strength NLP library for advanced text processing.
-		- [[Transformers (by Hugging Face)]]: Pre-trained models for NLP tasks such as text classification, translation, etc.
+		- [[Transformers by Hugging Face]]: Pre-trained models for NLP tasks such as text classification, translation, etc.
 	-
 	- ## 5. Web Scraping
 		- [[BeautifulSoup]]: Library for parsing HTML and XML documents and extracting data from them.

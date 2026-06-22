@@ -247,7 +247,7 @@ treeTitle: DSA - OOP - Liskov Substitution Principle (LSP)
 	- **Square/Rectangle problem**: a Square IS-A Rectangle geometrically but violates it behaviorally — prefer interfaces over forced inheritance.
 	- **Bird/Ostrich problem**: Don't put `fly()` in a base `Bird` class if not all birds can fly — use capability interfaces (`Flyable`).
 	- A class that throws `UnsupportedOperationException` or `NotImplementedException` for inherited methods is a **red flag** for LSP violation.
-	- Works closely with: [[Inheritance]], [[Interface]], [[Open Closed Principle (OCP)]]
+	- Works closely with: [[Inheritance]], [[Interface]], [[Open Closed Principle OCP]]
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

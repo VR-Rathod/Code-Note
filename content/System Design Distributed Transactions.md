@@ -3,6 +3,8 @@ seoTitle: Distributed Transactions (2PC, 3PC, Saga) – System Design Guide
 description: "A comprehensive guide on managing atomic transactions across distributed database nodes and microservices. Covers 2PC, 3PC, and Saga patterns."
 keywords: "distributed transactions, 2pc, 3pc, two-phase commit, three-phase commit, saga pattern, microservices transactions, split-brain, coordinator failure, eventual consistency, system design"
 displayTitle: System Design - Distributed Transactions
+title: System Design Distributed Transactions
+treeTitle: System Design - Microservices - Distributed Transactions
 ---
 
 > [!info] What is a Distributed Transaction?

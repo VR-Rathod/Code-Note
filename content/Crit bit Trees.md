@@ -23,7 +23,7 @@ treeTitle: DSA - Trees - Crit bit Trees
 	-
 	- ## Why Crit-bit Trees?
 	  collapsed:: true
-		- A standard [[Trie (Prefix Tree)]] consumes substantial memory because each character requires a node.
+		- A standard [[Trie Prefix Tree]] consumes substantial memory because each character requires a node.
 		- Crit-bit trees require only $n-1$ internal nodes for $n$ keys, regardless of key lengths.
 		- Search requires only **a single full string comparison** at the leaf node, while intermediate node visits are simple bitwise checks.
 		- They maintain alphabetical ordering, allowing fast prefix matching and range queries.

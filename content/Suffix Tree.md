@@ -21,7 +21,7 @@ treeTitle: DSA - Trees - Suffix Tree
 	-
 	- ## Why Suffix Trees?
 	  collapsed:: true
-		- [[Trie (Prefix Tree)]] stores a set of keys, but checking all suffixes of a text would require $O(n^2)$ space and time.
+		- [[Trie Prefix Tree]] stores a set of keys, but checking all suffixes of a text would require $O(n^2)$ space and time.
 		- Suffix Trees compress single-child nodes into single edges, saving memory and keeping the total number of nodes bounded by $O(n)$.
 		- Once built, queries like **substring search**, **pattern matching count**, and **longest repeated substring** are resolved in optimal time.
 -

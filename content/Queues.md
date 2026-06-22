@@ -40,7 +40,7 @@ treeTitle: DSA - Linear Data Structures - Queues
 	- ### 3. Deque (Double-Ended Queue)
 	  Elements can be inserted and removed from **both the front and the back**. It combines the powers of a Stack and a Queue.
 	- ### 4. Priority Queue
-	  Elements are dequeued based on their *priority* rather than their arrival time. Implemented using a [[Heap (Data Structure)]].
+	  Elements are dequeued based on their *priority* rather than their arrival time. Implemented using a [[Heap]].
 - # Time & Space Complexity
   collapsed:: true
 	- > [!important] Arrays vs Linked Lists for Queues

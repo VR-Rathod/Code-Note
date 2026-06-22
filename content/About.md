@@ -46,8 +46,8 @@ noindex: true
   
   ---
 - ## Legal
-- [[privacy-policy|Privacy Policy]]
-- [[terms-of-service|Terms of Service]]
+- [[Privacy Policy]]
+- [[Terms of Service]] 
   
   ---
   

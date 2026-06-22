@@ -3,6 +3,8 @@ seoTitle: LSM Trees vs B+ Trees (Database Storage Internals) – System Design
 description: "A comprehensive guide on database storage engines. Learn the structural and operational differences between write-optimized LSM Trees and read-optimized B+ Trees."
 keywords: "lsm tree, b+ tree, database internals, storage engine, sstable, memtable, write-ahead log, write amplification, compaction, read amplification, system design"
 displayTitle: System Design - LSM & B+ Trees
+title: System Design LSM and Bplus Trees
+treeTitle: System Design - Databases - LSM & B+ Trees
 ---
 
 > [!info] The Core Storage Engine Trade-off

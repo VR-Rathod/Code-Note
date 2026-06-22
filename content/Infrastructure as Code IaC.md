@@ -793,7 +793,7 @@ enableToc: true
 		-
 		- **The services running on your infrastructure** — [[Microservices Architecture]] explains the distributed application architecture that Kubernetes (provisioned by your Terraform code) is designed to run. Understanding microservices makes IaC design decisions — network topology, service accounts, secret management — make much more sense.
 		-
-		- **Why you're building this infrastructure** — [[System Design]] is the architectural layer above IaC: the decisions about databases, caches, load balancers, and regions that your Terraform modules implement. [[System Design - Scalability & CAP]] explains the horizontal scaling theory that IaC automates.
+		- **Why you're building this infrastructure** — [[System Design]] is the architectural layer above IaC: the decisions about databases, caches, load balancers, and regions that your Terraform modules implement. [[System Design Scalability & CAP]] explains the horizontal scaling theory that IaC automates.
 		-
 		- **Security controls your IaC must enforce** — [[Cybersecurity Architecture]] covers Zero Trust network design, IAM least-privilege, and compliance frameworks (SOC 2, PCI DSS, CIS benchmarks). Everything in that page eventually gets implemented as Terraform resources, security group rules, and IAM policies.
 		-

@@ -65,4 +65,4 @@ keywords: "spaCy, Python NLP, natural language processing, tokenization, NER, de
 	- **explain() Helper**: Use `spacy.explain(label)` to get a human-readable explanation of tag labels (e.g., POS tags, dependency labels, or entity types).
 - # 🔗 **Navigation & Internal Links**
 	- **Parent**: [[Python]]
-	- **Related Notes**: [[Machine Learning]] | [[NLTK]] | [[Transformers (by Hugging Face)]]
+	- **Related Notes**: [[Machine Learning]] | [[NLTK]] | [[Transformers by Hugging Face]]

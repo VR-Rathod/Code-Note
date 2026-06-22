@@ -220,9 +220,9 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	-
 	- ### CI/CD Concepts
 	  collapsed:: true
-		- [[Continuous Integration (CI)]]: The practice of automatically integrating and testing code changes in a shared repository multiple times a day, ensuring that code is always in a working state.
+		- [[Continuous Integration]]: The practice of automatically integrating and testing code changes in a shared repository multiple times a day, ensuring that code is always in a working state.
 		-
-		- [[Continuous Delivery (CD)]]: Extends CI by automating the deployment process to staging or production environments, making sure code is always ready to be deployed with minimal manual intervention.
+		- [[Continuous Delivery]]: Extends CI by automating the deployment process to staging or production environments, making sure code is always ready to be deployed with minimal manual intervention.
 		-
 		- [[Continuous Testing]]: Ensuring automated tests are executed throughout the entire CI/CD pipeline to maintain code quality and prevent issues.
 		-
@@ -272,11 +272,11 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 	-
 	- ### Cloud Platforms & Services
 	  collapsed:: true
-		- [[Amazon Web Services (AWS)]]: A leading cloud provider offering services like EC2, S3, Lambda, CodePipeline, and CodeDeploy for DevOps automation.
+		- [[Amazon Web Services]]: A leading cloud provider offering services like EC2, S3, Lambda, CodePipeline, and CodeDeploy for DevOps automation.
 		-
 		- [[Microsoft Azure]]: A cloud platform offering services for version control, CI/CD, Kubernetes management, and more.
 		-
-		- [[Google Cloud Platform (GCP)]]: Google’s cloud service offering CI/CD tools like Cloud Build, Kubernetes Engine (GKE), and Cloud Functions for DevOps.
+		- [[Google Cloud Platform]]: Google’s cloud service offering CI/CD tools like Cloud Build, Kubernetes Engine (GKE), and Cloud Functions for DevOps.
 		-
 		- [[DigitalOcean]]: A cloud computing platform known for simplicity and ease of use, often employed by small to medium-sized DevOps teams.
 	-
@@ -286,7 +286,7 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		-
 		- [[Grafana]]: A visualization and analytics platform that integrates with Prometheus to create real-time dashboards for monitoring system performance.
 		-
-		- [[ELK Stack (Elasticsearch, Logstash, Kibana)]]: A popular toolset for collecting, storing, and visualizing logs for improved observability.
+		- [[ELK Stack Elasticsearch, Logstash, Kibana]]: A popular toolset for collecting, storing, and visualizing logs for improved observability.
 		-
 		- [[Datadog]]: A cloud-based monitoring platform that provides observability into the infrastructure, applications, and services.
 		-
@@ -355,11 +355,10 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		- [[Game Physics]] :- Comprehensive game physics covering rigid body dynamics, collision detection (AABB, SAT, GJK, EPA), impulse-based resolution, constraints, joints, soft bodies, cloth simulation, mass-spring systems, and physics engine comparison.
 	-
 	- ### 🔴 Super Advanced: Custom Engines & Graphics
-		- > [!warning] For developers building engines or hyper-optimized graphics pipelines.
-		-
-		- [[Advanced Graphics]] :- **Vulkan, DirectX 12, Metal, WebGPU** — HLSL/GLSL/WGSL, compute shaders, bindless rendering, render graphs.
+		- [[Graphics Programming From Scratch]] :- Learn graphics from zero — PBR, Render Equation, Ray Marching, Vulkan & GPU Architecture. Beginner to advanced with full code.
+		- [[Advanced Graphics]] :- Vulkan, DirectX 12, Metal, WebGPU — HLSL/GLSL/WGSL, compute shaders, bindless rendering, render graphs.
 		- [[PathTracer Learning]] :- Build a GPU path tracer from scratch — BVH, Vulkan RT, ReSTIR.
-		- Custom Frameworks: [[SDL (Simple DirectMedia Layer)]], [[SFML (Simple and Fast Multimedia Library)]], [[Bevy]], [[Panda3D]].
+		- Custom Frameworks: [[Simple DirectMedia Layer]], [[Simple and Fast Multimedia Library]], [[Bevy]], [[Panda3D]].
 -
 - ## Useful Listing
   id:: 6722a764-cba3-430a-805a-3a2746eb9e3f

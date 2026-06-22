@@ -323,6 +323,6 @@ treeTitle: DSA - Advanced Tips - Mos Algorithm with Hilbert Curve
 	- ## Resources
 		- [Codeforces – Optimizing Mo's Algorithm with Hilbert Curve](https://codeforces.com/blog/entry/61203)
 	- ## Related Pages
-		- [[MOs Algorithm (Query square root decomposition)]] – Core block-based Mo's Algorithm
+		- [[MOs Algorithm Query square root decomposition]] – Core block-based Mo's Algorithm
 		- [[Submask Bitwise Iteration]] – $O(3^N)$ submask DP iteration
 		- [[DSA Algo & System Design]] – Master DSA checklist

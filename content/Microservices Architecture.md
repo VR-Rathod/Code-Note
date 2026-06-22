@@ -10,7 +10,7 @@ enableToc: true
 > [!info] About This Page
 > Microservices Architecture is a style of building applications as a collection of **small, independently deployable services**, each owning its data, communicating over well-defined APIs, and focused on a single business capability.
 > This page covers the full journey — when to use microservices, how to design them, how they communicate, how to handle failures, and how to deploy and observe them.
-> Related deep-dives: [[System Design - Microservices]], [[DevOps]] for deployment pipelines, [[Continuous Monitoring & Logging]] for observability, [[Infrastructure as Code IaC]] for provisioning the infrastructure that runs them.
+> Related deep-dives: [[System Design Microservices]], [[DevOps]] for deployment pipelines, [[Continuous Monitoring & Logging]] for observability, [[Infrastructure as Code IaC]] for provisioning the infrastructure that runs them.
 
 - # History & Why Microservices
   collapsed:: true
@@ -27,7 +27,7 @@ enableToc: true
 		- The term "microservices" was popularized around **2011–2012** by a group of architects (James Lewis, Martin Fowler, and others) who were independently converging on similar patterns at different companies — Netflix, Amazon, Google, Twitter — as they hit the limits of large monolithic systems.
 		- **Amazon's two-pizza teams** (2002, Jeff Bezos's mandate) pre-date the term but embody the principle: a team that can be fed by two pizzas should own a service end-to-end — from code to production. This forced Amazon to decompose their monolith into services, eventually becoming AWS.
 		- **Netflix's microservices migration** (2008–2012) is the most famous case study. After a database corruption event nearly destroyed the company, they rebuilt their entire streaming platform as hundreds of microservices. This also led them to create Hystrix (circuit breaker), Eureka (service discovery), Ribbon (client-side load balancing), and Zuul (API gateway) — most of which are now standard patterns across the industry.
-		- [[System Design - Microservices]] covers the distributed systems patterns that underpin this architecture. [[DevOps]] covers the CI/CD pipelines that make independent deployment practical.
+		- [[System Design Microservices]] covers the distributed systems patterns that underpin this architecture. [[DevOps]] covers the CI/CD pipelines that make independent deployment practical.
 - # Introduction
 	- Microservices is not a technology — it's an **organizational and architectural pattern**. The technology (containers, Kubernetes, service meshes) enables it, but the core idea is about **aligning software boundaries with business capabilities and team ownership**.
 	-
@@ -913,9 +913,9 @@ enableToc: true
 	- ## Explore Further
 		- Microservices architecture is the intersection of system design, DevOps, and distributed systems. Every page below is something you'll need in practice.
 		-
-		- **The patterns catalogue** — [[System Design - Microservices]] is the companion page from a pure system design angle: API gateway design choices, service mesh tradeoffs, CQRS and event sourcing patterns, and the outbox problem — all framed for system design interviews and architectural decision-making.
+		- **The patterns catalogue** — [[System Design Microservices]] is the companion page from a pure system design angle: API gateway design choices, service mesh tradeoffs, CQRS and event sourcing patterns, and the outbox problem — all framed for system design interviews and architectural decision-making.
 		-
-		- **The broader architecture context** — [[System Design]] covers scalability, caching, database choices, message queues, and rate limiting — all the decisions that happen at the microservice level and aggregate into your overall system. [[System Design - APIs & Networking]] dives into REST vs gRPC vs GraphQL vs WebSockets and when each makes sense for inter-service communication. [[System Design - Scalability & CAP]] explains the consistency tradeoffs that the saga pattern and eventual consistency in this page are responding to.
+		- **The broader architecture context** — [[System Design]] covers scalability, caching, database choices, message queues, and rate limiting — all the decisions that happen at the microservice level and aggregate into your overall system. [[System Design APIs & Networking]] dives into REST vs gRPC vs GraphQL vs WebSockets and when each makes sense for inter-service communication. [[System Design Scalability & CAP]] explains the consistency tradeoffs that the saga pattern and eventual consistency in this page are responding to.
 		-
 		- **Deploying and operating your services** — [[DevOps]] covers Docker, Kubernetes, GitOps with ArgoCD, and the CI/CD pipelines that make independent deployment practical. The microservices promise of "deploy any service at any time" only holds if you have a solid [[DevOps]] pipeline behind it. [[Continuous Integration]] and [[Continuous Delivery]] each have dedicated pages on the per-service pipeline patterns that enable this.
 		-

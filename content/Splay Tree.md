@@ -365,7 +365,7 @@ treeTitle: DSA - Trees - Splay Tree
 - # Variations & Related
   collapsed:: true
 	- [[AA Tree]] – Self-balancing tree using level values.
-	- [[Binary Search Tree (BST)]] – Non-balancing parent search structure.
+	- [[Binary Search Tree]] – Non-balancing parent search structure.
 -
 - # Key Takeaways
   collapsed:: true

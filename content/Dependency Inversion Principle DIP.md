@@ -219,7 +219,7 @@ treeTitle: DSA - OOP - Dependency Inversion Principle (DIP)
 	- **Dependency Injection** is the mechanism that implements DIP — pass dependencies from outside.
 	- DIP makes code **testable** — swap real implementations for mocks/stubs at test time.
 	- DIP makes code **flexible** — swap databases, email providers, payment gateways without touching business logic.
-	- Closely related to: [[Interface]], [[Strategy Pattern]], [[Open Closed Principle (OCP)]], [[Single Responsibility Principle (SRP)]]
+	- Closely related to: [[Interface]], [[Strategy Pattern]], [[Open Closed Principle OCP]], [[Single Responsibility Principle SRP]]
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

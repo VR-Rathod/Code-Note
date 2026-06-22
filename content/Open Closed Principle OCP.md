@@ -256,7 +256,7 @@ treeTitle: DSA - OOP - Open Closed Principle (OCP)
 	- **Closed for modification** — existing working code is not touched when adding new features.
 	- Implemented via **polymorphism**, **abstract classes**, **interfaces**, and **strategy/plugin patterns**.
 	- The key: define **stable abstractions** (interfaces) that vary points implement — the core code never sees the concrete type.
-	- Closely related to: [[Strategy Pattern]], [[Polymorphism]], [[Dependency Inversion Principle (DIP)]]
+	- Closely related to: [[Strategy Pattern]], [[Polymorphism]], [[Dependency Inversion Principle DIP]]
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

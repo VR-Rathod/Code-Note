@@ -274,7 +274,7 @@ treeTitle: DSA - DP & Greedy - Knapsack Problem
 	- Recurrence: `max(skip, take)` — take only when `c >= weight[i]`.
 	- 1D optimisation: iterate capacity **right-to-left** to enforce "each item used once".
 	- **Backtracking** through 2D table reveals which items were selected.
-	- Related: [[Dynamic Programming Concepts]], [[Longest Common Subsequence (LCS)]], [[Longest Increasing Subsequence (LIS)]]
+	- Related: [[Dynamic Programming Concepts]], [[Longest Common Subsequence]], [[Longest Increasing Subsequence]]
 - # More Learn
   collapsed:: true
 	- ## LeetCode Problems

@@ -20,7 +20,7 @@ treeTitle: DSA - String Algorithms - Aho Corasick Algorithm
 	-
 	- ## Why Aho-Corasick?
 	  collapsed:: true
-		- [[Knuth Morris Pratt Algorithm (KMP)]] searches for **one** pattern in a text.
+		- [[Knuth Morris Pratt Algorithm]] searches for **one** pattern in a text.
 		- [[Rabin-Karp Algorithm]] uses rolling hashes to search for multiple patterns, but can suffer from hash collisions and worst-case $O(N \cdot K)$ performance.
 		- **Aho-Corasick** provides guaranteed $O(N + M + Z)$ linear time regardless of pattern overlaps or text content.
 -
@@ -1126,7 +1126,7 @@ treeTitle: DSA - String Algorithms - Aho Corasick Algorithm
 		- The alphabet size is small or mid-size, keeping the memory allocation reasonable.
 	-
 	- ## ❌ Avoid Aho-Corasick When
-		- You only have a single pattern to search (use [[Knuth Morris Pratt Algorithm (KMP)]] or [[Linear Search]]/Boyer-Moore).
+		- You only have a single pattern to search (use [[Knuth Morris Pratt Algorithm]] or [[Linear Search]]/Boyer-Moore).
 		- Patterns are dynamic and change continuously (use Suffix Trees or Suffix Automata to allow dynamic adjustments).
 -
 - # Key Takeaways

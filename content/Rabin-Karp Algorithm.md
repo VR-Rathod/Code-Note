@@ -20,7 +20,7 @@ treeTitle: DSA - String Algorithms - Rabin-Karp Algorithm
 		- Instead of opening every single box and examining the contents, you put each box on a scale. If a box weighs 5.2 kg, you move on immediately. If a box weighs exactly 5.4 kg, you open it to double-check if it contains the correct items (handling the "collision" of another item having the same weight).
 	-
 	- ## Why Rabin-Karp?
-		- Standard algorithms like [[Knuth Morris Pratt Algorithm (KMP)]] are optimized for searching a single pattern.
+		- Standard algorithms like [[Knuth Morris Pratt Algorithm]] are optimized for searching a single pattern.
 		- Rabin-Karp is uniquely suited for **multiple pattern searches** (e.g., searching for 100 different keywords in a document at once). By using a hash table of pattern hashes, we can search for all patterns simultaneously in a single pass of the text.
 -
 - # How It Works

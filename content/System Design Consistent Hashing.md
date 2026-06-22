@@ -3,6 +3,8 @@ seoTitle: Consistent Hashing Ring Architecture – System Design Guide
 description: "An in-depth guide to consistent hashing rings. Learn about range mapping, hot spot mitigation using virtual nodes, and node join/leave logic."
 keywords: "consistent hashing, hash ring, virtual nodes, load balancing, sharding, distributed cache, dynamo, cassandra, system design"
 displayTitle: System Design - Consistent Hashing
+title: System Design Consistent Hashing
+treeTitle: System Design - Databases - Consistent Hashing
 ---
 
 > [!info] What is Consistent Hashing?

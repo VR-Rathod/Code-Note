@@ -3,11 +3,13 @@ seoTitle: Scalability & CAP Theorem – System Design Learning Guide
 description: "Learn scalability and CAP theorem with plain English explanations, real-world analogies, and practical examples. Covers vertical vs horizontal scaling, CAP theorem, PACELC, SLA, consistent hashing, and back-of-envelope estimation."
 keywords: "scalability tutorial, CAP theorem explained, horizontal scaling, vertical scaling, SLA SLO SLI, consistent hashing explained, system design beginner, distributed systems basics, VR-Rathod, Code-Note"
 displayTitle: System Design - Scalability & CAP
+title: System Design Scalability & CAP
+treeTitle: System Design - Scalability & CAP
 ---
 
 > [!info] About This Page
 > **Topic:** Scalability fundamentals — the foundation of every large system.
-> Parent: [[System Design]]. Next: [[System Design - Caching]] → [[System Design - Databases]].
+> Parent: [[System Design]]. Next: [[System Design Caching]] → [[System Design Databases]].
 
 - # What is Scalability? (Start Here)
   collapsed:: true
@@ -115,7 +117,7 @@ displayTitle: System Design - Scalability & CAP
 	  collapsed:: true
 		- **Consistency (C)**
 		  Every read returns the **most recent write** — all nodes show the same data.
-		  *(Consistency ordering is often managed by logical clocks, see [[System Design - Logical Clocks]])*
+		  *(Consistency ordering is often managed by logical clocks, see [[System Design Logical Clocks]])*
 		  > Think: You update your profile picture. Every server in the world sees the new picture instantly.
 		-
 		- **Availability (A)**
@@ -211,7 +213,7 @@ displayTitle: System Design - Scalability & CAP
 - # Consistent Hashing (How Distributed Caches Scale)
   collapsed:: true
 	- > [!info] Full Guide
-	  > See [[System Design - Consistent Hashing]] for in-depth coverage, mathematical rebalancing, and Python/JS code.
+	  > See [[System Design Consistent Hashing]] for in-depth coverage, mathematical rebalancing, and Python/JS code.
 	- ## The Problem First
 	  collapsed:: true
 		- Imagine you have 3 Redis servers and you want to distribute keys across them.
@@ -311,8 +313,8 @@ displayTitle: System Design - Scalability & CAP
 		  > Tweet text = ~280 bytes · Profile photo = ~200 KB · HD photo = ~3 MB · 1 min video = ~50 MB
 - # Useful Links & Resources
 	- [[System Design]] — Main hub page
-	- [[System Design - Caching]] — Next: learn how to reduce DB load by 90% with caching
-	- [[System Design - Databases]] — Deep dive: SQL vs NoSQL, sharding, replication
+	- [[System Design Caching]] — Next: learn how to reduce DB load by 90% with caching
+	- [[System Design Databases]] — Deep dive: SQL vs NoSQL, sharding, replication
 	- [System Design Primer](https://github.com/donnemartin/system-design-primer) — Free comprehensive guide
 	- [ByteByteGo](https://blog.bytebytego.com) — Visual explanations of system design concepts
 	- [Designing Data-Intensive Applications](https://dataintensive.net) — The best book on this topic

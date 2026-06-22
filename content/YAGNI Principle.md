@@ -203,7 +203,7 @@ treeTitle: DSA - OOP - YAGNI Principle
 	- Speculative code is technical debt that was never useful — it costs maintenance without providing value.
 	- **Rule**: If there's no test for it, no requirement for it, and no current use — don't write it.
 	- YAGNI works best with **refactoring** — when you *do* need the feature, add it then using the knowledge of what you actually need.
-	- Related: [[DRY Principle]], [[Law of Demeter]], [[Single Responsibility Principle (SRP)]]
+	- Related: [[DRY Principle]], [[Law of Demeter]], [[Single Responsibility Principle SRP]]
 - # More Learn
   collapsed:: true
 	- ## GitHub & Webs

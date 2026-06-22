@@ -368,7 +368,7 @@ treeTitle: DSA - DP & Greedy - Dynamic Programming Concepts
 	- **Memoization** = recursion + cache (top-down). **Tabulation** = iterative + table (bottom-up).
 	- Design state → write recurrence → choose approach → optimise space.
 	- Space optimisation: if dp[i] depends only on dp[i-1], use two variables (O(1) space).
-	- Related: [[0/1 Knapsack Problem]], [[Longest Common Subsequence (LCS)]], [[Longest Increasing Subsequence (LIS)]], [[Matrix Chain Multiplication]]
+	- Related: [[0/1 Knapsack Problem]], [[Longest Common Subsequence]], [[Longest Increasing Subsequence]], [[Matrix Chain Multiplication]]
 - # More Learn
   collapsed:: true
 	- ## LeetCode
