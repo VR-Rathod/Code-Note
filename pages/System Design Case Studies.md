@@ -3,11 +3,13 @@ seoTitle: System Design Case Studies – URL Shortener, Chat, YouTube, Twitter F
 description: "Real-world system design case studies for interviews: URL shortener, chat system, YouTube, Twitter news feed, Uber ride-sharing, and rate limiter. Full architecture walkthroughs with estimations and component design."
 keywords: "system design case studies, URL shortener design, chat system design, YouTube design, Twitter feed design, Uber system design, rate limiter design, system design interview, FAANG, VR-Rathod, Code-Note"
 displayTitle: System Design - Case Studies
+title: System Design Case Studies
+treeTitle: System Design - Case Studies
 ---
 
 > [!info] About This Page
 > Real-world **system design case studies** for interviews and learning. Each study follows: Requirements → Estimation → API → Architecture → Deep Dive.
-> Parent: [[System Design]]. Prerequisite: [[System Design - Scalability & CAP]], [[System Design - Caching]], [[System Design - Databases]].
+> Parent: [[System Design]]. Prerequisite: [[System Design Scalability & CAP]], [[System Design Caching]], [[System Design Databases]].
 
 > [!tip] Interview Framework
 > **①** Clarify (5 min) → **②** Estimate (5 min) → **③** API (5 min) → **④** HLD (10 min) → **⑤** Deep dive (15 min) → **⑥** Trade-offs (5 min)

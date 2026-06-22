@@ -355,9 +355,8 @@ keywords: "free code notes, programming knowledge base, algorithms, data structu
 		- [[Game Physics]] :- Comprehensive game physics covering rigid body dynamics, collision detection (AABB, SAT, GJK, EPA), impulse-based resolution, constraints, joints, soft bodies, cloth simulation, mass-spring systems, and physics engine comparison.
 	-
 	- ### 🔴 Super Advanced: Custom Engines & Graphics
-		- > [!warning] For developers building engines or hyper-optimized graphics pipelines.
-		-
-		- [[Advanced Graphics]] :- **Vulkan, DirectX 12, Metal, WebGPU** — HLSL/GLSL/WGSL, compute shaders, bindless rendering, render graphs.
+		- [[Graphics Programming From Scratch]] :- Learn graphics from zero — PBR, Render Equation, Ray Marching, Vulkan & GPU Architecture. Beginner to advanced with full code.
+		- [[Advanced Graphics]] :- Vulkan, DirectX 12, Metal, WebGPU — HLSL/GLSL/WGSL, compute shaders, bindless rendering, render graphs.
 		- [[PathTracer Learning]] :- Build a GPU path tracer from scratch — BVH, Vulkan RT, ReSTIR.
 		- Custom Frameworks: [[Simple DirectMedia Layer]], [[Simple and Fast Multimedia Library]], [[Bevy]], [[Panda3D]].
 -

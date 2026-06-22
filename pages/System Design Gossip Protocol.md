@@ -3,6 +3,8 @@ seoTitle: Gossip Protocol & Membership (SWIM) – System Design Guide
 description: "Learn how decentralized networks synchronize state and detect failures. Covers anti-entropy, rumor-mongering, and the SWIM protocol."
 keywords: "gossip protocol, swim membership protocol, peer-to-peer, failure detection, cassandra gossip, distributed systems, decentralization, system design"
 displayTitle: System Design - Gossip Protocol
+title: System Design Gossip Protocol
+treeTitle: System Design - Distributed Systems - Gossip Protocol
 ---
 
 > [!info] What is a Gossip Protocol?

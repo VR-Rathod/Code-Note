@@ -1,13 +1,9 @@
 ---
-treeTitle: Game Development - Engines - Unreal C++
----
-
-
----
 seoTitle: C++ for Unreal Engine – Complete UE5 C++ Scripting Reference
 description: "Complete C++ for Unreal Engine 5 reference covering UObject system, UPROPERTY/UFUNCTION macros, gameplay framework, GAS, networking, async, memory management, and advanced patterns."
 keywords: "C++ Unreal Engine, UE5 C++, UObject, UPROPERTY, UFUNCTION, UCLASS, Unreal C++ scripting, gameplay framework, GAS, networking replication, Unreal macros, Unreal memory, TArray, TMap, cpp unreal guide, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: C++ for Unreal Engine
+treeTitle: Game Development - Engines - Unreal C++
 ---
 
 - # Introduction
@@ -15,6 +11,7 @@ displayTitle: C++ for Unreal Engine
 	- This page covers **Unreal Engine-specific C++ patterns** — the UObject system, reflection macros, engine APIs, and idioms that differ from standard C++.
 	- For the full C++ language reference (STL, templates, smart pointers, move semantics, etc.) see [[Cpp]].
 	- For the full Unreal Engine reference (editor, Blueprints, Nanite, Lumen, AI, networking, etc.) see [[Unreal Engine]].
+-
 - # UObject System & Reflection
   collapsed:: true
 	- ## Why UObject?
@@ -251,6 +248,7 @@ displayTitle: C++ for Unreal Engine
 		  // Get string name
 		  FString StateName = UEnum::GetValueAsString(State); // "ECharacterState::Idle"
 		  ```
+-
 - # Unreal Container Types
   collapsed:: true
 	- ## TArray — Dynamic Array
@@ -410,6 +408,7 @@ displayTitle: C++ for Unreal Engine
 		  TUniquePtr<FMyData> Unique = MakeUnique<FMyData>();
 		  TUniquePtr<FMyData> Moved  = MoveTemp(Unique); // transfer ownership
 		  ```
+-
 - # Unreal String Types
   collapsed:: true
 	- ## FString, FName, FText
@@ -465,6 +464,7 @@ displayTitle: C++ for Unreal Engine
 		  // FName    — identifiers, asset/bone/socket names (fast compare)
 		  // FText    — player-facing text (localization support)
 		  ```
+-
 - # Memory Management & Garbage Collection
   collapsed:: true
 	- ## GC Rules
@@ -532,6 +532,7 @@ displayTitle: C++ for Unreal Engine
 		  TSoftClassPtr<AMyActor> SoftClass;
 		  TSubclassOf<AMyActor> LoadedClass = SoftClass.LoadSynchronous();
 		  ```
+-
 - # Actor & Component Lifecycle
   collapsed:: true
 	- ## Full Lifecycle
@@ -617,6 +618,7 @@ displayTitle: C++ for Unreal Engine
 		  AddTickPrerequisiteActor(OtherActor);
 		  AddTickPrerequisiteComponent(OtherComp);
 		  ```
+-
 - # Delegates & Events
   collapsed:: true
 	- ## Delegate Types
@@ -675,6 +677,7 @@ displayTitle: C++ for Unreal Engine
 		  OnDeath.RemoveDynamic(this, &AMyActor::HandleDeath);
 		  OnDeath.Broadcast(Killer);
 		  ```
+-
 - # Timers
   collapsed:: true
 	- ## FTimerManager
@@ -735,6 +738,7 @@ displayTitle: C++ for Unreal Engine
 		  GetWorldTimerManager().PauseTimer(SpawnTimer);
 		  GetWorldTimerManager().UnPauseTimer(SpawnTimer);
 		  ```
+-
 - # Async & Latent Actions
   collapsed:: true
 	- ## Async Tasks
@@ -814,6 +818,7 @@ displayTitle: C++ for Unreal Engine
 		      }
 		  }
 		  ```
+-
 - # Interfaces
   collapsed:: true
 	- ## UInterface
@@ -869,6 +874,7 @@ displayTitle: C++ for Unreal Engine
 		      }
 		  }
 		  ```
+-
 - # Subsystems
   collapsed:: true
 	- ## USubsystem Types
@@ -917,6 +923,7 @@ displayTitle: C++ for Unreal Engine
 		  // ULocalPlayerSubsystem — one per local player
 		  // UEngineSubsystem — one for the entire engine lifetime
 		  ```
+-
 - # Networking — Replication In Depth
   collapsed:: true
 	- ## Replication Setup
@@ -993,6 +1000,7 @@ displayTitle: C++ for Unreal Engine
 		      UGameplayStatics::PlaySoundAtLocation(GetWorld(), FireSound, Loc);
 		  }
 		  ```
+-
 - # Asset Management
   collapsed:: true
 	- ## Soft References & Async Loading
@@ -1050,6 +1058,7 @@ displayTitle: C++ for Unreal Engine
 		      TSoftObjectPtr<UTexture2D> Icon;
 		  };
 		  ```
+-
 - # Common Unreal C++ Patterns
   collapsed:: true
 	- ## Component Pattern
@@ -1246,6 +1255,7 @@ displayTitle: C++ for Unreal Engine
 		      if (CurrentState) CurrentState->Update(this, DeltaTime);
 		  }
 		  ```
+-
 - # Debugging & Logging
   collapsed:: true
 	- ## UE_LOG & Debug Helpers
@@ -1289,6 +1299,7 @@ displayTitle: C++ for Unreal Engine
 		  ensureMsgf(Value > 0, TEXT("Bad value: %f"), Value);
 		  verify(DoSomething());               // like check but evaluates in shipping
 		  ```
+-
 - # More Learn
 	- [[Cpp]] - Full C++ language reference (STL, templates, smart pointers, move semantics)
 	- [[Unreal Engine]] - Full Unreal Engine reference (editor, Blueprints, Nanite, Lumen, GAS, networking)

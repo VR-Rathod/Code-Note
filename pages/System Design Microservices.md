@@ -3,11 +3,13 @@ seoTitle: Microservices & Distributed Patterns – System Design Guide
 description: "Complete microservices reference: API gateway, service discovery, circuit breaker, saga pattern, CQRS, event sourcing, outbox pattern, distributed tracing, and service mesh for system design interviews."
 keywords: "microservices, API gateway, circuit breaker, saga pattern, CQRS, event sourcing, outbox pattern, service discovery, distributed tracing, Kafka, message queue, system design, VR-Rathod, Code-Note"
 displayTitle: System Design - Microservices
+title: System Design Microservices
+treeTitle: System Design - Microservices - Detailed Patterns
 ---
 
 > [!info] About This Page
 > Covers **microservices architecture and distributed system patterns** — service communication, resilience, and data consistency.
-> Parent: [[System Design]]. See also: [[System Design - APIs & Networking]], [[System Design - Databases]].
+> Parent: [[System Design]]. See also: [[System Design APIs & Networking]], [[System Design Databases]].
 
 > [!warning] Don't Start with Microservices
 > Monolith first, then extract services as pain points emerge. Premature microservices = distributed monolith with all the complexity and none of the benefits.
@@ -292,7 +294,7 @@ displayTitle: System Design - Microservices
 		  ```
 - # Useful Links & Resources
 	- [[System Design]] — Hub page
-	- [[System Design - APIs & Networking]] — REST, gRPC, WebSockets, rate limiting
+	- [[System Design APIs & Networking]] — REST, gRPC, WebSockets, rate limiting
 	- [Microservices.io](https://microservices.io) — Pattern catalog by Chris Richardson
 	- [Resilience4j](https://resilience4j.readme.io) — Circuit breaker library
 	- [Debezium](https://debezium.io) — CDC for outbox pattern

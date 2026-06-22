@@ -3,6 +3,8 @@ seoTitle: Vector Databases & Similarity Search (HNSW, IVF-PQ) – System Design
 description: "A comprehensive guide to vector database architectures, similarity indexing (HNSW, IVF-PQ), metrics, and use cases in AI/LLM retrieval."
 keywords: "vector database, similarity search, hnsw, ivf-pq, cosine similarity, embeddings, llm database, pgvector, pinecone, milvus, system design"
 displayTitle: System Design - Vector Databases
+title: System Design Vector Databases
+treeTitle: System Design - Databases - Vector Databases
 ---
 
 > [!info] What is a Vector Database?

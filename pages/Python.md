@@ -1645,7 +1645,7 @@ displayTitle: Python
 		- [[NumPy]]: Fundamental package for scientific computing (handling arrays and matrices).
 		- [[Pandas]]: Library for data manipulation and analysis, especially for structured data.
 		- [[Matplotlib]]: Plotting library for creating static, animated, and interactive visualizations.
-		- [[Scikit-learn]]: Machine learning library for data mining and analysis.
+		- [[Scikit Learn]]: Machine learning library for data mining and analysis.
 		- [[PyTorch]]: Deep learning library for building neural networks.
 		- [[XGBoost]]: Optimized gradient boosting library for machine learning.
 	-

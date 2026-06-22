@@ -3,7 +3,7 @@ seoTitle: POCO C++ Libraries – Portable Components Reference Guide
 description: "POCO C++ Libraries reference covering HTTP server/client, JSON/XML parsing, database access, threading, filesystem, and networking for cross-platform C++ apps."
 keywords: "POCO C++, POCO libraries, C++ HTTP, C++ networking, C++ JSON, C++ XML, C++ database, Poco::Net, Poco::JSON, cross-platform C++, VR-Rathod, Code-Note, code note vr, vr book"
 displayTitle: POCO (C++ Portable Components)
-title: POCO C++ Portable Components
+title: POCO Cpp Portable Components
 ---
 
 - # History

@@ -3,6 +3,8 @@ seoTitle: Conflict-free Replicated Data Types (CRDT) – System Design Guide
 description: "A comprehensive guide on CRDTs (Conflict-free Replicated Data Types). Learn about CvRDT vs CmRDT, state/operation propagation, join-semilattices, and Python/JavaScript implementations."
 keywords: "crdt, conflict-free replicated data types, cvrdt, cmrdt, replication, distributed systems, replication conflicts, state-based, operation-based, eventual consistency, yjs, automerge, figma, vr-rathod, code-note"
 displayTitle: System Design - CRDT
+title: System Design CRDT
+treeTitle: System Design - Distributed Systems - CRDT
 ---
 
 > [!info] What is a CRDT?

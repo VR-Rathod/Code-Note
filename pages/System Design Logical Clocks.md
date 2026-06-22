@@ -3,6 +3,8 @@ seoTitle: Distributed Logical Clocks (Lamport, Vector Clocks) – System Design
 description: "Learn how distributed systems order events without synchronized physical clocks. Covers Lamport Timestamps, Vector Clocks, causality, and concurrent update detection."
 keywords: "logical clock, lamport timestamp, vector clock, causality, happens-before, clock drift, NTP, distributed systems, system design"
 displayTitle: System Design - Logical Clocks
+title: System Design Logical Clocks
+treeTitle: System Design - Distributed Systems - Logical Clocks
 ---
 
 > [!info] What is a Logical Clock?

@@ -19,11 +19,12 @@ treeTitle: DSA - Linear Data Structures - Arrays
 	- ## Static vs Dynamic Arrays
 	  collapsed:: true
 		- ### Static Arrays
-		  A static array has a **fixed size** determined at the time of its creation. If you create an array of size 5, it can only hold 5 elements. If you need a 6th element, you are out of luck.
-		  *Example: Standard arrays in C, C++, and Java (e.g., `int arr[5];`).*
+			- A static array has a **fixed size** determined at the time of its creation. If you create an array of size 5, it can only hold 5 elements. If you need a 6th element, you are out of luck.
+			  *Example: Standard arrays in C, C++, and Java (e.g., `int arr[5];`).*
+		-
 		- ### Dynamic Arrays
-		  A dynamic array can **resize itself automatically** when it gets full. Under the hood, it is still a static array. When it reaches capacity, it creates a brand new, larger static array (usually double the size), copies all the old elements over, and then adds the new element.
-		  *Example: `list` in Python, `std::vector` in C++, `ArrayList` in Java, `Array` in JavaScript.*
+			- A dynamic array can **resize itself automatically** when it gets full. Under the hood, it is still a static array. When it reaches capacity, it creates a brand new, larger static array (usually double the size), copies all the old elements over, and then adds the new element.
+			  *Example: `list` in Python, `std::vector` in C++, `ArrayList` in Java, `Array` in JavaScript.*
 	-
 	- ## Memory Contiguity & Cache Locality
 	  collapsed:: true

@@ -74,7 +74,6 @@ treeTitle: DSA
 -
 - # Data Structures
 	- ## Linear Data Structures:
-	  collapsed:: true
 		- 1) [[Arrays]] - Contiguous memory structures covering static and dynamic arrays, multi-dimensional indexing, and amortized time analysis.
 		- 2) [[Linked Lists]] - Sequential data nodes covering singly, doubly, and circular configurations with insertion/deletion algorithms.
 		- 3) [[Stacks]] - LIFO (Last-In, First-Out) operations, execution call stacks, and monotonic stack patterns for range queries.

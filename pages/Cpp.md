@@ -3140,7 +3140,7 @@ displayTitle: C++
 	-
 	- [[Cpp REST SDK]] - Cross-platform RESTful web services and HTTP communication.
 	-
-	- [[POCO C++ Portable Components]] - HTTP, database, JSON/XML parsing for networked applications.
+	- [[POCO Cpp Portable Components]] - HTTP, database, JSON/XML parsing for networked applications.
 	-
 	- [[Google Test]] - Unit testing framework with mock objects and assertions.
 	-

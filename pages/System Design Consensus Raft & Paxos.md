@@ -3,7 +3,8 @@ seoTitle: Distributed Consensus Algorithms (Paxos, Raft, Zab) – System Design
 description: "An in-depth guide to distributed consensus algorithms. Learn Paxos (single-decree, multi-paxos), Raft (leader election, log replication, safety), and Zab protocols."
 keywords: "consensus, raft, paxos, zab, distributed systems, leader election, log replication, split brain, distributed consistency, system design"
 displayTitle: System Design - Consensus (Raft & Paxos)
-title: System Design - Consensus Raft & Paxos
+title: System Design Consensus Raft & Paxos
+treeTitle: System Design - Distributed Systems - Consensus (Raft & Paxos)
 ---
 
 > [!info] What is Distributed Consensus?

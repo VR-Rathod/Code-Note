@@ -3,11 +3,13 @@ seoTitle: Caching Explained – Redis, LRU, Cache Patterns & Stampede Prevention
 description: "Learn caching from scratch with plain English explanations and real-world analogies: cache-aside pattern, write-through, LRU eviction, Redis vs Memcached, cache stampede, and CDN caching. Perfect for system design interviews."
 keywords: "caching tutorial, Redis explained, LRU eviction explained, cache stampede, write-through cache, cache-aside pattern, TTL explained, system design caching, distributed cache, VR-Rathod, Code-Note"
 displayTitle: System Design - Caching
+title: System Design Caching
+treeTitle: System Design - Caching
 ---
 
 > [!info] About This Page
 > **Topic:** Caching — the single most effective way to make a slow system fast.
-> Parent: [[System Design]]. Prev: [[System Design - Scalability & CAP]]. Next: [[System Design - Databases]].
+> Parent: [[System Design]]. Prev: [[System Design Scalability & CAP]]. Next: [[System Design Databases]].
 
 - # What is Caching and Why Does It Matter?
   collapsed:: true
@@ -362,8 +364,8 @@ displayTitle: System Design - Caching
 		  > Changing the file changes the filename → busts the cache automatically. No TTL issues.
 - # Useful Links & Resources
 	- [[System Design]] — Main hub page
-	- [[System Design - Scalability & CAP]] — Previous: scaling fundamentals
-	- [[System Design - Databases]] — Next: where data lives long-term
+	- [[System Design Scalability & CAP]] — Previous: scaling fundamentals
+	- [[System Design Databases]] — Next: where data lives long-term
 	- [Redis documentation](https://redis.io/docs/) — Official, excellent docs
 	- [Redis University](https://university.redis.com) — Free Redis courses
 	- [Cloudflare Cache docs](https://developers.cloudflare.com/cache/) — CDN caching in practice

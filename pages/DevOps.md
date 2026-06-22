@@ -1433,7 +1433,7 @@ treeTitle: DevOps
 		-
 		- **When your pipelines need to orchestrate complex multi-step workflows** — [[Automation]] covers scripting patterns, task scheduling, and [[kestra]] which handles ETL pipelines, infrastructure automation jobs, and AI workflows that outgrow simple CI/CD.
 		-
-		- **The architecture DevOps serves** — [[System Design]] is the bigger picture: how to design the systems these pipelines deploy. [[System Design - Microservices]] shows the architecture that makes independent deployment so critical. [[System Design - Scalability & CAP]] explains why horizontal scaling (which IaC automates) exists.
+		- **The architecture DevOps serves** — [[System Design]] is the bigger picture: how to design the systems these pipelines deploy. [[System Design Microservices]] shows the architecture that makes independent deployment so critical. [[System Design Scalability & CAP]] explains why horizontal scaling (which IaC automates) exists.
 		-
 		- **Keeping your team in sync** — [[Jira]] tracks sprint work and incident tickets, integrates with every CI tool listed above, and is where action items from post-mortems land. [[Trello]] and [[Asana]] serve lighter planning needs. [[Azure DevOps]] is Microsoft's all-in-one: Boards, Repos, Pipelines, Artifacts, and Test Plans under one roof.
 	- ## Master Playlists YouTube

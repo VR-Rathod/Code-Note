@@ -877,7 +877,7 @@ enableToc: true
 		-
 		- **The infrastructure being monitored** — [[Infrastructure as Code IaC]] provisions the Prometheus servers, ELK clusters, and Grafana instances that your monitoring stack runs on. Good IaC includes the entire observability stack as code, not just the application infrastructure.
 		-
-		- **Architecture-level observability decisions** — [[System Design]] covers the four-nines availability targets, CAP theorem tradeoffs, and caching strategies that SLIs and SLOs are designed to measure. [[System Design - Scalability & CAP]] explains why your error budget math looks the way it does. [[System Design - Microservices]] covers circuit breakers and health checks — the patterns that make your service-level metrics meaningful.
+		- **Architecture-level observability decisions** — [[System Design]] covers the four-nines availability targets, CAP theorem tradeoffs, and caching strategies that SLIs and SLOs are designed to measure. [[System Design Scalability & CAP]] explains why your error budget math looks the way it does. [[System Design Microservices]] covers circuit breakers and health checks — the patterns that make your service-level metrics meaningful.
 		-
 		- **Automating your monitoring operations** — [[Automation]] covers how to script alert response, auto-generate runbooks, and build self-healing systems. [[kestra]] handles the multi-step workflows triggered by alerts: auto-scaling, rolling restarts, incident ticket creation, and Slack notifications — all in YAML with full retry and error handling.
 		-
