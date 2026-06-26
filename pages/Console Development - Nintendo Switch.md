@@ -12,9 +12,9 @@ displayTitle: Console Development - Nintendo Switch
 > [!warning] NDA Notice
 > Nintendo's SDK is among the most strictly NDA-protected. This page covers **publicly documented** hardware specs, general architecture concepts, open-source community findings (libnx), and public GDC/NDC talks.
 
-- # Nintendo Switch Hardware
+- ## Nintendo Switch Hardware
   collapsed:: true
-	- ## Switch Architecture
+	- ### Switch Architecture
 	  collapsed:: true
 		- ```
 		  Nintendo Switch Custom SoC: NVIDIA Tegra X1 (modified)
@@ -52,7 +52,7 @@ displayTitle: Console Development - Nintendo Switch
 		    Heavy games drain faster — optimize for battery life
 		  ```
 	-
-	- ## Switch Lite vs Switch OLED vs Switch 2
+	- ### Switch Lite vs Switch OLED vs Switch 2
 	  collapsed:: true
 		- | Feature | Switch Lite | Switch OLED | Switch 2 |
 		  |---------|-------------|-------------|---------|
@@ -66,7 +66,7 @@ displayTitle: Console Development - Nintendo Switch
 		- > [!tip] Switch 2 (2025)
 		  > Nintendo Switch 2 launched in 2025 with dramatically improved hardware. DLSS upscaling is a key feature — games can render at lower resolution and upscale to 1080p/4K. Backward compatible with Switch 1 cards.
 	-
-	- ## Docked vs Handheld Mode
+	- ### Docked vs Handheld Mode
 	  collapsed:: true
 		- | Setting | Handheld | Docked |
 		  |---------|----------|--------|
@@ -91,9 +91,9 @@ displayTitle: Console Development - Nintendo Switch
 		    Frame target  — 30 FPS always, or 60 FPS in docked only
 		  ```
 -
-- # Switch Graphics API (NVN)
+- ## Switch Graphics API (NVN)
   collapsed:: true
-	- ## What is NVN?
+	- ### What is NVN?
 	  collapsed:: true
 		- ```
 		  NVN = NVIDIA Native API for Switch
@@ -149,7 +149,7 @@ displayTitle: Console Development - Nintendo Switch
 		  nvnQueueFlush(&queue);
 		  ```
 	-
-	- ## Switch Shaders (GLSL)
+	- ### Switch Shaders (GLSL)
 	  collapsed:: true
 		- ```glsl
 		  // Switch supports GLSL (OpenGL-style shaders via NVN)
@@ -193,7 +193,7 @@ displayTitle: Console Development - Nintendo Switch
 		  }
 		  ```
 	-
-	- ## Switch Tiled Rendering
+	- ### Switch Tiled Rendering
 	  collapsed:: true
 		- ```
 		  Maxwell GPU uses Tiled Rendering:
@@ -215,9 +215,9 @@ displayTitle: Console Development - Nintendo Switch
 		    5. UI (no depth test)
 		  ```
 -
-- # Memory Management on Switch
+- ## Memory Management on Switch
   collapsed:: true
-	- ## Memory Budget
+	- ### Memory Budget
 	  collapsed:: true
 		- ```
 		  Total RAM: 4 GB LPDDR4X
@@ -247,7 +247,7 @@ displayTitle: Console Development - Nintendo Switch
 		  > Even one uncompressed 4K texture can blow your entire texture budget.
 		  > **Always use ASTC compression on Switch.**
 	-
-	- ## Texture Compression: ASTC
+	- ### Texture Compression: ASTC
 	  collapsed:: true
 		- | ASTC Block Size | Bits/pixel | Compression Ratio | Use Case |
 		  |-----------------|------------|-------------------|----------|
@@ -271,7 +271,7 @@ displayTitle: Console Development - Nintendo Switch
 		    astcenc -cl input.png output.astc 6x6 -medium
 		  ```
 	-
-	- ## Memory Allocation Strategy
+	- ### Memory Allocation Strategy
 	  collapsed:: true
 		- ```c++
 		  // Switch memory management — use custom allocators
@@ -303,9 +303,9 @@ displayTitle: Console Development - Nintendo Switch
 		  // void Update() { auto* obj = gamePool.Alloc<MyObject>(); }
 		  ```
 -
-- # Joy-Con Input
+- ## Joy-Con Input
   collapsed:: true
-	- ## Input System
+	- ### Input System
 	  collapsed:: true
 		- ```
 		  Switch input configurations:
@@ -342,7 +342,7 @@ displayTitle: Console Development - Nintendo Switch
 		  > Western convention: B = confirm, A = cancel (same as Xbox muscle memory)
 		  > Show correct platform icons — never show Xbox A/B on Switch screens!
 	-
-	- ## HD Rumble
+	- ### HD Rumble
 	  collapsed:: true
 		- ```
 		  HD Rumble (Switch):
@@ -394,7 +394,7 @@ displayTitle: Console Development - Nintendo Switch
 		  hidSendVibrationValue(&leftHandle, &vibration);
 		  ```
 	-
-	- ## Motion Controls (Gyroscope)
+	- ### Motion Controls (Gyroscope)
 	  collapsed:: true
 		- ```c++
 		  // Switch gyroscope input — conceptual
@@ -428,9 +428,9 @@ displayTitle: Console Development - Nintendo Switch
 		  // Subtract gravity for pure motion detection
 		  ```
 -
-- # Performance Optimization for Switch
+- ## Performance Optimization for Switch
   collapsed:: true
-	- ## GPU Optimization
+	- ### GPU Optimization
 	  collapsed:: true
 		- ```
 		  Switch GPU (Maxwell) optimization priorities:
@@ -459,7 +459,7 @@ displayTitle: Console Development - Nintendo Switch
 		     Switch 2: use DLSS for free quality improvement
 		  ```
 	-
-	- ## CPU Optimization
+	- ### CPU Optimization
 	  collapsed:: true
 		- ```
 		  Switch CPU (Cortex-A57) optimization:
@@ -505,7 +505,7 @@ displayTitle: Console Development - Nintendo Switch
 		  }
 		  ```
 	-
-	- ## Battery Optimization
+	- ### Battery Optimization
 	  collapsed:: true
 		- ```
 		  Battery life is a certification concern AND a user experience issue:
@@ -530,9 +530,9 @@ displayTitle: Console Development - Nintendo Switch
 		      Notify player if game drops resolution for battery
 		  ```
 -
-- # Switch Development in Unity & Unreal
+- ## Switch Development in Unity & Unreal
   collapsed:: true
-	- ## Unity on Switch
+	- ### Unity on Switch
 	  collapsed:: true
 		- ```
 		  Unity Switch requirements:
@@ -559,7 +559,7 @@ displayTitle: Console Development - Nintendo Switch
 		  Deploy: via DevMenu on SDEV/EDEV kit
 		  ```
 	-
-	- ## Unreal Engine on Switch
+	- ### Unreal Engine on Switch
 	  collapsed:: true
 		- ```
 		  UE5 on Switch — challenging but achievable:

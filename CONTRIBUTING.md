@@ -1,70 +1,79 @@
-# Contributing to Free Code Notes
+# Contributing to Free Code Notes 🚀
 
-Thank you for contributing! This guide defines the **exact format and structure** every page must follow. Consistent structure makes the knowledge base easy to navigate in Logseq and SEO-friendly on the web.
+Thank you for taking the time to contribute! This guide defines the **exact format and structure** every page must follow. Consistent structure makes the knowledge base easy to navigate in Logseq and SEO-friendly on the web.
 
 ---
 
 ## Page Types & Which Format to Use
 
-| Page Type | Format to Follow |
-|---|---|
-| Programming Language | [Programming Page Format](#programming-page-format) |
-| Operating System / Distro | [OS Page Format](#os-page-format) |
-| Framework / Library | [Framework Page Format](#frameworklibrary-page-format) |
-| Algorithm / Data Structure | [Algorithm Page Format](#algorithmdata-structure-format) |
-| Tool / Software | [Tool Page Format](#toolsoftware-format) |
-| Concept / Theory | [Concept Page Format](#concepttheory-format) |
+Please follow the correct template based on the type of page you are creating:
+
+| Page Type | Format to Follow | Description |
+| :--- | :--- | :--- |
+| 💻 **Programming Language** | [Programming Page Format](#programming-page-format) | For core languages like C++, Python, Java, etc. |
+| 🐧 **Operating System / Distro** | [OS Page Format](#os-page-format) | For distros and OS-related guides like Kali Linux, Ubuntu, etc. |
+| 📦 **Framework / Library** | [Framework/Library Page Format](#frameworklibrary-page-format) | For libraries and frameworks like React, Express, etc. |
+| 🧮 **Algorithm / Data Structure** | [Algorithm/Data Structure Format](#algorithmdata-structure-format) | For DSA topics like Binary Search, Dijkstra's Algorithm, etc. |
+| 🛠️ **Tool / Software** | [Tool/Software Format](#toolsoftware-format) | For software utilities and tools like Git, Docker, etc. |
+| 💡 **Concept / Theory** | [Concept/Theory Format](#concepttheory-format) | For general theoretical and conceptual pages. |
 
 ---
 
 ## File Naming Convention
 
-- Use the **exact display name** as the filename: `Kali Linux.md`, `Cpp.md`, `React js.md`
-- Use kebab-case only for multi-word algorithmic pages: `Binary Search.md`, `Dijkstras Algorithm.md`
-- Place all pages inside the `/pages/` directory
-- Link pages in `index.md` under the correct section using Logseq `[[Page Name]]` syntax
+To maintain consistency across the knowledge base, adhere to these rules:
+
+*   Use the **exact display name** as the filename:
+    *   *Examples:* `Kali Linux.md`, `Cpp.md`, `React js.md`
+*   Use kebab-case/spaces properly:
+    *   *Algorithmic pages:* Use kebab-case/capitalization matching the name, e.g., `Binary Search.md`, `Dijkstras Algorithm.md`
+*   Place all files inside the `pages/` directory.
+*   Link your new pages in `index.md` under the correct section using Logseq `[[Page Name]]` syntax.
 
 ---
 
-## Frontmatter (Required on Every Page)
+## Frontmatter Configuration (Required)
 
-Every page **must** start with SEO frontmatter:
+Every page **must** start with the following SEO-optimized frontmatter:
 
 ```yaml
-
 seoTitle: <Page Name> Complete Guide – <Short Description>
 description: "Comprehensive <topic> reference covering <key topics>."
-keywords: "<keyword1>, <keyword2>, ..., VR-Rathod, Code-Note,Vaibhav Rathod, vaibhav, Vaibhav, VR, code note vr, vr book , <You'r name / your code tags>"
-displayTitle: Better Title  # This is title of page (not required for  all page)
-`seoTitle` — Keep under 60 characters. Format: `Topic Name – Subtitle`
-`description` — 1-2 sentences, 120-160 characters. Mention key subtopics.
-`keywords` — Comma-separated. Always end with the standard author tags.
-comments: false/true (For Enabling or disable comments)
+keywords: "<keyword1>, <keyword2>, ..., VR-Rathod, Code-Note, Vaibhav Rathod, vaibhav, Vaibhav, VR, code note vr, vr book, <Your name / your code tags>"
+displayTitle: Better Title  # This is the title of the page (not required for all pages)
+comments: false/true        # For enabling or disabling comments
 treeTitle: main page - sub page - sub page
 ```
 
-### For Single Writer
+### Author Attribution
+
+#### For a Single Author
 ```yaml
-author: Your Name (Default Vaibav Rathod) 
-authorUrl: Youe Website URl (Default Git profile VR-Rathod)
+author: Your Name (Default: Vaibhav Rathod) 
+authorUrl: Your Website URL (Default: GitHub profile VR-Rathod)
 ```
 
-### For Multiple writers
+#### For Multiple Authors
 ```yaml
 authors:
   - name: Name 1
     url: Url 1
-
-  - name : Name 2
+  - name: Name 2
     url: Url 2
 ```
+
 ---
 
-## Programming Page Format
+## Page Structure Templates
 
-This is the **primary format**. See `Cpp.md` or `Java.md` as reference implementations.
+Below are the templates for each page type. You can copy and paste these directly to start writing your page.
 
-```
+### Programming Page Format
+
+> [!NOTE]
+> See [Cpp.md](pages/Cpp.md) or `Java.md` as reference implementations.
+
+```text
 # History
   collapsed:: true
   - How: (origin story, who created it, when)
@@ -137,18 +146,19 @@ This is the **primary format**. See `Cpp.md` or `Java.md` as reference implement
 ```
 
 **Rules for code blocks:**
-- Always use fenced code blocks with the language tag: ` ```c++ `, ` ```python `, ` ```java `
-- Include comments inside code explaining what each line does
-- Show both the code AND its output where relevant
-- Keep examples minimal but complete — they must run as-is
+*   Always use fenced code blocks with the language tag: ` ```c++ `, ` ```python `, ` ```java `
+*   Include comments inside code explaining what each line does.
+*   Show both the code **AND** its output where relevant.
+*   Keep examples minimal but complete — they must run as-is.
 
 ---
 
-## OS Page Format
+### OS Page Format
 
-See `Kali Linux.md` as the reference implementation.
+> [!NOTE]
+> See [Kali Linux.md](pages/Kali Linux.md) as the reference implementation.
 
-```
+```text
 # History
   collapsed:: true
   - How / Who / Why
@@ -209,9 +219,9 @@ See `Kali Linux.md` as the reference implementation.
 
 ---
 
-## Framework/Library Page Format
+### Framework/Library Page Format
 
-```
+```text
 # History
   collapsed:: true
 
@@ -239,11 +249,12 @@ See `Kali Linux.md` as the reference implementation.
 
 ---
 
-## Algorithm/Data Structure Format
+### Algorithm/Data Structure Format
 
-See `Binary Search.md` or `` as reference implementations.
+> [!NOTE]
+> See `Binary Search.md` as the reference implementation.
 
-```
+```text
 # Explanation
   - Clear definition, purpose, real-world use cases
   - ## Real-World Analogy  (optional but recommended)
@@ -284,9 +295,9 @@ See `Binary Search.md` or `` as reference implementations.
 
 ---
 
-## Tool/Software Format
+### Tool/Software Format
 
-```
+```text
 # History
   collapsed:: true
 
@@ -309,10 +320,12 @@ See `Binary Search.md` or `` as reference implementations.
 
 ---
 
-## Concept/Theory Format
-[[internal link must be inthere pera or bullte points name menastion]]
+### Concept/Theory Format
 
-```
+> [!IMPORTANT]
+> Internal links (using `[[Page Name]]`) must be included within paragraphs or bullet points where page names are mentioned.
+
+```text
 # What is <Concept>?
   - Clear definition
 
@@ -331,26 +344,36 @@ See `Binary Search.md` or `` as reference implementations.
 
 ---
 
-## Code Block Formats
+## Code Block Styles
 
 This project uses three code block styles. Use the right one for the right context:
 
 ### 1. Plain Fenced Block — ```` ```language ````
 Use for a **single standalone snippet** inside a regular bullet.
+
 ```python
 def example():
     pass
 ```
 
 ### 2. `:::code-note` — Single-Language Focus Block
-Use for a **featured snippet** that deserves visual emphasis — a clean, dedicated display for one language.
-Perfect for: recursive variants, utility helpers, built-in usage examples.
+Use for a **featured snippet** that deserves visual emphasis — a clean, dedicated display for one language. Perfect for: recursive variants, utility helpers, and built-in usage examples.
 
+```text
+:::code-note
+
+```python
+def example_highlighted():
+    # Highlights a specific, important implementation detail
+    pass
+```
+:::
+```
 
 ### 3. `:::code-tabs` — Multi-Language Tab View
-Use when showing the **same algorithm in multiple languages** side by side as switchable tabs.
-Perfect for: main implementation sections where you want Python, C++, JS, Java, C all available.
-```
+Use when showing the **same algorithm in multiple languages** side-by-side as switchable tabs. Perfect for: main implementation sections where you want Python, C++, JS, Java, and C all available.
+
+```text
 :::code-tabs
 
 ```python
@@ -368,35 +391,36 @@ Perfect for: main implementation sections where you want Python, C++, JS, Java, 
 :::
 ```
 
-> **Rule:** Always use `:::code-tabs` for multi-language implementations, `:::code-note` for single highlighted snippets, and plain fenced blocks for inline examples within bullet text.
+> [!IMPORTANT]
+> Always use `:::code-tabs` for multi-language implementations, `:::code-note` for single highlighted snippets, and plain fenced blocks for inline examples within bullet text.
 
 ---
 
 ## General Rules (Apply to ALL Pages)
 
-1. **collapsed:: true** — Add to every top-level section except the first (`# Explanation`) and last (`# Key Takeaways`). This keeps Logseq clean.
-2. **Logseq bullet syntax** — All content must use `- ` (dash + space, by default will apply if you are using Logseq) bullet format. Headings inside bullets use `## ` or `### `.
-3. **Internal links** — Use `[[Page Name]]` to link to other pages in the knowledge base. Never use relative file paths.
-4. **No broken links** — Only link to pages that actually exist in `/pages/`. If the page doesn't exist yet, create it or leave plain text.
-5. **Code blocks** — Always specify the language tag. Use ```` ```bash ```` for terminal commands, ```` ```python ```` for Python, etc. See [Code Block Formats](#code-block-formats) for `:::code-note` and `:::code-tabs`.
-6. **No promotion** — The `# More Learn` section only accepts links to trusted public resources: GitHub repos, official docs, free YouTube playlists. No personal social media promotion.
-7. **Spelling & grammar** — Write in clear English. Use spell-check before submitting.
-8. **No duplicate content** — If a topic is already covered in another page, link to it with `[[Page Name]]` instead of repeating it.
-9. **SEO keywords** — Always end the `keywords` frontmatter field with `, VR-Rathod, Code-Note, code note vr, vr book`.
-10. **File size** — There is no maximum size. Bigger, more detailed pages are better. Depth is valued over brevity.
-11. **Code comments** — All code snippets must have inline comments explaining key lines. Show output where relevant.
-12. **Overflow prevention** — In C/C++/Java, always use `mid = low + (high - low) / 2` instead of `(low + high) / 2` when doing binary search to prevent integer overflow. Document this in your code.
+1.  **`collapsed:: true`** — Add to every top-level section except the first (e.g., `# Explanation` or `# History`) and last (e.g., `# Key Takeaways` or `# More Learn`). This keeps the Logseq interface clean.
+2.  **Logseq Bullet Syntax** — All content must use the `- ` (dash + space) bullet format. Headings inside bullets must use `## ` or `### `.
+3.  **Internal Links** — Use `[[Page Name]]` to link to other pages in the knowledge base. Never use relative file paths.
+4.  **No Broken Links** — Only link to pages that actually exist in `/pages/`. If the page doesn't exist yet, create it first or leave it as plain text.
+5.  **Code Block Language Tags** — Always specify the language tag. Use ```` ```bash ```` for terminal commands, ```` ```python ```` for Python, etc. See the [Code Block Styles](#code-block-styles) section.
+6.  **No Promotion** — The `# More Learn` section only accepts links to trusted public resources (GitHub repositories, official docs, free YouTube playlists). Personal social media promotion is strictly prohibited.
+7.  **Spelling & Grammar** — Write in clear English. Perform a spell-check before submitting.
+8.  **No Duplicate Content** — If a topic is already covered in another page, link to it with `[[Page Name]]` instead of duplicating information.
+9.  **SEO Keywords** — Always end the `keywords` frontmatter field with: `, VR-Rathod, Code-Note, code note vr, vr book`.
+10. **File Size** — There is no maximum size limit. Deeper, more comprehensive pages are highly valued over brief summaries.
+11. **Code Comments** — All code snippets must have inline comments explaining key lines. Include command output where relevant.
+12. **Overflow Prevention** — In C, C++, and Java, always use `mid = low + (high - low) / 2` instead of `(low + high) / 2` when implementing binary search to prevent integer overflow. Make sure to document this in your code comments.
 
 ---
 
 ## Submitting Your Contribution
 
-1. Fork the repository
-2. Create your page in `/pages/` following the correct format above
-3. Add a link to your page in `index.md` under the correct section
-4. Submit a Pull Request with a clear title: `Add: <Page Name>` or `Update: <Page Name>`
-5. In the PR description, briefly describe what you added or changed
+1.  **Fork** the repository.
+2.  **Create your page** inside the `/pages/` directory following the correct template and general rules.
+3.  **Add a link** to your page in `index.md` under the correct category section.
+4.  **Submit a Pull Request (PR)** with a clear, descriptive title (e.g., `Add: <Page Name>` or `Update: <Page Name>`).
+5.  In the PR description, briefly outline what content was added or updated.
 
-If you have any questions, contact via the repository issues or email listed in the README.
+If you have any questions, feel free to reach out via the repository's GitHub Issues or check the contact email listed in the `README.md`.
 
 Thank you for contributing! 🦾
