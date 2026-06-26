@@ -33,11 +33,17 @@ treeTitle: DSA - Linear Data Structures - Linked Lists
 	- ## Types of Linked Lists
 	  collapsed:: true
 		- ### 1. Singly Linked List
-		  Each node points only to the next node. Traversal is strictly one-way (forward). The last node points to `null`.
+		  collapsed:: true
+			- Each node points only to the next node. Traversal is strictly one-way (forward). The last node points to `null`.
+		-
 		- ### 2. Doubly Linked List
-		  Each node has **two pointers**: one pointing to the next node, and one pointing to the previous node. This allows for traversal in both directions, making deletions easier but requiring more memory.
+		  collapsed:: true
+			- Each node has **two pointers**: one pointing to the next node, and one pointing to the previous node. This allows for traversal in both directions, making deletions easier but requiring more memory.
+		-
 		- ### 3. Circular Linked List
-		  The last node's `next` pointer points back to the `Head` (first node) instead of `null`, creating a continuous loop. Used in round-robin scheduling algorithms.
+		  collapsed:: true
+			- The last node's `next` pointer points back to the `Head` (first node) instead of `null`, creating a continuous loop. Used in round-robin scheduling algorithms.
+-
 - # How It Works (Operations)
   collapsed:: true
 	- ## Insertion
@@ -57,6 +63,7 @@ treeTitle: DSA - Linear Data Structures - Linked Lists
 	- ## Deletion
 	  collapsed:: true
 		- To delete a node, you simply change the pointer of the *previous* node to point to the node *after* the one you want to delete. The deleted node is then cleaned up by the garbage collector (or manually freed in C/C++).
+-
 - # Time & Space Complexity
   collapsed:: true
 	- > [!important] Arrays vs Linked Lists
@@ -69,6 +76,7 @@ treeTitle: DSA - Linear Data Structures - Linked Lists
 	  | **Insert (Head)** | $O(1)$ | $O(N)$ | Just update the head pointer. Array requires shifting. |
 	  | **Insert (Tail)** | $O(N)$ (or $O(1)$ w/ Tail) | $O(1)$ | Depends on if a tail pointer is maintained. |
 	  | **Space Complexity** | $O(N)$ | $O(N)$ | Requires extra space for pointers compared to arrays. |
+-
 - # Implementation
   collapsed:: true
 	- > [!note] Building a Singly Linked List

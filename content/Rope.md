@@ -2,7 +2,7 @@
 seoTitle: Rope Data Structure Complete Guide – Efficient Large-String Manipulation
 description: "A comprehensive guide on the Rope data structure. Learn how binary trees optimize string concatenation and split operations in O(log n) time."
 keywords: "rope data structure, string manipulation, text editor, binary tree, rope weight, string concatenation, string split, time complexity, space complexity, VR-Rathod, Code-Note, code note vr, vr book,Rope (Data Structure)"
-diplayTitle: Rope (Data Structure)
+displayTitle: Rope (Data Structure)
 treeTitle: DSA - Advanced Data Structures - Rope (Data Structure)
 ---
 
@@ -12,10 +12,13 @@ treeTitle: DSA - Advanced Data Structures - Rope (Data Structure)
 > - **Leaf Nodes** store actual string segments.
 > - **Internal Nodes** store the **weight** (total length of the string in their left subtree) and pointers to left and right children.
 
+-
 - # Explanation
+  collapsed:: true
 	- Traditional strings are stored as contiguous character arrays. If you insert a character at the beginning of a 10 MB string, the operating system must shift all 10 million characters in memory, taking $O(N)$ time. Ropes solve this by representing the string as a tree, allowing concatenation and splitting in $O(\log N)$ time.
 	-
 	- ## Real-World Analogy
+	  collapsed:: true
 		- **Railway Cars**: Instead of building one extremely long, rigid train car that is difficult to turn or modify (contiguous string), you connect individual train cars together with couplings (internal nodes). If you want to insert a new car or split the train in half, you only need to adjust the couplings, rather than modifying the cars themselves.
 		- **Text Editors (e.g., Visual Studio Code, Eclipse)**: Heavy-duty text editors use ropes or gap buffers internally to ensure that editing files containing millions of lines remains instantaneous and doesn't freeze the UI.
 -

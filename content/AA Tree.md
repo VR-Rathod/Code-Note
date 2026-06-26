@@ -9,25 +9,25 @@ treeTitle: DSA - Trees - AA Tree
 > An **AA Tree** (Arne Andersson Tree) is a self-balancing binary search tree that simplifies the classic Red-Black Tree.
 > It enforces balance using node **levels** (integers) rather than colors, significantly reducing the number of rotation cases needed during insertions and deletions.
 
-- # Explanation
+- ## Explanation
 	- An **AA Tree** is a variant of the Red-Black Tree that eliminates half of the restructuring cases by requiring that **only right children** can be at the same level as their parent.
 	- Instead of colors (Red/Black), every node is tagged with an integer **level** representing the black height of the node.
 	-
-	- ## Real-World Analogy
+	- ### Real-World Analogy
 	  collapsed:: true
 		- Think of a **corporate hierarchy** where employees are assigned strict grade levels.
 			- You can have a peer (at your same grade level) working directly under you, but to avoid structural confusion, they **must sit on your right**.
 			- No peers are allowed to sit on your left (left-child same level).
 			- You can have at most one peer reporting to you; if a second peer joins them, it triggers a promotion (level increment) to rebalance the team.
 	-
-	- ## Why AA Tree Over Red-Black Tree?
+	- ### Why AA Tree Over Red-Black Tree?
 	  collapsed:: true
 		- Red-Black Trees are highly efficient but notoriously complex to implement, requiring up to **6 balancing cases** for insertion and **8 cases** for deletion.
 		- By restricting red links (nodes at the same level) to the right side, the AA Tree reduces rebalancing to just **2 simple operations**: **Skew** and **Split**.
 -
-- # How It Works
+- ## How It Works
   collapsed:: true
-	- ## The Level Rules
+	- ### The Level Rules
 	  collapsed:: true
 		- 1. Leaf nodes have a level of 1.
 		- 2. The level of a left child must be exactly 1 less than its parent's level.
@@ -35,9 +35,9 @@ treeTitle: DSA - Trees - AA Tree
 		- 4. The level of a right grandchild must be strictly less than its grandparent's level.
 		- 5. Every node with level > 1 must have two children.
 	-
-	- ## The Two Core Rebalancing Operations
+	- ### The Two Core Rebalancing Operations
 	  collapsed:: true
-		- ### 1. Skew (Right Rotation)
+		- #### 1. Skew (Right Rotation)
 		  collapsed:: true
 			- **Trigger**: When a left child has the same level as its parent (violating Rule 2).
 			- **Action**: Perform a right rotation to turn the left horizontal link into a right horizontal link.
@@ -48,7 +48,7 @@ treeTitle: DSA - Trees - AA Tree
 			       /     \                                          /     \
 			     LL      LR                                        LR    Right
 			  ```
-		- ### 2. Split (Left Rotation + Level Up)
+		- #### 2. Split (Left Rotation + Level Up)
 		  collapsed:: true
 			- **Trigger**: When a node has two consecutive right children at the same level (violating Rule 4).
 			- **Action**: Perform a left rotation on the node and increment its level (promote it).
@@ -60,14 +60,14 @@ treeTitle: DSA - Trees - AA Tree
 			                   RL     Grandchild (Lvl X)         A        RL
 			  ```
 	-
-	- ## Step-by-Step Insertion Process
+	- ### Step-by-Step Insertion Process
 	  collapsed:: true
 		- 1. Perform standard BST insertion and set the new node's level to 1.
 		- 2. On backtracking up the recursion tree, apply `skew()` to fix any left horizontal links.
 		- 3. Apply `split()` to fix any double right horizontal links.
 		- 4. Repeat skew and split checks at each parent node along the insertion path.
 -
-- # Time & Space Complexity
+- ## Time & Space Complexity
   collapsed:: true
 	- | Operation | Time Complexity (Average) | Time Complexity (Worst) | Space Complexity |
 	  |-----------|---------------------------|-------------------------|------------------|
@@ -76,7 +76,7 @@ treeTitle: DSA - Trees - AA Tree
 	  | **Delete** | $O(\log n)$ | $O(\log n)$ | $O(\log n)$ call stack |
 	- Height is guaranteed to be tightly bounded, yielding $O(\log n)$ performance across all operations.
 -
-- # Implementation
+- ## Implementation
   collapsed:: true
 	- > [!note] AA Tree Implementation
 	  > Below are complete implementations for AA Trees, including search, skew, split, and insert operations.
@@ -563,7 +563,7 @@ treeTitle: DSA - Trees - AA Tree
 	  
 	  :::
 -
-- # When to Use
+- ## When to Use
   collapsed:: true
 	- ```mermaid
 	  flowchart TD
@@ -577,28 +577,28 @@ treeTitle: DSA - Trees - AA Tree
 	      S3 -- No --> R4["✅ Use AVL or Red-Black"]
 	  ```
 	-
-	- ## ✅ Use AA Tree When:
+	- ### ✅ Use AA Tree When:
 		- You want to implement a self-balancing BST from scratch and want to avoid the complex edge-cases of Red-Black Trees.
 		- Standard libraries aren't available, and coding simplicity is paramount.
 		- Low variance lookup/insert performance is needed.
 	-
-	- ## ❌ Avoid When:
+	- ### ❌ Avoid When:
 		- Maximum execution speed is crucial; standard Red-Black Trees or AVL Trees perform slightly fewer operations in practice because they do not require re-rotations during balanced lookups.
 		- Pre-built collections are already available in the language's standard library (e.g., `std::set` in C++ or `TreeMap` in Java).
 -
-- # Variations & Related
+- ## Variations & Related
   collapsed:: true
 	- [[Binary Search Tree]] - The parent class of all ordered tree types.
 	- [[Segment Tree]] - Balanced interval querying structure.
 	- [[Splay Tree]] - A self-adjusting search tree that optimizes for recently queried elements.
 -
-- # Key Takeaways
+- ## Key Takeaways
 	- AA Trees enforce balance via integer **levels** instead of node colors.
 	- They eliminate left-leaning horizontal links by only allowing red links to lean right.
 	- Two operations, **skew** (right rotate) and **split** (left rotate and level up), handle all insertion balance needs.
 	- The worst-case height is $O(\log n)$, guaranteeing lookup, insert, and delete in $O(\log n)$ time.
 -
-- # More Learn
-	- ## GitHub & Webs
+- ## More Learn
+	- ### GitHub & Webs
 		- [TheAlgorithms – Binary Tree](https://github.com/TheAlgorithms/Python/tree/master/data_structures/binary_tree)
 		- [Wikipedia - AA tree](https://en.wikipedia.org/wiki/AA_tree)
