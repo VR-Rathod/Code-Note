@@ -71,6 +71,8 @@ type TweenNode = {
 }
 
 async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
+  if (!graph.isConnected) return () => { }
+
   const slug = simplifySlug(fullSlug)
   const visited = getVisited()
   removeAllChildren(graph)
@@ -95,8 +97,11 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     pulseSpeed,
   } = JSON.parse(graph.dataset["cfg"]!) as D3Config
 
+  const contentIndex = await fetchData
+  if (!graph.isConnected) return () => { }
+
   const data: Map<SimpleSlug, ContentDetails> = new Map(
-    Object.entries<ContentDetails>(await fetchData).map(([k, v]) => [
+    Object.entries<ContentDetails>(contentIndex).map(([k, v]) => [
       simplifySlug(k as FullSlug),
       v,
     ]),
@@ -462,6 +467,12 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     resolution: window.devicePixelRatio,
     eventMode: "static",
   })
+
+  if (!graph.isConnected) {
+    app.destroy(true, { children: true })
+    return () => { }
+  }
+
   graph.appendChild(app.canvas)
 
   const stage = app.stage
@@ -745,7 +756,7 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
         // Perpendicular vector
         const px = -dy / len
         const py = dx / len
-        
+
         // Dynamic curve offset (12% of connection distance)
         const curveOffset = len * 0.12
         // Deterministic curve direction based on lexicographical order of node IDs
@@ -788,7 +799,7 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
       cancelAnimationFrame(animationFrameId)
     }
     document.removeEventListener("visibilitychange", onVisibilityChange)
-    app.destroy()
+    app.destroy(true, { children: true })
   }
 }
 

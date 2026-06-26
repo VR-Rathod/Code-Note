@@ -24,6 +24,10 @@
     {
       "source": "/robots.txt",
       "destination": "/static/robots.txt"
+    },
+    {
+      "source": "/14d90987ba8747698fd38a7580adb3af.txt",
+      "destination": "/static/14d90987ba8747698fd38a7580adb3af.txt"
     }
   ],
   "headers": [

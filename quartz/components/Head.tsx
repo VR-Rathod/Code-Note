@@ -56,7 +56,7 @@ function buildBreadcrumbLd(baseUrl: string, fileData: any, allFiles: any[]) {
     for (let i = 0; i < segments.length; i++) {
       const segment = segments[i]
       const isCurrentPage = i === segments.length - 1
-      
+
       let itemUrl = `https://${baseUrl}`
       if (!isCurrentPage) {
         const matchedSlug = findSlugForSegment(segment)
